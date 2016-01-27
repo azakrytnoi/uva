@@ -50,37 +50,42 @@ std::string U10305::operator()()
 		}
 	}
 	std::stringstream out;
-	std::vector<task> done_tasks;
+	std::vector<int> done_tasks;
 	done_tasks.reserve(tasks.size());
-	std::copy_if(tasks.begin(), tasks.end(), std::back_inserter(done_tasks), [](task t) { return t.predessors.empty(); });
+	std::for_each(tasks.begin(), tasks.end(), [&](task& t) { if (t.predessors.empty()) { done_tasks.push_back(t.id); t.executed = true; } });
 	if (done_tasks.empty())
 	{
 		return "No solution";
 	}
 	else
 	{
+		std::vector<int> current;
 		while (done_tasks.size() < tasks.size())
 		{
-			std::for_each(done_tasks.begin(), done_tasks.end(), [&](task t) { tasks[t.id - 1].executed = true; });
-			std::copy_if(tasks.begin(), tasks.end(), std::back_inserter(done_tasks), [&](task t) -> bool 
+			current.clear();
+			current.reserve(tasks.size());
+			std::for_each(tasks.begin(), tasks.end(), [&](task& t)
 			{
 				if (!t.executed)
 				{
 					bool ready(true);
-					for each (int tt in t.predessors)
+					for each (int idx in t.predessors)
 					{
-						ready &= tasks[tt - 1].executed;
+						ready &= tasks[idx - 1].executed;
 						if (!ready)
 						{
 							break;
 						}
 					}
-					return ready;
+					if (ready)
+					{
+						current.push_back(t.id);
+					}
 				}
-				return false;
 			});
+			std::_For_each(current.begin(), current.end(), [&](int idx) {done_tasks.push_back(idx); tasks[idx - 1].executed = true; });
 		}
-		std::ostream_iterator<task> oit(out, " ");
+		std::ostream_iterator<int> oit(out, " ");
 		std::copy(done_tasks.begin(), done_tasks.end(), oit);
 	}
 	return out.str();
