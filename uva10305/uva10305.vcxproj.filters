@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Data Files">
+      <UniqueIdentifier>{8a06ae3d-83e7-4f9e-b69b-4fd92854eaed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="U10305.h">
@@ -31,6 +34,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="U594.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="U11340.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -53,14 +59,40 @@
     <ClCompile Include="U594.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="U11340.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u10305.txt" />
-    <Text Include="u200.txt" />
-    <Text Include="u200_2.txt" />
-    <Text Include="u10305_2.txt" />
-    <Text Include="u100.txt" />
-    <Text Include="u482.txt" />
-    <Text Include="u594.txt" />
+    <Text Include="u100.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u200.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u200_2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u482.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u594.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u10305.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u10305_2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u11340.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="u11340_2.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11340_3.txt">
+      <Filter>Data Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
