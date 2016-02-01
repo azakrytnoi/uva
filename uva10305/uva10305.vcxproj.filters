@@ -24,6 +24,12 @@
     <ClInclude Include="U200.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="U100.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="U482.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="U10305.cpp">
@@ -35,11 +41,19 @@
     <ClCompile Include="U200.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="U100.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="U482.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="u10305.txt" />
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
     <Text Include="u10305_2.txt" />
+    <Text Include="u100.txt" />
+    <Text Include="u482.txt" />
   </ItemGroup>
 </Project>

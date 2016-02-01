@@ -147,19 +147,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="evaluator.h" />
+    <ClInclude Include="U100.h" />
     <ClInclude Include="U10305.h" />
     <ClInclude Include="U200.h" />
+    <ClInclude Include="U482.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="evaluator.cpp" />
+    <ClCompile Include="U100.cpp" />
     <ClCompile Include="U10305.cpp" />
     <ClCompile Include="U200.cpp" />
+    <ClCompile Include="U482.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="u100.txt" />
     <Text Include="u10305.txt" />
     <Text Include="u10305_2.txt" />
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
+    <Text Include="u482.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
