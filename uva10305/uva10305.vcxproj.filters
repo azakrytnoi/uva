@@ -30,6 +30,9 @@
     <ClInclude Include="U482.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="U594.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="U10305.cpp">
@@ -47,6 +50,9 @@
     <ClCompile Include="U482.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="U594.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="u10305.txt" />
@@ -55,5 +61,6 @@
     <Text Include="u10305_2.txt" />
     <Text Include="u100.txt" />
     <Text Include="u482.txt" />
+    <Text Include="u594.txt" />
   </ItemGroup>
 </Project>
