@@ -7,6 +7,6 @@
 
 int main()
 {
-	evaluator<U10305> u10305("u10305.txt");
-	evaluator<U200> u200("u200.txt");
+	evaluator<U10305> u10305("u10305_2.txt");
+	evaluator<U200> u200("u200_2.txt");
 }

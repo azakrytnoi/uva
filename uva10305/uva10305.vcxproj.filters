@@ -39,5 +39,7 @@
   <ItemGroup>
     <Text Include="u10305.txt" />
     <Text Include="u200.txt" />
+    <Text Include="u200_2.txt" />
+    <Text Include="u10305_2.txt" />
   </ItemGroup>
 </Project>
