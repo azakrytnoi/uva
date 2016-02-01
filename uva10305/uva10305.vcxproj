@@ -152,6 +152,7 @@
     <ClInclude Include="U11340.h" />
     <ClInclude Include="U200.h" />
     <ClInclude Include="U482.h" />
+    <ClInclude Include="U544.h" />
     <ClInclude Include="U594.h" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClCompile Include="U11340.cpp" />
     <ClCompile Include="U200.cpp" />
     <ClCompile Include="U482.cpp" />
+    <ClCompile Include="U544.cpp" />
     <ClCompile Include="U594.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +175,8 @@
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
     <Text Include="u482.txt" />
+    <Text Include="u544.txt" />
+    <Text Include="u544_2.txt" />
     <Text Include="u594.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

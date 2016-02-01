@@ -39,6 +39,9 @@
     <ClInclude Include="U11340.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="U544.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="U10305.cpp">
@@ -60,6 +63,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="U11340.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="U544.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -92,6 +98,12 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u11340.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u544.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u544_2.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>
