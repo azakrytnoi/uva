@@ -64,34 +64,34 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u100.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u200.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u200_2.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u482.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u594.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u10305.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u10305_2.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="u11340.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="u11340_2.txt">
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u11340_3.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u100.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u200.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u200_2.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u482.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u594.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10305.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10305_2.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11340.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>
