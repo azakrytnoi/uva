@@ -8,6 +8,7 @@
 #include "U594.h"
 #include "U11340.h"
 #include "U544.h"
+#include "U558.h"
 
 int main()
 {
@@ -17,5 +18,6 @@ int main()
 //	evaluator<U482> u482("u482.txt");
 //	evaluator<U594> u594("u594.txt");
 //	evaluator<U11340> u11340("u11340_3.txt");
-	evaluator<U544> u544("u544_2.txt");
+//	evaluator<U544> u544("u544_2.txt");
+	evaluator<U558> u558("u558_2.txt");
 }
