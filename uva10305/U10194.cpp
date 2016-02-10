@@ -151,13 +151,9 @@ void U10194::operator()()
 			{
 				if (match.size() == 5)
 				{
-					std::string team1Name = match[1];
 					int team1Goals = std::atoi(match[2].str().c_str());
 					int team2Goals = std::atoi(match[3].str().c_str());
-					std::string team2Name = match[4];
-					team& team1 = *teams[team1Name];
-					team& team2 = *teams[team2Name];
-					team::recordResults(team1, team2, team1Goals, team2Goals);
+					team::recordResults(*teams[match[1].str()], *teams[match[4].str()], team1Goals, team2Goals);
 				}
 			}
 		}
