@@ -1,0 +1,331 @@
+10
+aAa b
+10
+55 6b
+56bA 
+5aAaa
+A6a a
+B55BA
+a5aBa
+aaaa 
+ab6ab
+b bbb
+b6   
+20
+A6a a#1@1#B55BA
+55 6b#0@0#5aAaa
+55 6b#1@1#56bA 
+55 6b#1@0#B55BA
+ab6ab#0@0#b6   
+A6a a#0@1#aaaa 
+aaaa #1@1#b bbb
+A6a a#1@1#aaaa 
+5aAaa#0@0#ab6ab
+5aAaa#1@0#aaaa 
+B55BA#0@1#b6   
+A6a a#0@1#b bbb
+A6a a#0@0#B55BA
+5aAaa#0@0#aaaa 
+A6a a#0@1#b bbb
+B55BA#1@1#b6   
+ab6ab#0@0#b6   
+a5aBa#1@0#b bbb
+5aAaa#1@0#b bbb
+56bA #1@0#a5aBa
+5bb b
+10
+6a b5
+A56aa
+A6AbB
+A6bB 
+aaaA 
+b  ba
+b baB
+bA6A 
+ba6 b
+babB5
+20
+6a b5#1@0#b baB
+A6AbB#0@1#aaaA 
+A6bB #0@0#babB5
+6a b5#1@1#bA6A 
+aaaA #1@1#b baB
+6a b5#0@0#b  ba
+A56aa#0@0#A6bB 
+A56aa#1@1#A6bB 
+6a b5#1@1#b baB
+A56aa#1@1#A6bB 
+b baB#1@0#ba6 b
+A56aa#0@0#b baB
+bA6A #0@0#ba6 b
+A6AbB#0@0#A6bB 
+ba6 b#0@1#babB5
+A56aa#0@1#babB5
+A56aa#0@1#babB5
+A6bB #0@1#aaaA 
+bA6A #1@1#ba6 b
+A6bB #0@1#b baB
+B B a
+10
+56BB5
+6Bb6 
+AA ba
+Bab B
+b6   
+bB Bb
+babb6
+bb   
+bb5Aa
+bbABb
+20
+AA ba#0@1#b6   
+Bab B#0@1#bb5Aa
+bB Bb#0@0#bb5Aa
+bb   #1@0#bb5Aa
+AA ba#0@0#babb6
+AA ba#1@1#bB Bb
+56BB5#0@0#bB Bb
+bb   #0@1#bbABb
+babb6#0@0#bbABb
+babb6#0@0#bbABb
+6Bb6 #0@0#AA ba
+b6   #0@0#babb6
+6Bb6 #1@1#bb5Aa
+AA ba#0@0#bbABb
+b6   #0@1#babb6
+AA ba#1@1#bb5Aa
+bB Bb#0@0#babb6
+b6   #0@0#bb   
+Bab B#0@1#b6   
+b6   #0@0#bbABb
+a665a
+10
+6BBB 
+6aa6b
+6ab5B
+a A  
+abb65
+b aaB
+bBBb5
+bBbBa
+bab a
+bb6 a
+20
+abb65#0@0#bab a
+6ab5B#1@0#a A  
+bBBb5#0@1#bb6 a
+6aa6b#1@1#bb6 a
+6ab5B#0@0#bBbBa
+bab a#1@0#bb6 a
+a A  #0@0#bBBb5
+6BBB #1@1#bb6 a
+abb65#1@0#bBbBa
+6aa6b#0@1#6ab5B
+6ab5B#1@0#bb6 a
+a A  #0@0#abb65
+6BBB #0@0#bBBb5
+a A  #1@0#bb6 a
+6aa6b#1@0#6ab5B
+bBbBa#1@0#bab a
+6aa6b#1@0#bab a
+b aaB#1@0#bb6 a
+6BBB #0@0#6ab5B
+6BBB #0@0#6ab5B
+BaA a
+10
+5bA 5
+6bab6
+B a a
+a  5a
+a Ba5
+a6bab
+aa A 
+b6 Bb
+bA6Bb
+bBb a
+20
+a  5a#0@0#a6bab
+bA6Bb#0@1#bBb a
+5bA 5#1@0#bA6Bb
+a6bab#0@0#bA6Bb
+a  5a#1@1#a Ba5
+a6bab#0@0#bBb a
+B a a#1@1#a6bab
+B a a#1@1#a  5a
+a Ba5#0@1#aa A 
+bA6Bb#1@1#bBb a
+a  5a#0@1#a6bab
+6bab6#1@1#b6 Bb
+aa A #1@0#b6 Bb
+aa A #1@0#b6 Bb
+a  5a#1@0#b6 Bb
+a Ba5#0@0#bBb a
+6bab6#1@1#a6bab
+B a a#1@1#bBb a
+B a a#1@1#b6 Bb
+aa A #1@0#bBb a
+aB5ab
+10
+5b65a
+A 66a
+abBAB
+b    
+b655a
+bB  a
+ba b5
+bb  b
+bbba 
+bbba6
+20
+A 66a#1@1#bbba 
+b655a#1@0#ba b5
+bb  b#0@1#bbba 
+bbba #1@1#bbba6
+bB  a#1@1#bbba 
+b    #1@0#bb  b
+5b65a#1@1#b    
+A 66a#0@1#bb  b
+abBAB#1@1#bbba6
+bb  b#0@0#bbba6
+abBAB#1@0#bB  a
+abBAB#1@1#bbba6
+abBAB#0@1#bb  b
+bbba #1@1#bbba6
+5b65a#0@1#abBAB
+b    #0@1#bbba6
+abBAB#1@0#b655a
+b    #1@1#b655a
+A 66a#0@0#bbba6
+abBAB#0@0#b655a
+B5aAB
+10
+6 Bb5
+A6bBb
+aBb6 
+aa Bb
+aab5a
+ab5  
+b56b 
+b6Ba 
+bA ab
+babB 
+20
+A6bBb#1@1#b6Ba 
+aab5a#1@0#b56b 
+A6bBb#1@0#aa Bb
+bA ab#1@0#babB 
+6 Bb5#1@0#bA ab
+ab5  #1@0#b56b 
+ab5  #1@1#b56b 
+A6bBb#0@0#aa Bb
+A6bBb#0@0#aab5a
+A6bBb#0@0#aa Bb
+aBb6 #1@1#b6Ba 
+aab5a#0@1#ab5  
+aa Bb#1@1#babB 
+A6bBb#1@0#aab5a
+aab5a#0@0#b6Ba 
+6 Bb5#0@1#aab5a
+aa Bb#1@1#bA ab
+aBb6 #0@0#b6Ba 
+aa Bb#1@0#b56b 
+6 Bb5#0@0#aBb6 
+6 6b 
+10
+5AA5b
+B5b b
+BBaAa
+Ba5ab
+aA6b5
+aAab5
+aaaa5
+abAA 
+b A6 
+bB  a
+20
+aA6b5#1@0#abAA 
+Ba5ab#1@1#bB  a
+aAab5#0@1#b A6 
+5AA5b#0@0#B5b b
+aaaa5#1@0#abAA 
+B5b b#0@1#b A6 
+B5b b#1@1#abAA 
+5AA5b#1@0#B5b b
+aAab5#0@1#bB  a
+aA6b5#1@1#bB  a
+aAab5#0@1#bB  a
+BBaAa#1@1#bB  a
+5AA5b#0@0#BBaAa
+5AA5b#1@1#aA6b5
+5AA5b#0@0#abAA 
+B5b b#1@0#aaaa5
+abAA #1@1#bB  a
+aAab5#0@0#abAA 
+BBaAa#1@1#aaaa5
+BBaAa#1@0#aaaa5
+bbAb6
+10
+5 Aa5
+56 a5
+5a5Ab
+ABaBA
+Aa5 B
+AbA5A
+a  Aa
+a5b5a
+b A6B
+bb  6
+20
+5a5Ab#0@0#a5b5a
+AbA5A#0@0#a5b5a
+ABaBA#1@1#AbA5A
+5a5Ab#0@1#Aa5 B
+Aa5 B#1@0#bb  6
+Aa5 B#0@0#AbA5A
+56 a5#1@1#b A6B
+a5b5a#0@0#bb  6
+5 Aa5#0@1#AbA5A
+5a5Ab#1@0#AbA5A
+a5b5a#1@1#bb  6
+Aa5 B#1@1#b A6B
+5 Aa5#1@0#Aa5 B
+5 Aa5#1@0#a5b5a
+ABaBA#1@1#bb  6
+5 Aa5#0@0#AbA5A
+56 a5#0@1#AbA5A
+56 a5#1@0#a  Aa
+a5b5a#1@0#b A6B
+a  Aa#1@0#a5b5a
+bBBA 
+10
+5b5aa
+A6 5 
+ABa6 
+B baa
+a a b
+a5a5A
+aaAaa
+ab b6
+b aa 
+bBa  
+20
+a5a5A#0@1#ab b6
+ABa6 #1@0#bBa  
+5b5aa#0@0#a a b
+A6 5 #1@1#B baa
+5b5aa#1@0#bBa  
+ABa6 #0@1#B baa
+B baa#1@0#b aa 
+ABa6 #1@1#B baa
+B baa#1@0#b aa 
+aaAaa#0@1#b aa 
+ABa6 #1@0#a a b
+aaAaa#1@1#ab b6
+ab b6#0@1#b aa 
+B baa#0@1#aaAaa
+ABa6 #0@1#B baa
+5b5aa#1@0#ab b6
+aaAaa#1@1#bBa  
+a a b#1@1#ab b6
+5b5aa#1@1#ab b6
+a a b#1@0#ab b6

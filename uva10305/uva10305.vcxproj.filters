@@ -45,6 +45,12 @@
     <ClInclude Include="U558.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="U146.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="U10194.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="U10305.cpp">
@@ -72,6 +78,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="U558.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="U146.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="U10194.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -116,6 +128,12 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u558_2.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u146.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10194.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>
