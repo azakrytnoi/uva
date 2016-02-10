@@ -150,6 +150,7 @@
     <ClInclude Include="U100.h" />
     <ClInclude Include="U10305.h" />
     <ClInclude Include="U11340.h" />
+    <ClInclude Include="U146.h" />
     <ClInclude Include="U200.h" />
     <ClInclude Include="U482.h" />
     <ClInclude Include="U544.h" />
@@ -161,6 +162,7 @@
     <ClCompile Include="U100.cpp" />
     <ClCompile Include="U10305.cpp" />
     <ClCompile Include="U11340.cpp" />
+    <ClCompile Include="U146.cpp" />
     <ClCompile Include="U200.cpp" />
     <ClCompile Include="U482.cpp" />
     <ClCompile Include="U544.cpp" />
@@ -174,6 +176,7 @@
     <Text Include="u11340.txt" />
     <Text Include="u11340_2.txt" />
     <Text Include="u11340_3.txt" />
+    <Text Include="u146.txt" />
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
     <Text Include="u482.txt" />
