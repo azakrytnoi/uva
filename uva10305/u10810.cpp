@@ -37,8 +37,8 @@ private:
     uint64_t swaps_;
     std::list<int> src_;
 
-    void merge_sort (iterator p, iterator r);
-    void merge (iterator p, iterator q, iterator r);
+    void merge_sort (iterator, iterator);
+    void merge (iterator, iterator, iterator);
 };
 
 sorter::sorter(int n) : n_(n), swaps_(0)
@@ -51,42 +51,39 @@ uint64_t sorter::sort()
     return swaps_;
 }
 
-void sorter::merge_sort (iterator p, iterator r)
+void sorter::merge_sort (iterator start, iterator end)
 {
     std::clog << "merge-sort [ ";
-    std::copy(p, r, log);
+    std::copy(start, end, log);
     std::clog << "]" << std::endl;
-    if ( std::distance(p, r) > 1 )
+    if ( std::distance(start, end) > 1 )
     {
-        iterator q ( p);
-        std::advance(q, std::distance(p, r) / 2);
-        merge_sort (p, q);
-        merge_sort (q, r);
-        merge (p, q, r);
-    std::clog << "merge-sort after [ ";
-    std::copy(p, r, log);
-    std::clog << "]" << std::endl;
+        iterator middle ( start);
+        std::advance(middle, std::distance(start, end) / 2);
+        merge_sort (start, middle);
+        merge_sort (middle, end);
+        merge (start, middle, end);
+        std::clog << "merge-sort after [ ";
+        std::copy(start, end, log);
+        std::clog << "]" << std::endl;
     }
 }
 
-void sorter::merge (iterator p, iterator q, iterator r)
+void sorter::merge (iterator start, iterator middle, iterator end)
 {
     std::clog << "merge [ ";
-    std::copy(p, q, log);
+    std::copy(start, middle, log);
     std::clog << "/ ";
-    std::copy(q, r, log);
+    std::copy(middle, end, log);
     std::clog << "]" << std::endl;
-    int len1 = std::distance( p, q) + 1;
     std::list <int> left;
     std::list <int> right;
 
-    std::copy(p, q, std::back_inserter(left));
-    std::copy(q, r, std::back_inserter(right));
- //   left.splice(left.begin(), src_, p, q);
- //   right.splice(right.begin(), src_, q, r);
+    std::copy(start, middle, std::back_inserter(left));
+    std::copy(middle, end, std::back_inserter(right));
 
-    left.push_back (999999999 + 10);
-    right.push_back (999999999 + 10);
+    left.push_back (999999999 + 2);
+    right.push_back (999999999 + 2);
     std::clog << "\tleft [ ";
     std::copy (left.begin(), left.end(), log);
     std::clog << "]" << std::endl;
@@ -94,22 +91,25 @@ void sorter::merge (iterator p, iterator q, iterator r)
     std::copy (right.begin(), right.end(), log);
     std::clog << "]" << std::endl;
 
-    for ( iterator k = p ; k != r;  )
+    int ll = left.size() - 1;
+    int left_count (0);
+    for ( iterator current = start ; current != end;  )
     {
         if ( left.front() <= right.front() )
         {
-            *(k++) = left.front();
+            *(current++) = left.front();
             left.pop_front();
+            left_count++;
         }
         else
         {
-            *(k++) = right.front();
+            *(current++) = right.front();
             right.pop_front();
-            swaps_ += len1 - std::distance(p, k);
+            swaps_ += ll - left_count;
         }
     }
     std::clog << "merged [ ";
-    std::copy (p, r, log);
+    std::copy (start, end, log);
     std::clog << "]" << std::endl;
 }
 
