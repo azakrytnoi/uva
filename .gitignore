@@ -211,3 +211,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 uva.VC.opendb
+*.out
