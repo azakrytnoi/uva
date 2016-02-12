@@ -16,7 +16,7 @@ namespace
 		bool executed;
 
 		task() : id(0), executed(false) {}
-		task(int id) : id(id), executed(false) {}
+		explicit task(int id) : id(id), executed(false) {}
 	};
 
 	std::ostream& operator << (std::ostream& out, const task& t)
@@ -78,7 +78,7 @@ void U10305::operator()()
 						}
 					}
 				});
-				std::_For_each(current.begin(), current.end(), [&](int idx) {done_tasks.push_back(idx); tasks[idx - 1].executed = true; });
+				std::for_each(current.begin(), current.end(), [&](int idx) {done_tasks.push_back(idx); tasks[idx - 1].executed = true; });
 			}
 			std::copy(done_tasks.begin(), done_tasks.end(), oit);
 			std::cout << std::endl;

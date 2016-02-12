@@ -71,8 +71,7 @@ private:
 };
 
 teestream::teestream(std::ostream & o1, std::ostream & o2)
-    : std::ostream(&tbuf)
-    , tbuf(o1.rdbuf(), o2.rdbuf())
+    : std::ostream(&tbuf), tbuf(o1.rdbuf(), o2.rdbuf())
 {
 }
 
@@ -82,7 +81,7 @@ template<typename Tp>
 class evaluator
 {
 public:
-    evaluator(const std::string& source);
+    explicit evaluator(const std::string& source);
     ~evaluator();
 
 private:
