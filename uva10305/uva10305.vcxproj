@@ -149,6 +149,7 @@
     <ClInclude Include="evaluator.h" />
     <ClInclude Include="U100.h" />
     <ClInclude Include="U10194.h" />
+    <ClInclude Include="U10258.h" />
     <ClInclude Include="U10305.h" />
     <ClInclude Include="U11340.h" />
     <ClInclude Include="U146.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="evaluator.cpp" />
     <ClCompile Include="U100.cpp" />
     <ClCompile Include="U10194.cpp" />
+    <ClCompile Include="U10258.cpp" />
     <ClCompile Include="U10305.cpp" />
     <ClCompile Include="U11340.cpp" />
     <ClCompile Include="U146.cpp" />
@@ -174,6 +176,7 @@
   <ItemGroup>
     <Text Include="u100.txt" />
     <Text Include="u10194.txt" />
+    <Text Include="u10258.txt" />
     <Text Include="u10305.txt" />
     <Text Include="u10305_2.txt" />
     <Text Include="u11340.txt" />
