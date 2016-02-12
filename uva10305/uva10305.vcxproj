@@ -147,11 +147,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="evaluator.h" />
+    <ClInclude Include="sort.h" />
     <ClInclude Include="U100.h" />
     <ClInclude Include="U10194.h" />
     <ClInclude Include="U10258.h" />
     <ClInclude Include="U10305.h" />
+    <ClInclude Include="u10810.h" />
     <ClInclude Include="U11340.h" />
+    <ClInclude Include="u11495.h" />
     <ClInclude Include="U146.h" />
     <ClInclude Include="U200.h" />
     <ClInclude Include="U482.h" />
@@ -166,7 +169,9 @@
     <ClCompile Include="U10194.cpp" />
     <ClCompile Include="U10258.cpp" />
     <ClCompile Include="U10305.cpp" />
+    <ClCompile Include="u10810.cpp" />
     <ClCompile Include="U11340.cpp" />
+    <ClCompile Include="u11495.cpp" />
     <ClCompile Include="U146.cpp" />
     <ClCompile Include="U200.cpp" />
     <ClCompile Include="U482.cpp" />
@@ -181,9 +186,11 @@
     <Text Include="u10258.txt" />
     <Text Include="u10305.txt" />
     <Text Include="u10305_2.txt" />
+    <Text Include="u10810.txt" />
     <Text Include="u11340.txt" />
     <Text Include="u11340_2.txt" />
     <Text Include="u11340_3.txt" />
+    <Text Include="u11495.txt" />
     <Text Include="u146.txt" />
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
