@@ -15,13 +15,15 @@
 //#include "U10258.h"
 //#include "u11495.h"
 //#include "u10810.h"
-#include "U127.h"
-#include "u673.h"
+//#include "U127.h"
+//#include "u673.h"
+#include "u11388.h"
 
 int main()
 {
-    evaluator<U673> u673("u673.txt");
-    evaluator<U127> u127("u127.txt");
+    evaluator<U11388> u11388("u11388.txt");
+//    evaluator<U673> u673("u673.txt");
+//    evaluator<U127> u127("u127.txt");
 //	evaluator<U11495> u11495("u11495.txt");
 //	evaluator<U10810> u10810("u10810.txt");
 //	evaluator<U957> u957("u957.txt");
