@@ -28,7 +28,7 @@ void U11495::operator()()
 		{
 			util::sort<100000> s(n);
 			in >> s;
-			std::cout << (s.do_sort() & 0x01 ? "Marcelo" : "Carlos") << std::endl;
+			std::cout << ((s.do_sort() & 0x01) ? "Marcelo" : "Carlos") << std::endl;
 		}
 	}
 }
