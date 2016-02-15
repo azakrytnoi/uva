@@ -72,6 +72,9 @@
     <ClInclude Include="u673.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="u727.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="U10305.cpp">
@@ -123,6 +126,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="u673.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u727.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -188,6 +194,9 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u673.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u727.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>

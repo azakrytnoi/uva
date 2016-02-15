@@ -15,9 +15,11 @@
 //#include "U10258.h"
 //#include "u11495.h"
 //#include "u10810.h"
+#include "u727.h"
 
 int main()
 {
+	evaluator<U727> u727("u727.txt");
 //	evaluator<U11495> u11495("u11495.txt");
 //	evaluator<U10810> u10810("u10810.txt");
 //	evaluator<U957> u957("u957.txt");
