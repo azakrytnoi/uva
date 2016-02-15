@@ -26,8 +26,7 @@ LFLAGS =
 LIBS = 
 
 # define the C source files
-SRCS = evaluator.cpp  U10194.cpp  U10258.cpp  U10305.cpp  U11340.cpp  u11495.cpp  U146.cpp \
-     U482.cpp  U558.cpp  u673.cpp  u714.cpp U100.cpp       u10219.cpp  u10301.cpp  u10810.cpp  u11388.cpp  U127.cpp    U200.cpp  U544.cpp  U594.cpp  u679.cpp  u957.cpp
+SRCS = $(wildcard *.cpp)
 
 # define the C object files 
 #

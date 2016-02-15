@@ -162,6 +162,7 @@
     <ClInclude Include="U544.h" />
     <ClInclude Include="U558.h" />
     <ClInclude Include="U594.h" />
+    <ClInclude Include="u673.h" />
     <ClInclude Include="u957.h" />
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +181,7 @@
     <ClCompile Include="U544.cpp" />
     <ClCompile Include="U558.cpp" />
     <ClCompile Include="U594.cpp" />
+    <ClCompile Include="u673.cpp" />
     <ClCompile Include="u957.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +205,7 @@
     <Text Include="u558.txt" />
     <Text Include="u558_2.txt" />
     <Text Include="u594.txt" />
+    <Text Include="u673.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
