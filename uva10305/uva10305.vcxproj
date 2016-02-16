@@ -150,12 +150,18 @@
     <ClInclude Include="sort.h" />
     <ClInclude Include="U100.h" />
     <ClInclude Include="U10194.h" />
+    <ClInclude Include="u10219.h" />
+    <ClInclude Include="u10226.h" />
     <ClInclude Include="U10258.h" />
+    <ClInclude Include="u10301.h" />
     <ClInclude Include="U10305.h" />
     <ClInclude Include="u10810.h" />
+    <ClInclude Include="u11239.h" />
     <ClInclude Include="U11340.h" />
+    <ClInclude Include="u11388.h" />
     <ClInclude Include="u11462.h" />
     <ClInclude Include="u11495.h" />
+    <ClInclude Include="U127.h" />
     <ClInclude Include="U146.h" />
     <ClInclude Include="U200.h" />
     <ClInclude Include="U482.h" />
@@ -163,6 +169,8 @@
     <ClInclude Include="U558.h" />
     <ClInclude Include="U594.h" />
     <ClInclude Include="u673.h" />
+    <ClInclude Include="u679.h" />
+    <ClInclude Include="u714.h" />
     <ClInclude Include="u727.h" />
     <ClInclude Include="u957.h" />
   </ItemGroup>
@@ -170,12 +178,18 @@
     <ClCompile Include="evaluator.cpp" />
     <ClCompile Include="U100.cpp" />
     <ClCompile Include="U10194.cpp" />
+    <ClCompile Include="u10219.cpp" />
+    <ClCompile Include="u10226.cpp" />
     <ClCompile Include="U10258.cpp" />
+    <ClCompile Include="u10301.cpp" />
     <ClCompile Include="U10305.cpp" />
     <ClCompile Include="u10810.cpp" />
+    <ClCompile Include="u11239.cpp" />
     <ClCompile Include="U11340.cpp" />
+    <ClCompile Include="u11388.cpp" />
     <ClCompile Include="u11462.cpp" />
     <ClCompile Include="u11495.cpp" />
+    <ClCompile Include="U127.cpp" />
     <ClCompile Include="U146.cpp" />
     <ClCompile Include="U200.cpp" />
     <ClCompile Include="U482.cpp" />
@@ -183,21 +197,29 @@
     <ClCompile Include="U558.cpp" />
     <ClCompile Include="U594.cpp" />
     <ClCompile Include="u673.cpp" />
+    <ClCompile Include="u679.cpp" />
+    <ClCompile Include="u714.cpp" />
     <ClCompile Include="u727.cpp" />
     <ClCompile Include="u957.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="u100.txt" />
     <Text Include="u10194.txt" />
+    <Text Include="u10219.txt" />
+    <Text Include="u10226.txt" />
     <Text Include="u10258.txt" />
+    <Text Include="u10301.txt" />
     <Text Include="u10305.txt" />
     <Text Include="u10305_2.txt" />
     <Text Include="u10810.txt" />
+    <Text Include="u11239.txt" />
     <Text Include="u11340.txt" />
     <Text Include="u11340_2.txt" />
     <Text Include="u11340_3.txt" />
+    <Text Include="u11388.txt" />
     <Text Include="u11462.txt" />
     <Text Include="u11495.txt" />
+    <Text Include="u127.txt" />
     <Text Include="u146.txt" />
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
@@ -208,7 +230,10 @@
     <Text Include="u558_2.txt" />
     <Text Include="u594.txt" />
     <Text Include="u673.txt" />
+    <Text Include="u679.txt" />
+    <Text Include="u714.txt" />
     <Text Include="u727.txt" />
+    <Text Include="u957.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

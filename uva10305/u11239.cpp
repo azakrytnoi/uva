@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cctype>
 #include <set>
+#include <iterator>
 
 void U11239::operator()()
 {

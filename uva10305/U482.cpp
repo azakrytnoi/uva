@@ -39,12 +39,10 @@ void U482::operator()()
 		src.clear();
 		std::getline(std::cin, line);
 		std::getline(std::cin, line);
-		std::istream_iterator<size_t> is1(std::stringstream(line));
-//		std::transform(is1, std::stringstream(), std::back_inserter(src), [&](size_t n) { item i; i.idx = n; return i; });
+		std::transform(std::istream_iterator<size_t>(std::stringstream(line)), std::istream_iterator<size_t>(), std::back_inserter(src), [&](size_t n) { item i; i.idx = n; return i; });
 		std::getline(std::cin, line);
 		auto src_pointer = src.begin();
-		std::istream_iterator<std::string> is2(std::stringstream(line));
-//		std::for_each(is2, std::stringstream().end(), [&](const std::string& val) { (src_pointer++)->value = val; });
+		std::for_each(std::istream_iterator<std::string>(std::stringstream(line)), std::istream_iterator <std::string>() , [&](const std::string& val) { (src_pointer++)->value = val; });
 		std::sort(src.begin(), src.end());
 		std::for_each(src.begin(), src.end(), [&](item& itm) { std::cout << itm.value << std::endl; });
 		std::cout << std::endl;

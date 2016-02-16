@@ -5,6 +5,7 @@
 #include <iterator>
 #include <algorithm>
 #include <sstream>
+#include <numeric>
 
 U714::U714()
 {
@@ -23,7 +24,7 @@ public:
 
     inline void solve()
     {
-        int64_t sum ( std::accumulate(pages_.begin(), pages_.end(), 0));
+        int64_t sum ( std::accumulate(pages_.begin(), pages_.end(), 0ll));
         int64_t lmin ( *(std::minmax_element(pages_.begin(), pages_.end()).first));
         optimal_ = binary(lmin, sum);
     }
