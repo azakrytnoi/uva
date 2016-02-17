@@ -77,7 +77,7 @@ inline void sort<MAX>::merge(iterator start, iterator middle, iterator end)
     left.push_back(MAX + 2);
     right.push_back(MAX + 2);
 
-    int ll = left.size() - 1;
+    size_t ll = left.size() - 1;
     int left_count(0);
     for (iterator current = start; current != end; )
     {

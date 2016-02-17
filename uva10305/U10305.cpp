@@ -1,4 +1,4 @@
-#include "U10305.h"
+#include "u10305.h"
 
 #include <iostream>
 #include <vector>
@@ -46,7 +46,7 @@ void U10305::operator()()
 			std::cin >> n >> m;
 			if (n == 0 && m == 0) break;
 			tasks.reserve(n);
-			std::generate_n(std::back_inserter(tasks), n, [&]() { return task(tasks.size() + 1); });
+			std::generate_n(std::back_inserter(tasks), n, [&]() { return task(int(tasks.size()) + 1); });
 			while (std::cin >> n >> t)
 			{
 				if (n == 0 && t == 0) break;
