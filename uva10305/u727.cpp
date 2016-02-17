@@ -87,10 +87,6 @@ namespace
 
 U727::U727()
 {
-	op_rank['/'] = 3;
-	op_rank['*'] = 3;
-	op_rank['-'] = 1;
-	op_rank['+'] = 1;
 }
 
 U727::~U727()
@@ -100,6 +96,12 @@ U727::~U727()
 
 void U727::operator()()
 {
+    {
+        op_rank['/'] = 3;
+	    op_rank['*'] = 3;
+	    op_rank['-'] = 1;
+	    op_rank['+'] = 1;
+    }
 	int N;
 	std::cin >> N;
 	std::string line;

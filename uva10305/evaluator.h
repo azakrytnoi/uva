@@ -7,7 +7,7 @@
 #include <functional>
 #include <iosfwd>
 #include <sstream>
-
+#include <typeinfo>
 
 
 template <typename char_type,
@@ -127,6 +127,7 @@ private:
 template<typename Tp>
 void evaluator<Tp>::operator()()
 {
+    std::cout << typeid(Tp).name() << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
     std::stringstream out;
     {
