@@ -18,11 +18,11 @@
 //#include "u727.h"
 //#include "u10226.h"
 //#include "u11239.h"
-#include "u11136.h"
+#include "u11308.h"
 
 int main()
 {
-	evaluator<U11136> u11136("u11136.txt");
+    evaluator<U11308> u11308("u11308.txt");
 //    evaluator<U11239> u11239("u11239.txt");
 //    evaluator<U10226> u10226("u10226.txt");
 //	evaluator<U727> u727("u727.txt");
