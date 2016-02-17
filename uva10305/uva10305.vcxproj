@@ -158,6 +158,7 @@
     <ClInclude Include="u10810.h" />
     <ClInclude Include="u11136.h" />
     <ClInclude Include="u11239.h" />
+    <ClInclude Include="u11308.h" />
     <ClInclude Include="U11340.h" />
     <ClInclude Include="u11388.h" />
     <ClInclude Include="u11462.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="u679.h" />
     <ClInclude Include="u714.h" />
     <ClInclude Include="u727.h" />
+    <ClInclude Include="u908.h" />
     <ClInclude Include="u957.h" />
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +189,7 @@
     <ClCompile Include="u10810.cpp" />
     <ClCompile Include="u11136.cpp" />
     <ClCompile Include="u11239.cpp" />
+    <ClCompile Include="u11308.cpp" />
     <ClCompile Include="U11340.cpp" />
     <ClCompile Include="u11388.cpp" />
     <ClCompile Include="u11462.cpp" />
@@ -202,6 +205,7 @@
     <ClCompile Include="u679.cpp" />
     <ClCompile Include="u714.cpp" />
     <ClCompile Include="u727.cpp" />
+    <ClCompile Include="u908.cpp" />
     <ClCompile Include="u957.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +220,7 @@
     <Text Include="u10810.txt" />
     <Text Include="u11136.txt" />
     <Text Include="u11239.txt" />
+    <Text Include="u11308.txt" />
     <Text Include="u11340.txt" />
     <Text Include="u11340_2.txt" />
     <Text Include="u11340_3.txt" />
@@ -236,6 +241,7 @@
     <Text Include="u679.txt" />
     <Text Include="u714.txt" />
     <Text Include="u727.txt" />
+    <Text Include="u908.txt" />
     <Text Include="u957.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
