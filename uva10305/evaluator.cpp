@@ -36,14 +36,18 @@ int main(int argc, char** argv)
 	{
         for (int i = 1; i < argc; i++)
         {
-            (*g_cache[argv[i]])();
+            auto uva = g_cache.find(argv[1]);
+            if (uva != g_cache.end()) 
+            {
+                (*(uva->second))();
+            }
         }
 	}
     else
     {
-        std::for_each(g_cache.begin(), g_cache.end(), [](auto uv)
+        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva)
         {
-            (*(uv.second))();
+            (*(uva.second))();
         });
     }
 }
