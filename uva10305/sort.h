@@ -23,6 +23,7 @@ public:
     {
     }
 
+    /** \brief Destructor */
     ~sort()
     {
     }

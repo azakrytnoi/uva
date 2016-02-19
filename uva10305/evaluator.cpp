@@ -1,45 +1,53 @@
 #include <iostream>
 
 #include "evaluator.h"
-//#include "u10305.h"
-//#include "u200.h"
-//#include "u100.h"
-//#include "u482.h"
-//#include "u594.h"
-//#include "u11340.h"
-//#include "u544.h"
-//#include "u558.h"
-//#include "u146.h"
-//#include "u957.h"
-//#include "u10194.h"
-//#include "u10258.h"
-//#include "u11495.h"
-//#include "u10810.h"
-//#include "u727.h"
-//#include "u10226.h"
-//#include "u11239.h"
-#include "u11308.h"
-#include "u908.h"
 
-int main()
+#include "uvas.h"
+
+#include <map>
+#include <typeinfo>
+#include <memory>
+#include <algorithm>
+
+namespace
 {
-	evaluator<U908> u988("u908.txt");
-//    evaluator<U11308> u11308("u11308.txt");
-//    evaluator<U11239> u11239("u11239.txt");
-//    evaluator<U10226> u10226("u10226.txt");
-//	evaluator<U727> u727("u727.txt");
-//	evaluator<U11495> u11495("u11495.txt");
-//	evaluator<U10810> u10810("u10810.txt");
-//	evaluator<U957> u957("u957.txt");
-//	evaluator<U10258> u10258("u10258.txt");
-//	evaluator<U10305> u10305("u10305_2.txt");
-//	evaluator<U200> u200("u200_2.txt");
-//	evaluator<U100> u100("u100.txt");
-//	evaluator<U482> u482("u482.txt");
-//	evaluator<U594> u594("u594.txt");
-//	evaluator<U11340> u11340("u11340_3.txt");
-//	evaluator<U544> u544("u544_2.txt");
-//	evaluator<U558> u558("u558_2.txt");
-//	evaluator<U146> u146("u146.txt");
-//	evaluator<U10194> u10194("u10194.txt");
+	std::map<std::string, std::shared_ptr<wraper>> g_cache;
+
+	template<class... Ts> struct populate {};
+
+	template<class Tp, class... Ts>
+	struct populate<Tp, Ts...> : populate<Ts...>
+	{
+		populate() : populate<Ts...>()
+		{
+			std::string tp_name(typeid(Tp).name());
+            tp_name = tp_name.substr(tp_name.find('U') + 1);
+			g_cache[tp_name] = std::make_shared<evaluator<Tp>>("u" + tp_name + ".txt");
+		}
+	};
+
+	populate < U100, U10194, U10219, U10226, U10258, U10301, U10305, U10810, U11136, U11239, U11308, U11340, U11388, U11462, U11495, U127,
+		U146, U200, U482, U544, U558, U594, U673, U679, U714, U727, U908, U957, U628	> pop;
+}
+
+int main(int argc, char** argv)
+{
+	if (argc > 1)
+	{
+        for (int i = 1; i < argc; i++)
+        {
+            auto uva = g_cache.find(argv[1]);
+            if (uva != g_cache.end()) 
+            {
+                (*(uva->second))();
+            }
+        }
+	}
+    else
+    {
+        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva)
+        {
+            (*(uva.second))();
+        });
+    }
 }

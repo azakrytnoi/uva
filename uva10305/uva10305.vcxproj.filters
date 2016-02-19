@@ -108,6 +108,9 @@
     <ClInclude Include="u908.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="uvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="u10305.cpp">

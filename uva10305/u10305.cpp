@@ -19,11 +19,6 @@ namespace
 		explicit task(int id) : id(id), executed(false) {}
 	};
 
-	std::ostream& operator << (std::ostream& out, const task& t)
-	{
-		out << t.id;
-		return out;
-	}
 }
 
 U10305::U10305()

@@ -176,6 +176,7 @@
     <ClInclude Include="u727.h" />
     <ClInclude Include="u908.h" />
     <ClInclude Include="u957.h" />
+    <ClInclude Include="uvas.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="evaluator.cpp" />

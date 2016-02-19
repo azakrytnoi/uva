@@ -20,10 +20,6 @@ namespace {
 	typedef std::pair<int, int> Edge;
 	typedef std::pair<int, Edge> Line;
 
-	bool operator < (const Line a, const Line b) {
-		return a.first < b.first;
-	}
-
 	std::istream& operator >> (std::istream& in, Line& line)
 	{
 		in >> line.second.first >> line.second.second >> line.first;
@@ -100,7 +96,7 @@ namespace {
 	{
 		int total = 0;
 
-		sort(lines.begin(), lines.end());
+		sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
 		std::for_each(lines.begin(), lines.end(), [this, &total](auto line)
 		{
 			int cost = line.first;
