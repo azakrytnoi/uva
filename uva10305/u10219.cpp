@@ -15,21 +15,15 @@ void U10219::operator()()
 {
     LL n, k;
 
-    while ( std::cin >> n >> k )
-    {
+    while ( std::cin >> n >> k ) {
         double digit = 0;
 
-        if ( k > n - k )
-        {
-            for ( LL i = k + 1; i <= n; i++ )
-            {
+        if ( k > n - k ) {
+            for ( LL i = k + 1; i <= n; i++ ) {
                 digit += (std::log10 (i) - std::log10 (n - i + 1));
             }
-        }
-        else
-        {
-            for ( LL i = n - k + 1; i <= n; i++ )
-            {
+        } else {
+            for ( LL i = n - k + 1; i <= n; i++ ) {
                 digit += (std::log10 (i) - std::log10 (n - i + 1));
             }
         }

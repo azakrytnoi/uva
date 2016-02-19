@@ -2,9 +2,9 @@
 class U482
 {
 public:
-	U482();
-	~U482();
+    U482();
+    ~U482();
 
-	void operator()();
+    void operator()();
 };
 

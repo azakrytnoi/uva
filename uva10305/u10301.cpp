@@ -30,19 +30,13 @@ public:
     bool intersect (const ring& other) const
     {
         long double distance = sqrt((mX - other.mX) * (mX - other.mX) + (mY - other.mY) * (mY - other.mY));
-        if(distance < (mR + other.mR))
-        {
-            if(distance + std::min(mR, other.mR) <= std::max(mR, other.mR))
-            {
+        if(distance < (mR + other.mR)) {
+            if(distance + std::min(mR, other.mR) <= std::max(mR, other.mR)) {
                 return false;
-            }
-            else
-            {
+            } else {
                 return true;
             }
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
@@ -57,37 +51,29 @@ void U10301::operator()()
 {
     int16_t n_rings;
     std::vector<ring> rings;
-    while ((std::cin >> n_rings) && n_rings > 0)
-    {
+    while ((std::cin >> n_rings) && n_rings > 0) {
         rings.clear();
         rings.reserve(n_rings);
-        std::generate_n(std::back_inserter(rings), n_rings, []() -> ring
-        {
+        std::generate_n(std::back_inserter(rings), n_rings, []() -> ring {
             ring r;
             std::cin >> r;
             return r;
         });
         std::vector<std::vector<bool>> connected(rings.size());
-        for(size_t i = 0; i < rings.size(); i++)
-        {
+        for(size_t i = 0; i < rings.size(); i++) {
             connected[i].resize(rings.size());
             connected[i][i] = true;
         }
-        for (size_t i = 0; i < rings.size(); i++)
-        {
-            for (size_t j = 0; j < i; j++)
-            {
-                if (rings[i].intersect(rings[j]))
-                {
+        for (size_t i = 0; i < rings.size(); i++) {
+            for (size_t j = 0; j < i; j++) {
+                if (rings[i].intersect(rings[j])) {
                     connected[i][j] = connected[j][i] = true;
                 }
             }
         }
         size_t max_glued (std::numeric_limits<size_t>::min());
-        std::for_each(connected.begin(), connected.end(), [&](std::vector<bool>& row)
-        {
-            size_t glued = std::count_if(row.begin(), row.end(), [&](bool c)
-            {
+        std::for_each(connected.begin(), connected.end(), [&](std::vector<bool>& row) {
+            size_t glued = std::count_if(row.begin(), row.end(), [&](bool c) {
                 return c;
             });
             max_glued = std::max(glued, max_glued);

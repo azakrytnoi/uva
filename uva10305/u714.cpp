@@ -59,18 +59,15 @@ private:
         breaks_.resize(books_);
         int cnt = 0;
         int pos = books_ - 1;
-        while (pos >= 0)
-        {
+        while (pos >= 0) {
             int64_t sum = 0;
             bool ok = true;
-            while (pos >= 0 && sum + pages_[pos] <= M)
-            {
+            while (pos >= 0 && sum + pages_[pos] <= M) {
                 ok = false;
                 sum += pages_[pos];
                 --pos;
             }
-            if (ok)
-            {
+            if (ok) {
                 return scribers_ + 1;
             }
             if (pos >= 0) breaks_[pos] = true;
@@ -82,8 +79,7 @@ private:
     inline int64_t binary(int64_t lmin, int64_t sum)
     {
         int64_t left = lmin, right = sum;
-        while (left < right)
-        {
+        while (left < right) {
             int64_t mid = (left + right) >> 1;
             if (divide(mid) <= scribers_)
                 right = mid;
@@ -96,20 +92,16 @@ private:
     inline void output(std::ostream& out)
     {
         int cnt = divide(optimal_);
-        for (int i = 0; i < books_ - 1 && cnt < scribers_; ++i)
-        {
-            if (!breaks_[i])
-            {
+        for (int i = 0; i < books_ - 1 && cnt < scribers_; ++i) {
+            if (!breaks_[i]) {
                 breaks_[i] = true;
                 ++cnt;
             }
         }
-        for (int i = 0; i < books_; ++i)
-        {
+        for (int i = 0; i < books_; ++i) {
             if (i) out << " " << pages_[i];
             else out << pages_[i];
-            if (breaks_[i])
-            {
+            if (breaks_[i]) {
                 out << " /";
             }
         }
@@ -127,8 +119,7 @@ void U714::operator()()
 {
     int T;
     std::cin >> T;
-    while (T--)
-    {
+    while (T--) {
         int books, scribers;
         std::cin >> books >> scribers;
         solver s(books, scribers);

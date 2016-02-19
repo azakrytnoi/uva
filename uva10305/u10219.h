@@ -2,13 +2,13 @@
 
 class U10219
 {
-    public:
-        /** Default constructor */
-        U10219();
+public:
+    /** Default constructor */
+    U10219();
 
-        void operator()();
+    void operator()();
 
-    protected:
+protected:
 
-    private:
+private:
 };

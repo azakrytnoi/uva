@@ -10,10 +10,12 @@
 U628::U628()
 {
 }
-namespace {
+namespace
+{
 const std::string digits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-class generator {
+class generator
+{
 public:
     generator(std::vector<std::string>& dictionary) : dictionary_(dictionary) {}
 
