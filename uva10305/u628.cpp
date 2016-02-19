@@ -17,7 +17,7 @@ const std::string digits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" 
 class generator
 {
 public:
-    generator(std::vector<std::string>& dictionary) : dictionary_(dictionary) {}
+    explicit generator(std::vector<std::string>& dictionary) : dictionary_(dictionary) {}
 
     void generate(std::string::iterator pos, std::string::iterator end, std::string s)
     {

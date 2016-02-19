@@ -18,7 +18,7 @@ void U10013::operator()()
         summ.reserve(M + 1);
         summ.push_back(0);
         std::generate_n(std::back_inserter(summ), M, []() {
-            int l,r;
+            int l(0),r(0);
             std::cin >> l >> r;
             return int8_t(l + r);
         });

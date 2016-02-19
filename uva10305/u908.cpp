@@ -88,7 +88,7 @@ private:
     DisjointSet mst_;
 
 public:
-    Kruskal(int v)
+    explicit Kruskal(int v)
     {
         mst_.initSet(v);
     }
