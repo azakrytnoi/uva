@@ -1,4 +1,4 @@
-#include "U10305.h"
+#include "u10305.h"
 
 #include <iostream>
 #include <vector>
@@ -16,14 +16,9 @@ namespace
 		bool executed;
 
 		task() : id(0), executed(false) {}
-		task(int id) : id(id), executed(false) {}
+		explicit task(int id) : id(id), executed(false) {}
 	};
 
-	std::ostream& operator << (std::ostream& out, const task& t)
-	{
-		out << t.id;
-		return out;
-	}
 }
 
 U10305::U10305()
@@ -46,7 +41,7 @@ void U10305::operator()()
 			std::cin >> n >> m;
 			if (n == 0 && m == 0) break;
 			tasks.reserve(n);
-			std::generate_n(std::back_inserter(tasks), n, [&]() { return task(tasks.size() + 1); });
+			std::generate_n(std::back_inserter(tasks), n, [&]() { return task(int(tasks.size()) + 1); });
 			while (std::cin >> n >> t)
 			{
 				if (n == 0 && t == 0) break;
@@ -78,7 +73,7 @@ void U10305::operator()()
 						}
 					}
 				});
-				std::_For_each(current.begin(), current.end(), [&](int idx) {done_tasks.push_back(idx); tasks[idx - 1].executed = true; });
+				std::for_each(current.begin(), current.end(), [&](int idx) {done_tasks.push_back(idx); tasks[idx - 1].executed = true; });
 			}
 			std::copy(done_tasks.begin(), done_tasks.end(), oit);
 			std::cout << std::endl;

@@ -1,10 +1,10 @@
 #pragma once
-
-class U10305
+class U908
 {
 public:
-	U10305();
-	~U10305();
+	U908();
+	~U908();
+
 	void operator()();
 };
 

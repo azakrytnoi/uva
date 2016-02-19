@@ -7,8 +7,8 @@
 #include <functional>
 #include <iosfwd>
 #include <sstream>
-
-
+#include <typeinfo>
+#include <chrono>
 
 template <typename char_type,
           typename traits = std::char_traits<char_type> >
@@ -71,21 +71,34 @@ private:
 };
 
 teestream::teestream(std::ostream & o1, std::ostream & o2)
-    : std::ostream(&tbuf)
-    , tbuf(o1.rdbuf(), o2.rdbuf())
+    : std::ostream(&tbuf), tbuf(o1.rdbuf(), o2.rdbuf())
 {
 }
 
-
-
-template<typename Tp>
-class evaluator
+class wraper
 {
 public:
-    evaluator(const std::string& source);
-    ~evaluator();
+	virtual ~wraper() {}
+	virtual void operator()() = 0;
+};
+
+template<typename Tp>
+class evaluator : public wraper
+{
+public:
+	explicit evaluator(const std::string& source) : source_(source)
+	{
+	}
+
+    virtual ~evaluator()
+	{
+	}
+
+	virtual void operator ()();
 
 private:
+	std::string source_;
+	Tp tp_;
 };
 
 namespace
@@ -112,22 +125,25 @@ private:
 }
 
 template<typename Tp>
-evaluator<Tp>::evaluator(const std::string& source)
+void evaluator<Tp>::operator()()
 {
-    std::ifstream in(source.c_str());
-    std::stringstream out;
-    Tp tp;
+    std::cout << typeid(Tp).name() << ": << " << source_ << std::endl;
+    std::ifstream in(source_.c_str());
+	uint64_t elapsed(0);
+	std::stringstream out;
     {
         io_wrapper<std::ostream> wrap_in (std::cout, out.rdbuf());
         io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
-        tp();
+		{
+			std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+			tp_();
+			elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
+		}
     }
-    std::ofstream log((source + ".out").c_str());
-    teestream tee(log, std::cout);
-    tee << out.str();
-}
-
-template<typename Tp>
-evaluator<Tp>::~evaluator()
-{
+	{
+		std::ofstream log((source_ + ".out").c_str());
+		teestream tee(log, std::cout);
+		tee << out.str();
+	}
+	std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }

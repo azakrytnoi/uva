@@ -18,78 +18,204 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="U10305.h">
+    <ClInclude Include="u10305.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="evaluator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U200.h">
+    <ClInclude Include="u200.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U100.h">
+    <ClInclude Include="u100.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U482.h">
+    <ClInclude Include="u482.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U594.h">
+    <ClInclude Include="u594.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U11340.h">
+    <ClInclude Include="u11340.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U544.h">
+    <ClInclude Include="u544.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U558.h">
+    <ClInclude Include="u558.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U146.h">
+    <ClInclude Include="u146.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U10194.h">
+    <ClInclude Include="u10194.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="U10258.h">
+    <ClInclude Include="u10258.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u957.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11495.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u10810.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11462.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u673.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u727.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11239.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u127.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u679.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u714.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u10219.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u10226.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u10301.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11388.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11136.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11308.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u908.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="uvas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u11854.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u628.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u156.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="U10305.cpp">
+    <ClCompile Include="u10305.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="evaluator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U200.cpp">
+    <ClCompile Include="u200.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U100.cpp">
+    <ClCompile Include="u100.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U482.cpp">
+    <ClCompile Include="u482.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U594.cpp">
+    <ClCompile Include="u594.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U11340.cpp">
+    <ClCompile Include="u11340.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U544.cpp">
+    <ClCompile Include="u544.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U558.cpp">
+    <ClCompile Include="u558.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U146.cpp">
+    <ClCompile Include="u146.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U10194.cpp">
+    <ClCompile Include="u10194.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="U10258.cpp">
+    <ClCompile Include="u10258.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u957.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11495.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u10810.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11462.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u673.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u727.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11239.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u127.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u679.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u714.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u10219.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u10226.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u10301.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11388.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11136.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11308.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u908.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11854.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u628.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u156.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -143,6 +269,66 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u10258.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11495.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10810.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11462.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u673.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u727.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11239.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u127.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u679.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u714.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u957.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10219.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10226.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u10301.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11388.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11136.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11308.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u908.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11854.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u628.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u156.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>

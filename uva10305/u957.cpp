@@ -61,7 +61,7 @@ public:
 private:
     int years_;
     int popes_;
-    int max_;
+    int64_t max_;
     std::vector<int>::iterator start_;
     std::vector<int>::iterator end_;
     static std::vector<int> elections_;
