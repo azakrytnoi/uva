@@ -8,7 +8,7 @@
 #include <iosfwd>
 #include <sstream>
 #include <typeinfo>
-
+#include <chrono>
 
 template <typename char_type,
           typename traits = std::char_traits<char_type> >
@@ -129,13 +129,21 @@ void evaluator<Tp>::operator()()
 {
     std::cout << typeid(Tp).name() << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
-    std::stringstream out;
+	uint64_t elapsed(0);
+	std::stringstream out;
     {
         io_wrapper<std::ostream> wrap_in (std::cout, out.rdbuf());
         io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
-        tp_();
+		{
+			std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+			tp_();
+			elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
+		}
     }
-    std::ofstream log((source_ + ".out").c_str());
-    teestream tee(log, std::cout);
-    tee << out.str();
+	{
+		std::ofstream log((source_ + ".out").c_str());
+		teestream tee(log, std::cout);
+		tee << out.str();
+	}
+	std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }
