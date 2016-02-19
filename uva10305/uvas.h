@@ -33,3 +33,4 @@
 #include "u957.h"
 #include "u628.h"
 #include "u156.h"
+#include "u305.h"

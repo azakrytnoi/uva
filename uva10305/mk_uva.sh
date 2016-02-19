@@ -11,6 +11,7 @@ cat > "u$1.h" <<EOF
 
 class U$1
 {
+public:
 	U$1() {}
 	
 	void operator()();
@@ -27,3 +28,9 @@ void U$1::operator()()
 	
 }
 EOF
+
+cat >>uvas.h <<EOF
+#include "u$1.h"
+EOF
+
+touch "u$1.txt"
