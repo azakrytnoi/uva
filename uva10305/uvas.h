@@ -23,6 +23,7 @@
 #include "u11462.h"
 #include "u11854.h"
 #include "u11636.h"
+#include "u10220.h"
 #include "u127.h"
 #include "u200.h"
 #include "u544.h"
