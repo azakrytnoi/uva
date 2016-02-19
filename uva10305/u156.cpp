@@ -23,7 +23,7 @@ void U156::operator()()
 	while (std::cin >> word && word[0] != '#')
 	{
 		std::string key(word);
-		std::transform(key.begin(), key.end(), key.begin(), std::tolower);
+		std::transform(key.begin(), key.end(), key.begin(), [](auto ch){ return std::tolower(ch);});
 		std::sort(key.begin(), key.end());
 		if (dictionary[key].second++ == 0)
 		{

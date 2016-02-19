@@ -71,10 +71,11 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
+u156.o: u156.h
+u11136.o: u11136.h
 u100.o: u100.h
-u679.o: u679.h
-u10219.o: u10219.h
 u908.o: u908.h
+u10219.o: u10219.h
 u200.o: u200.h
 u11462.o: u11462.h
 u482.o: u482.h
@@ -90,17 +91,21 @@ u11308.o: u11308.h
 u714.o: u714.h
 u146.o: u146.h
 u673.o: u673.h
-u11136.o: u11136.h
-u11388.o: u11388.h
 u10305.o: u10305.h
 u594.o: u594.h
 u10810.o: u10810.h sort.h
 u127.o: u127.h
 u11239.o: u11239.h
+u11854.o: u11854.h
 u957.o: u957.h
+u11388.o: u11388.h
+u679.o: u679.h
 u11495.o: u11495.h sort.h
 u558.o: u558.h
 evaluator.o: evaluator.h uvas.h u100.h u10219.h u10258.h u10305.h u11136.h
 evaluator.o: u11308.h u11388.h u11495.h u146.h u482.h u558.h u673.h u714.h
 evaluator.o: u908.h u10194.h u10226.h u10301.h u10810.h u11239.h u11340.h
-evaluator.o: u11462.h u127.h u200.h u544.h u594.h u679.h u727.h u957.h u628.h
+evaluator.o: u11462.h u11854.h u11636.h u10220.h u127.h u200.h u544.h u594.h
+evaluator.o: u679.h u727.h u957.h u628.h u156.h
+u10220.o: u10220.h
+u11636.o: u11636.h
