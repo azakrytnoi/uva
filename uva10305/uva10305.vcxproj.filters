@@ -111,6 +111,12 @@
     <ClInclude Include="uvas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="u11854.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u628.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="u10305.cpp">
@@ -198,6 +204,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="u908.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u11854.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u628.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -302,6 +314,12 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u908.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u11854.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u628.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>

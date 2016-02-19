@@ -21,6 +21,7 @@
 #include "u11239.h"
 #include "u11340.h"
 #include "u11462.h"
+#include "u11854.h"
 #include "u127.h"
 #include "u200.h"
 #include "u544.h"
