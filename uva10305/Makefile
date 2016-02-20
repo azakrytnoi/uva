@@ -95,6 +95,7 @@ u146.o: u146.h
 u673.o: u673.h
 u305.o: u305.h
 u10305.o: u10305.h
+u10066.o: u10066.h
 u594.o: u594.h
 u11461.o: u11461.h
 u127.o: u127.h
@@ -112,7 +113,7 @@ evaluator.o: u11308.h u11388.h u11495.h u146.h u482.h u558.h u673.h u714.h
 evaluator.o: u908.h u10194.h u10226.h u10301.h u10810.h u11239.h u11340.h
 evaluator.o: u11462.h u11854.h u11636.h u10220.h u127.h u200.h u544.h u594.h
 evaluator.o: u679.h u727.h u957.h u628.h u156.h u305.h u10013.h u11461.h
-evaluator.o: u11150.h u167.h u116.h
+evaluator.o: u11150.h u167.h u116.h u10066.h
 u10220.o: u10220.h
 u10810.o: u10810.h sort.h
 u11636.o: u11636.h
