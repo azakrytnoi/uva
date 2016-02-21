@@ -7,8 +7,7 @@
 #include <iterator>
 #include <sstream>
 
-namespace
-{
+namespace {
 struct task {
     int id;
     std::vector<int> predessors;

@@ -41,3 +41,5 @@ touch "u$1.txt"
 
 make depend
 rm Makefile.bak
+
+git add Makefile *.h *.cpp *.txt
