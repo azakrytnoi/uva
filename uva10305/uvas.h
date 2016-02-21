@@ -42,3 +42,5 @@
 #include "u10066.h"
 #include "u10931.h"
 #include "u11185.h"
+#include "u900.h"
+#include "u10062.h"

@@ -84,11 +84,9 @@ void U10258::operator()()
             }
         });
         {
-            std::ostream_iterator<std::tuple<int, int, int>> out(std::cerr, "\n");
+            std::ostream_iterator<std::tuple<int, int, int>> out(std::cout, "\n");
             std::copy(scoreboard.begin(), scoreboard.end(), out);
-            std::cerr << std::endl;
+            std::cout << std::endl;
         }
     }
 }
-
-
