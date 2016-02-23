@@ -6,6 +6,7 @@
 #include <iterator>
 #include <numeric>
 #include <limits>
+#include <string>
 
 namespace {
 template<size_t BASE>

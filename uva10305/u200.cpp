@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <string>
 
 U200::U200()
 {

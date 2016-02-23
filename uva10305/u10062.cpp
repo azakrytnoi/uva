@@ -6,6 +6,7 @@
 #include <iterator>
 #include <numeric>
 #include <map>
+#include <string>
 
 namespace {
 std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p)
