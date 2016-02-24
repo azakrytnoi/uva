@@ -40,7 +40,10 @@ void U400::operator()()
             for (size_t column = 0; column < ncolumns; column++) {
                 if (column * nrows + idx < names.size()) {
                     std::cout.setf(std::ios::left);
-                    std::cout << std::setw(longest + (column == ncolumns - 1 ? 0 : 2)) << names[column * nrows + idx];
+                    auto shift = (column == ncolumns - 1)
+                                 || ((column + 1) * nrows + idx >= names.size());
+                    std::cout << std::setw(longest + (shift ? 0 : 2))
+                              << names[column * nrows + idx];
                 }
             }
             std::cout << std::endl;
