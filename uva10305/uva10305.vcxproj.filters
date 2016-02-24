@@ -162,6 +162,9 @@
     <ClInclude Include="u900.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="u454.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="u10305.cpp">
@@ -300,6 +303,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="u900.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u454.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -461,6 +467,9 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u476.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u454.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>
