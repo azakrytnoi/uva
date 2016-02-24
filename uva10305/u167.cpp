@@ -1,5 +1,9 @@
 #include "u167.h"
 
+#ifdef _WIN32
+#define _SCL_SECURE_NO_WARNINGS
+#endif // WIN32
+
 #include <iostream>
 #include <vector>
 #include <algorithm>

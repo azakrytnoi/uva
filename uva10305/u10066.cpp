@@ -55,7 +55,11 @@ public:
 };
 
 int solver::lcs(const int* a, const int* b, const size_t M, const size_t N) {
-    int temp[M + 1][N + 1];
+#ifdef _WIN32
+    int temp[11 + 1][110 + 1];
+#else
+	int temp[M + 1][N + 1];
+#endif
 
     for (size_t i = 0; i <= M; i++) {
         for (size_t j = 0; j <= N; j++) {

@@ -34,7 +34,7 @@ int main(int argc, char** argv)
 {
     if (argc > 1) {
         for (int i = 1; i < argc; i++) {
-            auto uva = g_cache.find(argv[1]);
+            auto uva = g_cache.find(argv[i]);
             if (uva != g_cache.end()) {
                 (*(uva->second))();
             }

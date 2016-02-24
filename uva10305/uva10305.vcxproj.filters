@@ -460,5 +460,8 @@
     <Text Include="u11461.txt">
       <Filter>Data Files</Filter>
     </Text>
+    <Text Include="u476.txt">
+      <Filter>Data Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
