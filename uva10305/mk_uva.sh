@@ -22,10 +22,13 @@ cat > "u$1.cpp" <<EOF
 #include "u$1.h"
 
 #include <iostream>
+#include <iomanip>
 #include <vector>
+#include <string>
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <limits>
 
 void U$1::operator()()
 {
