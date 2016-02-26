@@ -180,6 +180,9 @@
     <ClInclude Include="u167.h" />
     <ClInclude Include="u200.h" />
     <ClInclude Include="u305.h" />
+    <ClInclude Include="u400.h" />
+    <ClInclude Include="u401.h" />
+    <ClInclude Include="u412.h" />
     <ClInclude Include="u454.h" />
     <ClInclude Include="u478.h" />
     <ClInclude Include="u482.h" />
@@ -230,6 +233,9 @@
     <ClCompile Include="u167.cpp" />
     <ClCompile Include="u200.cpp" />
     <ClCompile Include="u305.cpp" />
+    <ClCompile Include="u400.cpp" />
+    <ClCompile Include="u401.cpp" />
+    <ClCompile Include="u412.cpp" />
     <ClCompile Include="u454.cpp" />
     <ClCompile Include="u478.cpp" />
     <ClCompile Include="u482.cpp" />
@@ -282,6 +288,9 @@
     <Text Include="u200.txt" />
     <Text Include="u200_2.txt" />
     <Text Include="u305.txt" />
+    <Text Include="u400.txt" />
+    <Text Include="u401.txt" />
+    <Text Include="u412.txt" />
     <Text Include="u454.txt" />
     <Text Include="u476.txt" />
     <Text Include="u477.txt" />

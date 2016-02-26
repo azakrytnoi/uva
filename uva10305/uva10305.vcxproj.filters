@@ -165,6 +165,15 @@
     <ClInclude Include="u454.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="u400.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u401.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="u412.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="u10305.cpp">
@@ -306,6 +315,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="u454.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u400.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u401.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="u412.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -470,6 +488,15 @@
       <Filter>Data Files</Filter>
     </Text>
     <Text Include="u454.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u400.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u401.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+    <Text Include="u412.txt">
       <Filter>Data Files</Filter>
     </Text>
   </ItemGroup>
