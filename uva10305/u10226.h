@@ -7,5 +7,5 @@ public:
     ~U10226();
 
     void operator()();
-    
+
 };

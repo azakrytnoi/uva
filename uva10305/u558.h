@@ -2,11 +2,11 @@
 class U558
 {
 public:
-	U558();
-	~U558();
-	void operator()();
+    U558();
+    ~U558();
+    void operator()();
 
 private:
-	static const int Infinity = 10000;
+    static const int Infinity = 10000;
 };
 

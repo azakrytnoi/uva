@@ -13,8 +13,7 @@ void U11308::operator()()
     int N;
     std::cin >> N;
     std::string line;
-    while (N--)
-    {
+    while (N--) {
         std::getline(std::cin, line);
         std::map<std::string, int> stock;
         std::vector<std::pair<std::string, int>> requests;
@@ -22,48 +21,41 @@ void U11308::operator()()
         std::getline(std::cin, backery);
         int n_stock, n_recipes, budget;
         std::cin >> n_stock >> n_recipes >> budget;
-        while(n_stock--)
-        {
+        while(n_stock--) {
             int price;
             std::cin >> line >> price;
             stock[line] = price;
         }
         requests.reserve(n_recipes);
-        while (n_recipes--)
-        {
+        while (n_recipes--) {
             std::getline(std::cin, line);
             std::getline(std::cin, line);
             std::pair<std::string, int> request = std::make_pair(line, 0);
             std::cin >> n_stock;
-            while (n_stock--)
-            {
+            while (n_stock--) {
                 int qty;
-                std::cin >> line >> qty; 
+                std::cin >> line >> qty;
                 request.second += stock[line] * qty;
             }
-            if (request.second <= budget)
-            {
+            if (request.second <= budget) {
                 requests.push_back(request);
             }
         }
-        std::transform(backery.begin(), backery.end(), backery.begin(), [](auto ch) { return std::toupper(ch); });
+        std::transform(backery.begin(), backery.end(), backery.begin(), [](auto ch) {
+            return std::toupper(ch);
+        });
         std::cout << backery << std::endl;
-        if (requests.empty())
-        {
+        if (requests.empty()) {
             std::cout << "Too expensive!" << std::endl;
-        }
-        else
-        {
-            std::sort(requests.begin(), requests.end(), [](auto r1, auto r2) -> bool
-            {
+        } else {
+            std::sort(requests.begin(), requests.end(), [](auto r1, auto r2) -> bool {
                 if (r1.second == r2.second)
                 {
                     return r1.first < r2.first;
                 }
                 return r1.second < r2.second;
             });
-            std::for_each (requests.begin(), requests.end(), [](auto r)
-            {
+            std::for_each (requests.begin(), requests.end(), [](auto r) {
                 std::cout << r.first << std::endl;
             });
         }

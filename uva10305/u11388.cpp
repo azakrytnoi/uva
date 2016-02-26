@@ -10,16 +10,12 @@ void U11388::operator()()
 {
     int N;
     std::cin>>N;
-    while (N--)
-    {
+    while (N--) {
         int gcd, lcm;
         std::cin >> gcd >> lcm;
-        if (lcm%gcd == 0)
-        {
+        if (lcm%gcd == 0) {
             std::cout << gcd << " " << lcm << std::endl;
-        }
-        else
-        {
+        } else {
             std::cout << "-1" << std::endl;
         }
     }

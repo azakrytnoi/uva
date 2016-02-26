@@ -2,11 +2,11 @@
 
 class U957
 {
-    public:
-        U957();
-        void operator()();
+public:
+    U957();
+    void operator()();
 
-    protected:
+protected:
 
-    private:
+private:
 };

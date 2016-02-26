@@ -3,7 +3,7 @@
 class U10810
 {
 public:
-	U10810();
+    U10810();
 
-	void operator()();
+    void operator()();
 };

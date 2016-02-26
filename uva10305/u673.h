@@ -2,13 +2,13 @@
 
 class U673
 {
-    public:
-        /** Default constructor */
-        U673();
+public:
+    /** Default constructor */
+    U673();
 
-        void operator()();
+    void operator()();
 
-    protected:
+protected:
 
-    private:
+private:
 };
