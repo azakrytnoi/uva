@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>uva10305</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>shared</ProjectName>
+    <ProjectName>starter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -56,6 +56,7 @@
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
   <ImportGroup Label="Shared">
+    <Import Project="..\headers\headers.vcxitems" Label="Shared" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -75,6 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>${SolutionDir}\headers;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -148,61 +150,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="evaluator.h" />
-    <ClInclude Include="sort.h" />
-    <ClInclude Include="u100.h" />
-    <ClInclude Include="u10013.h" />
-    <ClInclude Include="u10062.h" />
-    <ClInclude Include="u10066.h" />
-    <ClInclude Include="u10194.h" />
-    <ClInclude Include="u10219.h" />
-    <ClInclude Include="u10220.h" />
-    <ClInclude Include="u10226.h" />
-    <ClInclude Include="u10258.h" />
-    <ClInclude Include="u10301.h" />
-    <ClInclude Include="u10305.h" />
-    <ClInclude Include="u10810.h" />
-    <ClInclude Include="u10931.h" />
-    <ClInclude Include="u11136.h" />
-    <ClInclude Include="u11150.h" />
-    <ClInclude Include="u11185.h" />
-    <ClInclude Include="u11239.h" />
-    <ClInclude Include="u11308.h" />
-    <ClInclude Include="u11340.h" />
-    <ClInclude Include="u11388.h" />
-    <ClInclude Include="u11461.h" />
-    <ClInclude Include="u11462.h" />
-    <ClInclude Include="u11495.h" />
-    <ClInclude Include="u116.h" />
-    <ClInclude Include="u11636.h" />
     <ClInclude Include="u11854.h" />
-    <ClInclude Include="u127.h" />
-    <ClInclude Include="u146.h" />
-    <ClInclude Include="u156.h" />
-    <ClInclude Include="u167.h" />
-    <ClInclude Include="u200.h" />
-    <ClInclude Include="u305.h" />
-    <ClInclude Include="u400.h" />
-    <ClInclude Include="u401.h" />
-    <ClInclude Include="u412.h" />
-    <ClInclude Include="u454.h" />
-    <ClInclude Include="u478.h" />
-    <ClInclude Include="u482.h" />
-    <ClInclude Include="u544.h" />
-    <ClInclude Include="u558.h" />
-    <ClInclude Include="u594.h" />
-    <ClInclude Include="u628.h" />
-    <ClInclude Include="u673.h" />
-    <ClInclude Include="u679.h" />
-    <ClInclude Include="u714.h" />
-    <ClInclude Include="u727.h" />
-    <ClInclude Include="u900.h" />
-    <ClInclude Include="u908.h" />
-    <ClInclude Include="u957.h" />
     <ClInclude Include="uvas.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="evaluator.cpp" />
-    <ClCompile Include="u100.cpp" />
     <ClCompile Include="u10013.cpp" />
     <ClCompile Include="u10062.cpp" />
     <ClCompile Include="u10066.cpp" />
@@ -253,7 +205,6 @@
     <ClCompile Include="u957.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u100.txt" />
     <Text Include="u10013.txt" />
     <Text Include="u10062.txt" />
     <Text Include="u10066.txt" />
@@ -310,6 +261,11 @@
     <Text Include="u900.txt" />
     <Text Include="u908.txt" />
     <Text Include="u957.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\u100\u100.vcxproj">
+      <Project>{1edbef59-af76-42f2-8216-1ccc2e008ef6}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

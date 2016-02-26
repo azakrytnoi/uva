@@ -3,9 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shared", "shared\shared.vcxproj", "{482D0971-DDC5-4A04-83DE-3A0B438A3F89}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "starter", "shared\shared.vcxproj", "{482D0971-DDC5-4A04-83DE-3A0B438A3F89}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6} = {1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "headers", "headers\headers.vcxitems", "{45D41ACC-2C3C-43D2-BC10-02AA73FFC7C7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u100", "u100\u100.vcxproj", "{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		headers\headers.vcxitems*{1edbef59-af76-42f2-8216-1ccc2e008ef6}*SharedItemsImports = 4
+		headers\headers.vcxitems*{482d0971-ddc5-4a04-83de-3a0b438a3f89}*SharedItemsImports = 4
+		headers\headers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
@@ -21,6 +33,14 @@ Global
 		{482D0971-DDC5-4A04-83DE-3A0B438A3F89}.Release|x64.Build.0 = Release|x64
 		{482D0971-DDC5-4A04-83DE-3A0B438A3F89}.Release|x86.ActiveCfg = Release|Win32
 		{482D0971-DDC5-4A04-83DE-3A0B438A3F89}.Release|x86.Build.0 = Release|Win32
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Debug|x64.ActiveCfg = Debug|x64
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Debug|x64.Build.0 = Debug|x64
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Debug|x86.ActiveCfg = Debug|Win32
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Debug|x86.Build.0 = Debug|Win32
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x64.ActiveCfg = Release|x64
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x64.Build.0 = Release|x64
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x86.ActiveCfg = Release|Win32
+		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

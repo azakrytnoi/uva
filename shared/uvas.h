@@ -1,5 +1,7 @@
 #pragma once
 
+#define UVA_API_EXPORT __declspec(dllimport)
+
 #include "u100.h"
 #include "u10219.h"
 #include "u10258.h"
