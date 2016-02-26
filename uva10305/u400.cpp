@@ -28,7 +28,7 @@ void U400::operator()()
             return line;
         });
         std::sort(names.begin(), names.end());
-        size_t ncolumns (std::max(60 / longest, 1ul));
+        size_t ncolumns (std::max(60 / longest, size_t(1)));
         while ((ncolumns -1) * (longest + 2) + longest > 60) {
             ncolumns--;
         }

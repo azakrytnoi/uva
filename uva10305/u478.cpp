@@ -128,7 +128,7 @@ void U478::operator()()
         }
     }
     point p;
-    point pend(9999.9, 9999.9);
+    point pend(9999.9f, 9999.9f);
     size_t pseq (0);
     while (std::cin >> p && p != pend) {
         pseq++;

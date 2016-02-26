@@ -1,5 +1,8 @@
 #include "u454.h"
 
+#pragma warning (push)
+#pragma warning (disable : 4503)
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -85,3 +88,5 @@ void U454::operator()()
         std::cout << std::endl;
     }
 }
+
+#pragma warning (pop)

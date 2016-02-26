@@ -39,7 +39,7 @@ public:
 
 palindrome::kind palindrome::check(const std::string& source)
 {
-    int result(int(kind::NotAtAll));
+    int result = int(kind::NotAtAll);
     std::string working (source);
     std::reverse(working.begin(), working.end());
     if (working == source) {
