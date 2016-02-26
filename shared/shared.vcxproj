@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{482D0971-DDC5-4A04-83DE-3A0B438A3F89}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>uva10305</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>starter</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+    <Import Project="..\headers\headers.vcxitems" Label="Shared" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>${SolutionDir}\headers;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="evaluator.h" />
+    <ClInclude Include="uvas.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="evaluator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\u100\u100.txt" />
+    <Text Include="..\u10013\u10013.txt" />
+    <Text Include="..\u10062\u10062.txt" />
+    <Text Include="..\u10066\u10066.txt" />
+    <Text Include="..\u10194\u10194.txt" />
+    <Text Include="..\u10219\u10219.txt" />
+    <Text Include="..\u10220\u10220.txt" />
+    <Text Include="..\u10226\u10226.txt" />
+    <Text Include="..\u10258\u10258.txt" />
+    <Text Include="..\u10301\u10301.txt" />
+    <Text Include="..\u10305\u10305.txt" />
+    <Text Include="..\u10305\u10305_2.txt" />
+    <Text Include="..\u10810\u10810.txt" />
+    <Text Include="..\u10931\u10931.txt" />
+    <Text Include="..\u11136\u11136.txt" />
+    <Text Include="..\u11150\u11150.txt" />
+    <Text Include="..\u11185\u11185.txt" />
+    <Text Include="..\u11239\u11239.txt" />
+    <Text Include="..\u11308\u11308.txt" />
+    <Text Include="..\u11340\u11340.txt" />
+    <Text Include="..\u11340_2\u11340_2.txt" />
+    <Text Include="..\u11340_3\u11340_3.txt" />
+    <Text Include="..\u11388\u11388.txt" />
+    <Text Include="..\u11461\u11461.txt" />
+    <Text Include="..\u11462\u11462.txt" />
+    <Text Include="..\u11495\u11495.txt" />
+    <Text Include="..\u11636\u11636.txt" />
+    <Text Include="..\u11854\u11854.txt" />
+    <Text Include="..\u127\u127.txt" />
+    <Text Include="..\u146\u146.txt" />
+    <Text Include="..\u156\u156.txt" />
+    <Text Include="..\u167\u167.txt" />
+    <Text Include="..\u200\u200.txt" />
+    <Text Include="..\u200\u200_2.txt" />
+    <Text Include="..\u305\u305.txt" />
+    <Text Include="..\u400\u400.txt" />
+    <Text Include="..\u401\u401.txt" />
+    <Text Include="..\u412\u412.txt" />
+    <Text Include="..\u454\u454.txt" />
+    <Text Include="..\u476\u476.txt" />
+    <Text Include="..\u477\u477.txt" />
+    <Text Include="..\u478\u478.txt" />
+    <Text Include="..\u482\u482.txt" />
+    <Text Include="..\u544\u544.txt" />
+    <Text Include="..\u544\u544_2.txt" />
+    <Text Include="..\u558\u558.txt" />
+    <Text Include="..\u558\u558_2.txt" />
+    <Text Include="..\u594\u594.txt" />
+    <Text Include="..\u628\u628.txt" />
+    <Text Include="..\u673\u673.txt" />
+    <Text Include="..\u679\u679.txt" />
+    <Text Include="..\u714\u714.txt" />
+    <Text Include="..\u727\u727.txt" />
+    <Text Include="..\u900\u900.txt" />
+    <Text Include="..\u908\u908.txt" />
+    <Text Include="..\u957\u957.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\u10013\u10013.vcxproj">
+      <Project>{e476c8d3-549a-4e33-9a3c-b898cab15f1e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10062\u10062.vcxproj">
+      <Project>{a2a75ddb-e877-4257-86a8-998d19705bcc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10066\u10066.vcxproj">
+      <Project>{240a12c2-4640-4192-81cf-0e275b32d978}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u100\u100.vcxproj">
+      <Project>{1edbef59-af76-42f2-8216-1ccc2e008ef6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10194\u10194.vcxproj">
+      <Project>{9fe07aed-34ef-40c4-9bda-cd6f0d2eb511}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10219\u10219.vcxproj">
+      <Project>{aaa65103-344c-4b29-af44-30c5e53a8f9a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10220\u10220.vcxproj">
+      <Project>{6a045a0b-2afc-4376-a998-d64f9e187600}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10226\u10226.vcxproj">
+      <Project>{365b381c-3e8e-4b1b-af32-797886b8d839}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10258\u10258.vcxproj">
+      <Project>{abf1844f-2f17-4a73-891e-6cc53e363574}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10301\u10301.vcxproj">
+      <Project>{c06f1ce1-aca7-4a82-b93a-14372316a42c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10305\u10305.vcxproj">
+      <Project>{b5e6a217-7a1f-41f4-8963-6c2ba40ffd15}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10810\u10810.vcxproj">
+      <Project>{c4bc5017-ade4-4eed-b515-c827d0fef79a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u10931\u10931.vcxproj">
+      <Project>{c4d50119-0da3-40cc-96f3-d830f8fc5881}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11136\u11136.vcxproj">
+      <Project>{31a2f6b1-5d1c-4f27-9001-06f4c397febc}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11150\u11150.vcxproj">
+      <Project>{0659add9-16ca-4dc9-86ad-a63519fca3de}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11185\u11185.vcxproj">
+      <Project>{53817ee0-f16c-4a0e-b088-c3777ca43a73}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11239\u11239.vcxproj">
+      <Project>{f553c0f2-9bef-4ef8-be95-651f17b3fb81}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11308\u11308.vcxproj">
+      <Project>{6f1f36dc-3fe0-445f-ba24-fb7590c5fa00}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11340\u11340.vcxproj">
+      <Project>{bd903e31-8d89-453c-952f-4494fdbe3a01}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11388\u11388.vcxproj">
+      <Project>{ce44e6c5-7aaa-4b3f-8033-0b230d5c4ab4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11461\u11461.vcxproj">
+      <Project>{d9f7e80f-5be7-41af-ab52-3dfb99082cd0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11462\u11462.vcxproj">
+      <Project>{40caf91a-f25c-4b7e-a34a-fd6d7e26e283}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11495\u11495.vcxproj">
+      <Project>{afc06d07-de11-408a-a0bf-7ede49a480cb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11636\u11636.vcxproj">
+      <Project>{2fcd6ad6-7e70-42d6-889d-3f83ebee16ad}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u116\u116.vcxproj">
+      <Project>{08e2e6c0-f883-443f-983d-8aabace33403}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u11854\u11854.vcxproj">
+      <Project>{cd471a23-4ec4-44a0-a30f-7b02901c424d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u127\u127.vcxproj">
+      <Project>{90018751-d938-4559-9d16-53e4bbf5b4d7}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u146\u146.vcxproj">
+      <Project>{fb0e0057-830c-447f-b2b7-5f0934deeb57}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u156\u156.vcxproj">
+      <Project>{ba67ee8d-00a1-46ee-96ca-13a06710ed6a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u167\u167.vcxproj">
+      <Project>{af44ef4e-1f95-47b3-bb66-e73cff5a6975}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u200\u200.vcxproj">
+      <Project>{8c5a33a3-2bee-41a9-b18f-d821e5985e1b}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u305\u305.vcxproj">
+      <Project>{5c66e55e-6015-4e0b-8986-5f5bb116a384}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u400\u400.vcxproj">
+      <Project>{b9f7f524-73f9-4109-b0a7-7f01570011fd}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u401\u401.vcxproj">
+      <Project>{4aa1c4cd-ad18-47cc-b744-6a3ac3c27aa4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u412\u412.vcxproj">
+      <Project>{f7fc2ccf-4869-4721-869e-bd6f2aa5ec27}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u454\u454.vcxproj">
+      <Project>{5f5bbf81-3fa4-41ca-a63e-ded4ec18666d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u478\u478.vcxproj">
+      <Project>{4987c147-a493-490e-ba5f-dbabe84bd3db}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u482\u482.vcxproj">
+      <Project>{67a8fc4c-9fa0-4425-ba92-c7c166bbe6c8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u544\u544.vcxproj">
+      <Project>{dd6dc4d2-4e44-4a22-9278-56fbab31c7c4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u558\u558.vcxproj">
+      <Project>{3b1b1f9f-c97f-4835-9908-ac9c970e5e25}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u594\u594.vcxproj">
+      <Project>{8aecc889-8d7b-49e0-aeb0-80954286dc6c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u628\u628.vcxproj">
+      <Project>{429826e9-fdaa-4081-964b-34058652aa83}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u673\u673.vcxproj">
+      <Project>{9e62047e-ce0d-4d9b-b8ce-fc584d95c569}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u679\u679.vcxproj">
+      <Project>{479a8c3a-27c5-4a6f-af73-c0bdd4584bba}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u714\u714.vcxproj">
+      <Project>{3c63efe2-604a-4c26-8e7e-3f2baacc6950}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u727\u727.vcxproj">
+      <Project>{bf80e03c-ed86-4377-a629-8af0da2e56c1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u900\u900.vcxproj">
+      <Project>{28d00af6-8c56-48b7-8d6b-aa3d5b3c2837}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u908\u908.vcxproj">
+      <Project>{a7b10713-09e4-4816-9cd9-a05f1c26fd1c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u957\u957.vcxproj">
+      <Project>{3bb0c165-cb22-4d8b-b9af-8da4f7d41594}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
