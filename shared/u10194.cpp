@@ -1,3 +1,5 @@
+#define UVA_API_EXPORT __declspec(dllexport)
+
 #include "u10194.h"
 
 #include <iostream>

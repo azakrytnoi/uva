@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "headers", "headers\headers.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u100", "u100\u100.vcxproj", "{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u116", "u116\u116.vcxproj", "{08E2E6C0-F883-443F-983D-8AABACE33403}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		headers\headers.vcxitems*{1edbef59-af76-42f2-8216-1ccc2e008ef6}*SharedItemsImports = 4
@@ -41,6 +43,14 @@ Global
 		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x64.Build.0 = Release|x64
 		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x86.ActiveCfg = Release|Win32
 		{1EDBEF59-AF76-42F2-8216-1CCC2E008EF6}.Release|x86.Build.0 = Release|Win32
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Debug|x64.ActiveCfg = Debug|x64
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Debug|x64.Build.0 = Debug|x64
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Debug|x86.ActiveCfg = Debug|Win32
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Debug|x86.Build.0 = Debug|Win32
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Release|x64.ActiveCfg = Release|x64
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Release|x64.Build.0 = Release|x64
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Release|x86.ActiveCfg = Release|Win32
+		{08E2E6C0-F883-443F-983D-8AABACE33403}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

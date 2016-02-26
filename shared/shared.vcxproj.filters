@@ -57,9 +57,6 @@
     <ClInclude Include="uvas.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u116.txt">
-      <Filter>Data FIles</Filter>
-    </Text>
     <Text Include="u127.txt">
       <Filter>Data FIles</Filter>
     </Text>
