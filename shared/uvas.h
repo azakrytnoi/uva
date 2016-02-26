@@ -1,6 +1,10 @@
 #pragma once
 
+#ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllimport)
+#else
+#define UVA_API_EXPORT
+#endif // _WIN32
 
 #include "u100.h"
 #include "u10219.h"

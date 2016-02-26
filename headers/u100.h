@@ -2,7 +2,7 @@
 
 #include <cstdint>
 #include <functional>
-class UVA_API_EXPORT U100
+class U100
 {
 public:
     U100();
