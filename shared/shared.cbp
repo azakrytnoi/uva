@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="uva10305" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug x64">
+				<Option output="shared" prefix_auto="1" extension_auto="1" />
+				<Option external_deps="liblibu11150.a;liblibu116.a;liblibu100.a;liblibu900.a;liblibu11636.a;liblibu11136.a;liblibu10226.a;liblibu558.a;liblibu957.a;liblibu714.a;liblibu11462.a;liblibu628.a;liblibu679.a;liblibu478.a;liblibu401.a;liblibu11185.a;liblibu305.a;liblibu454.a;liblibu482.a;liblibu10220.a;liblibu11308.a;liblibu594.a;liblibu200.a;liblibu127.a;liblibu673.a;liblibu10194.a;liblibu10062.a;liblibu908.a;liblibu10219.a;liblibu10258.a;liblibu167.a;liblibu11495.a;liblibu10305.a;liblibu400.a;liblibu156.a;liblibu11340.a;liblibu727.a;liblibu10301.a;liblibu10810.a;liblibu10931.a;liblibu11854.a;liblibu11388.a;liblibu11461.a;liblibu544.a;liblibu10013.a;liblibu11239.a;liblibu412.a;liblibu146.a;" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add directory="${SolutionDir}/headers" />
+					<Add directory="$(IncludePath)" />
+				</Compiler>
+				<Linker>
+					<Add library="liblibu11150.a" />
+					<Add library="liblibu116.a" />
+					<Add library="liblibu100.a" />
+					<Add library="liblibu900.a" />
+					<Add library="liblibu11636.a" />
+					<Add library="liblibu11136.a" />
+					<Add library="liblibu10226.a" />
+					<Add library="liblibu558.a" />
+					<Add library="liblibu957.a" />
+					<Add library="liblibu714.a" />
+					<Add library="liblibu11462.a" />
+					<Add library="liblibu628.a" />
+					<Add library="liblibu679.a" />
+					<Add library="liblibu478.a" />
+					<Add library="liblibu401.a" />
+					<Add library="liblibu11185.a" />
+					<Add library="liblibu305.a" />
+					<Add library="liblibu454.a" />
+					<Add library="liblibu482.a" />
+					<Add library="liblibu10220.a" />
+					<Add library="liblibu11308.a" />
+					<Add library="liblibu594.a" />
+					<Add library="liblibu200.a" />
+					<Add library="liblibu127.a" />
+					<Add library="liblibu673.a" />
+					<Add library="liblibu10194.a" />
+					<Add library="liblibu10062.a" />
+					<Add library="liblibu908.a" />
+					<Add library="liblibu10219.a" />
+					<Add library="liblibu10258.a" />
+					<Add library="liblibu167.a" />
+					<Add library="liblibu11495.a" />
+					<Add library="liblibu10305.a" />
+					<Add library="liblibu400.a" />
+					<Add library="liblibu156.a" />
+					<Add library="liblibu11340.a" />
+					<Add library="liblibu727.a" />
+					<Add library="liblibu10301.a" />
+					<Add library="liblibu10810.a" />
+					<Add library="liblibu10931.a" />
+					<Add library="liblibu11854.a" />
+					<Add library="liblibu11388.a" />
+					<Add library="liblibu11461.a" />
+					<Add library="liblibu544.a" />
+					<Add library="liblibu10013.a" />
+					<Add library="liblibu11239.a" />
+					<Add library="liblibu412.a" />
+					<Add library="liblibu146.a" />
+				</Linker>
+			</Target>
+			<Target title="Release x64">
+				<Option output="shared" prefix_auto="1" extension_auto="1" />
+				<Option external_deps=";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+				</Compiler>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="shared" prefix_auto="1" extension_auto="1" />
+				<Option external_deps=";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+				</Compiler>
+			</Target>
+			<Target title="Debug Win32">
+				<Option output="shared" prefix_auto="1" extension_auto="1" />
+				<Option external_deps=";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="evaluator.cpp" />
+		<Unit filename="evaluator.h" />
+		<Unit filename="uvas.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
