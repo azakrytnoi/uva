@@ -13,7 +13,7 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
-					<Add directory="${SolutionDir}/headers" />
+					<Add directory="../headers" />
 					<Add directory="$(IncludePath)" />
 				</Compiler>
 			</Target>
