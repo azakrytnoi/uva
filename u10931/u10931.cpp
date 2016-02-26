@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 
 #include "u10931.h"
