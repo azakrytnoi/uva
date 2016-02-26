@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="u400" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug x64">
+				<Option platforms="Unix;" />
+				<Option output="u400" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Weffc++" />
+					<Add option="-std=c++14" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-fpic" />
+					<Add option="-g" />
+					<Add directory="../headers" />
+				</Compiler>
+				<ExtraCommands>
+					<Add after="mv libu400.so ../lib" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release x64">
+				<Option output="u400" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+			</Target>
+		</Build>
+		<Unit filename="u400.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

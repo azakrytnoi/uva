@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="evaluator.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="evaluator.h" />
+    <ClInclude Include="uvas.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="u127.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u146.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u156.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u167.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u200.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u200_2.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u305.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u400.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u401.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u412.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u478.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u482.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u544.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u544_2.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u558.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u558_2.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u594.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u628.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u673.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u454.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u476.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u477.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u679.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u714.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u727.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u900.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u908.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u957.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10013.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10062.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10066.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10194.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11854.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11636.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11495.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11462.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11461.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11388.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11340_3.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11340_2.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11340.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11308.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11239.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11185.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11150.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u11136.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10931.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10810.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10305_2.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10305.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10301.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10258.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10226.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10220.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u10219.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+    <Text Include="u100.txt">
+      <Filter>Data FIles</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data FIles">
+      <UniqueIdentifier>{d2943b47-1517-4f70-a8b5-983dae894209}</UniqueIdentifier>
+      <Extensions>txt</Extensions>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)sort.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u100.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10013.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10062.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10066.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10194.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10219.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10220.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10226.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10258.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10301.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10305.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10810.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u10931.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11136.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11150.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11185.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11239.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11308.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11340.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11388.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11461.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11462.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11495.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u116.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11636.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u11854.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u127.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u146.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u156.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u167.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u200.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u305.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u400.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u401.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u412.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u454.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u478.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u482.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u544.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u558.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u594.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u628.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u673.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u679.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u714.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u727.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u900.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u908.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u957.h" />
+  </ItemGroup>
+</Project>
