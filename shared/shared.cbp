@@ -3,69 +3,75 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="starter" />
+		<Option platforms="Unix;" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug x64">
-				<Option output="shared" prefix_auto="1" extension_auto="1" />
-				<Option external_deps="liblibu11150.a;liblibu116.a;liblibu100.a;liblibu900.a;liblibu11636.a;liblibu11136.a;liblibu10226.a;liblibu558.a;liblibu957.a;liblibu714.a;liblibu11462.a;liblibu628.a;liblibu679.a;liblibu478.a;liblibu401.a;liblibu11185.a;liblibu305.a;liblibu454.a;liblibu482.a;liblibu10220.a;liblibu11308.a;liblibu594.a;liblibu200.a;liblibu127.a;liblibu673.a;liblibu10194.a;liblibu10062.a;liblibu908.a;liblibu10219.a;liblibu10258.a;liblibu167.a;liblibu11495.a;liblibu10305.a;liblibu400.a;liblibu156.a;liblibu11340.a;liblibu727.a;liblibu10301.a;liblibu10810.a;liblibu10931.a;liblibu11854.a;liblibu11388.a;liblibu11461.a;liblibu544.a;liblibu10013.a;liblibu11239.a;liblibu412.a;liblibu146.a;" />
-				<Option type="0" />
+				<Option output="starter" prefix_auto="1" extension_auto="1" />
+				<Option external_deps="../bin/libu11150.so../bin/libu116.so../bin/libu100.so../bin/libu900.so../bin/libu11636.so../bin/libu11136.so../bin/libu10226.so../bin/libu558.so../bin/libu957.so../bin/libu714.so../bin/libu11462.so../bin/libu628.so../bin/libu679.so../bin/libu478.so../bin/libu401.so../bin/libu11185.so../bin/libu305.so../bin/libu454.so../bin/libu482.so../bin/libu10220.so../bin/libu11308.so../bin/libu594.so../bin/libu200.so../bin/libu127.so../bin/libu673.so../bin/libu10194.so../bin/libu10062.so../bin/libu908.so../bin/libu10219.so../bin/libu10258.so../bin/libu167.so../bin/libu11495.so../bin/libu10305.so../bin/libu400.so../bin/libu156.so../bin/libu11340.so../bin/libu727.so../bin/libu10301.so../bin/libu10810.so../bin/libu10931.so../bin/libu11854.so../bin/libu11388.so../bin/libu11461.so../bin/libu544.so../bin/libu10013.so../bin/libu11239.so../bin/libu412.so../bin/libu146.so;" />
+				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
 				<Compiler>
+					<Add option="-Weffc++" />
+					<Add option="-std=c++14" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-g" />
 					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 					<Add directory="../headers" />
-					<Add directory="$(IncludePath)" />
 				</Compiler>
 				<Linker>
-					<Add library="liblibu11150.a" />
-					<Add library="liblibu116.a" />
-					<Add library="liblibu100.a" />
-					<Add library="liblibu900.a" />
-					<Add library="liblibu11636.a" />
-					<Add library="liblibu11136.a" />
-					<Add library="liblibu10226.a" />
-					<Add library="liblibu558.a" />
-					<Add library="liblibu957.a" />
-					<Add library="liblibu714.a" />
-					<Add library="liblibu11462.a" />
-					<Add library="liblibu628.a" />
-					<Add library="liblibu679.a" />
-					<Add library="liblibu478.a" />
-					<Add library="liblibu401.a" />
-					<Add library="liblibu11185.a" />
-					<Add library="liblibu305.a" />
-					<Add library="liblibu454.a" />
-					<Add library="liblibu482.a" />
-					<Add library="liblibu10220.a" />
-					<Add library="liblibu11308.a" />
-					<Add library="liblibu594.a" />
-					<Add library="liblibu200.a" />
-					<Add library="liblibu127.a" />
-					<Add library="liblibu673.a" />
-					<Add library="liblibu10194.a" />
-					<Add library="liblibu10062.a" />
-					<Add library="liblibu908.a" />
-					<Add library="liblibu10219.a" />
-					<Add library="liblibu10258.a" />
-					<Add library="liblibu167.a" />
-					<Add library="liblibu11495.a" />
-					<Add library="liblibu10305.a" />
-					<Add library="liblibu400.a" />
-					<Add library="liblibu156.a" />
-					<Add library="liblibu11340.a" />
-					<Add library="liblibu727.a" />
-					<Add library="liblibu10301.a" />
-					<Add library="liblibu10810.a" />
-					<Add library="liblibu10931.a" />
-					<Add library="liblibu11854.a" />
-					<Add library="liblibu11388.a" />
-					<Add library="liblibu11461.a" />
-					<Add library="liblibu544.a" />
-					<Add library="liblibu10013.a" />
-					<Add library="liblibu11239.a" />
-					<Add library="liblibu412.a" />
-					<Add library="liblibu146.a" />
+					<Add library="../bin/libu11150.so" />
+					<Add library="../bin/libu116.so" />
+					<Add library="../bin/libu100.so" />
+					<Add library="../bin/libu900.so" />
+					<Add library="../bin/libu11636.so" />
+					<Add library="../bin/libu11136.so" />
+					<Add library="../bin/libu10226.so" />
+					<Add library="../bin/libu558.so" />
+					<Add library="../bin/libu957.so" />
+					<Add library="../bin/libu714.so" />
+					<Add library="../bin/libu11462.so" />
+					<Add library="../bin/libu628.so" />
+					<Add library="../bin/libu679.so" />
+					<Add library="../bin/libu478.so" />
+					<Add library="../bin/libu401.so" />
+					<Add library="../bin/libu11185.so" />
+					<Add library="../bin/libu305.so" />
+					<Add library="../bin/libu454.so" />
+					<Add library="../bin/libu482.so" />
+					<Add library="../bin/libu10220.so" />
+					<Add library="../bin/libu11308.so" />
+					<Add library="../bin/libu594.so" />
+					<Add library="../bin/libu200.so" />
+					<Add library="../bin/libu127.so" />
+					<Add library="../bin/libu673.so" />
+					<Add library="../bin/libu10194.so" />
+					<Add library="../bin/libu10062.so" />
+					<Add library="../bin/libu908.so" />
+					<Add library="../bin/libu10219.so" />
+					<Add library="../bin/libu10258.so" />
+					<Add library="../bin/libu167.so" />
+					<Add library="../bin/libu11495.so" />
+					<Add library="../bin/libu10305.so" />
+					<Add library="../bin/libu400.so" />
+					<Add library="../bin/libu156.so" />
+					<Add library="../bin/libu11340.so" />
+					<Add library="../bin/libu727.so" />
+					<Add library="../bin/libu10301.so" />
+					<Add library="../bin/libu10810.so" />
+					<Add library="../bin/libu10931.so" />
+					<Add library="../bin/libu11854.so" />
+					<Add library="../bin/libu11388.so" />
+					<Add library="../bin/libu11461.so" />
+					<Add library="../bin/libu544.so" />
+					<Add library="../bin/libu10013.so" />
+					<Add library="../bin/libu11239.so" />
+					<Add library="../bin/libu412.so" />
+					<Add library="../bin/libu146.so" />
 				</Linker>
 			</Target>
 			<Target title="Release x64">
@@ -75,28 +81,6 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-DNDEBUG" />
-					<Add option="-D_CONSOLE" />
-				</Compiler>
-			</Target>
-			<Target title="Release Win32">
-				<Option output="shared" prefix_auto="1" extension_auto="1" />
-				<Option external_deps=";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-DWIN32" />
-					<Add option="-DNDEBUG" />
-					<Add option="-D_CONSOLE" />
-				</Compiler>
-			</Target>
-			<Target title="Debug Win32">
-				<Option output="shared" prefix_auto="1" extension_auto="1" />
-				<Option external_deps=";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-DWIN32" />
-					<Add option="-D_DEBUG" />
 					<Add option="-D_CONSOLE" />
 				</Compiler>
 			</Target>

@@ -69,6 +69,8 @@ artifacts/
 *.scc
 *.orig
 *.bak
+*.so
+*.depend
 
 # Chutzpah Test files
 _Chutzpah*
