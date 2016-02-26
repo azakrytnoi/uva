@@ -17,8 +17,8 @@ struct task {
     std::vector<int> predessors;
     bool executed;
 
-    task() : id(0), executed(false) {}
-    explicit task(int id) : id(id), executed(false) {}
+    task() : id(0), predessors(), executed(false) {}
+    explicit task(int id) : id(id), predessors(), executed(false) {}
 };
 
 }

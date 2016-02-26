@@ -25,7 +25,7 @@ class solver {
 
 public:
 
-    solver() : N_(0), M_(0), best_(0)
+    solver() : N_(0), M_(0), best_(0), matrix_(), costs_(), path_(), trace_()
     {
         matrix_.resize(10);
         costs_.resize(10);

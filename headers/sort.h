@@ -19,7 +19,7 @@ public:
      *
      * \param n number of elements
      */
-    explicit sort(int n) : n_(n), swaps_(0)
+    explicit sort(int n) : n_(n), swaps_(0), src_()
     {
     }
 

@@ -23,7 +23,7 @@ void U100::operator()()
     while (std::cin >> i >> j) {
         int start(i), end(j);
         if (start > end) std::swap(start, end);
-        std::cout << i << " " << j << " " << cycle_ength(start, end, [](uint32_t n) -> uint32_t {
+        std::cout << i << " " << j << " " << cycle_length(start, end, [](uint32_t n) -> uint32_t {
             uint32_t cnt(1);
             while (n != 1)
             {
@@ -39,7 +39,7 @@ void U100::operator()()
     }
 }
 
-uint32_t U100::cycle_ength(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f)
+uint32_t U100::cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f)
 {
     uint32_t result(std::numeric_limits<uint32_t>::min());
     for (uint32_t n = start; n <= end; n++) {

@@ -36,6 +36,8 @@ struct DisjointSet {
     std::vector<int> pAddress;
     std::vector<int> numVertices;
 
+    DisjointSet() : sets(0), pAddress(), numVertices() {}
+
     void initSet(int n)
     {
         sets = n;
@@ -92,7 +94,7 @@ private:
     DisjointSet mst_;
 
 public:
-    explicit Kruskal(int v)
+    explicit Kruskal(int v) : mst_()
     {
         mst_.initSet(v);
     }

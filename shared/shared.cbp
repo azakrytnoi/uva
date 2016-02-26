@@ -9,7 +9,7 @@
 		<Build>
 			<Target title="Debug x64">
 				<Option output="starter" prefix_auto="1" extension_auto="1" />
-				<Option external_deps="../bin/libu11150.so../bin/libu116.so../bin/libu100.so../bin/libu900.so../bin/libu11636.so../bin/libu11136.so../bin/libu10226.so../bin/libu558.so../bin/libu957.so../bin/libu714.so../bin/libu11462.so../bin/libu628.so../bin/libu679.so../bin/libu478.so../bin/libu401.so../bin/libu11185.so../bin/libu305.so../bin/libu454.so../bin/libu482.so../bin/libu10220.so../bin/libu11308.so../bin/libu594.so../bin/libu200.so../bin/libu127.so../bin/libu673.so../bin/libu10194.so../bin/libu10062.so../bin/libu908.so../bin/libu10219.so../bin/libu10258.so../bin/libu167.so../bin/libu11495.so../bin/libu10305.so../bin/libu400.so../bin/libu156.so../bin/libu11340.so../bin/libu727.so../bin/libu10301.so../bin/libu10810.so../bin/libu10931.so../bin/libu11854.so../bin/libu11388.so../bin/libu11461.so../bin/libu544.so../bin/libu10013.so../bin/libu11239.so../bin/libu412.so../bin/libu146.so;" />
+				<Option external_deps="../lib/libu11150.so../lib/libu116.so../lib/libu100.so../lib/libu900.so../lib/libu11636.so../lib/libu11136.so../lib/libu10226.so../lib/libu558.so../lib/libu957.so../lib/libu714.so../lib/libu11462.so../lib/libu628.so../lib/libu679.so../lib/libu478.so../lib/libu401.so../lib/libu11185.so../lib/libu305.so../lib/libu454.so../lib/libu482.so../lib/libu10220.so../lib/libu11308.so../lib/libu594.so../lib/libu200.so../lib/libu127.so../lib/libu673.so../lib/libu10194.so../lib/libu10062.so../lib/libu908.so../lib/libu10219.so../lib/libu10258.so../lib/libu167.so../lib/libu11495.so../lib/libu10305.so../lib/libu400.so../lib/libu156.so../lib/libu11340.so../lib/libu727.so../lib/libu10301.so../lib/libu10810.so../lib/libu10931.so../lib/libu11854.so../lib/libu11388.so../lib/libu11461.so../lib/libu544.so../lib/libu10013.so../lib/libu11239.so../lib/libu412.so../lib/libu146.so;" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Option use_console_runner="0" />
@@ -23,56 +23,6 @@
 					<Add option="-D_CONSOLE" />
 					<Add directory="../headers" />
 				</Compiler>
-				<Linker>
-					<Add library="../bin/libu11150.so" />
-					<Add library="../bin/libu116.so" />
-					<Add library="../bin/libu100.so" />
-					<Add library="../bin/libu900.so" />
-					<Add library="../bin/libu11636.so" />
-					<Add library="../bin/libu11136.so" />
-					<Add library="../bin/libu10226.so" />
-					<Add library="../bin/libu558.so" />
-					<Add library="../bin/libu957.so" />
-					<Add library="../bin/libu714.so" />
-					<Add library="../bin/libu11462.so" />
-					<Add library="../bin/libu628.so" />
-					<Add library="../bin/libu679.so" />
-					<Add library="../bin/libu478.so" />
-					<Add library="../bin/libu401.so" />
-					<Add library="../bin/libu11185.so" />
-					<Add library="../bin/libu305.so" />
-					<Add library="../bin/libu454.so" />
-					<Add library="../bin/libu482.so" />
-					<Add library="../bin/libu10220.so" />
-					<Add library="../bin/libu11308.so" />
-					<Add library="../bin/libu594.so" />
-					<Add library="../bin/libu200.so" />
-					<Add library="../bin/libu127.so" />
-					<Add library="../bin/libu673.so" />
-					<Add library="../bin/libu10194.so" />
-					<Add library="../bin/libu10062.so" />
-					<Add library="../bin/libu908.so" />
-					<Add library="../bin/libu10219.so" />
-					<Add library="../bin/libu10258.so" />
-					<Add library="../bin/libu167.so" />
-					<Add library="../bin/libu11495.so" />
-					<Add library="../bin/libu10305.so" />
-					<Add library="../bin/libu400.so" />
-					<Add library="../bin/libu156.so" />
-					<Add library="../bin/libu11340.so" />
-					<Add library="../bin/libu727.so" />
-					<Add library="../bin/libu10301.so" />
-					<Add library="../bin/libu10810.so" />
-					<Add library="../bin/libu10931.so" />
-					<Add library="../bin/libu11854.so" />
-					<Add library="../bin/libu11388.so" />
-					<Add library="../bin/libu11461.so" />
-					<Add library="../bin/libu544.so" />
-					<Add library="../bin/libu10013.so" />
-					<Add library="../bin/libu11239.so" />
-					<Add library="../bin/libu412.so" />
-					<Add library="../bin/libu146.so" />
-				</Linker>
 			</Target>
 			<Target title="Release x64">
 				<Option output="shared" prefix_auto="1" extension_auto="1" />
@@ -85,6 +35,57 @@
 				</Compiler>
 			</Target>
 		</Build>
+		<Linker>
+			<Add library="libu11150.so" /> 
+			<Add library="libu116.so" />
+			<Add library="libu100.so" />
+			<Add library="libu900.so" />
+			<Add library="libu11636.so" />
+			<Add library="libu11136.so" />
+			<Add library="libu10226.so" />
+			<Add library="libu558.so" />
+			<Add library="libu957.so" />
+			<Add library="libu714.so" />
+			<Add library="libu11462.so" />
+			<Add library="libu628.so" />
+			<Add library="libu679.so" />
+			<Add library="libu478.so" />
+			<Add library="libu401.so" />
+			<Add library="libu11185.so" />
+			<Add library="libu305.so" />
+			<Add library="libu454.so" />
+			<Add library="libu482.so" />
+			<Add library="libu10220.so" />
+			<Add library="libu11308.so" />
+			<Add library="libu594.so" />
+			<Add library="libu200.so" />
+			<Add library="libu127.so" />
+			<Add library="libu673.so" />
+			<Add library="libu10194.so" />
+			<Add library="libu10062.so" />
+			<Add library="libu908.so" />
+			<Add library="libu10219.so" />
+			<Add library="libu10258.so" />
+			<Add library="libu167.so" />
+			<Add library="libu11495.so" />
+			<Add library="libu10305.so" />
+			<Add library="libu400.so" />
+			<Add library="libu156.so" />
+			<Add library="libu11340.so" />
+			<Add library="libu727.so" />
+			<Add library="libu10301.so" />
+			<Add library="libu10810.so" />
+			<Add library="libu10931.so" />
+			<Add library="libu11854.so" />
+			<Add library="libu11388.so" />
+			<Add library="libu11461.so" />
+			<Add library="libu544.so" />
+			<Add library="libu10013.so" />
+			<Add library="libu11239.so" />
+			<Add library="libu412.so" />
+			<Add library="libu146.so" />
+			<Add directory="../lib/" />
+		</Linker>
 		<Unit filename="evaluator.cpp" />
 		<Unit filename="evaluator.h" />
 		<Unit filename="uvas.h" />

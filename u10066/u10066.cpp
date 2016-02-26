@@ -21,7 +21,7 @@ class solver {
     int lcs(const int* a, const int* b, const size_t M, const size_t N);
 
 public:
-    solver() : seq_(0) {
+    solver() : a_(), b_(), seq_(0), solution_() {
         a_.reserve(100);
         b_.reserve(100);
     }

@@ -16,7 +16,7 @@ class fibonacci {
     std::vector<uint64_t> fib_;
 
 public:
-    fibonacci()
+    fibonacci() : fib_()
     {
         fib_.reserve(MAX + 1);
         uint64_t n0[] = {1, 1};

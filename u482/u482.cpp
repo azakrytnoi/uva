@@ -25,6 +25,8 @@ struct item {
     uint32_t idx;
     std::string value;
 
+    item() : idx(0), value() {}
+
     bool operator < (const item& other)
     {
         return idx < other.idx;

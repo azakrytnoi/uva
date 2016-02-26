@@ -4,8 +4,10 @@
 
 #include "u454.h"
 
+#ifdef _WIN32
 #pragma warning (push)
 #pragma warning (disable : 4503)
+#endif // _WIN32
 
 #include <iostream>
 #include <vector>
@@ -93,4 +95,6 @@ void U454::operator()()
     }
 }
 
+#ifdef _WIN32
 #pragma warning (pop)
+#endif

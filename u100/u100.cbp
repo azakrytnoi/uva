@@ -24,7 +24,7 @@
 					<Add directory="../headers" />
 				</Compiler>
 				<ExtraCommands>
-					<Add after="cp libu100.so ../bin" />
+					<Add after="mv libu100.so ../lib" />
 				</ExtraCommands>
 			</Target>
 			<Target title="Release x64">

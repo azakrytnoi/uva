@@ -10,6 +10,6 @@ public:
     void operator()();
 
 private:
-    uint32_t cycle_ength(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
+    uint32_t cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
 };
 

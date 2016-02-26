@@ -25,6 +25,9 @@ public:
     {
     }
 
+    basic_teebuf(const basic_teebuf& rhs) = delete;
+    basic_teebuf& operator = (const basic_teebuf& rhs) = delete;
+
 private:
     virtual int sync()
     {
@@ -83,7 +86,7 @@ template<typename Tp>
 class evaluator : public wraper
 {
 public:
-    explicit evaluator(const std::string& source) : source_(source)
+    explicit evaluator(const std::string& source) : source_(source), tp_()
     {
     }
 
@@ -92,6 +95,9 @@ public:
     }
 
     virtual void operator ()();
+
+    evaluator(const evaluator& rhs) = delete;
+    evaluator& operator = (const evaluator& rhs) = delete;
 
 private:
     std::string source_;
@@ -104,15 +110,17 @@ template <typename T>
 class io_wrapper
 {
 public:
-    explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream)
+    explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
     {
-        streambuf_ = stream_.rdbuf(streambuf);
     }
 
     ~io_wrapper()
     {
         stream_.rdbuf(streambuf_);
     }
+
+    io_wrapper(const io_wrapper& rhs) = delete;
+    io_wrapper& operator = (const io_wrapper& rhs) = delete;
 
 private:
     T& stream_;

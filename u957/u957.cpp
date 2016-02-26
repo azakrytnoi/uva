@@ -19,7 +19,7 @@ namespace
 class solver
 {
 public:
-    solver() : years_(0), popes_(0), max_(std::numeric_limits<int>::min())
+    solver() : years_(0), popes_(0), max_(std::numeric_limits<int>::min()), start_(), end_()
     {
     }
 
