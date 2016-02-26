@@ -117,7 +117,7 @@
     <ClCompile Include="u127.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\shared\u127.txt" />
+    <Text Include="u127.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

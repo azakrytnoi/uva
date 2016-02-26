@@ -21,7 +21,7 @@ struct populate<Tp, Ts...> : populate<Ts...> {
     {
         std::string tp_name(typeid(Tp).name());
         tp_name = tp_name.substr(tp_name.find('U') + 1);
-        g_cache[tp_name] = std::make_shared<evaluator<Tp>>("u" + tp_name + ".txt");
+        g_cache[tp_name] = std::make_shared<evaluator<Tp>>("../u" + tp_name + "/u" + tp_name + ".txt");
     }
 };
 
