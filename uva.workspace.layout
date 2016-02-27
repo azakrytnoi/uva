@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_workspace_layout_file>
-	<ActiveProject path="shared/shared.cbp" />
-	<PreferredTarget name="Debug x64" />
+	<ActiveProject path="u408/u408.cbp" />
 </CodeBlocks_workspace_layout_file>
