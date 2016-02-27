@@ -71,6 +71,10 @@ artifacts/
 *.bak
 *.so
 *.depend
+*.cbp
+*.layout
+*.workspace
+
 
 # Chutzpah Test files
 _Chutzpah*

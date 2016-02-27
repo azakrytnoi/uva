@@ -2,6 +2,9 @@
 
 #include <algorithm>
 
+namespace math
+{
+
 template<typename T>
 T gcd (T a, T b)
 {
@@ -17,3 +20,4 @@ T gcd (T a, T b)
     return gcd (b, t);
 }
 
+}

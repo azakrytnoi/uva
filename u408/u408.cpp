@@ -26,7 +26,7 @@ void U408::operator()()
     while (std::cin >> step >> mod)
     {
         std::cout << std::setw(10) << step << std::setw(10) << mod << "    ";
-        if (gcd(mod, step) == 1)
+        if (math::gcd(mod, step) == 1)
         {
             std::cout << "Good Choice" << std::endl;
         }
