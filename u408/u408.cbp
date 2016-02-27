@@ -33,6 +33,7 @@
 				<Option compiler="gcc" />
 			</Target>
 		</Build>
+		<Unit filename="../headers/gcd.h" />
 		<Unit filename="u408.cpp" />
 		<Extensions>
 			<code_completion />

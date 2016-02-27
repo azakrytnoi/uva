@@ -36,7 +36,7 @@
 			</Target>
 		</Build>
 		<Linker>
-			<Add library="libu11150.so" /> 
+			<Add library="libu11150.so" />
 			<Add library="libu116.so" />
 			<Add library="libu100.so" />
 			<Add library="libu900.so" />
@@ -86,6 +86,58 @@
 			<Add library="libu146.so" />
 			<Add directory="../lib/" />
 		</Linker>
+		<Unit filename="../headers/gcd.h" />
+		<Unit filename="../headers/sort.h" />
+		<Unit filename="../headers/u100.h" />
+		<Unit filename="../headers/u10013.h" />
+		<Unit filename="../headers/u10062.h" />
+		<Unit filename="../headers/u10066.h" />
+		<Unit filename="../headers/u10194.h" />
+		<Unit filename="../headers/u10219.h" />
+		<Unit filename="../headers/u10220.h" />
+		<Unit filename="../headers/u10226.h" />
+		<Unit filename="../headers/u10258.h" />
+		<Unit filename="../headers/u10301.h" />
+		<Unit filename="../headers/u10305.h" />
+		<Unit filename="../headers/u10810.h" />
+		<Unit filename="../headers/u10931.h" />
+		<Unit filename="../headers/u11136.h" />
+		<Unit filename="../headers/u11150.h" />
+		<Unit filename="../headers/u11185.h" />
+		<Unit filename="../headers/u11239.h" />
+		<Unit filename="../headers/u11308.h" />
+		<Unit filename="../headers/u11340.h" />
+		<Unit filename="../headers/u11388.h" />
+		<Unit filename="../headers/u11461.h" />
+		<Unit filename="../headers/u11462.h" />
+		<Unit filename="../headers/u11495.h" />
+		<Unit filename="../headers/u116.h" />
+		<Unit filename="../headers/u11636.h" />
+		<Unit filename="../headers/u11854.h" />
+		<Unit filename="../headers/u127.h" />
+		<Unit filename="../headers/u146.h" />
+		<Unit filename="../headers/u156.h" />
+		<Unit filename="../headers/u167.h" />
+		<Unit filename="../headers/u200.h" />
+		<Unit filename="../headers/u305.h" />
+		<Unit filename="../headers/u400.h" />
+		<Unit filename="../headers/u401.h" />
+		<Unit filename="../headers/u408.h" />
+		<Unit filename="../headers/u412.h" />
+		<Unit filename="../headers/u454.h" />
+		<Unit filename="../headers/u478.h" />
+		<Unit filename="../headers/u482.h" />
+		<Unit filename="../headers/u544.h" />
+		<Unit filename="../headers/u558.h" />
+		<Unit filename="../headers/u594.h" />
+		<Unit filename="../headers/u628.h" />
+		<Unit filename="../headers/u673.h" />
+		<Unit filename="../headers/u679.h" />
+		<Unit filename="../headers/u714.h" />
+		<Unit filename="../headers/u727.h" />
+		<Unit filename="../headers/u900.h" />
+		<Unit filename="../headers/u908.h" />
+		<Unit filename="../headers/u957.h" />
 		<Unit filename="evaluator.cpp" />
 		<Unit filename="evaluator.h" />
 		<Unit filename="uvas.h" />
