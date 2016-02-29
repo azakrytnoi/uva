@@ -1,5 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define UVA_API_EXPORT
 #endif
 
 #include "u908.h"
