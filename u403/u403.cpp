@@ -28,7 +28,6 @@ class driver
 public:
     driver() :
         parser_("\\.([PLRC])[^C]*C([15]) *(\\d+ )(\\d+ )?[^\\|]*\\|([^\\|]*)\\|.*")
-//        parser_("\\.([PLRC]).*")
         , match_(), /*c1_font_("ABCDEFGHIJKLMNOPQRSTUVWXYZ "), */c5_font_()
     {
         c5_font_['A'] = {".***..", "*...*.", "*****.", "*...*.", "*...*."};
@@ -70,7 +69,6 @@ public:
         std::string cmmand, line;
         if (std::getline(in, line) && !line.empty())
         {
-            std::clog << line << std::endl;
             if (line[1] != 'E' && std::regex_match(line, d.match_, d.parser_))
             {
                 uint32_t font = std::atoi(d.match_[2].str().c_str());
@@ -105,6 +103,7 @@ public:
                 if (line == ".EOP")
                 {
                     d.flush_page();
+					d.clean_page();
                 }
             }
         }
@@ -138,12 +137,15 @@ void driver::clean_page()
 
 void driver::place(uint32_t font, uint32_t row, uint32_t col, const std::string& text)
 {
-    std::clog << "Place: [" << row << ", " << col << "] " << text << std::endl;
     switch(font)
     {
     case 1:
     {
-        std::pair<uint32_t, std::string> aligned = left_text(text, 60 - col);
+        std::pair<uint32_t, std::string> aligned = left_text(text, 61 - col);
+		if (col + aligned.second.length() > 60)
+		{
+			aligned.second.erase(aligned.second.end() - 1);
+		}
         print_c1_at(row, col, aligned.second);
     }
     break;
@@ -158,7 +160,6 @@ void driver::place(uint32_t font, uint32_t row, uint32_t col, const std::string&
 
 void driver::right(uint32_t font, uint32_t row, const std::string& text)
 {
-    std::clog << "Right: [" << row << "] " << text << std::endl;
     switch(font)
     {
     case 1:
@@ -178,7 +179,6 @@ void driver::right(uint32_t font, uint32_t row, const std::string& text)
 
 void driver::left(uint32_t font, uint32_t row, const std::string& text)
 {
-    std::clog << "Left: [" << row << "] " << text << std::endl;
     switch(font)
     {
     case 1:
@@ -198,19 +198,18 @@ void driver::left(uint32_t font, uint32_t row, const std::string& text)
 
 void driver::center(uint32_t font, uint32_t row, const std::string& text)
 {
-    std::clog << "Center: [" << row << "] " << text << std::endl;
     switch(font)
     {
     case 1:
     {
         std::pair<uint32_t, std::string> aligned = center_text(text, 60);
-        print_c1_at(row, aligned.first, aligned.second);
+        print_c1_at(row, (aligned.second.length() & 0x01) == 0 ? aligned.first : aligned.first + 1, aligned.second);
     }
     break;
     case 5:
     {
         std::pair<uint32_t, std::string> aligned = center_text(text, 10);
-        print_c5_at(row, aligned.first * 6, aligned.second);
+        print_c5_at(row, (aligned.second.length() & 0x01) == 0 ? aligned.first * 6 : aligned.first * 6 + 3, aligned.second);
     }
     break;
     }
@@ -223,7 +222,7 @@ std::pair<uint32_t, std::string> driver::right_text(const std::string& text, uin
     {
         output = output.substr(1, output.length() - 1);
     }
-    uint32_t col = (width - output.length());
+    uint32_t col (uint32_t(width - output.length()));
     return std::make_pair(col, output);
 }
 
@@ -244,7 +243,7 @@ std::pair<uint32_t, std::string> driver::center_text(const std::string& text, ui
     {
         output = output.substr(1, output.length() - 2);
     }
-    uint32_t col = (width - output.length()) / 2;
+    uint32_t col (uint32_t((width - output.length()) / 2));
     return std::make_pair(col, output);
 }
 
@@ -265,14 +264,16 @@ void driver::print_c5_at(uint32_t row, uint32_t col, const std::string& text)
         uint32_t current_col (col);
         std::for_each(text.begin(), text.end(), [&](const char ch)
         {
-            std::string line (c5_font_[ch][i]);
+			int idx = 0;
+			std::string line (c5_font_[ch][i]);
             if (current_col > 54)
             {
                 line = line.substr(0, 60 - current_col);
             }
-            std::transform(line.begin(), line.end(), page_[row + i] + current_col, [](const char ch)
+            std::transform(line.begin(), line.end(), page_[row + i] + current_col, [&](const char ch)
             {
-                return ch == ' ' ? '.' : ch;
+				idx++;
+				return ch == '.' ? page_[row + i][current_col + idx - 1] : ch;
             });
             current_col += 6;
         });

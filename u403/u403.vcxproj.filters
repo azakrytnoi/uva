@@ -19,4 +19,8 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="u403.deb.txt" />
+    <Text Include="u403.txt" />
+  </ItemGroup>
 </Project>

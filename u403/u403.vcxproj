@@ -116,6 +116,10 @@
   <ItemGroup>
     <ClCompile Include="u403.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="u403.txt" />
+    <Text Include="u403.deb.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
