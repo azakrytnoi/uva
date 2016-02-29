@@ -1,5 +1,5 @@
 #pragma once
-class U11462
+class UVA_API_EXPORT U11462
 {
 public:
     U11462();

@@ -49,6 +49,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)u305.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)u400.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)u401.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u403.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)u408.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)u412.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)u454.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)u478.h" />

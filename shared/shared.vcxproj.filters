@@ -8,172 +8,172 @@
     <ClInclude Include="uvas.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u127.txt">
+    <Text Include="..\u100\u100.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u146.txt">
+    <Text Include="..\u10013\u10013.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u156.txt">
+    <Text Include="..\u10062\u10062.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u167.txt">
+    <Text Include="..\u10066\u10066.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u200.txt">
+    <Text Include="..\u10194\u10194.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u200_2.txt">
+    <Text Include="..\u10219\u10219.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u305.txt">
+    <Text Include="..\u10220\u10220.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u400.txt">
+    <Text Include="..\u10226\u10226.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u401.txt">
+    <Text Include="..\u10258\u10258.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u412.txt">
+    <Text Include="..\u10301\u10301.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u478.txt">
+    <Text Include="..\u10305\u10305.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u482.txt">
+    <Text Include="..\u10305\u10305_2.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u544.txt">
+    <Text Include="..\u10810\u10810.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u544_2.txt">
+    <Text Include="..\u10931\u10931.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u558.txt">
+    <Text Include="..\u11136\u11136.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u558_2.txt">
+    <Text Include="..\u11150\u11150.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u594.txt">
+    <Text Include="..\u11185\u11185.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u628.txt">
+    <Text Include="..\u11239\u11239.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u673.txt">
+    <Text Include="..\u11308\u11308.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u454.txt">
+    <Text Include="..\u11340\u11340.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u476.txt">
+    <Text Include="..\u11340_2\u11340_2.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u477.txt">
+    <Text Include="..\u11340_3\u11340_3.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u679.txt">
+    <Text Include="..\u11388\u11388.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u714.txt">
+    <Text Include="..\u11461\u11461.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u727.txt">
+    <Text Include="..\u11462\u11462.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u900.txt">
+    <Text Include="..\u11495\u11495.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u908.txt">
+    <Text Include="..\u11636\u11636.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u957.txt">
+    <Text Include="..\u11854\u11854.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10013.txt">
+    <Text Include="..\u127\u127.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10062.txt">
+    <Text Include="..\u146\u146.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10066.txt">
+    <Text Include="..\u156\u156.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10194.txt">
+    <Text Include="..\u167\u167.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11854.txt">
+    <Text Include="..\u200\u200.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11636.txt">
+    <Text Include="..\u200\u200_2.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11495.txt">
+    <Text Include="..\u305\u305.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11462.txt">
+    <Text Include="..\u400\u400.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11461.txt">
+    <Text Include="..\u401\u401.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11388.txt">
+    <Text Include="..\u412\u412.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11340_3.txt">
+    <Text Include="..\u454\u454.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11340_2.txt">
+    <Text Include="..\u476\u476.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11340.txt">
+    <Text Include="..\u477\u477.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11308.txt">
+    <Text Include="..\u478\u478.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11239.txt">
+    <Text Include="..\u482\u482.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11185.txt">
+    <Text Include="..\u544\u544.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11150.txt">
+    <Text Include="..\u544\u544_2.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u11136.txt">
+    <Text Include="..\u558\u558.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10931.txt">
+    <Text Include="..\u558\u558_2.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10810.txt">
+    <Text Include="..\u594\u594.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10305_2.txt">
+    <Text Include="..\u628\u628.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10305.txt">
+    <Text Include="..\u673\u673.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10301.txt">
+    <Text Include="..\u679\u679.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10258.txt">
+    <Text Include="..\u714\u714.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10226.txt">
+    <Text Include="..\u727\u727.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10220.txt">
+    <Text Include="..\u900\u900.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u10219.txt">
+    <Text Include="..\u908\u908.txt">
       <Filter>Data FIles</Filter>
     </Text>
-    <Text Include="u100.txt">
+    <Text Include="..\u957\u957.txt">
       <Filter>Data FIles</Filter>
     </Text>
   </ItemGroup>

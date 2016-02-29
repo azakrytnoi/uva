@@ -316,8 +316,17 @@
     <ProjectReference Include="..\u401\u401.vcxproj">
       <Project>{4aa1c4cd-ad18-47cc-b744-6a3ac3c27aa4}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\u403\u403.vcxproj">
+      <Project>{4fcd272c-77a4-404e-bbac-a67fe1c03d58}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u408\u408.vcxproj">
+      <Project>{4f553475-fe78-4fe3-bcab-c9d924a1b388}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\u412\u412.vcxproj">
       <Project>{f7fc2ccf-4869-4721-869e-bd6f2aa5ec27}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\u417\u417.vcxproj">
+      <Project>{5ed30b70-d666-49f0-8585-06c7a66a3c04}</Project>
     </ProjectReference>
     <ProjectReference Include="..\u454\u454.vcxproj">
       <Project>{5f5bbf81-3fa4-41ca-a63e-ded4ec18666d}</Project>

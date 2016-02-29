@@ -1,3 +1,7 @@
+#ifdef _WIN32
+#define UVA_API_EXPORT __declspec(dllexport)
+#endif
+
 #include "u417.h"
 
 #include <iostream>
