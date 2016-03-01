@@ -11,6 +11,8 @@
 #include <iterator>
 #include <algorithm>
 
+U10013::U10013() {}
+
 void U10013::operator()()
 {
     int N;
