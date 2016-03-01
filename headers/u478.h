@@ -3,7 +3,7 @@
 class  U478
 {
 public:
-    U478() {}
+    U478();
 
     void operator()();
 };
@@ -11,11 +11,11 @@ public:
 class  U477 : public U478
 {
 public:
-	U477() {}
+	U477();
 };
 
 class  U476 : public U478
 {
 public:
-	U476() {}
+	U476();
 };

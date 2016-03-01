@@ -18,6 +18,7 @@ U146::U146()
 U146::~U146()
 {
 }
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U146 instance; 	instance(); }
 void U146::operator()()
 {
     std::string line;

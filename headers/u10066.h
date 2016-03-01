@@ -3,7 +3,7 @@
 class  U10066
 {
 public:
-    U10066() {}
+    U10066();
 
     void operator()();
 };

@@ -14,6 +14,7 @@ U10810::U10810()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10810 instance; 	instance(); }
 void U10810::operator()()
 {
     int n;

@@ -14,6 +14,7 @@
 #include <sstream>
 #include <cctype>
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11308 instance; 	instance(); }
 void U11308::operator()()
 {
     int N;

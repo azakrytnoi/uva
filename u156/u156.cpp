@@ -22,6 +22,7 @@ U156::~U156()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U156 instance; 	instance(); }
 void U156::operator()()
 {
     std::string word;

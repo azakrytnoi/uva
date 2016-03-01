@@ -147,6 +147,7 @@ U10194::~U10194()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10194 instance; 	instance(); }
 void U10194::operator()()
 {
     int N;

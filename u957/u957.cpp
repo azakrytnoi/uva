@@ -72,6 +72,7 @@ private:
 std::vector<int> solver::elections_;
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U957 instance; 	instance(); }
 void U957::operator()()
 {
     solver s;

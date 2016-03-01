@@ -3,7 +3,7 @@
 class  U400
 {
 public:
-    U400() {}
+    U400();
 
     void operator()();
 };

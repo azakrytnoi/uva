@@ -33,6 +33,7 @@ union {
 } item;
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U594 instance; 	instance(); }
 void U594::operator()()
 {
     while (std::cin >> item.numerical) {

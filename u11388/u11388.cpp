@@ -12,6 +12,7 @@ U11388::U11388()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11388 instance; 	instance(); }
 void U11388::operator()()
 {
     int N;

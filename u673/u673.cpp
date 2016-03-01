@@ -15,6 +15,7 @@ U673::U673()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U673 instance; 	instance(); }
 void U673::operator()()
 {
     std::string line;

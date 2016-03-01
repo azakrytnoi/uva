@@ -101,6 +101,9 @@ public:
 };
 }
 
+U478::U478() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U478 instance; 	instance(); }
 void U478::operator()()
 {
     std::vector<std::shared_ptr<shape>> shapes;

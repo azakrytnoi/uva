@@ -13,6 +13,7 @@
 
 U10013::U10013() {}
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10013 instance; 	instance(); }
 void U10013::operator()()
 {
     int N;

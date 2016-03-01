@@ -36,6 +36,7 @@ struct item {
 };
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U482 instance; 	instance(); }
 void U482::operator()()
 {
     uint32_t n;

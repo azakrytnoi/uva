@@ -22,6 +22,9 @@ namespace
     }
 }
 
+U11150::U11150() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11150 instance; 	instance(); }
 void U11150::operator()()
 {
     int N;

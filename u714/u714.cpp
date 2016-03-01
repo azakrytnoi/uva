@@ -121,6 +121,7 @@ std::vector<bool> solver::breaks_;
 
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U714 instance; 	instance(); }
 void U714::operator()()
 {
     int T;

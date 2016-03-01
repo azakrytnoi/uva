@@ -30,6 +30,7 @@ U127::U127()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U127 instance; 	instance(); }
 void U127::operator()()
 {
     std::vector <std::stack <card> > cards;

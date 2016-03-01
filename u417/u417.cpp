@@ -58,6 +58,7 @@ public:
 
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U417 instance; 	instance(); }
 void U417::operator()()
 {
     solver s;

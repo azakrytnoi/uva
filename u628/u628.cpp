@@ -52,6 +52,7 @@ private:
 
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U628 instance; 	instance(); }
 void U628::operator()()
 {
     std::vector<std::string> words;

@@ -3,7 +3,7 @@
 class  U900
 {
 public:
-    U900() {}
+    U900();
 
     void operator()();
 };

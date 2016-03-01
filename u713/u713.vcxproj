@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C63EFE2-604A-4C26-8E7E-3F2BAACC6950}</ProjectGuid>
+    <ProjectGuid>{B4127D0F-80E6-4776-AB58-823D09D848C8}</ProjectGuid>
     <RootNamespace>u714</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -114,10 +114,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="u714.cpp" />
+    <ClCompile Include="u713.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u714.txt" />
+    <Text Include="u713.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

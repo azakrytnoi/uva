@@ -91,6 +91,7 @@ U727::~U727()
 }
 
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U727 instance; 	instance(); }
 void U727::operator()()
 {
     {

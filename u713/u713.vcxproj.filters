@@ -15,11 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="u714.cpp">
+    <ClCompile Include="u713.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\shared\u714.txt" />
+    <Text Include="u713.txt" />
   </ItemGroup>
 </Project>

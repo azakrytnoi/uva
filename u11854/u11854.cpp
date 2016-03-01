@@ -12,6 +12,7 @@
 #include <vector>
 #include <numeric>
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11854 instance; 	instance(); }
 void U11854::operator()()
 {
     std::vector<uint32_t> triangle;

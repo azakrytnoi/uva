@@ -3,7 +3,7 @@
 class  U305
 {
 public:
-    U305() {}
+    U305();
 
     void operator()();
 };

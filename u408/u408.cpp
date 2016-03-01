@@ -22,6 +22,7 @@ U408::~U408()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U408 instance; 	instance(); }
 void U408::operator()()
 {
     uint32_t step, mod;

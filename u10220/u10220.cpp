@@ -20,6 +20,7 @@ U10220::~U10220()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10220 instance; 	instance(); }
 void U10220::operator()()
 {
     std::vector<int32_t> sums;

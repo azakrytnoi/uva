@@ -36,6 +36,9 @@ public:
 };
 }
 
+U900::U900() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U900 instance; 	instance(); }
 void U900::operator()()
 {
     int N;

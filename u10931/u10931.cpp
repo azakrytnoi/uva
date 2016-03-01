@@ -54,6 +54,9 @@ public:
 };
 }
 
+U10931::U10931() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10931 instance; 	instance(); }
 void U10931::operator()()
 {
     std::string binary;

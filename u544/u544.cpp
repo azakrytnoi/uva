@@ -20,6 +20,7 @@ U544::~U544()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U544 instance; 	instance(); }
 void U544::operator()()
 {
     int n, r;

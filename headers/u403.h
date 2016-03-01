@@ -3,7 +3,7 @@
 class  U403
 {
 public:
-    U403() {}
+    U403();
 
     void operator()();
 };

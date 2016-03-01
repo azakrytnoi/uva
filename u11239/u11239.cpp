@@ -15,6 +15,7 @@
 #include <set>
 #include <iterator>
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11239 instance; 	instance(); }
 void U11239::operator()()
 {
     std::string line;

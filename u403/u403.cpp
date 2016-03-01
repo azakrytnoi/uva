@@ -297,6 +297,9 @@ void driver::flush_page()
 
 }
 
+U403::U403() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U403 instance; 	instance(); }
 void U403::operator()()
 {
     driver d;

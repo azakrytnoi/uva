@@ -74,6 +74,7 @@ public:
 
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U713 instance; 	instance(); }
 void U713::operator()()
 {
     int N;

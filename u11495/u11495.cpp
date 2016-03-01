@@ -21,6 +21,7 @@ U11495::~U11495()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11495 instance; 	instance(); }
 void U11495::operator()()
 {
     std::string line;

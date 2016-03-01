@@ -67,6 +67,7 @@ U679::U679()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U679 instance; 	instance(); }
 void U679::operator()()
 {
     int n_cases;

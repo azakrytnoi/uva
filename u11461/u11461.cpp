@@ -12,6 +12,9 @@
 #include <iterator>
 #include <numeric>
 
+U11461::U11461() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11461 instance; 	instance(); }
 void U11461::operator()()
 {
     std::vector<uint32_t> squares;

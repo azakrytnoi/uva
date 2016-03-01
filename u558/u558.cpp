@@ -28,6 +28,7 @@ struct edge {
 };
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U558 instance; 	instance(); }
 void U558::operator()()
 {
     int N;

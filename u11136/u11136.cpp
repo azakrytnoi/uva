@@ -23,6 +23,7 @@ U11136::~U11136()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11136 instance; 	instance(); }
 void U11136::operator()()
 {
     int N;

@@ -53,6 +53,7 @@ private:
 };
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10301 instance; 	instance(); }
 void U10301::operator()()
 {
     int16_t n_rings;

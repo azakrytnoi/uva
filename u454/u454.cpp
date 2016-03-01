@@ -32,6 +32,7 @@ U454::~U454()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U454 instance; 	instance(); }
 void U454::operator()()
 {
     int N;

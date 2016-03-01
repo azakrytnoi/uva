@@ -36,6 +36,7 @@ U10305::~U10305()
 {
 }
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10305 instance; 	instance(); }
 void U10305::operator()()
 {
     std::ostream_iterator<int> oit(std::cout, " ");

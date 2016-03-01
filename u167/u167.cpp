@@ -91,6 +91,9 @@ void solver::traverse(int current)
 }
 }
 
+U167::U167() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U167 instance; 	instance(); }
 void U167::operator()()
 {
     int N;

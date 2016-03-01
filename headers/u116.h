@@ -3,7 +3,7 @@
 class  U116
 {
 public:
-    U116() {}
+    U116();
 
     void operator()();
 };

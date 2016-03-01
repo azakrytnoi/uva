@@ -116,6 +116,9 @@ int solver::dp(int row, int col)
 }
 }
 
+U116::U116() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U116 instance; 	instance(); }
 void U116::operator()()
 {
     solver s;

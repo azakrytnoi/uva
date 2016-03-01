@@ -14,25 +14,11 @@
 #include <cmath>
 #include <iomanip>
 
-namespace
-{
+#include "gcd.h"
 
-template<typename T>
-T gcd (T a, T b)
-{
-    if (a < b)
-    {
-        std::swap (a, b);
-    }
-    T t = a % b;
-    if (t == 0)
-    {
-        return b;
-    }
-    return gcd (b, t);
-}
-}
+U412::U412() {}
 
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U412 instance; 	instance(); }
 void U412::operator()()
 {
     uint32_t N;
@@ -48,7 +34,7 @@ void U412::operator()()
         {
             for (size_t j = i + 1; j < N; j++)
             {
-                if (gcd(series[i], series[j]) == 1)
+                if (math::gcd(series[i], series[j]) == 1)
                 {
                     count++;
                 }

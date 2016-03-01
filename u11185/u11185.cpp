@@ -50,6 +50,9 @@ public:
 };
 }
 
+U11185::U11185() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11185 instance; 	instance(); }
 void U11185::operator()()
 {
     typedef base_iterator<3> base3_iterator;

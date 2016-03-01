@@ -60,6 +60,9 @@ palindrome::kind palindrome::check(const std::string& source)
 
 }
 
+U401::U401() {}
+
+extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U401 instance; 	instance(); }
 void U401::operator()()
 {
     std::string line;
