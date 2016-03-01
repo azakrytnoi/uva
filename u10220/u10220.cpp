@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -20,7 +21,14 @@ U10220::~U10220()
 {
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10220 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10220 instance;
+    instance();
+}
 void U10220::operator()()
 {
     std::vector<int32_t> sums;

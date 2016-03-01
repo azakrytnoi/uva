@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -18,11 +19,9 @@ U713::U713()
 {
 }
 
-namespace
-{
+namespace {
 
-class solver
-{
+class solver {
     std::string a_, b_;
 public:
 
@@ -42,26 +41,22 @@ public:
         int carry (0);
         std::stringstream ss;
         auto ita = s.a_.begin(), itb = s.b_.begin();
-        for (; ita != s.a_.end() && itb != s.b_.end(); )
-        {
+        for (; ita != s.a_.end() && itb != s.b_.end(); ) {
             int res = (*(ita++) - '0') + (*(itb++) - '0') + carry;
             ss << (res % 10);
             carry = res / 10;
         }
-        while (ita != s.a_.end())
-        {
+        while (ita != s.a_.end()) {
             int res = (*(ita++) - '0') + carry;
             ss << (res % 10);
             carry = res / 10;
         }
-        while (itb != s.b_.end())
-        {
+        while (itb != s.b_.end()) {
             int res = (*(itb++) - '0') + carry;
             ss << (res % 10);
             carry = res / 10;
         }
-        if (carry != 0)
-        {
+        if (carry != 0) {
             ss << carry;
         }
         std::string res(ss.str());
@@ -74,14 +69,20 @@ public:
 
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U713 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U713 instance;
+    instance();
+}
 void U713::operator()()
 {
     int N;
     std::cin >> N;
     solver s;
-    while (N--)
-    {
+    while (N--) {
         std::cin >> s;
         std::cout << s << std::endl;
     }

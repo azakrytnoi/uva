@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -12,7 +13,14 @@
 #include <vector>
 #include <numeric>
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11854 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11854 instance;
+    instance();
+}
 void U11854::operator()()
 {
     std::vector<uint32_t> triangle;

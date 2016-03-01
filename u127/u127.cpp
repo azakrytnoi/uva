@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -15,8 +16,7 @@
 #include <algorithm>
 #include <iterator>
 
-namespace
-{
+namespace {
 typedef std::pair<char, char> card;
 
 bool can(card c1, card c2)
@@ -30,7 +30,14 @@ U127::U127()
 {
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U127 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U127 instance;
+    instance();
+}
 void U127::operator()()
 {
     std::vector <std::stack <card> > cards;

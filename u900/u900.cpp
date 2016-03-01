@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -38,7 +39,14 @@ public:
 
 U900::U900() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U900 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U900 instance;
+    instance();
+}
 void U900::operator()()
 {
     int N;

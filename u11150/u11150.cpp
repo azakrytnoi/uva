@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -12,19 +13,26 @@
 #include <iterator>
 #include <numeric>
 
-namespace
+namespace {
+int calculate (int full, int extra)
 {
-    int calculate (int full, int extra) {
-        if (full != 0) {
-            return full + calculate((full + extra) / 3, (full + extra) % 3);
-        }
-        return 0;
+    if (full != 0) {
+        return full + calculate((full + extra) / 3, (full + extra) % 3);
     }
+    return 0;
+}
 }
 
 U11150::U11150() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U11150 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11150 instance;
+    instance();
+}
 void U11150::operator()()
 {
     int N;

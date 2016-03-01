@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -11,8 +12,7 @@
 #include <stack>
 #include <map>
 
-namespace
-{
+namespace {
 
 std::map<char, int> op_rank;
 
@@ -91,7 +91,14 @@ U727::~U727()
 }
 
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U727 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U727 instance;
+    instance();
+}
 void U727::operator()()
 {
     {

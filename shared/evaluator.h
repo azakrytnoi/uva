@@ -12,10 +12,9 @@
 #include <memory>
 
 template <typename char_type,
-          typename traits = std::char_traits<char_type> >
+         typename traits = std::char_traits<char_type> >
 class basic_teebuf:
-    public std::basic_streambuf<char_type, traits>
-{
+    public std::basic_streambuf<char_type, traits> {
 public:
     typedef typename traits::int_type int_type;
 
@@ -63,8 +62,7 @@ typedef basic_teebuf<char> teebuf;
 
 
 
-class teestream : public std::ostream
-{
+class teestream : public std::ostream {
 public:
     teestream(std::ostream & o1, std::ostream & o2);
 private:
@@ -76,20 +74,17 @@ teestream::teestream(std::ostream & o1, std::ostream & o2)
 {
 }
 
-class wraper
-{
+class wraper {
 public:
     virtual ~wraper() {}
     virtual void operator()() = 0;
 
 protected:
-	template<typename Tp>
-	void invoke(const std::string& baseName);
+    void invoke(const std::string& baseName);
 };
 
 template<typename Tp>
-class evaluator : public wraper
-{
+class evaluator : public wraper {
 public:
     explicit evaluator(const std::string& source) : source_(source)
     {
@@ -108,11 +103,9 @@ private:
     std::string source_;
 };
 
-namespace
-{
+namespace {
 template <typename T>
-class io_wrapper
-{
+class io_wrapper {
 public:
     explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
     {
@@ -136,8 +129,8 @@ private:
 template<typename Tp>
 void evaluator<Tp>::operator()()
 {
-	std::string tp_name(typeid(Tp).name());
-	tp_name = tp_name.substr(tp_name.find('U'));
+    std::string tp_name(typeid(Tp).name());
+    tp_name = tp_name.substr(tp_name.find('U'));
     std::cout << tp_name << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
     uint64_t elapsed(0);
@@ -147,7 +140,7 @@ void evaluator<Tp>::operator()()
         io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
         {
             std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-			invoke<Tp>(Tp::libname());
+            invoke(Tp::libname());
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
         }
     }

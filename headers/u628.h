@@ -1,9 +1,11 @@
 #pragma once
 
-class  U628
-{
+class  U628 {
 public:
-static const char * libname() { return "u628"; } 
+    static const char * libname()
+    {
+        return "u628";
+    }
     U628();
     void operator()();
 };

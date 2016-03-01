@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -13,8 +14,7 @@
 #include <iterator>
 #include <algorithm>
 
-namespace
-{
+namespace {
 std::ostream& operator << (std::ostream& out, const std::pair<std::string, double>& pair)
 {
     out << pair.first << " " << std::fixed << std::setprecision(4) << pair.second;
@@ -31,7 +31,14 @@ U10226::~U10226()
 {
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10226 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10226 instance;
+    instance();
+}
 void U10226::operator()()
 {
     int N;

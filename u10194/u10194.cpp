@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -16,11 +17,9 @@
 #include <cstdlib>
 #include <memory>
 
-namespace
-{
+namespace {
 
-class team
-{
+class team {
 public:
     explicit team(std::string& name) : points_(0), wins_(0), ties_(0), losses_(0), goals_scored_(0), goals_against_(0), name_(name) {}
 
@@ -147,7 +146,14 @@ U10194::~U10194()
 {
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10194 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10194 instance;
+    instance();
+}
 void U10194::operator()()
 {
     int N;

@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -17,10 +18,8 @@ U714::U714()
 {
 }
 
-namespace
-{
-class solver
-{
+namespace {
+class solver {
 public:
     solver (int books, int scribers): books_(books), scribers_(scribers), optimal_(0)
     {
@@ -121,7 +120,14 @@ std::vector<bool> solver::breaks_;
 
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U714 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U714 instance;
+    instance();
+}
 void U714::operator()()
 {
     int T;

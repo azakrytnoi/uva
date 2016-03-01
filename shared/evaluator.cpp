@@ -8,20 +8,22 @@
 #include <typeinfo>
 #include <memory>
 #include <algorithm>
+#include <exception>
 
 #ifdef _WIN32
 #include <windows.h>
+#else
+#include <dlfcn.h>
+#define __cdecl
 #endif
 
-namespace
-{
+namespace {
 std::map<std::string, std::shared_ptr<wraper>> g_cache;
 
 template<class... Ts> struct populate {};
 
 template<class Tp, class... Ts>
-struct populate<Tp, Ts...> : populate<Ts...>
-{
+struct populate<Tp, Ts...> : populate<Ts...> {
     populate() : populate<Ts...>()
     {
         std::string tp_name(typeid(Tp).name());
@@ -37,44 +39,38 @@ populate < U10066, U10931, U11185, U900, U10062, U476, U477, U478, U454, U412, U
 
 int main(int argc, char** argv)
 {
-    if (argc > 1)
-    {
-        for (int i = 1; i < argc; i++)
-        {
+    if (argc > 1) {
+        for (int i = 1; i < argc; i++) {
             auto uva = g_cache.find(argv[i]);
-            if (uva != g_cache.end())
-            {
+            if (uva != g_cache.end()) {
                 (*(uva->second))();
             }
         }
-    }
-    else
-    {
-        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva)
-        {
+    } else {
+        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva) {
             (*(uva.second))();
         });
     }
 }
 
-typedef void (__cdecl *f_instance)();
+typedef void (__cdecl *invoker)();
 
-template<typename Tp>
 void wraper::invoke(const std::string & baseName)
 {
 #ifdef _WIN32
-	HINSTANCE hGetProcIDDLL = LoadLibraryA((baseName + ".dll").c_str());
-	if (!hGetProcIDDLL) {
-		std::cout << "failure loading library" << std::endl;
-		throw std::exception(baseName.c_str());
-	}
-	f_instance finstance = (f_instance)GetProcAddress(hGetProcIDDLL, "invoke");
+    HINSTANCE hGetProcIDDLL = LoadLibraryA((baseName + ".dll").c_str());
+    if (!hGetProcIDDLL) {
+        std::cout << "failure loading library" << std::endl;
+        throw std::exception(baseName.c_str());
+    }
+    invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL, "invoke");
 #else
-	load for linux
+    void* handle = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
+    invoker fnc = (invoker)dlsym(handle, "invoke");
 #endif // _WIN32
-	if (!finstance) {
-		std::cout << "failure locate function" << std::endl;
-		throw std::exception(baseName.c_str());
-	}
-	finstance();
+    if (!fnc) {
+        std::cout << "failure locate function" << std::endl;
+        throw std::exception();
+    }
+    fnc();
 }

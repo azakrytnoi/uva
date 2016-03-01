@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -16,10 +17,8 @@
 #include <iomanip>
 #include <regex>
 
-namespace
-{
-class driver
-{
+namespace {
+class driver {
     char page_[60][60];
     std::regex parser_;
     std::smatch match_;
@@ -67,43 +66,33 @@ public:
     friend std::istream& operator >> (std::istream& in, driver& d)
     {
         std::string cmmand, line;
-        if (std::getline(in, line) && !line.empty())
-        {
-            if (line[1] != 'E' && std::regex_match(line, d.match_, d.parser_))
-            {
+        if (std::getline(in, line) && !line.empty()) {
+            if (line[1] != 'E' && std::regex_match(line, d.match_, d.parser_)) {
                 uint32_t font = std::atoi(d.match_[2].str().c_str());
                 uint32_t row = std::atoi(d.match_[3].str().c_str()) - 1;
-                switch(d.match_[1].str()[0])
-                {
-                case 'P':
-                {
+                switch(d.match_[1].str()[0]) {
+                case 'P': {
                     uint32_t col = std::atoi(d.match_[4].str().c_str()) - 1;
                     d.place(font, row, col, d.match_[5]);
                 }
                 break;
-                case 'L':
-                {
+                case 'L': {
                     d.left(font, row, d.match_[5]);
                 }
                 break;
-                case 'R':
-                {
+                case 'R': {
                     d.right(font, row, d.match_[5]);
                 }
                 break;
-                case 'C':
-                {
+                case 'C': {
                     d.center(font, row, d.match_[5]);
                 }
                 break;
                 }
-            }
-            else
-            {
-                if (line == ".EOP")
-                {
+            } else {
+                if (line == ".EOP") {
                     d.flush_page();
-					d.clean_page();
+                    d.clean_page();
                 }
             }
         }
@@ -126,10 +115,8 @@ private:
 
 void driver::clean_page()
 {
-    std::for_each(page_, page_ + 60, [](char * row)
-    {
-        std::generate_n(row, 60, []()
-        {
+    std::for_each(page_, page_ + 60, [](char * row) {
+        std::generate_n(row, 60, []() {
             return '.';
         });
     });
@@ -137,20 +124,16 @@ void driver::clean_page()
 
 void driver::place(uint32_t font, uint32_t row, uint32_t col, const std::string& text)
 {
-    switch(font)
-    {
-    case 1:
-    {
+    switch(font) {
+    case 1: {
         std::pair<uint32_t, std::string> aligned = left_text(text, 61 - col);
-		if (col + aligned.second.length() > 60)
-		{
-			aligned.second.erase(aligned.second.end() - 1);
-		}
+        if (col + aligned.second.length() > 60) {
+            aligned.second.erase(aligned.second.end() - 1);
+        }
         print_c1_at(row, col, aligned.second);
     }
     break;
-    case 5:
-    {
+    case 5: {
         std::pair<uint32_t, std::string> aligned = left_text(text, (66 - col) / 6);
         print_c5_at(row, col, aligned.second);
     }
@@ -160,16 +143,13 @@ void driver::place(uint32_t font, uint32_t row, uint32_t col, const std::string&
 
 void driver::right(uint32_t font, uint32_t row, const std::string& text)
 {
-    switch(font)
-    {
-    case 1:
-    {
+    switch(font) {
+    case 1: {
         std::pair<uint32_t, std::string> aligned = right_text(text, 60);
         print_c1_at(row, aligned.first, aligned.second);
     }
     break;
-    case 5:
-    {
+    case 5: {
         std::pair<uint32_t, std::string> aligned = right_text(text, 10);
         print_c5_at(row, aligned.first * 6, aligned.second);
     }
@@ -179,16 +159,13 @@ void driver::right(uint32_t font, uint32_t row, const std::string& text)
 
 void driver::left(uint32_t font, uint32_t row, const std::string& text)
 {
-    switch(font)
-    {
-    case 1:
-    {
+    switch(font) {
+    case 1: {
         std::pair<uint32_t, std::string> aligned = left_text(text, 60);
         print_c1_at(row, aligned.first, aligned.second);
     }
     break;
-    case 5:
-    {
+    case 5: {
         std::pair<uint32_t, std::string> aligned = left_text(text, 10);
         print_c5_at(row, aligned.first * 6, aligned.second);
     }
@@ -198,16 +175,13 @@ void driver::left(uint32_t font, uint32_t row, const std::string& text)
 
 void driver::center(uint32_t font, uint32_t row, const std::string& text)
 {
-    switch(font)
-    {
-    case 1:
-    {
+    switch(font) {
+    case 1: {
         std::pair<uint32_t, std::string> aligned = center_text(text, 60);
         print_c1_at(row, (aligned.second.length() & 0x01) == 0 ? aligned.first : aligned.first + 1, aligned.second);
     }
     break;
-    case 5:
-    {
+    case 5: {
         std::pair<uint32_t, std::string> aligned = center_text(text, 10);
         print_c5_at(row, (aligned.second.length() & 0x01) == 0 ? aligned.first * 6 : aligned.first * 6 + 3, aligned.second);
     }
@@ -218,8 +192,7 @@ void driver::center(uint32_t font, uint32_t row, const std::string& text)
 std::pair<uint32_t, std::string> driver::right_text(const std::string& text, uint32_t width)
 {
     std::string output(text);
-    while (output.length() > width)
-    {
+    while (output.length() > width) {
         output = output.substr(1, output.length() - 1);
     }
     uint32_t col (uint32_t(width - output.length()));
@@ -229,8 +202,7 @@ std::pair<uint32_t, std::string> driver::right_text(const std::string& text, uin
 std::pair<uint32_t, std::string> driver::left_text(const std::string& text, uint32_t width)
 {
     std::string output(text);
-    while (output.length() > width)
-    {
+    while (output.length() > width) {
         output = output.substr(0, output.length() - 2);
     }
     return std::make_pair(0, output);
@@ -239,8 +211,7 @@ std::pair<uint32_t, std::string> driver::left_text(const std::string& text, uint
 std::pair<uint32_t, std::string> driver::center_text(const std::string& text, uint32_t width)
 {
     std::string output(text);
-    while (output.length() > width)
-    {
+    while (output.length() > width) {
         output = output.substr(1, output.length() - 2);
     }
     uint32_t col (uint32_t((width - output.length()) / 2));
@@ -250,8 +221,7 @@ std::pair<uint32_t, std::string> driver::center_text(const std::string& text, ui
 void driver::print_c1_at(uint32_t row, uint32_t col, const std::string& text)
 {
     int idx = 0;
-    std::transform(text.begin(), text.end(), page_[row] + col, [&](const char ch)
-    {
+    std::transform(text.begin(), text.end(), page_[row] + col, [&](const char ch) {
         idx++;
         return ch == ' ' ? page_[row][col + idx - 1] : ch;
     });
@@ -259,21 +229,17 @@ void driver::print_c1_at(uint32_t row, uint32_t col, const std::string& text)
 
 void driver::print_c5_at(uint32_t row, uint32_t col, const std::string& text)
 {
-    for (uint32_t i = 0; i < 5 && (row + i) < 60; i++)
-    {
+    for (uint32_t i = 0; i < 5 && (row + i) < 60; i++) {
         uint32_t current_col (col);
-        std::for_each(text.begin(), text.end(), [&](const char ch)
-        {
-			int idx = 0;
-			std::string line (c5_font_[ch][i]);
-            if (current_col > 54)
-            {
+        std::for_each(text.begin(), text.end(), [&](const char ch) {
+            int idx = 0;
+            std::string line (c5_font_[ch][i]);
+            if (current_col > 54) {
                 line = line.substr(0, 60 - current_col);
             }
-            std::transform(line.begin(), line.end(), page_[row + i] + current_col, [&](const char ch)
-            {
-				idx++;
-				return ch == '.' ? page_[row + i][current_col + idx - 1] : ch;
+            std::transform(line.begin(), line.end(), page_[row + i] + current_col, [&](const char ch) {
+                idx++;
+                return ch == '.' ? page_[row + i][current_col + idx - 1] : ch;
             });
             current_col += 6;
         });
@@ -283,10 +249,8 @@ void driver::print_c5_at(uint32_t row, uint32_t col, const std::string& text)
 
 void driver::flush_page()
 {
-    std::for_each(page_, page_ + 60, [](const char row[60])
-    {
-        std::for_each(row, row + 60, [](const char ch)
-        {
+    std::for_each(page_, page_ + 60, [](const char row[60]) {
+        std::for_each(row, row + 60, [](const char ch) {
             std::cout << ch;
         });
         std::cout << std::endl;
@@ -299,7 +263,14 @@ void driver::flush_page()
 
 U403::U403() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U403 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U403 instance;
+    instance();
+}
 void U403::operator()()
 {
     driver d;

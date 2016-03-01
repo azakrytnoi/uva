@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -22,8 +23,7 @@ U908::~U908()
 {
 }
 
-namespace
-{
+namespace {
 typedef std::pair<int, int> Edge;
 typedef std::pair<int, Edge> Line;
 
@@ -90,8 +90,7 @@ struct DisjointSet {
     }
 };
 
-class Kruskal
-{
+class Kruskal {
 private:
     DisjointSet mst_;
 
@@ -122,7 +121,14 @@ int Kruskal::operator()(std::vector <Line>& lines)
 }
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U908 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U908 instance;
+    instance();
+}
 void U908::operator()()
 {
     int V;

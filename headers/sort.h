@@ -6,14 +6,12 @@
 #include <iterator>
 #include <algorithm>
 
-namespace util
-{
+namespace util {
 /** \brief utility class, counts number of swaps during sort
  *
  */
 template<uint64_t MAX>
-class sort
-{
+class sort {
 public:
     /** \brief Constructor
      *

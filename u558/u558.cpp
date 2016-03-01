@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -21,14 +22,20 @@ U558::~U558()
 {
 }
 
-namespace
-{
+namespace {
 struct edge {
     int start, end, weight;
 };
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U558 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U558 instance;
+    instance();
+}
 void U558::operator()()
 {
     int N;

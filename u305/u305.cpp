@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -12,8 +13,7 @@
 #include <numeric>
 #include <iterator>
 
-namespace
-{
+namespace {
 size_t circle_count (size_t k, size_t m)
 {
     size_t size = 2 * k;
@@ -31,7 +31,14 @@ size_t circle_count (size_t k, size_t m)
 
 U305::U305() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U305 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U305 instance;
+    instance();
+}
 void U305::operator()()
 {
     std::vector<size_t> answers;

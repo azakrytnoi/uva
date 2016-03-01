@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -13,14 +14,20 @@
 
 U10013::U10013() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10013 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10013 instance;
+    instance();
+}
 void U10013::operator()()
 {
     int N;
     std::cin >> N;
     std::vector<int8_t> summ;
-    while(N--)
-    {
+    while(N--) {
         int M;
         std::cin >> M;
         summ.clear();

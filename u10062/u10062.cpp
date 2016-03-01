@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -24,7 +25,14 @@ std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p
 
 U10062::U10062() {}
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10062 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10062 instance;
+    instance();
+}
 void U10062::operator()()
 {
     std::string line;

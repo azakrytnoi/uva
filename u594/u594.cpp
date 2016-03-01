@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -19,8 +20,7 @@ U594::~U594()
 {
 }
 
-namespace
-{
+namespace {
 union {
     int32_t numerical;
     unsigned char bytes[4];
@@ -33,7 +33,14 @@ union {
 } item;
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U594 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U594 instance;
+    instance();
+}
 void U594::operator()()
 {
     while (std::cin >> item.numerical) {

@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -21,8 +22,7 @@ U482::~U482()
 {
 }
 
-namespace
-{
+namespace {
 struct item {
     uint32_t idx;
     std::string value;
@@ -36,7 +36,14 @@ struct item {
 };
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U482 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U482 instance;
+    instance();
+}
 void U482::operator()()
 {
     uint32_t n;

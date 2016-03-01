@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -12,11 +13,9 @@
 #include <algorithm>
 #include <iterator>
 
-namespace
-{
+namespace {
 
-class node
-{
+class node {
 public:
     node(): id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
     node(const node& rhs) = delete;
@@ -67,7 +66,14 @@ U679::U679()
 {
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U679 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U679 instance;
+    instance();
+}
 void U679::operator()()
 {
     int n_cases;

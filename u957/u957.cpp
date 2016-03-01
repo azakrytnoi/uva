@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -16,10 +17,8 @@ U957::U957()
 {
 }
 
-namespace
-{
-class solver
-{
+namespace {
+class solver {
 public:
     solver() : years_(0), popes_(0), max_(std::numeric_limits<int>::min()), start_(), end_()
     {
@@ -72,7 +71,14 @@ private:
 std::vector<int> solver::elections_;
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U957 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U957 instance;
+    instance();
+}
 void U957::operator()()
 {
     solver s;

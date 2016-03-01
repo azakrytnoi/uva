@@ -1,6 +1,7 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
+#define __cdecl
 #define UVA_API_EXPORT
 #endif
 
@@ -20,10 +21,8 @@ U10301::U10301()
 {
 }
 
-namespace
-{
-class ring
-{
+namespace {
+class ring {
 public:
     ring() : mX(0.0), mY(0.0), mR(0.0) {}
 
@@ -53,7 +52,14 @@ private:
 };
 }
 
-extern "C" { 	UVA_API_EXPORT void __cdecl invoke(); } void __cdecl invoke() { 	U10301 instance; 	instance(); }
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10301 instance;
+    instance();
+}
 void U10301::operator()()
 {
     int16_t n_rings;
