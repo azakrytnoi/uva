@@ -2,6 +2,7 @@
 class  U558
 {
 public:
+static const char * libname() { return "u558"; } 
     U558();
     ~U558();
     void operator()();

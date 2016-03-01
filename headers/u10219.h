@@ -3,6 +3,7 @@
 class  U10219
 {
 public:
+static const char * libname() { return "u10219"; } 
     /** Default constructor */
     U10219();
 

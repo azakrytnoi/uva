@@ -5,6 +5,7 @@
 class U100
 {
 public:
+static const char * libname() { return "u100"; } 
     U100();
     void operator()();
 

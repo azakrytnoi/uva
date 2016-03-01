@@ -147,7 +147,7 @@ void evaluator<Tp>::operator()()
         io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
         {
             std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-			invoke<Tp>(tp_name);
+			invoke<Tp>(Tp::libname());
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
         }
     }
