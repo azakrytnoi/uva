@@ -28,7 +28,7 @@ LIBS = -lu10013 -lu10062 -lu10066 -lu100 -lu10194 -lu10219 -lu10220 -lu10226 -lu
 	-lu10810 -lu10931 -lu11136 -lu11150 -lu11185 -lu11239 -lu11308 -lu11340 -lu11388 -lu11461 \
 	-lu11462 -lu11495 -lu11636 -lu116 -lu11854 -lu127 -lu146 -lu156 -lu167 -lu200 -lu305 -lu400 \
 	-lu408 -lu401 -lu412 -lu454 -lu478 -lu482 -lu544 -lu558 -lu594 -lu628 -lu673 -lu679 -lu714 \
-	-lu727 -lu900 -lu908 -lu957 -lu417 -lu403
+	-lu727 -lu900 -lu908 -lu957 -lu417 -lu403 -lu713
 
 # define the C source files
 SRCS = $(wildcard *.cpp)
