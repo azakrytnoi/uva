@@ -1,6 +1,6 @@
 #pragma once
 
-class UVA_API_EXPORT U673
+class  U673
 {
 public:
     /** Default constructor */

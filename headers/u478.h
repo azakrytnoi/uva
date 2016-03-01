@@ -1,6 +1,6 @@
 #pragma once
 
-class UVA_API_EXPORT U478
+class  U478
 {
 public:
     U478() {}
@@ -8,13 +8,13 @@ public:
     void operator()();
 };
 
-class UVA_API_EXPORT U477 : public U478
+class  U477 : public U478
 {
 public:
 	U477() {}
 };
 
-class UVA_API_EXPORT U476 : public U478
+class  U476 : public U478
 {
 public:
 	U476() {}

@@ -10,14 +10,20 @@
 #include <limits>
 #include <algorithm>
 
+extern "C" {
+	UVA_API_EXPORT void __cdecl invoke();
+}
+
+void __cdecl invoke()
+{
+	U100 instance;
+	instance();
+}
+
 U100::U100()
 {
 }
 
-
-U100::~U100()
-{
-}
 
 void U100::operator()()
 {

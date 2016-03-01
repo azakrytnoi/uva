@@ -9,6 +9,7 @@
 #include <sstream>
 #include <typeinfo>
 #include <chrono>
+#include <memory>
 
 template <typename char_type,
           typename traits = std::char_traits<char_type> >
@@ -80,13 +81,17 @@ class wraper
 public:
     virtual ~wraper() {}
     virtual void operator()() = 0;
+
+protected:
+	template<typename Tp>
+	void invoke(const std::string& baseName);
 };
 
 template<typename Tp>
 class evaluator : public wraper
 {
 public:
-    explicit evaluator(const std::string& source) : source_(source), tp_()
+    explicit evaluator(const std::string& source) : source_(source)
     {
     }
 
@@ -101,7 +106,6 @@ public:
 
 private:
     std::string source_;
-    Tp tp_;
 };
 
 namespace
@@ -132,7 +136,9 @@ private:
 template<typename Tp>
 void evaluator<Tp>::operator()()
 {
-    std::cout << typeid(Tp).name() << ": << " << source_ << std::endl;
+	std::string tp_name(typeid(Tp).name());
+	tp_name = tp_name.substr(tp_name.find('U'));
+    std::cout << tp_name << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
     uint64_t elapsed(0);
     std::stringstream out;
@@ -141,7 +147,7 @@ void evaluator<Tp>::operator()()
         io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
         {
             std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-            tp_();
+			invoke<Tp>(tp_name);
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
         }
     }
