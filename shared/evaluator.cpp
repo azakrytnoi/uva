@@ -67,7 +67,7 @@ void wraper::invoke(const std::string & baseName)
 	}
 	f_instance finstance = (f_instance)GetProcAddress(hGetProcIDDLL, "invoke");
 	if (!finstance) {
-		std::cout << "cuouldn't locate function" << std::endl;
+		std::cout << "failure locate function" << std::endl;
 		throw std::exception(baseName.c_str());
 	}
 	finstance();
