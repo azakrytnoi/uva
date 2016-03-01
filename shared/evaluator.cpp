@@ -9,7 +9,9 @@
 #include <memory>
 #include <algorithm>
 
+#ifdef _WIN32
 #include <windows.h>
+#endif
 
 namespace
 {
@@ -60,12 +62,16 @@ typedef void (__cdecl *f_instance)();
 template<typename Tp>
 void wraper::invoke(const std::string & baseName)
 {
+#ifdef _WIN32
 	HINSTANCE hGetProcIDDLL = LoadLibraryA((baseName + ".dll").c_str());
 	if (!hGetProcIDDLL) {
 		std::cout << "failure loading library" << std::endl;
 		throw std::exception(baseName.c_str());
 	}
 	f_instance finstance = (f_instance)GetProcAddress(hGetProcIDDLL, "invoke");
+#else
+	load for linux
+#endif // _WIN32
 	if (!finstance) {
 		std::cout << "failure locate function" << std::endl;
 		throw std::exception(baseName.c_str());
