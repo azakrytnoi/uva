@@ -24,8 +24,10 @@ U908::~U908()
 {
 }
 
+namespace math {
+
 template<>
-int math::Kruskal<int>::operator()(std::vector <math::Kruskal<int>::Line>& lines)
+int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
 {
 	int total = 0;
 
@@ -40,6 +42,8 @@ int math::Kruskal<int>::operator()(std::vector <math::Kruskal<int>::Line>& lines
 		}
 	});
 	return total;
+}
+
 }
 
 extern "C" {

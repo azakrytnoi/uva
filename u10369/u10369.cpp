@@ -37,7 +37,10 @@ U10369::U10369()
 {
 }
 
-double math::Kruskal<double>::operator()(std::vector <math::Kruskal<double>::Line>& lines)
+namespace math {
+
+template<>
+double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
 {
 	double result(0);
 
@@ -53,6 +56,8 @@ double math::Kruskal<double>::operator()(std::vector <math::Kruskal<double>::Lin
 		}
 	});
 	return result;
+}
+
 }
 
 void U10369::operator()()
