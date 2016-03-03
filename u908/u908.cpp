@@ -6,6 +6,7 @@
 #endif
 
 #include "u908.h"
+#include "kruskal.h"
 
 #include <cstdio>
 #include <iostream>
@@ -23,102 +24,22 @@ U908::~U908()
 {
 }
 
-namespace {
-typedef std::pair<int, int> Edge;
-typedef std::pair<int, Edge> Line;
-
-std::istream& operator >> (std::istream& in, Line& line)
+template<>
+int math::Kruskal<int>::operator()(std::vector <math::Kruskal<int>::Line>& lines)
 {
-    in >> line.second.first >> line.second.second >> line.first;
-    return in;
-}
+	int total = 0;
 
-struct DisjointSet {
-    int sets;
-    std::vector<int> pAddress;
-    std::vector<int> numVertices;
-
-    DisjointSet() : sets(0), pAddress(), numVertices() {}
-
-    void initSet(int n)
-    {
-        sets = n;
-        pAddress.clear();
-        numVertices.clear();
-        pAddress.reserve(n + 1);
-        numVertices.reserve(n + 1);
-        int i = 0;
-        std::generate_n(std::back_inserter(pAddress), n + 1, [&i]() {
-            return i++;
-        });
-        std::generate_n(std::back_inserter(numVertices), n + 1, []() {
-            return 1;
-        });
-    }
-
-    int findSet(int x)
-    {
-        if (x == pAddress[x])
-            return x;
-        else
-            return pAddress[x] = findSet(pAddress[x]);
-    }
-
-    int setSize(int x)
-    {
-        return numVertices[findSet(x)];
-    }
-
-    bool isSameSet(int x, int y)
-    {
-        if (findSet(x) == findSet(y))
-            return true;
-        else
-            return false;
-    }
-
-    void unionSet(int x, int y)
-    {
-        int xRoot = findSet(x);
-        int yRoot = findSet(y);
-
-        if (!isSameSet(xRoot, yRoot)) {
-            numVertices[yRoot] += numVertices[xRoot];
-            pAddress[xRoot] = yRoot;
-            sets--;
-        }
-    }
-};
-
-class Kruskal {
-private:
-    DisjointSet mst_;
-
-public:
-    explicit Kruskal(int v) : mst_()
-    {
-        mst_.initSet(v);
-    }
-
-    int operator()(std::vector <Line>& lines);
-};
-
-int Kruskal::operator()(std::vector <Line>& lines)
-{
-    int total = 0;
-
-    sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
-    std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
-        int cost = line.first;
-        int origin = line.second.first;
-        int destination = line.second.second;
-        if (!mst_.isSameSet(origin, destination)) {
-            total += cost;
-            mst_.unionSet(origin, destination);
-        }
-    });
-    return total;
-}
+	sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
+	std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
+		int cost = line.first;
+		int origin = line.second.first;
+		int destination = line.second.second;
+		if (!mst_.isSameSet(origin, destination)) {
+			total += cost;
+			mst_.unionSet(origin, destination);
+		}
+	});
+	return total;
 }
 
 extern "C" {
@@ -133,14 +54,14 @@ void U908::operator()()
 {
     int V;
 
-    auto readLine = []() -> Line {
-        Line line;
-        std::cin >> line;
+    auto readLine = []() -> math::Kruskal<int>::Line {
+		math::Kruskal<int>::Line line;
+		std::cin >> line.second.first >> line.second.second >> line.first;
         return line;
     };
-    std::vector <Line> lines;
+    std::vector <math::Kruskal<int>::Line> lines;
     while (std::cin >> V) {
-        Kruskal kruskal(V);
+		math::Kruskal<int> kruskal(V);
         int K, M, total(0);
         lines.clear();
         for (int i = 0; i < V - 1; i++) {

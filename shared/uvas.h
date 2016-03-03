@@ -54,3 +54,4 @@
 #include "../u417/u417.h"
 #include "../u403/u403.h"
 #include "../u713/u713.h"
+#include "../u10369/u10369.h"
