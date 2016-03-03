@@ -23,4 +23,9 @@
     <Text Include="u403.deb.txt" />
     <Text Include="u403.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="u403.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

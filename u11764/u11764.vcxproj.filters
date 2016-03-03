@@ -22,4 +22,9 @@
   <ItemGroup>
     <Text Include="u11764.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="u11764.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

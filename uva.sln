@@ -163,6 +163,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u403", "u403\u403.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u713", "u713\u713.vcxproj", "{B4127D0F-80E6-4776-AB58-823D09D848C8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u11764", "u11764\u11764.vcxproj", "{2C491930-D400-44F6-9D9E-8D9EA244B450}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		headers\headers.vcxitems*{8aecc889-8d7b-49e0-aeb0-80954286dc6c}*SharedItemsImports = 4
@@ -215,6 +217,7 @@ Global
 		headers\headers.vcxitems*{2fcd6ad6-7e70-42d6-889d-3f83ebee16ad}*SharedItemsImports = 4
 		headers\headers.vcxitems*{365b381c-3e8e-4b1b-af32-797886b8d839}*SharedItemsImports = 4
 		headers\headers.vcxitems*{bd903e31-8d89-453c-952f-4494fdbe3a01}*SharedItemsImports = 4
+		headers\headers.vcxitems*{2c491930-d400-44f6-9d9e-8d9ea244b450}*SharedItemsImports = 4
 		headers\headers.vcxitems*{4f553475-fe78-4fe3-bcab-c9d924a1b388}*SharedItemsImports = 4
 		headers\headers.vcxitems*{c06f1ce1-aca7-4a82-b93a-14372316a42c}*SharedItemsImports = 4
 		headers\headers.vcxitems*{08e2e6c0-f883-443f-983d-8aabace33403}*SharedItemsImports = 4
@@ -660,6 +663,14 @@ Global
 		{B4127D0F-80E6-4776-AB58-823D09D848C8}.Release|x64.Build.0 = Release|x64
 		{B4127D0F-80E6-4776-AB58-823D09D848C8}.Release|x86.ActiveCfg = Release|Win32
 		{B4127D0F-80E6-4776-AB58-823D09D848C8}.Release|x86.Build.0 = Release|Win32
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Debug|x64.ActiveCfg = Debug|x64
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Debug|x64.Build.0 = Debug|x64
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Debug|x86.ActiveCfg = Debug|Win32
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Debug|x86.Build.0 = Debug|Win32
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Release|x64.ActiveCfg = Release|x64
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Release|x64.Build.0 = Release|x64
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Release|x86.ActiveCfg = Release|Win32
+		{2C491930-D400-44F6-9D9E-8D9EA244B450}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

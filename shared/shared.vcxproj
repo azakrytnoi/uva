@@ -214,11 +214,6 @@
     <Text Include="..\u908\u908.txt" />
     <Text Include="..\u957\u957.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\u100\u100.vcxproj">
-      <Project>{1edbef59-af76-42f2-8216-1ccc2e008ef6}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
