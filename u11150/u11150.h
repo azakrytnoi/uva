@@ -2,11 +2,11 @@
 
 class  U11150 {
 public:
-    static const char * libname()
-    {
-        return "u11150";
-    }
-    U11150();
+	static const char * libname()
+	{
+		return "u11150";
+	}
+	U11150();
 
-    void operator()();
+	void operator()();
 };

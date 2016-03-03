@@ -43,36 +43,36 @@ int math::Kruskal<int>::operator()(std::vector <math::Kruskal<int>::Line>& lines
 }
 
 extern "C" {
-    UVA_API_EXPORT void __cdecl invoke();
+	UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-    U908 instance;
-    instance();
+	U908 instance;
+	instance();
 }
 void U908::operator()()
 {
-    int V;
+	int V;
 
-    auto readLine = []() -> math::Kruskal<int>::Line {
+	auto readLine = []() -> math::Kruskal<int>::Line {
 		math::Kruskal<int>::Line line;
 		std::cin >> line.second.first >> line.second.second >> line.first;
-        return line;
-    };
-    std::vector <math::Kruskal<int>::Line> lines;
-    while (std::cin >> V) {
+		return line;
+	};
+	std::vector <math::Kruskal<int>::Line> lines;
+	while (std::cin >> V) {
 		math::Kruskal<int> kruskal(V);
-        int K, M, total(0);
-        lines.clear();
-        for (int i = 0; i < V - 1; i++) {
-            total += readLine().first;
-        }
-        std::cout << total << std::endl;
-        std::cin >> K;
-        std::generate_n(std::back_inserter(lines), K, readLine);
-        std::cin >> M;
-        std::generate_n(std::back_inserter(lines), M, readLine);
-        std::cout << kruskal(lines) << std::endl;
-        std::cout << std::endl;
-    }
+		int K, M, total(0);
+		lines.clear();
+		for (int i = 0; i < V - 1; i++) {
+			total += readLine().first;
+		}
+		std::cout << total << std::endl;
+		std::cin >> K;
+		std::generate_n(std::back_inserter(lines), K, readLine);
+		std::cin >> M;
+		std::generate_n(std::back_inserter(lines), M, readLine);
+		std::cout << kruskal(lines) << std::endl;
+		std::cout << std::endl;
+	}
 }

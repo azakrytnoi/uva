@@ -2,14 +2,14 @@
 
 class  U127 {
 public:
-    static const char * libname()
-    {
-        return "u127";
-    }
-    /** Default constructor */
-    U127();
+	static const char * libname()
+	{
+		return "u127";
+	}
+	/** Default constructor */
+	U127();
 
-    void operator()();
+	void operator()();
 
 protected:
 

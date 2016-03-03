@@ -4,14 +4,13 @@
 #include <functional>
 class U100 {
 public:
-    static const char * libname()
-    {
-        return "u100";
-    }
-    U100();
-    void operator()();
+	static const char * libname()
+	{
+		return "u100";
+	}
+	U100();
+	void operator()();
 
 private:
-    uint32_t cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
+	uint32_t cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
 };
-

@@ -24,10 +24,9 @@ void __cdecl invoke()
 }
 
 namespace {
-
 	double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
 	{
-		return sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first)) 
+		return sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
 			+ (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
 	}
 
@@ -40,7 +39,7 @@ U10369::U10369()
 
 double math::Kruskal<double>::operator()(std::vector <math::Kruskal<double>::Line>& lines)
 {
-	double result (0);
+	double result(0);
 
 	sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
 	std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {

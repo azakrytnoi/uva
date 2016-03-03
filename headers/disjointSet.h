@@ -5,7 +5,6 @@
 #include <iterator>
 
 namespace math {
-
 	struct DisjointSet {
 		int sets;
 		std::vector<int> pAddress;
@@ -62,6 +61,4 @@ namespace math {
 			}
 		}
 	};
-
-
 }
