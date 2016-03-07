@@ -20,6 +20,6 @@ Amount I
 SELECT LastName, FirstName, To, Amount
  FROM AccountInfo
  INNER JOIN AccountTransfers ON Account=From
- WHERE FirstName="Petr"
+ WHERE FirstName="Ivan"
  ORDER BY LastName DESCENDING, Amount
 
