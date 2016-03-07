@@ -107,6 +107,19 @@ namespace {
 
 		const std::map<std::string, std::string>& columns() const { return columns_; }
 		const std::map<std::string, std::shared_ptr<table>>& tables() const { return tables_; }
+
+		bool compare(const std::string& column, const std::map<std::string, std::string>& r1, const std::map<std::string, std::string>& r2) const
+		{
+			switch (tables_.find(columns_.find(column)->second)->second->meta().find(column)->second)
+			{
+			case datatype::I:
+				return std::atoi(r1.find(column)->second.c_str()) < std::atoi(r2.find(column)->second.c_str());
+			case datatype::S:
+				return r1.find(column)->second < r2.find(column)->second;
+			default:
+				return false;
+			}
+		}
 	};
 
 	class query {
@@ -157,7 +170,6 @@ namespace {
 	};
 
 	void query::parse(const std::string& qry) {
-		std::clog << qry << std::endl;
 		auto select_pos = qry.find("SELECT ");
 		if (select_pos != std::string::npos) {
 			auto from_pos = qry.find(" FROM ", select_pos);
@@ -241,6 +253,32 @@ namespace {
 
 	void query::parseOrder(const std::string & order_list)
 	{
+		std::string source(order_list);
+		source.erase(order_list.find_last_not_of(' ') + 1, std::string::npos).erase(0, order_list.find_first_not_of(' '));
+		if (!source.empty()) {
+			source.append(",");
+			std::vector<std::pair<std::string, bool>> sort_defs;
+			sort_defs.reserve(std::count_if(source.begin(), source.end(), [](auto ch) { return ch == ','; }));
+			while (source.find(',') != std::string::npos) {
+				std::string ord = source.substr(0, source.find(','));
+				ord.erase(ord.find_last_not_of(' ') + 1, std::string::npos).erase(0, ord.find_first_not_of(' '));
+				source.erase(0, source.find(',') + 1);
+				bool order(true);
+				if (ord.find(' ') != std::string::npos) {
+					order = ord.substr(ord.find(' ') + 1) == "DESCENDING";
+					ord.erase(ord.find(' '), std::string::npos);
+					ord.erase(ord.find_last_not_of(' ') + 1, std::string::npos).erase(0, ord.find_first_not_of(' '));
+				}
+				sort_defs.push_back(std::make_pair(ord, order));
+			}
+			std::for_each(sort_defs.rbegin(), sort_defs.rend(), [&](auto sort_def)
+			{
+				std::stable_sort(resultset_.begin(), resultset_.end(), [&](auto r1, auto r2)
+				{
+					return sort_def.second ? db_.compare(sort_def.first, r1, r2) : db_.compare(sort_def.first, r2, r1);
+				});
+			});
+		}
 	}
 
 	void query::parseJoin(const std::string & join_list)
@@ -260,14 +298,14 @@ namespace {
 		join_result.reserve(resultset_.size() * join_table->data().size());
 		std::for_each(resultset_.begin(), resultset_.end(), [&](auto row1)
 		{
-				std::for_each(join_table->data().begin(), join_table->data().end(), [&](auto row2)
+			std::for_each(join_table->data().begin(), join_table->data().end(), [&](auto row2)
+			{
+				std::map<std::string, std::string> row(row1); row.insert(row2.begin(), row2.end());
+				if (row[col_a] == row[col_b])
 				{
-						std::map<std::string, std::string> row(row1); row.insert(row2.begin(), row2.end());
-						if (row[col_a] == row[col_b])
-						{
-							join_result.push_back(row);
-						}
-				});
+					join_result.push_back(row);
+				}
+			});
 		});
 		resultset_ = join_result;
 		resultset_.shrink_to_fit();
