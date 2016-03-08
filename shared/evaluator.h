@@ -25,6 +25,8 @@ public:
 	{
 	}
 
+	virtual ~basic_teebuf() {}
+
 	basic_teebuf(const basic_teebuf& rhs) = delete;
 	basic_teebuf& operator = (const basic_teebuf& rhs) = delete;
 

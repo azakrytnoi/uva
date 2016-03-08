@@ -45,7 +45,7 @@ SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 # define the executable file 
-MAIN = libu10757.so
+MAIN = libu624.so
 
 #
 # The following part of the makefile is generic; it can be used to 
