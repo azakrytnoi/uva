@@ -16,7 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <memory>
-#include <map>
+#include <unordered_map>
 #include <sstream>
 
 extern "C" {
@@ -34,8 +34,8 @@ namespace {
 	};
 
 	class table {
-		std::map<std::string, datatype> meta_;
-		std::vector<std::map<std::string, std::string>> data_;
+		std::unordered_map<std::string, datatype> meta_;
+		std::vector<std::unordered_map<std::string, std::string>> data_;
 		std::string name_;
 
 	public:
@@ -46,12 +46,12 @@ namespace {
 			return name_;
 		}
 
-		const std::map<std::string, datatype>& meta() const
+		const std::unordered_map<std::string, datatype>& meta() const
 		{
 			return meta_;
 		}
 
-		const std::vector<std::map<std::string, std::string>>& data() const { return data_; }
+		const std::vector<std::unordered_map<std::string, std::string>>& data() const { return data_; }
 
 		friend
 			std::istream& operator >> (std::istream& in, table& t)
@@ -69,8 +69,8 @@ namespace {
 				columns.push_back(name);
 			}
 			t.data_.reserve(nRows);
-			std::generate_n(std::back_inserter(t.data_), nRows, [&]() -> std::map<std::string, std::string> {
-				std::map<std::string, std::string> row;
+			std::generate_n(std::back_inserter(t.data_), nRows, [&]() -> std::unordered_map<std::string, std::string> {
+				std::unordered_map<std::string, std::string> row;
 				std::for_each(columns.begin(), columns.end(), [&](auto name)
 				{
 					std::string value;
@@ -84,8 +84,8 @@ namespace {
 	};
 
 	class database {
-		std::map<std::string, std::string> columns_;
-		std::map<std::string, std::shared_ptr<table>> tables_;
+		std::unordered_map<std::string, std::string> columns_;
+		std::unordered_map<std::string, std::shared_ptr<table>> tables_;
 
 	public:
 		database() : columns_(), tables_() {}
@@ -105,10 +105,10 @@ namespace {
 			return in;
 		}
 
-		const std::map<std::string, std::string>& columns() const { return columns_; }
-		const std::map<std::string, std::shared_ptr<table>>& tables() const { return tables_; }
+		const std::unordered_map<std::string, std::string>& columns() const { return columns_; }
+		const std::unordered_map<std::string, std::shared_ptr<table>>& tables() const { return tables_; }
 
-		bool compare(const std::string& column, const std::map<std::string, std::string>& r1, const std::map<std::string, std::string>& r2) const
+		bool compare(const std::string& column, const std::unordered_map<std::string, std::string>& r1, const std::unordered_map<std::string, std::string>& r2) const
 		{
 			switch (tables_.find(columns_.find(column)->second)->second->meta().find(column)->second)
 			{
@@ -124,7 +124,7 @@ namespace {
 
 	class query {
 		std::vector<std::string> selector_;
-		std::vector<std::map<std::string, std::string>> resultset_;
+		std::vector<std::unordered_map<std::string, std::string>> resultset_;
 		std::vector<std::pair<std::string, bool>> sort_;
 		const database& db_;
 
@@ -244,7 +244,7 @@ namespace {
 		if (col_value[0] == '"') {
 			col_value = col_value.substr(1, col_value.length() - 2);
 		}
-		std::vector<std::map<std::string, std::string>> filter_result;
+		std::vector<std::unordered_map<std::string, std::string>> filter_result;
 		filter_result.reserve(resultset_.size());
 		std::copy_if(resultset_.begin(), resultset_.end(), std::back_inserter(filter_result), [&](auto row) -> bool { return row[col_name] == col_value; });
 		resultset_ = filter_result;
@@ -293,14 +293,14 @@ namespace {
 		col_a = col_a.substr(0, col_a.find('='));
 		col_a.erase(col_a.find_last_not_of(' ') + 1, std::string::npos).erase(0, col_a.find_first_not_of(' '));
 		col_b.erase(col_b.find_last_not_of(' ') + 1, std::string::npos).erase(0, col_b.find_first_not_of(' '));
-		std::vector<std::map<std::string, std::string>> join_result;
+		std::vector<std::unordered_map<std::string, std::string>> join_result;
 		std::shared_ptr<table> join_table = db_.tables().find(join_table_name)->second;
 		join_result.reserve(resultset_.size() * join_table->data().size());
 		std::for_each(resultset_.begin(), resultset_.end(), [&](auto row1)
 		{
 			std::for_each(join_table->data().begin(), join_table->data().end(), [&](auto row2)
 			{
-				std::map<std::string, std::string> row(row1); row.insert(row2.begin(), row2.end());
+				std::unordered_map<std::string, std::string> row(row1); row.insert(row2.begin(), row2.end());
 				if (row[col_a] == row[col_b])
 				{
 					join_result.push_back(row);
