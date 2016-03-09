@@ -27,7 +27,6 @@ void __cdecl invoke()
 }
 
 namespace {
-
 	template<size_t N>
 	class solver {
 		int nFloors_;
@@ -46,7 +45,8 @@ namespace {
 			sol.upmost_ = -1;
 			sol.stops_.clear();
 			sol.floors_.reset();
-			while (sol.nFloors_--) {
+			while (sol.nFloors_--)
+			{
 				in >> sol.upmost_;
 				sol.floors_[sol.upmost_] = true;
 			}
@@ -62,13 +62,19 @@ namespace {
 		}
 
 		void solve() {
-			int min(0); 
+			int min(0);
 			max_ = 14 * (upmost_ - 1);
 			while (min < max_ - 1)
 			{
 				int mid = (min + max_) / 2;
-				if (solve(mid)) { max_ = mid; }
-				else { min = mid; }
+				if (solve(mid))
+				{
+					max_ = mid;
+				}
+				else
+				{
+					min = mid;
+				}
 			}
 		}
 
@@ -79,11 +85,13 @@ namespace {
 			int next_floor(top / 20 + 2);
 			while (next_floor <= upmost_)
 			{
-				while (next_floor <= upmost_ && floors_[next_floor] == false) {
+				while (next_floor <= upmost_ && floors_[next_floor] == false)
+				{
 					next_floor++;
 				}
 				stops_.push_back(next_floor);
-				if ((next_floor - 1) * 4 + 10 * num_stops > top) {
+				if ((next_floor - 1) * 4 + 10 * num_stops > top)
+				{
 					return false;
 				}
 				int temp = (top - 10 * num_stops + 20 * next_floor + 4) / 24;
