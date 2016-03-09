@@ -30,7 +30,7 @@ namespace {
 			+ (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
 	}
 
-	int S, P;
+	size_t S, P;
 }
 
 U10369::U10369()

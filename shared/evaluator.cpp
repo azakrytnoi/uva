@@ -1,5 +1,13 @@
 #include <iostream>
 
+
+#ifdef _WIN32
+#include <windows.h>
+#else
+#include <dlfcn.h>
+#define __cdecl
+#endif
+
 #include "evaluator.h"
 
 #include "uvas.h"
@@ -9,13 +17,6 @@
 #include <memory>
 #include <algorithm>
 #include <exception>
-
-#ifdef _WIN32
-#include <windows.h>
-#else
-#include <dlfcn.h>
-#define __cdecl
-#endif
 
 namespace {
 	std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
@@ -35,7 +36,7 @@ namespace {
 	populate < U100, U10194, U10219, U10226, U10258, U10301, U10305, U10810, U11136, U11239, U11308, U11340, U11388, U11462, U11495, U127, U11150, U116 > p1;
 	populate < U167, U146, U200, U482, U544, U558, U594, U673, U679, U714, U727, U908, U957, U628, U11854, U156, U11636, U10220, U305, U10013, U11461 > p2;
 	populate < U10066, U10931, U11185, U900, U10062, U476, U477, U478, U454, U412, U400, U401, U408, U417, U403, U713, U11764, U10369, U10757, U624 > p3;
-	populate < U10746, U1199, U11221 > p4;
+	populate < U10746, U1199, U11221, U213 > p4;
 }
 
 int main(int argc, char** argv)
@@ -66,6 +67,10 @@ uva_wraper::invoker uva_wraper::prepare(const std::string & baseName)
 	invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL, "invoke");
 #else
 	void* handle = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
+	if (!handle) {
+	    std::cout << "failure loading library" << std::endl;
+	    throw std::exception();
+	}
 	invoker fnc = (invoker)dlsym(handle, "invoke");
 #endif // _WIN32
 	if (!fnc) {

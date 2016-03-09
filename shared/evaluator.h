@@ -11,6 +11,10 @@
 #include <chrono>
 #include <memory>
 
+#ifndef _WIN32
+#define __cdecl
+#endif
+
 template <typename char_type,
 	typename traits = std::char_traits<char_type> >
 class basic_teebuf :

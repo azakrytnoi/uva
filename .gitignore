@@ -74,7 +74,9 @@ artifacts/
 *.cbp
 *.layout
 *.workspace
-
+.project
+.cproject
+.settings
 
 # Chutzpah Test files
 _Chutzpah*
