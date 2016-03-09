@@ -11,7 +11,7 @@ namespace math {
 		math::DisjointSet mst_;
 
 	public:
-		typedef std::pair<int, int> Edge;
+		typedef std::pair<size_t, size_t> Edge;
 
 		typedef std::pair<T, Edge> Line;
 
