@@ -18,7 +18,7 @@
 #endif
 
 namespace {
-	std::map<std::string, std::shared_ptr<wraper>> g_cache;
+	std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
 
 	template<class... Ts> struct populate {};
 
@@ -55,9 +55,7 @@ int main(int argc, char** argv)
 	}
 }
 
-typedef void(__cdecl *invoker)();
-
-void wraper::invoke(const std::string & baseName)
+uva_wraper::invoker uva_wraper::prepare(const std::string & baseName)
 {
 #ifdef _WIN32
 	HINSTANCE hGetProcIDDLL = LoadLibraryA((baseName + ".dll").c_str());
@@ -74,5 +72,5 @@ void wraper::invoke(const std::string & baseName)
 		std::cout << "failure locate function" << std::endl;
 		throw std::exception();
 	}
-	fnc();
+	return fnc;
 }

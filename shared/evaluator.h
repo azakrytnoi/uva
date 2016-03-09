@@ -75,17 +75,19 @@ teestream::teestream(std::ostream & o1, std::ostream & o2)
 {
 }
 
-class wraper {
+class uva_wraper {
 public:
-	virtual ~wraper() {}
+	virtual ~uva_wraper() {}
 	virtual void operator()() = 0;
 
 protected:
-	void invoke(const std::string& baseName);
+	typedef void(__cdecl *invoker)();
+
+	invoker prepare(const std::string& baseName);
 };
 
 template<typename Tp>
-class evaluator : public wraper {
+class evaluator : public uva_wraper {
 public:
 	explicit evaluator(const std::string& source) : source_(source)
 	{
@@ -138,9 +140,10 @@ void evaluator<Tp>::operator()()
 	{
 		io_wrapper<std::ostream> wrap_in(std::cout, out.rdbuf());
 		io_wrapper<std::istream> wrap_out(std::cin, in.rdbuf());
+		invoker fnc = prepare(Tp::libname());
 		{
 			std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-			invoke(Tp::libname());
+			fnc();
 			elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
 		}
 	}
