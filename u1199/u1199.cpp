@@ -75,20 +75,20 @@ namespace {
 	private:
 		bool solve(int top) {
 			stops_.clear();
-			int j, num(0);
-			int i(top / 20 + 2);
-			while (i <= upmost_)
+			int num_stops(0);
+			int next_floor(top / 20 + 2);
+			while (next_floor <= upmost_)
 			{
-				while (i <= upmost_ && floors_[i] == false) {
-					i++;
+				while (next_floor <= upmost_ && floors_[next_floor] == false) {
+					next_floor++;
 				}
-				stops_.push_back(i);
-				if ((i - 1) * 4 + 10 * num > top) {
+				stops_.push_back(next_floor);
+				if ((next_floor - 1) * 4 + 10 * num_stops > top) {
 					return false;
 				}
-				j = (top - 10 * num + 20 * i + 4) / 24;
-				i = (top - 10 * num + 16 * j + 4) / 20 + 1;
-				num++;
+				int temp = (top - 10 * num_stops + 20 * next_floor + 4) / 24;
+				next_floor = (top - 10 * num_stops + 16 * temp + 4) / 20 + 1;
+				num_stops++;
 			}
 			return true;
 		}
@@ -99,7 +99,7 @@ void U1199::operator()()
 {
 	int N;
 	while ((std::cin >> N) && N) {
-		solver<31> s(N);
+		solver<32> s(N);
 		std::cin >> s;
 		s.solve();
 		std::cout << s << std::endl;
