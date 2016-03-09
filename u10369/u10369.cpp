@@ -48,8 +48,8 @@ double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
 	std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {
 		if (mst_.sets == S) return;
 		double cost = line.first;
-		int origin = line.second.first;
-		int destination = line.second.second;
+		auto origin = line.second.first;
+		auto destination = line.second.second;
 		if (!mst_.isSameSet(origin, destination)) {
 			result = cost;
 			mst_.unionSet(origin, destination);

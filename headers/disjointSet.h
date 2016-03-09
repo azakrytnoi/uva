@@ -3,23 +3,24 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include <cstdint>
 
 namespace math {
 	struct DisjointSet {
-		int sets;
-		std::vector<int> pAddress;
-		std::vector<int> numVertices;
+		uint64_t sets;
+		std::vector<uint64_t> pAddress;
+		std::vector<uint64_t> numVertices;
 
 		DisjointSet() : sets(0), pAddress(), numVertices() {}
 
-		void initSet(int n)
+		void initSet(uint64_t n)
 		{
 			sets = n;
 			pAddress.clear();
 			numVertices.clear();
 			pAddress.reserve(n + 1);
 			numVertices.reserve(n + 1);
-			int i = 0;
+			uint64_t i = 0;
 			std::generate_n(std::back_inserter(pAddress), n + 1, [&i]() {
 				return i++;
 			});
@@ -28,7 +29,7 @@ namespace math {
 			});
 		}
 
-		int findSet(int x)
+		uint64_t findSet(uint64_t x)
 		{
 			if (x == pAddress[x])
 				return x;
@@ -36,12 +37,12 @@ namespace math {
 				return pAddress[x] = findSet(pAddress[x]);
 		}
 
-		int setSize(int x)
+		uint64_t setSize(uint64_t x)
 		{
 			return numVertices[findSet(x)];
 		}
 
-		bool isSameSet(int x, int y)
+		bool isSameSet(uint64_t x, uint64_t y)
 		{
 			if (findSet(x) == findSet(y))
 				return true;
@@ -49,10 +50,10 @@ namespace math {
 				return false;
 		}
 
-		void unionSet(int x, int y)
+		void unionSet(uint64_t x, uint64_t y)
 		{
-			int xRoot = findSet(x);
-			int yRoot = findSet(y);
+			uint64_t xRoot = findSet(x);
+			uint64_t yRoot = findSet(y);
 
 			if (!isSameSet(xRoot, yRoot)) {
 				numVertices[yRoot] += numVertices[xRoot];

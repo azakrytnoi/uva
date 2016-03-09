@@ -34,8 +34,8 @@ int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
 	sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
 	std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
 		int cost = line.first;
-		int origin = line.second.first;
-		int destination = line.second.second;
+		auto origin = line.second.first;
+		auto destination = line.second.second;
 		if (!mst_.isSameSet(origin, destination)) {
 			total += cost;
 			mst_.unionSet(origin, destination);
