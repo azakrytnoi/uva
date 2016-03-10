@@ -74,6 +74,7 @@ artifacts/
 *.cbp
 *.layout
 *.workspace
+*.gcda
 .project
 .cproject
 .settings
