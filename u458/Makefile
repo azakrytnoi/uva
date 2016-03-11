@@ -10,7 +10,7 @@ CC = g++
 
 # define any compile-time flags
 #CFLAGS = -m64 -Wall -O2 -std=c++14
-CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -fPIC -pthread $(UCFLAGS)
+CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -fPIC $(UCFLAGS)
 
 # define any directories containing header files other than /usr/include
 #
@@ -24,8 +24,8 @@ LFLAGS =
 # define any libraries to link into executable:
 #   if I want to link in libraries (libx.so or libx.a) I use the -llibname 
 #   option, something like (this will link in libmylib.so and libm.so:
-LIBS = -lpthread
-#LIBS = -lu30613 -lu10062 -lu10066 -lu100 -lu10194 -lu10219 -lu10220 -lu10226 -lu10258 -lu10301 -lu10305 \
+LIBS = 
+#LIBS = -lu45813 -lu10062 -lu10066 -lu100 -lu10194 -lu10219 -lu10220 -lu10226 -lu10258 -lu10301 -lu10305 \
 #	-lu10810 -lu10931 -lu11136 -lu11150 -lu11185 -lu11239 -lu11308 -lu11340 -lu11388 -lu11461 \
 #	-lu11462 -lu11495 -lu11636 -lu116 -lu11854 -lu127 -lu146 -lu156 -lu167 -lu200 -lu305 -lu400 \
 #	-lu408 -lu401 -lu412 -lu454 -lu478 -lu482 -lu544 -lu558 -lu594 -lu628 -lu673 -lu679 -lu714 \
@@ -45,7 +45,7 @@ SRCS = $(wildcard *.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 # define the executable file 
-MAIN = libu306.so
+MAIN = libu458.so
 
 #
 # The following part of the makefile is generic; it can be used to 
