@@ -65,3 +65,5 @@
 #include "../u306/u306.h"
 #include "../u444/u444.h"
 #include "../u458/u458.h"
+#include "../u492/u492.h"
+#include "../u10896/u10896.h"
