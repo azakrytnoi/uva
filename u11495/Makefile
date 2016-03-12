@@ -82,3 +82,5 @@ depend: $(SRCS)
 	makedepend $(INCLUDES) $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
+
+u11495.o: u11495.h ../headers/sort.h

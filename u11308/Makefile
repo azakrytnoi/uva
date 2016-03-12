@@ -82,3 +82,5 @@ depend: $(SRCS)
 	makedepend $(INCLUDES) $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
+
+u11308.o: u11308.h

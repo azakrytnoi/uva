@@ -22,6 +22,10 @@ public:
 
     void operator()();
 };
+
+#ifdef POPULATE_CACHE
+populate <U$1> pu$1;
+#endif
 EOF
 
 cat > "../u$1/u$1.cpp" <<EOF
@@ -69,4 +73,4 @@ sed "s/u100/u$1/" ../u100/Makefile > ../u$1/Makefile
 sed "s/u100/u$1/" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
 sed "s/u100/u$1/" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
 
-git add ../*.h ../*.cpp ../*.txt ../*.vcxproj*
+git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile

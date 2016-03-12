@@ -7,6 +7,12 @@ all:	$(TARGET)
 	 $(MAKE) -C $$module ; \
 	done
 
+depend:	$(TARGET)
+	$(MAKE) -C shared depend
+	for module in $(MODULES) ; do \
+	 $(MAKE) -C $$module depend ; \
+	done
+
 clean:
 	$(MAKE) -C shared clean
 	for module in $(MODULES) ; do \

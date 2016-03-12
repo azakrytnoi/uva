@@ -82,3 +82,5 @@ depend: $(SRCS)
 	makedepend $(INCLUDES) $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
+
+u10369.o: u10369.h ../headers/kruskal.h ../headers/disjointSet.h

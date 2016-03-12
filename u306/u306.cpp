@@ -80,7 +80,7 @@ void U306::operator()() {
 			std::string line;
 			std::getline(std::cin, line);
 			line.erase(0, 1);
-			std::future<std::string> fut = std::async([](cipher c, int k, std::string data) -> std::string {
+			std::future<std::string> fut = std::async(std::launch::async, [](cipher c, int k, std::string data) -> std::string {
 				while (k--) {
 					(c << data) >> data;
 				}
@@ -91,7 +91,6 @@ void U306::operator()() {
 		futs.push_back(std::async([]()->std::string {return ""; }));
 	}
 	for (auto fit = futs.begin(); fit != futs.end(); ++fit) {
-		fit->wait();
 		std::cout << fit->get() << std::endl;
 	}
 }
