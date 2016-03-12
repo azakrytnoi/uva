@@ -9,3 +9,7 @@ public:
 	~U10258();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U10258> pu10258; 
+#endif 
+

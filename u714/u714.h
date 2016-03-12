@@ -9,3 +9,7 @@ public:
 	U714();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U714> pu714; 
+#endif 
+

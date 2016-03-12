@@ -1,5 +1,7 @@
 #pragma once
 
+#define POPULATE_CACHE
+
 #include "../u100/u100.h"
 #include "../u10219/u10219.h"
 #include "../u10258/u10258.h"

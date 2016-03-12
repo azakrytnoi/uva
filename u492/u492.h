@@ -12,3 +12,7 @@ public:
     void operator()();
 
 };
+#ifdef POPULATE_CACHE 
+populate <U492> pu492; 
+#endif 
+

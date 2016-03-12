@@ -9,3 +9,7 @@ public:
 	U417();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U417> pu417; 
+#endif 
+

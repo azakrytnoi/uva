@@ -9,3 +9,7 @@ public:
 	U679();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U679> pu679; 
+#endif 
+

@@ -10,3 +10,7 @@ public:
 
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U11462> pu11462; 
+#endif 
+

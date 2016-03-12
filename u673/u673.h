@@ -15,3 +15,7 @@ protected:
 
 private:
 };
+#ifdef POPULATE_CACHE 
+populate <U673> pu673; 
+#endif 
+
