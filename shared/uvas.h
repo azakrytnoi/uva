@@ -71,3 +71,5 @@
 #include "../u10896/u10896.h"
 #include "../u11541/u11541.h"
 #include "../u865/u865.h"
+#include "../u468/u468.h"
+#include "../u10878/u10878.h"
