@@ -14,6 +14,7 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)bigint.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)disjointSet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)kruskal.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sort.h" />

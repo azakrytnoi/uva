@@ -73,3 +73,6 @@
 #include "../u865/u865.h"
 #include "../u468/u468.h"
 #include "../u10878/u10878.h"
+#include "../u424/u424.h"
+#include "../u465/u465.h"
+#include "../u619/u619.h"

@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{150500A2-0254-47E8-9771-1C035DC65EF0}</ProjectGuid>
-    <RootNamespace>u11541</RootNamespace>
+    <ProjectGuid>{9BDAAB8A-37E3-491A-8711-5285B826410A}</ProjectGuid>
+    <RootNamespace>u424</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -114,13 +114,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="u11541.cpp" />
+    <ClCompile Include="u424.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u11541.txt" />
+    <Text Include="u424.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="u11541.h" />
+    <ClInclude Include="u424.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
