@@ -104,4 +104,4 @@ evaluator.o: ../u624/u624.h ../u10746/u10746.h ../u1199/u1199.h
 evaluator.o: ../u11221/u11221.h ../u213/u213.h ../u306/u306.h ../u444/u444.h
 evaluator.o: ../u458/u458.h ../u492/u492.h ../u10896/u10896.h
 evaluator.o: ../u11541/u11541.h ../u865/u865.h ../u468/u468.h
-evaluator.o: ../u10878/u10878.h
+evaluator.o: ../u10878/u10878.h ../u424/u424.h ../u465/u465.h ../u619/u619.h

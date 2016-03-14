@@ -21,61 +21,93 @@
 #include "bigint.h"
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
-void __cdecl invoke()
-{
-	U619 instance;
-	instance();
+void __cdecl invoke() {
+    U619 instance;
+    instance();
 }
 
 namespace {
-	class checker {
-	public:
-		static std::string translate(const std::string& source);
+    class checker {
+    public:
+        static std::string translate(const std::string& source);
 
-	private:
-		static std::string translate_number(const std::string& source);
-		static std::string translate_string(const std::string& source);
-	};
+    private:
+        static std::string change_base(const std::string& source, int from, int to, int base);
+        static void process_carry(std::vector<int>& data, int to);
 
-	std::string checker::translate(const std::string & source)
-	{
-		if (std::isdigit(source[0])) {
-			return translate_number(source);
-		}
-		return translate_string(source);
-	}
+        template<typename T>
+        static void print(std::ostream& out, T& data);
+    };
 
-	std::string checker::translate_number(const std::string & source)
-	{
-		math::BigInteger num = source;
-		return source;
-	}
+    template<typename T>
+    void checker::print(std::ostream& out, T& data) {
+        size_t pos;
+        bool printed = false;
+        for (pos = 0; (data.size() - pos) % 3 != 0; pos++) {
+            out << data[pos];
+            printed = true;
+        }
+        for (; pos < data.size(); pos += 3) {
+            if (printed) {
+                out << ',';
+            }
+            out << data[pos] << data[pos + 1] << data[pos + 2];
+            printed = true;
+        }
+    }
 
-	std::string checker::translate_string(const std::string & source)
-	{
-		math::BigInteger bi = "1";
-		math::BigInteger result;
-		std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
-			std::stringstream ss;
-			ss << ((ch - 'a' + 1) % 26);
-			math::BigInteger letter = ss.str();
-			letter *= bi;
-			result += letter;
-			bi *= 26;
-		});
-		std::stringstream ss;
-		ss << std::setw(22) << source << result;
-		return ss.str();
-	}
+    std::string checker::translate(const std::string & source) {
+        if (std::isdigit(source[0])) {
+            return change_base(source, 10, 26, '0');
+        }
+        return change_base(source, 26, 10, 'a' - 1);
+    }
+
+    std::string checker::change_base(const std::string& source, int from, int to, int base) {
+        std::vector<int> internal;
+        internal.push_back(0);
+        std::for_each(source.begin(), source.end(), [&](auto ch) {
+            std::transform(internal.begin(), internal.end(), internal.begin(), [&] (auto digit) {return digit * from;});
+            int last = internal.back() + ch - base;
+            internal[internal.size() - 1] = last;
+            process_carry(internal, to);
+        });
+        std::stringstream out;
+        if (from == 10) {
+            std::string translated;
+            translated.resize(internal.size());
+            std::transform(internal.begin(), internal.end(), translated.begin(), [](auto ch) {return ch + 'a' - 1;});
+            out.setf(std::ios::left);
+            out << std::setw(22) << translated;
+            print(out, source);
+        } else {
+            out.setf(std::ios::left);
+            out << std::setw(22) << source;
+            print(out, internal);
+        }
+        return out.str();
+    }
+
+    void checker::process_carry(std::vector<int>& data, int base_to) {
+        for (auto it = data.rbegin(); it != data.rend() - 1; ++it) {
+            *(it + 1) += *it / base_to;
+            *it %= base_to;
+        }
+        int tmp = data[0];
+        while (tmp >= base_to) {
+            data.insert(data.begin(), tmp / base_to);
+            data[1] = tmp % base_to;
+            tmp /= base_to;
+        }
+    }
+
 }
 
-void U619::operator()()
-{
-	std::string line;
-	while (std::getline(std::cin, line) && line != "*")
-	{
-		std::cout << checker::translate(line) << std::endl;
-	}
+void U619::operator()() {
+    std::string line;
+    while (std::getline(std::cin, line) && line != "*") {
+        std::cout << checker::translate(line) << std::endl;
+    }
 }
