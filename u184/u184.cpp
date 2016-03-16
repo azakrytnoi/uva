@@ -26,6 +26,10 @@ void __cdecl invoke() {
 }
 
 namespace {
+
+    typedef std::pair<uint16_t, uint16_t> point2d;
+    typedef std::pair<point2d, point2d> line2d;
+
     class solution {
     public:
         solution() :
@@ -36,7 +40,7 @@ namespace {
         friend std::istream& operator >>(std::istream& in, solution& sol) {
             sol.points_.clear();
             while (in) {
-                std::pair<uint16_t, uint16_t> point;
+                point2d point;
                 in >> point.first >> point.second;
                 if (point.first == 0 && point.second == 0)
                     break;
@@ -52,7 +56,7 @@ namespace {
         }
 
         friend std::ostream& operator <<(std::ostream& out, const solution& sol) {
-            std::for_each(sol.lines_.begin(), sol.lines_.end(), [&](auto line) {
+            std::for_each(sol.lines_.begin(), sol.lines_.end(), [&](const std::list<point2d>& line) {
                 std::for_each(line.begin(), line.end(), [&](auto point) {
                             out << "(" << std::setw(4) << point.first << "," << std::setw(4) << point.second << ")";
                         });
@@ -67,19 +71,19 @@ namespace {
         }
 
     private:
-        std::vector<std::pair<uint16_t, uint16_t>> points_;
-        std::vector<std::vector<std::pair<uint16_t, uint16_t>>>lines_;
+        std::vector<point2d> points_;
+        std::list<std::list<point2d>>lines_;
 
         static
-        bool colinear(std::pair<uint16_t, uint16_t> &a, std::pair<uint16_t, uint16_t>& b, std::pair<uint16_t, uint16_t>& c) {
+        bool is_colinear(point2d &a, point2d& b, point2d& c) {
             return a.first * (b.second - c.second) + b.first * (c.second - a.second) + c.first * (a.second - b.second) == 0;
         }
 
         static
-        bool already_marked(std::pair<uint16_t, uint16_t>& a, std::pair<uint16_t, uint16_t>& b, std::vector<std::pair<std::pair<uint16_t, uint16_t>,std::pair<uint16_t, uint16_t>>>& proceesed) {
+        bool is_extending(point2d& a, point2d& b, std::list<line2d>& proceesed) {
             for (auto pp = proceesed.begin(); pp != proceesed.end(); ++pp) {
-                bool r1 (colinear(a, b, pp->first));
-                bool r2 (colinear(a, b, pp->second));
+                bool r1 (is_colinear(a, b, pp->first));
+                bool r2 (is_colinear(a, b, pp->second));
                 if ( r1 && r2 ) {
                     return true;
                 }
@@ -91,13 +95,13 @@ namespace {
 
     bool solution::solve() {
         lines_.clear();
-        std::vector<std::pair<std::pair<uint16_t, uint16_t>, std::pair<uint16_t, uint16_t>>>processed;
+        std::list<line2d> processed;
         for (auto pa = points_.begin(); pa != points_.end() - 2; ++pa) {
             for (auto pb = pa + 1; pb != points_.end() - 1; ++pb) {
-                if (!already_marked(*pa, *pb, processed)) {
-                    std::vector<std::pair<uint16_t, uint16_t>> line;
+                if (!is_extending(*pa, *pb, processed)) {
+                    std::list<point2d> line;
                     for (auto pc = pb + 1; pc != points_.end(); ++pc) {
-                        if (colinear(*pa, *pb, *pc)) {
+                        if (is_colinear(*pa, *pb, *pc)) {
                             if (line.empty()) {
                                 line.push_back(*pa);
                                 line.push_back(*pb);
