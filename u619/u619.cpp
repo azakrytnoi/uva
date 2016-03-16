@@ -43,11 +43,11 @@ namespace {
 
 	template<typename T>
 	void checker::print(std::ostream& out, T& data) {
-		size_t pos(0);
+		uint32_t pos(0);
 		std::reverse(data.begin(), data.end());
 		std::stringstream temp;
 		std::for_each(data.begin(), data.end(), [&](auto digit) {
-			pos = (++pos) % 3;
+			pos = ((++pos) % 3);
 			temp << digit;
 			if (pos == 0) {
 				temp << ',';

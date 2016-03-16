@@ -83,4 +83,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u12243.o: u100.h
+u12243.o: u12243.h
