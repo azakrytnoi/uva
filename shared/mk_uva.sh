@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [ -z "$1" ]
-then
-   echo "No number"
-   exit 1
-fi
-
 mkdir ../u$1
 
 cat > "../u$1/u$1.h" <<EOF
