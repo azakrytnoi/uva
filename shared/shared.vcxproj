@@ -22,7 +22,7 @@
     <ProjectGuid>{482D0971-DDC5-4A04-83DE-3A0B438A3F89}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>uva10305</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.10586.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>starter</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

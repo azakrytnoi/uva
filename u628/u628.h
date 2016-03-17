@@ -9,3 +9,7 @@ public:
 	U628();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U628> pu628; 
+#endif 
+

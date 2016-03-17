@@ -10,3 +10,7 @@ public:
 	~U408();
 	void operator()();
 };
+#ifdef POPULATE_CACHE 
+populate <U408> pu408; 
+#endif 
+

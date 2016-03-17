@@ -10,7 +10,7 @@ CC = g++
 
 # define any compile-time flags
 #CFLAGS = -m64 -Wall -O2 -std=c++14
-CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 $(UCFLAGS)
+CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -pthread $(UCFLAGS)
 
 # define any directories containing header files other than /usr/include
 #
@@ -81,3 +81,28 @@ depend: $(SRCS)
 	makedepend $(INCLUDES) $^
 
 # DO NOT DELETE THIS LINE -- make depend needs it
+
+evaluator.o: /usr/include/dlfcn.h /usr/include/features.h
+evaluator.o: /usr/include/stdc-predef.h evaluator.h uvas.h ../u100/u100.h
+evaluator.o: ../u10219/u10219.h ../u10258/u10258.h ../u10305/u10305.h
+evaluator.o: ../u11136/u11136.h ../u11308/u11308.h ../u11388/u11388.h
+evaluator.o: ../u11495/u11495.h ../u146/u146.h ../u482/u482.h ../u558/u558.h
+evaluator.o: ../u673/u673.h ../u714/u714.h ../u908/u908.h ../u10194/u10194.h
+evaluator.o: ../u10226/u10226.h ../u10301/u10301.h ../u10810/u10810.h
+evaluator.o: ../u11239/u11239.h ../u11340/u11340.h ../u11462/u11462.h
+evaluator.o: ../u11854/u11854.h ../u11636/u11636.h ../u11764/u11764.h
+evaluator.o: ../u10220/u10220.h ../u127/u127.h ../u200/u200.h ../u544/u544.h
+evaluator.o: ../u594/u594.h ../u679/u679.h ../u727/u727.h ../u957/u957.h
+evaluator.o: ../u628/u628.h ../u156/u156.h ../u305/u305.h ../u10013/u10013.h
+evaluator.o: ../u11461/u11461.h ../u11150/u11150.h ../u167/u167.h
+evaluator.o: ../u116/u116.h ../u10066/u10066.h ../u10931/u10931.h
+evaluator.o: ../u11185/u11185.h ../u900/u900.h ../u10062/u10062.h
+evaluator.o: ../u478/u478.h ../u454/u454.h ../u412/u412.h ../u400/u400.h
+evaluator.o: ../u401/u401.h ../u408/u408.h ../u417/u417.h ../u403/u403.h
+evaluator.o: ../u713/u713.h ../u10369/u10369.h ../u10757/u10757.h
+evaluator.o: ../u624/u624.h ../u10746/u10746.h ../u1199/u1199.h
+evaluator.o: ../u11221/u11221.h ../u213/u213.h ../u306/u306.h ../u444/u444.h
+evaluator.o: ../u458/u458.h ../u492/u492.h ../u10896/u10896.h
+evaluator.o: ../u11541/u11541.h ../u865/u865.h ../u468/u468.h
+evaluator.o: ../u10878/u10878.h ../u424/u424.h ../u465/u465.h ../u619/u619.h
+evaluator.o: ../u12243/u12243.h

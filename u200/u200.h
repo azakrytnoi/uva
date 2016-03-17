@@ -10,3 +10,7 @@ public:
 	~U200();
 	void operator ()();
 };
+#ifdef POPULATE_CACHE 
+populate <U200> pu200; 
+#endif 
+

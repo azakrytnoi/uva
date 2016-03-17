@@ -142,9 +142,9 @@ void evaluator<Tp>::operator()()
 	uint64_t elapsed(0);
 	std::stringstream out;
 	{
+		invoker fnc = prepare(Tp::libname());
 		io_wrapper<std::ostream> wrap_in(std::cout, out.rdbuf());
 		io_wrapper<std::istream> wrap_out(std::cin, in.rdbuf());
-		invoker fnc = prepare(Tp::libname());
 		{
 			std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
 			fnc();
