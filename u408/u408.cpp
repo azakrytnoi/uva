@@ -23,24 +23,23 @@ U408::~U408()
 }
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U408 instance;
-	instance();
+    U408 instance;
+    instance();
 }
 void U408::operator()()
 {
-	uint32_t step, mod;
-	while (std::cin >> step >> mod) {
-		std::cout << std::setw(10) << step << std::setw(10) << mod << "    ";
-		if (math::gcd(mod, step) == 1) {
-			std::cout << "Good Choice" << std::endl;
-		}
-		else {
-			std::cout << "Bad Choice" << std::endl;
-		}
-		std::cout << std::endl;
-	}
+    uint32_t step, mod;
+    while (std::cin >> step >> mod) {
+        std::cout << std::setw(10) << step << std::setw(10) << mod << "    ";
+        if (math::gcd(mod, step) == 1) {
+            std::cout << "Good Choice" << std::endl;
+        } else {
+            std::cout << "Bad Choice" << std::endl;
+        }
+        std::cout << std::endl;
+    }
 }

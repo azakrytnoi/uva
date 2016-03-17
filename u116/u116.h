@@ -2,15 +2,15 @@
 
 class  U116 {
 public:
-	static const char * libname()
-	{
-		return "u116";
-	}
-	U116();
+    static const char * libname()
+    {
+        return "u116";
+    }
+    U116();
 
-	void operator()();
+    void operator()();
 };
-#ifdef POPULATE_CACHE 
-populate <U116> pu116; 
-#endif 
+#ifdef POPULATE_CACHE
+populate <U116> pu116;
+#endif
 

@@ -17,12 +17,12 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U458 instance;
-	instance();
+    U458 instance;
+    instance();
 }
 
 
@@ -31,7 +31,9 @@ void U458::operator()()
     std::string line;
     while (std::getline(std::cin, line) && !line.empty()) {
         std::ostream_iterator<char> oit(std::cout);
-        std::transform(line.begin(), line.end(), oit, [](auto ch) { return ch - ('\'' - ' ');});
+        std::transform(line.begin(), line.end(), oit, [](auto ch) {
+            return ch - ('\'' - ' ');
+        });
         std::cout << std::endl;
     }
 }

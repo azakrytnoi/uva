@@ -17,12 +17,12 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U10878 instance;
-	instance();
+    U10878 instance;
+    instance();
 }
 
 namespace  {
@@ -34,7 +34,8 @@ public:
 private:
 };
 
-char coder::decode(const std::string& line) {
+char coder::decode(const std::string& line)
+{
     std::string temp(line.substr(1, 9));
     char code = std::accumulate(temp.begin(), temp.end(), 0, [](auto ch, auto current) {
         if (current != '.') {
@@ -53,7 +54,7 @@ void U10878::operator()()
     std::string line;
     while (std::getline(std::cin, line)) {
         if (!line.empty() && line != "___________") {
-           std::cout << coder::decode(line);
+            std::cout << coder::decode(line);
         }
     }
 }

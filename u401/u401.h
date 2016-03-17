@@ -2,15 +2,15 @@
 
 class  U401 {
 public:
-	static const char * libname()
-	{
-		return "u401";
-	}
-	U401();
+    static const char * libname()
+    {
+        return "u401";
+    }
+    U401();
 
-	void operator()();
+    void operator()();
 };
-#ifdef POPULATE_CACHE 
-populate <U401> pu401; 
-#endif 
+#ifdef POPULATE_CACHE
+populate <U401> pu401;
+#endif
 

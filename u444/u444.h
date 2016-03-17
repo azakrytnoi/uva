@@ -1,17 +1,16 @@
 #pragma once
 
-class U444
-{
+class U444 {
 public:
-	static const char * libname()
-	{
-		return "u444";
-	}
+    static const char * libname()
+    {
+        return "u444";
+    }
     U444() {}
 
     void operator()();
 };
-#ifdef POPULATE_CACHE 
-populate <U444> pu444; 
-#endif 
+#ifdef POPULATE_CACHE
+populate <U444> pu444;
+#endif
 

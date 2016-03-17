@@ -19,12 +19,12 @@
 #include <cctype>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U492 instance;
-	instance();
+    U492 instance;
+    instance();
 }
 
 namespace  {
@@ -34,7 +34,8 @@ public:
     static void piggle(const std::string& word);
 };
 
-void piggler::piggle(const std::string& word) {
+void piggler::piggle(const std::string& word)
+{
     switch (word[0]) {
     case 'a':
     case 'A':

@@ -21,55 +21,59 @@
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
-void __cdecl invoke() {
+void __cdecl invoke()
+{
     U444 instance;
     instance();
 }
 
 namespace {
 
-    class coder {
-    public:
+class coder {
+public:
 
-        static std::string encode(const std::string& src);
-        static std::string decode(const std::string& src);
+    static std::string encode(const std::string& src);
+    static std::string decode(const std::string& src);
 
-    private:
-    };
+private:
+};
 
-    std::string coder::encode(const std::string& source) {
-        std::stringstream out;
-        std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
-            std::stringstream ss;
-            ss << (int)ch;
-            std::string str(ss.str());
-            std::reverse(str.begin(), str.end());
-            out << str;
-        });
-        return out.str();
-    }
+std::string coder::encode(const std::string& source)
+{
+    std::stringstream out;
+    std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
+        std::stringstream ss;
+        ss << (int)ch;
+        std::string str(ss.str());
+        std::reverse(str.begin(), str.end());
+        out << str;
+    });
+    return out.str();
+}
 
-    std::string coder::decode(const std::string& source) {
-        std::stringstream out;
-        for (auto it = source.begin(); it != source.end();) {
-            std::stringstream in;
-            in << *it++ << *it++;
-            int ch;
-            in >> ch;
-            if (ch < 32) {
-                it++;
-                ch += 100;
-            }
-            out << char(ch);
+std::string coder::decode(const std::string& source)
+{
+    std::stringstream out;
+    for (auto it = source.begin(); it != source.end();) {
+        std::stringstream in;
+        in << *it++ << *it++;
+        int ch;
+        in >> ch;
+        if (ch < 32) {
+            it++;
+            ch += 100;
         }
-        std::string tmp(out.str());
-        std::reverse(tmp.begin(), tmp.end());
-        return tmp;
+        out << char(ch);
     }
+    std::string tmp(out.str());
+    std::reverse(tmp.begin(), tmp.end());
+    return tmp;
+}
 
 }  // namespace
 
-void U444::operator()() {
+void U444::operator()()
+{
     std::string line;
     while (std::getline(std::cin, line)) {
         if (!line.empty()) {

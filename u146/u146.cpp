@@ -19,26 +19,25 @@ U146::~U146()
 {
 }
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U146 instance;
-	instance();
+    U146 instance;
+    instance();
 }
 void U146::operator()()
 {
-	std::string line;
-	while (std::getline(std::cin, line)) {
-		if ("#" == line) {
-			break;
-		}
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        if ("#" == line) {
+            break;
+        }
 
-		if (std::next_permutation(line.begin(), line.end())) {
-			std::cout << line << std::endl;
-		}
-		else {
-			std::cout << "No Successor" << std::endl;
-		}
-	}
+        if (std::next_permutation(line.begin(), line.end())) {
+            std::cout << line << std::endl;
+        } else {
+            std::cout << "No Successor" << std::endl;
+        }
+    }
 }

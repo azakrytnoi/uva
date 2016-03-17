@@ -2,15 +2,15 @@
 
 class  U403 {
 public:
-	static const char * libname()
-	{
-		return "u403";
-	}
-	U403();
+    static const char * libname()
+    {
+        return "u403";
+    }
+    U403();
 
-	void operator()();
+    void operator()();
 };
-#ifdef POPULATE_CACHE 
-populate <U403> pu403; 
-#endif 
+#ifdef POPULATE_CACHE
+populate <U403> pu403;
+#endif
 
