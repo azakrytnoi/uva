@@ -161,6 +161,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u865", "u865\u865.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u1210", "u1210\u1210.vcxproj", "{22B1096C-52FE-425A-BDCA-F882BB2B7615}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u11223", "u11223\u11223.vcxproj", "{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		headers\headers.vcxitems*{8aecc889-8d7b-49e0-aeb0-80954286dc6c}*SharedItemsImports = 4
@@ -198,6 +200,7 @@ Global
 		headers\headers.vcxitems*{a2a1cbaf-ec26-453e-bf23-959bce5b3e29}*SharedItemsImports = 4
 		headers\headers.vcxitems*{d6dd04ec-b39b-4721-bbd3-81ececbb978c}*SharedItemsImports = 4
 		headers\headers.vcxitems*{abf1844f-2f17-4a73-891e-6cc53e363574}*SharedItemsImports = 4
+		headers\headers.vcxitems*{bedad1b0-01d4-46e6-b2f4-4d730f156955}*SharedItemsImports = 4
 		headers\headers.vcxitems*{22b4d399-fa77-4606-9d1a-2d59831d3b72}*SharedItemsImports = 4
 		headers\headers.vcxitems*{cd471a23-4ec4-44a0-a30f-7b02901c424d}*SharedItemsImports = 4
 		headers\headers.vcxitems*{b73e0aeb-fdd2-4ede-9aef-b2e9a5211b7d}*SharedItemsImports = 4
@@ -1031,6 +1034,16 @@ Global
 		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x64.Build.0 = Release|x64
 		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x86.ActiveCfg = Release|Win32
 		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x86.Build.0 = Release|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Debug|ARM.ActiveCfg = Debug|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Debug|x64.ActiveCfg = Debug|x64
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Debug|x64.Build.0 = Debug|x64
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Debug|x86.ActiveCfg = Debug|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Debug|x86.Build.0 = Debug|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Release|ARM.ActiveCfg = Release|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Release|x64.ActiveCfg = Release|x64
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Release|x64.Build.0 = Release|x64
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Release|x86.ActiveCfg = Release|Win32
+		{BEDAD1B0-01D4-46E6-B2F4-4D730F156955}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
