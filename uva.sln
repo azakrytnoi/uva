@@ -159,9 +159,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u492", "u492\u492.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u865", "u865\u865.vcxproj", "{22B4D399-FA77-4606-9D1A-2D59831D3B72}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u1210", "u1210\u1210.vcxproj", "{22B1096C-52FE-425A-BDCA-F882BB2B7615}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		headers\headers.vcxitems*{8aecc889-8d7b-49e0-aeb0-80954286dc6c}*SharedItemsImports = 4
+		headers\headers.vcxitems*{22b1096c-52fe-425a-bdca-f882bb2b7615}*SharedItemsImports = 4
 		headers\headers.vcxitems*{b6e80f54-ee2d-42d8-a308-d0c3b59f381b}*SharedItemsImports = 4
 		headers\headers.vcxitems*{429826e9-fdaa-4081-964b-34058652aa83}*SharedItemsImports = 4
 		headers\headers.vcxitems*{4aa1c4cd-ad18-47cc-b744-6a3ac3c27aa4}*SharedItemsImports = 4
@@ -1018,6 +1021,16 @@ Global
 		{22B4D399-FA77-4606-9D1A-2D59831D3B72}.Release|x64.Build.0 = Release|x64
 		{22B4D399-FA77-4606-9D1A-2D59831D3B72}.Release|x86.ActiveCfg = Release|Win32
 		{22B4D399-FA77-4606-9D1A-2D59831D3B72}.Release|x86.Build.0 = Release|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Debug|ARM.ActiveCfg = Debug|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Debug|x64.ActiveCfg = Debug|x64
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Debug|x64.Build.0 = Debug|x64
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Debug|x86.ActiveCfg = Debug|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Debug|x86.Build.0 = Debug|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|ARM.ActiveCfg = Release|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x64.ActiveCfg = Release|x64
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x64.Build.0 = Release|x64
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x86.ActiveCfg = Release|Win32
+		{22B1096C-52FE-425A-BDCA-F882BB2B7615}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
