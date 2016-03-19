@@ -64,7 +64,7 @@ private:
     void reinit();
 
     friend void deal(std::string line, desk& eng, std::istream& in);
-
+    void incorporateTable();
 };
 
 void desk::reinit()
@@ -113,6 +113,24 @@ std::ostream& operator <<(std::ostream& out, const desk& eng)
     return out;
 }
 
+void desk::incorporateTable()
+{
+    changeTurn();
+    std::stack<card> temp;
+    while (!hands_[player_].empty()) {
+        temp.push(hands_[player_].top());
+        hands_[player_].pop();
+    }
+    while (!table_.empty()) {
+        hands_[player_].push(table_.top());
+        table_.pop();
+    }
+    while (!temp.empty()) {
+        hands_[player_].push(temp.top());
+        temp.pop();
+    }
+}
+
 void desk::playToCover(size_t steps)
 {
     while (steps--) {
@@ -137,20 +155,7 @@ void desk::playToCover(size_t steps)
         }
     }
     if (!table_.empty()) {
-        changeTurn();
-        std::stack<card> temp;
-        while (!hands_[player_].empty()) {
-            temp.push(hands_[player_].top());
-            hands_[player_].pop();
-        }
-        while (!table_.empty()) {
-            hands_[player_].push(table_.top());
-            table_.pop();
-        }
-        while(!temp.empty()) {
-            hands_[player_].push(temp.top());
-            temp.pop();
-        }
+        incorporateTable();
         dumpRound();
     }
 }
@@ -173,9 +178,9 @@ std::ostream& operator << (std::ostream& out, std::stack<card> cards)
 
 void desk::dumpRound()
 {
-    std::clog << player_ << ": " << table_ << std::endl;
-    std::clog << "\t" << hands_[0] << std::endl;
-    std::clog << "\t" << hands_[1] << std::endl;
+//    std::clog << player_ << ": " << table_ << std::endl;
+//    std::clog << "\t" << hands_[0] << std::endl;
+//    std::clog << "\t" << hands_[1] << std::endl;
 }
 
 bool desk::step()
