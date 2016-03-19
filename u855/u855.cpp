@@ -17,12 +17,12 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U855 instance;
-	instance();
+    U855 instance;
+    instance();
 }
 
 
