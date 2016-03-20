@@ -87,3 +87,7 @@
 #include "../u740/u740.h"
 #include "../u855/u855.h"
 #include "../u162/u162.h"
+#include "../u119/u119.h"
+#include "../u913/u913.h"
+#include "../u10131/u10131.h"
+#include "../u10010/u10010.h"

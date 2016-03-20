@@ -29,8 +29,8 @@ fibonacci<N>::fibonacci() :
     fib_()
 {
     fib_.reserve(N + 1);
-    fib_.push_back(1);
-    fib_.push_back(1);
+    uint64_t n0[] = { 1, 1 };
+    fib_.assign(n0, n0 + 2);
     std::generate_n(std::back_inserter(fib_), N - 1, [&]() -> uint32_t {
         size_t current = fib_.size();
         return fib_[current - 1] + fib_[current - 2];
