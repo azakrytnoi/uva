@@ -75,11 +75,11 @@ bool solution::lookup(size_t row, size_t col, const std::string& word)
             size_t matched_pos(1);
             for (;
                     matched_pos < word.length()
-                            && !(lookup_row >= nRows_ || lookup_row < 0 || lookup_col >= nCols_ || lookup_col < 0)
-                            && grid_[lookup_row][lookup_col] == word[matched_pos];
+                    && !(lookup_row >= nRows_ || lookup_row < 0 || lookup_col >= nCols_ || lookup_col < 0)
+                    && grid_[lookup_row][lookup_col] == word[matched_pos];
                     matched_pos++,
-                        lookup_row += delta->first,
-                        lookup_col += delta->second) {
+                    lookup_row += delta->first,
+                    lookup_col += delta->second) {
             }
             if (matched_pos == word.length()) {
                 return true;

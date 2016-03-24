@@ -91,3 +91,6 @@
 #include "../u913/u913.h"
 #include "../u10131/u10131.h"
 #include "../u10010/u10010.h"
+#include "../u10235/u10235.h"
+#include "../u147/u147.h"
+#include "../u357/u357.h"
