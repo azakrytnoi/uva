@@ -56,8 +56,10 @@ namespace {
 			dist_.resize(N);
 		}
 
-		friend std::istream& operator >> (std::istream& in, solution& sol);
-		friend std::ostream& operator << (std::ostream& out, solution& sol);
+	    template<size_t NN, size_t MM>
+		friend std::istream& operator >> (std::istream& in, solution<NN,MM>& sol);
+        template<size_t NN, size_t MM>
+		friend std::ostream& operator << (std::ostream& out, solution<NN,MM>& sol);
 
 		solution& operator()();
 
@@ -155,7 +157,8 @@ namespace {
 
 	typedef solution<333, 100000> u11159Solution;
 
-	std::istream& operator >> (std::istream& in, u11159Solution& sol) {
+	template<size_t N, size_t M>
+	std::istream& operator >> (std::istream& in, solution<N,M>& sol) {
 		auto readArray = [&]() { int tmp; in >> tmp; return tmp; };
 		std::cin >> sol.n_;
 		sol.a_.clear();
@@ -170,7 +173,8 @@ namespace {
 		return in;
 	}
 
-	std::ostream& operator << (std::ostream& out, u11159Solution& sol) {
+    template<size_t N, size_t M>
+	std::ostream& operator << (std::ostream& out, solution<N,M>& sol) {
 		std::cout << "Case " << (++sol.caseNo_) << ": " << sol.result_;
 		return out;
 	}
