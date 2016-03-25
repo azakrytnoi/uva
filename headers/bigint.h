@@ -21,6 +21,8 @@ public:
 
     BigInteger& operator = (const BigInteger& rhs);
 
+    const std::vector<uint8_t>& data() const { return data_; }
+
     friend
     std::ostream& operator << (std::ostream& out, const BigInteger& rhs);
 
