@@ -137,8 +137,9 @@ bool solution<N, M>::BFS()
         if (pn_[i] == 0) {
             dist_[i] = 0;
             q_[en++] = i;
-        } else
+        } else {
             dist_[i] = INFINITY;
+        }
     }
     dist_[0] = INFINITY;
     while (b < en) {

@@ -98,3 +98,7 @@
 #include "../u324/u324.h"
 #include "../u11159/u11159.h"
 #include "../u10424/u10424.h"
+#include "../u10252/u10252.h"
+#include "../u484/u484.h"
+#include "../u10161/u10161.h"
+#include "../u10260/u10260.h"
