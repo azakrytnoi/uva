@@ -54,6 +54,8 @@ namespace math {
             return uint32_t(primes_.size());
         }
 
+        uint32_t operator [] (size_t n) const { return primes_[n]; }
+
     private:
         std::bitset<N + 1> sieve_;
         std::vector<uint32_t> primes_;

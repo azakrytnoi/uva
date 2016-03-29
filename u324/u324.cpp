@@ -50,9 +50,6 @@ namespace {
 						cache_[i][digit]++;
 					}
 				});
-				std::ostream_iterator<uint16_t> oit(std::clog, " ");
-				std::copy(cache_[i].begin(), cache_[i].end(), oit);
-				std::clog << " <- " << i << std::endl;
 			}
 		}
 
@@ -75,7 +72,7 @@ namespace {
 			if (idx % 5 == 0) {
 				out << std::endl;
 			}
-			out << "  (" << (idx++) << ")" << std::setw(3) << freq;
+			out << "   (" << (idx++) << ")" << std::setw(5) << freq << " ";
 		});
 		return out;
 	}

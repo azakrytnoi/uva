@@ -76,7 +76,7 @@ namespace math {
 					*it %= 10;
 					if (it + 1 == data_.end()) {
 						data_.push_back(rem);
-						it = data_.end() - 1;
+						break;;
 					}
 					else {
 						*(it + 1) += rem;
