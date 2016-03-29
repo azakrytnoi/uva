@@ -63,7 +63,7 @@ all:    $(MAIN)
 
 $(MAIN): $(OBJS) 
 	$(CC) -shared $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
-	cp $(MAIN) ../lib
+	ln $(MAIN) ../lib/$(MAIN)
 
 # this is a suffix replacement rule for building .o's from .c's
 # it uses automatic variables $<: the name of the prerequisite of
