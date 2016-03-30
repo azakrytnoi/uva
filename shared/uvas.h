@@ -106,3 +106,4 @@
 #include "../u583/u583.h"
 #include "../u623/u623.h"
 #include "../u568/u568.h"
+#include "../u696/u696.h"
