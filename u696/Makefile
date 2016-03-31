@@ -77,7 +77,7 @@ cleanDebug:
 	$(RM) *.o *.out *.orig *.bak *~ $(MAIN)
 
 clean:
-	$(RM) *.o *.out *.orig *.bak *~ $(MAIN)
+	$(RM) *.o *.out *.orig *.bak *~ ../lib/$(MAIN) $(MAIN)
 
 depend: $(SRCS)
 	makedepend $(INCLUDES) $^
