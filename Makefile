@@ -18,3 +18,7 @@ clean:
 	for module in $(MODULES) ; do \
 	 $(MAKE) -C $$module clean ; \
 	done
+
+strip:
+	strip -s -K invoke -x -X -v lib/*
+	strip -s -x -X -v shared/starter
