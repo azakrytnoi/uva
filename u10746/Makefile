@@ -3,7 +3,6 @@
 
 CC = g++
 
-#CFLAGS = -m64 -Wall -O2 -std=c++14
 CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -fPIC $(UCFLAGS)
 
 #
@@ -12,7 +11,6 @@ INCLUDES = -I. -I../headers
 LFLAGS = 
 
 LIBS = 
-#LIBS = -lu1074613 -lu10062 -lu10066 -lu100 -lu10194 -lu10219 -lu10220 -lu10226 -lu10258 -lu10301 -lu10305 \
 
 SRCS = $(wildcard *.cpp)
 
