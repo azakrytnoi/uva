@@ -29,8 +29,10 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
-class checker {
+namespace
+{
+class checker
+{
 public:
     static std::string translate(std::string& source);
 

@@ -27,9 +27,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class solution {
+class solution
+{
     math::sieve<50000> sieve_;
     std::vector<uint32_t> factors_;
     int32_t n_;

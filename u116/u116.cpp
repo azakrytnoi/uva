@@ -14,9 +14,11 @@
 #include <numeric>
 #include <limits>
 
-namespace {
+namespace
+{
 typedef std::vector<std::vector<int>> matrix;
-class solver {
+class solver
+{
     int N_, M_;
     int best_;
     matrix matrix_;
@@ -97,12 +99,20 @@ void solver::solve()
 
 int solver::dp(int row, int col)
 {
-    if (col >= N_) return 0;
-    if (costs_[row][col] != std::numeric_limits<int>::max()) return costs_[row][col];
+    if (col >= N_) {
+        return 0;
+    }
+    if (costs_[row][col] != std::numeric_limits<int>::max()) {
+        return costs_[row][col];
+    }
 
     int next[3] = { row - 1, row, row + 1 };
-    if (row == 0) next[0] = M_ - 1;
-    if (row == M_ - 1) next[2] = 0;
+    if (row == 0) {
+        next[0] = M_ - 1;
+    }
+    if (row == M_ - 1) {
+        next[2] = 0;
+    }
 
     for (int k = 0; k < 3; k++) {
         int val = matrix_[row][col] + dp(next[k], col + 1);

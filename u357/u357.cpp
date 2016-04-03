@@ -25,10 +25,12 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
 template<size_t N>
-class solution {
+class solution
+{
     static std::vector<int> coins_;
     std::vector<int64_t> counts_;
 public:

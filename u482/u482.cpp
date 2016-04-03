@@ -22,7 +22,8 @@ U482::~U482()
 {
 }
 
-namespace {
+namespace
+{
 struct item {
     uint32_t idx;
     std::string value;

@@ -13,7 +13,8 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
+namespace
+{
 int calculate(int full, int extra)
 {
     if (full != 0) {

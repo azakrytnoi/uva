@@ -28,12 +28,15 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
-enum class datatype : char {
+namespace
+{
+enum class datatype : char
+{
     I = 'I', S = 'S'
 };
 
-class table {
+class table
+{
     std::unordered_map<std::string, datatype> meta_;
     std::vector<std::unordered_map<std::string, std::string>> data_;
     std::string name_;
@@ -86,7 +89,8 @@ public:
     }
 };
 
-class database {
+class database
+{
     std::unordered_map<std::string, std::string> columns_;
     std::unordered_map<std::string, std::shared_ptr<table>> tables_;
 
@@ -130,7 +134,8 @@ public:
     }
 };
 
-class query {
+class query
+{
     std::vector<std::string> selector_;
     std::vector<std::unordered_map<std::string, std::string>> resultset_;
     std::vector<std::pair<std::string, bool>> sort_;

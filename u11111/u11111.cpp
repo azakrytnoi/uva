@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class solution {
+class solution
+{
 public:
     solution() : src_()
     {

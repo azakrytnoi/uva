@@ -29,10 +29,12 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
 template<size_t N>
-class solution {
+class solution
+{
 public:
     solution() : primes_()
     {

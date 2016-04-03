@@ -17,8 +17,10 @@ U417::U417()
 {
 }
 
-namespace {
-class solver {
+namespace
+{
+class solver
+{
     std::map<std::string, int> valid_;
 public:
     solver() : valid_()
@@ -33,7 +35,9 @@ public:
             word = work.front();
             work.pop();
             valid_[word] = cnt++;
-            if (word.length() == 5) continue;
+            if (word.length() == 5) {
+                continue;
+            }
             for (char ch = *(--word.end()) + 1; ch <= 'z'; ch++) {
                 work.push(word + ch);
             }

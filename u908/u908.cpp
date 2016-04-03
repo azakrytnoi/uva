@@ -24,7 +24,8 @@ U908::~U908()
 {
 }
 
-namespace math {
+namespace math
+{
 
 template<>
 int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)

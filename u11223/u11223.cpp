@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class morse {
+class morse
+{
 public:
     morse() : code_(), buffer_()
     {

@@ -21,7 +21,8 @@ U558::~U558()
 {
 }
 
-namespace {
+namespace
+{
 struct edge {
     int start, end, weight;
 };
@@ -62,16 +63,18 @@ void U558::operator()()
 
         for (int i = 0; i < n_systems - 1; i++) {
             for (int j = 0; j < n_wormholes; j++) {
-                if (distances[wormholes[j].start] + wormholes[j].weight < distances[wormholes[j].end])
+                if (distances[wormholes[j].start] + wormholes[j].weight < distances[wormholes[j].end]) {
                     distances[wormholes[j].end] = distances[wormholes[j].start] + wormholes[j].weight;
+                }
             }
         }
 
         bool have_negative_cycle = false;
 
         for (int j = 0; !have_negative_cycle && j < n_wormholes; j++) {
-            if (distances[wormholes[j].start] + wormholes[j].weight < distances[wormholes[j].end])
+            if (distances[wormholes[j].start] + wormholes[j].weight < distances[wormholes[j].end]) {
                 have_negative_cycle = true;
+            }
         }
 
         std::cout << (have_negative_cycle ? "possible" : "not possible") << std::endl;

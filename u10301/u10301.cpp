@@ -21,8 +21,10 @@ U10301::U10301()
 {
 }
 
-namespace {
-class ring {
+namespace
+{
+class ring
+{
 public:
     ring() : mX(0.0), mY(0.0), mR(0.0) {}
 

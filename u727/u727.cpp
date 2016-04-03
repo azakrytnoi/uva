@@ -12,7 +12,8 @@
 #include <stack>
 #include <map>
 
-namespace {
+namespace
+{
 std::map<char, int> op_rank;
 
 std::string process(const std::string& input)

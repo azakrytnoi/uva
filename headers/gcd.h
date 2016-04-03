@@ -2,7 +2,8 @@
 
 #include <algorithm>
 
-namespace math {
+namespace math
+{
 
 template<typename T>
 T gcd (T a, T b)

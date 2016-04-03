@@ -27,7 +27,9 @@ void U11854::operator()()
     triangle.resize(3);
     while (std::cin) {
         std::cin >> triangle[0] >> triangle[1] >> triangle[2];
-        if (std::accumulate(triangle.begin(), triangle.end(), 0) == 0) break;
+        if (std::accumulate(triangle.begin(), triangle.end(), 0) == 0) {
+            break;
+        }
         std::sort(triangle.begin(), triangle.end());
         std::cout << (triangle[0] * triangle[0] + triangle[1] * triangle[1] == triangle[2] * triangle[2] ? "right" : "wrong") << std::endl;
     }

@@ -36,8 +36,9 @@ void U11495::operator()()
         std::stringstream in(line);
         int n;
         in >> n;
-        if (n == 0) break;
-        else {
+        if (n == 0) {
+            break;
+        } else {
             util::sort<100000> s(n);
             in >> s;
             std::cout << ((s.do_sort() & 0x01) ? "Marcelo" : "Carlos") << std::endl;

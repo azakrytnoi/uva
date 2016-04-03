@@ -27,9 +27,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class piggler {
+class piggler
+{
 public:
     static void piggle(const std::string& word);
 };

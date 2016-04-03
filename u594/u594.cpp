@@ -19,7 +19,8 @@ U594::~U594()
 {
 }
 
-namespace {
+namespace
+{
 union {
     int32_t numerical;
     unsigned char bytes[4];

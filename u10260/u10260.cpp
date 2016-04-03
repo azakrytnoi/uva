@@ -26,9 +26,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class solution {
+class solution
+{
     static std::unordered_map<char, char> soundex_;
     std::string original_;
 public:

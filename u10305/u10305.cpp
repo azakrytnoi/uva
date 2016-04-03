@@ -14,7 +14,8 @@
 #include <iterator>
 #include <sstream>
 
-namespace {
+namespace
+{
 struct task {
     int id;
     std::vector<int> predessors;
@@ -49,15 +50,21 @@ void U10305::operator()()
         {
             int n, m, t;
             std::cin >> n >> m;
-            if (n == 0 && m == 0) break;
+            if (n == 0 && m == 0) {
+                break;
+            }
             tasks.reserve(n);
             std::generate_n(std::back_inserter(tasks), n, [&]() {
                 return task(int(tasks.size()) + 1);
             });
             while (std::cin >> n >> t) {
-                if (n == 0 && t == 0) break;
+                if (n == 0 && t == 0) {
+                    break;
+                }
                 tasks[t - 1].predessors.push_back(n);
-                if (--m == 0) break;
+                if (--m == 0) {
+                    break;
+                }
             }
         }
         if (std::cin) {

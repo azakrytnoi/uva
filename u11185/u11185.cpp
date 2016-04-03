@@ -15,9 +15,11 @@
 #include <limits>
 #include <string>
 
-namespace {
+namespace
+{
 template<size_t BASE>
-class base_iterator : public std::iterator<std::input_iterator_tag, char> {
+class base_iterator : public std::iterator<std::input_iterator_tag, char>
+{
     int32_t number_;
 
 public:

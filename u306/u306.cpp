@@ -27,8 +27,10 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
-class cipher {
+namespace
+{
+class cipher
+{
     std::vector<int> cipher_;
     std::string buffer_;
 public:

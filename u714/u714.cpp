@@ -18,8 +18,10 @@ U714::U714()
 {
 }
 
-namespace {
-class solver {
+namespace
+{
+class solver
+{
 public:
     solver(int books, int scribers) : books_(books), scribers_(scribers), optimal_(0)
     {
@@ -75,7 +77,9 @@ private:
             if (ok) {
                 return scribers_ + 1;
             }
-            if (pos >= 0) breaks_[pos] = true;
+            if (pos >= 0) {
+                breaks_[pos] = true;
+            }
             ++cnt;
         }
         return cnt;
@@ -86,10 +90,11 @@ private:
         int64_t left = lmin, right = sum;
         while (left < right) {
             int64_t mid = (left + right) >> 1;
-            if (divide(mid) <= scribers_)
+            if (divide(mid) <= scribers_) {
                 right = mid;
-            else
+            } else {
                 left = mid + 1;
+            }
         }
         return right;
     }
@@ -104,8 +109,11 @@ private:
             }
         }
         for (int i = 0; i < books_; ++i) {
-            if (i) out << " " << pages_[i];
-            else out << pages_[i];
+            if (i) {
+                out << " " << pages_[i];
+            } else {
+                out << pages_[i];
+            }
             if (breaks_[i]) {
                 out << " /";
             }

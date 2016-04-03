@@ -26,9 +26,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class coder {
+class coder
+{
     std::vector<std::pair<char, char>> freq_;
 public:
     coder() :

@@ -16,7 +16,8 @@
 #include <tuple>
 #include <iterator>
 
-namespace std {
+namespace std
+{
 ostream& operator << (ostream& out, const tuple<int, int, int>& t)
 {
     out << get<0>(t) << " " << get<1>(t) << " " << get<2>(t);

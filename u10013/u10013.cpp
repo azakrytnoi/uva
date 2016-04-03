@@ -46,7 +46,9 @@ void U10013::operator()()
             }
         }
         auto it = summ.begin();
-        if (*it == 0) ++it;
+        if (*it == 0) {
+            ++it;
+        }
         std::ostream_iterator<char> oit(std::cout, "");
         std::transform(it, summ.end(), oit, [](auto d) -> char { return '0' + d; });
         std::cout << std::endl << std::endl;

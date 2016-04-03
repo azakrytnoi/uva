@@ -20,9 +20,11 @@
 #include <memory>
 #include <iomanip>
 
-namespace {
+namespace
+{
 typedef std::pair<int, int> queen;
-class solver {
+class solver
+{
     int board_[8][8];
     queen queens_[8];
     int max_;
@@ -57,8 +59,12 @@ public:
 bool solver::conflict(int qmax, int row, int col)
 {
     for (int i = 0; i < qmax; i++) {
-        if (queens_[i].first == row || queens_[i].second == col) return true;
-        if (std::abs(queens_[i].first - row) == std::abs(queens_[i].second - col)) return true;
+        if (queens_[i].first == row || queens_[i].second == col) {
+            return true;
+        }
+        if (std::abs(queens_[i].first - row) == std::abs(queens_[i].second - col)) {
+            return true;
+        }
     }
     return false;
 }

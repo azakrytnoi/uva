@@ -14,8 +14,10 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
-class bit_iterator : public std::iterator<std::input_iterator_tag, char> {
+namespace
+{
+class bit_iterator : public std::iterator<std::input_iterator_tag, char>
+{
     uint64_t number_;
     uint16_t& parity_;
 

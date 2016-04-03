@@ -13,9 +13,11 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
+namespace
+{
 template <size_t MAX>
-class fibonacci {
+class fibonacci
+{
     std::vector<uint64_t> fib_;
 
 public:

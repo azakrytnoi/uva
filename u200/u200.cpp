@@ -64,7 +64,9 @@ void U200::operator()()
                         for (size_t i = 1; i < working.size(); ++i) {
                             char prev_ch = working[i - 1][idx];
                             char curr_ch = working[i][idx];
-                            if (prev_ch == curr_ch) continue;
+                            if (prev_ch == curr_ch) {
+                                continue;
+                            }
                             size_t prev_pos, curr_pos;
                             if ((curr_pos = ordering.find(curr_ch)) == std::string::npos) {
                                 const size_t prev_pos = ordering.find(prev_ch);

@@ -16,7 +16,8 @@
 #include <algorithm>
 #include <iterator>
 
-namespace {
+namespace
+{
 typedef std::pair<char, char> card;
 
 bool can(card c1, card c2)
@@ -56,12 +57,16 @@ void U127::operator()()
             if (i >= 3 && can(cards[i].top(), cards[i - 3].top())) {
                 cards[i - 3].push(cards[i].top());
                 cards[i].pop();
-                if (cards[i].empty()) cards.erase(cards.begin() + i);
+                if (cards[i].empty()) {
+                    cards.erase(cards.begin() + i);
+                }
                 i -= 4;
             } else if (i >= 1 && can(cards[i].top(), cards[i - 1].top())) {
                 cards[i - 1].push(cards[i].top());
                 cards[i].pop();
-                if (cards[i].empty()) cards.erase(cards.begin() + i);
+                if (cards[i].empty()) {
+                    cards.erase(cards.begin() + i);
+                }
                 i -= 2;
             }
         }

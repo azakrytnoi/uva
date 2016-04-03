@@ -28,10 +28,12 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
 template<uint32_t N>
-class solution {
+class solution
+{
 public:
     solution() : counts_()
     {
@@ -41,7 +43,9 @@ public:
             uint32_t sum(0);
             for (auto j = sieve.begin() + i; j != sieve.end(); ++j) {
                 sum += *j;
-                if (sum > N) break;
+                if (sum > N) {
+                    break;
+                }
                 ++counts_[sum];
             }
         }

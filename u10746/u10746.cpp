@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 template<size_t N>
-class mcmf {
+class mcmf
+{
     std::vector<int> prev_;
     std::vector<int> last_;
     std::vector<int> to_;

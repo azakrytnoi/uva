@@ -33,10 +33,12 @@ U624::~U624()
 {
 }
 
-namespace {
+namespace
+{
 
 template<size_t N>
-class solver {
+class solver
+{
     std::vector<int> tracks_;
     std::bitset<N> solution_;
     std::bitset<N> current_;

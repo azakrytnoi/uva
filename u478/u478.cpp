@@ -16,7 +16,8 @@
 #include <cmath>
 #include <sstream>
 
-namespace {
+namespace
+{
 typedef std::pair<float_t, float_t> point;
 
 std::istream& operator >> (std::istream& in, point& p)
@@ -30,9 +31,11 @@ float_t distance(const point& p1, const point& p2)
     return std::sqrt((p1.first - p2.first) * (p1.first - p2.first) + (p1.second - p2.second) * (p1.second - p2.second));
 }
 
-class shape {
+class shape
+{
 public:
-    enum class kind : char {
+    enum class kind : char
+    {
         RECTANGLE = 'r', CIRCLE = 'c', TRIANGLE = 't'
     };
     const kind kind_;
@@ -49,7 +52,8 @@ public:
     }
 };
 
-class rectangle : public shape {
+class rectangle : public shape
+{
     point topLeft_;
     point bottomRight_;
 
@@ -64,7 +68,8 @@ public:
     }
 };
 
-class circle : public shape {
+class circle : public shape
+{
     point center_;
     float_t radius_;
 
@@ -78,7 +83,8 @@ public:
     }
 };
 
-class triange : public shape {
+class triange : public shape
+{
     point a_;
     point b_;
     point c_;

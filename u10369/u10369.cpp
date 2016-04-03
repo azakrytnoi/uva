@@ -23,7 +23,8 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
 {
     return sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
@@ -37,7 +38,8 @@ U10369::U10369()
 {
 }
 
-namespace math {
+namespace math
+{
 
 template<>
 double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
@@ -46,7 +48,9 @@ double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
 
     sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
     std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {
-        if (mst_.sets == S) return;
+        if (mst_.sets == S) {
+            return;
+        }
         double cost = line.first;
         auto origin = line.second.first;
         auto destination = line.second.second;

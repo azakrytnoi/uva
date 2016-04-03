@@ -30,7 +30,9 @@ void U100::operator()()
     uint32_t i, j;
     while (std::cin >> i >> j) {
         int start(i), end(j);
-        if (start > end) std::swap(start, end);
+        if (start > end) {
+            std::swap(start, end);
+        }
         std::cout << i << " " << j << " " << cycle_length(start, end, [](uint32_t n) -> uint32_t {
             uint32_t cnt(1);
             while (n != 1)

@@ -3,10 +3,10 @@
 class U10424
 {
 public:
-	static const char * libname()
-	{
-		return "u10424";
-	}
+    static const char * libname()
+    {
+        return "u10424";
+    }
     U10424() {}
 
     void operator()();

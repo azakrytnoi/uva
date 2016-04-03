@@ -27,9 +27,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class coder {
+class coder
+{
 public:
 
     coder() : buffer_() {}

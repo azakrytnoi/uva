@@ -17,11 +17,14 @@
 #include <limits>
 #include <unordered_map>
 
-namespace {
-class palindrome {
+namespace
+{
+class palindrome
+{
     std::unordered_map<char, char> valid_chars_;
 public:
-    enum class kind :int {
+    enum class kind :int
+    {
         NotAtAll = 0, Palindrome = 1, Mirror = 2, MirrorPalindrome = 3
     };
 

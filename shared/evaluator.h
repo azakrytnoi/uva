@@ -18,7 +18,8 @@
 template <typename char_type,
           typename traits = std::char_traits<char_type> >
 class basic_teebuf :
-    public std::basic_streambuf<char_type, traits> {
+    public std::basic_streambuf<char_type, traits>
+{
 public:
     typedef typename traits::int_type int_type;
 
@@ -66,7 +67,8 @@ private:
 
 typedef basic_teebuf<char> teebuf;
 
-class teestream : public std::ostream {
+class teestream : public std::ostream
+{
 public:
     teestream(std::ostream & o1, std::ostream & o2);
 private:
@@ -78,7 +80,8 @@ teestream::teestream(std::ostream & o1, std::ostream & o2)
 {
 }
 
-class uva_wraper {
+class uva_wraper
+{
 public:
     virtual ~uva_wraper() {}
     virtual void operator()() = 0;
@@ -90,7 +93,8 @@ protected:
 };
 
 template<typename Tp>
-class evaluator : public uva_wraper {
+class evaluator : public uva_wraper
+{
 public:
     explicit evaluator(const std::string& source) : source_(source)
     {
@@ -109,9 +113,11 @@ private:
     std::string source_;
 };
 
-namespace {
+namespace
+{
 template <typename T>
-class io_wrapper {
+class io_wrapper
+{
 public:
     explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
     {

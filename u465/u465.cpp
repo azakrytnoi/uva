@@ -27,8 +27,10 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
-class checker {
+namespace
+{
+class checker
+{
 public:
     static std::vector<std::string> check(const std::string& source);
 };

@@ -50,10 +50,30 @@ void __cdecl invoke()
 	instance();
 }
 
+namespace
+{
+
+class solution
+{
+public:
+    solution();
+
+    friend std::istream& operator >>(std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+
+    operator bool() const;
+
+private:
+};
+
+}
 
 void U$1::operator()()
 {
-
+    solution sol;
+    while (std::cin >> sol && sol) {
+        std::cout << sol << std::endl;
+    }
 }
 EOF
 

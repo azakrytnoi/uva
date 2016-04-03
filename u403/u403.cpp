@@ -17,8 +17,10 @@
 #include <iomanip>
 #include <regex>
 
-namespace {
-class driver {
+namespace
+{
+class driver
+{
     char page_[60][60];
     std::regex parser_;
     std::smatch match_;

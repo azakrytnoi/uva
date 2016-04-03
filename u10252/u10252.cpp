@@ -25,9 +25,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class solution {
+class solution
+{
     std::string a_;
     std::string b_;
     std::string result_;

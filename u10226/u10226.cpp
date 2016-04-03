@@ -14,7 +14,8 @@
 #include <iterator>
 #include <algorithm>
 
-namespace {
+namespace
+{
 std::ostream& operator << (std::ostream& out, const std::pair<std::string, double>& pair)
 {
     out << pair.first << " " << std::fixed << std::setprecision(4) << pair.second;

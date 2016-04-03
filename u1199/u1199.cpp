@@ -26,9 +26,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 template<size_t N>
-class solver {
+class solver
+{
     int nFloors_;
     int max_;
     int upmost_;

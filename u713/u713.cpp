@@ -19,8 +19,10 @@ U713::U713()
 {
 }
 
-namespace {
-class solver {
+namespace
+{
+class solver
+{
     std::string a_, b_;
 public:
 

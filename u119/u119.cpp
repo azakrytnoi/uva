@@ -26,9 +26,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class group {
+class group
+{
     std::vector<std::pair<std::string, int32_t>> names_;
 public:
     group() : names_() {}

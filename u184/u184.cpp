@@ -26,12 +26,14 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
 typedef std::pair<uint16_t, uint16_t> point2d;
 typedef std::pair<point2d, point2d> line2d;
 
-class solution {
+class solution
+{
 public:
     solution() :
         points_(), lines_()
@@ -45,8 +47,9 @@ public:
         while (in) {
             point2d point;
             in >> point.first >> point.second;
-            if (point.first == 0 && point.second == 0)
+            if (point.first == 0 && point.second == 0) {
                 break;
+            }
             sol.points_.push_back(point);
         }
         std::sort(sol.points_.begin(), sol.points_.end(), [](auto p1, auto p2) {

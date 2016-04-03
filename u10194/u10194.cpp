@@ -17,8 +17,10 @@
 #include <cstdlib>
 #include <memory>
 
-namespace {
-class team {
+namespace
+{
+class team
+{
 public:
     explicit team(std::string& name) : points_(0), wins_(0), ties_(0), losses_(0), goals_scored_(0), goals_against_(0), name_(name) {}
 

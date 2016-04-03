@@ -15,7 +15,8 @@
 #include <map>
 #include <string>
 
-namespace {
+namespace
+{
 std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p)
 {
     out << int(p.first) << " " << p.second;

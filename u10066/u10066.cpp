@@ -13,8 +13,10 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
-class solver {
+namespace
+{
+class solver
+{
     std::vector<int> a_;
     std::vector<int> b_;
     int seq_;

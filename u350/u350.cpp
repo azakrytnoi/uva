@@ -26,7 +26,8 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
 struct linear {
     uint32_t Z, I, M;
@@ -36,7 +37,8 @@ struct linear {
     }
 };
 
-class solution {
+class solution
+{
     linear lcm_;
     uint32_t count_;
     uint32_t L;

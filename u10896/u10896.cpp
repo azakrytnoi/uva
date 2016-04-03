@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class decoder {
+class decoder
+{
     std::map<size_t, std::list<std::string>> words_;
 
 public:

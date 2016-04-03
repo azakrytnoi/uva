@@ -1,6 +1,7 @@
 #pragma once
 
-class U10896 {
+class U10896
+{
 public:
     static const char * libname()
     {

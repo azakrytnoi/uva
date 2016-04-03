@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class solution {
+class solution
+{
 public:
     solution() :
         fb_(), cipher_(), cipher_text_(), text_len_(0)

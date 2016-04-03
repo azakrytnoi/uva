@@ -25,9 +25,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class calculator {
+class calculator
+{
 public:
     static int summ(const std::string& str);
 
@@ -35,7 +37,8 @@ private:
     static int summ(int part);
 };
 
-class solution {
+class solution
+{
     double grade_;
 public:
 

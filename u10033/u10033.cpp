@@ -26,25 +26,30 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class computer {
+class computer
+{
     std::vector<uint16_t> registers_;
     std::vector<uint16_t> ram_;
     uint16_t pc_ = 0;
     bool running_ = false;
     static const uint16_t MODULO = 1000;
 public:
-    computer() :registers_(), ram_() {
+    computer() :registers_(), ram_()
+    {
         registers_.reserve(10);
         ram_.reserve(1000);
     }
 
-    operator bool () const {
+    operator bool () const
+    {
         return running_;
     }
 
-    friend std::istream& operator >> (std::istream& in, computer& comp) {
+    friend std::istream& operator >> (std::istream& in, computer& comp)
+    {
         comp.reset();
         std::string line;
         auto current = comp.ram_.begin();
@@ -58,7 +63,8 @@ public:
     void step();
 
 private:
-    void reset () {
+    void reset ()
+    {
         registers_.clear();
         registers_.resize(registers_.capacity());
         ram_.clear();
@@ -67,72 +73,86 @@ private:
         running_ = true;
     }
 
-    inline void halt() {
+    inline void halt()
+    {
         running_ = false;
     }
 
-    inline void condJump(uint8_t d, uint8_t s) {
+    inline void condJump(uint8_t d, uint8_t s)
+    {
         if (registers_[s] != 0) {
             pc_ = registers_[d];
         }
     }
 
-    inline void setRegisterConstant(uint8_t d, uint8_t n) {
+    inline void setRegisterConstant(uint8_t d, uint8_t n)
+    {
         registers_[d] = n;
     }
 
-    inline void addRegisterConstant(uint8_t d, uint8_t n) {
+    inline void addRegisterConstant(uint8_t d, uint8_t n)
+    {
         uint16_t temp = registers_[d] + n;
         registers_[d] = temp % MODULO;
     }
 
-    inline void multiplyRegisterConstant (uint8_t d, uint8_t n) {
+    inline void multiplyRegisterConstant (uint8_t d, uint8_t n)
+    {
         uint16_t temp = registers_[d] * n;
         registers_[d] = temp % MODULO;
     }
 
-    inline void setRegisterRegister(uint8_t d, uint8_t s) {
+    inline void setRegisterRegister(uint8_t d, uint8_t s)
+    {
         registers_[d] = registers_[s];
     }
 
-    inline void addRegisterRegister(uint8_t d, uint8_t s) {
+    inline void addRegisterRegister(uint8_t d, uint8_t s)
+    {
         uint16_t temp = registers_[d] + registers_[s];
         registers_[d] = temp % MODULO;
     }
 
-    inline void multiplyRegisterRegister(uint8_t d, uint8_t s) {
+    inline void multiplyRegisterRegister(uint8_t d, uint8_t s)
+    {
         uint16_t temp = registers_[d] * registers_[s];
         registers_[d] = temp % MODULO;
     }
 
-    inline void setRegisterRam(uint8_t d, uint8_t a) {
+    inline void setRegisterRam(uint8_t d, uint8_t a)
+    {
         registers_[d] = ram_[registers_[a]];
     }
 
-    inline void setRamRegister(uint8_t s, uint8_t a) {
+    inline void setRamRegister(uint8_t s, uint8_t a)
+    {
         ram_[registers_[a]] = registers_[s];
     }
 
 };
 
-class solution {
+class solution
+{
     computer comp_;
     uint32_t steps_ = 0;
 public:
     solution() : comp_() {}
 
-    friend std::istream& operator >> (std::istream& in, solution& sol) {
+    friend std::istream& operator >> (std::istream& in, solution& sol)
+    {
         in >> sol.comp_;
         sol.steps_ = 0;
         return in;
     }
 
-    friend std::ostream& operator << (std::ostream& out, const solution& sol) {
+    friend std::ostream& operator << (std::ostream& out, const solution& sol)
+    {
         out << sol.steps_ << std::endl;
         return out;
     }
 
-    solution& operator () () {
+    solution& operator () ()
+    {
         while (comp_) {
             steps_++;
             comp_.step();
@@ -141,7 +161,8 @@ public:
     }
 };
 
-void computer::step() {
+void computer::step()
+{
     if (running_) {
         uint16_t instruction = ram_[pc_++];
         uint8_t code = instruction / 100;

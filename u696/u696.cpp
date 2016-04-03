@@ -25,9 +25,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class solution {
+class solution
+{
     uint32_t knights_;
     uint32_t n_;
     uint32_t m_;

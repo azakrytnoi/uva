@@ -29,10 +29,12 @@ void __cdecl invoke()
 #undef INFINITY
 #endif // INFINITY
 
-namespace {
+namespace
+{
 
 template<size_t N, size_t M>
-class solution {
+class solution
+{
     int n_, m_;
     std::vector<int> a_;
     std::vector<int> b_;

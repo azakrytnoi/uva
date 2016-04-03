@@ -28,9 +28,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace {
+namespace
+{
 
-class coder {
+class coder
+{
     std::map<std::string, char> code_;
     std::string message_;
 public:

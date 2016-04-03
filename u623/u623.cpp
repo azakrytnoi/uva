@@ -27,9 +27,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class solution {
+class solution
+{
     math::BigInteger int_;
     uint32_t n_;
 public:

@@ -13,8 +13,10 @@
 #include <algorithm>
 #include <iterator>
 
-namespace {
-class node {
+namespace
+{
+class node
+{
 public:
     node() : id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
     node(const node& rhs) = delete;

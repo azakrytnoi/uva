@@ -25,9 +25,11 @@ void __cdecl invoke()
     instance();
 }
 
-namespace  {
+namespace
+{
 
-class coder {
+class coder
+{
 public:
     static char decode(const std::string& line);
 

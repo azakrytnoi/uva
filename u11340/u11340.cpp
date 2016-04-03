@@ -52,7 +52,9 @@ void U11340::operator()()
             std::getline(std::cin, line);
             std::for_each(line.begin(), line.end(), [&](char ch) {
                 auto it = prices.find(ch);
-                if (it != prices.end()) price += it->second;
+                if (it != prices.end()) {
+                    price += it->second;
+                }
             });
         }
         std::cout << std::fixed << std::setprecision(2) << (price / 100.0) << '$' << std::endl;

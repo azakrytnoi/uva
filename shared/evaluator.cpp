@@ -16,7 +16,8 @@
 #include <algorithm>
 #include <exception>
 
-namespace {
+namespace
+{
 std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
 
 template<class... Ts> struct populate {};
