@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <deque>
+#include <sstream>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
