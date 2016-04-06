@@ -83,4 +83,4 @@ evaluator.o: ../u350/u350.h ../u583/u583.h ../u623/u623.h ../u568/u568.h
 evaluator.o: ../u696/u696.h ../u10033/u10033.h ../u706/u706.h
 evaluator.o: ../u10142/u10142.h ../u10189/u10189.h ../u12709/u12709.h
 evaluator.o: ../u10267/u10267.h ../u10196/u10196.h ../u10137/u10137.h
-evaluator.o: ../u10038/u10038.h
+evaluator.o: ../u10038/u10038.h ../u10315/u10315.h
