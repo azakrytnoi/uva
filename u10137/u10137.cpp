@@ -60,7 +60,7 @@ public:
                 }
             });
             sol.change_ = std::min(negative, positive);
-            if (sol.change_ == 0){
+            if (sol.change_ == 0) {
                 sol.change_ = std::ceil(std::max(negative, positive) / 2.0);
             }
         }

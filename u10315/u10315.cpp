@@ -81,43 +81,37 @@ class hand
 {
     std::vector<card> hand_;
     hand_value value_;
-    card_value high_;
+    std::vector<std::pair<card_value, int>> distribution_;
 public:
-    hand () : hand_(), value_(hand_value::HighCard), high_(card_value::_2)
+    hand () : hand_(), value_(hand_value::HighCard), distribution_()
     {
+        distribution_.reserve(5);
         hand_.reserve(5);
     }
 
     friend std::istream& operator >> (std::istream& in, hand& h);
 
-    friend std::ostream& operator << (std::ostream& out, const hand& h);
+//    friend std::ostream& operator << (std::ostream& out, const hand& h);
 
     friend bool operator == (const hand& left, const hand& right)
     {
         if (left.value_ == right.value_) {
-            if (left.high_ == right.high_) {
-                switch (left.value_) {
-                case hand_value::HighCard:
-                    if (card_value(left.hand_[1].first) == card_value(right.hand_[1].first)) {
-                        if (card_value(left.hand_[2].first) == card_value(right.hand_[2].first)) {
-                            if (card_value(left.hand_[3].first) == card_value(right.hand_[3].first)) {
-                                return card_value(left.hand_[4].first) == card_value(right.hand_[4].first);
-                            }
-                        }
+            switch (left.value_) {
+            case hand_value::Flush:
+            case hand_value::StraightFlush:
+                for(size_t idx = 0; idx < left.hand_.size(); idx++) {
+                    if (card_value(left.hand_[idx].first) != card_value(right.hand_[idx].first)) {
+                        return false;
                     }
-                case hand_value::Pair:
-                    if (card_value(left.hand_[2].first) == card_value(right.hand_[2].first)) {
-                        if (card_value(left.hand_[3].first) == card_value(right.hand_[3].first)) {
-                            return card_value(left.hand_[4].first) == card_value(right.hand_[4].first);
-                        }
-                    }
-                case hand_value::TwoPairs:
-                    if (card_value(left.hand_[2].first) == card_value(right.hand_[2].first)) {
-                        return card_value(left.hand_[4].first) == card_value(right.hand_[4].first);
-                    }
-                default:
-                    break;
                 }
+                return true;
+            default:
+                for(size_t idx = 0; idx < left.distribution_.size(); idx++) {
+                    if (left.distribution_[idx].first != right.distribution_[idx].first) {
+                        return false;
+                    }
+                }
+                return true;
             }
         }
         return false;
@@ -126,7 +120,23 @@ public:
     friend bool operator < (const hand& left, const hand& right)
     {
         if (left.value_ == right.value_) {
-            return left.high_ < right.high_;
+            switch (left.value_) {
+            case hand_value::Flush:
+            case hand_value::StraightFlush:
+                for(size_t idx = 0; idx < left.hand_.size(); idx++) {
+                    if (card_value(left.hand_[idx].first) != card_value(right.hand_[idx].first)) {
+                        return card_value(left.hand_[idx].first) < card_value(right.hand_[idx].first);
+                    }
+                }
+                return true;
+            default:
+                for(size_t idx = 0; idx < left.distribution_.size(); idx++) {
+                    if (left.distribution_[idx].first != right.distribution_[idx].first) {
+                        return left.distribution_[idx].first < right.distribution_[idx].first;
+                    }
+                }
+                return true;
+            }
         }
         return left.value_ < right.value_;
     }
@@ -153,7 +163,7 @@ public:
 
     friend std::ostream& operator <<(std::ostream& out, const solution& sol)
     {
-        out << sol.black_ << " vs " << sol.white_ << std::endl;
+//        out << sol.black_ << " vs " << sol.white_ << std::endl;
         if (sol.black_ == sol.white_) {
             out << "Tie.";
         } else if (sol.black_ < sol.white_) {
@@ -181,68 +191,101 @@ std::istream& operator >> (std::istream& in, hand& h)
     return in;
 }
 
+/*
+const std::string name (const hand_value val)
+{
+    switch (val) {
+    case hand_value::HighCard:
+        return "High Card";
+    case hand_value::Pair:
+        return "Pair";
+    case hand_value::TwoPairs:
+        return "Two Pairs";
+    case hand_value::ThreeOfAKind:
+        return "Three Of A Kind";
+    case hand_value::Straight:
+        return "Straight";
+    case hand_value::Flush:
+        return "Flush";
+    case hand_value::FullHouse:
+        return "Full House";
+    case hand_value::FourOfAKind:
+        return "Four Of A Kind";
+    case hand_value::StraightFlush:
+        return "Straight Flush";
+    default:
+        return "undefined";
+    }
+}
+
 std::ostream& operator << (std::ostream& out, const hand& h)
 {
+    out << "[" << name(h.value_) << "]: ";
     std::for_each(h.hand_.begin(), h.hand_.end(), [&](auto c) {
         out << c.first << c.second << ' ';
     });
     return out;
 }
+*/
 
 void hand::evaluate()
 {
-    bool same_suit = (hand_[0].second == hand_[1].second) && (hand_[1].second == hand_[2].second) && (hand_[2].second == hand_[3].second) && (hand_[3].second == hand_[4].second);
-    std::sort(hand_.begin(), hand_.end(), [](auto c1, auto c2) {
-        return card_value(c2.first) < card_value(c1.first);
-    });
-    high_ = card_value(hand_[0].first);
-    value_ = hand_value::HighCard;
-    std::map<card_value, int> temp;
-    std::for_each(hand_.begin(), hand_.end(), [&](auto c) {
-        temp[card_value(c.first)]++;
-    });
-    std::vector<std::pair<card_value, int>> distribution(temp.begin(), temp.end());
-    std::sort(distribution.begin(), distribution.end(), [](auto d1, auto d2) {
-        return d2.second < d1.second;
-    });
-    switch (distribution[0].second) {
-    case 4:
-        value_ = hand_value::FourOfAKind;
-        high_ = distribution[0].first;
-        break;
-    case 3:
-        if (distribution.size() == 2) {
-            value_ = hand_value::FullHouse;
+    bool same_suit = (hand_[0].second == hand_[1].second)
+            && (hand_[1].second == hand_[2].second)
+            && (hand_[2].second == hand_[3].second)
+            && (hand_[3].second == hand_[4].second);
+    bool straight (is_straight());
+    if (same_suit) {
+        if (straight) {
+            value_ = hand_value::StraightFlush;
         } else {
-            value_ = hand_value::ThreeOfAKind;
-        }
-        high_ = distribution[0].first;
-        break;
-    case 2:
-        if (distribution[1].second == 2) {
-            value_ = hand_value::TwoPairs;
-            high_ = std::max(distribution[0].first, distribution[1].first);
-        } else {
-            value_ = hand_value::Pair;
-            high_ = distribution[0].first;
-        }
-        break;
-    default:
-        if (is_straight()) {
-            if (same_suit) {
-                value_ = hand_value::StraightFlush;
-            } else {
-                value_ = hand_value::Straight;
-            }
-        } else if (same_suit) {
             value_ = hand_value::Flush;
         }
-        break;
+    } else {
+        value_ = hand_value::HighCard;
+        std::map<card_value, int> temp;
+        std::for_each(hand_.begin(), hand_.end(), [&](auto c) {
+            temp[card_value(c.first)]++;
+        });
+        distribution_.assign(temp.begin(), temp.end());
+        std::sort(distribution_.begin(), distribution_.end(), [](auto d1, auto d2) {
+            if (d2.second == d1.second) {
+                return d2.first < d1.first;
+            }
+            return d2.second < d1.second;
+        });
+        switch (distribution_[0].second) {
+        case 4:
+            value_ = hand_value::FourOfAKind;
+            break;
+        case 3:
+            if (distribution_.size() == 2) {
+                value_ = hand_value::FullHouse;
+            } else {
+                value_ = hand_value::ThreeOfAKind;
+            }
+            break;
+        case 2:
+            if (distribution_[1].second == 2) {
+                value_ = hand_value::TwoPairs;
+            } else {
+                value_ = hand_value::Pair;
+            }
+            break;
+        default:
+            if (straight) {
+                value_ = hand_value::Straight;
+            }
+            break;
+        }
     }
 }
 
 bool hand::is_straight()
 {
+    std::sort(hand_.begin(), hand_.end(), [](auto c1, auto c2) {
+        return card_value(c2.first) < card_value(c1.first);
+    });
     bool straight (true);
     for (size_t i = 1; straight && i <= 4; i++) {
         if (card_value(hand_[i - 1].first) - card_value(hand_[i].first) != 1) {
@@ -258,6 +301,6 @@ void U10315::operator()()
 {
     solution sol;
     while (std::cin >> sol) {
-        std::clog << sol << std::endl;
+        std::cout << sol << std::endl;
     }
 }
