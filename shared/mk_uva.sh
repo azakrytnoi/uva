@@ -63,6 +63,8 @@ public:
 
     operator bool() const;
 
+    solution& operator()();
+
 private:
 };
 
@@ -72,7 +74,7 @@ void U$1::operator()()
 {
     solution sol;
     while (std::cin >> sol && sol) {
-        std::cout << sol << std::endl;
+        std::cout << sol() << std::endl;
     }
 }
 EOF
