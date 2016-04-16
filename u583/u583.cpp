@@ -46,7 +46,7 @@ public:
 
     friend std::ostream& operator << (std::ostream& out, const solution& sol);
 
-    operator bool ()
+    operator bool () const
     {
         return n_ != 0;
     }
@@ -68,7 +68,7 @@ solution& solution::operator ()()
 {
     uint32_t num = std::abs(n_);
     factors_.clear();
-    auto factor = sieve_.begin();
+    auto factor = sieve_.begin() + 1;
 
     while((*factor) * (*factor) <= num) {
         while(num % (*factor) == 0) {
@@ -85,7 +85,7 @@ solution& solution::operator ()()
 
 }  // namespace
 
-void U583::operator()()
+void U583::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

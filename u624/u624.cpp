@@ -92,7 +92,7 @@ public:
 };
 }
 
-void U624::operator()()
+void U624::operator()() const
 {
     std::string line;
     solver<20> s;

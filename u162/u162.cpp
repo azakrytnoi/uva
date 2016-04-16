@@ -226,7 +226,7 @@ void desk::coverFace()
 }
 }  // namespace
 
-void U162::operator()()
+void U162::operator()() const
 {
     desk eng;
     while ((std::cin >> eng) && eng) {

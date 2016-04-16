@@ -9,7 +9,7 @@ public:
     }
     U10301();
 
-    void operator ()();
+    void operator ()() const;
 
 protected:
 

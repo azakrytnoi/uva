@@ -74,7 +74,7 @@ decoder& decoder::operator <<(const std::string& source)
 
 }  // namespace
 
-void U11541::operator()()
+void U11541::operator()() const
 {
     int N;
     std::cin >> N;

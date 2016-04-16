@@ -72,7 +72,7 @@ void __cdecl invoke()
     U401 instance;
     instance();
 }
-void U401::operator()()
+void U401::operator()() const
 {
     std::string line;
     palindrome p;

@@ -63,7 +63,7 @@ void __cdecl invoke()
     U417 instance;
     instance();
 }
-void U417::operator()()
+void U417::operator()() const
 {
     solver s;
     std::string word;

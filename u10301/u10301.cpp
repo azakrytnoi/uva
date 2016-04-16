@@ -61,7 +61,7 @@ void __cdecl invoke()
     U10301 instance;
     instance();
 }
-void U10301::operator()()
+void U10301::operator()() const
 {
     int16_t n_rings;
     std::vector<ring> rings;

@@ -42,7 +42,7 @@ public:
             return cache_[x];
         }
 
-        long y = x % 2 ? 3 * x + 1 : x / 2;
+        long y = (x % 2) ? 3 * x + 1 : x / 2;
         if (y == 1) {
             return 1;
         }
@@ -87,7 +87,7 @@ private:
 };
 }  // namespace
 
-void U371::operator()()
+void U371::operator()() const
 {
     solution sol;
     uint32_t l, h;

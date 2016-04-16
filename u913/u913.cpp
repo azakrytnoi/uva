@@ -26,7 +26,7 @@ void __cdecl invoke()
 }
 
 
-void U913::operator()()
+void U913::operator()() const
 {
     uint64_t num;
     while (std::cin >> num) {

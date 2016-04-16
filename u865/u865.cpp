@@ -33,7 +33,7 @@ class coder
 {
 public:
 
-    coder(std::ostream& out) :
+    explicit coder(std::ostream& out) :
         plain_(), subst_(), out_(out)
     {
     }
@@ -73,7 +73,7 @@ std::string& coder::encode(std::string& source)
 
 }  // namespace
 
-void U865::operator()()
+void U865::operator()() const
 {
     int N;
     std::string line;

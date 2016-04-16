@@ -21,7 +21,7 @@ void __cdecl invoke()
     U11388 instance;
     instance();
 }
-void U11388::operator()()
+void U11388::operator()() const
 {
     int N;
     std::cin >> N;

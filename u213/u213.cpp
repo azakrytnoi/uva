@@ -119,7 +119,7 @@ private:
 
 }  // namespace
 
-void U213::operator()()
+void U213::operator()() const
 {
     coder coder;
     while (std::cin) {

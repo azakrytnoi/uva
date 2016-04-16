@@ -74,8 +74,8 @@ std::istream& operator >> (std::istream& in, solution& sol)
                 }
                 last = next;
             }
-            sol.jolly_ = sol.jolly_ & std::accumulate(sol.set_.begin(), sol.set_.end(), true, [](auto i, auto next) {
-                return i & next;
+            sol.jolly_ = sol.jolly_ && std::accumulate(sol.set_.begin(), sol.set_.end(), true, [](auto i, auto next) {
+                return i && next;
             });
         }
     }
@@ -84,7 +84,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
 
 }
 
-void U10038::operator()()
+void U10038::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

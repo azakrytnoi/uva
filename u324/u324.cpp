@@ -71,7 +71,7 @@ std::ostream& operator << (std::ostream& out, solution& sol)
     out << sol.number_ << "! --";
     uint16_t idx(0);
     std::for_each(sol.cache_[sol.number_].begin(), sol.cache_[sol.number_].end(), [&](auto freq) {
-        if (idx % 5 == 0) {
+        if ((idx % 5) == 0) {
             out << std::endl;
         }
         out << "   (" << (idx++) << ")" << std::setw(5) << freq << " ";
@@ -80,7 +80,7 @@ std::ostream& operator << (std::ostream& out, solution& sol)
 }
 }  // namespace
 
-void U324::operator()()
+void U324::operator()() const
 {
     solution sol;
     uint16_t n;

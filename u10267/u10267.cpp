@@ -107,7 +107,7 @@ private:
 class solution
 {
 public:
-    solution(std::ostream& out) : out_(out), command_(), device_() {}
+    explicit solution(std::ostream& out) : out_(out), command_(), device_() {}
 
     friend std::istream& operator >>(std::istream& in, solution& sol)
     {
@@ -214,7 +214,7 @@ std::ostream& operator << (std::ostream& out, const device& dev)
 }
 }
 
-void U10267::operator()()
+void U10267::operator()() const
 {
     solution sol(std::cout);
     while (std::cin >> sol && sol) {}

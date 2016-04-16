@@ -26,7 +26,7 @@ void __cdecl invoke()
     U146 instance;
     instance();
 }
-void U146::operator()()
+void U146::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {

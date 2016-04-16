@@ -108,7 +108,7 @@ void __cdecl invoke()
     U167 instance;
     instance();
 }
-void U167::operator()()
+void U167::operator()() const
 {
     int N;
     std::cin >> N;

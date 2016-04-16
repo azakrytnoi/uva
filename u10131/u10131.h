@@ -9,7 +9,7 @@ public:
     }
     U10131() {}
 
-    void operator()();
+    void operator()() const;
 };
 
 #ifdef POPULATE_CACHE

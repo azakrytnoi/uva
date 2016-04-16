@@ -9,7 +9,7 @@ public:
     }
     U10369();
 
-    void operator()();
+    void operator()() const;
 };
 #ifdef POPULATE_CACHE
 populate <U10369> pu10369;

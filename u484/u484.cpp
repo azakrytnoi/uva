@@ -26,7 +26,7 @@ void __cdecl invoke()
     instance();
 }
 
-void U484::operator()()
+void U484::operator()() const
 {
     std::vector<int> v;
     std::map<int, int> freq;

@@ -8,7 +8,7 @@ public:
         return "u417";
     }
     U417();
-    void operator()();
+    void operator()() const;
 };
 #ifdef POPULATE_CACHE
 populate <U417> pu417;

@@ -67,7 +67,7 @@ void __cdecl invoke()
     U10931 instance;
     instance();
 }
-void U10931::operator()()
+void U10931::operator()() const
 {
     std::string binary;
     binary.reserve(65);

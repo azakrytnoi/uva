@@ -31,7 +31,7 @@ void __cdecl invoke()
     U156 instance;
     instance();
 }
-void U156::operator()()
+void U156::operator()() const
 {
     std::string word;
     std::map<std::string, std::pair<std::string, int>> dictionary;

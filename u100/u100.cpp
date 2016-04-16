@@ -25,7 +25,7 @@ U100::U100()
 {
 }
 
-void U100::operator()()
+void U100::operator()() const
 {
     uint32_t i, j;
     while (std::cin >> i >> j) {

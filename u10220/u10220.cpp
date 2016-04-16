@@ -29,7 +29,7 @@ void __cdecl invoke()
     U10220 instance;
     instance();
 }
-void U10220::operator()()
+void U10220::operator()() const
 {
     std::vector<int32_t> sums;
     sums.reserve(1001);

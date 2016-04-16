@@ -25,7 +25,7 @@ void __cdecl invoke()
     U11636 instance;
     instance();
 }
-void U11636::operator()()
+void U11636::operator()() const
 {
     int lines;
     int case_no(0);

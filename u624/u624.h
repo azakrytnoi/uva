@@ -8,7 +8,7 @@ public:
     }
     U624();
     ~U624();
-    void operator()();
+    void operator()() const;
 };
 
 #ifdef POPULATE_CACHE

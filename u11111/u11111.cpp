@@ -89,7 +89,7 @@ solution::operator bool() const
 
 }
 
-void U11111::operator()()
+void U11111::operator()() const
 {
     solution sol;
     std::string line;

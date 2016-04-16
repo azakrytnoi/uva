@@ -81,7 +81,7 @@ namespace
 	};
 }
 
-void U10137::operator()()
+void U10137::operator()() const
 {
 	solution sol;
 	while (std::cin >> sol && sol) {

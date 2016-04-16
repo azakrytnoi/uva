@@ -31,7 +31,7 @@ namespace
 
 struct linear {
     uint32_t Z, I, M;
-    uint32_t operator ()(uint32_t n)
+    uint32_t operator ()(uint32_t n) const
     {
         return (Z * n + I) % M;
     }
@@ -52,12 +52,12 @@ public:
         return in;
     }
 
-    operator bool ()
+    operator bool () const
     {
         return !(lcm_.Z == 0 && lcm_.I == 0 && lcm_.M == 0 && L == 0);
     }
 
-    operator uint32_t ()
+    operator uint32_t () const
     {
         return count_;
     }
@@ -80,7 +80,7 @@ public:
 
 }  // namespace
 
-void U350::operator()()
+void U350::operator()() const
 {
     solution sol;
     uint32_t caseNo(0);

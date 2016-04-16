@@ -83,7 +83,7 @@ std::ostream& operator << (std::ostream& out, const solution& sol)
 
 }  // namespace
 
-void U11385::operator()()
+void U11385::operator()() const
 {
     solution sol;
     int N;

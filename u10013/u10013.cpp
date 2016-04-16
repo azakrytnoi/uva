@@ -22,7 +22,7 @@ void __cdecl invoke()
     U10013 instance;
     instance();
 }
-void U10013::operator()()
+void U10013::operator()() const
 {
     int N;
     std::cin >> N;

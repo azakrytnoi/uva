@@ -26,7 +26,7 @@ void __cdecl invoke()
 }
 
 
-void U458::operator()()
+void U458::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line) && !line.empty()) {

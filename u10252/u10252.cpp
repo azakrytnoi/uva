@@ -74,7 +74,7 @@ public:
 
 }  // namespace
 
-void U10252::operator()()
+void U10252::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

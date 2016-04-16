@@ -104,7 +104,7 @@ private:
 };
 }
 
-void U1199::operator()()
+void U1199::operator()() const
 {
     int N;
     while ((std::cin >> N) && N) {

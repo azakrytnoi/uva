@@ -107,7 +107,7 @@ std::ostream& operator << (std::ostream& out, const solution& sol)
 
 }  // namespace
 
-void U10424::operator()()
+void U10424::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

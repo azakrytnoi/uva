@@ -109,7 +109,7 @@ std::ostream& operator <<(std::ostream& out, const solution& sol)
 
 }  // namespace
 
-void U706::operator()()
+void U706::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

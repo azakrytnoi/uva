@@ -21,7 +21,7 @@ void __cdecl invoke()
     U11854 instance;
     instance();
 }
-void U11854::operator()()
+void U11854::operator()() const
 {
     std::vector<uint32_t> triangle;
     triangle.resize(3);

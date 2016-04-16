@@ -23,7 +23,7 @@ void __cdecl invoke()
     U11308 instance;
     instance();
 }
-void U11308::operator()()
+void U11308::operator()() const
 {
     int N;
     std::cin >> N;
@@ -70,7 +70,7 @@ void U11308::operator()()
                 }
                 return r1.second < r2.second;
             });
-            std::for_each(requests.begin(), requests.end(), [](auto r) {
+            std::for_each(requests.begin(), requests.end(), [](const std::pair<std::string, int>& r) {
                 std::cout << r.first << std::endl;
             });
         }

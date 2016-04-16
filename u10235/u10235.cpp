@@ -61,7 +61,7 @@ private:
 
 }  // namespace
 
-void U10235::operator()()
+void U10235::operator()() const
 {
     solution<1000001> sol;
     std::string line;

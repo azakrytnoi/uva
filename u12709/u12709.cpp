@@ -81,7 +81,7 @@ solution& solution::operator ()()
 
 }
 
-void U12709::operator()()
+void U12709::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

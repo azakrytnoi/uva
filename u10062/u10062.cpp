@@ -34,7 +34,7 @@ void __cdecl invoke()
     U10062 instance;
     instance();
 }
-void U10062::operator()()
+void U10062::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {

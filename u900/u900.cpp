@@ -49,7 +49,7 @@ void __cdecl invoke()
     U900 instance;
     instance();
 }
-void U900::operator()()
+void U900::operator()() const
 {
     int N;
     fibonacci<50> fib;

@@ -24,7 +24,7 @@ void __cdecl invoke()
     U673 instance;
     instance();
 }
-void U673::operator()()
+void U673::operator()() const
 {
     std::string line;
     int N;

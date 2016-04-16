@@ -38,7 +38,7 @@ void __cdecl invoke()
     U127 instance;
     instance();
 }
-void U127::operator()()
+void U127::operator()() const
 {
     std::vector <std::stack <card> > cards;
     std::string word;

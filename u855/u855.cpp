@@ -26,7 +26,7 @@ void __cdecl invoke()
 }
 
 
-void U855::operator()()
+void U855::operator()() const
 {
     int N;
     std::cin >> N;

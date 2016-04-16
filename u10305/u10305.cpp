@@ -42,7 +42,7 @@ void __cdecl invoke()
     U10305 instance;
     instance();
 }
-void U10305::operator()()
+void U10305::operator()() const
 {
     std::ostream_iterator<int> oit(std::cout, " ");
     while (std::cin) {

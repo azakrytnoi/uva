@@ -143,7 +143,7 @@ solution& solution::operator ()()
 
 #include <fstream>
 
-void U10142::operator()()
+void U10142::operator()() const
 {
     solution sol;
     int N;

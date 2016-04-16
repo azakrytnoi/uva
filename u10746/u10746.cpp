@@ -163,7 +163,7 @@ private:
 };
 }  // namespace
 
-void U10746::operator()()
+void U10746::operator()() const
 {
     int n, m;
     mcmf<21 * 2> solver;

@@ -30,7 +30,7 @@ struct item {
 
     item() : idx(0), value() {}
 
-    bool operator < (const item& other)
+    bool operator < (const item& other) const
     {
         return idx < other.idx;
     }

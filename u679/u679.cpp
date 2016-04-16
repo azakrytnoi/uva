@@ -74,7 +74,7 @@ void __cdecl invoke()
     U679 instance;
     instance();
 }
-void U679::operator()()
+void U679::operator()() const
 {
     int n_cases;
     while ((std::cin >> n_cases) && (n_cases > 0)) {

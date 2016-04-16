@@ -126,7 +126,7 @@ morse & morse::operator>>(std::string & output)
 
 }
 
-void U11223::operator()()
+void U11223::operator()() const
 {
     int N;
     std::cin >> N;

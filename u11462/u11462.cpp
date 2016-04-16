@@ -29,7 +29,7 @@ void __cdecl invoke()
     U11462 instance;
     instance();
 }
-void U11462::operator()()
+void U11462::operator()() const
 {
     std::vector<uint64_t> data;
     uint64_t N;

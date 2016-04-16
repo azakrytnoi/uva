@@ -84,7 +84,7 @@ decoder& decoder::operator <<(const std::vector<std::string>& input)
 }
 }  // namespace
 
-void U10851::operator()()
+void U10851::operator()() const
 {
     int N;
     std::cin >> N;

@@ -26,7 +26,7 @@ void __cdecl invoke()
     U10219 instance;
     instance();
 }
-void U10219::operator()()
+void U10219::operator()() const
 {
     LL n, k;
 

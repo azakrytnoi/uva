@@ -60,7 +60,7 @@ void __cdecl invoke()
     U628 instance;
     instance();
 }
-void U628::operator()()
+void U628::operator()() const
 {
     std::vector<std::string> words;
     std::string line;

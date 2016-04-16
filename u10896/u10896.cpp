@@ -65,7 +65,7 @@ public:
     }
 
 private:
-    char distance (char a, char b)
+    static char distance (char a, char b)
     {
         char res = a - b;
         if (res < 0) {
@@ -77,7 +77,7 @@ private:
 
 }  // namespace
 
-void U10896::operator()()
+void U10896::operator()() const
 {
     int N;
     std::cin >> N;

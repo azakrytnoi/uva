@@ -103,7 +103,7 @@ inline void solution::calculate(int n, int m)
 
 }
 
-void U10189::operator()()
+void U10189::operator()() const
 {
     solution sol;
     uint32_t nField(0);

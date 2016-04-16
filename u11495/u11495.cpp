@@ -29,7 +29,7 @@ void __cdecl invoke()
     U11495 instance;
     instance();
 }
-void U11495::operator()()
+void U11495::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {

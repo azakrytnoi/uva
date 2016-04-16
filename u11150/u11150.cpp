@@ -34,7 +34,7 @@ void __cdecl invoke()
     U11150 instance;
     instance();
 }
-void U11150::operator()()
+void U11150::operator()() const
 {
     int N;
     while (std::cin >> N) {

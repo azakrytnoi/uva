@@ -61,7 +61,7 @@ private:
 };
 }
 
-void U1210::operator()()
+void U1210::operator()() const
 {
     solution<10000> sol;
     uint32_t n;

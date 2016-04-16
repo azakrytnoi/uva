@@ -80,7 +80,7 @@ std::string operator << (baudot& eng, const std::string& input)
 }
 }  // namespace
 
-void U740::operator()()
+void U740::operator()() const
 {
     baudot eng;
     std::cin >> eng;

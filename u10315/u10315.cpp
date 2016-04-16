@@ -18,6 +18,10 @@
 #include <map>
 #include <utility>
 
+#ifndef _CONST_FUN
+#define _CONST_FUN constexpr
+#endif
+
 extern "C" {
 	UVA_API_EXPORT void __cdecl invoke();
 }
@@ -61,6 +65,8 @@ namespace {
 	}
 }
 
+#ifdef _WIN32
+
 bool operator < (const card_value& c1, const card_value& c2)
 {
 	return to_number(c1) < to_number(c2);
@@ -81,8 +87,20 @@ namespace std {
 	};
 }
 
+#endif
+
 namespace
 {
+
+#ifndef _WIN32
+
+    bool operator < (const card_value c1, const card_value c2)
+    {
+        return to_number(c1) < to_number(c2);
+    }
+
+#endif
+
 	typedef std::pair<char, char> card;
 
 	enum class hand_value
@@ -320,7 +338,7 @@ namespace
 	}
 }
 
-void U10315::operator()()
+void U10315::operator()() const
 {
 	solution sol;
 	while (std::cin >> sol) {

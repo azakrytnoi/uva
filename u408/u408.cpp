@@ -30,7 +30,7 @@ void __cdecl invoke()
     U408 instance;
     instance();
 }
-void U408::operator()()
+void U408::operator()() const
 {
     uint32_t step, mod;
     while (std::cin >> step >> mod) {

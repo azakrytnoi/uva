@@ -91,7 +91,7 @@ private:
     bool wKingCheck_;
     bool bKingCheck_;
 
-    bool traceDanger(const std::pair<int, int>& kPosition, int direction);
+    bool traceDanger(const std::pair<int, int>& kPosition, int direction) const;
 };
 
 solution& solution::operator ()()
@@ -120,7 +120,7 @@ std::ostream& operator <<(std::ostream& out, const solution& sol)
     return out;
 }
 
-bool solution::traceDanger(const std::pair<int, int>& kPosition, const int direction)
+bool solution::traceDanger(const std::pair<int, int>& kPosition, const int direction) const
 {
     bool check(false);
     std::pair<int, int> checkPosition;
@@ -293,7 +293,7 @@ bool solution::traceDanger(const std::pair<int, int>& kPosition, const int direc
 
 }
 
-void U10196::operator()()
+void U10196::operator()() const
 {
     solution sol;
     int gameNo(0);

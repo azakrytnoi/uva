@@ -51,7 +51,7 @@ void checker::print(std::ostream& out, T& data)
     std::reverse(data.begin(), data.end());
     std::stringstream temp;
     std::for_each(data.begin(), data.end(), [&](auto digit) {
-        pos = ((++pos) % 3);
+        pos = ((pos + 1) % 3);
         temp << digit;
         if (pos == 0) {
             temp << ',';
@@ -117,7 +117,7 @@ void checker::process_carry(std::vector<int>& data, int base_to)
 }
 }
 
-void U619::operator()()
+void U619::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line) && line != "*") {

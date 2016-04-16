@@ -81,7 +81,7 @@ void __cdecl invoke()
     U957 instance;
     instance();
 }
-void U957::operator()()
+void U957::operator()() const
 {
     solver s;
     while (std::cin >> s) {

@@ -23,7 +23,7 @@ void __cdecl invoke()
     U11461 instance;
     instance();
 }
-void U11461::operator()()
+void U11461::operator()() const
 {
     std::vector<uint32_t> squares;
     squares.reserve(400);

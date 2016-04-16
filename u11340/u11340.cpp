@@ -29,7 +29,7 @@ void __cdecl invoke()
     U11340 instance;
     instance();
 }
-void U11340::operator()()
+void U11340::operator()() const
 {
     int N;
     std::cin >> N;

@@ -28,7 +28,7 @@ void __cdecl invoke()
     U544 instance;
     instance();
 }
-void U544::operator()()
+void U544::operator()() const
 {
     int n, r;
     int cases = 0;

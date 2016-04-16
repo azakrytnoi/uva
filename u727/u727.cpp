@@ -97,7 +97,7 @@ void __cdecl invoke()
     U727 instance;
     instance();
 }
-void U727::operator()()
+void U727::operator()() const
 {
     {
         op_rank['/'] = 3;
