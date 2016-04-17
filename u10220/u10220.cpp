@@ -45,6 +45,7 @@ void U10220::operator()() const
             {
                 remainder += dig * digit;
                 dig = remainder % 10;
+                // cppcheck-suppress unreadVariable
                 remainder /= 10;
             });
             return std::accumulate(digits.begin(), digits.end(), 0);

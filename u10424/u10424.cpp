@@ -83,6 +83,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
         {
             return ::isalpha(ch);
         });
+        // cppcheck-suppress returnReference
         return res;
     };
     std::string a (readString());

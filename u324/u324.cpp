@@ -71,6 +71,7 @@ std::ostream& operator << (std::ostream& out, solution& sol)
     out << sol.number_ << "! --";
     uint16_t idx(0);
     std::for_each(sol.cache_[sol.number_].begin(), sol.cache_[sol.number_].end(), [&](auto freq) {
+        // cppcheck-suppress knownConditionTrueFalse
         if ((idx % 5) == 0) {
             out << std::endl;
         }

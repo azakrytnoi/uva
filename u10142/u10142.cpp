@@ -63,6 +63,7 @@ std::istream& operator >>(std::istream& in, solution& sol)
     std::getline(in, line);
     std::generate_n(std::back_inserter(sol.candidates_), n, [&]() -> std::string {
         std::getline(in, line);
+        // cppcheck-suppress returnReference
         return line;
     });
     while (std::getline(in, line) && !line.empty()) {

@@ -53,6 +53,7 @@ void checker::print(std::ostream& out, T& data)
     std::for_each(data.begin(), data.end(), [&](auto digit) {
         pos = ((pos + 1) % 3);
         temp << digit;
+        // cppcheck-suppress knownConditionTrueFalse
         if (pos == 0) {
             temp << ',';
         }

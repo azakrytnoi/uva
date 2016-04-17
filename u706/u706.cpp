@@ -87,6 +87,7 @@ std::ostream& operator <<(std::ostream& out, const solution& sol)
         out << sol.digits_[idx][row][2];
     };
     auto printScaledLine = [&]() {
+        // cppcheck-suppress unreadVariable
         col = 0;
         std::for_each(sol.number_.begin(), sol.number_.end(), printLine);
         out << std::endl;

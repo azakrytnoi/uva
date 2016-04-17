@@ -62,7 +62,7 @@ private:
     bool step();
     void changeTurn();
 
-    void dumpRound();
+    static void dumpRound();
 
     void reinit();
 
