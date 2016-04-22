@@ -34,7 +34,7 @@ public:
         primes_.shrink_to_fit();
     }
 
-    bool is_primme(uint64_t n) const
+    bool is_prime(uint64_t n) const
     {
         if (n < N) {
             return sieve_[n];

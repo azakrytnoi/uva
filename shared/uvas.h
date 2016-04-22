@@ -126,3 +126,4 @@
 #include "../u406/u406.h"
 #include "../u11547/u11547.h"
 #include "../u10141/u10141.h"
+#include "../u10006/u10006.h"
