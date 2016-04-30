@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u908.o: u908.h ../headers/kruskal.h ../headers/disjointSet.h
+u908.o: u908.h
