@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10258.h"
@@ -30,6 +33,14 @@ U10258::~U10258()
 {
 }
 
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10258 instance;
+    instance();
+}
 void U10258::operator()()
 {
     int N;

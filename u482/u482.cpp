@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u482.h"
@@ -27,13 +30,21 @@ struct item {
 
     item() : idx(0), value() {}
 
-    bool operator < (const item& other)
+    bool operator < (const item& other) const
     {
         return idx < other.idx;
     }
 };
 }
 
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U482 instance;
+    instance();
+}
 void U482::operator()()
 {
     uint32_t n;

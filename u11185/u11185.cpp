@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11185.h"
@@ -12,9 +15,11 @@
 #include <limits>
 #include <string>
 
-namespace {
+namespace
+{
 template<size_t BASE>
-class base_iterator : public std::iterator<std::input_iterator_tag, char> {
+class base_iterator : public std::iterator<std::input_iterator_tag, char>
+{
     int32_t number_;
 
 public:
@@ -38,17 +43,26 @@ public:
     }
     bool operator==(const base_iterator& rhs)
     {
-        return number_==rhs.number_;
+        return number_ == rhs.number_;
     }
     bool operator!=(const base_iterator& rhs)
     {
-        return number_!=rhs.number_;
+        return number_ != rhs.number_;
     }
-
 };
 }
 
-void U11185::operator()()
+U11185::U11185() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11185 instance;
+    instance();
+}
+void U11185::operator()() const
 {
     typedef base_iterator<3> base3_iterator;
     int32_t N;
@@ -59,7 +73,7 @@ void U11185::operator()()
         if (N != 0) {
             base3_iterator bit(N);
             translated.clear();
-            std::copy (bit, bend, std::back_inserter(translated));
+            std::copy(bit, bend, std::back_inserter(translated));
             std::reverse(translated.begin(), translated.end());
             std::cout << translated << std::endl;
         } else {

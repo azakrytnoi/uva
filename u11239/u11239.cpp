@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11239.h"
@@ -13,7 +16,15 @@
 #include <set>
 #include <iterator>
 
-void U11239::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11239 instance;
+    instance();
+}
+void U11239::operator()() const
 {
     std::string line;
     std::map<std::string, std::string> students;
@@ -38,7 +49,7 @@ void U11239::operator()()
                     }
                 }
             }
-        } while(std::getline(std::cin, line) && line[0] != '1');
+        } while (std::getline(std::cin, line) && line[0] != '1');
         std::vector<std::pair<std::string, size_t>> result;
         result.reserve(projects.size());
         std::transform(projects.begin(), projects.end(), std::back_inserter(result), [](auto item) -> std::pair<std::string, size_t> {
@@ -51,7 +62,7 @@ void U11239::operator()()
             }
             return i1.second > i2.second;
         });
-        std::for_each(result.begin(), result.end(), [](auto item) {
+        std::for_each(result.begin(), result.end(), [](const std::pair<std::string, size_t>& item) {
             std::cout << item.first << " " << item.second << std::endl;
         });
         std::cout << std::endl;

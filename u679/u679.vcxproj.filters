@@ -20,6 +20,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\shared\u679.txt" />
+    <Text Include="u679.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="u679.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

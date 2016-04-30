@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10305.h"
@@ -11,7 +14,8 @@
 #include <iterator>
 #include <sstream>
 
-namespace {
+namespace
+{
 struct task {
     int id;
     std::vector<int> predessors;
@@ -20,19 +24,25 @@ struct task {
     task() : id(0), predessors(), executed(false) {}
     explicit task(int id) : id(id), predessors(), executed(false) {}
 };
-
 }
 
 U10305::U10305()
 {
 }
 
-
 U10305::~U10305()
 {
 }
 
-void U10305::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10305 instance;
+    instance();
+}
+void U10305::operator()() const
 {
     std::ostream_iterator<int> oit(std::cout, " ");
     while (std::cin) {
@@ -40,15 +50,21 @@ void U10305::operator()()
         {
             int n, m, t;
             std::cin >> n >> m;
-            if (n == 0 && m == 0) break;
+            if (n == 0 && m == 0) {
+                break;
+            }
             tasks.reserve(n);
             std::generate_n(std::back_inserter(tasks), n, [&]() {
                 return task(int(tasks.size()) + 1);
             });
             while (std::cin >> n >> t) {
-                if (n == 0 && t == 0) break;
+                if (n == 0 && t == 0) {
+                    break;
+                }
                 tasks[t - 1].predessors.push_back(n);
-                if (--m == 0) break;
+                if (--m == 0) {
+                    break;
+                }
             }
         }
         if (std::cin) {
@@ -69,7 +85,8 @@ void U10305::operator()()
                 current.clear();
                 std::for_each(tasks.begin(), tasks.end(), [&](task& t) {
                     if (!t.executed) {
-                        if (std::accumulate(t.predessors.begin(), t.predessors.end(), true, [&](bool val, int idx) -> bool { return val & tasks[idx - 1].executed; })) {
+                        if (std::accumulate(t.predessors.begin(), t.predessors.end(), true,
+                                            [&](bool val, int idx) -> bool { return val & tasks[idx - 1].executed; })) {
                             current.push_back(t.id);
                         }
                     }

@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u167.h"
@@ -17,9 +20,11 @@
 #include <memory>
 #include <iomanip>
 
-namespace {
+namespace
+{
 typedef std::pair<int, int> queen;
-class solver {
+class solver
+{
     int board_[8][8];
     queen queens_[8];
     int max_;
@@ -29,7 +34,7 @@ class solver {
     bool conflict(int qmax, int row, int col);
 
 public:
-    solver () : max_(0)
+    solver() : max_(0)
     {
         reinit();
     }
@@ -39,7 +44,7 @@ public:
     {
         s.reinit();
         std::for_each(s.board_, s.board_ + 8, [&](auto row) {
-            std::generate_n(row, 8, [&]() -> int { int c; in >> c; return c;});
+            std::generate_n(row, 8, [&]() -> int { int c; in >> c; return c; });
         });
         return in;
     }
@@ -53,9 +58,13 @@ public:
 
 bool solver::conflict(int qmax, int row, int col)
 {
-    for(int i = 0; i < qmax; i++) {
-        if(queens_[i].first == row || queens_[i].second == col) return true;
-        if(std::abs(queens_[i].first - row) == std::abs(queens_[i].second - col)) return true;
+    for (int i = 0; i < qmax; i++) {
+        if (queens_[i].first == row || queens_[i].second == col) {
+            return true;
+        }
+        if (std::abs(queens_[i].first - row) == std::abs(queens_[i].second - col)) {
+            return true;
+        }
     }
     return false;
 }
@@ -63,24 +72,24 @@ bool solver::conflict(int qmax, int row, int col)
 void solver::reinit()
 {
     max_ = 0;
-    std::for_each (board_, board_ + 8, [](auto row) {
+    std::for_each(board_, board_ + 8, [](auto row) {
         std::fill_n(row, 8, 0);
     });
 }
 
 void solver::traverse(int current)
 {
-    if(current == 8) {
+    if (current == 8) {
         int total = 0;
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             total += board_[queens_[i].first][queens_[i].second];
         }
         max_ = std::max(total, max_);
         return;
     }
 
-    for(int row = 0; row < 8; row++) {
-        if(!conflict(current, row, current)) {
+    for (int row = 0; row < 8; row++) {
+        if (!conflict(current, row, current)) {
             queens_[current].first = row;
             queens_[current].second = current;
             traverse(current + 1);
@@ -89,7 +98,17 @@ void solver::traverse(int current)
 }
 }
 
-void U167::operator()()
+U167::U167() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U167 instance;
+    instance();
+}
+void U167::operator()() const
 {
     int N;
     std::cin >> N;

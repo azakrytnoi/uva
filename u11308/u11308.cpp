@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11308.h"
@@ -12,7 +15,15 @@
 #include <sstream>
 #include <cctype>
 
-void U11308::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11308 instance;
+    instance();
+}
+void U11308::operator()() const
 {
     int N;
     std::cin >> N;
@@ -25,7 +36,7 @@ void U11308::operator()()
         std::getline(std::cin, backery);
         int n_stock, n_recipes, budget;
         std::cin >> n_stock >> n_recipes >> budget;
-        while(n_stock--) {
+        while (n_stock--) {
             int price;
             std::cin >> line >> price;
             stock[line] = price;
@@ -59,7 +70,7 @@ void U11308::operator()()
                 }
                 return r1.second < r2.second;
             });
-            std::for_each (requests.begin(), requests.end(), [](auto r) {
+            std::for_each(requests.begin(), requests.end(), [](const std::pair<std::string, int>& r) {
                 std::cout << r.first << std::endl;
             });
         }

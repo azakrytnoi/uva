@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u400.h"
@@ -14,7 +17,17 @@
 #include <iomanip>
 #include <ios>
 
-void U400::operator()()
+U400::U400() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U400 instance;
+    instance();
+}
+void U400::operator()() const
 {
     uint32_t N;
     std::vector<std::string> names;
@@ -32,11 +45,11 @@ void U400::operator()()
             return line;
         });
         std::sort(names.begin(), names.end());
-        size_t ncolumns (std::max(60 / longest, size_t(1)));
-        while ((ncolumns -1) * (longest + 2) + longest > 60) {
+        size_t ncolumns(std::max(60 / longest, size_t(1)));
+        while ((ncolumns - 1) * (longest + 2) + longest > 60) {
             ncolumns--;
         }
-        size_t nrows (names.size() / ncolumns);
+        size_t nrows(names.size() / ncolumns);
         if (nrows * ncolumns < names.size()) {
             nrows++;
         }

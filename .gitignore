@@ -71,6 +71,13 @@ artifacts/
 *.bak
 *.so
 *.depend
+*.cbp
+*.layout
+*.workspace
+*.gcda
+.project
+.cproject
+.settings
 
 # Chutzpah Test files
 _Chutzpah*
@@ -217,3 +224,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 uva.VC.opendb
 *.txt.out
+/lib/

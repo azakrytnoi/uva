@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u116.h"
@@ -11,9 +14,11 @@
 #include <numeric>
 #include <limits>
 
-namespace {
+namespace
+{
 typedef std::vector<std::vector<int>> matrix;
-class solver {
+class solver
+{
     int N_, M_;
     int best_;
     matrix matrix_;
@@ -62,9 +67,9 @@ public:
     friend
     std::ostream& operator << (std::ostream& out, const solver& s)
     {
-        std::ostream_iterator<int> oit (out, " ");
+        std::ostream_iterator<int> oit(out, " ");
         std::copy(s.trace_.begin(), s.trace_.end(), oit);
-        out << std:: endl << s.best_;
+        out << std::endl << s.best_;
         return out;
     }
 
@@ -77,7 +82,7 @@ void solver::solve()
      * DP problem, relation is the minimum cost length to current cell from
      * cell to left and cell to above left.
      */
-    int row (0);
+    int row(0);
     for (int i = 0; i < M_; i++) {
         dp(i, 0);
         if (costs_[i][0] < best_) {
@@ -94,12 +99,20 @@ void solver::solve()
 
 int solver::dp(int row, int col)
 {
-    if (col >= N_) return 0;
-    if (costs_[row][col] != std::numeric_limits<int>::max()) return costs_[row][col];
+    if (col >= N_) {
+        return 0;
+    }
+    if (costs_[row][col] != std::numeric_limits<int>::max()) {
+        return costs_[row][col];
+    }
 
     int next[3] = { row - 1, row, row + 1 };
-    if (row == 0) next[0] = M_ - 1;
-    if (row == M_ - 1) next[2] = 0;
+    if (row == 0) {
+        next[0] = M_ - 1;
+    }
+    if (row == M_ - 1) {
+        next[2] = 0;
+    }
 
     for (int k = 0; k < 3; k++) {
         int val = matrix_[row][col] + dp(next[k], col + 1);
@@ -114,10 +127,20 @@ int solver::dp(int row, int col)
 }
 }
 
-void U116::operator()()
+U116::U116() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U116 instance;
+    instance();
+}
+void U116::operator()() const
 {
     solver s;
-    while(std::cin >> s) {
+    while (std::cin >> s) {
         s.solve();
         std::cout << s << std::endl;
     }

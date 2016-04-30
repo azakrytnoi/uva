@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u401.h"
@@ -14,15 +17,18 @@
 #include <limits>
 #include <unordered_map>
 
-namespace {
-class palindrome {
+namespace
+{
+class palindrome
+{
     std::unordered_map<char, char> valid_chars_;
 public:
-    enum class kind :int {
+    enum class kind :int
+    {
         NotAtAll = 0, Palindrome = 1, Mirror = 2, MirrorPalindrome = 3
     };
 
-    palindrome () : valid_chars_({
+    palindrome() : valid_chars_({
         {'A','A'},{'M','M'},{'Y','Y'},
         /*{'B',0},{'N', 0},*/{'Z','5'},
         /*{'C',0},*/{'O','O'},{'1','1'},
@@ -38,13 +44,12 @@ public:
     }) {}
 
     kind check(const std::string& source);
-
 };
 
 palindrome::kind palindrome::check(const std::string& source)
 {
     int result = int(kind::NotAtAll);
-    std::string working (source);
+    std::string working(source);
     std::reverse(working.begin(), working.end());
     if (working == source) {
         result |= int(kind::Palindrome);
@@ -55,10 +60,19 @@ palindrome::kind palindrome::check(const std::string& source)
     }
     return kind(result);
 }
-
 }
 
-void U401::operator()()
+U401::U401() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U401 instance;
+    instance();
+}
+void U401::operator()() const
 {
     std::string line;
     palindrome p;

@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u957.h"
@@ -49,7 +52,7 @@ public:
         max_ = std::numeric_limits<int>::min();
         for (auto it = solver::elections_.begin(); it != solver::elections_.end(); ++it) {
             auto istart = it;
-            auto iend = std::upper_bound(it, solver::elections_.end(), *(it) + years_ - 1);
+            auto iend = std::upper_bound(it, solver::elections_.end(), *(it)+years_ - 1);
             if ((iend - istart) > max_) {
                 max_ = (iend - istart);
                 start_ = istart;
@@ -70,7 +73,15 @@ private:
 std::vector<int> solver::elections_;
 }
 
-void U957::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U957 instance;
+    instance();
+}
+void U957::operator()() const
 {
     solver s;
     while (std::cin >> s) {

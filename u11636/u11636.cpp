@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11636.h"
@@ -10,12 +13,19 @@ U11636::U11636()
 {
 }
 
-
 U11636::~U11636()
 {
 }
 
-void U11636::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11636 instance;
+    instance();
+}
+void U11636::operator()() const
 {
     int lines;
     int case_no(0);

@@ -9,10 +9,15 @@
 #include <sstream>
 #include <typeinfo>
 #include <chrono>
+#include <memory>
+
+#ifndef _WIN32
+#define __cdecl
+#endif
 
 template <typename char_type,
           typename traits = std::char_traits<char_type> >
-class basic_teebuf:
+class basic_teebuf :
     public std::basic_streambuf<char_type, traits>
 {
 public:
@@ -24,6 +29,8 @@ public:
         , sb2(sb2)
     {
     }
+
+    virtual ~basic_teebuf() {}
 
     basic_teebuf(const basic_teebuf& rhs) = delete;
     basic_teebuf& operator = (const basic_teebuf& rhs) = delete;
@@ -60,8 +67,6 @@ private:
 
 typedef basic_teebuf<char> teebuf;
 
-
-
 class teestream : public std::ostream
 {
 public:
@@ -75,18 +80,23 @@ teestream::teestream(std::ostream & o1, std::ostream & o2)
 {
 }
 
-class wraper
+class uva_wraper
 {
 public:
-    virtual ~wraper() {}
+    virtual ~uva_wraper() {}
     virtual void operator()() = 0;
+
+protected:
+    typedef void(__cdecl *invoker)();
+
+    invoker prepare(const std::string& baseName);
 };
 
 template<typename Tp>
-class evaluator : public wraper
+class evaluator : public uva_wraper
 {
 public:
-    explicit evaluator(const std::string& source) : source_(source), tp_()
+    explicit evaluator(const std::string& source) : source_(source)
     {
     }
 
@@ -101,7 +111,6 @@ public:
 
 private:
     std::string source_;
-    Tp tp_;
 };
 
 namespace
@@ -126,22 +135,24 @@ private:
     T& stream_;
     std::streambuf* streambuf_;
 };
-
 }
 
 template<typename Tp>
 void evaluator<Tp>::operator()()
 {
-    std::cout << typeid(Tp).name() << ": << " << source_ << std::endl;
+    std::string tp_name(typeid(Tp).name());
+    tp_name = tp_name.substr(tp_name.find('U'));
+    std::cout << tp_name << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
     uint64_t elapsed(0);
     std::stringstream out;
     {
-        io_wrapper<std::ostream> wrap_in (std::cout, out.rdbuf());
-        io_wrapper<std::istream> wrap_out (std::cin, in.rdbuf());
+        invoker fnc = prepare(Tp::libname());
+        io_wrapper<std::ostream> wrap_in(std::cout, out.rdbuf());
+        io_wrapper<std::istream> wrap_out(std::cin, in.rdbuf());
         {
             std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
-            tp_();
+            fnc();
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
         }
     }

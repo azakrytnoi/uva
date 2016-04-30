@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u594.h"
@@ -31,7 +34,15 @@ union {
 } item;
 }
 
-void U594::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U594 instance;
+    instance();
+}
+void U594::operator()() const
 {
     while (std::cin >> item.numerical) {
         std::cout << item.numerical << " converts to ";

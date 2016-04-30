@@ -38,7 +38,6 @@ public:
         return in;
     }
 
-
 private:
     typedef std::list<int>::iterator iterator;
     int n_;
@@ -91,5 +90,4 @@ inline void sort<MAX>::merge(iterator start, iterator middle, iterator end)
         }
     }
 }
-
 }
