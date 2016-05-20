@@ -119,12 +119,9 @@
   <ItemGroup>
     <Text Include="u10258.txt" />
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <ClInclude Include="u10258.h" />
   </ItemGroup>
->>>>>>> release/Enough_for_now
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
