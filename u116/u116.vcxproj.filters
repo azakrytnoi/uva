@@ -22,4 +22,9 @@
   <ItemGroup>
     <Text Include="..\shared\u116.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="u116.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>

@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u679.h"
@@ -12,11 +15,10 @@
 
 namespace
 {
-
 class node
 {
 public:
-    node(): id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
+    node() : id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
     node(const node& rhs) = delete;
 
     node& operator = (const node& rhs) = delete;
@@ -58,14 +60,21 @@ private:
 };
 
 int node::id_gen;
-
 }
 
 U679::U679()
 {
 }
 
-void U679::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U679 instance;
+    instance();
+}
+void U679::operator()() const
 {
     int n_cases;
     while ((std::cin >> n_cases) && (n_cases > 0)) {
@@ -88,7 +97,7 @@ void U679::operator()()
             for (int i = 1; i <= I; ++i) {
                 current = root;
                 node * next = current;
-                while(next != nullptr) {
+                while (next != nullptr) {
                     current = next;
                     next = current->traverse();
                 }

@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10062.h"
@@ -12,7 +15,8 @@
 #include <map>
 #include <string>
 
-namespace {
+namespace
+{
 std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p)
 {
     out << int(p.first) << " " << p.second;
@@ -20,7 +24,17 @@ std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p
 }
 }
 
-void U10062::operator()()
+U10062::U10062() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10062 instance;
+    instance();
+}
+void U10062::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {
@@ -36,8 +50,8 @@ void U10062::operator()()
             }
             return p1.second < p2.second;
         });
-//        std::ostream_iterator<std::pair<char, uint16_t>> oit(std::cout, "\n");
-//        std::copy(result.begin(), result.end(), oit);
+        //        std::ostream_iterator<std::pair<char, uint16_t>> oit(std::cout, "\n");
+        //        std::copy(result.begin(), result.end(), oit);
         std::for_each(result.begin(), result.end(), [](const std::pair<char, uint16_t>& p) {
             std::cout << p << std::endl;
         });

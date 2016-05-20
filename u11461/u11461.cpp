@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11461.h"
@@ -10,11 +13,21 @@
 #include <iterator>
 #include <numeric>
 
-void U11461::operator()()
+U11461::U11461() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11461 instance;
+    instance();
+}
+void U11461::operator()() const
 {
     std::vector<uint32_t> squares;
     squares.reserve(400);
-    for(uint32_t i = 0; i * i <= 100000; ++i) {
+    for (uint32_t i = 0; i * i <= 100000; ++i) {
         squares.push_back(i * i);
     }
     uint32_t a, b;

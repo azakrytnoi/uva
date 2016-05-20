@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u127.h"
@@ -21,14 +24,21 @@ bool can(card c1, card c2)
 {
     return (c1.first == c2.first || c1.second == c2.second);
 }
-
 }
 
 U127::U127()
 {
 }
 
-void U127::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U127 instance;
+    instance();
+}
+void U127::operator()() const
 {
     std::vector <std::stack <card> > cards;
     std::string word;
@@ -47,12 +57,16 @@ void U127::operator()()
             if (i >= 3 && can(cards[i].top(), cards[i - 3].top())) {
                 cards[i - 3].push(cards[i].top());
                 cards[i].pop();
-                if (cards[i].empty()) cards.erase(cards.begin() + i);
+                if (cards[i].empty()) {
+                    cards.erase(cards.begin() + i);
+                }
                 i -= 4;
             } else if (i >= 1 && can(cards[i].top(), cards[i - 1].top())) {
                 cards[i - 1].push(cards[i].top());
                 cards[i].pop();
-                if (cards[i].empty()) cards.erase(cards.begin() + i);
+                if (cards[i].empty()) {
+                    cards.erase(cards.begin() + i);
+                }
                 i -= 2;
             }
         }

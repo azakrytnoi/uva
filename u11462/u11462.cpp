@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11462.h"
@@ -14,12 +17,19 @@ U11462::U11462()
 {
 }
 
-
 U11462::~U11462()
 {
 }
 
-void U11462::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11462 instance;
+    instance();
+}
+void U11462::operator()() const
 {
     std::vector<uint64_t> data;
     uint64_t N;

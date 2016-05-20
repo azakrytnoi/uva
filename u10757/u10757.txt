@@ -1,0 +1,25 @@
+1
+
+2
+AccountInfo 4 3
+Account I
+LastName S
+FirstName S
+Balance I
+1 Ivanov Petr 2500
+2 Petrov Ivan 2000
+3 Ivanov Ivan 3000
+AccountTransfers 3 4
+From I
+To I
+Amount I
+1 2 1000
+2 3 2000
+3 1 3000
+2 1 10
+SELECT LastName, FirstName, To, Amount
+ FROM AccountInfo
+ INNER JOIN AccountTransfers ON Account=From
+ WHERE FirstName="Ivan"
+ ORDER BY LastName DESCENDING, Amount
+

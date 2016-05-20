@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11340.h"
@@ -14,12 +17,19 @@ U11340::U11340()
 {
 }
 
-
 U11340::~U11340()
 {
 }
 
-void U11340::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U11340 instance;
+    instance();
+}
+void U11340::operator()() const
 {
     int N;
     std::cin >> N;
@@ -42,7 +52,9 @@ void U11340::operator()()
             std::getline(std::cin, line);
             std::for_each(line.begin(), line.end(), [&](char ch) {
                 auto it = prices.find(ch);
-                if (it != prices.end()) price += it->second;
+                if (it != prices.end()) {
+                    price += it->second;
+                }
             });
         }
         std::cout << std::fixed << std::setprecision(2) << (price / 100.0) << '$' << std::endl;

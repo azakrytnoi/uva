@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u628.h"
@@ -25,12 +28,12 @@ public:
 
     void generate(std::string::iterator pos, std::string::iterator end, std::string s)
     {
-        if(pos == end) {
+        if (pos == end) {
             std::cout << s << std::endl;
             return;
         }
         auto self = this;
-        switch(*pos) {
+        switch (*pos) {
         case '#':
             std::for_each(dictionary_.begin(), dictionary_.end(), [&](auto dict) {
                 self->generate(pos + 1, end, s + dict);
@@ -47,10 +50,17 @@ public:
 private:
     std::vector<std::string>& dictionary_;
 };
-
 }
 
-void U628::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U628 instance;
+    instance();
+}
+void U628::operator()() const
 {
     std::vector<std::string> words;
     std::string line;
@@ -72,6 +82,5 @@ void U628::operator()()
             std::cin >> line;
             gen.generate(line.begin(), line.end(), "");
         }
-
     }
 }

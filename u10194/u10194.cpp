@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10194.h"
@@ -16,7 +19,6 @@
 
 namespace
 {
-
 class team
 {
 public:
@@ -30,7 +32,7 @@ public:
         return out;
     }
 
-    bool operator < (const team& other)
+    bool operator < (const team& other) const
     {
         if (points_ == other.points_) {
             if (wins_ == other.wins_) {
@@ -145,6 +147,14 @@ U10194::~U10194()
 {
 }
 
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10194 instance;
+    instance();
+}
 void U10194::operator()()
 {
     int N;
@@ -186,7 +196,7 @@ void U10194::operator()()
             return *t2 < *t1;
         });
         int position = 0;
-        std::for_each(results.begin(), results.end(), [&position](auto t) {
+        std::for_each(results.begin(), results.end(), [&position](const std::shared_ptr<team>& t) {
             std::cout << (++position) << ") " << *t << std::endl;
         });
         std::cout << std::endl;

@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u200.h"
@@ -14,12 +17,19 @@ U200::U200()
 {
 }
 
-
 U200::~U200()
 {
 }
 
-void U200::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U200 instance;
+    instance();
+}
+void U200::operator()() const
 {
     while (std::cin) {
         std::vector<std::string> index;
@@ -39,7 +49,7 @@ void U200::operator()()
             }
         }
         {
-            std::for_each (ordering.begin(), ordering.end(), [&](char start_ch) {
+            std::for_each(ordering.begin(), ordering.end(), [&](char start_ch) {
                 std::vector<std::string> selected;
                 std::copy_if(index.begin(), index.end(), std::back_inserter(selected), [&](std::string & line) {
                     return line[0] == start_ch;
@@ -54,7 +64,9 @@ void U200::operator()()
                         for (size_t i = 1; i < working.size(); ++i) {
                             char prev_ch = working[i - 1][idx];
                             char curr_ch = working[i][idx];
-                            if (prev_ch == curr_ch) continue;
+                            if (prev_ch == curr_ch) {
+                                continue;
+                            }
                             size_t prev_pos, curr_pos;
                             if ((curr_pos = ordering.find(curr_ch)) == std::string::npos) {
                                 const size_t prev_pos = ordering.find(prev_ch);

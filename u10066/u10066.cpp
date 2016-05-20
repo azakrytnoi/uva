@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10066.h"
@@ -10,8 +13,10 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
-class solver {
+namespace
+{
+class solver
+{
     std::vector<int> a_;
     std::vector<int> b_;
     int seq_;
@@ -21,13 +26,15 @@ class solver {
     int lcs(const int* a, const int* b, const size_t M, const size_t N);
 
 public:
-    solver() : a_(), b_(), seq_(0), solution_() {
+    solver() : a_(), b_(), seq_(0), solution_()
+    {
         a_.reserve(100);
         b_.reserve(100);
     }
 
     friend
-    std::istream& operator >> (std::istream& in, solver& s) {
+    std::istream& operator >> (std::istream& in, solver& s)
+    {
         int n, m;
         auto load = [&]() {
             int tmp;
@@ -47,33 +54,34 @@ public:
     }
 
     friend
-    std::ostream& operator << (std::ostream& out, const solver& s) {
+    std::ostream& operator << (std::ostream& out, const solver& s)
+    {
         out << "Twin Towers #" << s.seq_ << std::endl << "Number of Tiles : " << s.solution_ << std::endl;
         return out;
     }
 
-    solver& solve() {
+    solver& solve()
+    {
         solution_ = lcs(a_.data(), b_.data(), a_.size(), b_.size());
         return *this;
     }
 };
 
-int solver::lcs(const int* a, const int* b, const size_t M, const size_t N) {
+int solver::lcs(const int* a, const int* b, const size_t M, const size_t N)
+{
 #ifdef _WIN32
     int temp[110 + 1][110 + 1];
 #else
-	int temp[M + 1][N + 1];
+    int temp[M + 1][N + 1];
 #endif
 
     for (size_t i = 0; i <= M; i++) {
         for (size_t j = 0; j <= N; j++) {
             if (i == 0 || j == 0) {
                 temp[i][j] = 0;
-            }
-            else if (a[i - 1] == b[j - 1]) {
+            } else if (a[i - 1] == b[j - 1]) {
                 temp[i][j] = temp[i - 1][j - 1] + 1;
-            }
-            else {
+            } else {
                 temp[i][j] = std::max(temp[i - 1][j], temp[i][j - 1]);
             }
         }
@@ -82,7 +90,17 @@ int solver::lcs(const int* a, const int* b, const size_t M, const size_t N) {
 }
 }
 
-void U10066::operator()()
+U10066::U10066() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U10066 instance;
+    instance();
+}
+void U10066::operator()() const
 {
     solver s;
     while (std::cin >> s) {

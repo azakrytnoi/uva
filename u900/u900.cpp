@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u900.h"
@@ -10,16 +13,18 @@
 #include <iterator>
 #include <numeric>
 
-namespace {
+namespace
+{
 template <size_t MAX>
-class fibonacci {
+class fibonacci
+{
     std::vector<uint64_t> fib_;
 
 public:
     fibonacci() : fib_()
     {
         fib_.reserve(MAX + 1);
-        uint64_t n0[] = {1, 1};
+        uint64_t n0[] = { 1, 1 };
         fib_.assign(n0, n0 + 2);
     }
 
@@ -34,11 +39,21 @@ public:
 };
 }
 
-void U900::operator()()
+U900::U900() {}
+
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U900 instance;
+    instance();
+}
+void U900::operator()() const
 {
     int N;
     fibonacci<50> fib;
     while (std::cin >> N && N > 0) {
-        std::cout << fib (N) << std::endl;
+        std::cout << fib(N) << std::endl;
     }
 }

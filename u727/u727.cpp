@@ -1,5 +1,8 @@
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
+#else
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u727.h"
@@ -11,16 +14,14 @@
 
 namespace
 {
-
 std::map<char, int> op_rank;
 
 std::string process(const std::string& input)
 {
-    std::string result ("");
+    std::string result("");
     std::stack <char> op_stack;
 
     for (size_t i = 0; i < input.size(); i++) {
-
         switch (input[i]) {
         case '(':
             op_stack.push(input[i]);
@@ -88,8 +89,15 @@ U727::~U727()
 {
 }
 
-
-void U727::operator()()
+extern "C" {
+    UVA_API_EXPORT void __cdecl invoke();
+}
+void __cdecl invoke()
+{
+    U727 instance;
+    instance();
+}
+void U727::operator()() const
 {
     {
         op_rank['/'] = 3;
