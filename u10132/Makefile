@@ -18,7 +18,7 @@ SRCS = $(wildcard *.cpp)
 #
 OBJS = $(SRCS:.cpp=.o)
 
-MAIN = libu908.so
+MAIN = libu10132.so
 
 #
 #
@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u908.o: u908.h ../headers/kruskal.h ../headers/disjointSet.h
+u10132.o: u10132.h

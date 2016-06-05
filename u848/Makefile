@@ -3,7 +3,7 @@
 
 CC = g++
 
-CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -fPIC $(UCFLAGS)
+CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -ggdb -fPIC $(UCFLAGS)
 
 #
 INCLUDES = -I. -I../headers
@@ -18,7 +18,7 @@ SRCS = $(wildcard *.cpp)
 #
 OBJS = $(SRCS:.cpp=.o)
 
-MAIN = libu908.so
+MAIN = libu848.so
 
 #
 #
@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u908.o: u908.h ../headers/kruskal.h ../headers/disjointSet.h
+u848.o: u848.h
