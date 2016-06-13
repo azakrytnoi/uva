@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<results>
-    <error file="u908.cpp" line="59" id="unusedFunction" severity="style" msg="The function &apos;setSize&apos; is never used."/>
-    <error id="missingIncludeSystem" severity="style" msg="Cppcheck cannot find all the include files (use --check-config for details)"/>
-</results>
