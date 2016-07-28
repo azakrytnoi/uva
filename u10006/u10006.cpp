@@ -79,7 +79,7 @@ private:
         return true;
     }
 
-    uint32_t mod_pow(uint64_t base, uint32_t exp, uint32_t mod)
+    static uint32_t mod_pow(uint64_t base, uint32_t exp, uint32_t mod)
     {
         uint32_t result = 1;
         while(exp > 0) {

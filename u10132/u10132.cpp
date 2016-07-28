@@ -47,7 +47,7 @@ public:
     solution& operator()();
 
 private:
-    bool matchAll(std::string result, std::vector<std::string> fragments)
+    static bool matchAll(std::string result, std::vector<std::string> fragments)
     {
         size_t nMatched = 0;
         for (size_t i = 0; i < fragments.size(); i++) {
