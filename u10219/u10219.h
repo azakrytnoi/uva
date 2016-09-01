@@ -10,7 +10,7 @@ public:
     /** Default constructor */
     U10219();
 
-    void operator()();
+    void operator()() const;
 
 protected:
 

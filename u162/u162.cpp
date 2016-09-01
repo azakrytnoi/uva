@@ -62,7 +62,7 @@ private:
     bool step();
     void changeTurn();
 
-    void dumpRound();
+    static void dumpRound();
 
     void reinit();
 
@@ -226,7 +226,7 @@ void desk::coverFace()
 }
 }  // namespace
 
-void U162::operator()()
+void U162::operator()() const
 {
     desk eng;
     while ((std::cin >> eng) && eng) {

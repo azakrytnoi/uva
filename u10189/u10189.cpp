@@ -60,6 +60,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
         std::getline(in, line);
         std::generate_n(std::back_inserter(sol.field_), sol.N_, [&]() -> std::string {
             std::getline(in, line);
+            // cppcheck-suppress returnReference
             return line;
         });
     }
@@ -103,7 +104,7 @@ inline void solution::calculate(int n, int m)
 
 }
 
-void U10189::operator()()
+void U10189::operator()() const
 {
     solution sol;
     uint32_t nField(0);

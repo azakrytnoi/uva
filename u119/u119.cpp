@@ -86,7 +86,7 @@ std::ostream& operator << (std::ostream& out, const group& gr)
 
 }  // namespace
 
-void U119::operator()()
+void U119::operator()() const
 {
     group gr;
     while (std::cin >> gr) {

@@ -85,7 +85,7 @@ std::string coder::operator ()(std::string& input)
 
 }  // namespace
 
-void U468::operator()()
+void U468::operator()() const
 {
     int N;
     std::cin >> N;

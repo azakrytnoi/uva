@@ -83,6 +83,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
         {
             return ::isalpha(ch);
         });
+        // cppcheck-suppress returnReference
         return res;
     };
     std::string a (readString());
@@ -107,7 +108,7 @@ std::ostream& operator << (std::ostream& out, const solution& sol)
 
 }  // namespace
 
-void U10424::operator()()
+void U10424::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

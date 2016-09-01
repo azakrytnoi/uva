@@ -57,7 +57,7 @@ public:
 
 }  // namespace
 
-void U568::operator()()
+void U568::operator()() const
 {
     solution<10001> sol;
     uint32_t n;

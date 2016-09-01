@@ -60,7 +60,7 @@ std::vector<int> solution<N>::coins_ = {5, 10, 20, 50, 100, 200, 500, 1000, 2000
 
 }  // namespace
 
-void U147::operator()()
+void U147::operator()() const
 {
     double amt;
     solution<30000> sol;

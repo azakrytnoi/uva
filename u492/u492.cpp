@@ -60,7 +60,7 @@ void piggler::piggle(const std::string& word)
 
 }  // namespace
 
-void U492::operator()()
+void U492::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line) && !line.empty()) {

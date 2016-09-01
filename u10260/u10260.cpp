@@ -102,7 +102,7 @@ std::unordered_map<char, char> solution::soundex_ = {
 
 }  // namespace
 
-void U10260::operator()()
+void U10260::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

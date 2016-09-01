@@ -29,7 +29,7 @@ void __cdecl invoke()
     U10220 instance;
     instance();
 }
-void U10220::operator()()
+void U10220::operator()() const
 {
     std::vector<int32_t> sums;
     sums.reserve(1001);
@@ -45,6 +45,7 @@ void U10220::operator()()
             {
                 remainder += dig * digit;
                 dig = remainder % 10;
+                // cppcheck-suppress unreadVariable
                 remainder /= 10;
             });
             return std::accumulate(digits.begin(), digits.end(), 0);

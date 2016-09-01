@@ -15,6 +15,7 @@ U594::U594()
 {
 }
 
+
 U594::~U594()
 {
 }
@@ -41,7 +42,7 @@ void __cdecl invoke()
     U594 instance;
     instance();
 }
-void U594::operator()()
+void U594::operator()() const
 {
     while (std::cin >> item.numerical) {
         std::cout << item.numerical << " converts to ";

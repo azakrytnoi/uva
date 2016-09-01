@@ -64,7 +64,7 @@ public:
 };
 }  // namespace
 
-void U10161::operator()()
+void U10161::operator()() const
 {
     int n;
     solution sol;

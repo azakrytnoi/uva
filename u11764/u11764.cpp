@@ -22,7 +22,7 @@ void __cdecl invoke()
     instance();
 }
 
-void U11764::operator()()
+void U11764::operator()() const
 {
     int N;
     std::cin >> N;

@@ -27,7 +27,7 @@ void __cdecl invoke()
     U412 instance;
     instance();
 }
-void U412::operator()()
+void U412::operator()() const
 {
     uint32_t N;
     std::vector<uint32_t> series;

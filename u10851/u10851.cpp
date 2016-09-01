@@ -54,6 +54,7 @@ std::istream& operator >>(std::istream& in, decoder& dec)
     input.reserve(10);
     std::generate_n(std::back_inserter(input), 10, [&]() -> std::string {
         std::getline(std::cin, line);
+        // cppcheck-suppress returnReference
         return line;
     });
     dec << input;
@@ -84,7 +85,7 @@ decoder& decoder::operator <<(const std::vector<std::string>& input)
 }
 }  // namespace
 
-void U10851::operator()()
+void U10851::operator()() const
 {
     int N;
     std::cin >> N;

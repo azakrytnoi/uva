@@ -100,7 +100,7 @@ void __cdecl invoke()
     U10066 instance;
     instance();
 }
-void U10066::operator()()
+void U10066::operator()() const
 {
     solver s;
     while (std::cin >> s) {

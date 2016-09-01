@@ -26,7 +26,7 @@ void __cdecl invoke()
     instance();
 }
 
-void U11221::operator()()
+void U11221::operator()() const
 {
     int N;
     std::cin >> N;

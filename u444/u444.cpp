@@ -74,7 +74,7 @@ std::string coder::decode(const std::string& source)
 
 }  // namespace
 
-void U444::operator()()
+void U444::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {

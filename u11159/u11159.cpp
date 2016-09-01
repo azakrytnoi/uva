@@ -25,10 +25,6 @@ void __cdecl invoke()
     instance();
 }
 
-#ifdef INFINITY
-#undef INFINITY
-#endif // INFINITY
-
 namespace
 {
 
@@ -46,7 +42,7 @@ class solution
     int result_;
     int caseNo_;
 
-    static const int INFINITY;
+    static const int INFINITY_;
 public:
     solution() : n_(0), m_(0), a_(), b_(), pn_(), pm_(), q_(), dist_(), g_(), result_(0), caseNo_(0)
     {
@@ -73,7 +69,7 @@ private:
 };
 
 template<size_t N, size_t M>
-const int solution<N, M>::INFINITY = 1000000000;
+const int solution<N, M>::INFINITY_ = 1000000000;
 
 template<size_t N, size_t M>
 solution<N,M>& solution<N, M>::operator()()
@@ -125,7 +121,7 @@ bool solution<N, M>::DFS(int v)
                 }
             }
         }
-        dist_[v] = INFINITY;
+        dist_[v] = INFINITY_;
         return false;
     }
     return true;
@@ -140,23 +136,23 @@ bool solution<N, M>::BFS()
             dist_[i] = 0;
             q_[en++] = i;
         } else {
-            dist_[i] = INFINITY;
+            dist_[i] = INFINITY_;
         }
     }
-    dist_[0] = INFINITY;
+    dist_[0] = INFINITY_;
     while (b < en) {
         int v = q_[b++];
         if (dist_[v] < dist_[0]) {
             for (int j = 0; j < int(g_[v].size()); ++j) {
                 int u = g_[v][j];
-                if (dist_[pm_[u]] == INFINITY) {
+                if (dist_[pm_[u]] == INFINITY_) {
                     dist_[pm_[u]] = dist_[v] + 1;
                     q_[en++] = pm_[u];
                 }
             }
         }
     }
-    return dist_[0] != INFINITY;
+    return dist_[0] != INFINITY_;
 }
 
 typedef solution<333, 100000> u11159Solution;
@@ -191,7 +187,7 @@ std::ostream& operator << (std::ostream& out, solution<N,M>& sol)
 
 }
 
-void U11159::operator()()
+void U11159::operator()() const
 {
     int T;
     std::cin >> T;

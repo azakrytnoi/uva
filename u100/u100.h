@@ -10,10 +10,10 @@ public:
         return "u100";
     }
     U100();
-    void operator()();
+    void operator()() const;
 
 private:
-    uint32_t cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
+    static uint32_t cycle_length(uint32_t start, uint32_t end, std::function<uint32_t(uint32_t)> f);
 };
 
 #ifdef POPULATE_CACHE

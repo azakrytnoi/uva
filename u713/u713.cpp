@@ -76,7 +76,7 @@ void __cdecl invoke()
     U713 instance;
     instance();
 }
-void U713::operator()()
+void U713::operator()() const
 {
     int N;
     std::cin >> N;

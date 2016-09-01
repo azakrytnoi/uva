@@ -56,7 +56,9 @@ std::istream& operator >> (std::istream& in, solution& sol)
         sol.ants_.reserve(n);
         std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t> {
             uint16_t l, w, h;
+            // cppcheck-suppress uninitvar
             in >> l >> w >> h;
+            // cppcheck-suppress uninitvar
             return std::make_pair(h, l * w * h);
         });
     }
@@ -81,7 +83,7 @@ solution& solution::operator ()()
 
 }
 
-void U12709::operator()()
+void U12709::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

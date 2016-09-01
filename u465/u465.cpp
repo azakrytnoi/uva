@@ -78,7 +78,7 @@ std::vector<std::string> checker::check(const std::string & source)
 }
 }
 
-void U465::operator()()
+void U465::operator()() const
 {
     std::string line;
     std::ostream_iterator<std::string> oit(std::cout, "\n");

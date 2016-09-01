@@ -85,7 +85,7 @@ cipher& cipher::operator >>(std::string& dst)
 }
 }  // namespace
 
-void U306::operator()()
+void U306::operator()() const
 {
     cipher global;
     std::vector<std::future<std::string>> futs;

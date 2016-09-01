@@ -142,7 +142,7 @@ class query
     const database& db_;
 
 public:
-    query(const database& db) : selector_(), resultset_(), sort_(), db_(db) {}
+    explicit query(const database& db) : selector_(), resultset_(), sort_(), db_(db) {}
 
     query& execute();
 
@@ -330,7 +330,7 @@ query& query::execute()
 }
 }
 
-void U10757::operator()()
+void U10757::operator()() const
 {
     int N;
     std::cin >> N;

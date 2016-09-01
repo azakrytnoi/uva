@@ -9,7 +9,7 @@ public:
     }
     U865() {}
 
-    void operator()();
+    void operator()() const;
 };
 
 #ifdef POPULATE_CACHE

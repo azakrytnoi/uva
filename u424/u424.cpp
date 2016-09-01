@@ -28,7 +28,7 @@ void __cdecl invoke()
     instance();
 }
 
-void U424::operator()()
+void U424::operator()() const
 {
     std::string line;
     math::BigInteger bi;

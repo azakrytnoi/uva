@@ -27,7 +27,7 @@ void __cdecl invoke()
     U400 instance;
     instance();
 }
-void U400::operator()()
+void U400::operator()() const
 {
     uint32_t N;
     std::vector<std::string> names;

@@ -28,7 +28,6 @@ void __cdecl invoke()
 
 namespace
 {
-
 class device
 {
     std::vector<std::string> pixels_;
@@ -41,7 +40,7 @@ public:
     friend std::ostream& operator << (std::ostream& out, const device& dev);
 
 private:
-    void reset ()
+    void reset()
     {
         pixels_.clear();
         pixels_.reserve(N_);
@@ -55,7 +54,7 @@ private:
         pixels_[row - 1][col - 1] = color;
     }
 
-    void vLine (size_t col, size_t row_s, size_t row_e, char color)
+    void vLine(size_t col, size_t row_s, size_t row_e, char color)
     {
         for (size_t r = row_s - 1; r <= row_e - 1; r++) {
             pixels_[r][col - 1] = color;
@@ -108,7 +107,7 @@ private:
 class solution
 {
 public:
-    solution(std::ostream& out) : out_(out), command_(), device_() {}
+    explicit solution(std::ostream& out) : out_(out), command_(), device_() {}
 
     friend std::istream& operator >>(std::istream& in, solution& sol)
     {
@@ -124,7 +123,6 @@ private:
     std::string command_;
     device device_;
     bool running_ = true;
-
 };
 
 solution::operator bool()
@@ -214,10 +212,9 @@ std::ostream& operator << (std::ostream& out, const device& dev)
     std::copy(dev.pixels_.begin(), dev.pixels_.end(), oit);
     return out;
 }
-
 }
 
-void U10267::operator()()
+void U10267::operator()() const
 {
     solution sol(std::cout);
     while (std::cin >> sol && sol) {}

@@ -24,7 +24,7 @@ void __cdecl invoke()
     U11239 instance;
     instance();
 }
-void U11239::operator()()
+void U11239::operator()() const
 {
     std::string line;
     std::map<std::string, std::string> students;
@@ -62,7 +62,7 @@ void U11239::operator()()
             }
             return i1.second > i2.second;
         });
-        std::for_each(result.begin(), result.end(), [](auto item) {
+        std::for_each(result.begin(), result.end(), [](const std::pair<std::string, size_t>& item) {
             std::cout << item.first << " " << item.second << std::endl;
         });
         std::cout << std::endl;

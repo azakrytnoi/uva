@@ -29,7 +29,7 @@ void __cdecl invoke()
     U200 instance;
     instance();
 }
-void U200::operator()()
+void U200::operator()() const
 {
     while (std::cin) {
         std::vector<std::string> index;

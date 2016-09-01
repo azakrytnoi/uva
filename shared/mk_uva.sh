@@ -44,6 +44,7 @@ cat > "../u$1/u$1.cpp" <<EOF
 extern "C" {
 	UVA_API_EXPORT void __cdecl invoke();
 }
+
 void __cdecl invoke()
 {
 	U$1 instance;

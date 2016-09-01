@@ -39,7 +39,7 @@ void __cdecl invoke()
     U10226 instance;
     instance();
 }
-void U10226::operator()()
+void U10226::operator()() const
 {
     int N;
     std::cin >> N;
@@ -54,7 +54,7 @@ void U10226::operator()()
             species[line]++;
             total++;
         }
-        std::for_each(species.begin(), species.end(), [&](auto specie) {
+        std::for_each(species.begin(), species.end(), [&](const std::pair<std::string, int>& specie) {
             std::cout << std::make_pair(specie.first, double(specie.second) / total * 100.0) << std::endl;
         });
         std::cout << std::endl;

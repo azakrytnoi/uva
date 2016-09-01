@@ -8,7 +8,7 @@ public:
         return "u957";
     }
     U957();
-    void operator()();
+    void operator()() const;
 
 protected:
 

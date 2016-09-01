@@ -134,7 +134,7 @@ void __cdecl invoke()
     U714 instance;
     instance();
 }
-void U714::operator()()
+void U714::operator()() const
 {
     int T;
     std::cin >> T;

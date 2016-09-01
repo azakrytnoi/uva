@@ -76,7 +76,7 @@ public:
 
 }  // namespace
 
-void U696::operator()()
+void U696::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

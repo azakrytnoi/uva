@@ -64,7 +64,7 @@ double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
 
 }
 
-void U10369::operator()()
+void U10369::operator()() const
 {
     int N;
     std::vector<math::Kruskal<double>::Line> lines;

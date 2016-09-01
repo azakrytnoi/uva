@@ -51,7 +51,7 @@ char coder::decode(const std::string& line)
 
 }  // namespace
 
-void U10878::operator()()
+void U10878::operator()() const
 {
     std::string line;
     while (std::getline(std::cin, line)) {

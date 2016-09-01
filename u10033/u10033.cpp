@@ -205,7 +205,7 @@ void computer::step()
 
 }  // namespace
 
-void U10033::operator()()
+void U10033::operator()() const
 {
     solution sol;
     int N;

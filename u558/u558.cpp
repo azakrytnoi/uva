@@ -36,7 +36,7 @@ void __cdecl invoke()
     U558 instance;
     instance();
 }
-void U558::operator()()
+void U558::operator()() const
 {
     int N;
     std::cin >> N;

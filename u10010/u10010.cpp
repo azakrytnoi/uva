@@ -40,10 +40,10 @@ public:
 
     friend std::istream& operator >>(std::istream& in, solution& sol);
 
-    std::pair<size_t, size_t> solve(const std::string& word);
+    std::pair<size_t, size_t> solve(const std::string& word) const;
 
 private:
-    bool lookup(size_t row, size_t col, const std::string& word);
+    bool lookup(size_t row, size_t col, const std::string& word) const;
 };
 
 std::istream& operator >>(std::istream& in, solution& sol)
@@ -68,7 +68,7 @@ std::ostream& operator <<(std::ostream& out, const std::pair<size_t, size_t>& p)
 
 const std::vector<std::pair<int, int>> solution::deltas_ = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } };
 
-bool solution::lookup(size_t row, size_t col, const std::string& word)
+bool solution::lookup(size_t row, size_t col, const std::string& word) const
 {
     if (grid_[row][col] == word[0]) {
         for (auto delta = deltas_.begin(); delta != deltas_.end(); ++delta) {
@@ -90,7 +90,7 @@ bool solution::lookup(size_t row, size_t col, const std::string& word)
     return false;
 }
 
-std::pair<size_t, size_t> solution::solve(const std::string& word)
+std::pair<size_t, size_t> solution::solve(const std::string& word) const
 {
     for (size_t row = 0; row < size_t(nRows_); row++) {
         for (size_t col = 0; col < size_t(nCols_); col++) {
@@ -103,7 +103,7 @@ std::pair<size_t, size_t> solution::solve(const std::string& word)
 }
 }  // namespace
 
-void U10010::operator()()
+void U10010::operator()() const
 {
     solution sol;
     int N;

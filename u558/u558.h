@@ -8,7 +8,7 @@ public:
     }
     U558();
     ~U558();
-    void operator()();
+    void operator()() const;
 
 private:
     static const int Infinity = 10000;

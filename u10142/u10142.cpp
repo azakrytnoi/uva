@@ -29,7 +29,6 @@ void __cdecl invoke()
 
 namespace
 {
-
 class solution
 {
 public:
@@ -64,6 +63,7 @@ std::istream& operator >>(std::istream& in, solution& sol)
     std::getline(in, line);
     std::generate_n(std::back_inserter(sol.candidates_), n, [&]() -> std::string {
         std::getline(in, line);
+        // cppcheck-suppress returnReference
         return line;
     });
     while (std::getline(in, line) && !line.empty()) {
@@ -96,7 +96,7 @@ solution& solution::operator ()()
             });
             std::for_each(votes_.begin(), votes_.end(), [&](const std::deque<size_t>& vote) {
                 if (!vote.empty()) {
-                    ballout[vote.front() - 1].first ++;
+                    ballout[vote.front() - 1].first++;
                 }
             });
             std::sort(ballout.begin(), ballout.end(), [](auto c1, auto c2) -> bool {
@@ -125,7 +125,7 @@ solution& solution::operator ()()
                     while (ballout.back().first == lowest) {
                         std::for_each(votes_.begin(), votes_.end(), [&](std::deque<size_t>& vote) {
                             std::deque<size_t> temp;
-                            std::copy_if(vote.begin(), vote.end(), std::back_inserter(temp), [&] (auto idx) -> bool {
+                            std::copy_if(vote.begin(), vote.end(), std::back_inserter(temp), [&](auto idx) -> bool {
                                 return idx - 1 != ballout.back().second;
                             });
                             vote.swap(temp);
@@ -140,12 +140,11 @@ solution& solution::operator ()()
     }
     return *this;
 }
-
 }
 
 #include <fstream>
 
-void U10142::operator()()
+void U10142::operator()() const
 {
     solution sol;
     int N;

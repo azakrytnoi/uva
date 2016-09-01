@@ -13,7 +13,7 @@
 namespace math
 {
 
-template<uint32_t N>
+template<uint64_t N>
 class sieve
 {
 public:
@@ -22,10 +22,11 @@ public:
         sieve_.flip();
         sieve_[0] = false;
         sieve_[1] = false;
-        for (uint32_t i = 2; i <= N; i++) {
+        primes_.push_back(1);
+        for (uint64_t i = 2; i <= N; i++) {
             if (sieve_[i]) {
                 primes_.push_back(i);
-                for (uint32_t j = i * i; j <= N; j += i) {
+                for (uint64_t j = i * i; j <= N; j += i) {
                     sieve_[j] = false;
                 }
             }
@@ -33,7 +34,7 @@ public:
         primes_.shrink_to_fit();
     }
 
-    bool is_primme(uint32_t n) const
+    bool is_prime(uint64_t n) const
     {
         if (n < N) {
             return sieve_[n];
@@ -41,12 +42,12 @@ public:
         return false;
     }
 
-    std::vector<uint32_t>::const_iterator begin() const
+    std::vector<uint64_t>::const_iterator begin() const
     {
         return primes_.cbegin();
     }
 
-    std::vector<uint32_t>::const_iterator end() const
+    std::vector<uint64_t>::const_iterator end() const
     {
         return primes_.cend();
     }
@@ -56,14 +57,14 @@ public:
         return uint32_t(primes_.size());
     }
 
-    uint32_t operator [] (size_t n) const
+    uint64_t operator [] (size_t n) const
     {
         return primes_[n];
     }
 
 private:
     std::bitset<N + 1> sieve_;
-    std::vector<uint32_t> primes_;
+    std::vector<uint64_t> primes_;
 };
 
 

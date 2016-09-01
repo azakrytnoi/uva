@@ -131,7 +131,7 @@ bool solution::solve()
 }
 }
 
-void U184::operator()()
+void U184::operator()() const
 {
     solution sol;
     while (std::cin >> sol && !sol.empty()) {

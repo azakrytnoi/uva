@@ -61,7 +61,7 @@ public:
 
 }  // namespace
 
-void U623::operator()()
+void U623::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

@@ -107,8 +107,8 @@ morse & morse::operator<<(const std::string & input)
     while (iss >> code) {
         oss << code_[code];
         if (iss) {
-            char ch = iss.get();
-            ch = iss.peek();
+            iss.get();
+            char ch = iss.peek();
             if (ch == ' ') {
                 oss << ' ';
             }
@@ -126,7 +126,7 @@ morse & morse::operator>>(std::string & output)
 
 }
 
-void U11223::operator()()
+void U11223::operator()() const
 {
     int N;
     std::cin >> N;

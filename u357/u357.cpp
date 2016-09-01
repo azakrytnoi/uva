@@ -58,7 +58,7 @@ std::vector<int> solution<N>::coins_ = {1, 5, 10, 25, 50};
 
 }  // namespace
 
-void U357::operator()()
+void U357::operator()() const
 {
     int amt;
     solution<30000> sol;

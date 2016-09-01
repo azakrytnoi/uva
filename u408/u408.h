@@ -9,7 +9,7 @@ public:
     }
     U408();
     ~U408();
-    void operator()();
+    void operator()() const;
 };
 #ifdef POPULATE_CACHE
 populate <U408> pu408;

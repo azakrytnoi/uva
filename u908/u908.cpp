@@ -55,7 +55,7 @@ void __cdecl invoke()
     U908 instance;
     instance();
 }
-void U908::operator()()
+void U908::operator()() const
 {
     int V;
 

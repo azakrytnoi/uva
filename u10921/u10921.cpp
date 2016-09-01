@@ -99,7 +99,7 @@ coder& coder::operator >>(std::string& output)
 
 }  // namespace
 
-void U10921::operator()()
+void U10921::operator()() const
 {
     std::string line;
     coder coder;

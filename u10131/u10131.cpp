@@ -105,7 +105,7 @@ void solution::print_path(int end, std::ostream& out)
 }
 }  // namespace
 
-void U10131::operator()()
+void U10131::operator()() const
 {
     solution sol;
     std::cin >> sol;

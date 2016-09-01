@@ -110,9 +110,9 @@ private:
     void flush_page();
     void print_c1_at(uint32_t row, uint32_t col, const std::string& text);
     void print_c5_at(uint32_t row, uint32_t col, const std::string& text);
-    std::pair<uint32_t, std::string> center_text(const std::string& text, uint32_t width);
-    std::pair<uint32_t, std::string> right_text(const std::string& text, uint32_t width);
-    std::pair<uint32_t, std::string> left_text(const std::string& text, uint32_t width);
+    static std::pair<uint32_t, std::string> center_text(const std::string& text, uint32_t width);
+    static std::pair<uint32_t, std::string> right_text(const std::string& text, uint32_t width);
+    static std::pair<uint32_t, std::string> left_text(const std::string& text, uint32_t width);
 };
 
 void driver::clean_page()
@@ -271,7 +271,7 @@ void __cdecl invoke()
     U403 instance;
     instance();
 }
-void U403::operator()()
+void U403::operator()() const
 {
     driver d;
     while (std::cin >> d);

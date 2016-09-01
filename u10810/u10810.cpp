@@ -23,7 +23,7 @@ void __cdecl invoke()
     U10810 instance;
     instance();
 }
-void U10810::operator()()
+void U10810::operator()() const
 {
     int n;
     while (std::cin >> n && n > 0) {

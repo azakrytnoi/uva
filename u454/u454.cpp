@@ -41,7 +41,7 @@ void __cdecl invoke()
     U454 instance;
     instance();
 }
-void U454::operator()()
+void U454::operator()() const
 {
     int N;
     std::cin >> N;
@@ -91,7 +91,7 @@ void U454::operator()()
             }
             return p1.first < p2.first;
         });
-        std::for_each(result.begin(), result.end(), [](auto p) {
+        std::for_each(result.begin(), result.end(), [](const std::pair<std::string, std::string>& p) {
             std::cout << p.first << " = " << p.second << std::endl;
         });
         std::cout << std::endl;

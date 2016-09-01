@@ -8,7 +8,7 @@ public:
         return "u11388";
     }
     U11388();
-    void operator()();
+    void operator()() const;
 protected:
 private:
 };

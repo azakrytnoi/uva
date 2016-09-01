@@ -32,7 +32,7 @@ public:
         return out;
     }
 
-    bool operator < (const team& other)
+    bool operator < (const team& other) const
     {
         if (points_ == other.points_) {
             if (wins_ == other.wins_) {
@@ -196,7 +196,7 @@ void U10194::operator()()
             return *t2 < *t1;
         });
         int position = 0;
-        std::for_each(results.begin(), results.end(), [&position](auto t) {
+        std::for_each(results.begin(), results.end(), [&position](const std::shared_ptr<team>& t) {
             std::cout << (++position) << ") " << *t << std::endl;
         });
         std::cout << std::endl;

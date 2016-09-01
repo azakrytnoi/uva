@@ -137,7 +137,7 @@ void __cdecl invoke()
     U116 instance;
     instance();
 }
-void U116::operator()()
+void U116::operator()() const
 {
     solver s;
     while (std::cin >> s) {
