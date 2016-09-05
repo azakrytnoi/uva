@@ -19,8 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{22B4D399-FA77-4606-9D1A-2D59831D3B72}</ProjectGuid>
-    <RootNamespace>u865</RootNamespace>
+    <ProjectGuid>{9F7BFC45-C968-4114-98B1-07C92133ACDB}</ProjectGuid>
+    <RootNamespace>u10041</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -113,13 +114,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="u865.cpp" />
+    <ClCompile Include="u10041.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u865.txt" />
+    <Text Include="u10041.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="u865.h" />
+    <ClInclude Include="u10041.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
