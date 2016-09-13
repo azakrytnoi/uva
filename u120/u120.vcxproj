@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CC07883F-D81D-4293-B5D5-E7E70BDEC1CE}</ProjectGuid>
-    <RootNamespace>u10131</RootNamespace>
+    <ProjectGuid>{E749B472-F01F-4E2B-8BC7-FD0A6BCD6326}</ProjectGuid>
+    <RootNamespace>u120</RootNamespace>
 
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -114,13 +114,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="u10131.cpp" />
+    <ClCompile Include="u120.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="u10131.txt" />
+    <Text Include="u120.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="u10131.h" />
+    <ClInclude Include="u120.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
