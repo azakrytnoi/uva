@@ -76,11 +76,12 @@ namespace
 			if (moveLargestToFirst(i))
 			{
 				moves_.push_back(pancakes_.size() - i + 1);
-				std::reverse(pancakes_.begin(), pancakes_.begin() + 1);
+				std::reverse(pancakes_.begin(), pancakes_.begin() + i);
 			}
 		}
 		return *this;
 	}
+
 	bool solution::isSorted()
 	{
 		for (size_t i = 0; i < pancakes_.size() - 1; i++)
