@@ -275,6 +275,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u10037", "u10037\u10037.vcx
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u10035", "u10035\u10035.vcxproj", "{5EB0CB87-36A9-42AB-8983-7FA9812379BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u10018", "u10018\u10018.vcxproj", "{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		headers\headers.vcxitems*{01af620a-bf11-4fa9-8287-5bdc2bc6ea59}*SharedItemsImports = 4
@@ -333,6 +335,7 @@ Global
 		headers\headers.vcxitems*{6261989d-7d07-4ef1-9886-ab9d2315a307}*SharedItemsImports = 4
 		headers\headers.vcxitems*{63d10286-bbfb-4021-90ef-c61f6afc93ef}*SharedItemsImports = 4
 		headers\headers.vcxitems*{67a8fc4c-9fa0-4425-ba92-c7c166bbe6c8}*SharedItemsImports = 4
+		headers\headers.vcxitems*{67e4a0fb-67e1-43e0-bb6a-98fbce3b7ca9}*SharedItemsImports = 4
 		headers\headers.vcxitems*{697b2e99-4090-4cbb-a780-003e5960351d}*SharedItemsImports = 4
 		headers\headers.vcxitems*{6a045a0b-2afc-4376-a998-d64f9e187600}*SharedItemsImports = 4
 		headers\headers.vcxitems*{6f1f36dc-3fe0-445f-ba24-fb7590c5fa00}*SharedItemsImports = 4
@@ -1772,6 +1775,16 @@ Global
 		{5EB0CB87-36A9-42AB-8983-7FA9812379BD}.Release|x64.Build.0 = Release|x64
 		{5EB0CB87-36A9-42AB-8983-7FA9812379BD}.Release|x86.ActiveCfg = Release|Win32
 		{5EB0CB87-36A9-42AB-8983-7FA9812379BD}.Release|x86.Build.0 = Release|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Debug|ARM.ActiveCfg = Debug|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Debug|x64.ActiveCfg = Debug|x64
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Debug|x64.Build.0 = Debug|x64
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Debug|x86.ActiveCfg = Debug|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Debug|x86.Build.0 = Debug|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Release|ARM.ActiveCfg = Release|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Release|x64.ActiveCfg = Release|x64
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Release|x64.Build.0 = Release|x64
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Release|x86.ActiveCfg = Release|Win32
+		{67E4A0FB-67E1-43E0-BB6A-98FBCE3B7CA9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
