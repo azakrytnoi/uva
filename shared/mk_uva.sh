@@ -62,10 +62,26 @@ public:
     friend std::istream& operator >>(std::istream& in, solution& sol);
     friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const;
+    operator bool() const { return true; }
+    solution& operator()();
 
 private:
 };
+
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+  return in;
+}
+
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+  return out;
+}
+
+solution& solution::operator()()
+{
+  return *this;
+}
 
 }
 
