@@ -19,7 +19,8 @@
 #include <sstream>
 #include <cmath>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -35,12 +36,10 @@ class solution
 {
 public:
     solution() : src_()
-    {
-    }
+    {}
 
     ~solution()
-    {
-    }
+    {}
 
     solution& operator << (const std::string& input);
     operator bool() const;

@@ -18,7 +18,8 @@
 #include <stack>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -224,7 +225,7 @@ void desk::coverFace()
         break;
     }
 }
-}  // namespace
+} // namespace
 
 void U162::operator()() const
 {

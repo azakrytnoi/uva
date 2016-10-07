@@ -26,7 +26,8 @@ std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p
 
 U10062::U10062() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

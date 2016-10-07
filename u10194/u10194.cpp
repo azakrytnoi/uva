@@ -140,14 +140,13 @@ void team::recordResults(team & team1, team & team2, int team1Goals, int team2Go
 }
 
 U10194::U10194()
-{
-}
+{}
 
 U10194::~U10194()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

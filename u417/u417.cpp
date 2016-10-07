@@ -14,8 +14,7 @@
 #include <queue>
 
 U417::U417()
-{
-}
+{}
 
 namespace
 {
@@ -55,7 +54,8 @@ public:
 };
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

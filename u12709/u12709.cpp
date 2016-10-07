@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -75,8 +76,7 @@ solution& solution::operator ()()
 {
     std::sort(ants_.begin(), ants_.end(), [](auto a1, auto a2) -> bool {
         if (a1.first == a2.first) return a1.second > a2.second;
-        return a1.first > a2.first;
-    });
+        return a1.first > a2.first; });
     max_ = ants_.front().second;
     return *this;
 }

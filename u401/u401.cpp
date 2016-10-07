@@ -24,23 +24,22 @@ class palindrome
     std::unordered_map<char, char> valid_chars_;
 public:
     enum class kind :int
-    {
-        NotAtAll = 0, Palindrome = 1, Mirror = 2, MirrorPalindrome = 3
-    };
+    {   NotAtAll = 0, Palindrome = 1, Mirror = 2, MirrorPalindrome = 3 };
 
-    palindrome() : valid_chars_({
-        {'A','A'},{'M','M'},{'Y','Y'},
-        /*{'B',0},{'N', 0},*/{'Z','5'},
-        /*{'C',0},*/{'O','O'},{'1','1'},
-        /*{'D',0},{'P',0},*/{'2','S'},
-        {'E','3'},/*{'Q',0},*/{'3','E'},
+    palindrome() : valid_chars_(
+    {
+        {'A','A' }, {'M','M' }, {'Y','Y' },
+        /*{'B',0},{'N', 0},*/ {'Z','5' },
+        /*{'C',0},*/ {'O','O' }, {'1','1' },
+        /*{'D',0},{'P',0},*/ {'2','S' },
+        {'E','3' },/*{'Q',0},*/ {'3','E' },
         /*{'F',0},{'R',0},{'4',0},
-        {'G',0},*/{'S','2'},{'5','Z'},
-        {'H','H'},{'T','T'},/*{'6',0},*/
-        {'I','I'},{'U','U'},/*{'7',0},*/
-        {'J','L'},{'V','V'},{'8','8'},
-        /*{'K',0},*/{'W','W'},/*{'9',0},*/
-        {'L','J'},{'X','X'}
+        {'G',0},*/ {'S','2' }, {'5','Z' },
+        {'H','H' }, {'T','T' }, /*{'6',0},*/
+        {'I','I' }, {'U','U' }, /*{'7',0},*/
+        {'J','L' }, {'V','V' }, {'8','8' },
+        /*{'K',0},*/ {'W','W' }, /*{'9',0},*/
+        {'L','J' }, {'X','X' }
     }) {}
 
     kind check(const std::string& source);
@@ -64,7 +63,8 @@ palindrome::kind palindrome::check(const std::string& source)
 
 U401::U401() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

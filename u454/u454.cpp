@@ -26,14 +26,13 @@
 #include <list>
 
 U454::U454()
-{
-}
+{}
 
 U454::~U454()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -89,8 +88,7 @@ void U454::operator()() const
             {
                 return p1.second < p2.second;
             }
-            return p1.first < p2.first;
-        });
+            return p1.first < p2.first; });
         std::for_each(result.begin(), result.end(), [](const std::pair<std::string, std::string>& p) {
             std::cout << p.first << " = " << p.second << std::endl;
         });

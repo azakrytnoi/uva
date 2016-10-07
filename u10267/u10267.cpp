@@ -17,7 +17,8 @@
 #include <limits>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -44,9 +45,8 @@ private:
     {
         pixels_.clear();
         pixels_.reserve(N_);
-        std::generate_n(std::back_inserter(pixels_), N_, [&]() -> std::string {
-            return std::string(M_, 'O');
-        });
+        std::generate_n(std::back_inserter(pixels_), N_, [&]() -> std::string
+        {   return std::string(M_, 'O'); });
     }
 
     void colorPoint(size_t col, size_t row, char color)

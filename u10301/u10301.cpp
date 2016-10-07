@@ -18,8 +18,7 @@
 #include <map>
 
 U10301::U10301()
-{
-}
+{}
 
 namespace
 {
@@ -53,7 +52,8 @@ private:
 };
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -71,8 +71,7 @@ void U10301::operator()() const
         std::generate_n(std::back_inserter(rings), n_rings, []() -> ring {
             ring r;
             std::cin >> r;
-            return r;
-        });
+            return r; });
         std::vector<std::vector<bool>> connected(rings.size());
         for (size_t i = 0; i < rings.size(); i++) {
             connected[i].resize(rings.size());

@@ -82,14 +82,13 @@ std::string process(const std::string& input)
 }
 
 U727::U727()
-{
-}
+{}
 
 U727::~U727()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

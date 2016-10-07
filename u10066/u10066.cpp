@@ -92,7 +92,8 @@ int solver::lcs(const int* a, const int* b, const size_t M, const size_t N)
 
 U10066::U10066() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

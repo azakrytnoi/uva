@@ -18,7 +18,8 @@
 #include <array>
 #include <cmath>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -34,8 +35,7 @@ class decoder
 public:
     decoder() :
         message_()
-    {
-    }
+    {}
 
     friend std::istream& operator >>(std::istream& in, decoder& dec);
     friend std::ostream& operator <<(std::ostream& out, const decoder& dec);
@@ -55,8 +55,7 @@ std::istream& operator >>(std::istream& in, decoder& dec)
     std::generate_n(std::back_inserter(input), 10, [&]() -> std::string {
         std::getline(std::cin, line);
         // cppcheck-suppress returnReference
-        return line;
-    });
+        return line; });
     dec << input;
     return in;
 }
@@ -83,7 +82,7 @@ decoder& decoder::operator <<(const std::vector<std::string>& input)
 
     return *this;
 }
-}  // namespace
+} // namespace
 
 void U10851::operator()() const
 {

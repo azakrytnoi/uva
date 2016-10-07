@@ -19,7 +19,8 @@
 #include <unordered_map>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -85,7 +86,7 @@ public:
 
 private:
 };
-}  // namespace
+} // namespace
 
 void U371::operator()() const
 {

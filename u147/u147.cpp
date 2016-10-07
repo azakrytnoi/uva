@@ -18,7 +18,8 @@
 #include <cstdlib>
 #include <iosfwd>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -56,7 +57,7 @@ private:
 };
 
 template<size_t N>
-std::vector<int> solution<N>::coins_ = {5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000};
+std::vector<int> solution<N>::coins_ = {5, 10, 20, 50, 100, 200, 500, 1000, 2000, 5000, 10000 };
 
 }  // namespace
 

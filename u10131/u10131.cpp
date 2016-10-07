@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -103,7 +104,7 @@ void solution::print_path(int end, std::ostream& out)
         out << elephants_[end].first << std::endl;
     }
 }
-}  // namespace
+} // namespace
 
 void U10131::operator()() const
 {

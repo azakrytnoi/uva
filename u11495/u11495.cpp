@@ -14,14 +14,13 @@
 #include <sstream>
 
 U11495::U11495()
-{
-}
+{}
 
 U11495::~U11495()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

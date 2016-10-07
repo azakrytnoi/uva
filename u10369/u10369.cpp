@@ -14,7 +14,8 @@
 #include <iomanip>
 #include <iosfwd>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -35,8 +36,7 @@ size_t S, P;
 }
 
 U10369::U10369()
-{
-}
+{}
 
 namespace math
 {
@@ -79,8 +79,7 @@ void U10369::operator()() const
         std::generate_n(std::back_inserter(points), P, []() -> math::Kruskal<double>::Edge {
             math::Kruskal<double>::Edge point;
             std::cin >> point.first >> point.second;
-            return point;
-        });
+            return point; });
         for (size_t i = 0; i < points.size(); ++i) {
             for (size_t j = i + 1; j < points.size(); ++j) {
                 lines.push_back(std::make_pair(distance(points[i], points[j]), std::make_pair(i, j)));

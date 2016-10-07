@@ -17,7 +17,8 @@
 #include <limits>
 #include <map>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -35,8 +36,7 @@ class coder
 public:
     coder() :
         freq_()
-    {
-    }
+    {}
 
     std::string operator()(std::string& input);
     void init(const std::string& plain);

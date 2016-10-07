@@ -19,7 +19,8 @@
 #include <queue>
 #include <cstring>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -161,7 +162,7 @@ public:
 private:
     static constexpr double INF = 1e10;
 };
-}  // namespace
+} // namespace
 
 void U10746::operator()() const
 {

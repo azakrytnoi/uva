@@ -19,7 +19,8 @@
 
 U400::U400() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -42,8 +43,7 @@ void U400::operator()() const
         std::generate_n(std::back_inserter(names), N, [&]() -> std::string {
             std::getline(std::cin, line);
             longest = std::max(longest, line.size());
-            return line;
-        });
+            return line; });
         std::sort(names.begin(), names.end());
         size_t ncolumns(std::max(60 / longest, size_t(1)));
         while ((ncolumns - 1) * (longest + 2) + longest > 60) {

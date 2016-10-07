@@ -16,7 +16,8 @@
 #include <algorithm>
 #include <numeric>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -26,12 +27,10 @@ void __cdecl invoke()
 }
 
 U624::U624()
-{
-}
+{}
 
 U624::~U624()
-{
-}
+{}
 
 namespace
 {
@@ -67,7 +66,7 @@ public:
     {
         std::ostream_iterator<int> oit(out, " ");
         size_t idx(0);
-        std::copy_if(s.tracks_.begin(), s.tracks_.end(), oit, [&](auto /*track*/) -> bool {return s.solution_[idx++];});
+        std::copy_if(s.tracks_.begin(), s.tracks_.end(), oit, [&](auto /*track*/) -> bool {return s.solution_[idx++]; });
         out << "sum:" << s.total_;
         return out;
     }
@@ -77,7 +76,7 @@ public:
         if (level == tracks_.size()) {
             size_t idx(0);
             int64_t running = std::accumulate(tracks_.begin(), tracks_.end(), int64_t(0),
-                                              [&](int64_t init, auto val) -> int64_t {return init + (current_[idx++] ? val : 0);});
+                                              [&](int64_t init, auto val) -> int64_t {return init + (current_[idx++] ? val : 0); });
             if (running <= capacity_ && running > total_) {
                 total_ = running;
                 solution_ = current_;

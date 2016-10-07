@@ -20,7 +20,8 @@
 
 #include "bigint.h"
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -79,7 +80,7 @@ std::ostream& operator << (std::ostream& out, solution& sol)
     });
     return out;
 }
-}  // namespace
+} // namespace
 
 void U324::operator()() const
 {

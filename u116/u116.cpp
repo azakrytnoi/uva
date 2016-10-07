@@ -51,8 +51,7 @@ public:
                 s.matrix_[i].clear();
                 std::generate_n(std::back_inserter(s.matrix_[i]), s.N_, [&]() -> int {
                     int tmp; std::cin >> tmp;
-                    return tmp;
-                });
+                    return tmp; });
                 s.costs_[i].clear();
                 std::fill_n(std::back_inserter(s.costs_[i]), s.N_, std::numeric_limits<int>::max());
                 s.path_[i].clear();
@@ -129,7 +128,8 @@ int solver::dp(int row, int col)
 
 U116::U116() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

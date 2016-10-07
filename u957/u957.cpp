@@ -14,8 +14,7 @@
 #include <limits>
 
 U957::U957()
-{
-}
+{}
 
 namespace
 {
@@ -23,8 +22,7 @@ class solver
 {
 public:
     solver() : years_(0), popes_(0), max_(std::numeric_limits<int>::min()), start_(), end_()
-    {
-    }
+    {}
 
     friend std::istream& operator >> (std::istream& in, solver& s)
     {
@@ -73,7 +71,8 @@ private:
 std::vector<int> solver::elections_;
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

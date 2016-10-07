@@ -27,10 +27,10 @@ bool can(card c1, card c2)
 }
 
 U127::U127()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -34,17 +35,20 @@ class solution
 public:
     solution() : n_(0) {}
 
-    friend std::istream& operator >>(std::istream& in, solution& sol) {
+    friend std::istream& operator >>(std::istream& in, solution& sol)
+    {
         in >> sol.n_;
         return in;
     }
 
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol) {
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol)
+    {
         out << sol.n_;
         return out;
     }
 
-    solution& operator ()() {
+    solution& operator ()()
+    {
         n_ *= 567;
         n_ /= 9;
         n_ += 7492;

@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -61,8 +62,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
         std::generate_n(std::back_inserter(sol.field_), sol.N_, [&]() -> std::string {
             std::getline(in, line);
             // cppcheck-suppress returnReference
-            return line;
-        });
+            return line; });
     }
     return in;
 }

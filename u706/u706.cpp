@@ -46,7 +46,8 @@ private:
 };
 
 solution::solution() :
-    size_(0), number_(), digits_( {
+    size_(0), number_(), digits_(
+{
     { " - ", "| |", "   ", "| |", " - " },
     { "   ", "  |", "   ", "  |", "   " },
     { " - ", "  |", " - ", "|  ", " - " },

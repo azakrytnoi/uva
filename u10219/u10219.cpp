@@ -13,12 +13,12 @@
 #include <iomanip>
 
 U10219::U10219()
-{
-}
+{}
 
 typedef long long LL;
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

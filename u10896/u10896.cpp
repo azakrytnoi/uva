@@ -19,7 +19,8 @@
 #include <map>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -53,9 +54,8 @@ public:
         for (auto it = candidates.begin(); it != candidates.end(); ++it) {
             std::string::const_iterator wit = word.begin();
             char candidate = distance((*it)[0], *wit);
-            if (std::accumulate((*it).begin(), (*it).end(), true, [&](bool current, char ch) -> bool {
-            return current &= distance(ch, *(wit++)) == candidate;
-            })) {
+            if (std::accumulate((*it).begin(), (*it).end(), true, [&](bool current, char ch) -> bool
+            {   return current &= distance(ch, *(wit++)) == candidate; })) {
                 out << char('a' + candidate);
             }
         }

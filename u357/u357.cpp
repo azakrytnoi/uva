@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -54,7 +55,7 @@ private:
 };
 
 template<size_t N>
-std::vector<int> solution<N>::coins_ = {1, 5, 10, 25, 50};
+std::vector<int> solution<N>::coins_ = {1, 5, 10, 25, 50 };
 
 }  // namespace
 

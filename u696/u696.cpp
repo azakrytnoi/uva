@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -36,8 +37,7 @@ class solution
 public:
     solution() :
         knights_(0), n_(0), m_(0)
-    {
-    }
+    {}
 
     friend std::istream& operator >>(std::istream& in, solution& sol)
     {

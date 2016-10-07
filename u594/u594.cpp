@@ -12,13 +12,11 @@
 #include <algorithm>
 
 U594::U594()
-{
-}
+{}
 
 
 U594::~U594()
-{
-}
+{}
 
 namespace
 {
@@ -34,7 +32,8 @@ union {
 } item;
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

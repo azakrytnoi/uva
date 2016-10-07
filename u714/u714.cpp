@@ -15,8 +15,7 @@
 #include <numeric>
 
 U714::U714()
-{
-}
+{}
 
 namespace
 {
@@ -126,7 +125,8 @@ std::vector<int64_t> solver::pages_;
 std::vector<bool> solver::breaks_;
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

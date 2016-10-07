@@ -17,7 +17,8 @@
 #include <limits>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -35,8 +36,7 @@ public:
 
     explicit coder(std::ostream& out) :
         plain_(), subst_(), out_(out)
-    {
-    }
+    {}
 
     friend std::istream& operator >>(std::istream& in, coder& engine)
     {

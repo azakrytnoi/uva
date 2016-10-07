@@ -15,7 +15,8 @@
 #include <sstream>
 #include <cctype>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -68,8 +69,7 @@ void U11308::operator()() const
                 {
                     return r1.first < r2.first;
                 }
-                return r1.second < r2.second;
-            });
+                return r1.second < r2.second; });
             std::for_each(requests.begin(), requests.end(), [](const std::pair<std::string, int>& r) {
                 std::cout << r.first << std::endl;
             });

@@ -62,8 +62,7 @@ public:
     }
 
     ~driver()
-    {
-    }
+    {}
 
     friend std::istream& operator >> (std::istream& in, driver& d)
     {
@@ -263,7 +262,8 @@ void driver::flush_page()
 
 U403::U403() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

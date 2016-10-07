@@ -14,14 +14,13 @@
 #include <iomanip>
 
 U11340::U11340()
-{
-}
+{}
 
 U11340::~U11340()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

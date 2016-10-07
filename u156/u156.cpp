@@ -16,14 +16,13 @@
 #include <iterator>
 
 U156::U156()
-{
-}
+{}
 
 U156::~U156()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

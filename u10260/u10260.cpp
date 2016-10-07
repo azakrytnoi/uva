@@ -17,7 +17,8 @@
 #include <limits>
 #include <unordered_map>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -92,12 +93,12 @@ char solution::soundex(char ch)
 }
 
 std::unordered_map<char, char> solution::soundex_ = {
-    {'B', '1'}, {'F', '1'}, {'P', '1'}, {'V', '1'},
-    {'C', '2'}, {'G', '2'}, {'J', '2'}, {'K', '2'}, {'Q', '2'}, {'S', '2'}, {'X', '2'}, {'Z', '2'},
-    {'D', '3'}, {'T', '3'},
-    {'L', '4'},
-    {'M', '5'}, {'N', '5'},
-    {'R', '6'}
+    {'B', '1' }, {'F', '1' }, {'P', '1' }, {'V', '1' },
+    {'C', '2' }, {'G', '2' }, {'J', '2' }, {'K', '2' }, {'Q', '2' }, {'S', '2' }, {'X', '2' }, {'Z', '2' },
+    {'D', '3' }, {'T', '3' },
+    {'L', '4' },
+    {'M', '5' }, {'N', '5' },
+    {'R', '6' }
 };
 
 }  // namespace

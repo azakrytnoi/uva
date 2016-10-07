@@ -14,14 +14,13 @@
 #include <numeric>
 
 U10220::U10220()
-{
-}
+{}
 
 U10220::~U10220()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -48,8 +47,7 @@ void U10220::operator()() const
                 // cppcheck-suppress unreadVariable
                 remainder /= 10;
             });
-            return std::accumulate(digits.begin(), digits.end(), 0);
-        });
+            return std::accumulate(digits.begin(), digits.end(), 0); });
     }
     int n;
     while (std::cin >> n) {

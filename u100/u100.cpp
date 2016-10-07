@@ -11,7 +11,8 @@
 #include <limits>
 #include <algorithm>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 
@@ -22,8 +23,7 @@ void __cdecl invoke()
 }
 
 U100::U100()
-{
-}
+{}
 
 void U100::operator()() const
 {
@@ -44,8 +44,7 @@ void U100::operator()() const
                     n /= 2;
                 }
             }
-            return cnt;
-        }) << std::endl;
+            return cnt; }) << std::endl;
     }
 }
 

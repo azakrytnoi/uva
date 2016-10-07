@@ -19,7 +19,8 @@
 #include <sstream>
 #include <unordered_map>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

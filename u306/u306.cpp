@@ -18,7 +18,8 @@
 #include <thread>
 #include <future>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -36,8 +37,7 @@ class cipher
 public:
     cipher() :
         cipher_(), buffer_()
-    {
-    }
+    {}
     cipher(const cipher& rhs) : cipher_(rhs.cipher_), buffer_() {}
 
     friend std::istream& operator >>(std::istream& in, cipher& cipher)
@@ -83,7 +83,7 @@ cipher& cipher::operator >>(std::string& dst)
     buffer_.clear();
     return *this;
 }
-}  // namespace
+} // namespace
 
 void U306::operator()() const
 {
@@ -100,8 +100,7 @@ void U306::operator()() const
                 {
                     (c << data) >> data;
                 }
-                return data;
-            }, global, k, line);
+                return data; }, global, k, line);
             futs.push_back(std::move(fut));
         }
         futs.push_back(std::async([]()->std::string {return ""; }));

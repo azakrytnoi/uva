@@ -17,26 +17,32 @@
 #include <limits>
 #include <cmath>
 
-extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+extern "C"
+{
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U847 instance;
-	instance();
+    U847 instance;
+    instance();
 }
 
 void U847::operator()()
 {
-	int64_t n;
+    int64_t n;
 
-	while (std::cin >> n)
-	{
-		long double lg = std::logl(long double(n)) / std::logl(18);
-		int64_t lo = int64_t(std::floorl(lg));
-		if (lg - lo < 0.00000000001) { std::cout << "Ollie wins.\n"; continue; }
-		if (n / std::powl(18.0, long double(lo)) > 9.0) std::cout << "Ollie wins.\n";
-		else std::cout << "Stan wins.\n";
-	}
+    while (std::cin >> n) {
+        long double lg = std::logl(long double(n)) / std::logl(18);
+        int64_t lo = int64_t(std::floorl(lg));
+        if (lg - lo < 0.00000000001) {
+            std::cout << "Ollie wins.\n";
+            continue;
+        }
+        if (n / std::powl(18.0, long double(lo)) > 9.0) {
+            std::cout << "Ollie wins.\n";
+        } else {
+            std::cout << "Stan wins.\n";
+        }
+    }
 }

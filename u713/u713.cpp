@@ -16,8 +16,7 @@
 #include <string>
 
 U713::U713()
-{
-}
+{}
 
 namespace
 {
@@ -68,7 +67,8 @@ public:
 };
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -35,8 +36,7 @@ class solution
 public:
     solution() :
         grid_(), nCols_(0), nRows_(0)
-    {
-    }
+    {}
 
     friend std::istream& operator >>(std::istream& in, solution& sol);
 
@@ -101,7 +101,7 @@ std::pair<size_t, size_t> solution::solve(const std::string& word) const
     }
     return std::make_pair(std::numeric_limits<size_t>::max(), std::numeric_limits<size_t>::max());
 }
-}  // namespace
+} // namespace
 
 void U10010::operator()() const
 {

@@ -34,7 +34,8 @@ size_t circle_count(size_t k, size_t m)
 
 U305::U305() {}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -51,12 +52,10 @@ void U305::operator()()
         size_t probe(1);
         size_t k = answers.size();
         for (; circle_count(k, ++probe) != k;);
-        return probe;
-    });
+        return probe; });
 
     std::istream_iterator<size_t> iin(std::cin);
     std::ostream_iterator<size_t> iout(std::cout, "\n");
-    std::transform(iin, std::istream_iterator<size_t>(), iout, [&](auto k) -> size_t {
-        return answers[k];
-    });
+    std::transform(iin, std::istream_iterator<size_t>(), iout, [&](auto k) -> size_t
+    {   return answers[k]; });
 }

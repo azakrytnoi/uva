@@ -17,12 +17,10 @@
 #include <numeric>
 
 U908::U908()
-{
-}
+{}
 
 U908::~U908()
-{
-}
+{}
 
 namespace math
 {
@@ -47,7 +45,8 @@ int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
 
 }
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

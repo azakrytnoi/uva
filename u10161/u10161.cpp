@@ -16,7 +16,8 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -62,7 +63,7 @@ public:
         return *this;
     }
 };
-}  // namespace
+} // namespace
 
 void U10161::operator()() const
 {

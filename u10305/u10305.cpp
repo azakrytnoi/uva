@@ -27,14 +27,13 @@ struct task {
 }
 
 U10305::U10305()
-{
-}
+{}
 
 U10305::~U10305()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

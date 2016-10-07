@@ -17,7 +17,8 @@
 #include <limits>
 #include <map>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -31,9 +32,7 @@ namespace
 class baudot
 {
     enum class shift
-    {
-        UP, DOWN
-    };
+    {   UP, DOWN };
     shift shift_;
     std::map<shift, std::string> code_;
 
@@ -78,7 +77,7 @@ std::string operator << (baudot& eng, const std::string& input)
     }
     return result;
 }
-}  // namespace
+} // namespace
 
 void U740::operator()() const
 {

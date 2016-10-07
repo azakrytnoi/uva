@@ -18,103 +18,108 @@
 #include <limits>
 #include <sstream>
 
-extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+extern "C"
+{
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U120 instance;
-	instance();
+    U120 instance;
+    instance();
 }
 
 namespace
 {
-	class solution
-	{
-	public:
-		solution();
+class solution
+{
+public:
+    solution();
 
-		friend std::istream& operator >> (std::istream& in, solution& sol);
-		friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >> (std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-		solution& operator() ();
+    solution& operator() ();
 
-	private:
-		std::vector<uint16_t> pancakes_;
-		std::list<size_t> moves_;
+private:
+    std::vector<uint16_t> pancakes_;
+    std::list<size_t> moves_;
 
-		bool isSorted();
-		bool moveLargestToFirst(size_t pos);
-	};
+    bool isSorted();
+    bool moveLargestToFirst(size_t pos);
+};
 
-	solution::solution() : pancakes_(), moves_()
-	{
-		pancakes_.reserve(30);
-	}
+solution::solution() : pancakes_(), moves_()
+{
+    pancakes_.reserve(30);
+}
 
-	std::istream& operator >> (std::istream& in, solution& sol)
-	{
-		sol.pancakes_.clear();
-		std::copy(std::istream_iterator<uint16_t>(in), std::istream_iterator<uint16_t>(), std::back_inserter(sol.pancakes_));
-		return in;
-	}
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    sol.pancakes_.clear();
+    std::copy(std::istream_iterator<uint16_t>(in), std::istream_iterator<uint16_t>(), std::back_inserter(sol.pancakes_));
+    return in;
+}
 
-	std::ostream& operator << (std::ostream& out, const solution& sol)
-	{
-		std::ostream_iterator<size_t> iout(out, " ");
-		std::copy(sol.moves_.begin(), sol.moves_.end(), iout);
-		out << "0";
-		return out;
-	}
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+    std::ostream_iterator<size_t> iout(out, " ");
+    std::copy(sol.moves_.begin(), sol.moves_.end(), iout);
+    out << "0";
+    return out;
+}
 
-	solution& solution::operator()()
-	{
-		moves_.clear();
-		for (size_t i = pancakes_.size(); !isSorted(); i--)
-		{
-			if (moveLargestToFirst(i))
-			{
-				moves_.push_back(pancakes_.size() - i + 1);
-				std::reverse(pancakes_.begin(), pancakes_.begin() + i);
-			}
-		}
-		return *this;
-	}
+solution& solution::operator()()
+{
+    moves_.clear();
+    for (size_t i = pancakes_.size(); !isSorted(); i--) {
+        if (moveLargestToFirst(i)) {
+            moves_.push_back(pancakes_.size() - i + 1);
+            std::reverse(pancakes_.begin(), pancakes_.begin() + i);
+        }
+    }
+    return *this;
+}
 
-	bool solution::isSorted()
-	{
-		for (size_t i = 0; i < pancakes_.size() - 1; i++)
-		{
-			if (pancakes_[i] > pancakes_[i + 1]) return false;
-		}
+bool solution::isSorted()
+{
+    for (size_t i = 0; i < pancakes_.size() - 1; i++) {
+        if (pancakes_[i] > pancakes_[i + 1]) {
+            return false;
+        }
+    }
 
-		return true;
-	}
-	bool solution::moveLargestToFirst(size_t pos)
-	{
-		size_t largest = 0;
-		for (size_t i = 0; i < pos; i++)
-		{
-			if (pancakes_[i] > pancakes_[largest]) largest = i;
-		}
-		if (largest == 0)  return true;
-		if (largest == pos - 1) return false;
-		std::reverse(pancakes_.begin(), pancakes_.begin() + largest + 1);
-		moves_.push_back(pancakes_.size() - largest);
+    return true;
+}
+bool solution::moveLargestToFirst(size_t pos)
+{
+    size_t largest = 0;
+    for (size_t i = 0; i < pos; i++) {
+        if (pancakes_[i] > pancakes_[largest]) {
+            largest = i;
+        }
+    }
+    if (largest == 0) {
+        return true;
+    }
+    if (largest == pos - 1) {
+        return false;
+    }
+    std::reverse(pancakes_.begin(), pancakes_.begin() + largest + 1);
+    moves_.push_back(pancakes_.size() - largest);
 
-		return true;
-	}
+    return true;
+}
 }
 
 void U120::operator()()
 {
-	solution sol;
-	std::string line;
-	while (std::getline(std::cin, line)) {
-		std::cout << line << std::endl;
-		std::stringstream in(line);
-		in >> sol;
-		std::cout << sol() << std::endl;
-	}
+    solution sol;
+    std::string line;
+    while (std::getline(std::cin, line)) {
+        std::cout << line << std::endl;
+        std::stringstream in(line);
+        in >> sol;
+        std::cout << sol() << std::endl;
+    }
 }

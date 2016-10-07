@@ -14,14 +14,13 @@
 #include <algorithm>
 
 U11462::U11462()
-{
-}
+{}
 
 U11462::~U11462()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

@@ -16,13 +16,14 @@
 #include <numeric>
 #include <limits>
 
-extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+extern "C"
+{
+    UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
 {
-	U10141 instance;
-	instance();
+    U10141 instance;
+    instance();
 }
 
 namespace
@@ -36,12 +37,14 @@ public:
     solution() : nReq_(0), nProposals_(0), choosen_() {}
 
     friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol) {
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol)
+    {
         out << sol.choosen_ << std::endl;
         return out;
     }
 
-    operator bool() const {
+    operator bool() const
+    {
         return nReq_ != 0 && nProposals_ != 0;
     }
 
@@ -50,12 +53,14 @@ public:
 private:
 };
 
-std::istream& operator >> (std::istream& in, solution& sol) {
+std::istream& operator >> (std::istream& in, solution& sol)
+{
     in >> sol.nReq_ >> sol.nProposals_;
     return in;
 }
 
-solution& solution::operator ()() {
+solution& solution::operator ()()
+{
     double compliance = std::numeric_limits<double>::min();
     double minPrice = std::numeric_limits<double>::max();
     std::string line;

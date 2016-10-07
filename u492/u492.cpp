@@ -18,7 +18,8 @@
 #include <sstream>
 #include <cctype>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

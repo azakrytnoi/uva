@@ -24,14 +24,13 @@ std::ostream& operator << (std::ostream& out, const std::pair<std::string, doubl
 }
 
 U10226::U10226()
-{
-}
+{}
 
 U10226::~U10226()
-{
-}
+{}
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()

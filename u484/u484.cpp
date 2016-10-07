@@ -17,7 +17,8 @@
 #include <limits>
 #include <map>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -36,7 +37,7 @@ void U484::operator()() const
             v.push_back(n);
         }
     }
-    std::for_each(v.begin(), v.end(), [&](auto num)  {
+    std::for_each(v.begin(), v.end(), [&](auto num) {
         std::cout << num << " " << freq[num] << std::endl;
     });
 }

@@ -12,15 +12,12 @@
 #include <algorithm>
 
 U146::U146()
-{
-}
+{}
 
 U146::~U146()
-{
-}
-extern "C" {
-    UVA_API_EXPORT void __cdecl invoke();
-}
+{}
+extern "C"
+{   UVA_API_EXPORT void __cdecl invoke(); }
 void __cdecl invoke()
 {
     U146 instance;

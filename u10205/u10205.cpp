@@ -17,7 +17,8 @@
 #include <limits>
 #include <sstream>
 
-extern "C" {
+extern "C"
+{
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -30,14 +31,10 @@ namespace
 {
 
 enum class rank : char
-{
-    _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K', A = 'A'
-};
+{   _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K', A = 'A' };
 
 enum class suit : char
-{
-    Clubs = 'C', Diamonds = 'D', Hearts = 'H', Spades = 'S'
-};
+{   Clubs = 'C', Diamonds = 'D', Hearts = 'H', Spades = 'S' };
 
 std::ostream& operator << (std::ostream& out, const suit& s)
 {
