@@ -105,7 +105,7 @@ std::string solution::operator ()()
 
 }
 
-void U848::operator()()
+void U848::operator()() const
 {
     solution sol;
     std::cin >> sol;

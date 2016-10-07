@@ -32,7 +32,7 @@ namespace
 class solution
 {
 public:
-    solution() : n_(), m_(), result_() {}
+    solution() : m_(), n_(), result_() {}
 
     friend std::istream& operator >> (std::istream& in, solution& sol);
     friend std::ostream& operator <<(std::ostream& out, const solution& sol);
@@ -81,7 +81,7 @@ solution& solution::operator()()
 }
 }
 
-void U10077::operator()()
+void U10077::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

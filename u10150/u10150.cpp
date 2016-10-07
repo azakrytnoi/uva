@@ -127,7 +127,7 @@ bool solution::is_doublets(size_t u, size_t v)
 
 }
 
-void U10150::operator()()
+void U10150::operator()() const
 {
     solution sol;
     std::cin >> sol;

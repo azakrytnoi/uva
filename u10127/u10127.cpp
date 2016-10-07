@@ -69,7 +69,7 @@ solution& solution::operator()()
 }
 }
 
-void U10127::operator()()
+void U10127::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

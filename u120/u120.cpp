@@ -45,7 +45,7 @@ private:
     std::vector<uint16_t> pancakes_;
     std::list<size_t> moves_;
 
-    bool isSorted();
+    bool isSorted() const;
     bool moveLargestToFirst(size_t pos);
 };
 
@@ -81,7 +81,7 @@ solution& solution::operator()()
     return *this;
 }
 
-bool solution::isSorted()
+bool solution::isSorted() const
 {
     for (size_t i = 0; i < pancakes_.size() - 1; i++) {
         if (pancakes_[i] > pancakes_[i + 1]) {
@@ -112,7 +112,7 @@ bool solution::moveLargestToFirst(size_t pos)
 }
 }
 
-void U120::operator()()
+void U120::operator()() const
 {
     solution sol;
     std::string line;

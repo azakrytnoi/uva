@@ -103,7 +103,7 @@ solution::operator bool()
 }
 }
 
-void U10152::operator()()
+void U10152::operator()() const
 {
     int N;
     std::cin >> N;

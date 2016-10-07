@@ -122,7 +122,7 @@ solution::operator bool()
 }
 }
 
-void U10138::operator()()
+void U10138::operator()() const
 {
     int N;
     std::cin >> N;

@@ -81,7 +81,7 @@ solution& solution::operator()()
 
 }
 
-void U10041::operator()()
+void U10041::operator()() const
 {
     solution sol;
     size_t N;

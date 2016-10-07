@@ -28,18 +28,18 @@ void __cdecl invoke()
     instance();
 }
 
-void U847::operator()()
+void U847::operator()() const
 {
     int64_t n;
 
     while (std::cin >> n) {
-        long double lg = std::logl(long double(n)) / std::logl(18);
-        int64_t lo = int64_t(std::floorl(lg));
+        long double lg = std::log((long double)(n)) / std::log((long double)18);
+        int64_t lo = int64_t(std::floor(lg));
         if (lg - lo < 0.00000000001) {
             std::cout << "Ollie wins.\n";
             continue;
         }
-        if (n / std::powl(18.0, long double(lo)) > 9.0) {
+        if (n / std::pow(18.0, (long double)(lo)) > 9.0) {
             std::cout << "Ollie wins.\n";
         } else {
             std::cout << "Stan wins.\n";

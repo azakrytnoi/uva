@@ -168,7 +168,7 @@ solution::operator bool()
 }
 }
 
-void U10191::operator()()
+void U10191::operator()() const
 {
     solution sol;
     do {

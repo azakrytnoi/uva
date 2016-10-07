@@ -84,7 +84,7 @@ solution& solution::operator()()
 }
 }
 
-void U10018::operator()()
+void U10018::operator()() const
 {
     int32_t N;
     std::cin >> N;

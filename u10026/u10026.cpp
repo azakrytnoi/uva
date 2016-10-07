@@ -66,7 +66,9 @@ std::istream& operator >> (std::istream& in, solution& sol)
             job j;
             in >> j;
             j.position_ = sol.jobs_.size() + 1;
-            return j; });
+            // cppcheck-suppress returnReference
+            return j;
+        });
     }
     return in;
 }
@@ -98,7 +100,7 @@ solution::operator bool()
 
 }
 
-void U10026::operator()()
+void U10026::operator()() const
 {
     int dummy;
     std::cin >> dummy;

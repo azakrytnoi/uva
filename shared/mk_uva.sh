@@ -14,7 +14,7 @@ public:
 	}
     U$1() {}
 
-    void operator()();
+    void operator()() const;
 };
 
 #ifdef POPULATE_CACHE
@@ -85,7 +85,7 @@ solution& solution::operator()()
 
 }
 
-void U$1::operator()()
+void U$1::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

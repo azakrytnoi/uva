@@ -144,7 +144,7 @@ bool solution::calculate(size_t start, std::vector<bool> taken)
 }
 }
 
-void U10202::operator()()
+void U10202::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

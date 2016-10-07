@@ -83,7 +83,7 @@ solution::operator bool()
 }
 }
 
-void U10035::operator()()
+void U10035::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {

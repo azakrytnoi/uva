@@ -70,7 +70,7 @@ public:
     }
 
 private:
-    bool is_carmichael(uint32_t n)
+    static bool is_carmichael(uint32_t n)
     {
         for(uint32_t i = 2; i < n; i++) {
             if(mod_pow(i, n, n) != i) {

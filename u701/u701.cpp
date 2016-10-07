@@ -47,8 +47,8 @@ private:
     long double T_, LLP_;
 };
 
-const long double solution::_2L_ = std::logl(2);
-const long double solution::C_ = std::logl(10) / solution::_2L_;
+const long double solution::_2L_ = std::log(2);
+const long double solution::C_ = std::log(10) / solution::_2L_;
 
 std::istream& operator >> (std::istream& in, solution& sol)
 {
@@ -58,22 +58,22 @@ std::istream& operator >> (std::istream& in, solution& sol)
 
 std::ostream& operator <<(std::ostream& out, const solution& sol)
 {
-    out << int64_t(std::floorl(sol.LLP_ + sol.T_ * sol.C_));
+    out << int64_t(std::floor(sol.LLP_ + sol.T_ * sol.C_));
     return out;
 }
 
 solution& solution::operator()()
 {
-    long double LP = std::logl(long double(P_)) / _2L_;
-    LLP_ = std::logl(long double(P_) + 1) / _2L_;
-    T_ = std::floorl(std::log10l(long double(P_))) + 2;
-    for (; std::ceill(LP + T_ * C_) != std::floorl(LLP_ + T_ * C_); T_++);
+    long double LP = std::log((long double)(P_)) / _2L_;
+    LLP_ = std::log1p((long double)(P_)) / _2L_;
+    T_ = std::floor(std::log10((long double)(P_))) + 2;
+    for (; std::ceil(LP + T_ * C_) != std::floor(LLP_ + T_ * C_); T_++);
 
     return *this;
 }
 }
 
-void U701::operator()()
+void U701::operator()() const
 {
     solution sol;
     while (std::cin >> sol) {

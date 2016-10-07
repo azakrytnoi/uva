@@ -102,7 +102,7 @@ solution& solution::operator ()()
 }
 }
 
-void U10132::operator()()
+void U10132::operator()() const
 {
     solution sol;
     int ncases;
