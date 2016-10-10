@@ -146,21 +146,17 @@ void evaluator<Tp>::operator()()
 	std::cout << tp_name << ": << " << source_ << std::endl;
 	std::ifstream in(source_.c_str());
 	uint64_t elapsed(0);
-	std::stringstream out;
 	{
 		invoker fnc = prepare(Tp::libname());
-		io_wrapper<std::ostream> wrap_out(std::cout, out.rdbuf());
+		std::ofstream log((source_ + ".out").c_str());
+		teestream tee(log, std::cout);
+		io_wrapper<std::ostream> wrap_out(std::cout, tee.rdbuf());
 		io_wrapper<std::istream> wrap_in(std::cin, in.rdbuf());
 		{
 			std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
 			fnc();
 			elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
 		}
-	}
-	{
-		std::ofstream log((source_ + ".out").c_str());
-		teestream tee(log, std::cout);
-		tee << out.str();
 	}
 	std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }
