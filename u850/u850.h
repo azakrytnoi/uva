@@ -7,9 +7,9 @@ public:
 	{
 		return "u850";
 	}
-    U850() {}
+	U850() {}
 
-    void operator()();
+	void operator()() const;
 };
 
 #ifdef POPULATE_CACHE

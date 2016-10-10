@@ -145,14 +145,15 @@ namespace
 	}
 }
 
-void U850::operator()()
+void U850::operator()() const
 {
 	int N;
 	std::cin >> N;
 	std::cin.get();
 	std::cin.get();
 	solution sol;
-	while (N--) {
+	while (N--)
+	{
 		std::cin >> sol;
 		std::cout << sol();
 		if (N != 0)
