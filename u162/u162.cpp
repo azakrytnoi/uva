@@ -55,7 +55,7 @@ public:
         return valid_;
     }
 
-    void play();
+    desk& operator ()();
 
 private:
     void playToCover(size_t steps);
@@ -63,7 +63,7 @@ private:
     bool step();
     void changeTurn();
 
-    static void dumpRound();
+    void dumpRound();
 
     void reinit();
 
@@ -181,9 +181,9 @@ std::ostream& operator << (std::ostream& out, std::stack<card> cards)
 
 void desk::dumpRound()
 {
-    //    std::clog << player_ << ": " << table_ << std::endl;
-    //    std::clog << "\t" << hands_[0] << std::endl;
-    //    std::clog << "\t" << hands_[1] << std::endl;
+//    std::clog << player_ << ": " << table_ << std::endl;
+//    std::clog << "\t" << hands_[0] << std::endl;
+//    std::clog << "\t" << hands_[1] << std::endl;
 }
 
 bool desk::step()
@@ -197,13 +197,14 @@ bool desk::step()
     return false;
 }
 
-void desk::play()
+desk& desk::operator ()()
 {
     player_ = 0;
     while (step()) {
         changeTurn();
         coverFace();
     }
+    return *this;
 }
 
 void desk::coverFace()
@@ -231,7 +232,6 @@ void U162::operator()() const
 {
     desk eng;
     while ((std::cin >> eng) && eng) {
-        eng.play();
-        std::cout << eng << std::endl;
+        std::cout << eng() << std::endl;
     }
 }

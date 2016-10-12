@@ -59,7 +59,7 @@ std::istream& operator >> (std::istream& in, solution& sol)
 {
     sol.original_.clear();
     sol.target_.clear();
-    int nTurtles;
+    size_t nTurtles;
     in >> nTurtles;
     if (in) {
         sol.original_.reserve(nTurtles);
