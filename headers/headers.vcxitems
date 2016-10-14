@@ -17,7 +17,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)bigint.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)disjointSet.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)fibonacci.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)gcd.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)kruskal.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)prime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)sort.h" />
   </ItemGroup>
 </Project>
