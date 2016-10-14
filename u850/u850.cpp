@@ -70,7 +70,7 @@ private:
     }
 };
 
-solution::solution() : inputTokens_(), possible_(false)
+solution::solution() : alphabetTokens_(), inputTokens_(), possible_(false)
 {
     std::stringstream ss("the quick brown fox jumps over the lazy dog");
     std::istream_iterator<std::string> iss(ss);
