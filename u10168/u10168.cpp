@@ -62,11 +62,11 @@ std::istream& operator >>(std::istream& in, solution& sol)
 std::ostream& operator <<(std::ostream& out, const solution& sol)
 {
     if (sol.summ_.size() < 4) {
-        out << "Impossible";
+        out << "Impossible.";
     } else {
-        std::ostream_iterator<int32_t> oit(out, " ");
-        std::copy(sol.summ_.begin(), sol.summ_.end(), oit);
-//        out.seekp(-1, std::ios::end);
+        out << sol.summ_[0] << ' ' << sol.summ_[1] << ' ' << sol.summ_[2] << ' ' << sol.summ_[3];
+//        std::ostream_iterator<int32_t> oit(out, " ");
+//        std::copy(sol.summ_.begin(), sol.summ_.end(), oit);
     }
     return out;
 }
