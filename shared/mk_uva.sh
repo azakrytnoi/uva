@@ -104,6 +104,8 @@ sed "s/u100/u$1/" ../u100/Makefile > ../u$1/Makefile
 sed "s/u100/u$1/" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
 sed "s/u100/u$1/" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
 
+make 
+
 cd "../u$1"
 make depend
 cd ../shared
