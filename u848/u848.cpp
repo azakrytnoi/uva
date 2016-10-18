@@ -52,7 +52,7 @@ private:
 //        if (str.front() == ' ') {
 //            str.erase(0, str.find_first_not_of(' '));
 //        }
-        if (str.back() == ' ') {
+        if (!str.empty() && str.back() == ' ') {
             str.erase(str.find_last_not_of(' '), std::string::npos);
         }
     }
