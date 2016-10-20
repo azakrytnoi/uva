@@ -87,9 +87,23 @@ public:
     virtual void operator()() = 0;
 
 protected:
+#ifdef _WIN32
+	uva_wraper() : hGetProcIDDLL_() {}
+#else
+	uva_wraper() : handle_() {}
+#endif
+
     typedef void(__cdecl *invoker)();
 
     invoker prepare(const std::string& baseName);
+	void release();
+
+private:
+#ifdef _WIN32
+	HINSTANCE hGetProcIDDLL_;
+#else
+	void * handle_;
+#endif
 };
 
 template<typename Tp>
@@ -156,6 +170,7 @@ void evaluator<Tp>::operator()()
 			fnc();
 			elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
 		}
+		release();
 	}
 	std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }

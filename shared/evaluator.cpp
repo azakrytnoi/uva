@@ -55,23 +55,38 @@ int main(int argc, char** argv)
 uva_wraper::invoker uva_wraper::prepare(const std::string & baseName)
 {
 #ifdef _WIN32
-    HINSTANCE hGetProcIDDLL = LoadLibraryA((baseName + ".dll").c_str());
-    if (!hGetProcIDDLL) {
+    hGetProcIDDLL_ = LoadLibraryA((baseName + ".dll").c_str());
+    if (!hGetProcIDDLL_) {
         std::cout << "failure loading library" << std::endl;
         throw std::exception(baseName.c_str());
     }
-    invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL, "invoke");
+    invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL_, "invoke");
 #else
-    void* handle = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
-    if (!handle) {
+    handle_ = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
+    if (!handle_) {
         std::cout << "failure loading library" << std::endl;
         throw std::exception();
     }
-    invoker fnc = (invoker)dlsym(handle, "invoke");
+    invoker fnc = (invoker)dlsym(handle_, "invoke");
 #endif // _WIN32
     if (!fnc) {
         std::cout << "failure locate function" << std::endl;
         throw std::exception();
     }
     return fnc;
+}
+
+void uva_wraper::release()
+{
+#ifdef _WIN32
+	if (hGetProcIDDLL_) {
+		FreeLibrary(hGetProcIDDLL_);
+		hGetProcIDDLL_ = nullptr;
+	}
+#else
+	if (handle_) {
+		dlclose(handle_);
+		handle = nullptr;
+	}
+#endif // _WIN32
 }
