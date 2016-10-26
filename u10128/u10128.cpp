@@ -31,8 +31,7 @@ namespace
 	constexpr size_t N = 14;
 	class solution
 	{
-		std::vector<std::vector<int32_t>> pascalTriangle_;
-		std::vector<std::vector<std::vector<int32_t>>> dp_;
+		std::vector<std::vector<std::vector<int64_t>>> dp_;
 		int32_t n_, p_, r_;
 	public:
 		solution();
@@ -46,19 +45,20 @@ namespace
 	private:
 	};
 
-	solution::solution() : pascalTriangle_(N, std::vector<int32_t>(N)), dp_(N, std::vector<std::vector<int32_t>>(N, std::vector<int32_t>(N))),
+	solution::solution() : dp_(N, std::vector<std::vector<int64_t>>(N, std::vector<int64_t>(N))),
 		n_(), p_(), r_()
 	{
-		pascalTriangle_[0][0] = 1;
+		std::vector<std::vector<int64_t>> pascalTriangle(N, std::vector<int64_t>(N));
+		pascalTriangle[0][0] = 1;
 		for (size_t i = 1; i < N; i++)
 		{
-			pascalTriangle_[i][0] = pascalTriangle_[i][i] = 1;
+			pascalTriangle[i][0] = pascalTriangle[i][i] = 1;
 		}
 		for (size_t i = 2; i < N; ++i)
 		{
 			for (size_t j = 1; j < i; ++j)
 			{
-				pascalTriangle_[i][j] = pascalTriangle_[i - 1][j] + pascalTriangle_[i - 1][j - 1];
+				pascalTriangle[i][j] = pascalTriangle[i - 1][j] + pascalTriangle[i - 1][j - 1];
 			}
 		}
 		dp_[1][1][1] = dp_[0][0][0] = 1;
@@ -67,9 +67,9 @@ namespace
 				for (size_t r = 1; r <= p; ++r) {
 					for (size_t i = p - 1; i <= n - 1 - (r - 1); ++i) {
 						dp_[n][p][r] +=
-							pascalTriangle_[n - 1][i] *
-							std::accumulate(dp_[i][p - 1].begin(), dp_[i][p - 1].end(), 0) *
-							std::accumulate(dp_[n - 1 - i][r - 1].begin(), dp_[n - 1 - i][r - 1].end(), 0);
+							pascalTriangle[n - 1][i] *
+							std::accumulate(dp_[i][p - 1].begin(), dp_[i][p - 1].end(), 0ll) *
+							std::accumulate(dp_[n - 1 - i][r - 1].begin(), dp_[n - 1 - i][r - 1].end(), 0ll);
 						dp_[n][r][p] = dp_[n][p][r];  // symmetry
 					}
 				}
