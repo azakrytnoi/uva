@@ -37,6 +37,9 @@ namespace
 		solution();
 		~solution() { delete sieve_; }
 
+		solution(const solution& rhs) =delete;
+		solution& operator = (const solution& rhs) = delete;
+
 		friend std::istream& operator >> (std::istream& in, solution& sol);
 		friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 

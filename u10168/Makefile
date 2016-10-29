@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u10168.o: u10168.h
+u10168.o: u10168.h ../headers/prime.h

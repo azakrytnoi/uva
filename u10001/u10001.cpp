@@ -83,20 +83,20 @@ namespace
 					lc_1 = i * 2 + 1;
 				if (!li) { // for the first cell
 					// pass the cell and right bits of the first cell
-					if (id & 1 &&
-						(*this)(li + 1, lc_0 & 3, i) ||
-						id & 2 &&
-						(*this)(li + 1, lc_1 & 3, i))
+					if (((id & 1) &&
+						(*this)(li + 1, lc_0 & 3, i)) ||
+						((id & 2) &&
+						(*this)(li + 1, lc_1 & 3, i)))
 						return true;
 				}
 				else if (li == n_ - 1) { // for the last cell
-					if (lc_0 != -1 && (lc_0 >> 1) == fcr &&
-						(lc_0 & 3) == plc ||
-						lc_1 != -1 && (lc_1 >> 1) == fcr && (lc_1 & 3) == plc)
+					if ((lc_0 != -1 && (lc_0 >> 1) == fcr &&
+						(lc_0 & 3) == plc) ||
+						(lc_1 != -1 && (lc_1 >> 1) == fcr && (lc_1 & 3) == plc))
 						return true;
 				}
-				else if (lc_0 != -1 && (lc_0 & 3) == plc ||
-					lc_1 != -1 && (lc_1 & 3) == plc) {
+				else if ((lc_0 != -1 && (lc_0 & 3) == plc) ||
+					(lc_1 != -1 && (lc_1 & 3) == plc)) {
 					if ((*this)(li + 1, fcr, i))
 						// cell and right bits of the current cell are equal
 						// to the left ant cell bits of the previous cell
