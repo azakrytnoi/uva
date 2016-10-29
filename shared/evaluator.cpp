@@ -86,7 +86,7 @@ void uva_wraper::release()
 #else
 	if (handle_) {
 		dlclose(handle_);
-		handle = nullptr;
+		handle_ = nullptr;
 	}
 #endif // _WIN32
 }
