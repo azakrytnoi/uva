@@ -57,9 +57,9 @@ private:
 
         for (size_t i = 0; i < alphabetTokens_.size(); i++) {
             for (size_t j = 0; j < alphabetTokens_[i].length(); j++) {
-                if ((mappings_[encrypted[i][j]] == 0 && rmappings[alphabetTokens_[i][j]] == 0)
-                        || (mappings_[encrypted[i][j]] == alphabetTokens_[i][j])) {
-                    mappings_[encrypted[i][j]] = alphabetTokens_[i][j];
+                if ((mappings_[static_cast<size_t>(encrypted[i][j])] == 0 && rmappings[static_cast<size_t>(alphabetTokens_[i][j])] == 0)
+                        || (mappings_[static_cast<size_t>(encrypted[i][j])] == alphabetTokens_[i][j])) {
+                    mappings_[static_cast<size_t>(encrypted[i][j])] = alphabetTokens_[i][j];
                 } else {
                     return false;
                 }
@@ -105,7 +105,7 @@ std::ostream& operator << (std::ostream& out, const solution& sol)
             std::for_each(iti->begin(), iti->end(), [&](const std::string& element) {
                 std::string result;
                 std::transform(element.begin(), element.end(), std::back_inserter(result), [&](auto ch) {
-                    return sol.mappings_[ch];
+                    return sol.mappings_[static_cast<size_t>(ch)];
                 });
                 translated.push_back(result);
             });

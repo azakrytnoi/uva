@@ -93,6 +93,9 @@ protected:
 	uva_wraper() : handle_() {}
 #endif
 
+	uva_wraper(const uva_wraper& rhs) =delete;
+	uva_wraper& operator = (const uva_wraper& rhs) =delete;
+
     typedef void(__cdecl *invoker)();
 
     invoker prepare(const std::string& baseName);

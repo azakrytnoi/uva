@@ -17,6 +17,7 @@
 #include <limits>
 #include <memory>
 #include <map>
+#include <cstdint>
 
 #include "prime.h"
 
