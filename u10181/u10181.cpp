@@ -142,7 +142,7 @@ namespace
 		for (int i = 0; i < N - 1; ++i)
 		{
 			int8_t ch;
-			if ((ch = s[i]) == 0 && (i / SIZE + 1) & 0x1)
+			if ((ch = s[i]) == 0 && ((i / SIZE + 1) & 0x1))
 			{
 				ret = 1 - ret;
 			}
