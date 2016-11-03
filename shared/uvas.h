@@ -161,3 +161,4 @@
 #include "../u10128/u10128.h"
 #include "../u10160/u10160.h"
 #include "../u10032/u10032.h"
+#include "../u704/u704.h"
