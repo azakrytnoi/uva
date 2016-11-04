@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u478.h"
@@ -16,97 +16,91 @@
 #include <cmath>
 #include <sstream>
 
-namespace
-{
-typedef std::pair<float_t, float_t> point;
+namespace {
+    typedef std::pair<float_t, float_t> point;
 
-std::istream& operator >> (std::istream& in, point& p)
-{
-    in >> p.first >> p.second;
-    return in;
-}
-
-float_t distance(const point& p1, const point& p2)
-{
-    return std::sqrt((p1.first - p2.first) * (p1.first - p2.first) + (p1.second - p2.second) * (p1.second - p2.second));
-}
-
-class shape
-{
-public:
-    enum class kind : char
-    {   RECTANGLE = 'r', CIRCLE = 'c', TRIANGLE = 't' };
-    const kind kind_;
-    const size_t seq_;
-
-    shape(kind k, size_t seq) : kind_(k), seq_(seq) {}
-    virtual ~shape() {}
-
-    virtual bool point_inside(const point& p) = 0;
-
-    size_t seq() const
+    std::istream& operator >> (std::istream& in, point& p)
     {
-        return seq_;
+        in >> p.first >> p.second;
+        return in;
     }
-};
 
-class rectangle : public shape
-{
-    point topLeft_;
-    point bottomRight_;
-
-public:
-    rectangle(size_t seq, point& topLeft, point& bottomRight) : shape(kind::RECTANGLE, seq), topLeft_(topLeft), bottomRight_(bottomRight) {}
-    virtual ~rectangle() {}
-
-    virtual bool point_inside(const point& p)
+    float_t distance(const point& p1, const point& p2)
     {
-        return topLeft_.first < p.first && p.first < bottomRight_.first
-               && topLeft_.second > p.second && p.second > bottomRight_.second;
+        return std::sqrt((p1.first - p2.first) * (p1.first - p2.first) + (p1.second - p2.second) * (p1.second - p2.second));
     }
-};
 
-class circle : public shape
-{
-    point center_;
-    float_t radius_;
+    class shape {
+    public:
+        enum class kind : char
+        {   RECTANGLE = 'r', CIRCLE = 'c', TRIANGLE = 't' };
+        const kind kind_;
+        const size_t seq_;
 
-public:
-    circle(size_t seq, point& center, float_t radius) : shape(kind::CIRCLE, seq), center_(center), radius_(radius) {}
-    virtual ~circle() {}
+        shape(kind k, size_t seq) : kind_(k), seq_(seq) {}
+        virtual ~shape() {}
 
-    virtual bool point_inside(const point& p)
-    {
-        return distance(center_, p) < radius_;
-    }
-};
+        virtual bool point_inside(const point& p) = 0;
 
-class triange : public shape
-{
-    point a_;
-    point b_;
-    point c_;
+        size_t seq() const
+        {
+            return seq_;
+        }
+    };
 
-public:
-    triange(size_t seq, point& a, point& b, point& c) : shape(kind::TRIANGLE, seq), a_(a), b_(b), c_(c) {}
-    virtual ~triange() {}
+    class rectangle : public shape {
+        point topLeft_;
+        point bottomRight_;
 
-    virtual bool point_inside(const point& p)
-    {
-        float alpha = ((b_.second - c_.second)*(p.first - c_.first) + (c_.first - b_.first)*(p.second - c_.second)) /
-                      ((b_.second - c_.second)*(a_.first - c_.first) + (c_.first - b_.first)*(a_.second - c_.second));
-        float beta = ((c_.second - a_.second)*(p.first - c_.first) + (a_.first - c_.first)*(p.second - c_.second)) /
-                     ((b_.second - c_.second)*(a_.first - c_.first) + (c_.first - b_.first)*(a_.second - c_.second));
-        float gamma = 1.0f - alpha - beta;
-        return alpha > 0 && beta > 0 && gamma > 0;
-    }
-};
+    public:
+        rectangle(size_t seq, point& topLeft, point& bottomRight) : shape(kind::RECTANGLE, seq), topLeft_(topLeft), bottomRight_(bottomRight) {}
+        virtual ~rectangle() {}
+
+        virtual bool point_inside(const point& p)
+        {
+            return topLeft_.first < p.first && p.first < bottomRight_.first
+                   && topLeft_.second > p.second && p.second > bottomRight_.second;
+        }
+    };
+
+    class circle : public shape {
+        point center_;
+        float_t radius_;
+
+    public:
+        circle(size_t seq, point& center, float_t radius) : shape(kind::CIRCLE, seq), center_(center), radius_(radius) {}
+        virtual ~circle() {}
+
+        virtual bool point_inside(const point& p)
+        {
+            return distance(center_, p) < radius_;
+        }
+    };
+
+    class triange : public shape {
+        point a_;
+        point b_;
+        point c_;
+
+    public:
+        triange(size_t seq, point& a, point& b, point& c) : shape(kind::TRIANGLE, seq), a_(a), b_(b), c_(c) {}
+        virtual ~triange() {}
+
+        virtual bool point_inside(const point& p)
+        {
+            float alpha = ((b_.second - c_.second) * (p.first - c_.first) + (c_.first - b_.first) * (p.second - c_.second)) /
+                          ((b_.second - c_.second) * (a_.first - c_.first) + (c_.first - b_.first) * (a_.second - c_.second));
+            float beta = ((c_.second - a_.second) * (p.first - c_.first) + (a_.first - c_.first) * (p.second - c_.second)) /
+                         ((b_.second - c_.second) * (a_.first - c_.first) + (c_.first - b_.first) * (a_.second - c_.second));
+            float gamma = 1.0f - alpha - beta;
+            return alpha > 0 && beta > 0 && gamma > 0;
+        }
+    };
 }
 
 U478::U478() {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -119,8 +113,10 @@ void U478::operator()()
     std::vector<std::shared_ptr<shape>> shapes;
     shapes.reserve(10);
     std::string line;
+
     while (std::getline(std::cin, line) && line[0] != '*') {
         std::stringstream iss(line.substr(2));
+
         switch (line[0]) {
         case 'r': {
             point top, bottom;
@@ -129,6 +125,7 @@ void U478::operator()()
             shapes.push_back(rect);
         }
         break;
+
         case 'c': {
             point center;
             float radius;
@@ -137,6 +134,7 @@ void U478::operator()()
             shapes.push_back(circ);
         }
         break;
+
         case 't': {
             point a, b, c;
             iss >> a >> b >> c;
@@ -146,9 +144,11 @@ void U478::operator()()
         break;
         }
     }
+
     point p;
     point pend(9999.9f, 9999.9f);
     size_t pseq(0);
+
     while (std::cin >> p && p != pend) {
         pseq++;
         bool found(false);
@@ -158,6 +158,7 @@ void U478::operator()()
                 std::cout << "Point " << pseq << " is contained in figure " << sh->seq() << std::endl;
             }
         });
+
         if (!found) {
             std::cout << "Point " << pseq << " is not contained in any figure" << std::endl;
         }

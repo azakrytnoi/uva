@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10931.h"
@@ -14,53 +14,50 @@
 #include <iterator>
 #include <numeric>
 
-namespace
-{
-class bit_iterator : public std::iterator<std::input_iterator_tag, char>
-{
-    uint64_t number_;
-    uint16_t& parity_;
+namespace {
+    class bit_iterator : public std::iterator<std::input_iterator_tag, char> {
+        uint64_t number_;
+        uint16_t& parity_;
 
-public:
-    explicit bit_iterator(uint64_t number, uint16_t& parity) : number_(number), parity_(parity) {}
+    public:
+        explicit bit_iterator(uint64_t number, uint16_t& parity) : number_(number), parity_(parity) {}
 
-    uint16_t parity() const
-    {
-        return parity_;
-    }
+        uint16_t parity() const
+        {
+            return parity_;
+        }
 
-    char operator* ()
-    {
-        return (number_ & 0x01) + '0';
-    }
+        char operator* ()
+        {
+            return (number_ & 0x01) + '0';
+        }
 
-    bit_iterator& operator++()
-    {
-        parity_ += (number_ & 0x01);
-        number_ >>= 1;;
-        return *this;
-    }
-    bit_iterator operator++(int)
-    {
-        bit_iterator tmp(*this);
-        operator++();
-        return tmp;
-    }
-    bool operator==(const bit_iterator& rhs)
-    {
-        return number_ == rhs.number_;
-    }
-    bool operator!=(const bit_iterator& rhs)
-    {
-        return number_ != rhs.number_;
-    }
-};
+        bit_iterator& operator++()
+        {
+            parity_ += (number_ & 0x01);
+            number_ >>= 1;;
+            return *this;
+        }
+        bit_iterator operator++(int)
+        {
+            bit_iterator tmp(*this);
+            operator++();
+            return tmp;
+        }
+        bool operator==(const bit_iterator& rhs)
+        {
+            return number_ == rhs.number_;
+        }
+        bool operator!=(const bit_iterator& rhs)
+        {
+            return number_ != rhs.number_;
+        }
+    };
 }
 
 U10931::U10931() {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -75,6 +72,7 @@ void U10931::operator()() const
     uint64_t number;
     uint16_t parity;
     bit_iterator b_end(0, parity);
+
     while (std::cin >> number && number != 0) {
         binary.clear();
         parity = 0;

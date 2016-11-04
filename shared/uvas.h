@@ -162,3 +162,6 @@
 #include "../u10160/u10160.h"
 #include "../u10032/u10032.h"
 #include "../u704/u704.h"
+#include "../u11805/u11805.h"
+#include "../u488/u488.h"
+#include "../u11332/u11332.h"

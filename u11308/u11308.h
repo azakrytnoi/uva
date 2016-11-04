@@ -1,9 +1,8 @@
 #pragma once
 
-class  U11308
-{
+class  U11308 {
 public:
-    static const char * libname()
+    static const char* libname()
     {
         return "u11308";
     }

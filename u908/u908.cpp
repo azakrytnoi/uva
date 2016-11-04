@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u908.h"
@@ -22,31 +22,30 @@ U908::U908()
 U908::~U908()
 {}
 
-namespace math
-{
+namespace math {
 
-template<>
-int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
-{
-    int total = 0;
+    template<>
+    int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
+    {
+        int total = 0;
 
-    sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
-    std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
-        int cost = line.first;
-        auto origin = line.second.first;
-        auto destination = line.second.second;
-        if (!mst_.isSameSet(origin, destination)) {
-            total += cost;
-            mst_.unionSet(origin, destination);
-        }
-    });
-    return total;
+        sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
+        std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
+            int cost = line.first;
+            auto origin = line.second.first;
+            auto destination = line.second.second;
+
+            if (!mst_.isSameSet(origin, destination)) {
+                total += cost;
+                mst_.unionSet(origin, destination);
+            }
+        });
+        return total;
+    }
+
 }
 
-}
-
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -64,13 +63,16 @@ void U908::operator()() const
         return line;
     };
     std::vector <math::Kruskal<int>::Line> lines;
+
     while (std::cin >> V) {
         math::Kruskal<int> kruskal(V);
         int K, M, total(0);
         lines.clear();
+
         for (int i = 0; i < V - 1; i++) {
             total += readLine().first;
         }
+
         std::cout << total << std::endl;
         std::cin >> K;
         std::generate_n(std::back_inserter(lines), K, readLine);

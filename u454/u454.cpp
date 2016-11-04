@@ -1,15 +1,15 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u454.h"
 
 #ifdef _WIN32
-#pragma warning (push)
-#pragma warning (disable : 4503)
+    #pragma warning (push)
+    #pragma warning (disable : 4503)
 #endif // _WIN32
 
 #include <iostream>
@@ -31,8 +31,7 @@ U454::U454()
 U454::~U454()
 {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -47,9 +46,11 @@ void U454::operator()() const
     std::string line;
     std::getline(std::cin, line);
     std::getline(std::cin, line);
+
     while (N--) {
         std::map<std::string, std::map<std::string, std::list<std::string>>> anagrams;
         size_t lines(0);
+
         while (std::getline(std::cin, line) && !line.empty()) {
             lines++;
             std::string akey;
@@ -61,8 +62,10 @@ void U454::operator()() const
             });
             std::sort(akey.begin(), akey.end());
             auto it = anagrams.find(akey);
+
             if (it == anagrams.end()) {
                 anagrams[akey][line].clear();
+
             } else {
                 std::for_each(it->second.begin(), it->second.end(), [&](const std::pair<std::string, std::list<std::string>>& item) {
                     it->second[item.first].push_back(line);
@@ -70,13 +73,15 @@ void U454::operator()() const
                 it->second[line].clear();
             }
         }
+
         std::vector<std::pair<std::string, std::string>> result;
         result.reserve(lines);
         std::for_each(anagrams.begin(), anagrams.end(), [&](const std::pair<std::string, std::map<std::string, std::list<std::string>>>& item) {
             std::for_each(item.second.begin(), item.second.end(), [&](const std::pair<std::string, std::list<std::string>>& pairs) {
-                std::for_each(pairs.second.begin(), pairs.second.end(), [&](const std::string& anagram) {
+                std::for_each(pairs.second.begin(), pairs.second.end(), [&](const std::string & anagram) {
                     if (pairs.first < anagram) {
                         result.push_back(std::make_pair(pairs.first, anagram));
+
                     } else {
                         result.push_back(std::make_pair(anagram, pairs.first));
                     }
@@ -97,5 +102,5 @@ void U454::operator()() const
 }
 
 #ifdef _WIN32
-#pragma warning (pop)
+    #pragma warning (pop)
 #endif

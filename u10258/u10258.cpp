@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10258.h"
@@ -16,13 +16,12 @@
 #include <tuple>
 #include <iterator>
 
-namespace std
-{
-ostream& operator << (ostream& out, const tuple<int, int, int>& t)
-{
-    out << get<0>(t) << " " << get<1>(t) << " " << get<2>(t);
-    return out;
-}
+namespace std {
+    ostream& operator << (ostream& out, const tuple<int, int, int>& t)
+    {
+        out << get<0>(t) << " " << get<1>(t) << " " << get<2>(t);
+        return out;
+    }
 }
 
 U10258::U10258()
@@ -31,8 +30,7 @@ U10258::U10258()
 U10258::~U10258()
 {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -49,9 +47,11 @@ void U10258::operator()()
     std::vector<std::tuple<int, int, int>> scoreboard;
     std::getline(std::cin, line);
     std::getline(std::cin, line);
+
     while (N--) {
         contest.clear();
         scoreboard.clear();
+
         while (std::getline(std::cin, line) && !line.empty()) {
             int cont, problem, time;
             char resolution;
@@ -59,6 +59,7 @@ void U10258::operator()()
                 std::stringstream ss(line);
                 ss >> cont >> problem >> time >> resolution;
             }
+
             if (!contest[cont][problem].first) {
                 switch (resolution) {
                 case 'C':
@@ -75,6 +76,7 @@ void U10258::operator()()
                 }
             }
         }
+
         scoreboard.reserve(contest.size());
         std::for_each(contest.begin(), contest.end(), [&scoreboard](auto participant) {
             int total(0), problems(0);
@@ -90,9 +92,11 @@ void U10258::operator()()
             if (std::get<1>(t1) == std::get<1>(t2)) {
                 if (std::get<2>(t1) == std::get<2>(t2)) {
                     return std::get<0>(t1) < std::get<0>(t2);
+
                 } else {
                     return std::get<2>(t1) < std::get<2>(t2);
                 }
+
             } else {
                 return std::get<1>(t1) > std::get<1>(t2);
             }

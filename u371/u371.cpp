@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u371.h"
@@ -19,8 +19,7 @@
 #include <unordered_map>
 #include <sstream>
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -29,69 +28,77 @@ void __cdecl invoke()
     instance();
 }
 
-namespace
-{
-class solution
-{
-    std::unordered_map<int64_t, uint32_t> cache_;
-public:
-    solution() : cache_() {}
+namespace {
+    class solution {
+        std::unordered_map<int64_t, uint32_t> cache_;
+    public:
+        solution() : cache_() {}
 
-    uint32_t func_r(uint64_t x)
-    {
-        if (cache_[x] != 0) {
-            return cache_[x];
-        }
-
-        long y = (x % 2) ? 3 * x + 1 : x / 2;
-        if (y == 1) {
-            return 1;
-        }
-        return cache_[x] = func_r(y) + 1;
-    }
-
-    uint32_t func_i(uint64_t nn)
-    {
-        uint32_t count(0);
-        uint64_t n = nn;
-        do {
-            if (cache_[nn] != 0) {
-                return cache_[nn];
+        uint32_t func_r(uint64_t x)
+        {
+            if (cache_[x] != 0) {
+                return cache_[x];
             }
-            n = (n & 0x01) ? 3 * n + 1 : n >> 1;
-            count++;
-        } while (n != 1);
-        cache_[nn] = count;
-        return count;
-    }
 
-    std::string operator() (uint32_t l, uint32_t h)
-    {
-        if (l > h) {
-            std::swap(l, h);
-        }
-        uint64_t result(0);
-        uint32_t idx(l);
-        for (uint64_t n = l; n <= h; n++) {
-            uint32_t tmp = func_i(n);
-            if (tmp > result) {
-                result = tmp;
-                idx = n;
+            long y = (x % 2) ? 3 * x + 1 : x / 2;
+
+            if (y == 1) {
+                return 1;
             }
-        }
-        std::stringstream ss;
-        ss << "Between " << l << " and " << h << ", " << idx << " generates the longest sequence of " << result << " values.";
-        return ss.str();
-    }
 
-private:
-};
+            return cache_[x] = func_r(y) + 1;
+        }
+
+        uint32_t func_i(uint64_t nn)
+        {
+            uint32_t count(0);
+            uint64_t n = nn;
+
+            do {
+                if (cache_[nn] != 0) {
+                    return cache_[nn];
+                }
+
+                n = (n & 0x01) ? 3 * n + 1 : n >> 1;
+                count++;
+            } while (n != 1);
+
+            cache_[nn] = count;
+            return count;
+        }
+
+        std::string operator() (uint32_t l, uint32_t h)
+        {
+            if (l > h) {
+                std::swap(l, h);
+            }
+
+            uint64_t result(0);
+            uint32_t idx(l);
+
+            for (uint64_t n = l; n <= h; n++) {
+                uint32_t tmp = func_i(n);
+
+                if (tmp > result) {
+                    result = tmp;
+                    idx = n;
+                }
+            }
+
+            std::stringstream ss;
+            ss << "Between " << l << " and " << h << ", " << idx << " generates the longest sequence of " << result << " values.";
+            return ss.str();
+        }
+
+    private:
+    };
 } // namespace
 
 void U371::operator()() const
 {
     solution sol;
     uint32_t l, h;
+
     while (std::cin >> l >> h && (l + h) != 0) {
         std::cout << sol(l, h) << std::endl;
     }
