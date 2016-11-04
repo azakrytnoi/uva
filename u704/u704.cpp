@@ -17,7 +17,6 @@
 #include <limits>
 #include <queue>
 #include <deque>
-//#include <map>
 #include <unordered_map>
 
 extern "C" {
@@ -30,19 +29,15 @@ void __cdecl invoke()
 	instance();
 }
 
-namespace std
+namespace
 {
-	template<>
-	struct hash<const std::pair<uint64_t, uint64_t>> {
-		size_t operator () (const std::pair<uint64_t, uint64_t>& key)
+	struct hash {
+		size_t operator () (const std::pair<uint64_t, uint64_t>& key) const
 		{
 			return  key.first + key.second;
 		}
 	};
-}
 
-namespace
-{
 	enum class rotation : uint8_t {
 		unknown = 0,
 		left_clockwise = 1, // left wheel clockwise
@@ -52,6 +47,7 @@ namespace
 	};
 
 	typedef std::pair<uint64_t, uint64_t> wheels;
+	typedef std::unordered_map<const wheels, std::deque<rotation>, hash> WheelMap;
 
 	const size_t numbers_per_wheel = 12;
 	const size_t max_movements = 16; // max. number of movements
@@ -65,32 +61,32 @@ namespace
 		case rotation::left_clockwise: {
 			uint64_t temp = left & mask_8_bits; left >>= 8; left |= temp << 40;
 			right &= ~mask_12_bits; right |= left & mask_12_bits;
+			break;
 		}
-									   break;
 		case rotation::right_clockwise: {
 			uint64_t temp = (right & mask_8_bits << 40) >> 40;
 			right &= ~(mask_8_bits << 40); right <<= 8; right |= temp;
 			left &= ~mask_12_bits; left |= right & mask_12_bits;
+			break;
 		}
-										break;
 		case rotation::left_counterclockwise: {
 			uint64_t temp = (left & mask_8_bits << 40) >> 40;
 			left &= ~(mask_8_bits << 40); left <<= 8; left |= temp;
 			right &= ~mask_12_bits; right |= left & mask_12_bits;
+			break;
 		}
-											  break;
 		case rotation::right_counterclockwise: {
 			uint64_t temp = right & mask_8_bits; right >>= 8; right |= temp << 40;
 			left &= ~mask_12_bits; left |= right & mask_12_bits;
+			break;
 		}
-											   break;
 		}
 		return wheels(left, right);
 	}
 
 	class solution
 	{
-		std::unordered_map<const wheels, std::deque<rotation> > lower_half_cache_;
+		WheelMap lower_half_cache_;
 		std::deque<rotation> movements_;
 		wheels wheels_;
 		bool solved_;
@@ -111,7 +107,7 @@ namespace
 		bool rotate_wheel_and_cache(rotation direction, const wheels& wheel, const std::deque<rotation>& movements,
 			std::queue<wheels>& working_q);
 		bool rotate_wheel_and_cache(rotation direction, const wheels& wheel, const std::deque<rotation>& movements,
-			std::queue<wheels>& work_q, std::unordered_map< wheels, std::deque<rotation> >& cache);
+			std::queue<wheels>& work_q, WheelMap& cache);
 	};
 
 	void solution::generate_cache()
@@ -155,9 +151,9 @@ namespace
 	}
 
 	bool solution::rotate_wheel_and_cache(rotation direction, const wheels& wheel, const std::deque<rotation>& movements,
-		std::queue<wheels>& work_q, std::unordered_map< wheels, std::deque<rotation> >& cache)
+		std::queue<wheels>& work_q, WheelMap& cache)
 	{
-		const wheels new_wheel = rotate_wheel(direction, wheel);
+		wheels new_wheel = rotate_wheel(direction, wheel);
 		if (cache.find(new_wheel) != cache.end()) {
 			return false;
 		}
@@ -204,15 +200,15 @@ namespace
 	solution& solution::operator()()
 	{
 		solved_ = false;
-		std::unordered_map< wheels, std::deque<rotation> > cache;
+		WheelMap cache;
 		cache.insert(std::make_pair(wheels_, std::deque<rotation>()));
 		std::queue<wheels> bfs_q;
 		bfs_q.push(wheels_);
-		std::unordered_map< wheels, std::deque<rotation> >::const_iterator lhce = lower_half_cache_.end();
+		WheelMap::const_iterator lhce = lower_half_cache_.end();
 		while (!bfs_q.empty()) {
 			wheels wheel = bfs_q.front(); bfs_q.pop();
 			std::deque<rotation>& movements = cache[wheel];
-			std::unordered_map< wheels, std::deque<rotation> >::const_iterator lhci = lower_half_cache_.find(wheel);
+			WheelMap::const_iterator lhci = lower_half_cache_.find(wheel);
 			if (lhci != lhce) {
 				solved_ = true;
 				movements_ = movements;
