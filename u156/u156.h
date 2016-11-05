@@ -1,8 +1,7 @@
 #pragma once
-class  U156
-{
+class  U156 {
 public:
-    static const char * libname()
+    static const char* libname()
     {
         return "u156";
     }
@@ -12,6 +11,6 @@ public:
     void operator ()() const;
 };
 #ifdef POPULATE_CACHE
-populate <U156> pu156;
+    populate <U156> pu156;
 #endif
 

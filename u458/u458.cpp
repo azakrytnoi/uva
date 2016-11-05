@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u458.h"
@@ -16,8 +16,7 @@
 #include <numeric>
 #include <limits>
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -30,6 +29,7 @@ void __cdecl invoke()
 void U458::operator()() const
 {
     std::string line;
+
     while (std::getline(std::cin, line) && !line.empty()) {
         std::ostream_iterator<char> oit(std::cout);
         std::transform(line.begin(), line.end(), oit, [](auto ch) {

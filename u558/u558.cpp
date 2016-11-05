@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u558.h"
@@ -19,15 +19,13 @@ U558::U558()
 U558::~U558()
 {}
 
-namespace
-{
-struct edge {
-    int start, end, weight;
-};
+namespace {
+    struct edge {
+        int start, end, weight;
+    };
 }
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -41,6 +39,7 @@ void U558::operator()() const
     std::cin >> N;
     std::vector<edge> wormholes;
     std::vector<int> distances;
+
     while (N--) {
         wormholes.clear();
         distances.clear();

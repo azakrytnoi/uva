@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10220.h"
@@ -19,8 +19,7 @@ U10220::U10220()
 U10220::~U10220()
 {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -40,7 +39,7 @@ void U10220::operator()() const
         sums.push_back(0);
         std::generate_n(std::back_inserter(sums), 1000, [&]() -> int32_t {
             uint32_t digit = uint32_t(sums.size());
-            std::for_each(digits.begin(), digits.end(), [&](auto& dig)
+            std::for_each(digits.begin(), digits.end(), [&](auto & dig)
             {
                 remainder += dig * digit;
                 dig = remainder % 10;
@@ -50,6 +49,7 @@ void U10220::operator()() const
             return std::accumulate(digits.begin(), digits.end(), 0); });
     }
     int n;
+
     while (std::cin >> n) {
         std::cout << sums[n] << std::endl;
     }

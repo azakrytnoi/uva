@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10110.h"
@@ -16,8 +16,7 @@
 #include <numeric>
 #include <limits>
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 
@@ -27,51 +26,50 @@ void __cdecl invoke()
     instance();
 }
 
-namespace
-{
-class solution
-{
-    uint32_t n_;
-    bool light_;
-public:
-    solution() : n_(), light_() {}
+namespace {
+    class solution {
+        uint32_t n_;
+        bool light_;
+    public:
+        solution() : n_(), light_() {}
 
-    friend std::istream& operator >> (std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        friend std::istream& operator >> (std::istream& in, solution& sol);
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const
+        operator bool() const
+        {
+            return n_ != 0;
+        }
+        solution& operator()();
+
+    private:
+    };
+
+    std::istream& operator >> (std::istream& in, solution& sol)
     {
-        return n_ != 0;
+        sol.n_ = 0;
+        in >> sol.n_;
+        return in;
     }
-    solution& operator()();
 
-private:
-};
+    std::ostream& operator << (std::ostream& out, const solution& sol)
+    {
+        out << (sol.light_ ? "yes" : "no");
+        return out;
+    }
 
-std::istream& operator >> (std::istream& in, solution& sol)
-{
-    sol.n_ = 0;
-    in >> sol.n_;
-    return in;
-}
-
-std::ostream& operator << (std::ostream& out, const solution& sol)
-{
-    out << (sol.light_ ? "yes" : "no");
-    return out;
-}
-
-solution& solution::operator()()
-{
-    uint32_t nsq = std::sqrt(n_);
-    light_ = (n_ == (nsq * nsq));
-    return *this;
-}
+    solution& solution::operator()()
+    {
+        uint32_t nsq = std::sqrt(n_);
+        light_ = (n_ == (nsq * nsq));
+        return *this;
+    }
 }
 
 void U10110::operator()() const
 {
     solution sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }

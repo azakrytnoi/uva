@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u12243.h"
@@ -18,8 +18,7 @@
 #include <cctype>
 #include <sstream>
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -31,6 +30,7 @@ void __cdecl invoke()
 void U12243::operator()()
 {
     std::string line;
+
     while (std::getline(std::cin, line) && line != "*") {
         std::transform(line.begin(), line.end(), line.begin(), [](auto ch) {
             return std::tolower(ch);

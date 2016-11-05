@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u400.h"
@@ -19,8 +19,7 @@
 
 U400::U400() {}
 
-extern "C"
-{
+extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
 void __cdecl invoke()
@@ -34,6 +33,7 @@ void U400::operator()() const
     std::vector<std::string> names;
     std::string line;
     std::string separator(60, '-');
+
     while (std::cin >> N && N > 0) {
         std::cout << separator << std::endl;
         names.clear();
@@ -46,13 +46,17 @@ void U400::operator()() const
             return line; });
         std::sort(names.begin(), names.end());
         size_t ncolumns(std::max(60 / longest, size_t(1)));
+
         while ((ncolumns - 1) * (longest + 2) + longest > 60) {
             ncolumns--;
         }
+
         size_t nrows(names.size() / ncolumns);
+
         if (nrows * ncolumns < names.size()) {
             nrows++;
         }
+
         for (size_t idx = 0; idx < nrows; idx++) {
             for (size_t column = 0; column < ncolumns; column++) {
                 if (column * nrows + idx < names.size()) {
@@ -63,6 +67,7 @@ void U400::operator()() const
                               << names[column * nrows + idx];
                 }
             }
+
             std::cout << std::endl;
         }
     }

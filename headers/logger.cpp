@@ -7,6 +7,7 @@ std::mutex logger::log_mutex_;
 void logger::check()
 {
     std::lock_guard<std::mutex> l(logger::log_mutex_);
+
     if (logger::instance_ == nullptr) {
         logger::instance_ = new logger;
     }
