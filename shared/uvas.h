@@ -168,3 +168,6 @@
 #include "../u10079/u10079.h"
 #include "../u11455/u11455.h"
 #include "../u10270/u10270.h"
+#include "../u10783/u10783.h"
+#include "../u10970/u10970.h"
+#include "../u11984/u11984.h"
