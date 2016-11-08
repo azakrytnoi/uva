@@ -174,3 +174,5 @@
 #include "../u10783/u10783.h"
 #include "../u10970/u10970.h"
 #include "../u11984/u11984.h"
+#include "../u10004/u10004.h"
+#include "../u10067/u10067.h"
