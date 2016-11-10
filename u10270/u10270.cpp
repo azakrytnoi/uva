@@ -178,7 +178,7 @@ namespace {
         int32_t blocks[NMAX];
         int32_t nblocks;
 
-        for (int32_t r = 0; r < NPRIME; r++)
+        for (int32_t r = 0; r < NPRIME; r++) {
             if (trick[r][0] == n_) {
                 nblocks = trick[r][1];
 
@@ -188,6 +188,7 @@ namespace {
 
                 break;
             }
+        }
 
         finished = false;
 
@@ -285,10 +286,11 @@ namespace {
                 squares_[ncurrent].topLeft_.y_ = (y + 1);
                 squares_[ncurrent].size_ = s;
 
-                for (int32_t gy = y; gy < (y + s); gy++)
+                for (int32_t gy = y; gy < (y + s); gy++) {
                     for (int32_t gx = x; gx < (x + s); gx++) {
                         cell_[gy][gx] = s;
                     }
+                }
 
                 fill(blocks, ncurrent + 1, goal, display_when_find);
 
@@ -296,10 +298,11 @@ namespace {
                     return;
                 }
 
-                for (int32_t gy = y; gy < (y + s); gy++)
+                for (int32_t gy = y; gy < (y + s); gy++) {
                     for (int32_t gx = x; gx < (x + s); gx++) {
                         cell_[gy][gx] = 0;
                     }
+                }
             }
         }
     }
@@ -308,17 +311,18 @@ namespace {
     {
         int32_t npoints = 0;
 
-        for (int32_t y = 0; y <= (n_ - size); y++)
-            for (int32_t x = 0; x <= (n_ - size); x++)
+        for (int32_t y = 0; y <= (n_ - size); y++) {
+            for (int32_t x = 0; x <= (n_ - size); x++) {
                 if (cell_[y][x] == 0) {
                     bool empty = true;
 
                     for (int32_t i = y; i < (y + size); i++) {
-                        for (int32_t j = x; j < (x + size); j++)
+                        for (int32_t j = x; j < (x + size); j++) {
                             if (cell_[i][j] != 0) {
                                 empty = false;
                                 break;
                             }
+                        }
 
                         if (!empty) {
                             break;
@@ -332,6 +336,8 @@ namespace {
                         npoints++;
                     }
                 }
+            }
+        }
 
         return npoints;
     }
@@ -371,10 +377,11 @@ namespace {
         } else {
             int32_t r;
 
-            for (r = n_ - 2; r >= 1; r--)
+            for (r = n_ - 2; r >= 1; r--) {
                 if (area >= (r * r)) {
                     break;
                 }
+            }
 
             int32_t c = r;
             int32_t step = (nblocks == 0) ? 1 : (-1);
@@ -436,11 +443,12 @@ namespace {
             for (int32_t i = 0; i < ncache_[nblocks - 1]; i++) {
                 bool equal = true;
 
-                for (int32_t j = 0; j < nblocks; j++)
+                for (int32_t j = 0; j < nblocks; j++) {
                     if (cache_[nblocks - 1][i][j] != temp[j]) {
                         equal = false;
                         break;
                     }
+                }
 
                 if (equal) {
                     exist = true;
@@ -464,11 +472,12 @@ namespace {
         } else {
             int32_t up;
 
-            for (int32_t u = n_ - 1; u >= 1; u--)
+            for (int32_t u = n_ - 1; u >= 1; u--) {
                 if (area >= (u * u)) {
                     up = u;
                     break;
                 }
+            }
 
             for (int32_t r = (up / 2 + 1); r <= up; r++) {
                 if (nblocks == 1 && (r + blocks[0]) != n_) {
@@ -509,12 +518,14 @@ void U10270::operator()() const
 {
     int32_t N;
     std::cin >> N;
-    solution sol;
+    solution* sol = new solution;
 
     while (N--) {
-        std::cin >> sol;
-        std::cout << sol() << std::endl;
+        std::cin >> *sol;
+        std::cout << (*sol)() << std::endl;
     }
+
+    delete sol;
 }
 
 
