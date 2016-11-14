@@ -19,33 +19,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{482D0971-DDC5-4A04-83DE-3A0B438A3F89}</ProjectGuid>
-    <Keyword>Win32Proj</Keyword>
-    <RootNamespace>uva10305</RootNamespace>
-    <ProjectName>starter</ProjectName>
+    <ProjectGuid>{885883DD-DE10-41A5-ACEE-CFF4140B57D7}</ProjectGuid>
+    <RootNamespace>u705</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>Unicode</CharacterSet>
+    <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -70,150 +68,61 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LinkIncremental>true</LinkIncremental>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
     <IncludePath>${SolutionDir}\headers;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LinkIncremental>false</LinkIncremental>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <DisableSpecificWarnings>%(DisableSpecificWarnings)</DisableSpecificWarnings>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <StackReserveSize>4000000</StackReserveSize>
-      <StackCommitSize>1000000</StackCommitSize>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="evaluator.h" />
-    <ClInclude Include="uvas.h" />
+    <ClCompile Include="u705.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="evaluator.cpp" />
+    <Text Include="u705.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\u100\u100.txt" />
-    <Text Include="..\u10013\u10013.txt" />
-    <Text Include="..\u10062\u10062.txt" />
-    <Text Include="..\u10066\u10066.txt" />
-    <Text Include="..\u10194\u10194.txt" />
-    <Text Include="..\u10219\u10219.txt" />
-    <Text Include="..\u10220\u10220.txt" />
-    <Text Include="..\u10226\u10226.txt" />
-    <Text Include="..\u10258\u10258.txt" />
-    <Text Include="..\u10301\u10301.txt" />
-    <Text Include="..\u10305\u10305.txt" />
-    <Text Include="..\u10305\u10305_2.txt" />
-    <Text Include="..\u10810\u10810.txt" />
-    <Text Include="..\u10931\u10931.txt" />
-    <Text Include="..\u11136\u11136.txt" />
-    <Text Include="..\u11150\u11150.txt" />
-    <Text Include="..\u11185\u11185.txt" />
-    <Text Include="..\u11239\u11239.txt" />
-    <Text Include="..\u11308\u11308.txt" />
-    <Text Include="..\u11340\u11340.txt" />
-    <Text Include="..\u11340_2\u11340_2.txt" />
-    <Text Include="..\u11340_3\u11340_3.txt" />
-    <Text Include="..\u11388\u11388.txt" />
-    <Text Include="..\u11461\u11461.txt" />
-    <Text Include="..\u11462\u11462.txt" />
-    <Text Include="..\u11495\u11495.txt" />
-    <Text Include="..\u11636\u11636.txt" />
-    <Text Include="..\u11854\u11854.txt" />
-    <Text Include="..\u127\u127.txt" />
-    <Text Include="..\u146\u146.txt" />
-    <Text Include="..\u156\u156.txt" />
-    <Text Include="..\u167\u167.txt" />
-    <Text Include="..\u200\u200.txt" />
-    <Text Include="..\u200\u200_2.txt" />
-    <Text Include="..\u305\u305.txt" />
-    <Text Include="..\u400\u400.txt" />
-    <Text Include="..\u401\u401.txt" />
-    <Text Include="..\u412\u412.txt" />
-    <Text Include="..\u454\u454.txt" />
-    <Text Include="..\u476\u476.txt" />
-    <Text Include="..\u477\u477.txt" />
-    <Text Include="..\u478\u478.txt" />
-    <Text Include="..\u482\u482.txt" />
-    <Text Include="..\u544\u544.txt" />
-    <Text Include="..\u544\u544_2.txt" />
-    <Text Include="..\u558\u558.txt" />
-    <Text Include="..\u558\u558_2.txt" />
-    <Text Include="..\u594\u594.txt" />
-    <Text Include="..\u628\u628.txt" />
-    <Text Include="..\u673\u673.txt" />
-    <Text Include="..\u679\u679.txt" />
-    <Text Include="..\u714\u714.txt" />
-    <Text Include="..\u727\u727.txt" />
-    <Text Include="..\u900\u900.txt" />
-    <Text Include="..\u908\u908.txt" />
-    <Text Include="..\u957\u957.txt" />
+    <ClInclude Include="u705.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
