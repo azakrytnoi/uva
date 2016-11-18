@@ -353,11 +353,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "u10036", "u10036\u10036.vcx
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		headers\headers.vcxitems*{187aa6af-2431-4091-ae2d-8bd07ba47055}*SharedItemsImports = 4
 		headers\headers.vcxitems*{25a9f421-6358-457e-a5b6-415929a43626}*SharedItemsImports = 4
 		headers\headers.vcxitems*{41ba2e98-2e22-4a9c-b2b3-968ee2315c51}*SharedItemsImports = 4
 		headers\headers.vcxitems*{45d41acc-2c3c-43d2-bc10-02aa73ffc7c7}*SharedItemsImports = 9
 		headers\headers.vcxitems*{482d0971-ddc5-4a04-83de-3a0b438a3f89}*SharedItemsImports = 4
 		headers\headers.vcxitems*{5e809d54-cfe9-4155-b7d3-84f0bb7f4be1}*SharedItemsImports = 4
+		headers\headers.vcxitems*{5f7c7faa-4052-4307-aa09-dadc8a3d53c7}*SharedItemsImports = 4
+		headers\headers.vcxitems*{7e3708e3-3b7f-404c-ba9b-d0a92ecc61d0}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
