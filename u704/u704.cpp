@@ -140,7 +140,8 @@ namespace {
             std::deque<rotation> movements = lower_half_cache_[wheel];
 
             if (movements.size() < max_movements / 2) {
-                for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise); direction++) {
+                for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise);
+                        direction++) {
                     rotate_wheel_and_cache(static_cast<rotation>(direction), wheel, movements, bfs_q);
                 }
             }
@@ -260,7 +261,8 @@ namespace {
                 break;
 
             } else if (movements.size() < max_movements / 2) {
-                for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise); direction++) {
+                for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise);
+                        direction++) {
                     rotate_wheel_and_cache(static_cast<rotation>(direction), wheel, movements, bfs_q, cache);
                 }
             }

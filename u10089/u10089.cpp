@@ -77,7 +77,8 @@ namespace {
     {
         std::vector<std::pair<int64_t, int64_t>> repack;
         repack.reserve(packages_.size());
-        std::transform(packages_.begin(), packages_.end(), std::back_inserter(repack), [](const std::tuple<int64_t, int64_t, int64_t>& pack) -> std::pair<int64_t, int64_t> {
+        std::transform(packages_.begin(), packages_.end(),
+        std::back_inserter(repack), [](const std::tuple<int64_t, int64_t, int64_t>& pack) -> std::pair<int64_t, int64_t> {
             return std::make_pair(std::get<0>(pack) - std::get<2>(pack), std::get<1>(pack) - std::get<2>(pack));
         });
         int64_t x1(repack[0].first), y1(repack[0].second);

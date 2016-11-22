@@ -131,7 +131,8 @@ namespace {
         return *this;
     }
 
-    void solution::dominating_set(const std::vector<int32_t>& vertices, int32_t n, int32_t iv, int32_t v, const std::vector<uint64_t>& adjacency, const std::vector<uint64_t>& coverable, const uint64_t all_covered, uint64_t covered, int32_t& min_covered)
+    void solution::dominating_set(const std::vector<int32_t>& vertices, int32_t n, int32_t iv, int32_t v, const std::vector<uint64_t>& adjacency,
+                                  const std::vector<uint64_t>& coverable, const uint64_t all_covered, uint64_t covered, int32_t& min_covered)
     {
         if (min_covered <= v + 1 || iv == n) {
             return; // no need to further search

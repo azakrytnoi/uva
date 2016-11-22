@@ -127,7 +127,8 @@ namespace {
 
         if (std::find(passed.begin(), passed.end(), candidate) == passed.end()) {
             passed.push_back(candidate);
-            uint32_t min_number(std::accumulate(coauthors_[candidate].begin(), coauthors_[candidate].end(), std::numeric_limits<uint32_t>::max(), [&](uint32_t running, const std::string & name) {
+            uint32_t min_number(std::accumulate(coauthors_[candidate].begin(), coauthors_[candidate].end(),
+            std::numeric_limits<uint32_t>::max(), [&](uint32_t running, const std::string & name) {
                 return std::min(running, calculate(name, passed));
             }));
 

@@ -120,7 +120,8 @@ namespace {
             return tables_;
         }
 
-        bool compare(const std::string& column, const std::unordered_map<std::string, std::string>& r1, const std::unordered_map<std::string, std::string>& r2) const
+        bool compare(const std::string& column, const std::unordered_map<std::string, std::string>& r1,
+                     const std::unordered_map<std::string, std::string>& r2) const
         {
             switch (tables_.find(columns_.find(column)->second)->second->meta().find(column)->second) {
             case datatype::I:
