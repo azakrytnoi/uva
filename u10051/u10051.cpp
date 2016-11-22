@@ -96,7 +96,7 @@ namespace {
 
     solution& solution::operator()()
     {
-        path_.swap(std::vector<int32_t>(n_ * 6, -1));
+        path_ = std::vector<int32_t>(n_ * 6, -1);
         std::vector<int32_t> dp(n_ * 6);
 
         for (int32_t i = 0; i < idx_; i++) {

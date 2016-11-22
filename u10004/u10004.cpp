@@ -87,7 +87,7 @@ namespace {
             int32_t p = work.front();
             work.pop();
 
-            for (int32_t i = 0; i < ed_[p].size(); i++) {
+            for (size_t i = 0; i < ed_[p].size(); i++) {
                 if (colors[ed_[p][i]] == -1) {
                     colors[ed_[p][i]] = (colors[p] == 0 ? 1 : 0);
                     work.push(ed_[p][i]);

@@ -176,7 +176,7 @@ namespace {
     void solution::solve_it_by_trick()
     {
         int32_t blocks[NMAX];
-        int32_t nblocks;
+        int32_t nblocks(0);
 
         for (int32_t r = 0; r < NPRIME; r++) {
             if (trick[r][0] == n_) {

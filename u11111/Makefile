@@ -33,7 +33,7 @@ all:    $(MAIN)
 
 $(MAIN): $(OBJS) 
 	$(CC) -shared $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
-	ln $(MAIN) ../lib/$(MAIN)
+	ln -sf $(shell pwd)/$(MAIN) ../lib/$(MAIN)
 
 .cpp.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@

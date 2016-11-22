@@ -28,8 +28,9 @@ void __cdecl invoke()
 
 namespace {
 
+    constexpr int32_t INF = std::numeric_limits<int32_t>::min();
+
     class solution {
-        constexpr static const int32_t INF = std::numeric_limits<int32_t>::min();
         int32_t N_, roads_, source_, destination_, tourists_;
         std::vector<std::vector<int32_t>> matrix_;
         int32_t trip_;
@@ -58,7 +59,7 @@ namespace {
         if (sol) {
             sol.matrix_.clear();
             std::generate_n(std::back_inserter(sol.matrix_), sol.N_ + 1, [&]() {
-                return std::vector<int32_t>(sol.N_ + 1, sol.INF);
+                return std::vector<int32_t>(sol.N_ + 1, INF);
             });
 
             for (int32_t i = 0; i < sol.roads_; i++) {

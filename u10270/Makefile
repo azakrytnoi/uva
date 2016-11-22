@@ -33,7 +33,7 @@ all:    $(MAIN)
 
 $(MAIN): $(OBJS) 
 	$(CC) -shared $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
-	ln $(MAIN) ../lib/$(MAIN)
+	ln -sf $(shell pwd)/$(MAIN) ../lib/$(MAIN)
 
 .cpp.o:
 	$(CC) $(CFLAGS) $(INCLUDES) -c $<  -o $@
@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u10270.o: u10270.h
+u10270.o: u10270.h ../headers/gcd.h

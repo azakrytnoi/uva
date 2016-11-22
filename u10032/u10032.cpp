@@ -77,7 +77,7 @@ namespace {
         std::vector<int64_t> dp(weights_.size() * 450);
         dp[0] = 1;
 
-        for (int i = 0; i < weights_.size(); i++) {
+        for (size_t i = 0; i < weights_.size(); i++) {
             for (int j = total_; j > -1; j--) {
                 if (dp[j]) {
                     dp[j + weights_[i]] |= (dp[j] << 1);

@@ -69,7 +69,7 @@ namespace {
         std::for_each(words_.begin(), words_.end(), [&](std::string & word) {
             int32_t len(1);
 
-            for (int32_t i = 0; i <= word.size(); ++i) {
+            for (size_t i = 0; i <= word.size(); ++i) {
                 for (char c = 'a'; c <= 'z'; ++c) {
                     std::string w1(word);
                     w1.insert(i, 1, c);
@@ -84,7 +84,7 @@ namespace {
                 }
             }
 
-            for (int32_t i = 0; i < word.size(); ++i) {
+            for (size_t i = 0; i < word.size(); ++i) {
                 std::string w1(word);
                 w1.erase(i, 1);
 
@@ -93,7 +93,7 @@ namespace {
                 }
             }
 
-            for (int32_t i = 0; i < word.size(); ++i) {
+            for (size_t i = 0; i < word.size(); ++i) {
                 for (char c = 'a'; c <= 'z' && c != word[i]; ++c) {
                     std::string w1(word);
                     w1[i] = c;

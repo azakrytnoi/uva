@@ -38,7 +38,7 @@ namespace {
     };
 
     enum class rotation : uint8_t {
-        unknown = 0,
+        //unknown = 0,
         left_clockwise = 1, // left wheel clockwise
         right_clockwise = 2, // right wheel clockwise
         left_counterclockwise = 3, // left wheel counterclockwise
@@ -106,7 +106,7 @@ namespace {
         wheels wheels_;
         bool solved_;
     public:
-        solution()
+        solution() : lower_half_cache_(), movements_(), wheels_(), solved_()
         {
             generate_cache();
         }

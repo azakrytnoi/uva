@@ -48,7 +48,8 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-evaluator.o: evaluator.h uvas.h ../u100/u100.h
+evaluator.o: /usr/include/dlfcn.h /usr/include/features.h
+evaluator.o: /usr/include/stdc-predef.h evaluator.h uvas.h ../u100/u100.h
 evaluator.o: ../u10219/u10219.h ../u10258/u10258.h ../u10305/u10305.h
 evaluator.o: ../u11136/u11136.h ../u11308/u11308.h ../u11388/u11388.h
 evaluator.o: ../u11495/u11495.h ../u146/u146.h ../u482/u482.h ../u558/u558.h
@@ -95,4 +96,11 @@ evaluator.o: ../u10077/u10077.h ../u10202/u10202.h ../u10110/u10110.h
 evaluator.o: ../u850/u850.h ../u10104/u10104.h ../u10168/u10168.h
 evaluator.o: ../u10139/u10139.h ../u10089/u10089.h ../u10042/u10042.h
 evaluator.o: ../u10090/u10090.h ../u10001/u10001.h ../u861/u861.h
-evaluator.o: ../u10181/u10181.h ../u10128/u10128.h
+evaluator.o: ../u10181/u10181.h ../u10128/u10128.h ../u10160/u10160.h
+evaluator.o: ../u10032/u10032.h ../u704/u704.h ../u11805/u11805.h
+evaluator.o: ../u488/u488.h ../u11332/u11332.h ../u10079/u10079.h
+evaluator.o: ../u11455/u11455.h ../u11727/u11727.h ../u11172/u11172.h
+evaluator.o: ../u10071/u10071.h ../u10270/u10270.h ../u10783/u10783.h
+evaluator.o: ../u10970/u10970.h ../u11984/u11984.h ../u10004/u10004.h
+evaluator.o: ../u10067/u10067.h ../u10099/u10099.h ../u10029/u10029.h
+evaluator.o: ../u10036/u10036.h ../u705/u705.h ../u10051/u10051.h
