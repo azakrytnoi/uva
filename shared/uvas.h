@@ -181,3 +181,4 @@
 #include "../u10036/u10036.h"
 #include "../u705/u705.h"
 #include "../u10051/u10051.h"
+#include "../u10187/u10187.h"
