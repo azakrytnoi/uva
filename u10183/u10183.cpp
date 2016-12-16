@@ -87,7 +87,7 @@ namespace {
         res.reserve(len + 1);
         int32_t  carry = 0;
 
-        for (int32_t i = len - 1; i >= 0; i--) {
+        for (int32_t i = static_cast<int32_t>(len - 1); i >= 0; i--) {
             int32_t sum = carry + (s1[i] - '0') + (s2[i] - '0');
             carry = sum / 10;
             sum = sum % 10;

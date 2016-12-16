@@ -17,6 +17,7 @@
 #include <limits>
 #include <map>
 #include <queue>
+#include <functional>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
