@@ -12,19 +12,18 @@
 #include <memory>
 
 #ifndef _WIN32
-#define __cdecl
+    #define __cdecl
 #endif
 
 template <typename char_type,
-          typename traits = std::char_traits<char_type> >
+          typename traits = std::char_traits<char_type>>
 class basic_teebuf :
-    public std::basic_streambuf<char_type, traits>
-{
+    public std::basic_streambuf<char_type, traits> {
 public:
     typedef typename traits::int_type int_type;
 
-    basic_teebuf(std::basic_streambuf<char_type, traits> * sb1,
-                 std::basic_streambuf<char_type, traits> * sb2)
+    basic_teebuf(std::basic_streambuf<char_type, traits>* sb1,
+                 std::basic_streambuf<char_type, traits>* sb2)
         : sb1(sb1)
         , sb2(sb2)
     {
@@ -49,6 +48,7 @@ private:
 
         if (traits::eq_int_type(c, eof)) {
             return traits::not_eof(c);
+
         } else {
             char_type const ch = traits::to_char_type(c);
             int_type const r1 = sb1->sputc(ch);
@@ -61,40 +61,54 @@ private:
     }
 
 private:
-    std::basic_streambuf<char_type, traits> * sb1;
-    std::basic_streambuf<char_type, traits> * sb2;
+    std::basic_streambuf<char_type, traits>* sb1;
+    std::basic_streambuf<char_type, traits>* sb2;
 };
 
 typedef basic_teebuf<char> teebuf;
 
-class teestream : public std::ostream
-{
+class teestream : public std::ostream {
 public:
-    teestream(std::ostream & o1, std::ostream & o2);
+    teestream(std::ostream& o1, std::ostream& o2);
 private:
     teebuf tbuf;
 };
 
-teestream::teestream(std::ostream & o1, std::ostream & o2)
+teestream::teestream(std::ostream& o1, std::ostream& o2)
     : std::ostream(&tbuf), tbuf(o1.rdbuf(), o2.rdbuf())
 {
 }
 
-class uva_wraper
-{
+class uva_wraper {
 public:
     virtual ~uva_wraper() {}
     virtual void operator()() = 0;
 
 protected:
-    typedef void(__cdecl *invoker)();
+#ifdef _WIN32
+    uva_wraper() : hGetProcIDDLL_() {}
+#else
+    uva_wraper() : handle_() {}
+#endif
+
+    uva_wraper(const uva_wraper& rhs) = delete;
+    uva_wraper& operator = (const uva_wraper& rhs) = delete;
+
+    typedef void(__cdecl* invoker)();
 
     invoker prepare(const std::string& baseName);
+    void release();
+
+private:
+#ifdef _WIN32
+    HINSTANCE hGetProcIDDLL_;
+#else
+    void* handle_;
+#endif
 };
 
 template<typename Tp>
-class evaluator : public uva_wraper
-{
+class evaluator : public uva_wraper {
 public:
     explicit evaluator(const std::string& source) : source_(source)
     {
@@ -113,28 +127,26 @@ private:
     std::string source_;
 };
 
-namespace
-{
-template <typename T>
-class io_wrapper
-{
-public:
-    explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
-    {
-    }
+namespace {
+    template <typename T>
+    class io_wrapper {
+    public:
+        explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
+        {
+        }
 
-    ~io_wrapper()
-    {
-        stream_.rdbuf(streambuf_);
-    }
+        ~io_wrapper()
+        {
+            stream_.rdbuf(streambuf_);
+        }
 
-    io_wrapper(const io_wrapper& rhs) = delete;
-    io_wrapper& operator = (const io_wrapper& rhs) = delete;
+        io_wrapper(const io_wrapper& rhs) = delete;
+        io_wrapper& operator = (const io_wrapper& rhs) = delete;
 
-private:
-    T& stream_;
-    std::streambuf* streambuf_;
-};
+    private:
+        T& stream_;
+        std::streambuf* streambuf_;
+    };
 }
 
 template<typename Tp>
@@ -145,21 +157,18 @@ void evaluator<Tp>::operator()()
     std::cout << tp_name << ": << " << source_ << std::endl;
     std::ifstream in(source_.c_str());
     uint64_t elapsed(0);
-    std::stringstream out;
     {
         invoker fnc = prepare(Tp::libname());
-        io_wrapper<std::ostream> wrap_in(std::cout, out.rdbuf());
-        io_wrapper<std::istream> wrap_out(std::cin, in.rdbuf());
+        std::ofstream log((source_ + ".out").c_str());
+        teestream tee(log, std::cout);
+        io_wrapper<std::ostream> wrap_out(std::cout, tee.rdbuf());
+        io_wrapper<std::istream> wrap_in(std::cin, in.rdbuf());
         {
             std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
             fnc();
             elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now() - start).count();
         }
-    }
-    {
-        std::ofstream log((source_ + ".out").c_str());
-        teestream tee(log, std::cout);
-        tee << out.str();
+        release();
     }
     std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }

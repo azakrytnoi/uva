@@ -14,7 +14,7 @@ public:
 	}
     U$1() {}
 
-    void operator()();
+    void operator()() const;
 };
 
 #ifdef POPULATE_CACHE
@@ -62,18 +62,34 @@ public:
     friend std::istream& operator >>(std::istream& in, solution& sol);
     friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const;
+    operator bool() const { return true; }
+    solution& operator()();
 
 private:
 };
 
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+  return in;
 }
 
-void U$1::operator()()
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+  return out;
+}
+
+solution& solution::operator()()
+{
+  return *this;
+}
+
+}
+
+void U$1::operator()() const
 {
     solution sol;
     while (std::cin >> sol && sol) {
-        std::cout << sol << std::endl;
+        std::cout << sol() << std::endl;
     }
 }
 EOF
@@ -84,8 +100,15 @@ EOF
 
 touch "../u$1/u$1.txt"
 
-sed "s/u100/u$1/" ../u100/Makefile > ../u$1/Makefile
-sed "s/u100/u$1/" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
-sed "s/u100/u$1/" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
+sed "s/u100/u$1/g" ../u100/Makefile > ../u$1/Makefile
+sed "s/u100/u$1/g" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
+sed "s/u100/u$1/g" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
+
+make 
+
+cd "../u$1"
+make depend
+cd ../shared
+
 
 git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile

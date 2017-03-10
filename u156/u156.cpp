@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u156.h"
@@ -16,12 +16,10 @@
 #include <iterator>
 
 U156::U156()
-{
-}
+{}
 
 U156::~U156()
-{
-}
+{}
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -35,16 +33,19 @@ void U156::operator()() const
 {
     std::string word;
     std::map<std::string, std::pair<std::string, int>> dictionary;
+
     while (std::cin >> word && word[0] != '#') {
         std::string key(word);
         std::transform(key.begin(), key.end(), key.begin(), [](auto ch) {
             return std::tolower(ch);
         });
         std::sort(key.begin(), key.end());
+
         if (dictionary[key].second++ == 0) {
             dictionary[key].first = word;
         }
     }
+
     std::vector <std::pair<std::string, std::pair<std::string, int>>> ordinals;
     ordinals.reserve(dictionary.size());
     std::copy_if(dictionary.begin(), dictionary.end(), std::back_inserter(ordinals), [](auto item) -> bool { return item.second.second == 1; });

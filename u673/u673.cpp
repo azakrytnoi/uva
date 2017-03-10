@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u673.h"
@@ -13,8 +13,7 @@
 #include <sstream>
 
 U673::U673()
-{
-}
+{}
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -30,12 +29,14 @@ void U673::operator()() const
     int N;
     std::cin >> N;
     std::getline(std::cin, line);
+
     while (N--) {
         std::getline(std::cin, line);
         std::stringstream iss(line);
         std::stack<char> check;
         char ch;
         bool valid(true);
+
         while (valid && iss >> ch) {
             switch (ch) {
             case '[':
@@ -46,23 +47,28 @@ void U673::operator()() const
             case ']':
                 if (!check.empty() && '[' == check.top()) {
                     check.pop();
+
                 } else {
                     valid = false;
                 }
+
                 break;
 
             case ')':
                 if (!check.empty() && '(' == check.top()) {
                     check.pop();
+
                 } else {
                     valid = false;
                 }
+
                 break;
 
             default:
                 break;
             }
         }
+
         valid &= check.empty();
         std::cout << (valid ? "Yes" : "No") << std::endl;
     }

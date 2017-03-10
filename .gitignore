@@ -225,3 +225,5 @@ ModelManifest.xml
 uva.VC.opendb
 *.txt.out
 /lib/
+/uva.VC.db
+/uva.VC.VC.opendb

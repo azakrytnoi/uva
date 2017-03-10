@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10013.h"
@@ -27,6 +27,7 @@ void U10013::operator()() const
     int N;
     std::cin >> N;
     std::vector<int8_t> summ;
+
     while (N--) {
         int M;
         std::cin >> M;
@@ -38,17 +39,22 @@ void U10013::operator()() const
             std::cin >> l >> r;
             return int8_t(l + r);
         });
+
         for (auto it = summ.rbegin(), end = summ.rend(); it != end; ++it) {
             int8_t rem(*it / 10);
+
             if (rem > 0) {
                 *it %= 10;
                 *(it + 1) += rem;
             }
         }
+
         auto it = summ.begin();
+
         if (*it == 0) {
             ++it;
         }
+
         std::ostream_iterator<char> oit(std::cout, "");
         std::transform(it, summ.end(), oit, [](auto d) -> char { return '0' + d; });
         std::cout << std::endl << std::endl;

@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10219.h"
@@ -13,8 +13,7 @@
 #include <iomanip>
 
 U10219::U10219()
-{
-}
+{}
 
 typedef long long LL;
 
@@ -37,6 +36,7 @@ void U10219::operator()() const
             for (LL i = k + 1; i <= n; i++) {
                 digit += (std::log10(i) - std::log10(n - i + 1));
             }
+
         } else {
             for (LL i = n - k + 1; i <= n; i++) {
                 digit += (std::log10(i) - std::log10(n - i + 1));

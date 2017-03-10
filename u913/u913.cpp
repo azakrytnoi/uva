@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u913.h"
@@ -29,6 +29,7 @@ void __cdecl invoke()
 void U913::operator()() const
 {
     uint64_t num;
+
     while (std::cin >> num) {
         num = num / 2 + 1;
         num *= num;

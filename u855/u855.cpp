@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u855.h"
@@ -32,14 +32,17 @@ void U855::operator()() const
     std::cin >> N;
     std::vector<int> streets;
     std::vector<int> avenues;
+
     while (N--) {
         int temp, nFriends;
         std::cin >> temp >> temp >> nFriends;
         streets.resize(nFriends);
         avenues.resize(nFriends);
+
         for (auto ita = avenues.begin(), its = streets.begin(); ita != avenues.end(); ++its, ++ita) {
             std::cin >> *its >> *ita;
         }
+
         std::sort(streets.begin(), streets.end());
         std::sort(avenues.begin(), avenues.end());
         nFriends--;

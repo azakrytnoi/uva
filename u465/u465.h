@@ -1,9 +1,8 @@
 #pragma once
 
-class U465
-{
+class U465 {
 public:
-    static const char * libname()
+    static const char* libname()
     {
         return "u465";
     }
@@ -13,5 +12,5 @@ public:
 };
 
 #ifdef POPULATE_CACHE
-populate <U465> pu465;
+    populate <U465> pu465;
 #endif

@@ -2,10 +2,9 @@
 
 #include <cstdint>
 #include <functional>
-class U100
-{
+class U100 {
 public:
-    static const char * libname()
+    static const char* libname()
     {
         return "u100";
     }

@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u865.h"
@@ -26,50 +26,51 @@ void __cdecl invoke()
     instance();
 }
 
-namespace
-{
+namespace {
 
-class coder
-{
-public:
+    class coder {
+    public:
 
-    explicit coder(std::ostream& out) :
-        plain_(), subst_(), out_(out)
-    {
-    }
+        explicit coder(std::ostream& out) :
+            plain_(), subst_(), out_(out)
+        {}
 
-    friend std::istream& operator >>(std::istream& in, coder& engine)
-    {
-        std::getline(in, engine.plain_);
-        std::getline(in, engine.subst_);
-        engine.out_ << engine.subst_ << std::endl << engine.plain_ << std::endl;
-        std::string line;
-        while (std::getline(in, line) && !line.empty()) {
-            engine.out_ << engine.encode(line) << std::endl;
+        friend std::istream& operator >>(std::istream& in, coder& engine)
+        {
+            std::getline(in, engine.plain_);
+            std::getline(in, engine.subst_);
+            engine.out_ << engine.subst_ << std::endl << engine.plain_ << std::endl;
+            std::string line;
+
+            while (std::getline(in, line) && !line.empty()) {
+                engine.out_ << engine.encode(line) << std::endl;
+            }
+
+            engine.out_ << std::endl;
+            return in;
         }
-        engine.out_ << std::endl;
-        return in;
+
+    private:
+        std::string plain_;
+        std::string subst_;
+        std::ostream& out_;
+
+        std::string& encode(std::string& source);
+    };
+
+    std::string& coder::encode(std::string& source)
+    {
+        std::transform(source.begin(), source.end(), source.begin(), [&](auto ch) {
+            auto plain_pos = plain_.find(ch);
+
+            if (plain_pos != std::string::npos) {
+                return subst_[plain_pos];
+            }
+
+            return ch;
+        });
+        return source;
     }
-
-private:
-    std::string plain_;
-    std::string subst_;
-    std::ostream& out_;
-
-    std::string& encode(std::string& source);
-};
-
-std::string& coder::encode(std::string& source)
-{
-    std::transform(source.begin(), source.end(), source.begin(), [&](auto ch) {
-        auto plain_pos = plain_.find(ch);
-        if (plain_pos != std::string::npos) {
-            return subst_[plain_pos];
-        }
-        return ch;
-    });
-    return source;
-}
 
 }  // namespace
 
@@ -81,6 +82,7 @@ void U865::operator()() const
     std::getline(std::cin, line);
     std::getline(std::cin, line);
     coder engine(std::cout);
+
     while (N--) {
         std::cin >> engine;
     }

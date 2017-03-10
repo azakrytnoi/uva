@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10878.h"
@@ -25,35 +25,35 @@ void __cdecl invoke()
     instance();
 }
 
-namespace
-{
+namespace {
 
-class coder
-{
-public:
-    static char decode(const std::string& line);
+    class coder {
+    public:
+        static char decode(const std::string& line);
 
-private:
-};
+    private:
+    };
 
-char coder::decode(const std::string& line)
-{
-    std::string temp(line.substr(1, 9));
-    char code = std::accumulate(temp.begin(), temp.end(), 0, [](auto ch, auto current) {
-        if (current != '.') {
-            ch <<= 1;
-            ch |= current == 'o' ? 1 : 0;
-        }
-        return ch;
-    });
-    return code;
-}
+    char coder::decode(const std::string& line)
+    {
+        std::string temp(line.substr(1, 9));
+        char code = std::accumulate(temp.begin(), temp.end(), 0, [](auto ch, auto current) {
+            if (current != '.') {
+                ch <<= 1;
+                ch |= current == 'o' ? 1 : 0;
+            }
+
+            return ch;
+        });
+        return code;
+    }
 
 }  // namespace
 
 void U10878::operator()() const
 {
     std::string line;
+
     while (std::getline(std::cin, line)) {
         if (!line.empty() && line != "___________") {
             std::cout << coder::decode(line);

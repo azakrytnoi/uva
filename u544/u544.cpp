@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u544.h"
@@ -13,12 +13,10 @@
 #include <algorithm>
 
 U544::U544()
-{
-}
+{}
 
 U544::~U544()
-{
-}
+{}
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -49,14 +47,17 @@ void U544::operator()() const
             for (int j = 0; j < 205; j++) {
                 d[i][j] = -1;
             }
+
             d[i][i] = 0;
         }
 
         for (int i = 0; i < r; i++) {
             std::cin >> first >> second >> cost;
+
             if (!cityIndex[first]) {
                 cityIndex[first] = index++;
             }
+
             if (!cityIndex[second]) {
                 cityIndex[second] = index++;
             }

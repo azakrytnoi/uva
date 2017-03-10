@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u424.h"
@@ -32,8 +32,10 @@ void U424::operator()() const
 {
     std::string line;
     math::BigInteger bi;
+
     while (std::getline(std::cin, line) && line != "0") {
         bi += line;
     }
+
     std::cout << bi << std::endl;
 }
