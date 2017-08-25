@@ -15,6 +15,7 @@
 #include <iterator>
 #include <numeric>
 #include <limits>
+#include <cmath>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -40,7 +41,7 @@ namespace {
 
         solution& operator () (int n)
         {
-            int root(ceil(sqrt(n)));
+            int root(std::ceil(std::sqrt(n)));
             int shift(root * root - root + 1);
             x_ = y_ = root;
 

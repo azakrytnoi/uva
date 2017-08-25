@@ -18,6 +18,7 @@
 #include <bitset>
 #include <queue>
 #include <cstring>
+#include <cmath>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -193,7 +194,7 @@ void U10746::operator()() const
 
         double cost = solver(0, 1 + n + m);
         cost /= n;
-        cost = floor(cost * 100.0 + 0.5 + 1e-9) / 100.0;
+        cost = std::floor(cost * 100.0 + 0.5 + 1e-9) / 100.0;
         std::cout << std::fixed << std::setprecision(2) << cost << std::endl;
     }
 }

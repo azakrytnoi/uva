@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <cctype>
+#include <cmath>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();

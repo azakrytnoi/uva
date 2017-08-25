@@ -48,8 +48,7 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-evaluator.o: /usr/include/dlfcn.h /usr/include/features.h
-evaluator.o: /usr/include/stdc-predef.h evaluator.h uvas.h ../u100/u100.h
+evaluator.o: evaluator.h uvas.h ../u100/u100.h
 evaluator.o: ../u10219/u10219.h ../u10258/u10258.h ../u10305/u10305.h
 evaluator.o: ../u11136/u11136.h ../u11308/u11308.h ../u11388/u11388.h
 evaluator.o: ../u11495/u11495.h ../u146/u146.h ../u482/u482.h ../u558/u558.h

@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <cstdlib>
+#include <cmath>
 #include <iosfwd>
 
 extern "C" {
