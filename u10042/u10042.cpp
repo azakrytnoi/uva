@@ -15,6 +15,7 @@
 #include <iterator>
 #include <numeric>
 #include <limits>
+#include <cmath>
 
 #include "prime.h"
 

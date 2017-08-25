@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <iomanip>
 #include <iosfwd>
+#include <cmath>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -26,7 +27,7 @@ void __cdecl invoke()
 namespace {
     double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
     {
-        return sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
+        return std::sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
                     + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
     }
 
