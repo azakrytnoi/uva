@@ -12,5 +12,5 @@ public:
 };
 
 #ifdef POPULATE_CACHE
-    populate <U12243> pu12243;
+populate <U12243> pu12243;
 #endif

@@ -186,3 +186,6 @@
 #include "../u10276/u10276.h"
 #include "../u10034/u10034.h"
 #include "../u10054/u10054.h"
+#include "../u203/u203.h"
+#include "../u204/u204.h"
+#include "../u210/u210.h"

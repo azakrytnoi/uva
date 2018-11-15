@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10062.h"
@@ -16,11 +16,11 @@
 #include <string>
 
 namespace {
-    std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p)
-    {
-        out << int(p.first) << " " << p.second;
-        return out;
-    }
+std::ostream& operator << (std::ostream& out, const std::pair<char, uint16_t>& p)
+{
+    out << int(p.first) << " " << p.second;
+    return out;
+}
 }
 
 U10062::U10062() {}

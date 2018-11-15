@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u482.h"
@@ -21,17 +21,17 @@ U482::~U482()
 {}
 
 namespace {
-    struct item {
-        uint32_t idx;
-        std::string value;
+struct item {
+    uint32_t idx;
+    std::string value;
 
-        item() : idx(0), value() {}
+    item() : idx(0), value() {}
 
-        bool operator < (const item& other) const
-        {
-            return idx < other.idx;
-        }
-    };
+    bool operator < (const item& other) const
+    {
+        return idx < other.idx;
+    }
+};
 }
 
 extern "C" {

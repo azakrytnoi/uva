@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10970.h"
@@ -28,39 +28,39 @@ void __cdecl invoke()
 
 namespace {
 
-    class solution {
-        int32_t n_, m_;
-    public:
-        solution() : n_(), m_() {}
+class solution {
+    int32_t n_, m_;
+public:
+    solution() : n_(), m_() {}
 
-        friend std::istream& operator >>(std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >>(std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-        operator bool() const
-        {
-            return true;
-        }
-        solution& operator()();
-
-    private:
-    };
-
-    std::istream& operator >> (std::istream& in, solution& sol)
+    operator bool() const
     {
-        in >> sol.n_ >> sol.m_;
-        return in;
+        return true;
     }
+    solution& operator()();
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
-    {
-        out << (sol.n_ * sol.m_ - 1);
-        return out;
-    }
+private:
+};
 
-    solution& solution::operator()()
-    {
-        return *this;
-    }
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    in >> sol.n_ >> sol.m_;
+    return in;
+}
+
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+    out << (sol.n_ * sol.m_ - 1);
+    return out;
+}
+
+solution& solution::operator()()
+{
+    return *this;
+}
 
 }
 

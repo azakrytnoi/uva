@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10301.h"
@@ -21,36 +21,36 @@ U10301::U10301()
 {}
 
 namespace {
-    class ring {
-    public:
-        ring() : mX(0.0), mY(0.0), mR(0.0) {}
+class ring {
+public:
+    ring() : mX(0.0), mY(0.0), mR(0.0) {}
 
-        friend std::istream& operator >> (std::istream& in, ring& r)
-        {
-            in >> r.mX >> r.mY >> r.mR;
-            return in;
-        }
+    friend std::istream& operator >> (std::istream& in, ring& r)
+    {
+        in >> r.mX >> r.mY >> r.mR;
+        return in;
+    }
 
-        bool intersect(const ring& other) const
-        {
-            long double distance = sqrt((mX - other.mX) * (mX - other.mX) + (mY - other.mY) * (mY - other.mY));
+    bool intersect(const ring& other) const
+    {
+        long double distance = sqrt((mX - other.mX) * (mX - other.mX) + (mY - other.mY) * (mY - other.mY));
 
-            if (distance < (mR + other.mR)) {
-                if (distance + std::min(mR, other.mR) <= std::max(mR, other.mR)) {
-                    return false;
-
-                } else {
-                    return true;
-                }
+        if (distance < (mR + other.mR)) {
+            if (distance + std::min(mR, other.mR) <= std::max(mR, other.mR)) {
+                return false;
 
             } else {
-                return false;
+                return true;
             }
-        }
 
-    private:
-        long double mX, mY, mR;
-    };
+        } else {
+            return false;
+        }
+    }
+
+private:
+    long double mX, mY, mR;
+};
 }
 
 extern "C" {

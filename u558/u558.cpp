@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u558.h"
@@ -20,9 +20,9 @@ U558::~U558()
 {}
 
 namespace {
-    struct edge {
-        int start, end, weight;
-    };
+struct edge {
+    int start, end, weight;
+};
 }
 
 extern "C" {

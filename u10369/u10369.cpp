@@ -25,13 +25,13 @@ void __cdecl invoke()
 }
 
 namespace {
-    double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
-    {
-        return std::sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
-                    + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
-    }
+double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
+{
+    return std::sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
+                     + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
+}
 
-    size_t S, P;
+size_t S, P;
 }
 
 U10369::U10369()
@@ -39,28 +39,28 @@ U10369::U10369()
 
 namespace math {
 
-    template<>
-    double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
-    {
-        double result(0);
+template<>
+double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
+{
+    double result(0);
 
-        sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
-        std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {
-            if (mst_.sets == S) {
-                return;
-            }
+    sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
+    std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {
+        if (mst_.sets == S) {
+            return;
+        }
 
-            double cost = line.first;
-            auto origin = line.second.first;
-            auto destination = line.second.second;
+        double cost = line.first;
+        auto origin = line.second.first;
+        auto destination = line.second.second;
 
-            if (!mst_.isSameSet(origin, destination)) {
-                result = cost;
-                mst_.unionSet(origin, destination);
-            }
-        });
-        return result;
-    }
+        if (!mst_.isSameSet(origin, destination)) {
+            result = cost;
+            mst_.unionSet(origin, destination);
+        }
+    });
+    return result;
+}
 
 }
 

@@ -48,17 +48,21 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-evaluator.o: evaluator.h uvas.h ../u100/u100.h
-evaluator.o: ../u10219/u10219.h ../u10258/u10258.h ../u10305/u10305.h
-evaluator.o: ../u11136/u11136.h ../u11308/u11308.h ../u11388/u11388.h
-evaluator.o: ../u11495/u11495.h ../u146/u146.h ../u482/u482.h ../u558/u558.h
-evaluator.o: ../u673/u673.h ../u714/u714.h ../u908/u908.h ../u10194/u10194.h
-evaluator.o: ../u10226/u10226.h ../u10301/u10301.h ../u10810/u10810.h
-evaluator.o: ../u11239/u11239.h ../u11340/u11340.h ../u11462/u11462.h
-evaluator.o: ../u11854/u11854.h ../u11636/u11636.h ../u11764/u11764.h
-evaluator.o: ../u10220/u10220.h ../u127/u127.h ../u200/u200.h ../u544/u544.h
-evaluator.o: ../u594/u594.h ../u679/u679.h ../u727/u727.h ../u957/u957.h
-evaluator.o: ../u628/u628.h ../u156/u156.h ../u305/u305.h ../u10013/u10013.h
+evaluator.o: /usr/include/dlfcn.h /usr/include/features.h
+evaluator.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
+evaluator.o: /usr/include/bits/wordsize.h /usr/include/bits/long-double.h
+evaluator.o: /usr/include/gnu/stubs.h /usr/include/bits/dlfcn.h evaluator.h
+evaluator.o: uvas.h ../u100/u100.h ../u10219/u10219.h ../u10258/u10258.h
+evaluator.o: ../u10305/u10305.h ../u11136/u11136.h ../u11308/u11308.h
+evaluator.o: ../u11388/u11388.h ../u11495/u11495.h ../u146/u146.h
+evaluator.o: ../u482/u482.h ../u558/u558.h ../u673/u673.h ../u714/u714.h
+evaluator.o: ../u908/u908.h ../u10194/u10194.h ../u10226/u10226.h
+evaluator.o: ../u10301/u10301.h ../u10810/u10810.h ../u11239/u11239.h
+evaluator.o: ../u11340/u11340.h ../u11462/u11462.h ../u11854/u11854.h
+evaluator.o: ../u11636/u11636.h ../u11764/u11764.h ../u10220/u10220.h
+evaluator.o: ../u127/u127.h ../u200/u200.h ../u544/u544.h ../u594/u594.h
+evaluator.o: ../u679/u679.h ../u727/u727.h ../u957/u957.h ../u628/u628.h
+evaluator.o: ../u156/u156.h ../u305/u305.h ../u10013/u10013.h
 evaluator.o: ../u11461/u11461.h ../u11150/u11150.h ../u167/u167.h
 evaluator.o: ../u116/u116.h ../u10066/u10066.h ../u10931/u10931.h
 evaluator.o: ../u11185/u11185.h ../u900/u900.h ../u10062/u10062.h
@@ -103,3 +107,6 @@ evaluator.o: ../u10071/u10071.h ../u10270/u10270.h ../u10783/u10783.h
 evaluator.o: ../u10970/u10970.h ../u11984/u11984.h ../u10004/u10004.h
 evaluator.o: ../u10067/u10067.h ../u10099/u10099.h ../u10029/u10029.h
 evaluator.o: ../u10036/u10036.h ../u705/u705.h ../u10051/u10051.h
+evaluator.o: ../u10187/u10187.h ../u10183/u10183.h ../u10276/u10276.h
+evaluator.o: ../u10034/u10034.h ../u10054/u10054.h ../u203/u203.h
+evaluator.o: ../u204/u204.h ../u210/u210.h

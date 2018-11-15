@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u417.h"
@@ -17,46 +17,46 @@ U417::U417()
 {}
 
 namespace {
-    class solver {
-        std::map<std::string, int> valid_;
-    public:
-        solver() : valid_()
-        {
-            std::queue<std::string> work;
+class solver {
+    std::map<std::string, int> valid_;
+public:
+    solver() : valid_()
+    {
+        std::queue<std::string> work;
 
-            for (char ch = 'a'; ch <= 'z'; ch++) {
-                work.push(std::string(1, ch));
-            }
-
-            std::string word;
-            int cnt(1);
-
-            while (!work.empty()) {
-                word = work.front();
-                work.pop();
-                valid_[word] = cnt++;
-
-                if (word.length() == 5) {
-                    continue;
-                }
-
-                for (char ch = *(--word.end()) + 1; ch <= 'z'; ch++) {
-                    work.push(word + ch);
-                }
-            }
+        for (char ch = 'a'; ch <= 'z'; ch++) {
+            work.push(std::string(1, ch));
         }
 
-        int check(std::string& word)
-        {
-            auto it = valid_.find(word);
+        std::string word;
+        int cnt(1);
 
-            if (it != valid_.end()) {
-                return it->second;
+        while (!work.empty()) {
+            word = work.front();
+            work.pop();
+            valid_[word] = cnt++;
+
+            if (word.length() == 5) {
+                continue;
             }
 
-            return 0;
+            for (char ch = *(--word.end()) + 1; ch <= 'z'; ch++) {
+                work.push(word + ch);
+            }
         }
-    };
+    }
+
+    int check(std::string& word)
+    {
+        auto it = valid_.find(word);
+
+        if (it != valid_.end()) {
+            return it->second;
+        }
+
+        return 0;
+    }
+};
 }
 
 extern "C" {

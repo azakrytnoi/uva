@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u488.h"
@@ -28,53 +28,53 @@ void __cdecl invoke()
 }
 
 namespace {
-    class solution {
-        int32_t amp_, freq_;
-        std::stringstream out_;
-    public:
-        solution() : amp_(), freq_(), out_() {}
+class solution {
+    int32_t amp_, freq_;
+    std::stringstream out_;
+public:
+    solution() : amp_(), freq_(), out_() {}
 
-        friend std::istream& operator >> (std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >> (std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-        operator bool() const
-        {
-            return !(amp_ == 0 && freq_ == 0);
-        }
-        solution& operator()();
-
-    private:
-    };
-
-    std::istream& operator >> (std::istream& in, solution& sol)
+    operator bool() const
     {
-        in >> sol.amp_ >> sol.freq_;
-        return in;
+        return !(amp_ == 0 && freq_ == 0);
+    }
+    solution& operator()();
+
+private:
+};
+
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    in >> sol.amp_ >> sol.freq_;
+    return in;
+}
+
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+    for (int32_t i = 0; i < sol.freq_; i++) {
+        out << sol.out_.str() << std::endl;;
     }
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
-    {
-        for (int32_t i = 0; i < sol.freq_; i++) {
-            out << sol.out_.str() << std::endl;;
-        }
+    return out;
+}
 
-        return out;
+solution& solution::operator()()
+{
+    out_.str("");
+
+    for (int32_t i = 1; i <= amp_; i++) {
+        out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
     }
 
-    solution& solution::operator()()
-    {
-        out_.str("");
-
-        for (int32_t i = 1; i <= amp_; i++) {
-            out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
-        }
-
-        for (int i = amp_ - 1; i >= 1; i--) {
-            out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
-        }
-
-        return *this;
+    for (int i = amp_ - 1; i >= 1; i--) {
+        out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
     }
+
+    return *this;
+}
 }
 
 void U488::operator()() const

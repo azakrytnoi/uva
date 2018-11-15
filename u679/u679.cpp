@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u679.h"
@@ -14,50 +14,50 @@
 #include <iterator>
 
 namespace {
-    class node {
-    public:
-        node() : id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
-        node(const node& rhs) = delete;
+class node {
+public:
+    node() : id_(++id_gen), left_(nullptr), right_(nullptr), flag_(false) {}
+    node(const node& rhs) = delete;
 
-        node& operator = (const node& rhs) = delete;
+    node& operator = (const node& rhs) = delete;
 
-        ~node()
-        {
-            delete left_;
-            delete right_;
-        }
+    ~node()
+    {
+        delete left_;
+        delete right_;
+    }
 
-        int id() const
-        {
-            return id_;
-        }
+    int id() const
+    {
+        return id_;
+    }
 
-        node*& left()
-        {
-            return left_;
-        }
+    node*& left()
+    {
+        return left_;
+    }
 
-        node*& right()
-        {
-            return right_;
-        }
+    node*& right()
+    {
+        return right_;
+    }
 
-        node* traverse()
-        {
-            flag_ = !flag_;
-            return !flag_ ? right_ : left_;
-        }
+    node* traverse()
+    {
+        flag_ = !flag_;
+        return !flag_ ? right_ : left_;
+    }
 
-        static int id_gen;
+    static int id_gen;
 
-    private:
-        int id_;
-        node* left_;
-        node* right_;
-        bool flag_;
-    };
+private:
+    int id_;
+    node* left_;
+    node* right_;
+    bool flag_;
+};
 
-    int node::id_gen;
+int node::id_gen;
 }
 
 U679::U679()

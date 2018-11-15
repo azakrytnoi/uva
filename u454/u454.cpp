@@ -1,15 +1,15 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u454.h"
 
 #ifdef _WIN32
-    #pragma warning (push)
-    #pragma warning (disable : 4503)
+#pragma warning (push)
+#pragma warning (disable : 4503)
 #endif // _WIN32
 
 #include <iostream>
@@ -102,5 +102,5 @@ void U454::operator()() const
 }
 
 #ifdef _WIN32
-    #pragma warning (pop)
+#pragma warning (pop)
 #endif

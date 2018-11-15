@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10305.h"
@@ -15,14 +15,14 @@
 #include <sstream>
 
 namespace {
-    struct task {
-        int id;
-        std::vector<int> predessors;
-        bool executed;
+struct task {
+    int id;
+    std::vector<int> predessors;
+    bool executed;
 
-        task() : id(0), predessors(), executed(false) {}
-        explicit task(int id) : id(id), predessors(), executed(false) {}
-    };
+    task() : id(0), predessors(), executed(false) {}
+    explicit task(int id) : id(id), predessors(), executed(false) {}
+};
 }
 
 U10305::U10305()

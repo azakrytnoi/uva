@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u701.h"
@@ -28,47 +28,47 @@ void __cdecl invoke()
 }
 
 namespace {
-    class solution {
-    public:
-        solution() : P_(), T_(), LLP_() {}
+class solution {
+public:
+    solution() : P_(), T_(), LLP_() {}
 
-        friend std::istream& operator >> (std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >> (std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-        solution& operator ()();
+    solution& operator ()();
 
-    private:
-        static const long double C_;
-        static const long double _2L_;
-        int64_t P_;
-        long double T_, LLP_;
-    };
+private:
+    static const long double C_;
+    static const long double _2L_;
+    int64_t P_;
+    long double T_, LLP_;
+};
 
-    const long double solution::_2L_ = std::log(2);
-    const long double solution::C_ = std::log(10) / solution::_2L_;
+const long double solution::_2L_ = std::log(2);
+const long double solution::C_ = std::log(10) / solution::_2L_;
 
-    std::istream& operator >> (std::istream& in, solution& sol)
-    {
-        in >> sol.P_;
-        return in;
-    }
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    in >> sol.P_;
+    return in;
+}
 
-    std::ostream& operator <<(std::ostream& out, const solution& sol)
-    {
-        out << int64_t(std::floor(sol.LLP_ + sol.T_ * sol.C_));
-        return out;
-    }
+std::ostream& operator <<(std::ostream& out, const solution& sol)
+{
+    out << int64_t(std::floor(sol.LLP_ + sol.T_ * sol.C_));
+    return out;
+}
 
-    solution& solution::operator()()
-    {
-        long double LP = std::log((long double)(P_)) / _2L_;
-        LLP_ = std::log1p((long double)(P_)) / _2L_;
-        T_ = std::floor(std::log10((long double)(P_))) + 2;
+solution& solution::operator()()
+{
+    long double LP = std::log((long double)(P_)) / _2L_;
+    LLP_ = std::log1p((long double)(P_)) / _2L_;
+    T_ = std::floor(std::log10((long double)(P_))) + 2;
 
-        for (; std::ceil(LP + T_ * C_) != std::floor(LLP_ + T_ * C_); T_++);
+    for (; std::ceil(LP + T_ * C_) != std::floor(LLP_ + T_ * C_); T_++);
 
-        return *this;
-    }
+    return *this;
+}
 }
 
 void U701::operator()() const

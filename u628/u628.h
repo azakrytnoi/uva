@@ -10,6 +10,6 @@ public:
     void operator()() const;
 };
 #ifdef POPULATE_CACHE
-    populate <U628> pu628;
+populate <U628> pu628;
 #endif
 

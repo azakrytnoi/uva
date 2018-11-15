@@ -12,6 +12,6 @@ public:
     void operator()() const;
 };
 #ifdef POPULATE_CACHE
-    populate <U10226> pu10226;
+populate <U10226> pu10226;
 #endif
 

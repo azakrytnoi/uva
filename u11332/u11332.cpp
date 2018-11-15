@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11332.h"
@@ -27,58 +27,58 @@ void __cdecl invoke()
 }
 
 namespace {
-    class solution {
-        int64_t in_;
-        int64_t g_;
-    public:
-        solution() : in_(), g_() {}
+class solution {
+    int64_t in_;
+    int64_t g_;
+public:
+    solution() : in_(), g_() {}
 
-        friend std::istream& operator >> (std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >> (std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-        operator bool() const
-        {
-            return in_ != 0;
-        }
-        solution& operator()();
-
-    private:
-        static int64_t g(int64_t num);
-    };
-
-    std::istream& operator >> (std::istream& in, solution& sol)
+    operator bool() const
     {
-        in >> sol.in_;
-        return in;
+        return in_ != 0;
+    }
+    solution& operator()();
+
+private:
+    static int64_t g(int64_t num);
+};
+
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    in >> sol.in_;
+    return in;
+}
+
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+    out << sol.g_;
+    return out;
+}
+
+solution& solution::operator()()
+{
+    g_ = g(in_);
+    return *this;
+}
+
+int64_t solution::g(int64_t num)
+{
+    if (num < 10) {
+        return num;
     }
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
-    {
-        out << sol.g_;
-        return out;
+    int64_t running(0);
+
+    while (num > 0) {
+        running += num % 10;
+        num /= 10;
     }
 
-    solution& solution::operator()()
-    {
-        g_ = g(in_);
-        return *this;
-    }
-
-    int64_t solution::g(int64_t num)
-    {
-        if (num < 10) {
-            return num;
-        }
-
-        int64_t running(0);
-
-        while (num > 0) {
-            running += num % 10;
-            num /= 10;
-        }
-
-        return g(running);
-    }
+    return g(running);
+}
 }
 
 void U11332::operator()() const

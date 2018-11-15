@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11150.h"
@@ -14,14 +14,14 @@
 #include <numeric>
 
 namespace {
-    int calculate(int full, int extra)
-    {
-        if (full != 0) {
-            return full + calculate((full + extra) / 3, (full + extra) % 3);
-        }
-
-        return 0;
+int calculate(int full, int extra)
+{
+    if (full != 0) {
+        return full + calculate((full + extra) / 3, (full + extra) % 3);
     }
+
+    return 0;
+}
 }
 
 U11150::U11150() {}

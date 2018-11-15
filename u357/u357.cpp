@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u357.h"
@@ -27,33 +27,33 @@ void __cdecl invoke()
 
 namespace {
 
-    template<size_t N>
-    class solution {
-        static std::vector<int> coins_;
-        std::vector<int64_t> counts_;
-    public:
-        solution() : counts_()
-        {
-            counts_.resize(N + 1);
-            counts_[0] = 1;
+template<size_t N>
+class solution {
+    static std::vector<int> coins_;
+    std::vector<int64_t> counts_;
+public:
+    solution() : counts_()
+    {
+        counts_.resize(N + 1);
+        counts_[0] = 1;
 
-            for (auto cit = coins_.begin(); cit != coins_.end(); ++cit) {
-                for (size_t i = *cit; i <= N; i++) {
-                    counts_[i] += counts_[i - *cit];
-                }
+        for (auto cit = coins_.begin(); cit != coins_.end(); ++cit) {
+            for (size_t i = *cit; i <= N; i++) {
+                counts_[i] += counts_[i - *cit];
             }
         }
+    }
 
-        int64_t operator()(int amt)
-        {
-            return counts_[size_t(amt)];
-        }
+    int64_t operator()(int amt)
+    {
+        return counts_[size_t(amt)];
+    }
 
-    private:
-    };
+private:
+};
 
-    template<size_t N>
-    std::vector<int> solution<N>::coins_ = {1, 5, 10, 25, 50 };
+template<size_t N>
+std::vector<int> solution<N>::coins_ = {1, 5, 10, 25, 50 };
 
 }  // namespace
 

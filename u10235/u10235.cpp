@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10235.h"
@@ -30,33 +30,33 @@ void __cdecl invoke()
 }
 
 namespace {
-    template<size_t N>
-    class solution {
-    public:
-        solution() : primes_()
-        {
-            math::sieve<N> sieve;
-            std::for_each(sieve.begin(), sieve.end(), [&](auto prime) {
-                primes_[prime] = true;
-            });
-        }
+template<size_t N>
+class solution {
+public:
+    solution() : primes_()
+    {
+        math::sieve<N> sieve;
+        std::for_each(sieve.begin(), sieve.end(), [&](auto prime) {
+            primes_[prime] = true;
+        });
+    }
 
-        std::string operator() (int n, int m)
-        {
-            if (primes_[n]) {
-                if (primes_[m] && m != n) {
-                    return " is emirp.";
-                }
-
-                return " is prime.";
+    std::string operator() (int n, int m)
+    {
+        if (primes_[n]) {
+            if (primes_[m] && m != n) {
+                return " is emirp.";
             }
 
-            return " is not prime.";
+            return " is prime.";
         }
 
-    private:
-        std::map<int64_t, bool> primes_;
-    };
+        return " is not prime.";
+    }
+
+private:
+    std::map<int64_t, bool> primes_;
+};
 } // namespace
 
 void U10235::operator()() const

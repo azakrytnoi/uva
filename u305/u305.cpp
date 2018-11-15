@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u305.h"
@@ -14,23 +14,23 @@
 #include <iterator>
 
 namespace {
-    size_t circle_count(size_t k, size_t m)
-    {
-        size_t size = 2 * k;
+size_t circle_count(size_t k, size_t m)
+{
+    size_t size = 2 * k;
 
-        size_t current((m - 1) % size), i(0);
+    size_t current((m - 1) % size), i(0);
 
-        for (i = 0; i < 2 * k; i++) {
-            if (current < k) {
-                break;
-            }
-
-            size--;
-            current = (current + m - 1) % (size);
+    for (i = 0; i < 2 * k; i++) {
+        if (current < k) {
+            break;
         }
 
-        return i;
+        size--;
+        current = (current + m - 1) % (size);
     }
+
+    return i;
+}
 }
 
 U305::U305() {}

@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u11984.h"
@@ -28,43 +28,43 @@ void __cdecl invoke()
 
 namespace {
 
-    class solution {
-        double c_, f_;
-        double result_;
-    public:
-        solution() : c_(), f_(), result_() {}
+class solution {
+    double c_, f_;
+    double result_;
+public:
+    solution() : c_(), f_(), result_() {}
 
-        friend std::istream& operator >>(std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >>(std::istream& in, solution& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-        operator bool() const
-        {
-            return true;
-        }
-        solution& operator()();
-
-    private:
-    };
-
-    std::istream& operator >> (std::istream& in, solution& sol)
+    operator bool() const
     {
-        in >> sol.c_ >> sol.f_;
-        return in;
+        return true;
     }
+    solution& operator()();
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
-    {
-        out << std::fixed << std::setprecision(2) << sol.result_;
-        return out;
-    }
+private:
+};
 
-    solution& solution::operator()()
-    {
-        result_ = (((c_ * 9) / 5) + 32 );
-        result_ += f_;
-        result_ = ((result_ - 32) * 5 / 9);
-        return *this;
-    }
+std::istream& operator >> (std::istream& in, solution& sol)
+{
+    in >> sol.c_ >> sol.f_;
+    return in;
+}
+
+std::ostream& operator << (std::ostream& out, const solution& sol)
+{
+    out << std::fixed << std::setprecision(2) << sol.result_;
+    return out;
+}
+
+solution& solution::operator()()
+{
+    result_ = (((c_ * 9) / 5) + 32 );
+    result_ += f_;
+    result_ = ((result_ - 32) * 5 / 9);
+    return *this;
+}
 
 }
 

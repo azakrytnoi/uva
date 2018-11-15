@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u10226.h"
@@ -15,11 +15,11 @@
 #include <algorithm>
 
 namespace {
-    std::ostream& operator << (std::ostream& out, const std::pair<std::string, double>& pair)
-    {
-        out << pair.first << " " << std::fixed << std::setprecision(4) << pair.second;
-        return out;
-    }
+std::ostream& operator << (std::ostream& out, const std::pair<std::string, double>& pair)
+{
+    out << pair.first << " " << std::fixed << std::setprecision(4) << pair.second;
+    return out;
+}
 }
 
 U10226::U10226()

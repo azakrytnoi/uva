@@ -1,8 +1,8 @@
 #ifdef _WIN32
-    #define UVA_API_EXPORT __declspec(dllexport)
+#define UVA_API_EXPORT __declspec(dllexport)
 #else
-    #define __cdecl
-    #define UVA_API_EXPORT
+#define __cdecl
+#define UVA_API_EXPORT
 #endif
 
 #include "u628.h"
@@ -17,39 +17,39 @@
 U628::U628()
 {}
 namespace {
-    const std::string digits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+const std::string digits[] = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
-    class generator {
-    public:
-        explicit generator(std::vector<std::string>& dictionary) : dictionary_(dictionary) {}
+class generator {
+public:
+    explicit generator(std::vector<std::string>& dictionary) : dictionary_(dictionary) {}
 
-        void generate(std::string::iterator pos, std::string::iterator end, const std::string& s)
-        {
-            if (pos == end) {
-                std::cout << s << std::endl;
-                return;
-            }
-
-            auto self = this;
-
-            switch (*pos) {
-            case '#':
-                std::for_each(dictionary_.begin(), dictionary_.end(), [&](auto dict) {
-                    self->generate(pos + 1, end, s + dict);
-                });
-                break;
-
-            case '0':
-                std::for_each(digits, digits + 10, [&](auto digit) {
-                    self->generate(pos + 1, end, s + digit);
-                });
-                break;
-            }
+    void generate(std::string::iterator pos, std::string::iterator end, const std::string& s)
+    {
+        if (pos == end) {
+            std::cout << s << std::endl;
+            return;
         }
 
-    private:
-        std::vector<std::string>& dictionary_;
-    };
+        auto self = this;
+
+        switch (*pos) {
+        case '#':
+            std::for_each(dictionary_.begin(), dictionary_.end(), [&](auto dict) {
+                self->generate(pos + 1, end, s + dict);
+            });
+            break;
+
+        case '0':
+            std::for_each(digits, digits + 10, [&](auto digit) {
+                self->generate(pos + 1, end, s + digit);
+            });
+            break;
+        }
+    }
+
+private:
+    std::vector<std::string>& dictionary_;
+};
 }
 
 extern "C" {
