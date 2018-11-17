@@ -1,23 +1,26 @@
 
 MODULES = $(wildcard u[0-9]*)
 
-all:	$(TARGET)
+.PHONY: starter ${MODULES}
+
+starter: $(MODULES)
 	$(MAKE) -C shared
-	for module in $(MODULES) ; do \
-	 $(MAKE) -C $$module ; \
-	done
+
+$(MODULES):
+	$(MAKE) -C $@
+
+all:	$(TARGET)
+#	$(MAKE) -C shared
+	$(MAKE) -j -l5
+#	$(foreach m,$(MODULES),$(MAKE) -C $(m) && ) true
 
 depend:	$(TARGET)
 	$(MAKE) -C shared depend
-	for module in $(MODULES) ; do \
-	 $(MAKE) -C $$module depend ; \
-	done
+	$(foreach m,$(MODULES),$(MAKE) -C $(m) depend && ) true
 
 clean:
 	$(MAKE) -C shared clean
-	for module in $(MODULES) ; do \
-	 $(MAKE) -C $$module clean ; \
-	done
+	$(foreach m,$(MODULES),$(MAKE) -C $(m) clean && ) true
 
 strip:
 	strip -s -K invoke -x -X -v lib/*
