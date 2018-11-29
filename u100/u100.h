@@ -16,6 +16,6 @@ private:
 };
 
 #ifdef POPULATE_CACHE
-populate <U100> pu100;
+    populate <U100> pu100;
 #endif
 

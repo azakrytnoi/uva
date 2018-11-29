@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u12709.h"
@@ -27,59 +27,59 @@ void __cdecl invoke()
 
 namespace {
 
-class solution {
-public:
-    solution() : max_(0), ants_() {}
+    class solution {
+    public:
+        solution() : max_(0), ants_() {}
 
-    friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        friend std::istream& operator >>(std::istream& in, solution& sol);
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const
+        operator bool() const
+        {
+            return !ants_.empty();
+        }
+
+        solution& operator ()();
+
+    private:
+        uint64_t max_;
+        std::vector<std::pair<uint16_t, uint64_t>> ants_;
+    };
+
+    std::istream& operator >> (std::istream& in, solution& sol)
     {
-        return !ants_.empty();
+        sol.ants_.clear();
+        int n;
+
+        if (in >> n && n > 0) {
+            sol.ants_.reserve(n);
+            std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t> {
+                uint16_t l, w, h;
+                // cppcheck-suppress uninitvar
+                in >> l >> w >> h;
+                // cppcheck-suppress uninitvar
+                return std::make_pair(h, l* w * h);
+            });
+        }
+
+        return in;
     }
 
-    solution& operator ()();
+    std::ostream& operator << (std::ostream& out, const solution& sol)
+    {
+        out << sol.max_;
+        return out;
+    }
 
-private:
-    uint64_t max_;
-    std::vector<std::pair<uint16_t, uint64_t>> ants_;
-};
-
-std::istream& operator >> (std::istream& in, solution& sol)
-{
-    sol.ants_.clear();
-    int n;
-
-    if (in >> n && n > 0) {
-        sol.ants_.reserve(n);
-        std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t> {
-            uint16_t l, w, h;
-            // cppcheck-suppress uninitvar
-            in >> l >> w >> h;
-            // cppcheck-suppress uninitvar
-            return std::make_pair(h, l* w * h);
+    solution& solution::operator ()()
+    {
+        std::sort(ants_.begin(), ants_.end(), [](auto a1, auto a2) -> bool {
+            if (a1.first == a2.first) return a1.second > a2.second;
+            return a1.first > a2.first;
         });
+        max_ = ants_.front().second;
+        return *this;
     }
-
-    return in;
-}
-
-std::ostream& operator << (std::ostream& out, const solution& sol)
-{
-    out << sol.max_;
-    return out;
-}
-
-solution& solution::operator ()()
-{
-    std::sort(ants_.begin(), ants_.end(), [](auto a1, auto a2) -> bool {
-        if (a1.first == a2.first) return a1.second > a2.second;
-        return a1.first > a2.first;
-    });
-    max_ = ants_.front().second;
-    return *this;
-}
 
 }
 

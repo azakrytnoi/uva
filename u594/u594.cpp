@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u594.h"
@@ -19,16 +19,16 @@ U594::~U594()
 {}
 
 namespace {
-union {
-    int32_t numerical;
-    unsigned char bytes[4];
+    union {
+        int32_t numerical;
+        unsigned char bytes[4];
 
-    int32_t flip_endian() {
-        std::swap(bytes[0], bytes[3]);
-        std::swap(bytes[1], bytes[2]);
-        return numerical;
-    }
-} item;
+        int32_t flip_endian() {
+            std::swap(bytes[0], bytes[3]);
+            std::swap(bytes[1], bytes[2]);
+            return numerical;
+        }
+    } item;
 }
 
 extern "C" {

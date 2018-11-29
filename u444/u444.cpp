@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u444.h"
@@ -29,50 +29,50 @@ void __cdecl invoke()
 
 namespace {
 
-class coder {
-public:
+    class coder {
+    public:
 
-    static std::string encode(const std::string& src);
-    static std::string decode(const std::string& src);
+        static std::string encode(const std::string& src);
+        static std::string decode(const std::string& src);
 
-private:
-};
+    private:
+    };
 
-std::string coder::encode(const std::string& source)
-{
-    std::stringstream out;
-    std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
-        std::stringstream ss;
-        ss << (int)ch;
-        std::string str(ss.str());
-        std::reverse(str.begin(), str.end());
-        out << str;
-    });
-    return out.str();
-}
-
-std::string coder::decode(const std::string& source)
-{
-    std::stringstream out;
-
-    for (auto it = source.begin(); it != source.end();) {
-        std::stringstream in;
-        in << *it++ << *it++;
-        int ch;
-        in >> ch;
-
-        if (ch < 32) {
-            it++;
-            ch += 100;
-        }
-
-        out << char(ch);
+    std::string coder::encode(const std::string& source)
+    {
+        std::stringstream out;
+        std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
+            std::stringstream ss;
+            ss << (int)ch;
+            std::string str(ss.str());
+            std::reverse(str.begin(), str.end());
+            out << str;
+        });
+        return out.str();
     }
 
-    std::string tmp(out.str());
-    std::reverse(tmp.begin(), tmp.end());
-    return tmp;
-}
+    std::string coder::decode(const std::string& source)
+    {
+        std::stringstream out;
+
+        for (auto it = source.begin(); it != source.end();) {
+            std::stringstream in;
+            in << *it++ << *it++;
+            int ch;
+            in >> ch;
+
+            if (ch < 32) {
+                it++;
+                ch += 100;
+            }
+
+            out << char(ch);
+        }
+
+        std::string tmp(out.str());
+        std::reverse(tmp.begin(), tmp.end());
+        return tmp;
+    }
 
 }  // namespace
 

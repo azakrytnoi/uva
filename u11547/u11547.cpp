@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u11547.h"
@@ -27,38 +27,38 @@ void __cdecl invoke()
 
 namespace {
 
-class solution {
-    int64_t n_;
-public:
-    solution() : n_(0) {}
+    class solution {
+        int64_t n_;
+    public:
+        solution() : n_(0) {}
 
-    friend std::istream& operator >>(std::istream& in, solution& sol)
-    {
-        in >> sol.n_;
-        return in;
-    }
+        friend std::istream& operator >>(std::istream& in, solution& sol)
+        {
+            in >> sol.n_;
+            return in;
+        }
 
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol)
-    {
-        out << sol.n_;
-        return out;
-    }
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol)
+        {
+            out << sol.n_;
+            return out;
+        }
 
-    solution& operator ()()
-    {
-        n_ *= 567;
-        n_ /= 9;
-        n_ += 7492;
-        n_ *= 235;
-        n_ /= 47;
-        n_ -= 498;
-        n_ /= 10;
-        n_ = std::abs(n_ % 10);
-        return *this;
-    }
+        solution& operator ()()
+        {
+            n_ *= 567;
+            n_ /= 9;
+            n_ += 7492;
+            n_ *= 235;
+            n_ /= 47;
+            n_ -= 498;
+            n_ /= 10;
+            n_ = std::abs(n_ % 10);
+            return *this;
+        }
 
-private:
-};
+    private:
+    };
 
 }
 

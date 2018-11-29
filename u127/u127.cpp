@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u127.h"
@@ -17,12 +17,12 @@
 #include <iterator>
 
 namespace {
-typedef std::pair<char, char> card;
+    typedef std::pair<char, char> card;
 
-bool can(card c1, card c2)
-{
-    return (c1.first == c2.first || c1.second == c2.second);
-}
+    bool can(card c1, card c2)
+    {
+        return (c1.first == c2.first || c1.second == c2.second);
+    }
 }
 
 U127::U127()

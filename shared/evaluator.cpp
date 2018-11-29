@@ -2,10 +2,10 @@
 
 
 #ifdef _WIN32
-#include <windows.h>
+    #include <windows.h>
 #else
-#include <dlfcn.h>
-#define __cdecl
+    #include <dlfcn.h>
+    #define __cdecl
 #endif
 
 #include "evaluator.h"
@@ -17,19 +17,19 @@
 #include <exception>
 
 namespace {
-std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
+    std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
 
-template<class... Ts> struct populate {};
+    template<class... Ts> struct populate {};
 
-template<class Tp, class... Ts>
-struct populate<Tp, Ts...> : populate<Ts...> {
-    populate() : populate<Ts...>()
-    {
-        std::string tp_name(typeid(Tp).name());
-        tp_name = tp_name.substr(tp_name.find('U') + 1);
-        g_cache[tp_name] = std::make_shared<evaluator<Tp>>("../u" + tp_name + "/u" + tp_name + ".txt");
-    }
-};
+    template<class Tp, class... Ts>
+    struct populate<Tp, Ts...> : populate<Ts...> {
+        populate() : populate<Ts...>()
+        {
+            std::string tp_name(typeid(Tp).name());
+            tp_name = tp_name.substr(tp_name.find('U') + 1);
+            g_cache[tp_name] = std::make_shared<evaluator<Tp>>("../u" + tp_name + "/u" + tp_name + ".txt");
+        }
+    };
 
 }
 

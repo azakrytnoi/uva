@@ -29,6 +29,6 @@ public:
     U476();
 };
 #ifdef POPULATE_CACHE
-populate <U478> pu478;
+    populate <U478> pu478;
 #endif
 

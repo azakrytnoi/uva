@@ -12,7 +12,7 @@
 #include <memory>
 
 #ifndef _WIN32
-#define __cdecl
+    #define __cdecl
 #endif
 
 template <typename char_type,
@@ -128,25 +128,25 @@ private:
 };
 
 namespace {
-template <typename T>
-class io_wrapper {
-public:
-    explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
-    {
-    }
+    template <typename T>
+    class io_wrapper {
+    public:
+        explicit io_wrapper(T& stream, std::streambuf* streambuf) : stream_(stream), streambuf_(stream_.rdbuf(streambuf))
+        {
+        }
 
-    ~io_wrapper()
-    {
-        stream_.rdbuf(streambuf_);
-    }
+        ~io_wrapper()
+        {
+            stream_.rdbuf(streambuf_);
+        }
 
-    io_wrapper(const io_wrapper& rhs) = delete;
-    io_wrapper& operator = (const io_wrapper& rhs) = delete;
+        io_wrapper(const io_wrapper& rhs) = delete;
+        io_wrapper& operator = (const io_wrapper& rhs) = delete;
 
-private:
-    T& stream_;
-    std::streambuf* streambuf_;
-};
+    private:
+        T& stream_;
+        std::streambuf* streambuf_;
+    };
 }
 
 template<typename Tp>
