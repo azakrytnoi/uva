@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10258.h"
@@ -17,11 +17,11 @@
 #include <iterator>
 
 namespace std {
-ostream& operator << (ostream& out, const tuple<int, int, int>& t)
-{
-    out << get<0>(t) << " " << get<1>(t) << " " << get<2>(t);
-    return out;
-}
+    ostream& operator << (ostream& out, const tuple<int, int, int>& t)
+    {
+        out << get<0>(t) << " " << get<1>(t) << " " << get<2>(t);
+        return out;
+    }
 }
 
 U10258::U10258()

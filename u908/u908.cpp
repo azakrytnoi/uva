@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u908.h"
@@ -24,24 +24,24 @@ U908::~U908()
 
 namespace math {
 
-template<>
-int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
-{
-    int total = 0;
+    template<>
+    int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
+    {
+        int total = 0;
 
-    sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
-    std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
-        int cost = line.first;
-        auto origin = line.second.first;
-        auto destination = line.second.second;
+        sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
+        std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
+            int cost = line.first;
+            auto origin = line.second.first;
+            auto destination = line.second.second;
 
-        if (!mst_.isSameSet(origin, destination)) {
-            total += cost;
-            mst_.unionSet(origin, destination);
-        }
-    });
-    return total;
-}
+            if (!mst_.isSameSet(origin, destination)) {
+                total += cost;
+                mst_.unionSet(origin, destination);
+            }
+        });
+        return total;
+    }
 
 }
 

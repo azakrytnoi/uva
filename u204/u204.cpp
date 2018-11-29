@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u204.h"
@@ -26,45 +26,45 @@ void __cdecl invoke()
     instance();
 }
 
-namespace
-{
+namespace {
 
-class solution
-{
-public:
-    solution();
+    class solution {
+    public:
+        solution() {}
 
-    friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        friend std::istream& operator >>(std::istream& in, solution& sol);
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const {
-        return true;
+        operator bool() const
+        {
+            return true;
+        }
+        solution& operator()();
+
+    private:
+    };
+
+    std::istream& operator >> (std::istream& in, solution& sol)
+    {
+        return in;
     }
-    solution& operator()();
 
-private:
-};
+    std::ostream& operator << (std::ostream& out, const solution& sol)
+    {
+        return out;
+    }
 
-std::istream& operator >> (std::istream& in, solution& sol)
-{
-    return in;
-}
-
-std::ostream& operator << (std::ostream& out, const solution& sol)
-{
-    return out;
-}
-
-solution& solution::operator()()
-{
-    return *this;
-}
+    solution& solution::operator()()
+    {
+        return *this;
+    }
 
 }
 
 void U204::operator()() const
 {
     solution sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }

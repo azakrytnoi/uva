@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10018.h"
@@ -28,59 +28,59 @@ void __cdecl invoke()
 }
 
 namespace {
-class solution {
-public:
-    solution() : number_(), count_() {}
+    class solution {
+    public:
+        solution() : number_(), count_() {}
 
-    friend std::istream& operator >> (std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        friend std::istream& operator >> (std::istream& in, solution& sol);
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    solution& operator ()();
+        solution& operator ()();
 
-private:
-    int64_t number_;
-    int64_t count_;
+    private:
+        int64_t number_;
+        int64_t count_;
 
-    static int64_t revert(int64_t number);
-};
+        static int64_t revert(int64_t number);
+    };
 
-int64_t solution::revert(int64_t number)
-{
-    int64_t rev(0);
+    int64_t solution::revert(int64_t number)
+    {
+        int64_t rev(0);
 
-    while (number > 0) {
-        rev *= 10;
-        rev += number % 10;
-        number /= 10;
+        while (number > 0) {
+            rev *= 10;
+            rev += number % 10;
+            number /= 10;
+        }
+
+        return rev;
     }
 
-    return rev;
-}
+    std::istream& operator >> (std::istream& in, solution& sol)
+    {
+        sol.number_ = sol.count_ = 0;
+        in >> sol.number_;
+        return in;
+    }
 
-std::istream& operator >> (std::istream& in, solution& sol)
-{
-    sol.number_ = sol.count_ = 0;
-    in >> sol.number_;
-    return in;
-}
+    std::ostream& operator <<(std::ostream& out, const solution& sol)
+    {
+        out << sol.count_ << ' ' << sol.number_;
+        return out;
+    }
 
-std::ostream& operator <<(std::ostream& out, const solution& sol)
-{
-    out << sol.count_ << ' ' << sol.number_;
-    return out;
-}
+    solution& solution::operator()()
+    {
+        int64_t rev(revert(number_));
 
-solution& solution::operator()()
-{
-    int64_t rev(revert(number_));
+        do {
+            count_++;
+            number_ += rev;
+        } while ((rev = revert(number_)) != number_);
 
-    do {
-        count_++;
-        number_ += rev;
-    } while ((rev = revert(number_)) != number_);
-
-    return *this;
-}
+        return *this;
+    }
 }
 
 void U10018::operator()() const

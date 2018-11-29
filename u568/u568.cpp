@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u568.h"
@@ -27,34 +27,34 @@ void __cdecl invoke()
 
 namespace {
 
-template<size_t N>
-class solution {
-    std::vector<uint32_t> cache_;
-public:
-    solution() :
-        cache_()
-    {
-        cache_.resize(N + 1);
-        cache_[0] = 1;
-        int64_t modFact = 1;
+    template<size_t N>
+    class solution {
+        std::vector<uint32_t> cache_;
+    public:
+        solution() :
+            cache_()
+        {
+            cache_.resize(N + 1);
+            cache_[0] = 1;
+            int64_t modFact = 1;
 
-        for (size_t i = 1; i <= N; i++) {
-            modFact = (modFact * i);
+            for (size_t i = 1; i <= N; i++) {
+                modFact = (modFact * i);
 
-            while (modFact % 10 == 0) {
-                modFact /= 10;
+                while (modFact % 10 == 0) {
+                    modFact /= 10;
+                }
+
+                modFact = modFact % 100000;
+                cache_[i] = modFact % 10;
             }
-
-            modFact = modFact % 100000;
-            cache_[i] = modFact % 10;
         }
-    }
 
-    uint32_t operator[](uint32_t n) const
-    {
-        return cache_[n];
-    }
-};
+        uint32_t operator[](uint32_t n) const
+        {
+            return cache_[n];
+        }
+    };
 
 }  // namespace
 
