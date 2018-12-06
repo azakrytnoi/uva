@@ -189,3 +189,4 @@
 #include "../u203/u203.h"
 #include "../u204/u204.h"
 #include "../u210/u210.h"
+#include "../u206/u206.h"
