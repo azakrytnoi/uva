@@ -54,10 +54,8 @@ namespace {
         if (in >> n && n > 0) {
             sol.ants_.reserve(n);
             std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t> {
-                uint16_t l, w, h;
-                // cppcheck-suppress uninitvar
+                uint16_t l(0), w(0), h(0);
                 in >> l >> w >> h;
-                // cppcheck-suppress uninitvar
                 return std::make_pair(h, l* w * h);
             });
         }
