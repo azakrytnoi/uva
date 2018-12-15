@@ -57,7 +57,7 @@ namespace
 class solution
 {
 public:
-    solution();
+    solution() { }
 
     friend std::istream& operator >>(std::istream& in, solution& sol);
     friend std::ostream& operator <<(std::ostream& out, const solution& sol);
