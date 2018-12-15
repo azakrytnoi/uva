@@ -41,7 +41,6 @@ namespace {
         {
             return true;
         }
-        solution& operator()();
 
     private:
     };
@@ -97,10 +96,6 @@ namespace {
         return out;
     }
 
-    solution& solution::operator()()
-    {
-        return *this;
-    }
 }
 
 void U10128::operator()() const

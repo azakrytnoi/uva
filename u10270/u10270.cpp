@@ -470,7 +470,7 @@ namespace {
             }
 
         } else {
-            int32_t up;
+            int32_t up(0);
 
             for (int32_t u = n_ - 1; u >= 1; u--) {
                 if (area >= (u * u)) {

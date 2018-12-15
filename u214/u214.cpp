@@ -1,28 +1,3 @@
-#!/bin/bash
-
-mkdir ../u$1
-
-cat > "../u$1/u$1.h" <<EOF
-#pragma once
-
-class U$1
-{
-public:
-	static const char * libname()
-	{
-		return "u$1";
-	}
-    U$1() {}
-
-    void operator()() const;
-};
-
-#ifdef POPULATE_CACHE
-populate <U$1> pu$1;
-#endif
-EOF
-
-cat > "../u$1/u$1.cpp" <<EOF
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -30,7 +5,7 @@ cat > "../u$1/u$1.cpp" <<EOF
 #define UVA_API_EXPORT
 #endif
 
-#include "u$1.h"
+#include "u214.h"
 
 #include <iostream>
 #include <iomanip>
@@ -47,7 +22,7 @@ extern "C" {
 
 void __cdecl invoke()
 {
-	U$1 instance;
+	U214 instance;
 	instance();
 }
 
@@ -85,30 +60,10 @@ solution& solution::operator()()
 
 }
 
-void U$1::operator()() const
+void U214::operator()() const
 {
-    solution sol;
-    while (std::cin >> sol && sol) {
-        std::cout << sol() << std::endl;
-    }
+//    solution sol;
+//    while (std::cin >> sol && sol) {
+//        std::cout << sol() << std::endl;
+//    }
 }
-EOF
-
-cat >>uvas.h <<EOF
-#include "../u$1/u$1.h"
-EOF
-
-touch "../u$1/u$1.txt"
-
-sed "s/u100/u$1/g" ../u100/Makefile > ../u$1/Makefile
-sed "s/u100/u$1/g" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
-sed "s/u100/u$1/g" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
-
-make 
-
-cd "../u$1"
-make depend
-cd ../shared
-
-
-git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile

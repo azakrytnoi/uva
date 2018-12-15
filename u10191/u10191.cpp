@@ -90,8 +90,7 @@ namespace {
 
     class solution {
     public:
-        solution() : agenda_(), nap_(
-        {
+        solution() : agenda_(), nap_( {
             0, { 10, 0 }
         }), counter_(0) {}
 

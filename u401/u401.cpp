@@ -24,8 +24,7 @@ namespace {
         enum class kind : int
         {   NotAtAll = 0, Palindrome = 1, Mirror = 2, MirrorPalindrome = 3 };
 
-        palindrome() : valid_chars_(
-        {
+        palindrome() : valid_chars_( {
             {'A', 'A' }, {'M', 'M' }, {'Y', 'Y' },
             /*{'B',0},{'N', 0},*/ {'Z', '5' },
             /*{'C',0},*/ {'O', 'O' }, {'1', '1' },

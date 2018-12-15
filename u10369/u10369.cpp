@@ -28,7 +28,7 @@ namespace {
     double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
     {
         return std::sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
-                    + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
+                         + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
     }
 
     size_t S, P;
