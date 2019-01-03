@@ -43,9 +43,10 @@ namespace {
 
     private:
         std::vector<std::string> field_;
-        int N_, M_;
+        int16_t N_, M_;
 
-        void calculate (int n, int m);
+        void calculate (int16_t row, int16_t col);
+        static uint32_t nField_;
     };
 
     std::istream& operator >> (std::istream& in, solution& sol)
@@ -59,7 +60,6 @@ namespace {
             std::getline(in, line);
             std::generate_n(std::back_inserter(sol.field_), sol.N_, [&]() -> std::string {
                 std::getline(in, line);
-                // cppcheck-suppress returnReference
                 return line; });
         }
 
@@ -68,6 +68,7 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
+        out << "Field #" << sol.nField_ << ":" << std::endl;
         std::ostream_iterator<std::string> oit(out, "\n");
         std::copy(sol.field_.begin(), sol.field_.end(), oit);
         return out;
@@ -75,10 +76,12 @@ namespace {
 
     solution& solution::operator ()()
     {
-        for (int n = 0; n < N_; n++) {
-            for (int m = 0; m < M_; m++) {
-                if (field_[n][m] == '.') {
-                    calculate(n, m);
+        nField_++;
+
+        for (int16_t row = 0; row < N_; row++) {
+            for (int16_t col = 0; col < M_; col++) {
+                if (field_[row][col] == '.') {
+                    calculate(row, col);
                 }
             }
         }
@@ -86,34 +89,28 @@ namespace {
         return *this;
     }
 
-    inline void solution::calculate(int n, int m)
+    inline void solution::calculate(int16_t row, int16_t col)
     {
-        int8_t cnt(0);
+        static std::vector<std::pair<int16_t, int16_t>> deltas ({
+            {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}}
+        });
+        int8_t cnt = std::accumulate(deltas.begin(), deltas.end(), 0, [&](uint16_t prev, const std::pair<int16_t, int16_t>& coord) {
+            return (coord.first + row >= 0 && coord.first + row < N_ && coord.second + col >= 0 && coord.second + col < M_ &&
+                    field_[coord.first + row][coord.second + col] == '*') ? prev + 1 : prev;
+        });
 
-        for (int r = std::max(0, n - 1); r <= std::min(N_ - 1, n + 1); r++) {
-            for (int c = std::max(0, m - 1); c <= std::min(M_ - 1, m + 1); c++) {
-                if (r == n && c == m) {
-                    continue;
-                }
-
-                if (field_[r][c] == '*') {
-                    cnt++;
-                }
-            }
-        }
-
-        field_[n][m] = cnt + '0';
+        field_[row][col] = cnt + '0';
     }
+
+    uint32_t solution::nField_ = 0;
 
 }
 
 void U10189::operator()() const
 {
     solution sol;
-    uint32_t nField(0);
 
     while (std::cin >> sol && sol) {
-        std::cout << "Field #" << (++nField) << ":" << std::endl;
         std::cout << sol() << std::endl;
     }
 }

@@ -39,7 +39,8 @@ namespace {
         {
             std::stringstream ss(sentence);
             std::istream_iterator<std::string> sin(ss);
-            std::for_each(sin, std::istream_iterator<std::string>(), [&](const std::string & word) {
+            std::for_each(sin, std::istream_iterator<std::string>(),
+            [&](const std::string & word) {
                 words_[word.length()].push_back(word);
             });
         }
@@ -53,8 +54,9 @@ namespace {
                 std::string::const_iterator wit = word.begin();
                 char candidate = distance((*it)[0], *wit);
 
-                if (std::accumulate((*it).begin(), (*it).end(), true, [&](bool current, char ch) -> bool
-                {   return current &= distance(ch, *(wit++)) == candidate; })) {
+                if (std::accumulate((*it).begin(), (*it).end(), true,
+                		[&](bool current, char ch) -> bool {
+                			return current &= distance(ch, *(wit++)) == candidate;})) {
                     out << char('a' + candidate);
                 }
             }
@@ -65,7 +67,7 @@ namespace {
         }
 
     private:
-        static char distance (char a, char b)
+        static char distance(char a, char b)
         {
             char res = a - b;
 
