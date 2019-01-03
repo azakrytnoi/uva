@@ -112,3 +112,4 @@ cd ../shared
 
 
 git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile
+git commit -m "initial"
