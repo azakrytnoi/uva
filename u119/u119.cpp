@@ -73,7 +73,7 @@ namespace {
             }
 
             std::transform(names.begin(), names.end(), std::back_inserter(gr.names_), [&](const std::string & res) {
-                return std::make_pair(res, temp[res]);
+                return std::make_pair(res, temp.find(res)->second);
             });
         }
 
