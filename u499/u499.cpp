@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u499.h"
@@ -15,54 +15,83 @@
 #include <iterator>
 #include <numeric>
 #include <limits>
+#include <map>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U499 instance;
-	instance();
+    U499 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
+    class solution {
+    public:
+        solution() : raw_(), result_() {}
 
-class solution
-{
-public:
-    solution() { }
+        operator bool ()
+        {
+            return not raw_.empty();
+        }
 
-    friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        solution& operator()()
+        {
+            std::vector<std::pair<char, uint64_t>> work(raw_.begin(), raw_.end());
+            std::map<uint64_t, std::string> reverse;
 
-    operator bool() const { return true; }
-    solution& operator()();
+            for (auto& pair : work) {
+                reverse[pair.second] += pair.first;
+            }
 
-private:
-};
+            for (auto& pair : reverse) {
+                std::sort(pair.second.begin(), pair.second.end());
+            }
 
-std::istream& operator >> (std::istream& in, solution& sol)
-{
-  return in;
-}
+            result_.assign(reverse.rbegin(), reverse.rend());
+            return *this;
+        }
 
-std::ostream& operator << (std::ostream& out, const solution& sol)
-{
-  return out;
-}
+        friend std::istream& operator >> (std::istream& in, solution& sol)
+        {
+            sol.raw_.clear();
+            sol.result_.clear();
+            std::string line;
 
-solution& solution::operator()()
-{
-  return *this;
-}
+            if (std::getline(in, line) && not line.empty()) {
+                std::stringstream sin(line);
+                char ch;
+
+                while (sin >> ch) {
+                    if (std::isalpha(ch)) {
+                        sol.raw_[ch]++;
+                    }
+                }
+            }
+
+            return in;
+        }
+
+        friend std::ostream& operator << (std::ostream& out, const solution& sol)
+        {
+            out << sol.result_[0].second << " " << sol.result_[0].first;
+            return out;
+        }
+
+    private:
+        std::map<char, uint64_t> raw_;
+        std::vector<std::pair<uint64_t, std::string>> result_;
+    };
+
 
 }
 
 void U499::operator()() const
 {
     solution sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
