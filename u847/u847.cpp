@@ -32,7 +32,7 @@ void U847::operator()() const
     int64_t n;
 
     while (std::cin >> n) {
-        long double lg = std::log((long double)(n)) / std::log((long double)18);
+        double_t lg = std::log((n + 1.0)) / std::log(18.0);
         int64_t lo = int64_t(std::floor(lg));
 
         if (lg - lo < 0.00000000001) {
@@ -40,7 +40,7 @@ void U847::operator()() const
             continue;
         }
 
-        if (n / std::pow(18.0, (long double)(lo)) > 9.0) {
+        if (n / std::pow(18.0, double_t(lo)) > 9.0) {
             std::cout << "Ollie wins.\n";
 
         } else {
