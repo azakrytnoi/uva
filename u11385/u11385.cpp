@@ -18,6 +18,7 @@
 #include <cctype>
 
 #include "fibonacci.h"
+#include "bigint2.h"
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -42,8 +43,8 @@ namespace {
         friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
     private:
-        math::fibonacci<102> fb_;
-        std::vector<uint64_t> cipher_;
+        math::fibonacci<102, math::uint_big_t> fb_;
+        std::vector<math::uint_big_t> cipher_;
         std::string cipher_text_;
         size_t text_len_;
     };
