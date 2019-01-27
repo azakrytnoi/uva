@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10368.h"
@@ -17,52 +17,75 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U10368 instance;
-	instance();
+    U10368 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
 
-class solution_t
-{
-public:
-    solution_t() { }
+    class solution_t {
+    public:
+        solution_t(): o_(), s_(), winner_() {}
 
-    friend std::istream& operator >>(std::istream& in, solution_t& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
+        operator bool()
+        {
+            return o_ != 0 && s_ != 0;
+        }
 
-    operator bool() const { return true; }
-    solution_t& operator()();
+        solution_t& operator()()
+        {
+            if (o_ > s_) {
+                std::swap(o_, s_);
+            }
 
-private:
-};
+            winner_ = dfs(o_, s_);
+            return *this;
+        }
 
-std::istream& operator >> (std::istream& in, solution_t& sol)
-{
-  return in;
-}
+        friend std::istream& operator>>(std::istream& in, solution_t& sol)
+        {
+            sol.winner_ = sol.o_ = sol.s_ = 0;
+            in >> sol.o_ >> sol.s_;
+            return in;
+        }
 
-std::ostream& operator << (std::ostream& out, const solution_t& sol)
-{
-  return out;
-}
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
+        {
+            out << (sol.winner_ == 0 ? "Ollie" : "Stan") << " wins";
+            return out;
+        }
 
-solution_t& solution_t::operator()()
-{
-  return *this;
-}
+    private:
+        uint64_t o_, s_, winner_;
+
+        uint64_t dfs(uint64_t lhs, uint64_t rhs)
+        {
+            if (lhs == 0) {
+                return 0;
+            }
+
+            uint64_t res(0);
+            res |= !dfs(rhs % lhs, lhs);
+
+            if (rhs / lhs != 1 && res == 0) {
+                res |= !dfs(rhs, rhs + rhs % lhs);
+            }
+
+            return res;
+        }
+    };
 
 }
 
 void U10368::operator()() const
 {
     solution_t sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
