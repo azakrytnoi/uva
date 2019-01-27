@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u12469.h"
@@ -17,52 +17,66 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U12469 instance;
-	instance();
+    U12469 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
 
-class solution_t
-{
-public:
-    solution_t() { }
+    class solution_t {
+    public:
+        solution_t() : fib_(1001), n_()
+        {
+            size_t a0(2), a1(3), a2(5);
+            fib_[a0] = fib_[a1] = true;
 
-    friend std::istream& operator >>(std::istream& in, solution_t& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
+            while (a2 < 1000) {
+                fib_[a2] = true;
+                a0 = a2;
+                a2 += a1;
+                a1 = a0;
+            }
+        }
 
-    operator bool() const { return true; }
-    solution_t& operator()();
+        operator bool()
+        {
+            return n_ != 0;
+        }
 
-private:
-};
+        solution_t& operator()()
+        {
+            return *this;
+        }
 
-std::istream& operator >> (std::istream& in, solution_t& sol)
-{
-  return in;
-}
+        friend std::istream& operator>>(std::istream& in, solution_t& sol)
+        {
+            sol.n_ = 0;
+            in >> sol.n_;
+            return in;
+        }
 
-std::ostream& operator << (std::ostream& out, const solution_t& sol)
-{
-  return out;
-}
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
+        {
+            out << (sol.fib_[sol.n_] ? "Roberto" : "Alicia");
+            return out;
+        }
 
-solution_t& solution_t::operator()()
-{
-  return *this;
-}
+    private:
+        std::vector<bool> fib_;
+        size_t n_;
+    };
 
 }
 
 void U12469::operator()() const
 {
     solution_t sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
