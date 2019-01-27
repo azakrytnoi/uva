@@ -50,8 +50,9 @@ namespace math {
     size_t fibonacci<N, fib_t>::operator ()(const fib_t& fib) const
     {
         typedef typename std::vector<fib_t>::const_iterator  iterator_t;
-        auto b_search = [](iterator_t lower, iterator_t upper, const fib_t & val) -> iterator_t {
-            auto mid = lower + std::distance(lower, upper) / 2;
+        auto b_search = [&](iterator_t lower, iterator_t upper, const fib_t & val) -> iterator_t {
+            auto mid (lower);
+            std::advance(mid, std::distance(lower, upper) / 2);
 
             while (val != *mid && std::distance(lower, upper) > 0)
             {
@@ -61,7 +62,8 @@ namespace math {
                     lower = mid + 1;
                 }
 
-                mid = lower + std::distance(lower, upper) / 2;
+                mid = lower;
+                std::advance(mid, std::distance(lower, upper) / 2);
             }
 
             if (std::distance(lower, upper) >= 0)
@@ -69,7 +71,7 @@ namespace math {
                 return mid;
             }
 
-            return upper;
+            return fib_.end();
         };
         auto it = b_search(fib_.begin() + 1, fib_.end(), fib);
         return it == fib_.end() ? std::numeric_limits<size_t>::max() : std::distance(fib_.begin(), it);
