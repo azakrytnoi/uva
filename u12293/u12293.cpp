@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u12293.h"
@@ -17,52 +17,62 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U12293 instance;
-	instance();
+    U12293 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
 
-class solution_t
-{
-public:
-    solution_t() { }
+    class solution_t {
+    public:
+        solution_t() : n_(), win_() {}
 
-    friend std::istream& operator >>(std::istream& in, solution_t& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
+        operator bool()
+        {
+            return n_ != 0;
+        }
 
-    operator bool() const { return true; }
-    solution_t& operator()();
+        solution_t& operator()()
+        {
+            size_t curr(1);
 
-private:
-};
+            while (curr < n_) {
+                curr = curr * 2 + 1;
+            }
 
-std::istream& operator >> (std::istream& in, solution_t& sol)
-{
-  return in;
-}
+            win_ = curr == n_;
+            return *this;
+        }
 
-std::ostream& operator << (std::ostream& out, const solution_t& sol)
-{
-  return out;
-}
+        friend std::istream& operator>>(std::istream& in, solution_t& sol)
+        {
+            sol.n_ = 0;
+            in >> sol.n_;
+            return in;
+        }
 
-solution_t& solution_t::operator()()
-{
-  return *this;
-}
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
+        {
+            out << (sol.win_ ? "Bob" : "Alice");
+            return out;
+        }
+
+    private:
+        size_t n_;
+        bool win_;
+    };
 
 }
 
 void U12293::operator()() const
 {
     solution_t sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
