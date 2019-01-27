@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u11489.h"
@@ -17,52 +17,90 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U11489 instance;
-	instance();
+    U11489 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
 
-class solution_t
-{
-public:
-    solution_t() { }
+    class solution_t {
+    public:
+        solution_t() : N_(std::numeric_limits<size_t>::max()), case_(), s_(), win_() {}
 
-    friend std::istream& operator >>(std::istream& in, solution_t& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
+        operator bool()
+        {
+            return N_-- > 0;
+        }
 
-    operator bool() const { return true; }
-    solution_t& operator()();
+        solution_t& operator()()
+        {
+            std::vector<size_t> cnt(10);
+            size_t sum(0);
 
-private:
-};
+            for (size_t i = 0; i < s_.length(); i++) {
+                cnt[s_[i] - '0']++;
+                sum += s_[i] - '0';
+            }
 
-std::istream& operator >> (std::istream& in, solution_t& sol)
-{
-  return in;
-}
+            int8_t flag(0);
 
-std::ostream& operator << (std::ostream& out, const solution_t& sol)
-{
-  return out;
-}
+            while (true) {
+                size_t i;
 
-solution_t& solution_t::operator()()
-{
-  return *this;
-}
+                for (i = sum % 3; i < 10; i += 3) {
+                    if (cnt[i] != 0) {
+                        cnt[i]--;
+                        sum -= i;
+                        break;
+                    }
+                }
+
+                if (i >= 10) {
+                    break;
+                }
+
+                flag = 1 - flag;
+            }
+
+            win_ = flag == 1;
+            case_++;
+            return *this;
+        }
+
+        friend std::istream& operator>>(std::istream& in, solution_t& sol)
+        {
+            if (sol.N_ == std::numeric_limits<size_t>::max()) {
+                in >> sol.N_;
+            }
+
+            sol.s_.clear();
+            in >> sol.s_;
+            return in;
+        }
+
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
+        {
+            out << "Case " << sol.case_ << ": " << (sol.win_ ? "S" : "T");
+            return out;
+        }
+
+    private:
+        size_t N_, case_;
+        std::string s_;
+        bool win_;
+    };
 
 }
 
 void U11489::operator()() const
 {
     solution_t sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
