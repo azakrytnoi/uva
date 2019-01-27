@@ -31,6 +31,12 @@ public:
         }
     }
 
+    uint_big_t(std::string& str) : number_(str.length())
+    {
+    	std::transform(str.rbegin(), str.rend(), number_.begin(), [](char ch) { return ch - '0'; });
+    	normalize();
+    }
+
     uint_big_t(const uint_big_t& rhs) : number_(rhs.number_.begin(), rhs.number_.end())
     {}
     uint_big_t(uint_big_t&& rhs) : number_(std::move(rhs.number_))
@@ -60,6 +66,9 @@ public:
 	{
     	return not (*this == rhs);
 	}
+
+    size_t length() const { return number_.size(); }
+    std::vector<uint8_t>& data() { return number_; }
 
     uint_big_t& operator+=(const uint_big_t& rhs);
 

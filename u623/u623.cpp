@@ -1,3 +1,4 @@
+
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -16,7 +17,7 @@
 #include <numeric>
 #include <limits>
 
-#include "bigint.h"
+#include <biguint.h>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -30,7 +31,7 @@ void __cdecl invoke()
 namespace {
 
     class solution {
-        math::BigInteger int_;
+        math::uint_big_t int_;
         uint32_t n_;
     public:
         solution() : int_(), n_(0) {}
@@ -49,9 +50,9 @@ namespace {
 
         solution& operator()()
         {
-            int_ = std::string("1");
+            int_ = 1;
 
-            for (uint32_t n = 2; n <= n_; n++) {
+            for (math::uint_big_t n = 2; n <= n_; ++n) {
                 int_ *= n;
             }
 

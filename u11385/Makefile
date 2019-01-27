@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u11385.o: u11385.h ../headers/fibonacci.h
+u11385.o: u11385.h ../headers/fibonacci.h ../headers/biguint.h

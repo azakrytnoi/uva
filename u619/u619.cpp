@@ -18,8 +18,6 @@
 #include <cctype>
 #include <sstream>
 
-#include "bigint.h"
-
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }

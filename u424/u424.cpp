@@ -1,3 +1,4 @@
+
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -17,7 +18,7 @@
 #include <limits>
 #include <sstream>
 
-#include "bigint.h"
+#include <biguint.h>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -31,7 +32,7 @@ void __cdecl invoke()
 void U424::operator()() const
 {
     std::string line;
-    math::BigInteger bi;
+    math::uint_big_t bi;
 
     while (std::getline(std::cin, line) && line != "0") {
         bi += line;
