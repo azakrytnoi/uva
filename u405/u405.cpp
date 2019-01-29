@@ -147,7 +147,7 @@ namespace {
         for (auto& message : messages_) {
             auto& trace = std::get<2>(message);
             auto mta_name = std::get<0>(message);
-            auto dstName = std::get<1>(message);
+            auto& dstName = std::get<1>(message);
 
             while (trace.first == delivery_t::none) {
                 if (std::find(trace.second.begin(), trace.second.end(), mta_name) != trace.second.end()) {
