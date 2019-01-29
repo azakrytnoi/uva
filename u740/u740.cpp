@@ -27,31 +27,31 @@ void __cdecl invoke()
 }
 
 namespace {
-    class baudot {
-        enum class shift
+    class baudot_t {
+        enum class shift_t
         {   UP, DOWN };
-        shift shift_;
-        std::map<shift, std::string> code_;
+        shift_t shift_;
+        std::map<shift_t, std::string> code_;
 
     public:
-        baudot() : shift_(shift::DOWN), code_() {}
+        baudot_t() : shift_(shift_t::DOWN), code_() {}
 
-        friend std::istream& operator >> (std::istream& in, baudot& eng);
+        friend std::istream& operator >> (std::istream& in, baudot_t& eng);
 
-        friend std::string operator << (baudot& eng, const std::string& input);
+        friend std::string operator << (baudot_t& eng, const std::string& input);
     };
 
-    std::istream& operator >> (std::istream& in, baudot& eng)
+    std::istream& operator >> (std::istream& in, baudot_t& eng)
     {
-        eng.shift_ = baudot::shift::DOWN;
-        std::getline(in, eng.code_[baudot::shift::DOWN]);
-        std::getline(in, eng.code_[baudot::shift::UP]);
+        eng.shift_ = baudot_t::shift_t::DOWN;
+        std::getline(in, eng.code_[baudot_t::shift_t::DOWN]);
+        std::getline(in, eng.code_[baudot_t::shift_t::UP]);
         return in;
     }
 
-    std::string operator << (baudot& eng, const std::string& input)
+    std::string operator << (baudot_t& eng, const std::string& input)
     {
-        eng.shift_ = baudot::shift::DOWN;
+        eng.shift_ = baudot_t::shift_t::DOWN;
         std::string result;
 
         for (auto it = input.begin(); it != input.end(); ) {
@@ -65,11 +65,11 @@ namespace {
 
             switch (code) {
             case 0b11011:
-                eng.shift_ = baudot::shift::DOWN;
+                eng.shift_ = baudot_t::shift_t::DOWN;
                 break;
 
             case 0b11111:
-                eng.shift_ = baudot::shift::UP;
+                eng.shift_ = baudot_t::shift_t::UP;
                 break;
 
             default:
@@ -84,7 +84,7 @@ namespace {
 
 void U740::operator()() const
 {
-    baudot eng;
+    baudot_t eng;
     std::cin >> eng;
     std::string line;
 

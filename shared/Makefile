@@ -109,4 +109,14 @@ evaluator.o: ../u10067/u10067.h ../u10099/u10099.h ../u10029/u10029.h
 evaluator.o: ../u10036/u10036.h ../u705/u705.h ../u10051/u10051.h
 evaluator.o: ../u10187/u10187.h ../u10183/u10183.h ../u10276/u10276.h
 evaluator.o: ../u10034/u10034.h ../u10054/u10054.h ../u203/u203.h
-evaluator.o: ../u204/u204.h ../u210/u210.h
+evaluator.o: ../u204/u204.h ../u210/u210.h ../u206/u206.h ../u207/u207.h
+evaluator.o: ../u212/u212.h ../u214/u214.h ../u215/u215.h ../u217/u217.h
+evaluator.o: ../u216/u216.h ../u202/u202.h ../u275/u275.h ../u218/u218.h
+evaluator.o: ../u12149/u12149.h ../u554/u554.h ../u632/u632.h ../u726/u726.h
+evaluator.o: ../u11697/u11697.h ../u11787/u11787.h ../u11716/u11716.h
+evaluator.o: ../u118/u118.h ../u739/u739.h ../u741/u741.h ../u856/u856.h
+evaluator.o: ../u499/u499.h ../u10111/u10111.h ../u109/u109.h ../u495/u495.h
+evaluator.o: ../u542/u542.h ../u10008/u10008.h ../u10165/u10165.h
+evaluator.o: ../u10368/u10368.h ../u10404/u10404.h ../u10578/u10578.h
+evaluator.o: ../u11311/u11311.h ../u11489/u11489.h ../u12293/u12293.h
+evaluator.o: ../u12469/u12469.h

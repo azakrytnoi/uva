@@ -1,3 +1,4 @@
+
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -16,7 +17,7 @@
 #include <numeric>
 #include <limits>
 
-#include "bigint.h"
+#include <biguint.h>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -62,7 +63,7 @@ namespace {
         } else {
             switch (source[op_position]) {
             case '+': {
-                math::BigInteger bi = op1;
+                math::uint_big_t bi (op1);
                 bi += op2;
 
                 if (bi.length() > std::numeric_limits<int>::digits10) {

@@ -92,8 +92,8 @@ namespace {
         {
             out << x << " " << y << " " << size << std::endl;
         }
-        void solve_it_by_hard_work();
-        void solve_it_by_tip();
+//        void solve_it_by_hard_work();
+//        void solve_it_by_tip();
         void solve_it_by_trick();
 
         void fill(int32_t blocks[], int32_t ncurrent, int32_t goal, bool display_when_find);
@@ -197,44 +197,44 @@ namespace {
         fill(blocks, 0, nblocks, true);
     }
 
-    void solution::solve_it_by_tip()
-    {
-        int32_t blocks[NMAX];
-
-        finished = false;
-
-        memset(ncache_, 0, sizeof(ncache_));
-
-        int32_t goal = tip[n_ / 2 - 1];
-
-        cut_by_tip(n_ * n_, blocks, 0, goal);
-    }
-
-    void solution::solve_it_by_hard_work()
-    {
-        int32_t current[NMAX];
-
-        memset(ncache_, 0, sizeof(ncache_));
-
-        smallest = 1 + n_ / 2 + (n_ - 2) / 2 + 4;
-        int32_t threshold = smallest;
-
-        for (int32_t s = (n_ / 2 + 1); s < (n_ - 2); s++) {
-            smallest = 2;
-
-            math::gcd(s, n_ - s);
-
-            if (threshold > smallest) {
-                threshold = smallest;
-            }
-        }
-
-        smallest = threshold;
-
-        cut_by_hard_work(n_ * n_, current, 0);
-
-        print(best_, smallest);
-    }
+//    void solution::solve_it_by_tip()
+//    {
+//        int32_t blocks[NMAX];
+//
+//        finished = false;
+//
+//        memset(ncache_, 0, sizeof(ncache_));
+//
+//        int32_t goal = tip[n_ / 2 - 1];
+//
+//        cut_by_tip(n_ * n_, blocks, 0, goal);
+//    }
+//
+//    void solution::solve_it_by_hard_work()
+//    {
+//        int32_t current[NMAX];
+//
+//        memset(ncache_, 0, sizeof(ncache_));
+//
+//        smallest = 1 + n_ / 2 + (n_ - 2) / 2 + 4;
+//        int32_t threshold = smallest;
+//
+//        for (int32_t s = (n_ / 2 + 1); s < (n_ - 2); s++) {
+//            smallest = 2;
+//
+//            math::gcd(s, n_ - s);
+//
+//            if (threshold > smallest) {
+//                threshold = smallest;
+//            }
+//        }
+//
+//        smallest = threshold;
+//
+//        cut_by_hard_work(n_ * n_, current, 0);
+//
+//        print(best_, smallest);
+//    }
 
     void solution::fill(int32_t blocks[], int32_t ncurrent, int32_t goal, bool display_when_find)
     {

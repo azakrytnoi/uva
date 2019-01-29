@@ -1,3 +1,4 @@
+
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -18,7 +19,7 @@
 #include <unordered_map>
 #include <array>
 
-#include "bigint.h"
+#include <biguint.h>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -36,12 +37,12 @@ namespace {
     public:
         solution() : cache_(), number_(0)
         {
-            math::BigInteger fact("1");
+            math::uint_big_t fact(1);
             cache_.resize(368);
 
             for (uint16_t i = 1; i <= 367; i++) {
                 cache_[i].resize(10);
-                fact *= (int)i;
+                fact *= math::uint_big_t(i);
                 bool leading0(true);
                 std::for_each(fact.data().rbegin(), fact.data().rend(), [&](auto digit) {
                     if (leading0) {

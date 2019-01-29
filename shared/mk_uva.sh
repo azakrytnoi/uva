@@ -54,31 +54,31 @@ void __cdecl invoke()
 namespace
 {
 
-class solution
+class solution_t
 {
 public:
-    solution() { }
+    solution_t() { }
 
-    friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+    friend std::istream& operator >>(std::istream& in, solution_t& sol);
+    friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
 
     operator bool() const { return true; }
-    solution& operator()();
+    solution_t& operator()();
 
 private:
 };
 
-std::istream& operator >> (std::istream& in, solution& sol)
+std::istream& operator >> (std::istream& in, solution_t& sol)
 {
   return in;
 }
 
-std::ostream& operator << (std::ostream& out, const solution& sol)
+std::ostream& operator << (std::ostream& out, const solution_t& sol)
 {
   return out;
 }
 
-solution& solution::operator()()
+solution_t& solution_t::operator()()
 {
   return *this;
 }
@@ -87,7 +87,7 @@ solution& solution::operator()()
 
 void U$1::operator()() const
 {
-    solution sol;
+    solution_t sol;
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }
@@ -112,3 +112,4 @@ cd ../shared
 
 
 git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile
+git commit -m "initial"

@@ -192,9 +192,9 @@ namespace {
 
     void desk::dumpRound()
     {
-//    std::clog << player_ << ": " << table_ << std::endl;
-//    std::clog << "\t" << hands_[0] << std::endl;
-//    std::clog << "\t" << hands_[1] << std::endl;
+		std::clog << player_ << ": " << table_ << std::endl;
+		std::clog << "\t" << hands_[0] << std::endl;
+		std::clog << "\t" << hands_[1] << std::endl;
     }
 
     bool desk::step()
