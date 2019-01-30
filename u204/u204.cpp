@@ -37,7 +37,7 @@ namespace {
 
         operator bool() const
         {
-            return true;
+            return false;
         }
         solution& operator()();
 
