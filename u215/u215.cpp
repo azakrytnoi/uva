@@ -76,10 +76,11 @@ namespace {
             if (sol) {
                 in.ignore();
                 sol.broken_ = false;
+
                 for (size_t row = 0; row < sol.n_rows_; row++) {
-                	for (size_t col = 0; col < sol.n_cols_; col++) {
-                		in >> sol.spread_[row][col];
-                	}
+                    for (size_t col = 0; col < sol.n_cols_; col++) {
+                        in >> sol.spread_[row][col];
+                    }
                 }
             }
         }
@@ -124,7 +125,7 @@ namespace {
     {
         for (size_t row = 0; row < n_rows_; row++) {
             for (size_t col = 0; col < n_cols_; col++) {
-            	bool broken(false);
+                bool broken(false);
                 calculate (row, col, broken);
                 broken_ |= broken;
             }
@@ -165,10 +166,10 @@ namespace {
 
                 default:
                     if (std::isdigit(*ch)) {
-                        while (std::isdigit(*ch)) {
+                        do {
                             term *= 10;
-                            term += *(ch++) - '0';
-                        }
+                            term += *ch - '0';
+                        } while (std::isdigit(*(++ch)));
                     } else {
                         size_t refRow = *(ch++) - 'A';
                         size_t refCol = *(ch++) - '0';
