@@ -31,139 +31,217 @@ void __cdecl invoke()
 
 namespace {
 
-    class customer {
+    class location_t {
     public:
-        std::string name_;
-        int32_t x_, y_;
-        long double angle_;
-        long double distance_;
+        location_t (int32_t x = 0, int32_t y = 0, const std::string& name = "") : x_(x), y_(y), name_(name) {}
 
-        customer() : name_(), x_(), y_(), angle_(), distance_() {}
-
-        friend std::istream& operator >> (std::istream& in, customer& cust)
+        double_t phi() const
         {
-        	static long double _0 = std::atan2(1, 0);
-            std::string line;
-            std::getline(in, cust.name_);
-            std::getline(in, line);
-            std::stringstream strstream(line);
-            strstream >> cust.x_ >> cust.y_;
-            cust.distance_ = std::sqrt(cust.x_ * cust.x_ + cust.y_ * cust.y_); // @suppress("Invalid arguments")
-            cust.angle_ = std::atan2(cust.x_, cust.y_) + _0; // @suppress("Invalid arguments")
+            double_t _phi = std::atan2(y_, x_);
+
+            if (_phi < 0) {
+                _phi += 3 * M_PI;
+            }
+
+            return _phi;
+        }
+
+        double_t r2() const
+        {
+            return x_ * x_ + y_ * y_;
+        }
+
+        int32_t x() const
+        {
+            return x_;
+        }
+
+        int32_t y() const
+        {
+            return y_;
+        }
+
+        std::string name() const
+        {
+            return name_;
+        }
+
+        bool operator <(const location_t& rhs) const
+        {
+            auto a = phi();
+            auto b = rhs.phi();
+
+            if (std::abs(a - b) >= 1e-7) {
+                return a < b;
+            }
+
+            return r2() < rhs.r2();
+        }
+
+        friend std::istream& operator >>(std::istream& in, location_t& loc)
+        {
+            std::getline(in, loc.name_);
+            std::getline(in, loc.name_);
+            in >> loc.x_ >> loc.y_;
             return in;
         }
-    };
-
-    class solution {
-        std::vector<std::shared_ptr<customer>> customers_;
-        std::vector<std::list<std::shared_ptr<customer>>> routes_;
-        std::string title_;
-    public:
-        solution();
-
-        friend std::istream& operator >>(std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
-
-        operator bool() const
-        {
-            return not customers_.empty();
-        }
-        solution& operator()();
 
     private:
+        int32_t x_, y_;
+        std::string name_;
     };
 
-    solution::solution() : customers_(), routes_(), title_() {}
+    class route_t {
+    public:
+        route_t() : cost_(), customers_() {}
 
-    std::istream& operator >> (std::istream& in, solution& sol)
+        size_t cost() const
+        {
+            return cost_;
+        }
+        void populate (std::vector<location_t>::iterator& current, size_t capacity);
+
+        friend std::ostream& operator<<(std::ostream& out, const route_t& route);
+    private:
+        size_t cost_;
+        std::vector<location_t*> customers_;
+    };
+
+    class routes_t {
+    public:
+        routes_t() : total_(), routes_() {};
+
+        void reset(size_t n_routes)
+        {
+            routes_.clear();
+            routes_.reserve(n_routes);
+            total_ = 0;
+        }
+
+        void add_route (std::vector<location_t>::iterator& current, size_t capacity);
+
+        friend std::ostream& operator<<(std::ostream& out, const routes_t& routes);
+    private:
+        size_t total_;
+        std::vector<route_t> routes_;
+    };
+
+    class solution_t {
+    public:
+        solution_t() : case_no_(), n_cust_(), n_routes_(), name_(), customers_(), routes_() {}
+
+        operator bool()
+        {
+            return true;
+        }
+
+        solution_t& operator()();
+
+        friend std::istream& operator>>(std::istream& in, solution_t& sol);
+
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol);
+
+    private:
+        size_t case_no_;
+        size_t n_cust_, n_routes_;
+        std::string name_;
+        std::vector<location_t> customers_;
+        routes_t routes_;
+    };
+
+    std::istream& operator>>(std::istream& in, solution_t& sol)
     {
         sol.customers_.clear();
-        sol.routes_.clear();
 
-        if (std::getline(in, sol.title_)) {
-            std::string line;
-            std::getline(in, line);
-            std::stringstream temp(line);
-            size_t n_cust, n_routes;
-            temp >> n_routes >> n_cust;
-            sol.routes_.resize(n_routes);
-            sol.customers_.reserve(n_cust);
+        if (sol.case_no_ > 0) {
+            std::getline(in, sol.name_);
+        }
 
-            while (n_cust--) {
-                auto cust = std::make_shared<customer>();
-                in >> *cust;
-                sol.customers_.push_back(cust);
-            }
+        if (std::getline(in, sol.name_)) {
+            in >> sol.n_routes_ >> sol.n_cust_;
+            sol.customers_.reserve(sol.n_cust_);
+            std::generate_n(std::back_inserter(sol.customers_), sol.n_cust_, [&]() {
+                location_t loc;
+                in >> loc;
+                return loc;
+            });
         }
 
         return in;
     }
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
+    std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        out << sol.title_ << std::endl << "Number of Customers: " << sol.customers_.size() << "Number of Routes: " << sol.routes_.size() << std::endl;
-        auto idx(0);
-        auto total_lengh(0);
-        std::for_each(sol.routes_.begin(), sol.routes_.end(), [&](auto & route) {
-            out << std::endl << "Route ==> " << ++idx << std::endl;
-            auto route_lenght(0);
-            auto last_x(0), last_y(0);
-            std::for_each(route.begin(), route.end(), [&](auto cust) {
-                out << "Customer: " << cust->name_ << std::endl;;
-                route_lenght += std::abs(cust->x_) + std::abs(cust->y_);
-                last_x = cust->x_;
-                last_y = cust->y_;
-            });
-            route_lenght += std::abs(last_x) + std::abs(last_y);
-            out << "Route length ==> " << route_lenght << std::endl;
-            total_lengh += route_lenght;
-        });
-        out << std::endl << "Total Route Length ==> " << total_lengh << std::endl << "***********************************" << std::endl;
+        if (sol.case_no_ > 1) {
+            out << "***********************************" << std::endl;
+        }
+
+        out << sol.name_ << std::endl << "Number of Customers: " << std::left << std::setw(10) << sol.n_cust_ << "Number of Routes: " <<
+            sol.n_routes_ << std::endl << std::endl;
+        out << sol.routes_;
         return out;
     }
 
-    solution& solution::operator()()
+    solution_t& solution_t::operator()()
     {
-        std::sort(customers_.begin(), customers_.end(), [](auto c1, auto c2) {
-            if (c1->angle_ > c2->angle_) {
-                return true;
-            } else if (c1->angle_ == c2->angle_) {
-                return c1->distance_ < c2->distance_;
-            } else {
-                return false;
-            }
-        });
-        auto cust_per_route = customers_.size() / routes_.size();
-        std::vector<size_t> route_sizes;
-        route_sizes.reserve(routes_.size());
-        std::generate_n(std::back_inserter(route_sizes), routes_.size(), [ = ]() {
-            return cust_per_route;
-        });
+        case_no_++;
+        std::sort(customers_.begin(), customers_.end());
+        auto current = customers_.begin();
+        routes_.reset(n_routes_);
 
-        auto r_sizes_it = route_sizes.begin();
-
-        while (std::accumulate(route_sizes.begin(), route_sizes.end(), 0ul) != customers_.size()) {
-            (*r_sizes_it)++;
-            ++r_sizes_it;
-        }
-
-        auto cust = customers_.begin();
-        r_sizes_it = route_sizes.begin();
-
-        for (auto routeIt = routes_.begin(); routeIt != routes_.end(); ++routeIt, ++r_sizes_it) {
-            for (size_t idx = 0; idx < *r_sizes_it && cust != customers_.end(); idx++) {
-                routeIt->push_back(*cust);
-                ++cust;
-            }
+        for (size_t idx = 0; idx < n_routes_; idx++) {
+            auto capacity = n_cust_ / n_routes_ + (idx < n_cust_ % n_routes_ ? 1 : 0);
+            routes_.add_route(current, capacity);
         }
 
         return *this;
+    }
+
+    void routes_t::add_route(std::vector<location_t>::iterator& current, size_t capacity)
+    {
+        routes_.push_back(route_t());
+        routes_.back().populate (current, capacity);
+        total_ += routes_.back().cost();
+    }
+
+    void route_t::populate(std::vector<location_t>::iterator& current, size_t capacity)
+    {
+        customers_.reserve(capacity);
+        location_t last;
+
+        for (size_t idx = 0; idx < capacity; idx++) {
+            cost_ += (std::abs(last.x() - current->x()) + std::abs(last.y() - current->y()));
+            last = *current;
+            customers_.push_back(&(*current));
+            ++current;
+        }
+
+        cost_ += std::abs(last.x()) + std::abs(last.y());
+    }
+
+    std::ostream& operator<<(std::ostream& out, const routes_t& routes)
+    {
+        size_t n_route(0);
+        std::for_each(routes.routes_.begin(), routes.routes_.end(), [&](const route_t& route) {
+            out << "Route ==> " << (++n_route) << std::endl << route << std::endl;
+        });
+        out << "Total Route length ==> " << routes.total_;
+        return out;
+    }
+
+    std::ostream& operator<<(std::ostream& out, const route_t& route)
+    {
+        std::for_each(route.customers_.begin(), route.customers_.end(), [&](const location_t* customer) {
+            out << "Customer: " << customer->name() << std::endl;
+        });
+        out << "Route length ==> " << route.cost_ << std::endl;
+        return out;
     }
 }
 
 void U206::operator()() const
 {
-    solution sol;
+    solution_t sol;
 
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
