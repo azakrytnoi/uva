@@ -32,415 +32,539 @@ void __cdecl invoke()
 }
 
 namespace {
-
-    enum class status_t
-        : int {
-        running, ready, waiting, terminated
+    enum class status_t {
+        running, locked, terminated
     };
 
-    enum class op_type_t
-        : int {
-        assignment, output, lock, unlock, end
+    enum class op_type_t : char {
+        assign, print, lock, unlock, end
     };
+
+    typedef uint64_t time_t;
 
     class processor_t;
-    class operator_t {
+    class instruction_t {
     public:
-        virtual ~operator_t()
-        {
-        }
+        instruction_t() {}
+        static std::shared_ptr<instruction_t> parse(const std::string& src);
 
-        virtual void operator()(processor_t& sys) = 0;
+        friend class processor_t;
         virtual op_type_t op_type() const = 0;
+        virtual void populate(std::istream& in) = 0;
+        virtual std::string to_string() = 0;
+
+        virtual ~instruction_t() {}
+
+        time_t exec(processor_t& processor) const;
+
+    protected:
+        virtual void execute(processor_t& processor) const = 0;
     };
 
-    class assignment_t: public operator_t {
-        char variable_;
-        uint16_t value_;
-
+    class assign_t : public instruction_t {
+        std::string variable_;
+        uint64_t value_;
     public:
-        assignment_t(const std::string& line) :
-            variable_(), value_()
+        op_type_t op_type() const override
         {
-            std::stringstream iss(line);
-            std::istream_iterator<std::string> begin(iss), end;
-            const std::vector<std::string> tokens (begin, end);
-            variable_ = tokens[0][0];
-            value_ = std::atoi(tokens[2].c_str());
+            return op_type_t::assign;
+        }
+        void populate(std::istream& in) override
+        {
+            std::string dummy;
+            in >> dummy >> value_;
+        }
+        std::string to_string() override
+        {
+            std::stringstream temp;
+            temp << variable_ << " = " << value_;
+            return temp.str();
         }
 
-        virtual void operator ()(processor_t& sys) override;
-        virtual op_type_t op_type() const override
-        {
-            return op_type_t::assignment;
-        }
+        assign_t(const std::string& src) : variable_(src), value_() {}
+        virtual ~assign_t() {}
 
-        friend std::ostream& operator << (std::ostream& out, const assignment_t& op)
-        {
-            out << op.variable_ << " = " << op.value_;
-            return out;
-        }
+    protected:
+        virtual void execute(processor_t& processor) const override;
     };
 
-    class output_t: public operator_t {
-        char variable_;
-
+    class print_t : public instruction_t {
+        std::string variable_;
     public:
-        output_t(const std::string& line) :
-            variable_()
+        op_type_t op_type() const override
         {
-            std::stringstream iss(line);
-            std::istream_iterator<std::string> begin(iss), end;
-            std::vector<std::string> tokens (begin, end);
-            variable_ = tokens[1][0];
+            return op_type_t::print;
+        }
+        void populate(std::istream& in) override
+        {
+            in >> variable_;
+        }
+        std::string to_string() override
+        {
+            std::stringstream temp;
+            temp << "print " << variable_;
+            return temp.str();
         }
 
-        virtual void operator()(processor_t& sys) override;
-        virtual op_type_t op_type() const override
-        {
-            return op_type_t::output;
-        }
+        print_t(const std::string& /*src*/) : variable_() {}
+        virtual ~print_t() {}
 
-        friend std::ostream& operator << (std::ostream& out, const output_t& op)
-        {
-            out << "print " << op.variable_;
-            return out;
-        }
+    protected:
+        virtual void execute(processor_t& processor) const override;
     };
 
-    class lock_t: public operator_t {
+    class lock_t : public instruction_t {
     public:
-        lock_t() { }
-
-        virtual void operator()(processor_t& sys) override;
-        virtual op_type_t op_type() const override
+        op_type_t op_type() const override
         {
             return op_type_t::lock;
         }
-
-        friend std::ostream& operator << (std::ostream& out, const lock_t& /*op*/)
+        void populate(std::istream& /*in*/) override {}
+        std::string to_string() override
         {
-            out << "lock";
-            return out;
+            return "lock";
         }
+
+        lock_t(const std::string& /*src*/) {}
+        virtual ~lock_t() {}
+
+    protected:
+        virtual void execute(processor_t& processor) const override;
     };
 
-    class end_t: public operator_t {
+    class unlock_t : public instruction_t {
     public:
-        end_t() { }
-
-        virtual void operator()(processor_t& sys) override;
-        virtual op_type_t op_type() const override
-        {
-            return op_type_t::end;
-        }
-
-        friend std::ostream& operator << (std::ostream& out, const end_t& /*op*/)
-        {
-            out << "end";
-            return out;
-        }
-    };
-
-    class unlock_t: public operator_t {
-    public:
-        unlock_t() { }
-
-        virtual void operator()(processor_t& sys) override;
-        virtual op_type_t op_type() const override
+        op_type_t op_type() const override
         {
             return op_type_t::unlock;
         }
-
-        friend std::ostream& operator << (std::ostream& out, const unlock_t& /*op*/)
+        void populate(std::istream& /*in*/) override {}
+        std::string to_string() override
         {
-            out << "unlock";
-            return out;
+            return "unlock";
         }
+
+        unlock_t(const std::string& /*src*/) {}
+        virtual ~unlock_t() {}
+
+    protected:
+        virtual void execute(processor_t& processor) const override;
     };
+
+    class end_t : public instruction_t {
+    public:
+        op_type_t op_type() const override
+        {
+            return op_type_t::end;
+        }
+        void populate(std::istream& /*in*/) override {}
+        std::string to_string() override
+        {
+            return "end";
+        }
+
+        end_t(const std::string& /*src*/) {}
+        virtual ~end_t() {}
+
+    protected:
+        virtual void execute(processor_t& processor) const override;
+    };
+
 
     class programm_t {
         status_t status_;
-        uint16_t id_;
-        std::vector<std::shared_ptr<operator_t>> body_;
-        std::vector<std::shared_ptr<operator_t>>::iterator pc_;
+        std::vector<std::shared_ptr<instruction_t>> body_;
+        std::vector<std::shared_ptr<instruction_t>>::iterator pc_;
 
     public:
-        programm_t(uint16_t id) : status_(status_t::ready), id_(id), body_(), pc_() {}
+        programm_t(): status_(status_t::running), body_(), pc_() {}
 
-        void addOperator (const std::string& line);
-        uint16_t id() const
+        status_t  status() const
         {
-            return id_;
+            return status_;
         }
-        status_t status() const
+        status_t& status()
         {
             return status_;
         }
 
-        std::shared_ptr<operator_t> fetch_instruction ()
+        std::shared_ptr<instruction_t> instruction()
         {
-            return *pc_++;
+            return *pc_;
+        }
+        void step_back()
+        {
+            --pc_;
+        }
+        void step_forward()
+        {
+            ++pc_;
+        }
+        time_t execute_step(processor_t& proc);
+
+        void add_instruction(std::shared_ptr<instruction_t> instruction)
+        {
+            body_.push_back(instruction);
         }
 
-        void start()
+        friend std::istream& operator>>(std::istream& in, programm_t& prog)
         {
-            status_ = status_t::running;
+            std::string line;
+
+            while (std::getline(in, line) && line != "end") {
+                std::stringstream sin(line);
+                std::string op;
+                sin >> op;
+                auto instruction = instruction_t::parse(op);
+                instruction->populate(sin);
+                prog.add_instruction(instruction);
+            }
+
+            prog.add_instruction(std::make_shared<end_t>(""));
+            prog.pc_ = prog.body_.begin();
+            return in;
         }
-        void suspend()
+
+        friend std::ostream& operator <<(std::ostream& out, const programm_t& prog)
         {
-            status_ = status_t::waiting;
+            for (auto it = prog.body_.begin(); it != prog.body_.end(); ++it) {
+                out << (it == prog.pc_ ? "=>" : "  ") << (*it)->to_string() // @suppress("Method cannot be resolved")
+                    << std::endl; // @suppress("Invalid overload")
+            }
+
+            return out;
         }
-        void terminate()
+    };
+
+    struct op_type_hash {
+        std::hash<char> base_;
+        size_t operator()(const op_type_t& op_type) const
         {
-            status_ = status_t::terminated;
+            return base_(static_cast<char>(op_type));
         }
     };
 
     class processor_t {
-        std::unordered_map<char, int16_t> variables_;
-        std::unordered_map<uint16_t, std::shared_ptr<programm_t>> programms_;
-        std::unordered_map<op_type_t, uint16_t> timings_;
-        uint16_t time_, quantum_;
-        uint16_t current_;
-        std::deque<uint16_t> locked_;
-        std::deque<uint16_t> ready_;
-        std::ostream* out_;
-
+        typedef size_t proc_id_t;
+        size_t n_proc_;
+        std::unordered_map<proc_id_t, std::shared_ptr<programm_t>> programms_;
+        std::unordered_map<char, uint64_t> variables_;
+        std::unordered_map<op_type_t, time_t, op_type_hash> timings_;
+        time_t quantum_;
+        time_t slot_time_;
+        // runtime
+        std::string out_;
+        proc_id_t current_;
+        std::deque<proc_id_t> ready_;
+        proc_id_t latch_;
+        std::deque<proc_id_t> locked_;
     public:
-        processor_t() :
-            variables_(), programms_(), timings_(), time_(), quantum_(), current_(), locked_(), ready_(), out_()
+        processor_t() : n_proc_(), programms_(), variables_(), timings_(), quantum_(), slot_time_(), out_(), current_(), ready_(),
+            latch_(std::numeric_limits<proc_id_t>::max()), locked_() {}
+
+        friend std::istream& operator>>(std::istream& in, processor_t& proc);
+        friend std::ostream& operator<<(std::ostream& out, const processor_t& proc);
+
+        void set(const std::string& variable, const uint64_t value)
         {
+            variables_[variable[0]] = value;
         }
-
-        processor_t(const processor_t& rhs) = delete;
-        processor_t& operator = (const processor_t& rhs) = delete;
-
-        std::unordered_map<uint16_t, std::shared_ptr<programm_t>>& programms()
-        {
-            return programms_;
-        }
-
-        void reset(size_t N, uint16_t assign_time, uint16_t print_time,
-                   uint16_t lock_time, uint16_t unlock_time, uint16_t end_time, uint16_t quant)
-        {
-            time_ = 0;
-            quantum_ = quant;
-            timings_ = { {op_type_t::assignment, assign_time}, {op_type_t::output, print_time}, {op_type_t::lock, lock_time}, {op_type_t::unlock, unlock_time}, {op_type_t::end, end_time}};
-            programms_.clear();
-            programms_.reserve(N);
-            locked_.clear();
-            ready_.clear();
-        }
-
-        void setVariable(char name, uint16_t val)
-        {
-            variables_[name] = val;
-        }
-
-        uint16_t getVariable(char name)
-        {
-            return variables_[name];
-        }
-
-        void lockProgram()
-        {
-            if (not locked_.empty()) {
-                programms_[current_]->suspend();
-            }
-
-            locked_.push_back(current_);
-        }
-
-        void unlockProgram()
-        {
-            auto currentIdx = std::find(locked_.begin(), locked_.end(), current_);
-
-            if (currentIdx != locked_.end()) {
-                locked_.erase(currentIdx);
-            }
-
-            if (not locked_.empty()) {
-                uint16_t next = locked_.front();
-                locked_.pop_front();
-                ready_.push_back(next);
-            }
-        }
-
+        void print(const std::string& variable);
+        void lock();
+        void unlock();
         void terminate()
         {
-            programms_[current_]->terminate();
+            programms_.find(current_)->second->status() = status_t::terminated;
         }
 
-        void run(std::ostream& out);
-
-        void print (uint16_t value)
+        time_t timings(op_type_t op_type)
         {
-            (*out_) << value << std::endl;
+            return timings_[op_type];
         }
 
-        void execute (operator_t& op)
-        {
-            (*out_) << current_ << ": ";
+        void run();
 
-            switch (op.op_type()) {
-            case op_type_t::assignment:
-                (*out_) << static_cast<assignment_t&>(op);
-                break;
-
-            case op_type_t::output:
-                (*out_) << static_cast<output_t&>(op);
-                break;
-
-            case op_type_t::lock:
-                (*out_) << static_cast<lock_t&>(op);
-                break;
-
-            case op_type_t::unlock:
-                (*out_) << static_cast<unlock_t&>(op);
-                break;
-
-            case op_type_t::end:
-                (*out_) << static_cast<end_t&>(op);
-                break;
-
-            default:
-                break;
-            }
-
-            (*out_) << std::endl;
-            op(*this);
-            time_ += timings_[op.op_type()];
-        }
-
+#ifdef _DEBUG
+        void dump(const std::string& comment);
+#endif
     };
 
-    class solution {
+    class solution_t {
     public:
-        solution() :
-            system_()
+        solution_t() : n_cases_(std::numeric_limits<size_t>::max()), processor_() {}
+
+        operator bool()
         {
+            return n_cases_-- != 0;
         }
 
-        friend std::istream& operator >>(std::istream& in, solution& sol);
-        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        solution_t& operator()();
 
-        operator bool() const
-        {
-            return true;
-        }
-        solution& operator()(std::ostream& out);
+        friend std::istream& operator>>(std::istream& in, solution_t& sol);
+
+        friend std::ostream& operator<<(std::ostream& out, const solution_t& sol);
 
     private:
-        processor_t system_;
+        size_t n_cases_;
+        std::unique_ptr<processor_t> processor_;
     };
 
-    std::istream& operator >>(std::istream& in, solution& sol)
+    solution_t& solution_t::operator()()
     {
-        size_t N;
-        uint16_t assign_time, print_time, lock_time, unlock_time, end_time;
-        uint16_t quantum_time;
-        in >> N >> assign_time >> print_time >> lock_time >> unlock_time >> end_time >> quantum_time;
-        sol.system_.reset(N, assign_time, print_time, lock_time, unlock_time, end_time, quantum_time);
-        std::string line;
-        std::getline(in, line);
+        processor_->run();
+        return *this;
+    }
 
-        while (N--) {
-            auto prog = std::make_shared<programm_t>(sol.system_.programms().size() + 1);
+    std::istream& operator>>(std::istream& in, solution_t& sol)
+    {
+        sol.processor_.release();
 
-            while (std::getline(in, line) && line != "end") {
-                prog->addOperator(line);
-            }
+        if (sol.n_cases_ == std::numeric_limits<size_t>::max()) {
+            in >> sol.n_cases_;
+        }
 
-            prog->addOperator("end");
-            sol.system_.programms().insert(std::make_pair(prog->id(), prog)); // @suppress("Invalid arguments")
+        if (in) {
+            sol.processor_.reset(new processor_t);
+            in >> *sol.processor_;
         }
 
         return in;
     }
 
-    solution& solution::operator()(std::ostream& out)
+    std::istream& operator>>(std::istream& in, processor_t& proc)
     {
-        system_.run(out);
-        return *this;
+        time_t assign_time(0), print_time(0), lock_time(0), unlock_time(0), end_time(0);
+        in >> proc.n_proc_ >> assign_time >> print_time >> lock_time >> unlock_time >> end_time >> proc.quantum_;
+        proc.timings_ = {{op_type_t::assign, assign_time}, {op_type_t::print, print_time}, {op_type_t::lock, lock_time}, {op_type_t::unlock, unlock_time}, {op_type_t::end, end_time}};
+        in.ignore();
+
+        for (size_t idx = 0; idx < proc.n_proc_; idx++) {
+            auto prog = std::make_shared<programm_t>();
+            in >> *prog;
+            size_t pid = proc.programms_.size() + 1;
+            proc.programms_.insert(std::make_pair(pid, prog));
+        }
+
+        return in;
     }
 
-    void processor_t::run(std::ostream& out)
+    std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        out_ = &out;
-        std::transform(programms_.begin(), programms_.end(), std::back_inserter(ready_), [](auto & p) {
-            return p.first;
-        });
+        out << *sol.processor_; // << std::endl;
+        return out;
+    }
+
+    std::ostream& operator<<(std::ostream& out, const processor_t& proc)
+    {
+        out << proc.out_;
+        return out;
+    }
+
+    std::shared_ptr<instruction_t> instruction_t::parse(const std::string& src)
+    {
+        static std::unordered_map<std::string, op_type_t> code_map = {
+            {"print", op_type_t::print},
+            {"lock", op_type_t::lock},
+            {"unlock", op_type_t::unlock},
+            {"end", op_type_t::end}
+        };
+        auto code = code_map.find(src);
+
+        if (code != code_map.end()) {
+            switch (code->second) {
+            case op_type_t::end:
+                return std::make_shared<end_t>(src);
+
+            case op_type_t::lock:
+                return std::make_shared<lock_t>(src);
+
+            case op_type_t::unlock:
+                return std::make_shared<unlock_t>(src);
+
+            case op_type_t::print:
+                return std::make_shared<print_t>(src);
+
+            default:
+                break;
+            }
+        }
+
+        return std::make_shared<assign_t>(src);
+    }
+
+    void processor_t::print(const  std::string& variable)
+    {
+        std::stringstream tmp;
+        tmp << current_ << ": " << variables_[variable[0]] << std::endl;
+        out_ += tmp.str();
+    }
+
+    void assign_t::execute(processor_t& proc) const
+    {
+#ifdef _DEBUG
+        std::clog << variable_ << " = " << value_ << std::endl;
+#endif
+        proc.set(variable_, value_);
+    }
+
+    void print_t::execute(processor_t& proc) const
+    {
+#ifdef _DEBUG
+        std::clog << "print " << variable_ << std::endl;
+#endif
+        proc.print(variable_);
+    }
+
+    void lock_t::execute(processor_t& proc) const
+    {
+#ifdef _DEBUG
+        std::clog << "lock" << std::endl;
+#endif
+        proc.lock();
+    }
+
+    void unlock_t::execute(processor_t& proc) const
+    {
+#ifdef _DEBUG
+        std::clog << "unlock" << std::endl;
+#endif
+        proc.unlock();
+    }
+
+    void end_t::execute(processor_t& proc) const
+    {
+#ifdef _DEBUG
+        std::clog << "end" << std::endl;
+#endif
+        proc.terminate();
+    }
+
+    void processor_t::lock()
+    {
+        if (latch_ == std::numeric_limits<proc_id_t>::max()) {
+            latch_ = current_;
+        }
+
+        if (latch_ != current_) {
+            locked_.push_back(current_);
+            programms_.find(current_)->second->status() = status_t::locked;
+        }
+    }
+
+    void processor_t::unlock()
+    {
+        if (latch_ == current_) {
+            if (not locked_.empty()) {
+                auto unlock = locked_.front();
+                auto prog = programms_.find(unlock)->second;
+                prog->status() = status_t::running;
+                ready_.push_front(unlock);
+                locked_.pop_front();
+            }
+
+            latch_ = std::numeric_limits<proc_id_t>::max();
+        }
+    }
+
+    void processor_t::run()
+    {
+        std::transform(programms_.begin(), programms_.end(), //
+                       std::back_inserter(ready_), //
+                       [](const std::pair<proc_id_t, std::shared_ptr<programm_t>>& prog) ->proc_id_t { return prog.first; });
         std::sort(ready_.begin(), ready_.end());
 
         while (not ready_.empty()) {
-            time_ = 0;
             current_ = ready_.front();
             ready_.pop_front();
-            programms_[current_]->start();
+            auto prog = programms_.find(current_)->second;
+            slot_time_ = 0;
 
-            while (programms_[current_]->status() == status_t::running && time_ < quantum_) {
-                auto instruction = programms_[current_]->fetch_instruction();
-                execute(*instruction);
+            while (prog->status() == status_t::running && slot_time_ < quantum_) {
+                slot_time_ += prog->execute_step(*this);
             }
 
-            if (programms_[current_]->status() == status_t::running) {
+            if (prog->status() == status_t::running) {
                 ready_.push_back(current_);
             }
         }
     }
 
-    void programm_t::addOperator(const std::string& line)
+    time_t programm_t::execute_step(processor_t& processor)
     {
-        if (line == "lock") {
-            body_.push_back(std::make_shared<lock_t>());
-        } else if (line == "unlock") {
-            body_.push_back(std::make_shared<unlock_t>());
-        } else if (line == "end") {
-            body_.push_back(std::make_shared<end_t>());
-        } else if (line.substr(0, line.find(' ')) == "print") {
-            body_.push_back(std::make_shared<output_t>(line));
-        } else {
-            body_.push_back(std::make_shared<assignment_t>(line));
+        auto exec_time = instruction()->exec(processor);
+
+        if (status_ == status_t::running) {
+            ++pc_;
         }
 
-        pc_ = body_.begin();
+        return exec_time;
     }
 
-    void assignment_t::operator ()(processor_t& sys)
+    time_t instruction_t::exec(processor_t& processor) const
     {
-        sys.setVariable (variable_, value_);
+        execute(processor);
+#ifdef _DEBUG
+        processor.dump("after");
+#endif
+        return processor.timings(op_type());
     }
 
-    void output_t::operator ()(processor_t& sys)
+#ifdef _DEBUG
+    std::ostream& operator<<(std::ostream& out, status_t status)
     {
-        sys.print(sys.getVariable(variable_));
+        switch (status) {
+        case status_t::locked:
+            out << "locked";
+            break;
+
+        case status_t::running:
+            out << "running";
+            break;
+
+        case status_t::terminated:
+            out << "terminated";
+            break;
+
+        default:
+            out << "UNDEFINED";
+            break;
+        }
+
+        return out;
     }
 
-    void lock_t::operator ()(processor_t& sys)
+    void processor_t::dump(const std::string& comment)
     {
-        sys.lockProgram();
+        std::clog << "******* " << comment << " => current: " << current_ << "/"
+                  << (latch_ == std::numeric_limits<proc_id_t>::max() ? 0 : latch_)
+                  << "/" << programms_.find(current_)->second->status();
+        std::clog << "; times: " << slot_time_ << "/"
+                  << timings_.find(programms_.find(current_)->second->instruction()->op_type())->second << "/"
+                  << quantum_ << "; Variables: [";
+        std::ostream_iterator<std::string> val_out(std::clog, " ");
+        std::transform(variables_.begin(), variables_.end(), val_out, [](const std::pair<char, uint64_t>& val) {
+            std::stringstream val_str;
+            val_str << "[" << val.first << "] = " << val.second;
+            return val_str.str();
+        });
+        std::clog << "]; Ready: [";
+        std::ostream_iterator<proc_id_t> piout(std::clog, " ");
+        std::copy(ready_.begin(), ready_.end(), piout);
+        std::clog << "]; Pending: [";
+        std::copy(locked_.begin(), locked_.end(), piout);
+        std::clog << "]" << std::endl;
+        auto prog = programms_.find(current_)->second;
+        std::clog << "Programm position:" << std::endl << *prog << std::endl;
+        std::clog << "Output so far:" << std::endl << out_ << std::endl;
     }
-
-    void unlock_t::operator ()(processor_t& sys)
-    {
-        sys.unlockProgram();
-    }
-
-    void end_t::operator ()(processor_t& sys)
-    {
-        sys.terminate();
-    }
+#endif
 }
 
 void U210::operator()() const
 {
-    size_t N;
-    std::cin >> N;
-    solution sol;
+    solution_t sol;
 
-    while (N-- != 0 && std::cin >> sol && sol) {
-        sol(std::cout);
-        std::cout << std::endl;
+    while (std::cin >> sol && sol) {
+        std::cout << sol() << std::endl;
     }
 }
