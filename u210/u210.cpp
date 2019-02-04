@@ -192,20 +192,8 @@ namespace {
         {
             return *pc_;
         }
-        void step_back()
-        {
-            --pc_;
-        }
-        void step_forward()
-        {
-            ++pc_;
-        }
-        time_t execute_step(processor_t& proc);
 
-        void add_instruction(std::shared_ptr<instruction_t> instruction)
-        {
-            body_.push_back(instruction);
-        }
+        time_t execute_step(processor_t& proc);
 
         friend std::istream& operator>>(std::istream& in, programm_t& prog)
         {
@@ -217,14 +205,16 @@ namespace {
                 sin >> op;
                 auto instruction = instruction_t::parse(op);
                 instruction->populate(sin);
-                prog.add_instruction(instruction);
+                prog.body_.push_back(instruction);
             }
 
-            prog.add_instruction(std::make_shared<end_t>(""));
+            prog.body_.push_back(std::make_shared<end_t>(""));
+            prog.body_.shrink_to_fit();
             prog.pc_ = prog.body_.begin();
             return in;
         }
 
+#ifdef _DEBUG
         friend std::ostream& operator <<(std::ostream& out, const programm_t& prog)
         {
             for (auto it = prog.body_.begin(); it != prog.body_.end(); ++it) {
@@ -234,6 +224,7 @@ namespace {
 
             return out;
         }
+#endif
     };
 
     struct op_type_hash {
