@@ -54,22 +54,26 @@ namespace {
     std::string coder::decode(const std::string& source)
     {
         std::stringstream out;
+        std::string tmp;
 
         for (auto it = source.begin(); it != source.end();) {
-            std::stringstream in;
-            in << *it++ << *it++;
+            tmp.assign(it, it + 2);
+            it += 2;
+            std::reverse(tmp.begin(), tmp.end());
+            std::stringstream in(tmp);
+            tmp.clear();
             int ch;
             in >> ch;
 
             if (ch < 32) {
-                it++;
+                ++it;
                 ch += 100;
             }
 
             out << char(ch);
         }
 
-        std::string tmp(out.str());
+        tmp.assign(out.str());
         std::reverse(tmp.begin(), tmp.end());
         return tmp;
     }
