@@ -68,29 +68,33 @@ namespace {
 
         for (size_t i = 9; i >= leds_.size() - 1; --i) {
             std::vector<bool> bad(n_leds_);
-            size_t j(0);
+            auto led = leds_.begin();
 
-            for (; j < leds_.size(); ++j) {
-                size_t k(0);
+            for (; led != leds_.end(); ++led) {
+                auto possible = good[i - std::distance(leds_.begin(), led)].begin();
+                auto bad_led = bad.begin();
+                auto segment = led->begin();
 
-                for (; k < n_leds_; ++k) {
-                    if (bad[k] && leds_[j][k] == 'Y') {
+                for (; segment != led->end(); ++segment, ++bad_led, ++possible) {
+                    if (*bad_led && *segment == 'Y') {
                         break;
                     }
 
-                    if (leds_[j][k] == 'N' && good[i - j][k] == 'Y') {
-                        bad[k] = true;
-                    } else if (leds_[j][k] == 'Y' && good[i - j][k] == 'N') {
-                        break;
+                    if (*segment != *possible) {
+                        if (*segment == 'N') {
+                            *bad_led = true;
+                        } else if (*segment == 'Y') {
+                            break;
+                        }
                     }
                 }
 
-                if (k != n_leds_) { // loop not finished
+                if (segment != led->end()) { // loop not finished
                     break;
                 }
             }
 
-            if (j == leds_.size()) { // loop finished
+            if (led == leds_.end()) { // loop finished
                 match_ = true;
                 break;
             }
