@@ -18,7 +18,7 @@ U417::U417()
 
 namespace {
     class solver {
-        std::map<std::string, int> valid_;
+        std::map<std::string, size_t> valid_;
     public:
         solver() : valid_()
         {
@@ -29,7 +29,7 @@ namespace {
             }
 
             std::string word;
-            int cnt(1);
+            size_t cnt(1);
 
             while (!work.empty()) {
                 word = work.front();
@@ -40,7 +40,7 @@ namespace {
                     continue;
                 }
 
-                for (char ch = *(--word.end()) + 1; ch <= 'z'; ch++) {
+                for (char ch = word.back() + 1; ch <= 'z'; ch++) {
                     work.push(word + ch);
                 }
             }
