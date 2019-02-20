@@ -1,0 +1,14 @@
+M 12 29
+6 300
+Jack Casey
+M 12 21 0900 1015
+done
+Jack Ross
+M 12 29 1000 1100
+M 12 29 1200 1700
+done
+Jack Swigert
+M 12 29 1600 1700
+T 12 30 0900 1000
+done
+done
