@@ -127,6 +127,26 @@ private:
     std::string source_;
 };
 
+class dyn_evaluator : public uva_wraper {
+public:
+    explicit dyn_evaluator(const std::string& source, const std::string& libname) : source_(source), libname_(libname)
+    {
+    }
+
+    virtual ~dyn_evaluator()
+    {
+    }
+
+    virtual void operator ()();
+
+    dyn_evaluator(const dyn_evaluator& rhs) = delete;
+    dyn_evaluator& operator = (const dyn_evaluator& rhs) = delete;
+
+private:
+    std::string source_;
+    std::string libname_;
+};
+
 namespace {
     template <typename T>
     class io_wrapper {

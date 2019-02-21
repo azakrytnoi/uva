@@ -1,5 +1,5 @@
 
-MODULES = $(wildcard u[0-9]*)
+MODULES = $(wildcard vol[0-9]*)
 
 .PHONY: starter ${MODULES}
 
@@ -7,12 +7,10 @@ starter: $(MODULES)
 	$(MAKE) -C shared
 
 $(MODULES):
-	$(MAKE) -C $@
+	$(MAKE) -C $@ all
 
 all:	$(TARGET)
-#	$(MAKE) -C shared
 	$(MAKE) -j -l5
-#	$(foreach m,$(MODULES),$(MAKE) -C $(m) && ) true
 
 depend:	$(TARGET)
 	$(MAKE) -C shared depend

@@ -1,8 +1,19 @@
 #!/bin/bash
 
-mkdir ../u$1
+if [ "$#" -ne 2 ]
+then
+	echo "must be 2 parameters: ./mk_uva <uva_no> <vol_no>"
+	exit
+fi
 
-cat > "../u$1/u$1.h" <<EOF
+mkdir -p ../vol$2/u$1
+
+if [ ! -f ../vol$2/Makefile ]
+then
+	cp ../vol001/Makefile ../vol$2
+fi
+
+cat > "../vol$2/u$1/u$1.h" <<EOF
 #pragma once
 
 class U$1
@@ -22,7 +33,7 @@ populate <U$1> pu$1;
 #endif
 EOF
 
-cat > "../u$1/u$1.cpp" <<EOF
+cat > "../vol$2/u$1/u$1.cpp" <<EOF
 #ifdef _WIN32
 #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -98,18 +109,18 @@ cat >>uvas.h <<EOF
 #include "../u$1/u$1.h"
 EOF
 
-touch "../u$1/u$1.txt"
+touch "../vol$2/u$1/u$1.txt"
 
-sed "s/u100/u$1/g" ../u100/Makefile > ../u$1/Makefile
-sed "s/u100/u$1/g" ../u100/u100.vcxproj > ../u$1/u$1.vcxproj
-sed "s/u100/u$1/g" ../u100/u100.vcxproj.filters > ../u$1/u$1.vcxproj.filters
+sed "s/u100/u$1/g" ../vol001/u100/Makefile > ../vol$2/u$1/Makefile
+sed "s/u100/u$1/g" ../vol001/u100/u100.vcxproj > ../vol$2/u$1/u$1.vcxproj
+sed "s/u100/u$1/g" ../vol001/u100/u100.vcxproj.filters > ../vol$2/u$1/u$1.vcxproj.filters
 
 make 
 
-cd "../u$1"
+cd "../vol$2/u$1"
 make depend
-cd ../shared
+cd ../../shared
 
 
-git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile
+git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile ../*/*/Makefile
 git commit -m "initial"
