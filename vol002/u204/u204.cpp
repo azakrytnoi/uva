@@ -44,12 +44,12 @@ namespace {
     private:
     };
 
-    std::istream& operator >> (std::istream& in, solution& sol)
+    std::istream& operator >> (std::istream& in, solution& /*sol*/)
     {
         return in;
     }
 
-    std::ostream& operator << (std::ostream& out, const solution& sol)
+    std::ostream& operator << (std::ostream& out, const solution& /*sol*/)
     {
         return out;
     }

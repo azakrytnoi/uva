@@ -44,7 +44,11 @@ namespace {
                 if (dref->d_name[0] != '.') {
                     std::string libname(dref->d_name);
                     std::string p_name (libname.substr(4, libname.find('.') - 4));
-                    g_cache[p_name] = std::make_shared<dyn_evaluator>("../u" + p_name + "/u" + p_name + ".txt", "u" + p_name);
+                    std::stringstream vol_in(p_name), vol_out;
+                    size_t num(0);
+                    vol_in >> num;
+                    vol_out << std::setw(3) << std::setfill('0') << std::right << (num / 100);
+                    g_cache[p_name] = std::make_shared<dyn_evaluator>("../vol" + vol_out.str() + "/u" + p_name + "/u" + p_name + ".txt", "u" + p_name);
                 }
             }
         }
