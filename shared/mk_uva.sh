@@ -122,5 +122,5 @@ make depend
 cd ../../shared
 
 
-git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile
+git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile ../*/*/Makefile
 git commit -m "initial"
