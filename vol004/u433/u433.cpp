@@ -176,15 +176,10 @@ namespace {
 
     bool solution_t::is_similar(const std::string& digit, const std::string& reading)
     {
-        auto di = digit.begin();
-        auto ri = reading.begin();
-
-        while (di != digit.end() && ri != reading.end()) {
+        for (auto di = digit.begin(), ri = reading.begin(); di != digit.end() && ri != reading.end(); ++di, ++ri) {
             if (*di != *ri && *di == ' ') {
                 return false;
             }
-
-            ++di, ++ri;
         }
 
         return true;
