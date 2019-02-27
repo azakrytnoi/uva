@@ -31,7 +31,7 @@ void __cdecl invoke()
 
 namespace {
     class solution {
-        math::sieve<31623> sieve_;
+        math::sieve_t<31623> sieve_;
         int32_t n_;
     public:
         solution() : sieve_(), n_() {}

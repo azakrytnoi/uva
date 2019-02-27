@@ -18,7 +18,7 @@
 #include <limits>
 #include <cctype>
 
-#include "fibonacci.h"
+#include <fibonacci.h>
 #include <biguint.h>
 
 extern "C" {
@@ -44,7 +44,7 @@ namespace {
         friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
     private:
-        math::fibonacci<102, math::uint_big_t> fb_;
+        math::fibonacci_t<102, math::uint_big_t> fb_;
         std::vector<math::uint_big_t> cipher_;
         std::string cipher_text_;
         size_t text_len_;

@@ -46,7 +46,7 @@ namespace {
         solution& operator()();
 
     private:
-        math::sieve<10000001>* sieve_;
+        math::sieve_t<10000001>* sieve_;
         int32_t n_;
         std::vector<int32_t> summ_;
     };
@@ -54,7 +54,7 @@ namespace {
     solution::solution() :
         sieve_(nullptr), n_(), summ_()
     {
-        sieve_ = new math::sieve<10000001>;
+        sieve_ = new math::sieve_t<10000001>;
     }
 
     std::istream& operator >> (std::istream& in, solution& sol)

@@ -30,7 +30,7 @@ void __cdecl invoke()
 namespace {
 
     class solution {
-        math::sieve<50000> sieve_;
+        math::sieve_t<50000> sieve_;
         std::vector<uint32_t> factors_;
         int32_t n_;
     public:
