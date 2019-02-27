@@ -188,26 +188,24 @@ namespace {
     {
         graph_.reset();
 
-        for (size_t i = 0; i < dictionary_.size() - 1; i++) {
-            for (size_t j = i + 1; j < dictionary_.size(); j++) {
-                if (dictionary_[i].size() != dictionary_[j].size()) {
+        for (auto i = dictionary_.begin(); i != dictionary_.end(); ++i) {
+            for (auto j = i + 1; j != dictionary_.end(); ++j) {
+                if (i->size() != j->size()) {
                     continue;
                 }
 
-                size_t diff_cnt (0);
+                size_t diff_cnt(0);
+                auto ik = i->begin();
+                auto jk = j->begin();
 
-                for (size_t k = 0; k < dictionary_[i].size(); k++) {
-                    if (dictionary_[i][k] != dictionary_[j][k]) {
-                        diff_cnt += 1;
-
-                        if (diff_cnt > 1) {
-                            break;
-                        }
+                for (; diff_cnt < 2 && ik != i->end(); ++ik, ++jk) {
+                    if (*ik != *jk) {
+                        ++diff_cnt;
                     }
                 }
 
                 if (diff_cnt < 2) {
-                    graph_.addEdge (dictionary_[i], dictionary_[j]);
+                    graph_.addEdge (*i, *j);
                 }
             }
         }

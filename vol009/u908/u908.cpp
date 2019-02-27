@@ -1,3 +1,4 @@
+
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -6,7 +7,7 @@
 #endif
 
 #include "u908.h"
-#include "kruskal.h"
+#include <kruskal.h>
 
 #include <cstdio>
 #include <iostream>
@@ -25,7 +26,7 @@ U908::~U908()
 namespace math {
 
     template<>
-    int Kruskal<int>::operator()(std::vector <Kruskal<int>::Line>& lines)
+    int kruskal_t<int>::operator()(std::vector <kruskal_t<int>::line_t>& lines)
     {
         int total = 0;
 
@@ -57,15 +58,15 @@ void U908::operator()() const
 {
     int V;
 
-    auto readLine = []() -> math::Kruskal<int>::Line {
-        math::Kruskal<int>::Line line;
+    auto readLine = []() -> math::kruskal_t<int>::line_t {
+        math::kruskal_t<int>::line_t line;
         std::cin >> line.second.first >> line.second.second >> line.first;
         return line;
     };
-    std::vector <math::Kruskal<int>::Line> lines;
+    std::vector <math::kruskal_t<int>::line_t> lines;
 
     while (std::cin >> V) {
-        math::Kruskal<int> kruskal(V);
+        math::kruskal_t<int> kruskal(V);
         int K, M, total(0);
         lines.clear();
 
