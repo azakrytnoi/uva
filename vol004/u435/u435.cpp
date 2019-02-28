@@ -79,30 +79,64 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        auto summ = std::accumulate(parties_.begin(), parties_.end(), 0);
-        auto half = summ / 2 + (summ & 1);
+        switch (parties_.size()) {
+        case 1:
+            indexes_[0] = 1;
+            break;
 
-        for (size_t i = 0; i < parties_.size(); ++i) {
-            std::vector<int32_t> dp (1001);
-            dp[0] = 1;
-
-            for (size_t j = 0; j < parties_.size(); ++j) {
-                if (i == j)	{
-                    continue;
-                }
-
-                for (auto k = summ - parties_[j]; k >= 0; --k) {
-                    dp[k + parties_[j]] += dp[k];
-                }
+        case 2:
+            if (parties_[0] > parties_[1]) {
+                indexes_ = {2, 0};
+            } else {
+                indexes_ = {0, 2};
             }
 
-            int32_t index (0);
+            break;
 
-            for (auto j = half - parties_[i]; j < half && j >= 0; j++) {
-                index += dp[j];
+//        case 3:
+//        case 4: {
+//            int16_t max(std::numeric_limits<int16_t>::min());
+//            size_t max_idx(0);
+//
+//            for (size_t i = 0; i < parties_.size(); ++i) {
+//                if (parties_[i] > max) {
+//                    max = parties_[i];
+//                    max_idx = i;
+//                }
+//            }
+//
+//            indexes_[max_idx] = 2 ^ parties_.size();
+//        }
+//        break;
+
+        default: {
+            auto summ = std::accumulate(parties_.begin(), parties_.end(), 0);
+            auto half = summ / 2 + (summ & 1);
+
+            for (size_t i = 0; i < parties_.size(); ++i) {
+                std::vector<int32_t> dp (1001);
+                dp[0] = 1;
+
+                for (size_t j = 0; j < parties_.size(); ++j) {
+                    if (i == j)	{
+                        continue;
+                    }
+
+                    for (auto k = summ - parties_[j]; k >= 0; --k) {
+                        dp[k + parties_[j]] += dp[k];
+                    }
+                }
+
+                int32_t index (0);
+
+                for (auto j = half - parties_[i]; j < half && j >= 0; j++) {
+                    index += dp[j];
+                }
+
+                indexes_[i] = index;
             }
-
-            indexes_[i] = index;
+        }
+        break;
         }
 
         return *this;
