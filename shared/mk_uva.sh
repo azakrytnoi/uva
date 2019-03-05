@@ -46,10 +46,12 @@ cat > "../vol$2/u$1/u$1.cpp" <<EOF
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <map>
 #include <string>
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <memory>
 #include <limits>
 
 extern "C" {
