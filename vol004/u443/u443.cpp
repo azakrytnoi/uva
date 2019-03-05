@@ -44,7 +44,7 @@ namespace {
                 auto num = work.top();
                 work.pop();
 
-                while (!work.empty() && work.top() == num) {
+                while (not work.empty() && work.top() == num) {
                     work.pop();
                 }
 
