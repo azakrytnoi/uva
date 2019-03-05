@@ -28,11 +28,11 @@ void __cdecl invoke()
 }
 
 namespace {
-    typedef std::pair<char, char> card;
+    typedef std::pair<char, char> card_t;
 
     class desk {
-        std::vector<std::stack<card>> hands_;
-        std::stack<card> table_;
+        std::vector<std::stack<card_t>> hands_;
+        std::stack<card_t> table_;
         size_t player_;
         bool valid_;
         bool over_;
@@ -70,7 +70,7 @@ namespace {
 
     void desk::reinit()
     {
-        std::for_each(hands_.begin(), hands_.end(), [](std::stack<card>& hand) {
+        std::for_each(hands_.begin(), hands_.end(), [](std::stack<card_t>& hand) {
             while (!hand.empty()) {
                 hand.pop();
             }
@@ -91,7 +91,7 @@ namespace {
             std::stringstream ss(line);
             std::istream_iterator<std::string> iss(ss);
             std::for_each(iss, std::istream_iterator<std::string>(), [&](const std::string & word) {
-                eng.hands_[(cardNo++) % 2].push(card(word[0], word[1]));
+                eng.hands_[(cardNo++) % 2].push(card_t(word[0], word[1]));
             });
 
             if (i < 3) {
@@ -124,7 +124,7 @@ namespace {
     void desk::incorporateTable()
     {
         changeTurn();
-        std::stack<card> temp;
+        std::stack<card_t> temp;
 
         while (!hands_[player_].empty()) {
             temp.push(hands_[player_].top());
@@ -177,7 +177,7 @@ namespace {
         player_ = (player_ + 1) & 0x01;
     }
 
-    std::ostream& operator << (std::ostream& out, std::stack<card> cards)
+    std::ostream& operator << (std::ostream& out, std::stack<card_t> cards)
     {
         out << cards.size() << ":[";
 

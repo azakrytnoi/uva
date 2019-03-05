@@ -17,9 +17,9 @@
 #include <iterator>
 
 namespace {
-    typedef std::pair<char, char> card;
+    typedef std::pair<char, char> card_t;
 
-    bool can(card c1, card c2)
+    bool can(const card_t& c1, const card_t& c2)
     {
         return (c1.first == c2.first || c1.second == c2.second);
     }
@@ -38,19 +38,19 @@ void __cdecl invoke()
 }
 void U127::operator()() const
 {
-    std::vector <std::stack <card>> cards;
+    std::vector <std::stack <card_t>> cards;
     std::string word;
 
     while (std::cin >> word && word != "#") {
         cards.clear();
-        std::stack <card> s;
-        s.push(card(word[0], word[1]));
+        std::stack <card_t> s;
+        s.push(card_t(word[0], word[1]));
         cards.push_back(s);
 
         for (int i = 0; i < 51; i++) {
             std::cin >> word;
-            std::stack <card> s;
-            s.push(card(word[0], word[1]));
+            std::stack <card_t> s;
+            s.push(card_t(word[0], word[1]));
             cards.push_back(s);
         }
 
@@ -79,7 +79,7 @@ void U127::operator()() const
 
         std::cout << cards.size() << " pile" << (cards.size() == 1 ? "" : "s") << " remaining: ";
         std::ostream_iterator<size_t> oi(std::cout, " ");
-        std::transform(cards.begin(), cards.end(), oi, [](const std::stack<card>& s) {
+        std::transform(cards.begin(), cards.end(), oi, [](const std::stack<card_t>& s) {
             return s.size();
         });
         std::cout << std::endl;
