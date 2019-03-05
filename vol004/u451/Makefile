@@ -18,7 +18,7 @@ SRCS = $(wildcard *.cpp)
 #
 OBJS = $(SRCS:.cpp=.o)
 
-MAIN = libu450.so
+MAIN = libu451.so
 
 #
 #
