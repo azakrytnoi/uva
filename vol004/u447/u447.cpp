@@ -59,7 +59,7 @@ namespace {
         std::string line;
 
         while (std::getline(in, line) && not line.empty()) {
-        	std::stringstream temp(line);
+            std::stringstream temp(line);
             size_t x(0), y(0);
             temp >> x >> y;
             sol.map_[sol.current_][x - 1][y - 1] = 'O';
@@ -93,7 +93,7 @@ namespace {
                 }
             }
 
-            return current[x0][y0] == 'O' ? ncnt -1 : ncnt;
+            return current[x0][y0] == 'O' ? ncnt - 1 : ncnt;
         };
 
         for (size_t x = 0; x < MAX_; ++x) {
