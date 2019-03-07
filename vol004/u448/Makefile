@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u448.o: u448.h
+u448.o: u448.h ../../headers/utility.h
