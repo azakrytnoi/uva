@@ -18,6 +18,8 @@
 #include <map>
 #include <utility>
 
+#include "card.h"
+
 #ifndef _CONST_FUN
     #define _CONST_FUN constexpr
 #endif
@@ -32,12 +34,12 @@ void __cdecl invoke()
 }
 
 namespace {
-    enum class card_value : char
-    {   _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K', A = 'A' };
 
-    int to_number(const card_value c)
+    typedef T10::rank_t rank_t;
+
+    int to_number(const rank_t c)
     {
-        switch (char(c)) {
+        switch (static_cast<char>(c)) {
         case '2':
         case '3':
         case '4':
@@ -71,20 +73,20 @@ namespace {
 
 #ifdef _WIN32
 
-bool operator < (const card_value& c1, const card_value& c2)
+bool operator < (const rank_t& c1, const rank_t& c2)
 {
     return to_number(c1) < to_number(c2);
 }
 
 namespace std {
     template<>
-    struct less<card_value> {
+    struct less<rank_t> {
         // functor for operator<
-        typedef card_value first_argument_type;
-        typedef card_value second_argument_type;
+        typedef rank_t first_argument_type;
+        typedef rank_t second_argument_type;
         typedef bool result_type;
 
-        _CONST_FUN bool operator()(const card_value& _Left, const card_value& _Right) const
+        _CONST_FUN bool operator()(const rank_t& _Left, const rank_t& _Right) const
         {
             // apply operator< to operands
             return (_Left < _Right);
@@ -98,46 +100,44 @@ namespace {
 
 #ifndef _WIN32
 
-    bool operator < (const card_value c1, const card_value c2)
+    bool operator < (const rank_t c1, const rank_t c2)
     {
         return to_number(c1) < to_number(c2);
     }
 
 #endif
 
-    typedef std::pair<char, char> card;
+    typedef card_t<T10::rank_t> card_t;
+    typedef poker::combination_t combination_t;
 
-    enum class hand_value
-    {   HighCard, Pair, TwoPairs, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush };
-
-    int operator - (const card_value c1, const card_value c2)
+    int operator - (const rank_t c1, const rank_t c2)
     {
         return to_number(c1) - to_number(c2);
     }
 
-    class hand {
-        std::vector<card> hand_;
-        hand_value value_;
-        std::vector<std::pair<card_value, int>> distribution_;
+    class hand_t {
+        std::vector<card_t> hand_;
+        combination_t value_;
+        std::vector<std::pair<rank_t, int>> distribution_;
     public:
-        hand() : hand_(), value_(hand_value::HighCard), distribution_()
+        hand_t() : hand_(), value_(combination_t::HighCard), distribution_()
         {
             distribution_.reserve(5);
             hand_.reserve(5);
         }
 
-        friend std::istream& operator >> (std::istream& in, hand& h);
+        friend std::istream& operator >> (std::istream& in, hand_t& h);
 
-        //    friend std::ostream& operator << (std::ostream& out, const hand& h);
+            friend std::ostream& operator << (std::ostream& out, const hand_t& h);
 
-        friend bool operator == (const hand& left, const hand& right)
+        friend bool operator == (const hand_t& left, const hand_t& right)
         {
             if (left.value_ == right.value_) {
                 switch (left.value_) {
-                case hand_value::Flush:
-                case hand_value::StraightFlush:
+                case combination_t::Flush:
+                case combination_t::StraightFlush:
                     for (size_t idx = 0; idx < left.hand_.size(); idx++) {
-                        if (card_value(left.hand_[idx].first) != card_value(right.hand_[idx].first)) {
+                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_) {
                             return false;
                         }
                     }
@@ -158,15 +158,15 @@ namespace {
             return false;
         }
 
-        friend bool operator < (const hand& left, const hand& right)
+        friend bool operator < (const hand_t& left, const hand_t& right)
         {
             if (left.value_ == right.value_) {
                 switch (left.value_) {
-                case hand_value::Flush:
-                case hand_value::StraightFlush:
+                case combination_t::Flush:
+                case combination_t::StraightFlush:
                     for (size_t idx = 0; idx < left.hand_.size(); idx++) {
-                        if (card_value(left.hand_[idx].first) != card_value(right.hand_[idx].first)) {
-                            return card_value(left.hand_[idx].first) < card_value(right.hand_[idx].first);
+                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_) {
+                            return left.hand_[idx].rank_ < right.hand_[idx].rank_;
                         }
                     }
 
@@ -192,8 +192,8 @@ namespace {
     };
 
     class solution {
-        hand white_;
-        hand black_;
+        hand_t white_;
+        hand_t black_;
     public:
         solution() : white_(), black_() {}
 
@@ -208,7 +208,7 @@ namespace {
 
         friend std::ostream& operator <<(std::ostream& out, const solution& sol)
         {
-            //        out << sol.black_ << " vs " << sol.white_ << std::endl;
+                    out << sol.black_ << " vs " << sol.white_ << std::endl;
             if (sol.black_ == sol.white_) {
                 out << "Tie.";
 
@@ -225,14 +225,11 @@ namespace {
     private:
     };
 
-    std::istream& operator >> (std::istream& in, hand& h)
+    std::istream& operator >> (std::istream& in, hand_t& h)
     {
         h.hand_.clear();
-        std::generate_n(std::back_inserter(h.hand_), 5, [&]() {
-            card c;
-            in >> c.first >> c.second;
-            return c;
-        });
+        std::istream_iterator<card_t> cin(in);
+        std::copy_n(cin, 5, std::back_inserter(h.hand_));
 
         if (in) {
             h.evaluate();
@@ -241,64 +238,27 @@ namespace {
         return in;
     }
 
-    /*
-    const std::string name (const hand_value val)
+    void hand_t::evaluate()
     {
-    	switch (val) {
-    	case hand_value::HighCard:
-    		return "High Card";
-    	case hand_value::Pair:
-    		return "Pair";
-    	case hand_value::TwoPairs:
-    		return "Two Pairs";
-    	case hand_value::ThreeOfAKind:
-    		return "Three Of A Kind";
-    	case hand_value::Straight:
-    		return "Straight";
-    	case hand_value::Flush:
-    		return "Flush";
-    	case hand_value::FullHouse:
-    		return "Full House";
-    	case hand_value::FourOfAKind:
-    		return "Four Of A Kind";
-    	case hand_value::StraightFlush:
-    		return "Straight Flush";
-    	default:
-    		return "undefined";
-    	}
-    }
-
-    std::ostream& operator << (std::ostream& out, const hand& h)
-    {
-    	out << "[" << name(h.value_) << "]: ";
-    	std::for_each(h.hand_.begin(), h.hand_.end(), [&](auto c) {
-    		out << c.first << c.second << ' ';
-    	});
-    	return out;
-    }
-    */
-
-    void hand::evaluate()
-    {
-        bool same_suit = (hand_[0].second == hand_[1].second)
-                         && (hand_[1].second == hand_[2].second)
-                         && (hand_[2].second == hand_[3].second)
-                         && (hand_[3].second == hand_[4].second);
+        bool same_suit = (hand_[0].suit_ == hand_[1].suit_)
+                         && (hand_[1].suit_ == hand_[2].suit_)
+                         && (hand_[2].suit_ == hand_[3].suit_)
+                         && (hand_[3].suit_ == hand_[4].suit_);
         bool straight(is_straight());
 
         if (same_suit) {
             if (straight) {
-                value_ = hand_value::StraightFlush;
+                value_ = combination_t::StraightFlush;
 
             } else {
-                value_ = hand_value::Flush;
+                value_ = combination_t::Flush;
             }
 
         } else {
-            value_ = hand_value::HighCard;
-            std::map<card_value, int> temp;
+            value_ = combination_t::HighCard;
+            std::map<rank_t, int> temp;
             std::for_each(hand_.begin(), hand_.end(), [&](auto c) {
-                temp[card_value(c.first)]++;
+                temp[c.rank_]++;
             });
             distribution_.assign(temp.begin(), temp.end());
             std::sort(distribution_.begin(), distribution_.end(), [](auto d1, auto d2) {
@@ -311,32 +271,32 @@ namespace {
 
             switch (distribution_[0].second) {
             case 4:
-                value_ = hand_value::FourOfAKind;
+                value_ = combination_t::FourOfAKind;
                 break;
 
             case 3:
                 if (distribution_.size() == 2) {
-                    value_ = hand_value::FullHouse;
+                    value_ = combination_t::FullHouse;
 
                 } else {
-                    value_ = hand_value::ThreeOfAKind;
+                    value_ = combination_t::ThreeOfAKind;
                 }
 
                 break;
 
             case 2:
                 if (distribution_[1].second == 2) {
-                    value_ = hand_value::TwoPairs;
+                    value_ = combination_t::TwoPairs;
 
                 } else {
-                    value_ = hand_value::Pair;
+                    value_ = combination_t::OnePair;
                 }
 
                 break;
 
             default:
                 if (straight) {
-                    value_ = hand_value::Straight;
+                    value_ = combination_t::Straight;
                 }
 
                 break;
@@ -344,20 +304,44 @@ namespace {
         }
     }
 
-    bool hand::is_straight()
+    bool hand_t::is_straight()
     {
         std::sort(hand_.begin(), hand_.end(), [](auto c1, auto c2) {
-            return card_value(c2.first) < card_value(c1.first);
+            return c2.rank_ < c1.rank_;
         });
         bool straight(true);
 
         for (size_t i = 1; straight && i <= 4; i++) {
-            if (card_value(hand_[i - 1].first) - card_value(hand_[i].first) != 1) {
+            if (hand_[i - 1].rank_ - hand_[i].rank_ != 1) {
                 straight = false;
             }
         }
 
         return straight;
+    }
+
+    std::ostream& operator<<(std::ostream& out, const combination_t val) {
+    	static const std::map<combination_t, std::string> names ({
+    		{combination_t::HighCard, "High Card"},
+			{combination_t::OnePair, "One Pair"},
+			{combination_t::TwoPairs, "Two Pairs"},
+			{combination_t::ThreeOfAKind, "Three of a Kind"},
+			{combination_t::Straight, "Straight"},
+			{combination_t::Flush, "Flush"},
+			{combination_t::FullHouse, "Full House"},
+			{combination_t::FourOfAKind, "Four of a Kind"},
+			{combination_t::StraightFlush, "Straight Flush"}
+    	});
+    	out << names.find(val)->second;
+    	return out;
+    }
+
+    std::ostream& operator<<(std::ostream& out, const hand_t& hand) {
+    	out << hand.value_ << ": [ ";
+    	std::ostream_iterator<card_t> cout(out, " ");
+    	std::copy(hand.hand_.begin(), hand.hand_.end(), cout);
+    	out << ']';
+    	return out;
     }
 }
 

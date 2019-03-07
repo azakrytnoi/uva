@@ -18,6 +18,8 @@
 #include <stack>
 #include <sstream>
 
+#include "card.h"
+
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
@@ -28,7 +30,7 @@ void __cdecl invoke()
 }
 
 namespace {
-    typedef std::pair<char, char> card_t;
+    typedef card_t<T10::rank_t> card_t;
 
     class desk {
         std::vector<std::stack<card_t>> hands_;
@@ -91,7 +93,7 @@ namespace {
             std::stringstream ss(line);
             std::istream_iterator<std::string> iss(ss);
             std::for_each(iss, std::istream_iterator<std::string>(), [&](const std::string & word) {
-                eng.hands_[(cardNo++) % 2].push(card_t(word[0], word[1]));
+                eng.hands_[(cardNo++) % 2].push(card_t(word[1], word[0]));
             });
 
             if (i < 3) {
@@ -146,11 +148,11 @@ namespace {
     {
         while (steps--) {
             if (step()) {
-                switch (table_.top().second) {
-                case 'J':
-                case 'Q':
-                case 'K':
-                case 'A':
+                switch (table_.top().rank_) {
+                case T10::rank_t::J:
+                case T10::rank_t::Q:
+                case T10::rank_t::K:
+                case T10::rank_t::A:
                     steps = 0;
                     changeTurn();
                     coverFace();
@@ -182,7 +184,7 @@ namespace {
         out << cards.size() << ":[";
 
         while (!cards.empty()) {
-            out << " " << cards.top().first << cards.top().second << " ";
+            out << " " << static_cast<char>(cards.top().suit_) << static_cast<char>(cards.top().rank_) << " ";
             cards.pop();
         }
 
@@ -223,20 +225,20 @@ namespace {
 
     void desk::coverFace()
     {
-        switch (table_.top().second) {
-        case 'J':
+        switch (table_.top().rank_) {
+        case T10::rank_t::J:
             playToCover(1);
             break;
 
-        case 'Q':
+        case T10::rank_t::Q:
             playToCover(2);
             break;
 
-        case 'K':
+        case T10::rank_t::K:
             playToCover(3);
             break;
 
-        case 'A':
+        case T10::rank_t::A:
             playToCover(4);
             break;
 

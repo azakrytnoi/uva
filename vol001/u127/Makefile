@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u127.o: u127.h
+u127.o: u127.h ../../headers/card.h
