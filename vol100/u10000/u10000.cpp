@@ -74,9 +74,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        out << "Case " << sol.case_no_ << ": The longest path from " << (sol.start_ + 1) << " has length " << sol.max_ << ", finishing at " <<
-            (sol.end_ + 1) << "." <<
-            std::endl;
+        out << "Case " << sol.case_no_ << ": The longest path from " << (sol.start_ + 1) << " has length " << sol.max_ //
+            << ", finishing at " << (sol.end_ + 1) << "." << std::endl;
         return out;
     }
 
@@ -103,13 +102,13 @@ namespace {
     int32_t solution_t::traceBack(size_t end, std::vector<int32_t>& path)
     {
         if (path[end] == -1) {
-            int32_t longest = 0;
+            int32_t longest (0);
 
             for (size_t i = 0; i < graph_.size(); ++i) {
                 if (graph_[i][end]) {
                     int32_t length = traceBack(i, path) + 1;
 
-                    if ((length > 1 || i == start_) && length > longest) {
+                    if (length > longest) {
                         longest = length;
                     }
                 }
