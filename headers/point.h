@@ -12,10 +12,10 @@
 #include <algorithm>
 
 namespace geom {
+const double_t EPS = 1e-6;
 
     class point_t {
     public:
-        static constexpr double_t EPS = 1e-6;
 
         double_t x_, y_;
 
@@ -33,7 +33,7 @@ namespace geom {
 
         bool operator<(const point_t& rhs) const
         {
-            if (std::abs(x_ - rhs.x_) < EPS) {
+            if (std::abs(x_ - rhs.x_) < geom::EPS) {
                 return y_ < rhs.y_;
             }
 
@@ -42,7 +42,7 @@ namespace geom {
 
         bool operator==(const point_t& rhs) const
         {
-            return std::abs(x_ - rhs.x_) < EPS && std::abs(y_ - rhs.y_) < EPS;
+            return std::abs(x_ - rhs.x_) < geom::EPS && std::abs(y_ - rhs.y_) < geom::EPS;
         }
 
         friend point_t operator+(const point_t& lhs, const point_t& rhs)
@@ -88,7 +88,7 @@ namespace geom {
             for (size_t i = 0; i < n; i++) {
                 while (k >= 2 && point_t::cross(convex_hull[k - 2],
                                                   convex_hull[k - 1],
-                                                  points[i]) <= point_t::EPS) {
+                                                  points[i]) <= geom::EPS) {
                     --k;
                 }
 
@@ -100,7 +100,7 @@ namespace geom {
             for (int64_t i = n - 2; i >= 0; i--) {
                 while (k >= t && point_t::cross(convex_hull[k - 2],
                                                   convex_hull[k - 1],
-                                                  points[i]) <= point_t::EPS) {
+                                                  points[i]) <= geom::EPS) {
                     --k;
                 }
 

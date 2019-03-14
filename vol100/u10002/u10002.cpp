@@ -70,10 +70,12 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const point_t& point)
     {
-        auto round = [](const double_t val) -> double_t {
-            return std::abs(val) < 1e-4 ? 0.0 : val;
+    	constexpr size_t precision (3);
+    	constexpr double_t EPS (std::pow(10, -double_t(precision + 1)));
+        auto round = [&](const double_t val) -> double_t {
+            return std::abs(val) < EPS ? 0.0 : val;
         };
-        out << std::fixed << std::setprecision(3) << round(point.x_) << ' ' << round(point.y_);
+        out << std::fixed << std::setprecision(precision) << round(point.x_) << ' ' << round(point.y_);
         return out;
     }
 
