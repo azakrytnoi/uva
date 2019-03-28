@@ -28,7 +28,7 @@ namespace math {
             }
         }
 
-        uint_big_t(std::string& str) : number_(str.length())
+        uint_big_t(const std::string& str) : number_(str.length())
         {
             std::transform(str.rbegin(), str.rend(), number_.begin(), [](char ch) {
                 return ch - '0';
@@ -112,7 +112,7 @@ namespace math {
             return tmp;
         }
 
-        friend uint_big_t operator-(const uint_big_t& lhs, uint_big_t& rhs)
+        friend uint_big_t operator-(const uint_big_t& lhs, const uint_big_t& rhs)
         {
             uint_big_t tmp(lhs);
             tmp -= rhs;
@@ -205,6 +205,93 @@ namespace math {
         }
 
     };
+
+//    class int_big_t : public uint_big_t {
+//    	bool positive_;
+//
+//    public:
+//        int_big_t(int64_t n = 0) : uint_big_t(std::abs(n)), positive_(n >= 0)
+//        {}
+//
+//        int_big_t(std::string& str) : uint_big_t(int_big_t::check_sign(str)), positive_(str.front() != '-')
+//        {}
+//
+//        int_big_t(const int_big_t& rhs) : uint_big_t(rhs), positive_(rhs.positive_)
+//        {}
+//        int_big_t(int_big_t&& rhs) : uint_big_t(std::move(rhs)), positive_(rhs.positive_)
+//        {}
+//        int_big_t(const uint_big_t& rhs) : uint_big_t(rhs), positive_(true)
+//        {}
+//        int_big_t(uint_big_t&& rhs) : uint_big_t(std::move(rhs)), positive_(true)
+//        {}
+//
+//        uint_big_t abs() const {
+//        	return *this;
+//        }
+//
+//        int_big_t& operator = (const int_big_t& rhs)
+//        {
+//            number_.assign(rhs.number_.begin(), rhs.number_.end());
+//            positive_ = rhs.positive_;
+//            return *this;
+//        }
+//        int_big_t& operator = (int_big_t&& rhs)
+//        {
+//            number_ = std::move(rhs.number_);
+//            positive_ = rhs.positive_;
+//            return *this;
+//        }
+//        int_big_t& operator = (const uint_big_t& rhs)
+//        {
+//            number_.assign(rhs.number_.begin(), rhs.number_.end());
+//            positive_ = true;
+//            return *this;
+//        }
+//        int_big_t& operator = (uint_big_t&& rhs)
+//        {
+//            number_ = std::move(rhs.number_);
+//            positive_ = true;
+//            return *this;
+//        }
+//
+//        bool operator < (const int_big_t& rhs) const;
+//
+//        bool operator == (const int_big_t& rhs) const;
+//
+//        int_big_t& operator+=(const int_big_t& rhs) {
+//        	if (positive_ == rhs.positive_) {
+//        		abs() += rhs.abs();
+//        	} else {
+//        		if (positive_) {
+//        			if (abs() > rhs.abs()) {
+//        				abs() -= rhs.abs();
+//        			} else {
+//        				auto tmp(abs());
+//        				number_.assign(rhs.number_.begin(), rhs.number_.end());
+//        				abs() -= tmp;
+//        				positive_ = false;
+//        			}
+//        		}
+//        	}
+//        	return *this;
+//        }
+//
+//    private:
+//        static std::string check_sign(const std::string& src) {
+//        	return src.front() == '-' ? src.substr(1) : src;
+//        }
+//    };
+//
+//    bool int_big_t::operator <(const int_big_t& rhs) const {
+//    	if (positive_ == rhs.positive_) {
+//    		return positive_ ? abs() < rhs.abs() : rhs.abs() < abs();
+//    	}
+//    	return rhs.positive_;
+//    }
+//
+//    bool int_big_t::operator ==(const int_big_t& rhs) const {
+//    	return positive_ == rhs.positive_ && abs() == rhs.abs();
+//    }
 
     std::pair<uint_big_t, uint_big_t> uint_big_t::divide(const uint_big_t& lhs, const uint_big_t& rhs)
     {

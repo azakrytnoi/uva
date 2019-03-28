@@ -7,6 +7,9 @@
 
 #pragma once
 
+#include <vector>
+#include <cmath>
+
 #include "gcd.h"
 
 namespace math {
@@ -18,6 +21,10 @@ namespace math {
 
     public:
         rational_t(const T& a = 0, const T& b = 1) : a_(a), b_(b)
+        {
+            normalize();
+        }
+        rational_t(T&& a = 0, T&& b = 1) : a_(std::move(a)), b_(std::move(b))
         {
             normalize();
         }
@@ -69,8 +76,8 @@ namespace math {
 
         rational_t& operator -=(const rational_t& rhs)
         {
-            auto aprim(a_ * rhs.b_ - b_ * rhs.a_);
-            auto bprim(b_ * rhs.b_);
+            auto aprim = a_ * rhs.b_ - b_ * rhs.a_;
+            auto bprim = b_ * rhs.b_;
             a_ = aprim, b_ = bprim;
             normalize();
             return *this;
@@ -127,6 +134,8 @@ namespace math {
             return *this;
         }
 
+        std::vector<T> fraction() const;
+
     private:
         void normalize()
         {
@@ -139,5 +148,23 @@ namespace math {
             b_ /= div;
         }
     };
+
+    template<typename T>
+    std::vector<T> rational_t<T>::fraction() const
+    {
+        std::vector<T> result;
+        auto temp(*this);
+
+        while (temp.b_ != 1) {
+            auto int_part (temp.a_ / temp.b_);
+            result.push_back(int_part);
+            temp -= int_part;
+            temp.reciprocal();
+        }
+
+        result.push_back(temp.a_);
+        result.shrink_to_fit();
+        return result;
+    }
 
 }  // namespace math
