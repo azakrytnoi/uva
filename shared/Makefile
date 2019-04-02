@@ -49,10 +49,4 @@ depend: $(SRCS)
 # DO NOT DELETE THIS LINE -- make depend needs it
 
 evaluator.o: /usr/include/dlfcn.h /usr/include/features.h
-evaluator.o: /usr/include/stdc-predef.h /usr/include/sys/cdefs.h
-evaluator.o: /usr/include/bits/wordsize.h /usr/include/bits/long-double.h
-evaluator.o: /usr/include/gnu/stubs.h /usr/include/bits/dlfcn.h evaluator.h
-evaluator.o: /usr/include/dirent.h /usr/include/bits/types.h
-evaluator.o: /usr/include/bits/typesizes.h /usr/include/bits/dirent.h
-evaluator.o: /usr/include/bits/posix1_lim.h /usr/include/bits/local_lim.h
-evaluator.o: /usr/include/linux/limits.h
+evaluator.o: /usr/include/stdc-predef.h evaluator.h /usr/include/dirent.h
