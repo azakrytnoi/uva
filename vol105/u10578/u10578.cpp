@@ -10,6 +10,7 @@
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <map>
 #include <string>
 #include <algorithm>
 #include <iterator>
@@ -31,9 +32,8 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() : input_(), a_win_()
+        solution_t() : input_(), dp_(), a_win_()
         {
-            std::memset(dp_, -1, sizeof dp_);
         }
 
         operator bool()
@@ -70,25 +70,32 @@ namespace {
 
     private:
         std::string input_;
-        int8_t dp_[5][5][5][5][5][5];
+        std::map<std::string, int8_t> dp_;
         bool a_win_;
 
         int16_t play(int16_t p_num, std::array<uint8_t, 6>& v)
         {
+            std::string cache_key;
             {
                 int16_t idx(0);
+                auto crc(std::accumulate(v.begin(), v.end(), 0, [&](int16_t prev, int8_t next) {
+                    idx++;
+                    cache_key += '0' + next;
+                    return prev + next * idx;
+                }));
 
-                if (std::accumulate(v.begin(), v.end(), 0, [&](int16_t prev, int8_t next) {
-                idx++;
-                return prev + next * idx;
-            }) > 31) {
-                    dp_[v[0]][v[1]][v[2]][v[3]][v[4]][v[5]] = p_num;
+                if (crc > 31) {
+                    dp_[cache_key] = p_num;
                     return p_num;
                 }
             }
 
-            if (dp_[v[0]][v[1]][v[2]][v[3]][v[4]][v[5]] != -1) {
-                return dp_[v[0]][v[1]][v[2]][v[3]][v[4]][v[5]];
+            {
+                auto prev = dp_.find(cache_key);
+
+                if (prev != dp_.end()) {
+                    return prev->second;
+                }
             }
 
             int16_t win = 1 ^ p_num;
@@ -104,7 +111,7 @@ namespace {
                 }
             }
 
-            dp_[v[0]][v[1]][v[2]][v[3]][v[4]][v[5]] = win;
+            dp_[cache_key] = win;
             return win;
         }
     };
