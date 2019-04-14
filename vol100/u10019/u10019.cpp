@@ -32,32 +32,58 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() { }
+        solution_t() : N_(std::numeric_limits<size_t>::max()), number_(), b10_(), b16_() { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
 
-        operator bool() const
+        operator bool()
         {
-            return true;
+            return N_-- > 0;
         }
         solution_t& operator()();
 
     private:
+        size_t N_;
+        std::string number_;
+        size_t b10_, b16_;
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        if (sol.N_ == std::numeric_limits<size_t>::max()) {
+            in >> sol.N_;
+        }
+
+        in >> sol.number_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        out << sol.b10_ << ' ' << sol.b16_;
         return out;
     }
 
     solution_t& solution_t::operator()()
     {
+        auto countBits = [](uint64_t num) {
+            size_t counter(0);
+
+            while (num != 0) {
+                counter += num & 0x01;
+                num >>= 1;
+            }
+
+            return counter;
+        };
+        std::stringstream _10in(number_);
+        uint64_t num;
+        _10in >> num;
+        b10_ = countBits(num);
+        std::stringstream _16n(number_);
+        _16n >> std::hex >> num;
+        b16_ = countBits(num);
         return *this;
     }
 
