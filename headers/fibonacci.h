@@ -13,18 +13,18 @@
 
 namespace math {
     template<size_t N, typename fib_t>
-    class fibonacci {
+    class fibonacci_t {
         std::vector<fib_t> fib_;
 
     public:
-        fibonacci();
+        fibonacci_t();
 
         fib_t operator[](size_t n) const;
         size_t operator()(const fib_t& fib) const;
     };
 
     template<size_t N, typename fib_t>
-    fibonacci<N, fib_t>::fibonacci() :
+    fibonacci_t<N, fib_t>::fibonacci_t() :
         fib_()
     {
         fib_.reserve(N + 1);
@@ -37,7 +37,7 @@ namespace math {
     }
 
     template<size_t N, typename fib_t>
-    fib_t fibonacci<N, fib_t>::operator [](size_t n) const
+    fib_t fibonacci_t<N, fib_t>::operator [](size_t n) const
     {
         if (n < N) {
             return fib_[n];
@@ -47,7 +47,7 @@ namespace math {
     }
 
     template<size_t N, typename fib_t>
-    size_t fibonacci<N, fib_t>::operator ()(const fib_t& fib) const
+    size_t fibonacci_t<N, fib_t>::operator ()(const fib_t& fib) const
     {
         typedef typename std::vector<fib_t>::const_iterator  iterator_t;
         auto b_search = [&](iterator_t lower, iterator_t upper, const fib_t & val) -> iterator_t {

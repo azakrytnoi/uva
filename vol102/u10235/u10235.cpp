@@ -35,7 +35,7 @@ namespace {
     public:
         solution() : primes_()
         {
-            math::sieve<N> sieve;
+            math::sieve_t<N> sieve;
             std::for_each(sieve.begin(), sieve.end(), [&](auto prime) {
                 primes_[prime] = true;
             });

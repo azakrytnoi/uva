@@ -130,7 +130,7 @@ void dyn_evaluator::operator()()
 {
     std::string tp_name(libname_);
     tp_name = tp_name.substr(tp_name.find('u'));
-    std::cout << tp_name << ": << " << source_ << std::endl;
+    std::cout << tp_name << ": << " << source_ << std::endl << std::string(40, '-') << std::endl;
     std::ifstream in(source_.c_str());
     uint64_t elapsed(0);
     {
@@ -146,5 +146,6 @@ void dyn_evaluator::operator()()
         }
         release();
     }
-    std::cout << std::endl << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
+    std::cout << std::endl << std::string(40, '-') << std::endl
+              << "Elapsed: " << std::fixed << std::setprecision(4) << (elapsed / 1000000.0) << "ms." << std::endl;
 }

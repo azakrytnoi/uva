@@ -1,12 +1,13 @@
-﻿#ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+﻿
+#ifdef _WIN32
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u10369.h"
-#include "kruskal.h"
+#include <kruskal.h>
 
 #include <iostream>
 #include <vector>
@@ -25,7 +26,7 @@ void __cdecl invoke()
 }
 
 namespace {
-    double distance(math::Kruskal<double>::Edge& a, math::Kruskal<double>::Edge& b)
+    double distance(math::kruskal_t<double>::edge_t& a, math::kruskal_t<double>::edge_t& b)
     {
         return std::sqrt((double(a.first) - double(b.first)) * (double(a.first) - double(b.first))
                          + (double(a.second) - double(b.second)) * (double(a.second) - (double(b.second))));
@@ -40,13 +41,13 @@ U10369::U10369()
 namespace math {
 
     template<>
-    double Kruskal<double>::operator()(std::vector <Kruskal<double>::Line>& lines)
+    double kruskal_t<double>::operator()(std::vector <kruskal_t<double>::line_t>& lines)
     {
         double result(0);
 
         sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
         std::for_each(lines.begin(), lines.end(), [this, &result](auto line) {
-            if (mst_.sets == S) {
+            if (mst_.sets_ == S) {
                 return;
             }
 
@@ -67,18 +68,18 @@ namespace math {
 void U10369::operator()() const
 {
     int N;
-    std::vector<math::Kruskal<double>::Line> lines;
-    std::vector<math::Kruskal<double>::Edge> points;
+    std::vector<math::kruskal_t<double>::line_t> lines;
+    std::vector<math::kruskal_t<double>::edge_t> points;
     std::cin >> N;
 
     while (N--) {
         std::cin >> S >> P;
-        math::Kruskal<double> kruskal(P);
+        math::kruskal_t<double> kruskal(P);
         lines.clear();
         points.clear();
         points.reserve(P);
-        std::generate_n(std::back_inserter(points), P, []() -> math::Kruskal<double>::Edge {
-            math::Kruskal<double>::Edge point;
+        std::generate_n(std::back_inserter(points), P, []() -> math::kruskal_t<double>::edge_t {
+            math::kruskal_t<double>::edge_t point;
             std::cin >> point.first >> point.second;
             return point; });
 

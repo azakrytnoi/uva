@@ -30,7 +30,7 @@ void __cdecl invoke()
 namespace {
 
     class solution {
-        math::sieve<1000> sieve_;
+        math::sieve_t<1000> sieve_;
         uint32_t N_, C_;
         std::pair<int32_t, int32_t> result_;
     public:

@@ -17,6 +17,8 @@
 #include <limits>
 #include <sstream>
 
+#include "card.h"
+
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
@@ -28,11 +30,8 @@ void __cdecl invoke()
 
 namespace {
 
-    enum class rank : char
-    {   _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K', A = 'A' };
-
-    enum class suit : char
-    {   Clubs = 'C', Diamonds = 'D', Hearts = 'H', Spades = 'S' };
+    typedef T10::rank_t rank;
+    typedef suit_t suit;
 
     std::ostream& operator << (std::ostream& out, const suit& s)
     {
@@ -91,22 +90,22 @@ namespace {
         return out;
     }
 
-    class card : public std::pair<const rank, const suit> {
+    class card : public card_t<T10::rank_t> {
     public:
-        card(const rank& r, const suit& s) : std::pair<const rank, const suit>(r, s) {}
+        card(const rank& r, const suit& s) : card_t<T10::rank_t>(r, s) {}
 
         friend bool operator < (const card& c1, const card& c2)
         {
-            if (c1.second == c2.second) {
-                return c1.first < c2.first;
+            if (c1.suit_ == c2.suit_) {
+                return c1.rank_ < c2.rank_;
             }
 
-            return c1.second < c2.second;
+            return c1.suit_ < c2.suit_;
         }
 
         friend std::ostream& operator << (std::ostream& out, const card& c)
         {
-            out << c.first << " of " << c.second;
+            out << c.rank_ << " of " << c.suit_;
             return out;
         }
     };
@@ -153,7 +152,7 @@ namespace {
         std::string line;
         std::getline(in, line);
 
-        while (std::getline(in, line) && !line.empty()) {
+        while (std::getline(in, line) && not line.empty()) {
             std::vector<card> temp;
             temp.reserve(52);
             std::stringstream ss (line);

@@ -13,9 +13,9 @@
 namespace math {
 
     template<uint64_t N>
-    class sieve {
+    class sieve_t {
     public:
-        sieve() : sieve_(), primes_()
+        sieve_t() : sieve_(), primes_()
         {
             sieve_.flip();
             sieve_[0] = false;

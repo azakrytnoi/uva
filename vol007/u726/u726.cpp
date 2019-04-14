@@ -145,7 +145,8 @@ namespace {
         }
 
         std::transform(encoded_.begin(), encoded_.end(), std::back_inserter(decoded_), [&](char ch) -> char {
-            if (not std::isalpha(ch)) {
+            if (not std::isalpha(ch))
+            {
                 return ch;
             }
 

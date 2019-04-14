@@ -38,7 +38,7 @@ namespace {
     public:
         solution() : carmichael_(), n_(0)
         {
-            std::unique_ptr<math::sieve<10000000>> sieve (new math::sieve<10000000>);
+            std::unique_ptr<math::sieve_t<10000000>> sieve (new math::sieve_t<10000000>);
             std::clog << *(sieve->end() - 1) << std::endl;
 
             for (uint32_t i = 2; i <= 65000; i++) {

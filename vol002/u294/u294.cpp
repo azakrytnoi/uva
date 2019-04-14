@@ -30,7 +30,7 @@ void __cdecl invoke()
 namespace {
 
     class solution {
-        math::sieve<35000> sieve_;
+        math::sieve_t<35000> sieve_;
         uint32_t low_;
         uint32_t high_;
         uint32_t result_;

@@ -17,7 +17,7 @@
 #include <numeric>
 #include <limits>
 
-#include "fibonacci.h"
+#include <fibonacci.h>
 #include <biguint.h>
 
 extern "C" {
@@ -46,7 +46,7 @@ namespace {
         solution_t& operator()();
 
     private:
-        math::fibonacci<5001, math::uint_big_t> fb_;
+        math::fibonacci_t<5001, math::uint_big_t> fb_;
         size_t n_;
     };
 

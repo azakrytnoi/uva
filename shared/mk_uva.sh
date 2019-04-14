@@ -46,10 +46,12 @@ cat > "../vol$2/u$1/u$1.cpp" <<EOF
 #include <iostream>
 #include <iomanip>
 #include <vector>
+#include <map>
 #include <string>
 #include <algorithm>
 #include <iterator>
 #include <numeric>
+#include <memory>
 #include <limits>
 
 extern "C" {
@@ -105,22 +107,16 @@ void U$1::operator()() const
 }
 EOF
 
-cat >>uvas.h <<EOF
-#include "../u$1/u$1.h"
-EOF
-
 touch "../vol$2/u$1/u$1.txt"
 
 sed "s/u100/u$1/g" ../vol001/u100/Makefile > ../vol$2/u$1/Makefile
-sed "s/u100/u$1/g" ../vol001/u100/u100.vcxproj > ../vol$2/u$1/u$1.vcxproj
-sed "s/u100/u$1/g" ../vol001/u100/u100.vcxproj.filters > ../vol$2/u$1/u$1.vcxproj.filters
-
-make 
 
 cd "../vol$2/u$1"
 make depend
+astyle --project u$1.*
+make clean
+git add .
+
 cd ../../shared
 
-
-git add ../*.h ../*.cpp ../*.txt ../*.vcxproj* ../*/Makefile ../*/*/Makefile
 git commit -m "initial"

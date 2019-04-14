@@ -2,24 +2,25 @@
 
 #include <utility>
 #include <iostream>
+
 #include "disjointSet.h"
 
 namespace math {
     template<typename T>
-    class Kruskal {
+    class kruskal_t {
     private:
-        math::DisjointSet mst_;
+        math::disjointSet_t mst_;
 
     public:
-        typedef std::pair<size_t, size_t> Edge;
+        typedef std::pair<size_t, size_t> edge_t;
 
-        typedef std::pair<T, Edge> Line;
+        typedef std::pair<T, edge_t> line_t;
 
-        explicit Kruskal(size_t v) : mst_()
+        explicit kruskal_t(size_t v) : mst_()
         {
             mst_.initSet(v);
         }
 
-        T operator()(std::vector <Line>& lines);
+        T operator()(std::vector <line_t>& lines);
     };
 }

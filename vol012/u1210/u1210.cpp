@@ -34,7 +34,7 @@ namespace {
     public:
         solution() : counts_()
         {
-            math::sieve<N> sieve;
+            math::sieve_t<N> sieve;
             counts_.resize(N + 1);
 
             for (uint32_t i = 0; i < sieve.size(); i++) {

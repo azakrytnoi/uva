@@ -55,8 +55,8 @@ namespace {
                 char candidate = distance((*it)[0], *wit);
 
                 if (std::accumulate((*it).begin(), (*it).end(), true,
-                		[&](bool current, char ch) -> bool {
-                			return current &= distance(ch, *(wit++)) == candidate;})) {
+                [&](bool current, char ch) -> bool {
+                return current &= distance(ch, *(wit++)) == candidate;})) {
                     out << char('a' + candidate);
                 }
             }
