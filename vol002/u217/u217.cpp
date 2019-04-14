@@ -1,8 +1,8 @@
 #ifdef _WIN32
-#define UVA_API_EXPORT __declspec(dllexport)
+    #define UVA_API_EXPORT __declspec(dllexport)
 #else
-#define __cdecl
-#define UVA_API_EXPORT
+    #define __cdecl
+    #define UVA_API_EXPORT
 #endif
 
 #include "u217.h"
@@ -17,52 +17,54 @@
 #include <limits>
 
 extern "C" {
-	UVA_API_EXPORT void __cdecl invoke();
+    UVA_API_EXPORT void __cdecl invoke();
 }
 
 void __cdecl invoke()
 {
-	U217 instance;
-	instance();
+    U217 instance;
+    instance();
 }
 
-namespace
-{
+namespace {
 
-class solution
-{
-public:
-    solution() { }
+    class solution {
+    public:
+        solution() { }
 
-    friend std::istream& operator >>(std::istream& in, solution& sol);
-    friend std::ostream& operator <<(std::ostream& out, const solution& sol);
+        friend std::istream& operator >>(std::istream& in, solution& sol);
+        friend std::ostream& operator <<(std::ostream& out, const solution& sol);
 
-    operator bool() const { return false; }
-    solution& operator()();
+        operator bool() const
+        {
+            return false;
+        }
+        solution& operator()();
 
-private:
-};
+    private:
+    };
 
-std::istream& operator >> (std::istream& in, solution& /*sol*/)
-{
-  return in;
-}
+    std::istream& operator >> (std::istream& in, solution& /*sol*/)
+    {
+        return in;
+    }
 
-std::ostream& operator << (std::ostream& out, const solution& /*sol*/)
-{
-  return out;
-}
+    std::ostream& operator << (std::ostream& out, const solution& /*sol*/)
+    {
+        return out;
+    }
 
-solution& solution::operator()()
-{
-  return *this;
-}
+    solution& solution::operator()()
+    {
+        return *this;
+    }
 
 }
 
 void U217::operator()() const
 {
     solution sol;
+
     while (std::cin >> sol && sol) {
         std::cout << sol() << std::endl;
     }

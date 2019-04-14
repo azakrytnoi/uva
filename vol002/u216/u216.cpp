@@ -86,7 +86,7 @@ namespace {
 
     solution& solution::operator()()
     {
-    	ncase_++;
+        ncase_++;
         double min_distance = std::numeric_limits<double>::max();
         std::vector<std::pair<int32_t, int32_t>> work (locations_.begin(), locations_.end());
         std::vector<int32_t> permutations ({0, 1, 2, 3, 4, 5, 6, 7});

@@ -35,8 +35,8 @@ namespace {
     public:
         solution_t() : n_(), numbers_()
         {
-        	numbers_.reserve(max_);
-        	numbers_.push_back(0);
+            numbers_.reserve(max_);
+            numbers_.push_back(0);
             std::priority_queue<uint64_t, std::deque<uint64_t>, std::greater<uint64_t>> work;
             work.push(1);
 

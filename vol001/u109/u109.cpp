@@ -67,11 +67,11 @@ namespace {
 
     class kingdom_t {
     public:
-    	kingdom_t(): points_(), hull_(), alive_(true) {}
+        kingdom_t(): points_(), hull_(), alive_(true) {}
 
-    	std::vector<point_t> points_;
-    	std::vector<point_t> hull_;
-    	bool alive_;
+        std::vector<point_t> points_;
+        std::vector<point_t> hull_;
+        bool alive_;
     };
 
     class solution_t {
@@ -121,8 +121,9 @@ namespace {
             kingdom->hull_.push_back(kingdom->points_[1]);
 
             for (auto point = kingdom->points_.begin() + 2; point != kingdom->points_.end(); ++point) {
-                while (kingdom->hull_.size() >= 2 && point_t::cross(kingdom->hull_[kingdom->hull_.size() - 2], kingdom->hull_[kingdom->hull_.size() - 1], *point) > 0) {
-                	kingdom->hull_.erase(kingdom->hull_.end());
+                while (kingdom->hull_.size() >= 2 &&
+                        point_t::cross(kingdom->hull_[kingdom->hull_.size() - 2], kingdom->hull_[kingdom->hull_.size() - 1], *point) > 0) {
+                    kingdom->hull_.erase(kingdom->hull_.end());
                 }
 
                 kingdom->hull_.push_back(*point);

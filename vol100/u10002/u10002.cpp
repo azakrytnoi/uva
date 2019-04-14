@@ -70,8 +70,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const point_t& point)
     {
-    	constexpr size_t precision (3);
-    	constexpr double_t EPS (std::pow(10, -double_t(precision + 1)));
+        constexpr size_t precision (3);
+        constexpr double_t EPS (std::pow(10, -double_t(precision + 1)));
         auto round = [&](const double_t val) -> double_t {
             return std::abs(val) < EPS ? 0.0 : val;
         };

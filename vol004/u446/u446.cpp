@@ -83,7 +83,7 @@ namespace {
         auto from_hexstr = [](const std::string & src) -> uint16_t {
             uint16_t result(std::accumulate(src.begin(), src.end(), 0, [](uint16_t prev, char ch)
             {
-            	prev <<= 4;
+                prev <<= 4;
                 return ch >= 'A' ? prev + 10 + ch - 'A' : prev + ch - '0';
             }));
             return result;

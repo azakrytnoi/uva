@@ -282,7 +282,7 @@ Patient Operating Room Recovery Room
 
         for (auto patient : sol.patients_) {
             out << std::setw(2) << std::right << patient->id() << ' ' << std::setw(8) << std::left << patient->name() //
-            	<< std::setw(2) << ' ' << *patient->allocated_room() << std::setw(3) << ' ' << *patient->allocated_bed() //
+                << std::setw(2) << ' ' << *patient->allocated_room() << std::setw(3) << ' ' << *patient->allocated_bed() //
                 << std::endl;
         }
 
@@ -292,7 +292,8 @@ Type   # Minutes  % Used
 -------------------------)" << std:: endl;;
 
         for (auto op_room : sol.rooms_) {
-            out << *op_room << ' ' << std::fixed << std::setprecision(2) << std::setw(8) << std::right << op_room->utilized(sol.finish_ - sol.start_) << std::endl;
+            out << *op_room << ' ' << std::fixed << std::setprecision(2) << std::setw(8) << std::right << op_room->utilized(
+                    sol.finish_ - sol.start_) << std::endl;
         }
 
         for (auto r_bed : sol.beds_) {

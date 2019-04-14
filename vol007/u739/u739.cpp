@@ -94,7 +94,7 @@ namespace {
         static std::string soundex[] = {
             "AEIOUYWH",
             "BPFV",
-			"CSKGJQXZ",
+            "CSKGJQXZ",
             "DT",
             "L",
             "MN",

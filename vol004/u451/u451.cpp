@@ -34,7 +34,7 @@ namespace {
 
     namespace poker {
 
-    typedef ::poker::combination_t combination_t;
+        typedef ::poker::combination_t combination_t;
 
         typedef X10::rank_t rank_t;
         typedef std::array<card_t<rank_t>, 5> hand_t;

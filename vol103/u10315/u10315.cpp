@@ -128,7 +128,7 @@ namespace {
 
         friend std::istream& operator >> (std::istream& in, hand_t& h);
 
-            friend std::ostream& operator << (std::ostream& out, const hand_t& h);
+        friend std::ostream& operator << (std::ostream& out, const hand_t& h);
 
         friend bool operator == (const hand_t& left, const hand_t& right)
         {
@@ -208,7 +208,8 @@ namespace {
 
         friend std::ostream& operator <<(std::ostream& out, const solution& sol)
         {
-                    out << sol.black_ << " vs " << sol.white_ << std::endl;
+            out << sol.black_ << " vs " << sol.white_ << std::endl;
+
             if (sol.black_ == sol.white_) {
                 out << "Tie.";
 
@@ -320,28 +321,30 @@ namespace {
         return straight;
     }
 
-    std::ostream& operator<<(std::ostream& out, const combination_t val) {
-    	static const std::map<combination_t, std::string> names ({
-    		{combination_t::HighCard, "High Card"},
-			{combination_t::OnePair, "One Pair"},
-			{combination_t::TwoPairs, "Two Pairs"},
-			{combination_t::ThreeOfAKind, "Three of a Kind"},
-			{combination_t::Straight, "Straight"},
-			{combination_t::Flush, "Flush"},
-			{combination_t::FullHouse, "Full House"},
-			{combination_t::FourOfAKind, "Four of a Kind"},
-			{combination_t::StraightFlush, "Straight Flush"}
-    	});
-    	out << names.find(val)->second;
-    	return out;
+    std::ostream& operator<<(std::ostream& out, const combination_t val)
+    {
+        static const std::map<combination_t, std::string> names ({
+            {combination_t::HighCard, "High Card"},
+            {combination_t::OnePair, "One Pair"},
+            {combination_t::TwoPairs, "Two Pairs"},
+            {combination_t::ThreeOfAKind, "Three of a Kind"},
+            {combination_t::Straight, "Straight"},
+            {combination_t::Flush, "Flush"},
+            {combination_t::FullHouse, "Full House"},
+            {combination_t::FourOfAKind, "Four of a Kind"},
+            {combination_t::StraightFlush, "Straight Flush"}
+        });
+        out << names.find(val)->second;
+        return out;
     }
 
-    std::ostream& operator<<(std::ostream& out, const hand_t& hand) {
-    	out << hand.value_ << ": [ ";
-    	std::ostream_iterator<card_t> cout(out, " ");
-    	std::copy(hand.hand_.begin(), hand.hand_.end(), cout);
-    	out << ']';
-    	return out;
+    std::ostream& operator<<(std::ostream& out, const hand_t& hand)
+    {
+        out << hand.value_ << ": [ ";
+        std::ostream_iterator<card_t> cout(out, " ");
+        std::copy(hand.hand_.begin(), hand.hand_.end(), cout);
+        out << ']';
+        return out;
     }
 }
 
