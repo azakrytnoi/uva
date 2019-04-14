@@ -12,29 +12,29 @@
 #include <map>
 
 enum class suit_t : char {
-	Clubs = 'C', Diamonds = 'D', Hearts = 'H', Spades = 'S'
+    Clubs = 'C', Diamonds = 'D', Hearts = 'H', Spades = 'S'
 };
 
 namespace X10 {
 
-enum class rank_t : char {
-    A = 'A', _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', X = 'X', J = 'J', Q = 'Q', K = 'K'
-};
+    enum class rank_t : char {
+        A = 'A', _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', X = 'X', J = 'J', Q = 'Q', K = 'K'
+    };
 
 }  // namespace X10
 
 namespace T10 {
 
-enum class rank_t : char {
-    A = 'A', _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K'
-};
+    enum class rank_t : char {
+        A = 'A', _2 = '2', _3 = '3', _4 = '4', _5 = '5', _6 = '6', _7 = '7', _8 = '8', _9 = '9', T = 'T', J = 'J', Q = 'Q', K = 'K'
+    };
 
 }  // namespace T10
 
 template<typename RANK = X10::rank_t>
 class card_t {
 public:
-	typedef RANK rank_t;
+    typedef RANK rank_t;
     rank_t rank_;
     suit_t suit_;
 
@@ -61,8 +61,8 @@ public:
 
 namespace poker {
 
-enum class combination_t : uint8_t {
-    HighCard = 0, OnePair, TwoPairs, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush
-};
+    enum class combination_t : uint8_t {
+        HighCard = 0, OnePair, TwoPairs, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush
+    };
 
 }  // namespace poker

@@ -69,7 +69,7 @@ namespace {
 
         bool withIn (int16_t x, int16_t y)
         {
-		return x >= 0 && x < BOARD_SIZE_ && y >= 0 && y < BOARD_SIZE_;
+            return x >= 0 && x < BOARD_SIZE_ && y >= 0 && y < BOARD_SIZE_;
         };
 
         bool check (int16_t x, int16_t y, const int16_t dx, const int16_t dy, const uint8_t side)
@@ -88,8 +88,8 @@ namespace {
         };
 
         const char players_[2] = { 'W', 'B' };
-	static const int BOARD_SIZE_ = 8;
-};
+        static const int BOARD_SIZE_ = 8;
+    };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
@@ -199,8 +199,8 @@ namespace {
     {
         moves.clear();
 
-	for (int16_t y = 0; y < BOARD_SIZE_; y++) {
-		for (int16_t x = 0; x < BOARD_SIZE_; x++) {
+        for (int16_t y = 0; y < BOARD_SIZE_; y++) {
+            for (int16_t x = 0; x < BOARD_SIZE_; x++) {
                 bool valid(false);
 
                 for (int16_t dy = -1; dy < 2 && not valid; dy++) {

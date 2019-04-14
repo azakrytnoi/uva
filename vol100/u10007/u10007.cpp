@@ -34,15 +34,16 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() : factorial_(), n_(), result_() {
-        	factorial_.reserve(601);
-        	factorial_.push_back(1);
-        	factorial_.push_back(1);
-        	math::uint_big_t current (factorial_.back());
-        	std::generate_n(std::back_inserter(factorial_), 600, [&](){
-        		current *= math::uint_big_t(factorial_.size());
-        		return current;
-        	});
+        solution_t() : factorial_(), n_(), result_()
+        {
+            factorial_.reserve(601);
+            factorial_.push_back(1);
+            factorial_.push_back(1);
+            math::uint_big_t current (factorial_.back());
+            std::generate_n(std::back_inserter(factorial_), 600, [&]() {
+                current *= math::uint_big_t(factorial_.size());
+                return current;
+            });
         }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
@@ -62,19 +63,19 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-    	in >> sol.n_;
+        in >> sol.n_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-    	out << sol.result_;
+        out << sol.result_;
         return out;
     }
 
     solution_t& solution_t::operator()()
     {
-    	result_ = factorial_[n_ * 2] / factorial_[n_ + 1];
+        result_ = factorial_[n_ * 2] / factorial_[n_ + 1];
         return *this;
     }
 

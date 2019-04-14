@@ -12,7 +12,7 @@
 #include <algorithm>
 
 namespace geom {
-const double_t EPS = 1e-6;
+    const double_t EPS = 1e-6;
 
     class point_t {
     public:
@@ -87,8 +87,8 @@ const double_t EPS = 1e-6;
 
             for (size_t i = 0; i < n; i++) {
                 while (k >= 2 && point_t::cross(convex_hull[k - 2],
-                                                  convex_hull[k - 1],
-                                                  points[i]) <= geom::EPS) {
+                                                convex_hull[k - 1],
+                                                points[i]) <= geom::EPS) {
                     --k;
                 }
 
@@ -99,8 +99,8 @@ const double_t EPS = 1e-6;
 
             for (int64_t i = n - 2; i >= 0; i--) {
                 while (k >= t && point_t::cross(convex_hull[k - 2],
-                                                  convex_hull[k - 1],
-                                                  points[i]) <= geom::EPS) {
+                                                convex_hull[k - 1],
+                                                points[i]) <= geom::EPS) {
                     --k;
                 }
 

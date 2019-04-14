@@ -40,7 +40,7 @@ struct hex_translator_t : public flow_translator_t<T> {
 
     hex_translator_t& operator = (char ch)
     {
-    	ch = std::toupper(ch);
+        ch = std::toupper(ch);
         this->ref_ <<= 4;
         this->ref_ += ch >= 'A' ? 10 + ch - 'A' : ch - '0';
         return *this;
@@ -64,7 +64,7 @@ struct dec_translator_t : public std::iterator<std::forward_iterator_tag, T> {
 template<typename T>
 struct oct_translator_t : public std::iterator<std::forward_iterator_tag, T> {
 
-	explicit oct_translator_t(T& ref) : flow_translator_t<T>(ref) {}
+    explicit oct_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~oct_translator_t() {}
 
     oct_translator_t& operator = (char ch)
@@ -78,7 +78,7 @@ struct oct_translator_t : public std::iterator<std::forward_iterator_tag, T> {
 template<typename T>
 struct bin_translator_t : public std::iterator<std::forward_iterator_tag, T> {
 
-	explicit bin_translator_t(T& ref) : flow_translator_t<T>(ref) {}
+    explicit bin_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~bin_translator_t() {}
 
     bin_translator_t& operator = (char ch)

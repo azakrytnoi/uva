@@ -24,7 +24,7 @@ namespace math {
         {
             normalize();
         }
-        rational_t(T&& a = 0, T&& b = 1) : a_(std::move(a)), b_(std::move(b))
+        rational_t(T&& a = 0, T && b = 1) : a_(std::move(a)), b_(std::move(b))
         {
             normalize();
         }

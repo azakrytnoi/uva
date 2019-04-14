@@ -390,34 +390,38 @@ namespace {
 
     void solution_t::print_text(size_t row, size_t col, const std::string& text, size_t start_from, size_t n_chars, font_t font)
     {
-    	switch (font) {
-			case font_t::C1:
-	            for (size_t idx = 0; idx < n_chars; ++idx) {
-	                if (text[idx + start_from] != ' ') {
-	                    page_[row][col + idx] = text[idx + start_from];
-	                }
-	            }
-				break;
-			case font_t::C5:
-	            for (size_t drow = 0; drow < 5 && row + drow < 60; ++drow) {
-	                for (size_t idx = 0; idx < n_chars; ++idx) {
-	                    if (text[idx + start_from] != ' ') {
-	                        auto letter = letters_.find(text[idx + start_from]);
+        switch (font) {
+        case font_t::C1:
+            for (size_t idx = 0; idx < n_chars; ++idx) {
+                if (text[idx + start_from] != ' ') {
+                    page_[row][col + idx] = text[idx + start_from];
+                }
+            }
 
-	                        if (letter != letters_.end()) {
-	                            for (size_t dcol = 0; dcol < 5 && col + idx * 6 + dcol < 60; dcol++) {
-	                                if (letter->second[drow][dcol] != '.') {
-	                                    page_[row + drow][col + idx * 6 + dcol] = letter->second[drow][dcol];
-	                                }
-	                            }
-	                        }
-	                    }
-	                }
-	            }
-				break;
-			default:
-				break;
-		}
+            break;
+
+        case font_t::C5:
+            for (size_t drow = 0; drow < 5 && row + drow < 60; ++drow) {
+                for (size_t idx = 0; idx < n_chars; ++idx) {
+                    if (text[idx + start_from] != ' ') {
+                        auto letter = letters_.find(text[idx + start_from]);
+
+                        if (letter != letters_.end()) {
+                            for (size_t dcol = 0; dcol < 5 && col + idx * 6 + dcol < 60; dcol++) {
+                                if (letter->second[drow][dcol] != '.') {
+                                    page_[row + drow][col + idx * 6 + dcol] = letter->second[drow][dcol];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            break;
+
+        default:
+            break;
+        }
     }
 }
 
