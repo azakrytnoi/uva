@@ -59,11 +59,13 @@ namespace {
         sol.space_ = {-1, -1};
         sol.grid_ = std::vector<std::string>(5, std::string(5, ' '));
 
-        for (int8_t row = 0; row < 5; ++row) {
+        for (int8_t row = 0; row < 5; ++row)
+        {
             std::string line;
             std::getline(in, line);
 
-            if (line == "Z") {
+            if (line == "Z")
+            {
                 return in;
             }
 
@@ -74,7 +76,8 @@ namespace {
 
         char ch;
 
-        while (in >> ch && ch != '0') {
+        while (in >> ch && ch != '0')
+        {
             sol.moves_.push_back(ch);
         }
 
@@ -87,16 +90,21 @@ namespace {
     {
         out << "Puzzle #" << sol.case_no_ << ':' << std::endl;
 
-        if (sol.valid_) {
-            std::for_each(sol.grid_.begin(), sol.grid_.end(), [&](const std::string & row) {
+        if (sol.valid_)
+        {
+            std::for_each(sol.grid_.begin(), sol.grid_.end(), [&](const std::string & row)
+            {
                 std::string filler;
-                std::for_each(row.begin(), row.end(), [&](const char ch) {
+                std::for_each(row.begin(), row.end(), [&](const char ch)
+                {
                     out << filler << ch;
                     filler = " ";
                 });
                 out << std::endl;
             });
-        } else {
+        }
+        else
+        {
             out << "This puzzle has no final configuration." << std::endl;
         }
 
@@ -108,15 +116,18 @@ namespace {
         valid_ = true;
         ++case_no_;
 
-        for (auto move : moves_) {
+        for (auto move : moves_)
+        {
             auto change = change_.find(move);
             valid_ = change != change_.end();
 
-            if (valid_) {
+            if (valid_)
+            {
                 location_t next ({space_.first + change->second.first, space_.second + change->second.second});
                 valid_ = not (next.first < 0 || next.first >= 5 || next.second < 0 || next.second >= 5);
 
-                if (not valid_) {
+                if (not valid_)
+                {
                     break;
                 }
 
@@ -134,7 +145,8 @@ void U227::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -35,7 +35,8 @@ namespace {
             size_t a0(2), a1(3), a2(5);
             fib_[a0] = fib_[a1] = true;
 
-            while (a2 < 1000) {
+            while (a2 < 1000)
+            {
                 fib_[a2] = true;
                 a0 = a2;
                 a2 += a1;
@@ -77,7 +78,8 @@ void U12469::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

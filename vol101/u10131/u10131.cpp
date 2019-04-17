@@ -49,7 +49,8 @@ namespace {
     {
         std::pair<int16_t, int16_t> ws;
 
-        while (std::cin >> ws.first >> ws.second) {
+        while (std::cin >> ws.first >> ws.second)
+        {
             sol.elephants_.push_back(std::make_pair(sol.elephants_.size() + 1, ws));
         }
 
@@ -66,10 +67,12 @@ namespace {
 
     void solution::solve()
     {
-        std::sort(elephants_.begin(), elephants_.end(), [](const elephant & e1, const elephant e2) {
+        std::sort(elephants_.begin(), elephants_.end(), [](const elephant & e1, const elephant e2)
+        {
             return e1.second.second > e2.second.second;
         });
-        std::stable_sort(elephants_.begin(), elephants_.end(), [](const elephant & e1, const elephant e2) {
+        std::stable_sort(elephants_.begin(), elephants_.end(), [](const elephant & e1, const elephant e2)
+        {
             return e1.second.first < e2.second.first;
         });
         std::vector<int16_t> s(elephants_.size());
@@ -78,14 +81,17 @@ namespace {
         s[0] = 1;
         path_[0] = -1;
 
-        for (size_t i = 1; i < elephants_.size(); i++) {
+        for (size_t i = 1; i < elephants_.size(); i++)
+        {
             int16_t lprev = -1;
             s[i] = 1;
 
-            for (size_t j = 0; j < i; j++) {
+            for (size_t j = 0; j < i; j++)
+            {
                 if (elephants_[j].second.first < elephants_[i].second.first
                         && elephants_[j].second.second > elephants_[i].second.second
-                        && s[i] < s[j] + 1) {
+                        && s[i] < s[j] + 1)
+                {
                     s[i] = s[j] + 1;
                     lprev = int16_t(j);
                 }
@@ -93,7 +99,8 @@ namespace {
 
             path_[i] = lprev;
 
-            if (gmax_ < s[i]) {
+            if (gmax_ < s[i])
+            {
                 gmax_ = s[i];
                 end_pos_ = int(i);
             }
@@ -102,7 +109,8 @@ namespace {
 
     void solution::print_path(int end, std::ostream& out)
     {
-        if (end > -1) {
+        if (end > -1)
+        {
             print_path(path_[end], out);
             out << elephants_[end].first << std::endl;
         }

@@ -28,7 +28,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct job {
+    struct job
+    {
         int16_t S_, T_;
         size_t position_;
     };
@@ -58,9 +59,11 @@ namespace {
         int16_t n;
         in >> n;
 
-        if (in) {
+        if (in)
+        {
             sol.jobs_.reserve(n);
-            std::generate_n(std::back_inserter(sol.jobs_), n, [&]() -> job {
+            std::generate_n(std::back_inserter(sol.jobs_), n, [&]() -> job
+            {
                 job j;
                 in >> j;
                 j.position_ = sol.jobs_.size() + 1;
@@ -75,7 +78,8 @@ namespace {
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
         std::ostream_iterator<size_t> iout(out, " ");
-        std::transform(sol.jobs_.begin(), sol.jobs_.end(), iout, [](const job & j) {
+        std::transform(sol.jobs_.begin(), sol.jobs_.end(), iout, [](const job & j)
+        {
             return j.position_;
         });
         out.seekp(-1, std::ios::end);
@@ -85,11 +89,13 @@ namespace {
 
     solution::operator bool()
     {
-        std::sort(jobs_.begin(), jobs_.end(), [](job & a, job & b) {
+        std::sort(jobs_.begin(), jobs_.end(), [](job & a, job & b)
+        {
             double r1 = double(a.S_) / a.T_;
             double r2 = double(b.S_) / b.T_;
 
-            if (r1 != r2) {
+            if (r1 != r2)
+            {
                 return r1 > r2;
             }
 
@@ -106,13 +112,17 @@ void U10026::operator()() const
     std::cin >> dummy;
     solution sol;
 
-    while (true) {
+    while (true)
+    {
         std::cin >> sol;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << sol << std::endl;
 
-        } else {
+        }
+        else
+        {
             break;
         }
     }

@@ -43,7 +43,8 @@ namespace {
             int n;
             in >> n;
             cipher.cipher_.reserve(n);
-            std::generate_n(std::back_inserter(cipher.cipher_), n, [&]() {
+            std::generate_n(std::back_inserter(cipher.cipher_), n, [&]()
+            {
                 int tmp;
                 in >> tmp;
                 return tmp;
@@ -68,7 +69,8 @@ namespace {
         buffer_.clear();
         buffer_.resize(cipher_.size());
         auto it = src.begin();
-        std::for_each(cipher_.begin(), cipher_.end(), [&](auto idx) {
+        std::for_each(cipher_.begin(), cipher_.end(), [&](auto idx)
+        {
             buffer_[idx - 1] = (it == src.end() ? ' ' : *it++);
         });
         return *this;
@@ -87,14 +89,17 @@ void U306::operator()() const
     cipher global;
     std::vector<std::future<std::string>> futs;
 
-    while ((std::cin >> global) && global) {
+    while ((std::cin >> global) && global)
+    {
         int k;
 
-        while ((std::cin >> k) && k > 0) {
+        while ((std::cin >> k) && k > 0)
+        {
             std::string line;
             std::getline(std::cin, line);
             line.erase(0, 1);
-            std::future<std::string> fut = std::async(std::launch::async, [](cipher c, int k, std::string data) -> std::string {
+            std::future<std::string> fut = std::async(std::launch::async, [](cipher c, int k, std::string data) -> std::string
+            {
                 while (k--)
                 {
                     (c << data) >> data;
@@ -106,7 +111,8 @@ void U306::operator()() const
         futs.push_back(std::async([]()->std::string {return ""; }));
     }
 
-    for (auto fit = futs.begin(); fit != futs.end(); ++fit) {
+    for (auto fit = futs.begin(); fit != futs.end(); ++fit)
+    {
         std::cout << fit->get() << std::endl;
     }
 }

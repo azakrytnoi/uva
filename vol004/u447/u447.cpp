@@ -58,7 +58,8 @@ namespace {
         in.ignore();
         std::string line;
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             std::stringstream temp(line);
             size_t x(0), y(0);
             temp >> x >> y;
@@ -80,14 +81,18 @@ namespace {
     {
         auto& current(map_[current_]);
         auto& next(map_[1 - current_]);
-        auto neighours = [&](const int64_t x0, const int64_t y0) {
+        auto neighours = [&](const int64_t x0, const int64_t y0)
+        {
             size_t ncnt(0);
 
-            for (int64_t dx = -1; dx <= 1; ++dx) {
-                for (int64_t dy = -1; dy <= 1; ++dy) {
+            for (int64_t dx = -1; dx <= 1; ++dx)
+            {
+                for (int64_t dy = -1; dy <= 1; ++dy)
+                {
                     int64_t x(x0 + dx), y(y0 + dy);
 
-                    if (x >= 0 && x < MAX_ && y >= 0 && y < MAX_) {
+                    if (x >= 0 && x < MAX_ && y >= 0 && y < MAX_)
+                    {
                         ncnt += current[x][y] == 'O' ? 1 : 0;
                     }
                 }
@@ -96,9 +101,12 @@ namespace {
             return current[x0][y0] == 'O' ? ncnt - 1 : ncnt;
         };
 
-        for (size_t x = 0; x < MAX_; ++x) {
-            for (size_t y = 0; y < MAX_; ++y) {
-                switch (neighours(x, y)) {
+        for (size_t x = 0; x < MAX_; ++x)
+        {
+            for (size_t y = 0; y < MAX_; ++y)
+            {
+                switch (neighours(x, y))
+                {
                 case 2:
                     next[x][y] = current[x][y];
                     break;
@@ -125,12 +133,14 @@ void U447::operator()() const
     size_t N(0);
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         solution_t sol;
         std::cin >> sol;
         std::cout << sol;
 
-        while (sol) {
+        while (sol)
+        {
             std::cout << sol();
         }
 

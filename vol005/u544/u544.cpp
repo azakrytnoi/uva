@@ -31,8 +31,10 @@ void U544::operator()() const
     int n, r;
     int cases = 0;
 
-    while (std::cin >> n >> r) {
-        if (n == 0 && r == 0) {
+    while (std::cin >> n >> r)
+    {
+        if (n == 0 && r == 0)
+        {
             break;
         }
 
@@ -43,22 +45,27 @@ void U544::operator()() const
 
         int d[205][205];
 
-        for (int i = 0; i < 205; i++) {
-            for (int j = 0; j < 205; j++) {
+        for (int i = 0; i < 205; i++)
+        {
+            for (int j = 0; j < 205; j++)
+            {
                 d[i][j] = -1;
             }
 
             d[i][i] = 0;
         }
 
-        for (int i = 0; i < r; i++) {
+        for (int i = 0; i < r; i++)
+        {
             std::cin >> first >> second >> cost;
 
-            if (!cityIndex[first]) {
+            if (!cityIndex[first])
+            {
                 cityIndex[first] = index++;
             }
 
-            if (!cityIndex[second]) {
+            if (!cityIndex[second])
+            {
                 cityIndex[second] = index++;
             }
 
@@ -66,9 +73,12 @@ void U544::operator()() const
             d[cityIndex[second]][cityIndex[first]] = cost;
         }
 
-        for (int k = 1; k <= n; k++) {
-            for (int i = 1; i <= n; i++) {
-                for (int j = 1; j <= n; j++) {
+        for (int k = 1; k <= n; k++)
+        {
+            for (int i = 1; i <= n; i++)
+            {
+                for (int j = 1; j <= n; j++)
+                {
                     d[i][j] = d[j][i] = std::max(d[i][j], std::min(d[i][k], d[k][j]));
                 }
             }

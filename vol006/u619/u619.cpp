@@ -46,18 +46,21 @@ namespace {
         uint32_t pos(0);
         std::reverse(data.begin(), data.end());
         std::stringstream temp;
-        std::for_each(data.begin(), data.end(), [&](auto digit) {
+        std::for_each(data.begin(), data.end(), [&](auto digit)
+        {
             pos = ((pos + 1) % 3);
             temp << digit;
 
             // cppcheck-suppress knownConditionTrueFalse
-            if (pos == 0) {
+            if (pos == 0)
+            {
                 temp << ',';
             }
         });
         std::string result(temp.str());
 
-        if (result.back() == ',') {
+        if (result.back() == ',')
+        {
             result.erase(result.size() - 1);
         }
 
@@ -67,7 +70,8 @@ namespace {
 
     std::string checker::translate(std::string& source)
     {
-        if (std::isdigit(source[0])) {
+        if (std::isdigit(source[0]))
+        {
             return change_base(source, 10, 26, '0');
         }
 
@@ -78,8 +82,10 @@ namespace {
     {
         std::vector<int> internal;
         internal.push_back(0);
-        std::for_each(source.begin(), source.end(), [&](auto ch) {
-            std::transform(internal.begin(), internal.end(), internal.begin(), [&](auto digit) {
+        std::for_each(source.begin(), source.end(), [&](auto ch)
+        {
+            std::transform(internal.begin(), internal.end(), internal.begin(), [&](auto digit)
+            {
                 return digit * from;
             });
             internal.back() += ch - base;
@@ -87,17 +93,21 @@ namespace {
         });
         std::stringstream out;
 
-        if (from == 10) {
+        if (from == 10)
+        {
             std::string translated;
             translated.resize(internal.size());
-            std::transform(internal.begin(), internal.end(), translated.begin(), [](auto ch) {
+            std::transform(internal.begin(), internal.end(), translated.begin(), [](auto ch)
+            {
                 return ch + 'a' - 1;
             });
             out.setf(std::ios::left);
             out << std::setw(22) << translated;
             print(out, source);
 
-        } else {
+        }
+        else
+        {
             out.setf(std::ios::left);
             out << std::setw(22) << source;
             print(out, internal);
@@ -108,14 +118,16 @@ namespace {
 
     void checker::process_carry(std::vector<int>& data, int base_to)
     {
-        for (auto it = data.rbegin(); it != data.rend() - 1; ++it) {
+        for (auto it = data.rbegin(); it != data.rend() - 1; ++it)
+        {
             *(it + 1) += *it / base_to;
             *it %= base_to;
         }
 
         int tmp = data[0];
 
-        while (tmp >= base_to) {
+        while (tmp >= base_to)
+        {
             data.insert(data.begin(), tmp / base_to);
             data[1] = tmp % base_to;
             tmp /= base_to;
@@ -127,7 +139,8 @@ void U619::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line) && line != "*") {
+    while (std::getline(std::cin, line) && line != "*")
+    {
         std::cout << checker::translate(line) << std::endl;
     }
 }

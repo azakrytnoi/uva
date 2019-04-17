@@ -31,14 +31,17 @@ void U12243::operator()()
 {
     std::string line;
 
-    while (std::getline(std::cin, line) && line != "*") {
-        std::transform(line.begin(), line.end(), line.begin(), [](auto ch) {
+    while (std::getline(std::cin, line) && line != "*")
+    {
+        std::transform(line.begin(), line.end(), line.begin(), [](auto ch)
+        {
             return std::tolower(ch);
         });
         char ch = line[0];
         std::stringstream in(line);
         std::istream_iterator<std::string> iss(in);
-        bool tautogram = std::accumulate(iss, std::istream_iterator<std::string>(), true, [&](auto init, auto word) {
+        bool tautogram = std::accumulate(iss, std::istream_iterator<std::string>(), true, [&](auto init, auto word)
+        {
             return init && word[0] == ch;
         });
         std::cout << (tautogram ? "Y" : "N") << std::endl;

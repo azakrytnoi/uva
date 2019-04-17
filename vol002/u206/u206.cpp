@@ -39,7 +39,8 @@ namespace {
         {
             double_t _phi = std::atan2(y_, x_);
 
-            if (_phi < 0) {
+            if (_phi < 0)
+            {
                 _phi += 3 * M_PI;
             }
 
@@ -71,7 +72,8 @@ namespace {
             auto a = phi();
             auto b = rhs.phi();
 
-            if (std::abs(a - b) >= 1e-7) {
+            if (std::abs(a - b) >= 1e-7)
+            {
                 return a < b;
             }
 
@@ -153,14 +155,17 @@ namespace {
     {
         sol.customers_.clear();
 
-        if (sol.case_no_ > 0) {
+        if (sol.case_no_ > 0)
+        {
             std::getline(in, sol.name_);
         }
 
-        if (std::getline(in, sol.name_)) {
+        if (std::getline(in, sol.name_))
+        {
             in >> sol.n_routes_ >> sol.n_cust_;
             sol.customers_.reserve(sol.n_cust_);
-            std::generate_n(std::back_inserter(sol.customers_), sol.n_cust_, [&]() {
+            std::generate_n(std::back_inserter(sol.customers_), sol.n_cust_, [&]()
+            {
                 location_t loc;
                 in >> loc;
                 return loc;
@@ -172,7 +177,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        if (sol.case_no_ > 1) {
+        if (sol.case_no_ > 1)
+        {
             out << "***********************************" << std::endl;
         }
 
@@ -189,7 +195,8 @@ namespace {
         auto current = customers_.begin();
         routes_.reset(n_routes_);
 
-        for (size_t idx = 0; idx < n_routes_; idx++) {
+        for (size_t idx = 0; idx < n_routes_; idx++)
+        {
             auto capacity = n_cust_ / n_routes_ + (idx < n_cust_ % n_routes_ ? 1 : 0);
             routes_.add_route(current, capacity);
         }
@@ -209,7 +216,8 @@ namespace {
         customers_.reserve(capacity);
         location_t last;
 
-        for (size_t idx = 0; idx < capacity; idx++) {
+        for (size_t idx = 0; idx < capacity; idx++)
+        {
             cost_ += (std::abs(last.x() - current->x()) + std::abs(last.y() - current->y()));
             last = *current;
             customers_.push_back(&(*current));
@@ -222,7 +230,8 @@ namespace {
     std::ostream& operator<<(std::ostream& out, const routes_t& routes)
     {
         size_t n_route(0);
-        std::for_each(routes.routes_.begin(), routes.routes_.end(), [&](const route_t& route) {
+        std::for_each(routes.routes_.begin(), routes.routes_.end(), [&](const route_t& route)
+        {
             out << "Route ==> " << (++n_route) << std::endl << route << std::endl;
         });
         out << "Total Route length ==> " << routes.total_;
@@ -231,7 +240,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const route_t& route)
     {
-        std::for_each(route.customers_.begin(), route.customers_.end(), [&](const location_t* customer) {
+        std::for_each(route.customers_.begin(), route.customers_.end(), [&](const location_t* customer)
+        {
             out << "Customer: " << customer->name() << std::endl;
         });
         out << "Route length ==> " << route.cost_ << std::endl;
@@ -243,7 +253,8 @@ void U206::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

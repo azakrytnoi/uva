@@ -53,22 +53,26 @@ namespace {
 
         void vLine(size_t col, size_t row_s, size_t row_e, char color)
         {
-            for (size_t r = row_s - 1; r <= row_e - 1; r++) {
+            for (size_t r = row_s - 1; r <= row_e - 1; r++)
+            {
                 pixels_[r][col - 1] = color;
             }
         }
 
         void hLine(size_t col_s, size_t col_e, size_t row, char color)
         {
-            for (size_t c = col_s - 1; c <= col_e - 1; c++) {
+            for (size_t c = col_s - 1; c <= col_e - 1; c++)
+            {
                 pixels_[row - 1][c] = color;
             }
         }
 
         void rectangle(size_t col_s, size_t col_e, size_t row_s, size_t row_e, char color)
         {
-            for (size_t r = row_s - 1; r <= row_e - 1; r++) {
-                for (size_t c = col_s - 1; c <= col_e - 1; c++) {
+            for (size_t r = row_s - 1; r <= row_e - 1; r++)
+            {
+                for (size_t c = col_s - 1; c <= col_e - 1; c++)
+                {
                     pixels_[r][c] = color;
                 }
             }
@@ -76,22 +80,27 @@ namespace {
 
         void fillRegion(size_t col, size_t row, char new_color, char orig_color)
         {
-            if (pixels_[row][col] == orig_color) {
+            if (pixels_[row][col] == orig_color)
+            {
                 pixels_[row][col] = new_color;
 
-                if (col >= 1) {
+                if (col >= 1)
+                {
                     fillRegion(col - 1, row, new_color, orig_color);
                 }
 
-                if (col <= M_ - 2) {
+                if (col <= M_ - 2)
+                {
                     fillRegion(col + 1, row, new_color, orig_color);
                 }
 
-                if (row >= 1) {
+                if (row >= 1)
+                {
                     fillRegion(col, row - 1, new_color, orig_color);
                 }
 
-                if (row <= N_ - 2) {
+                if (row <= N_ - 2)
+                {
                     fillRegion(col, row + 1, new_color, orig_color);
                 }
             }
@@ -99,7 +108,8 @@ namespace {
 
         void fillRegion(size_t col, size_t row, char new_color)
         {
-            if (pixels_[row - 1][col - 1] != new_color) {
+            if (pixels_[row - 1][col - 1] != new_color)
+            {
                 fillRegion(col - 1, row - 1, new_color, pixels_[row - 1][col - 1]);
             }
         }
@@ -127,15 +137,18 @@ namespace {
 
     solution::operator bool()
     {
-        if (running_) {
-            switch (command_[0]) {
+        if (running_)
+        {
+            switch (command_[0])
+            {
             case 'I':
             case 'C':
             case 'L':
             case 'V':
             case 'H':
             case 'K':
-            case 'F': {
+            case 'F':
+            {
                 std::stringstream iss(command_);
                 iss >> device_;
             }
@@ -162,7 +175,8 @@ namespace {
         char command;
         in >> command;
 
-        switch (command) {
+        switch (command)
+        {
         case 'I':
             in >> dev.M_ >> dev.N_;
             dev.reset();
@@ -172,7 +186,8 @@ namespace {
             dev.reset();
             break;
 
-        case 'L': {
+        case 'L':
+        {
             size_t x, y;
             char c;
             in >> x >> y >> c;
@@ -180,7 +195,8 @@ namespace {
         }
         break;
 
-        case 'V': {
+        case 'V':
+        {
             size_t x, y1, y2;
             char c;
             in >> x >> y1 >> y2 >> c;
@@ -188,7 +204,8 @@ namespace {
         }
         break;
 
-        case 'H': {
+        case 'H':
+        {
             size_t x1, x2, y;
             char c;
             in >> x1 >> x2 >> y >> c;
@@ -196,7 +213,8 @@ namespace {
         }
         break;
 
-        case 'K': {
+        case 'K':
+        {
             size_t x1, x2, y1, y2;
             char c;
             in >> x1 >> x2 >> y1 >> y2 >> c;
@@ -204,7 +222,8 @@ namespace {
         }
         break;
 
-        case 'F': {
+        case 'F':
+        {
             size_t x, y;
             char c;
             in >> x >> y >> c;

@@ -47,7 +47,8 @@ namespace {
     private:
         void extEuclid(int64_t a, int64_t b)
         {
-            if (b == 0) {
+            if (b == 0)
+            {
                 x_ = 1;
                 y_ = 0;
                 d_ = a;
@@ -64,7 +65,8 @@ namespace {
     {
         in >> sol.n_;
 
-        if (sol.n_ != 0) {
+        if (sol.n_ != 0)
+        {
             in >> sol.c1_ >> sol.n1_ >> sol.c2_ >> sol.n2_;
         }
 
@@ -73,10 +75,13 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.fail_) {
+        if (sol.fail_)
+        {
             out << "failed";
 
-        } else {
+        }
+        else
+        {
             out << sol.x_ << ' ' << sol.y_;
         }
 
@@ -88,20 +93,27 @@ namespace {
         extEuclid(n1_, n2_);
         fail_ = (n_ % d_) != 0;
 
-        if (!fail_) {
+        if (!fail_)
+        {
             x_ *= (n_ / d_);
             y_ *= (n_ / d_);
             int64_t a = n2_ / d_, b = n1_ / d_;
             int64_t lf = (int64_t)std::ceil(-x_ / (double)a), rg = (int64_t)std::floor(y_ / (double)b);
 
-            if (lf > rg) {
+            if (lf > rg)
+            {
                 fail_ = true;
 
-            } else {
-                if (c1_ * (x_ + a * lf) + c2_ * (y_ - b * lf) < c1_ * (x_ + a * rg) + c2_ * (y_ - b * rg)) {
+            }
+            else
+            {
+                if (c1_ * (x_ + a * lf) + c2_ * (y_ - b * lf) < c1_ * (x_ + a * rg) + c2_ * (y_ - b * rg))
+                {
                     x_ += a * lf, y_ -= b * lf;
 
-                } else {
+                }
+                else
+                {
                     x_ += a * rg, y_ -= b * rg;
                 }
             }
@@ -115,7 +127,8 @@ void U10090::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

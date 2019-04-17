@@ -45,8 +45,10 @@ namespace {
     {
         std::stringstream oss;
         std::ostream_iterator<char> ois(oss, "");
-        std::transform(input.begin(), input.end(), ois, [](auto ch) {
-            switch (std::toupper(ch)) {
+        std::transform(input.begin(), input.end(), ois, [](auto ch)
+        {
+            switch (std::toupper(ch))
+            {
             case 'A':
             case 'B':
             case 'C':
@@ -110,7 +112,8 @@ void U10921::operator()() const
     std::string line;
     coder coder;
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         (coder << line) >> line;
         std::cout << line << std::endl;
     }

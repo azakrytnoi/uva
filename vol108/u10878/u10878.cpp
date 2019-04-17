@@ -37,8 +37,10 @@ namespace {
     char coder::decode(const std::string& line)
     {
         std::string temp(line.substr(1, 9));
-        char code = std::accumulate(temp.begin(), temp.end(), 0, [](auto ch, auto current) {
-            if (current != '.') {
+        char code = std::accumulate(temp.begin(), temp.end(), 0, [](auto ch, auto current)
+        {
+            if (current != '.')
+            {
                 ch <<= 1;
                 ch |= current == 'o' ? 1 : 0;
             }
@@ -54,8 +56,10 @@ void U10878::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line)) {
-        if (!line.empty() && line != "___________") {
+    while (std::getline(std::cin, line))
+    {
+        if (!line.empty() && line != "___________")
+        {
             std::cout << coder::decode(line);
         }
     }

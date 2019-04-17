@@ -28,21 +28,24 @@ void __cdecl invoke()
 }
 
 namespace {
-    struct time_point {
+    struct time_point
+    {
         int16_t hour_;
         int16_t minute_;
     };
 
     bool operator < (const time_point& tpl, const time_point& tpr)
     {
-        if (tpl.hour_ == tpr.hour_) {
+        if (tpl.hour_ == tpr.hour_)
+        {
             return tpl.minute_ < tpr.minute_;
         }
 
         return tpl.hour_ < tpr.hour_;
     }
 
-    struct appointment {
+    struct appointment
+    {
         time_point start_;
         time_point end_;
     };
@@ -66,7 +69,8 @@ namespace {
         return in;
     }
 
-    struct nap_time {
+    struct nap_time
+    {
         int16_t duration_;
         time_point start_;
     };
@@ -80,7 +84,8 @@ namespace {
     {
         std::stringstream oss;
 
-        if (nap.duration_ > 60) {
+        if (nap.duration_ > 60)
+        {
             oss << nap.duration_ / 60 << " hours and ";
         }
 
@@ -90,7 +95,8 @@ namespace {
 
     class solution {
     public:
-        solution() : agenda_(), nap_( {
+        solution() : agenda_(), nap_(
+        {
             0, { 10, 0 }
         }), counter_(0) {}
 
@@ -112,12 +118,14 @@ namespace {
         int16_t n;
         in >> n;
 
-        if (in && n > 0) {
+        if (in && n > 0)
+        {
             sol.counter_++;
             std::string line;
             std::getline(in, line);
             sol.agenda_.reserve(n);
-            std::generate_n(std::back_inserter(sol.agenda_), n, [&]() {
+            std::generate_n(std::back_inserter(sol.agenda_), n, [&]()
+            {
                 std::getline(in, line);
                 appointment app;
                 std::stringstream iss(line);
@@ -137,29 +145,35 @@ namespace {
 
     solution::operator bool()
     {
-        if (agenda_.empty()) {
+        if (agenda_.empty())
+        {
             return false;
         }
 
-        std::sort(agenda_.begin(), agenda_.end(), [](const appointment & app1, const appointment & app2) {
+        std::sort(agenda_.begin(), agenda_.end(), [](const appointment & app1, const appointment & app2)
+        {
             return app1.start_ < app2.start_;
         });
         const time_point first = { 10, 0 };
         const time_point last = { 18, 0 };
 
-        if (first < agenda_[0].start_) {
+        if (first < agenda_[0].start_)
+        {
             nap_.duration_ = agenda_[0].start_ - first;
             nap_.start_ = first;
         }
 
-        for (size_t i = 1; i < agenda_.size(); i++) {
-            if (agenda_[i - 1].end_ < agenda_[i].start_ && nap_.duration_ < (agenda_[i].start_ - agenda_[i - 1].end_)) {
+        for (size_t i = 1; i < agenda_.size(); i++)
+        {
+            if (agenda_[i - 1].end_ < agenda_[i].start_ && nap_.duration_ < (agenda_[i].start_ - agenda_[i - 1].end_))
+            {
                 nap_.duration_ = agenda_[i].start_ - agenda_[i - 1].end_;
                 nap_.start_ = agenda_[i - 1].end_;
             }
         }
 
-        if (agenda_.back().end_ < last && nap_.duration_ < (last - agenda_.back().end_)) {
+        if (agenda_.back().end_ < last && nap_.duration_ < (last - agenda_.back().end_))
+        {
             nap_.duration_ = last - agenda_.back().end_;
             nap_.start_ = agenda_.back().end_;
         }
@@ -172,11 +186,14 @@ void U10191::operator()() const
 {
     solution sol;
 
-    do {
+    do
+    {
         std::cin >> sol;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << sol << std::endl;
         }
-    } while (std::cin);
+    }
+    while (std::cin);
 }

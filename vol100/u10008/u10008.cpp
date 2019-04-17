@@ -28,7 +28,8 @@ void __cdecl invoke()
 }
 
 namespace {
-    struct freq_t {
+    struct freq_t
+    {
         char ch_;
         size_t freq_;
 
@@ -77,7 +78,8 @@ namespace {
             auto val(std::toupper(__value));
             auto it = container->find(val);
 
-            if (it == container->end()) {
+            if (it == container->end())
+            {
                 it = container->insert(it, std::make_pair(val, 0));
             }
 
@@ -109,13 +111,16 @@ namespace {
     solution_t& solution_t::operator()()
     {
         std::map<char, size_t> temp;
-        std::copy_if(source_.begin(), source_.end(), freq_inserter(temp), [](char ch) {
+        std::copy_if(source_.begin(), source_.end(), freq_inserter(temp), [](char ch)
+        {
             return std::isalpha(ch);
         });
         result_.reserve(temp.size());
         std::copy(temp.begin(), temp.end(), std::back_inserter(result_));
-        std::sort(result_.begin(), result_.end(), [](const freq_t& lhs, const freq_t& rhs) {
-            if (lhs.freq_ == rhs.freq_) {
+        std::sort(result_.begin(), result_.end(), [](const freq_t& lhs, const freq_t& rhs)
+        {
+            if (lhs.freq_ == rhs.freq_)
+            {
                 return lhs.ch_ < rhs.ch_;
             }
 
@@ -129,10 +134,12 @@ namespace {
         size_t n(0);
         std::string line;
 
-        if (in >> n && n > 0) {
+        if (in >> n && n > 0)
+        {
             in.ignore();
 
-            while (n--) {
+            while (n--)
+            {
                 std::getline(in, line);
                 sol.source_ += line;
             }
@@ -153,7 +160,8 @@ void U10008::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

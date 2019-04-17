@@ -33,7 +33,8 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() : case_no_(std::numeric_limits<size_t>::max()), digits_({
+        solution_t() : case_no_(std::numeric_limits<size_t>::max()), digits_(
+        {
             {" _ | ||_|", 0},
             {"     |  |", 1},
             {" _  _||_ ", 2},
@@ -69,15 +70,18 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (sol.case_no_ == std::numeric_limits<size_t>::max()) {
+        if (sol.case_no_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.case_no_;
             in.ignore();
         }
 
         std::vector<std::string> readings(3);
 
-        for (auto& line : readings) {
-            if (not std::getline(in, line)) {
+        for (auto& line : readings)
+        {
+            if (not std::getline(in, line))
+            {
                 return in;
             }
         }
@@ -86,11 +90,13 @@ namespace {
         sol.readings_.resize(9);
         sol.corrupted_ = std::numeric_limits<size_t>::max();
 
-        for (auto i = 0; i < 9; ++i) {
+        for (auto i = 0; i < 9; ++i)
+        {
             sol.readings_[i] = readings[0].substr(i * 3, 3) + readings[1].substr(i * 3, 3) + readings[2].substr(i * 3, 3);
             auto digit = sol.digits_.find(sol.readings_[i]);
 
-            if (digit == sol.digits_.end()) {
+            if (digit == sol.digits_.end())
+            {
                 sol.corrupted_ = i;
             }
         }
@@ -100,7 +106,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        switch (sol.rescnt_) {
+        switch (sol.rescnt_)
+        {
         case 1:
             out << std::setw(9) << std::setfill('0') << sol.result_;
             break;
@@ -130,20 +137,28 @@ namespace {
     {
         std::deque<std::vector<std::string>> work;
 
-        if (corrupted_ != std::numeric_limits<size_t>::max()) {
-            for (auto digit = digits_.begin(); digit != digits_.end(); ++digit) {
-                if (is_similar(digit->first, readings_[corrupted_])) {
+        if (corrupted_ != std::numeric_limits<size_t>::max())
+        {
+            for (auto digit = digits_.begin(); digit != digits_.end(); ++digit)
+            {
+                if (is_similar(digit->first, readings_[corrupted_]))
+                {
                     auto item = readings_;
                     item[corrupted_] = digit->first;
                     work.push_back(item);
                 }
             }
-        } else {
+        }
+        else
+        {
             work.push_back(readings_);
 
-            for (size_t idx = 0; idx < 9; ++idx) {
-                for (auto digit = digits_.begin(); digit != digits_.end(); ++digit) {
-                    if (digit->first != readings_[idx] && is_similar(digit->first, readings_[idx])) {
+            for (size_t idx = 0; idx < 9; ++idx)
+            {
+                for (auto digit = digits_.begin(); digit != digits_.end(); ++digit)
+                {
+                    if (digit->first != readings_[idx] && is_similar(digit->first, readings_[idx]))
+                    {
                         auto item = readings_;
                         item[idx] = digit->first;
                         work.push_back(item);
@@ -152,22 +167,26 @@ namespace {
             }
         }
 
-        while (not work.empty()) {
+        while (not work.empty())
+        {
             auto item = work.front();
             work.pop_front();
             uint64_t code(0), result(0);
 
-            for (size_t i = 0; i < 9; ++i) {
+            for (size_t i = 0; i < 9; ++i)
+            {
                 int8_t digit = digits_.find(item[i])->second;
                 code += (9 - i) * 9 * digit;
                 result *= 10;
                 result += digit;
             }
 
-            if (code % 11 == 0) {
+            if (code % 11 == 0)
+            {
                 result_ = result;
 
-                if (++rescnt_ == 2) {
+                if (++rescnt_ == 2)
+                {
                     return;
                 }
             }
@@ -176,8 +195,10 @@ namespace {
 
     bool solution_t::is_similar(const std::string& digit, const std::string& reading)
     {
-        for (auto di = digit.begin(), ri = reading.begin(); di != digit.end() && ri != reading.end(); ++di, ++ri) {
-            if (*di != *ri && *di == ' ') {
+        for (auto di = digit.begin(), ri = reading.begin(); di != digit.end() && ri != reading.end(); ++di, ++ri)
+        {
+            if (*di != *ri && *di == ' ')
+            {
                 return false;
             }
         }
@@ -190,7 +211,8 @@ void U433::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

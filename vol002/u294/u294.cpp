@@ -61,10 +61,12 @@ namespace {
         result_ = 0;
         num_factors_ = 0;
 
-        for (uint32_t num = low_; num <= high_; num++) {
+        for (uint32_t num = low_; num <= high_; num++)
+        {
             uint32_t factors = count_factors(num);
 
-            if (factors > num_factors_) {
+            if (factors > num_factors_)
+            {
                 num_factors_ = factors;
                 result_ = num;
             }
@@ -78,10 +80,12 @@ namespace {
         uint32_t result = 1;
         auto factor = sieve_.begin() + 1;
 
-        while ((*factor) * (*factor) <= num) {
+        while ((*factor) * (*factor) <= num)
+        {
             uint32_t count(0);
 
-            while (num % (*factor) == 0) {
+            while (num % (*factor) == 0)
+            {
                 count++;
                 num /= (*factor);
             }
@@ -90,7 +94,8 @@ namespace {
             ++factor;
         }
 
-        if (num != 1) {
+        if (num != 1)
+        {
             result *= 2;
         }
 
@@ -105,7 +110,8 @@ void U294::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

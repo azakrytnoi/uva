@@ -55,14 +55,17 @@ namespace {
             sol.path_.clear();
             sol.corner_ = 0;
 
-            if (in >> sol.corner_) {
+            if (in >> sol.corner_)
+            {
                 std::fill(sol.visited_.begin(), sol.visited_.end(), false);
-                std::for_each(sol.map_.begin(), sol.map_.end(), [](std::vector<bool>& row) {
+                std::for_each(sol.map_.begin(), sol.map_.end(), [](std::vector<bool>& row)
+                {
                     std::fill(row.begin(), row.end(), false);
                 });
                 uint16_t x(0), y(0);
 
-                while (in >> x >> y && not(x == 0 && y == 0)) {
+                while (in >> x >> y && not(x == 0 && y == 0))
+                {
                     sol.map_[x][y] = sol.map_[y][x] = true;
                 }
             }
@@ -73,9 +76,11 @@ namespace {
         friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
         {
             out << "CASE " << sol.case_no_ << std::endl;
-            std::for_each(sol.path_.begin(), sol.path_.end(), [&](const std::vector<uint16_t>& path) {
+            std::for_each(sol.path_.begin(), sol.path_.end(), [&](const std::vector<uint16_t>& path)
+            {
                 out << "1";
-                std::for_each(path.begin(), path.end(), [&](const uint16_t i) {
+                std::for_each(path.begin(), path.end(), [&](const uint16_t i)
+                {
                     out << " " << i;
                 });
                 out << std::endl;
@@ -96,16 +101,20 @@ namespace {
         {
             static std::vector<uint16_t> path(CORNERS);
 
-            if (node == corner_) {
+            if (node == corner_)
+            {
                 path_.push_back(std::vector<uint16_t>());
                 path_.back().resize(dep);
                 std::copy_n(path.begin(), dep, path_.back().begin());
                 return;
             }
 
-            for (size_t idx = 1; idx <= 21; idx++) {
-                if (map_[node][idx] && not visited_[idx]) {
-                    if (not reach_corner(idx)) {
+            for (size_t idx = 1; idx <= 21; idx++)
+            {
+                if (map_[node][idx] && not visited_[idx])
+                {
+                    if (not reach_corner(idx))
+                    {
                         continue;
                     }
 
@@ -124,15 +133,19 @@ namespace {
             size_t Qidx(0), targetnode;
             cornersQ[Qidx] = startnode;
 
-            for (uint16_t i = 0; i <= Qidx; i++) {
+            for (uint16_t i = 0; i <= Qidx; i++)
+            {
                 targetnode = cornersQ[i];
 
-                if (targetnode == corner_) {
+                if (targetnode == corner_)
+                {
                     return true;
                 }
 
-                for (uint16_t j = 1; j <= 21; j++) {
-                    if (not visited_[j] && map_[targetnode][j] && not used[j]) {
+                for (uint16_t j = 1; j <= 21; j++)
+                {
+                    if (not visited_[j] && map_[targetnode][j] && not used[j])
+                    {
                         used[j] = true;
                         cornersQ[++Qidx] = j;
                     }
@@ -149,7 +162,8 @@ void U208::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

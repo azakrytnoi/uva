@@ -32,13 +32,17 @@ void U408::operator()() const
 {
     uint32_t step, mod;
 
-    while (std::cin >> step >> mod) {
+    while (std::cin >> step >> mod)
+    {
         std::cout << std::setw(10) << step << std::setw(10) << mod << "    ";
 
-        if (math::gcd(mod, step) == 1) {
+        if (math::gcd(mod, step) == 1)
+        {
             std::cout << "Good Choice" << std::endl;
 
-        } else {
+        }
+        else
+        {
             std::cout << "Bad Choice" << std::endl;
         }
 

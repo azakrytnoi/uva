@@ -30,7 +30,8 @@ namespace math {
         fib_.reserve(N + 1);
         fib_t n0[] = { 1, 1 };
         fib_.assign(n0, n0 + 2);
-        std::generate_n(std::back_inserter(fib_), N - 1, [&]() -> fib_t {
+        std::generate_n(std::back_inserter(fib_), N - 1, [&]() -> fib_t
+        {
             size_t current = fib_.size();
             return fib_[current - 1] + fib_[current - 2];
         });
@@ -39,7 +40,8 @@ namespace math {
     template<size_t N, typename fib_t>
     fib_t fibonacci_t<N, fib_t>::operator [](size_t n) const
     {
-        if (n < N) {
+        if (n < N)
+        {
             return fib_[n];
         }
 
@@ -50,15 +52,19 @@ namespace math {
     size_t fibonacci_t<N, fib_t>::operator ()(const fib_t& fib) const
     {
         typedef typename std::vector<fib_t>::const_iterator  iterator_t;
-        auto b_search = [&](iterator_t lower, iterator_t upper, const fib_t & val) -> iterator_t {
+        auto b_search = [&](iterator_t lower, iterator_t upper, const fib_t & val) -> iterator_t
+        {
             auto mid (lower);
             std::advance(mid, std::distance(lower, upper) / 2);
 
             while (val != *mid && std::distance(lower, upper) > 0)
             {
-                if (val < *mid) {
+                if (val < *mid)
+                {
                     upper = mid - 1;
-                } else {
+                }
+                else
+                {
                     lower = mid + 1;
                 }
 

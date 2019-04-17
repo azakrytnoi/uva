@@ -41,7 +41,8 @@ namespace {
             in  >> sol.nDays_ >> nParties;
             sol.hParty_.clear();
             sol.hParty_.reserve(nParties);
-            std::generate_n(std::back_inserter(sol.hParty_), nParties, [&]() {
+            std::generate_n(std::back_inserter(sol.hParty_), nParties, [&]()
+            {
                 uint32_t period;
                 in >> period;
                 return period;
@@ -57,16 +58,20 @@ namespace {
 
         solution& operator()()
         {
-            for (uint32_t day = 1; day <= nDays_; day++) {
-                if (day % 7 == 6 || day % 7 == 0) {
+            for (uint32_t day = 1; day <= nDays_; day++)
+            {
+                if (day % 7 == 6 || day % 7 == 0)
+                {
                     continue;
                 }
 
-                bool strike = std::accumulate(hParty_.begin(), hParty_.end(), false, [&](auto prev, auto h) {
+                bool strike = std::accumulate(hParty_.begin(), hParty_.end(), false, [&](auto prev, auto h)
+                {
                     return prev || (day % h == 0);
                 });
 
-                if (strike) {
+                if (strike)
+                {
                     lostDays_++;
                 }
             }
@@ -85,7 +90,8 @@ void U10050::operator()() const
     std::cin >> nCases;
     solution sol;
 
-    while (nCases--) {
+    while (nCases--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

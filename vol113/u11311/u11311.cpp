@@ -44,7 +44,8 @@ namespace {
 
         friend std::istream& operator>>(std::istream& in, solution_t& sol)
         {
-            if (sol.N_ == std::numeric_limits<size_t>::max()) {
+            if (sol.N_ == std::numeric_limits<size_t>::max())
+            {
                 in >> sol.N_;
             }
 
@@ -69,7 +70,8 @@ void U11311::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

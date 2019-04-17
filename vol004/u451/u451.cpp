@@ -43,7 +43,8 @@ namespace {
         combination_t hand_value(hand_iterator_t hbegin, hand_iterator_t hend)
         {
             static const std::vector<rank_t> rorder({rank_t::A, rank_t::_2, rank_t::_3, rank_t::_4, rank_t::_5, rank_t::_6, rank_t::_7, rank_t::_8, rank_t::_9, rank_t::X, rank_t::J, rank_t::Q, rank_t::K});
-            struct less_rank {
+            struct less_rank
+            {
                 bool operator()(const rank_t lhs, const rank_t rhs)
                 {
                     auto lhsi = std::find(rorder.begin(), rorder.end(), lhs);
@@ -53,26 +54,32 @@ namespace {
             };
             std::map<rank_t, size_t, less_rank> ranks;
             std::map<suit_t, size_t> suits;
-            std::for_each(hbegin, hend, [&](const card_t<>& card) {
+            std::for_each(hbegin, hend, [&](const card_t<>& card)
+            {
                 ranks[card.rank_]++;
                 suits[card.suit_]++;
             });
             std::vector<size_t> rfreq(ranks.size());
-            std::transform(ranks.begin(), ranks.end(), rfreq.begin(), [](const std::pair<rank_t, size_t>& r) {
+            std::transform(ranks.begin(), ranks.end(), rfreq.begin(), [](const std::pair<rank_t, size_t>& r)
+            {
                 return r.second;
             });
-            std::sort(rfreq.begin(), rfreq.end(), [](size_t lhs, size_t rhs) {
+            std::sort(rfreq.begin(), rfreq.end(), [](size_t lhs, size_t rhs)
+            {
                 return lhs > rhs;
             });
             std::vector<size_t> sfreq(suits.size());
-            std::transform(suits.begin(), suits.end(), sfreq.begin(), [](const std::pair<suit_t, size_t>& s) {
+            std::transform(suits.begin(), suits.end(), sfreq.begin(), [](const std::pair<suit_t, size_t>& s)
+            {
                 return s.second;
             });
-            std::sort(sfreq.begin(), sfreq.end(), [](size_t lhs, size_t rhs) {
+            std::sort(sfreq.begin(), sfreq.end(), [](size_t lhs, size_t rhs)
+            {
                 return lhs > rhs;
             });
 
-            switch (rfreq.front()) {
+            switch (rfreq.front())
+            {
             case 2:
                 return sfreq.front() == 5 ? combination_t::Flush : rfreq[1] == 2 ? combination_t::TwoPairs : combination_t::OnePair;
 
@@ -82,20 +89,23 @@ namespace {
             case 4:
                 return combination_t::FourOfAKind;
 
-            default: {
+            default:
+            {
                 auto r = ranks.begin();
                 auto prev_rank = std::find(rorder.begin(), rorder.end(), r->first);
                 ++r;
                 bool strait = true;
 
-                for (; strait && r != ranks.end(); ++r) {
+                for (; strait && r != ranks.end(); ++r)
+                {
                     auto cur_rank = std::find(rorder.begin(), rorder.end(), r->first);
                     auto distance = std::distance(prev_rank, cur_rank);
                     strait = distance == 1 || distance == 9;
                     prev_rank = cur_rank;
                 }
 
-                if (strait) {
+                if (strait)
+                {
                     return sfreq.front() == 5 ? combination_t::StraightFlush : combination_t::Straight;
                 }
             }
@@ -110,7 +120,8 @@ namespace {
     class solution_t {
         typedef poker::combination_t combination_t;
     public:
-        solution_t() : n_(std::numeric_limits<size_t>::max()), desk_(), result_( {
+        solution_t() : n_(std::numeric_limits<size_t>::max()), desk_(), result_(
+        {
             {combination_t::HighCard, 0},
             {combination_t::OnePair, 0},
             {combination_t::TwoPairs, 0},
@@ -142,14 +153,17 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        for (auto& res : result_) {
+        for (auto& res : result_)
+        {
             res.second = 0;
         }
 
-        for (size_t i = 0; i < 5; ++i) {
+        for (size_t i = 0; i < 5; ++i)
+        {
             poker::hand_t col;
 
-            for (size_t j = 0; j < 5; ++j) {
+            for (size_t j = 0; j < 5; ++j)
+            {
                 col[j] = desk_[j][i];
             }
 
@@ -162,13 +176,17 @@ namespace {
 
     std::istream& operator>>(std::istream& in, solution_t& sol)
     {
-        if (sol.n_ == std::numeric_limits<size_t>::max()) {
+        if (sol.n_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.n_;
         }
 
-        if (in) {
-            for (size_t i = 0; i < 5; ++i) {
-                for (size_t j = 0; j < 5; ++j) {
+        if (in)
+        {
+            for (size_t i = 0; i < 5; ++i)
+            {
+                for (size_t j = 0; j < 5; ++j)
+                {
                     in >> sol.desk_[i][j];
                 }
             }
@@ -182,7 +200,8 @@ namespace {
         auto begin = sol.result_.begin();
         out << begin->second;
         ++begin;
-        std::for_each(begin, sol.result_.end(), [&](const std::pair<poker::combination_t, size_t>& freq) {
+        std::for_each(begin, sol.result_.end(), [&](const std::pair<poker::combination_t, size_t>& freq)
+        {
             out << ", " << freq.second;
         });
         out << std::endl;
@@ -195,7 +214,8 @@ void U450::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

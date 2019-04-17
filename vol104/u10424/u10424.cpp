@@ -47,7 +47,8 @@ namespace {
 
     int calculator::summ(const std::string& str)
     {
-        int part = std::accumulate(str.begin(), str.end(), 0, [](auto tot, auto ch) {
+        int part = std::accumulate(str.begin(), str.end(), 0, [](auto tot, auto ch)
+        {
             return tot + (ch - 'a' + 1);
         });
         return part == 0 ? 1 : summ(part);
@@ -55,10 +56,12 @@ namespace {
 
     int calculator::summ(int part)
     {
-        if (part > 9) {
+        if (part > 9)
+        {
             int sum (0);
 
-            while (part > 0) {
+            while (part > 0)
+            {
                 sum += part % 10;
                 part /= 10;
             }
@@ -71,7 +74,8 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution& sol)
     {
-        auto readString = [&in]() -> std::string {
+        auto readString = [&in]() -> std::string
+        {
             std::string tmp;
             std::getline(in, tmp);
             std::transform(tmp.begin(), tmp.end(), tmp.begin(), [](auto ch)
@@ -89,13 +93,18 @@ namespace {
         std::string a (readString());
         std::string b (readString());
 
-        if (a.empty() && b.empty()) {
+        if (a.empty() && b.empty())
+        {
             sol.grade_ = std::numeric_limits<double>::infinity();
 
-        } else if (a.empty() || b.empty()) {
+        }
+        else if (a.empty() || b.empty())
+        {
             sol.grade_ = 0.0;
 
-        } else {
+        }
+        else
+        {
             sol.grade_ = double(calculator::summ(a)) / double(calculator::summ(b));
         }
 
@@ -104,7 +113,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.grade_ != std::numeric_limits<double>::infinity()) {
+        if (sol.grade_ != std::numeric_limits<double>::infinity())
+        {
             out << std::fixed << std::setprecision(2) << (sol.grade_ > 1.0 ? 100.0 / sol.grade_ : sol.grade_ * 100.0) << " %";
         }
 
@@ -117,7 +127,8 @@ void U10424::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

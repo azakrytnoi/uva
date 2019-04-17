@@ -31,12 +31,14 @@ namespace math {
         int total = 0;
 
         sort(lines.begin(), lines.end(), [](auto a, auto b) -> bool { return a.first < b.first; });
-        std::for_each(lines.begin(), lines.end(), [this, &total](auto line) {
+        std::for_each(lines.begin(), lines.end(), [this, &total](auto line)
+        {
             int cost = line.first;
             auto origin = line.second.first;
             auto destination = line.second.second;
 
-            if (!mst_.isSameSet(origin, destination)) {
+            if (!mst_.isSameSet(origin, destination))
+            {
                 total += cost;
                 mst_.unionSet(origin, destination);
             }
@@ -58,19 +60,22 @@ void U908::operator()() const
 {
     int V;
 
-    auto readLine = []() -> math::kruskal_t<int>::line_t {
+    auto readLine = []() -> math::kruskal_t<int>::line_t
+    {
         math::kruskal_t<int>::line_t line;
         std::cin >> line.second.first >> line.second.second >> line.first;
         return line;
     };
     std::vector <math::kruskal_t<int>::line_t> lines;
 
-    while (std::cin >> V) {
+    while (std::cin >> V)
+    {
         math::kruskal_t<int> kruskal(V);
         int K, M, total(0);
         lines.clear();
 
-        for (int i = 0; i < V - 1; i++) {
+        for (int i = 0; i < V - 1; i++)
+        {
             total += readLine().first;
         }
 

@@ -114,11 +114,14 @@ void U478::operator()()
     shapes.reserve(10);
     std::string line;
 
-    while (std::getline(std::cin, line) && line[0] != '*') {
+    while (std::getline(std::cin, line) && line[0] != '*')
+    {
         std::stringstream iss(line.substr(2));
 
-        switch (line[0]) {
-        case 'r': {
+        switch (line[0])
+        {
+        case 'r':
+        {
             point top, bottom;
             iss >> top >> bottom;
             auto rect = std::make_shared<rectangle>(shapes.size() + 1, top, bottom);
@@ -126,7 +129,8 @@ void U478::operator()()
         }
         break;
 
-        case 'c': {
+        case 'c':
+        {
             point center;
             float radius;
             iss >> center >> radius;
@@ -135,7 +139,8 @@ void U478::operator()()
         }
         break;
 
-        case 't': {
+        case 't':
+        {
             point a, b, c;
             iss >> a >> b >> c;
             auto trn = std::make_shared<triange>(shapes.size() + 1, a, b, c);
@@ -149,17 +154,21 @@ void U478::operator()()
     point pend(9999.9f, 9999.9f);
     size_t pseq(0);
 
-    while (std::cin >> p && p != pend) {
+    while (std::cin >> p && p != pend)
+    {
         pseq++;
         bool found(false);
-        std::for_each(shapes.begin(), shapes.end(), [&](auto sh) {
-            if (sh->point_inside(p)) {
+        std::for_each(shapes.begin(), shapes.end(), [&](auto sh)
+        {
+            if (sh->point_inside(p))
+            {
                 found = true;
                 std::cout << "Point " << pseq << " is contained in figure " << sh->seq() << std::endl;
             }
         });
 
-        if (!found) {
+        if (!found)
+        {
             std::cout << "Point " << pseq << " is not contained in any figure" << std::endl;
         }
     }

@@ -53,11 +53,13 @@ namespace {
     {
         std::string line;
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             sol.known_ += line;
         }
 
-        while (std::getline(in, line)) {
+        while (std::getline(in, line))
+        {
             sol.encoded_ += line;
         }
 
@@ -73,7 +75,8 @@ namespace {
     solution& solution::operator()()
     {
         typedef std::map<char, uint16_t> freq_map;
-        struct freq_item : std::pair<freq_map::key_type, freq_map::mapped_type> {
+        struct freq_item : std::pair<freq_map::key_type, freq_map::mapped_type>
+        {
             freq_item(const std::pair<const freq_map::key_type, freq_map::mapped_type>& val) //
                 : std::pair<freq_map::key_type, freq_map::mapped_type>(val.first, val.second) {}
 
@@ -86,7 +89,8 @@ namespace {
 
             bool operator < (const freq_item& rhs)
             {
-                if (first == rhs.first) {
+                if (first == rhs.first)
+                {
                     return second < rhs.second;
                 }
 
@@ -97,7 +101,8 @@ namespace {
 
         freq_vector zero;
         zero.reserve('z' - 'a' + 1);
-        std::generate_n(std::back_inserter(zero), 'z' - 'a' + 1, []() {
+        std::generate_n(std::back_inserter(zero), 'z' - 'a' + 1, []()
+        {
             static char key ('a');
             return freq_item(std::make_pair(key++, 0));
         });
@@ -105,8 +110,10 @@ namespace {
         freq_map freq_known;
         freq_known.insert(zero.begin(), zero.end());
 
-        for (char ch : known_) {
-            if (std::isalpha(ch)) {
+        for (char ch : known_)
+        {
+            if (std::isalpha(ch))
+            {
                 freq_known[std::tolower(ch)]++;
             }
         }
@@ -114,23 +121,29 @@ namespace {
         freq_map freq_encoded;
         freq_encoded.insert(zero.begin(), zero.end());
 
-        for (char ch : encoded_) {
-            if (std::isalpha(ch)) {
+        for (char ch : encoded_)
+        {
+            if (std::isalpha(ch))
+            {
                 freq_encoded[std::tolower(ch)]++;
             }
         }
 
         freq_vector known_chars(freq_known.begin(), freq_known.end());
-        std::sort(known_chars.begin(), known_chars.end(), [](const freq_item & lhs, const freq_item & rhs) {
-            if (lhs.second != rhs.second) {
+        std::sort(known_chars.begin(), known_chars.end(), [](const freq_item & lhs, const freq_item & rhs)
+        {
+            if (lhs.second != rhs.second)
+            {
                 return lhs.second < rhs.second;
             }
 
             return lhs.first < rhs.first;
         });
         freq_vector encoded (freq_encoded.begin(), freq_encoded.end());
-        std::sort(encoded.begin(), encoded.end(), [](const freq_item & lhs, const freq_item & rhs) {
-            if (lhs.second != rhs.second) {
+        std::sort(encoded.begin(), encoded.end(), [](const freq_item & lhs, const freq_item & rhs)
+        {
+            if (lhs.second != rhs.second)
+            {
                 return lhs.second < rhs.second;
             }
 
@@ -140,11 +153,13 @@ namespace {
 
         for (auto known_it = known_chars.begin(), enc_it = encoded.begin(); //
                 known_it != known_chars.end() && enc_it != encoded.end(); //
-                ++known_it, ++ enc_it) {
+                ++known_it, ++ enc_it)
+        {
             coding_map[enc_it->first] = known_it->first;
         }
 
-        std::transform(encoded_.begin(), encoded_.end(), std::back_inserter(decoded_), [&](char ch) -> char {
+        std::transform(encoded_.begin(), encoded_.end(), std::back_inserter(decoded_), [&](char ch) -> char
+        {
             if (not std::isalpha(ch))
             {
                 return ch;

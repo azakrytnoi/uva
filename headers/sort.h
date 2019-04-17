@@ -56,7 +56,8 @@ namespace util {
     template<uint64_t MAX>
     inline void sort<MAX>::merge_sort(iterator start, iterator end)
     {
-        if (std::distance(start, end) > 1) {
+        if (std::distance(start, end) > 1)
+        {
             iterator middle(start);
             std::advance(middle, std::distance(start, end) / 2);
             merge_sort(start, middle);
@@ -77,13 +78,17 @@ namespace util {
         size_t ll = left.size() - 1;
         int left_count(0);
 
-        for (iterator current = start; current != end; ) {
-            if (left.front() <= right.front()) {
+        for (iterator current = start; current != end; )
+        {
+            if (left.front() <= right.front())
+            {
                 *(current++) = left.front();
                 left.pop_front();
                 left_count++;
 
-            } else {
+            }
+            else
+            {
                 *(current++) = right.front();
                 right.pop_front();
                 swaps_ += ll - left_count;

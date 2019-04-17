@@ -32,11 +32,13 @@ void __cdecl invoke()
 }
 
 namespace {
-    enum class status_t {
+    enum class status_t
+    {
         running, locked, terminated
     };
 
-    enum class op_type_t : char {
+    enum class op_type_t : char
+    {
         assign, print, lock, unlock, end
     };
 
@@ -199,7 +201,8 @@ namespace {
         {
             std::string line;
 
-            while (std::getline(in, line) && line != "end") {
+            while (std::getline(in, line) && line != "end")
+            {
                 std::stringstream sin(line);
                 std::string op;
                 sin >> op;
@@ -217,7 +220,8 @@ namespace {
 #ifdef _DEBUG
         friend std::ostream& operator <<(std::ostream& out, const programm_t& prog)
         {
-            for (auto it = prog.body_.begin(); it != prog.body_.end(); ++it) {
+            for (auto it = prog.body_.begin(); it != prog.body_.end(); ++it)
+            {
                 out << (it == prog.pc_ ? "=>" : "  ") << (*it)->to_string() // @suppress("Method cannot be resolved")
                     << std::endl; // @suppress("Invalid overload")
             }
@@ -227,7 +231,8 @@ namespace {
 #endif
     };
 
-    struct op_type_hash {
+    struct op_type_hash
+    {
         std::hash<char> base_;
         size_t operator()(const op_type_t& op_type) const
         {
@@ -310,11 +315,13 @@ namespace {
     {
         sol.processor_.release();
 
-        if (sol.n_cases_ == std::numeric_limits<size_t>::max()) {
+        if (sol.n_cases_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.n_cases_;
         }
 
-        if (in) {
+        if (in)
+        {
             sol.processor_.reset(new processor_t);
             in >> *sol.processor_;
         }
@@ -329,7 +336,8 @@ namespace {
         proc.timings_ = {{op_type_t::assign, assign_time}, {op_type_t::print, print_time}, {op_type_t::lock, lock_time}, {op_type_t::unlock, unlock_time}, {op_type_t::end, end_time}};
         in.ignore();
 
-        for (size_t idx = 0; idx < proc.n_proc_; idx++) {
+        for (size_t idx = 0; idx < proc.n_proc_; idx++)
+        {
             auto prog = std::make_shared<programm_t>();
             in >> *prog;
             size_t pid = proc.programms_.size() + 1;
@@ -353,7 +361,8 @@ namespace {
 
     std::shared_ptr<instruction_t> instruction_t::parse(const std::string& src)
     {
-        static std::unordered_map<std::string, op_type_t> code_map = {
+        static std::unordered_map<std::string, op_type_t> code_map =
+        {
             {"print", op_type_t::print},
             {"lock", op_type_t::lock},
             {"unlock", op_type_t::unlock},
@@ -361,8 +370,10 @@ namespace {
         };
         auto code = code_map.find(src);
 
-        if (code != code_map.end()) {
-            switch (code->second) {
+        if (code != code_map.end())
+        {
+            switch (code->second)
+            {
             case op_type_t::end:
                 return std::make_shared<end_t>(src);
 
@@ -432,11 +443,13 @@ namespace {
 
     void processor_t::lock()
     {
-        if (latch_ == std::numeric_limits<proc_id_t>::max()) {
+        if (latch_ == std::numeric_limits<proc_id_t>::max())
+        {
             latch_ = current_;
         }
 
-        if (latch_ != current_) {
+        if (latch_ != current_)
+        {
             locked_.push_back(current_);
             programms_.find(current_)->second->status() = status_t::locked;
         }
@@ -444,8 +457,10 @@ namespace {
 
     void processor_t::unlock()
     {
-        if (latch_ == current_) {
-            if (not locked_.empty()) {
+        if (latch_ == current_)
+        {
+            if (not locked_.empty())
+            {
                 auto unlock = locked_.front();
                 auto prog = programms_.find(unlock)->second;
                 prog->status() = status_t::running;
@@ -464,17 +479,20 @@ namespace {
                        [](const std::pair<proc_id_t, std::shared_ptr<programm_t>>& prog) ->proc_id_t { return prog.first; });
         std::sort(ready_.begin(), ready_.end());
 
-        while (not ready_.empty()) {
+        while (not ready_.empty())
+        {
             current_ = ready_.front();
             ready_.pop_front();
             auto prog = programms_.find(current_)->second;
             slot_time_ = 0;
 
-            while (prog->status() == status_t::running && slot_time_ < quantum_) {
+            while (prog->status() == status_t::running && slot_time_ < quantum_)
+            {
                 slot_time_ += prog->execute_step(*this);
             }
 
-            if (prog->status() == status_t::running) {
+            if (prog->status() == status_t::running)
+            {
                 ready_.push_back(current_);
             }
         }
@@ -484,7 +502,8 @@ namespace {
     {
         auto exec_time = instruction()->exec(processor);
 
-        if (status_ == status_t::running) {
+        if (status_ == status_t::running)
+        {
             ++pc_;
         }
 
@@ -503,7 +522,8 @@ namespace {
 #ifdef _DEBUG
     std::ostream& operator<<(std::ostream& out, status_t status)
     {
-        switch (status) {
+        switch (status)
+        {
         case status_t::locked:
             out << "locked";
             break;
@@ -533,7 +553,8 @@ namespace {
                   << timings_.find(programms_.find(current_)->second->instruction()->op_type())->second << "/"
                   << quantum_ << "; Variables: [";
         std::ostream_iterator<std::string> val_out(std::clog, " ");
-        std::transform(variables_.begin(), variables_.end(), val_out, [](const std::pair<char, uint64_t>& val) {
+        std::transform(variables_.begin(), variables_.end(), val_out, [](const std::pair<char, uint64_t>& val)
+        {
             std::stringstream val_str;
             val_str << "[" << val.first << "] = " << val.second;
             return val_str.str();
@@ -555,7 +576,8 @@ void U210::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

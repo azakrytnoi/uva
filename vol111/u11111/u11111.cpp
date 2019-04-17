@@ -60,19 +60,26 @@ namespace {
         std::stack<int> summs;
         int sum(0);
 
-        for (auto it = src_.begin(); it != src_.end(); ++it) {
-            if (*it < 0) {
+        for (auto it = src_.begin(); it != src_.end(); ++it)
+        {
+            if (*it < 0)
+            {
                 storage.push(*it);
                 summs.push(sum);
                 sum = 0;
 
-            } else {
-                if (!storage.empty()) {
-                    if (((storage.top() + *it) != 0) || (*it <= sum)) {
+            }
+            else
+            {
+                if (!storage.empty())
+                {
+                    if (((storage.top() + *it) != 0) || (*it <= sum))
+                    {
                         break;
                     }
 
-                    if (!summs.empty()) {
+                    if (!summs.empty())
+                    {
                         sum = summs.top();
                         summs.pop();
                     }
@@ -80,7 +87,9 @@ namespace {
                     sum += *it;
                     storage.pop();
 
-                } else {
+                }
+                else
+                {
                     return false;
                 }
             }
@@ -96,13 +105,17 @@ void U11111::operator()() const
     solution sol;
     std::string line;
 
-    while (std::getline(std::cin, line)) {
+    while (std::getline(std::cin, line))
+    {
         sol << line;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << ":-) Matrioshka!" << std::endl;
 
-        } else {
+        }
+        else
+        {
             std::cout << ":-( Try again." << std::endl;
         }
     }

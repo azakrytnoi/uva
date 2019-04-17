@@ -30,14 +30,16 @@ void __cdecl invoke()
 }
 
 namespace {
-    struct hash {
+    struct hash
+    {
         size_t operator () (const std::pair<uint64_t, uint64_t>& key) const
         {
             return  key.first + key.second;
         }
     };
 
-    enum class rotation : uint8_t {
+    enum class rotation : uint8_t
+    {
         //unknown = 0,
         left_clockwise = 1, // left wheel clockwise
         right_clockwise = 2, // right wheel clockwise
@@ -57,8 +59,10 @@ namespace {
         const uint64_t mask_8_bits = 0xff, mask_12_bits = 0xfff;
         uint64_t left = wheel.first, right = wheel.second;
 
-        switch (direction) {
-        case rotation::left_clockwise: {
+        switch (direction)
+        {
+        case rotation::left_clockwise:
+        {
             uint64_t temp = left & mask_8_bits;
             left >>= 8;
             left |= temp << 40;
@@ -67,7 +71,8 @@ namespace {
             break;
         }
 
-        case rotation::right_clockwise: {
+        case rotation::right_clockwise:
+        {
             uint64_t temp = (right & mask_8_bits << 40) >> 40;
             right &= ~(mask_8_bits << 40);
             right <<= 8;
@@ -77,7 +82,8 @@ namespace {
             break;
         }
 
-        case rotation::left_counterclockwise: {
+        case rotation::left_counterclockwise:
+        {
             uint64_t temp = (left & mask_8_bits << 40) >> 40;
             left &= ~(mask_8_bits << 40);
             left <<= 8;
@@ -87,7 +93,8 @@ namespace {
             break;
         }
 
-        case rotation::right_counterclockwise: {
+        case rotation::right_counterclockwise:
+        {
             uint64_t temp = right & mask_8_bits;
             right >>= 8;
             right |= temp << 40;
@@ -134,14 +141,17 @@ namespace {
         std::queue<wheels> bfs_q;
         bfs_q.push(wheels_solved);
 
-        while (!bfs_q.empty()) {
+        while (!bfs_q.empty())
+        {
             wheels wheel = bfs_q.front();
             bfs_q.pop();
             std::deque<rotation> movements = lower_half_cache_[wheel];
 
-            if (movements.size() < max_movements / 2) {
+            if (movements.size() < max_movements / 2)
+            {
                 for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise);
-                        direction++) {
+                        direction++)
+                {
                     rotate_wheel_and_cache(static_cast<rotation>(direction), wheel, movements, bfs_q);
                 }
             }
@@ -153,13 +163,15 @@ namespace {
     {
         wheels new_wheel = rotate_wheel(direction, wheel);
 
-        if (lower_half_cache_.find(new_wheel) != lower_half_cache_.end()) {
+        if (lower_half_cache_.find(new_wheel) != lower_half_cache_.end())
+        {
             return false;
         }
 
         rotation new_dir;
 
-        switch (direction) {
+        switch (direction)
+        {
         case rotation::left_clockwise:
             new_dir = rotation::left_counterclockwise;
             break;
@@ -189,7 +201,8 @@ namespace {
     {
         wheels new_wheel = rotate_wheel(direction, wheel);
 
-        if (cache.find(new_wheel) != cache.end()) {
+        if (cache.find(new_wheel) != cache.end())
+        {
             return false;
         }
 
@@ -204,13 +217,15 @@ namespace {
     {
         int nr;
 
-        for (size_t i = 0; i < numbers_per_wheel; i++) {
+        for (size_t i = 0; i < numbers_per_wheel; i++)
+        {
             std::cin >> nr;
             sol.wheels_.first <<= 4;
             sol.wheels_.first |= nr;
         }
 
-        for (size_t i = 0; i < numbers_per_wheel; i++) {
+        for (size_t i = 0; i < numbers_per_wheel; i++)
+        {
             std::cin >> nr;
             sol.wheels_.second <<= 4;
             sol.wheels_.second |= nr;
@@ -221,18 +236,25 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.solved_) {
-            if (sol.movements_.empty()) {
+        if (sol.solved_)
+        {
+            if (sol.movements_.empty())
+            {
                 std::cout << "PUZZLE ALREADY SOLVED";
 
-            } else {
+            }
+            else
+            {
                 for (std::deque<rotation>::const_iterator it = sol.movements_.begin(), e = sol.movements_.end();
-                        it != e; ++it) {
+                        it != e; ++it)
+                {
                     std::cout << static_cast<int32_t>(*it);
                 }
             }
 
-        } else {
+        }
+        else
+        {
             std::cout << "NO SOLUTION WAS FOUND IN 16 STEPS";
         }
 
@@ -248,21 +270,26 @@ namespace {
         bfs_q.push(wheels_);
         WheelMap::const_iterator lhce = lower_half_cache_.end();
 
-        while (!bfs_q.empty()) {
+        while (!bfs_q.empty())
+        {
             wheels wheel = bfs_q.front();
             bfs_q.pop();
             std::deque<rotation>& movements = cache[wheel];
             WheelMap::const_iterator lhci = lower_half_cache_.find(wheel);
 
-            if (lhci != lhce) {
+            if (lhci != lhce)
+            {
                 solved_ = true;
                 movements_ = movements;
                 movements_.insert(movements_.end(), lhci->second.begin(), lhci->second.end());
                 break;
 
-            } else if (movements.size() < max_movements / 2) {
+            }
+            else if (movements.size() < max_movements / 2)
+            {
                 for (int32_t direction = static_cast<int32_t>(rotation::left_clockwise); direction <= static_cast<int32_t>(rotation::right_counterclockwise);
-                        direction++) {
+                        direction++)
+                {
                     rotate_wheel_and_cache(static_cast<rotation>(direction), wheel, movements, bfs_q, cache);
                 }
             }
@@ -278,7 +305,8 @@ void U704::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

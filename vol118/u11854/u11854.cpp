@@ -26,10 +26,12 @@ void U11854::operator()() const
     std::vector<uint32_t> triangle;
     triangle.resize(3);
 
-    while (std::cin) {
+    while (std::cin)
+    {
         std::cin >> triangle[0] >> triangle[1] >> triangle[2];
 
-        if (std::accumulate(triangle.begin(), triangle.end(), 0) == 0) {
+        if (std::accumulate(triangle.begin(), triangle.end(), 0) == 0)
+        {
             break;
         }
 

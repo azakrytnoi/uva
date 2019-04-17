@@ -52,7 +52,8 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (sol.n_case_ == std::numeric_limits<size_t>::max()) {
+        if (sol.n_case_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.n_case_;
         }
 
@@ -62,7 +63,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        auto to_binstr = [](uint16_t n) -> std::string {
+        auto to_binstr = [](uint16_t n) -> std::string
+        {
             std::string out (13, '0');
             auto pout (out.rbegin());
 
@@ -80,7 +82,8 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        auto from_hexstr = [](const std::string & src) -> uint16_t {
+        auto from_hexstr = [](const std::string & src) -> uint16_t
+        {
             uint16_t result(std::accumulate(src.begin(), src.end(), 0, [](uint16_t prev, char ch)
             {
                 prev <<= 4;
@@ -91,7 +94,8 @@ namespace {
         a_ = from_hexstr(hex_a_);
         b_ = from_hexstr(hex_b_);
 
-        switch (op_[0]) {
+        switch (op_[0])
+        {
         case '+':
             sum_ = a_ + b_;
             break;
@@ -113,7 +117,8 @@ void U446::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

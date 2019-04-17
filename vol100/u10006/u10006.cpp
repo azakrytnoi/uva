@@ -41,8 +41,10 @@ namespace {
             std::unique_ptr<math::sieve_t<10000000>> sieve (new math::sieve_t<10000000>);
             std::clog << *(sieve->end() - 1) << std::endl;
 
-            for (uint32_t i = 2; i <= 65000; i++) {
-                if (!sieve->is_prime(i) && is_carmichael(i)) {
+            for (uint32_t i = 2; i <= 65000; i++)
+            {
+                if (!sieve->is_prime(i) && is_carmichael(i))
+                {
                     carmichael_[i] = true;
                 }
             }
@@ -55,10 +57,13 @@ namespace {
         }
         friend std::ostream& operator <<(std::ostream& out, solution& sol)
         {
-            if (sol.carmichael_[sol.n_]) {
+            if (sol.carmichael_[sol.n_])
+            {
                 out << "The number " << sol.n_ << " is a Carmichael number.";
 
-            } else {
+            }
+            else
+            {
                 out << sol.n_ << " is normal.";
             }
 
@@ -73,8 +78,10 @@ namespace {
     private:
         static bool is_carmichael(uint32_t n)
         {
-            for (uint32_t i = 2; i < n; i++) {
-                if (mod_pow(i, n, n) != i) {
+            for (uint32_t i = 2; i < n; i++)
+            {
+                if (mod_pow(i, n, n) != i)
+                {
                     return false;
                 }
             }
@@ -86,8 +93,10 @@ namespace {
         {
             uint32_t result = 1;
 
-            while (exp > 0) {
-                if (exp % 2 == 1) {
+            while (exp > 0)
+            {
+                if (exp % 2 == 1)
+                {
                     result = (result * base) % mod;
                 }
 
@@ -105,7 +114,8 @@ void U10006::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

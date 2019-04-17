@@ -63,7 +63,8 @@ namespace {
         ++caseNo_;
         pos_ = K_ + P_;
 
-        while (pos_ > N_) {
+        while (pos_ > N_)
+        {
             pos_ -= N_;
         }
 
@@ -77,7 +78,8 @@ void U11805::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

@@ -58,13 +58,15 @@ namespace {
         sol.graph_.clear();
         size_t n(0);
 
-        if (in >> n && n != 0) {
+        if (in >> n && n != 0)
+        {
             sol.graph_ = std::vector<std::vector<bool>>(n, std::vector<bool>(n, false));
             in >> sol.start_;
             --sol.start_;
             size_t p(0), q(0);
 
-            while (in >> p >> q && p != 0 && q != 0) {
+            while (in >> p >> q && p != 0 && q != 0)
+            {
                 sol.graph_[p - 1][q - 1] = true;
             }
         }
@@ -86,11 +88,14 @@ namespace {
         std::vector<int32_t> path(graph_.size(), -1);
         path[start_] = 0;
 
-        for (size_t idx = 0; idx < graph_.size(); ++idx) {
-            if (idx != start_) {
+        for (size_t idx = 0; idx < graph_.size(); ++idx)
+        {
+            if (idx != start_)
+            {
                 auto current (traceBack(idx, path));
 
-                if (current > max_) {
+                if (current > max_)
+                {
                     max_ = current, end_ = idx;
                 }
             }
@@ -101,14 +106,18 @@ namespace {
 
     int32_t solution_t::traceBack(size_t end, std::vector<int32_t>& path)
     {
-        if (path[end] == -1) {
+        if (path[end] == -1)
+        {
             int32_t longest (0);
 
-            for (size_t i = 0; i < graph_.size(); ++i) {
-                if (graph_[i][end]) {
+            for (size_t i = 0; i < graph_.size(); ++i)
+            {
+                if (graph_[i][end])
+                {
                     int32_t length = traceBack(i, path) + 1;
 
-                    if (length > longest) {
+                    if (length > longest)
+                    {
                         longest = length;
                     }
                 }
@@ -127,7 +136,8 @@ void U10000::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -70,12 +70,14 @@ namespace {
 
         void solve(size_t level = 0)
         {
-            if (level == tracks_.size()) {
+            if (level == tracks_.size())
+            {
                 size_t idx(0);
                 int64_t running = std::accumulate(tracks_.begin(), tracks_.end(), int64_t(0),
                                                   [&](int64_t init, auto val) -> int64_t {return init + (current_[idx++] ? val : 0); });
 
-                if (running <= capacity_ && running > total_) {
+                if (running <= capacity_ && running > total_)
+                {
                     total_ = running;
                     solution_ = current_;
                 }
@@ -96,7 +98,8 @@ void U624::operator()() const
     std::string line;
     solver<20> s;
 
-    while (std::getline(std::cin, line)) {
+    while (std::getline(std::cin, line))
+    {
         std::stringstream ss(line);
         ss >> s;
         s.solve();

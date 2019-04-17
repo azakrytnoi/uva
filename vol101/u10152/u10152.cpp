@@ -46,7 +46,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        std::for_each(sol.shifts_.begin(), sol.shifts_.end(), [&](const std::pair<std::string, size_t>& arg) {
+        std::for_each(sol.shifts_.begin(), sol.shifts_.end(), [&](const std::pair<std::string, size_t>& arg)
+        {
             out << arg.first << std::endl;
         });
         return out;
@@ -59,16 +60,19 @@ namespace {
         size_t nTurtles;
         in >> nTurtles;
 
-        if (in) {
+        if (in)
+        {
             sol.original_.reserve(nTurtles);
             std::string name;
             std::getline(in, name);
-            std::generate_n(std::back_inserter(sol.original_), nTurtles, [&]() {
+            std::generate_n(std::back_inserter(sol.original_), nTurtles, [&]()
+            {
                 std::getline(in, name);
                 return name;
             });
 
-            for (size_t j = 0; j < nTurtles; j++) {
+            for (size_t j = 0; j < nTurtles; j++)
+            {
                 std::getline(in, name);
                 sol.target_[name] = j;
             }
@@ -82,25 +86,32 @@ namespace {
         shifts_.clear();
         std::vector<std::pair<std::string, size_t>> order;
         order.reserve(original_.size());
-        std::transform(original_.begin(), original_.end(), std::back_inserter(order), [&](const std::string & name) {
+        std::transform(original_.begin(), original_.end(), std::back_inserter(order), [&](const std::string & name)
+        {
             return std::make_pair(name, target_[name]);
         });
         shifts_.reserve(order.size());
 
-        for (size_t i = original_.size() - 1, next = original_.size() - 1; ; i--) {
-            if (order[i].second != next) {
+        for (size_t i = original_.size() - 1, next = original_.size() - 1; ; i--)
+        {
+            if (order[i].second != next)
+            {
                 shifts_.push_back(order[i]);
 
-            } else {
+            }
+            else
+            {
                 next--;
             }
 
-            if (i == 0) {
+            if (i == 0)
+            {
                 break;
             }
         }
 
-        std::sort(shifts_.begin(), shifts_.end(), [](std::pair<std::string, size_t>& l, std::pair<std::string, size_t>& r) {
+        std::sort(shifts_.begin(), shifts_.end(), [](std::pair<std::string, size_t>& l, std::pair<std::string, size_t>& r)
+        {
             return l.second > r.second;
         });
         return true;
@@ -113,7 +124,8 @@ void U10152::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

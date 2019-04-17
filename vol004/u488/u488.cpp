@@ -54,7 +54,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        for (int32_t i = 0; i < sol.freq_; i++) {
+        for (int32_t i = 0; i < sol.freq_; i++)
+        {
             out << sol.out_.str() << std::endl;;
         }
 
@@ -65,11 +66,13 @@ namespace {
     {
         out_.str("");
 
-        for (int32_t i = 1; i <= amp_; i++) {
+        for (int32_t i = 1; i <= amp_; i++)
+        {
             out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
         }
 
-        for (int i = amp_ - 1; i >= 1; i--) {
+        for (int i = amp_ - 1; i >= 1; i--)
+        {
             out_ << std::string(i, static_cast<char>('0' + i)) << std::endl;
         }
 
@@ -83,10 +86,12 @@ void U488::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << sol();
         }
     }

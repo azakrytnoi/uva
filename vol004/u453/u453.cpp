@@ -33,7 +33,8 @@ namespace {
 
     const double_t EPS = 1e-6;
 
-    struct circle_t {
+    struct circle_t
+    {
         double_t x_, y_, r_;
 
         circle_t() : x_(), y_(), r_() {}
@@ -45,14 +46,16 @@ namespace {
         }
     };
 
-    struct point_t {
+    struct point_t
+    {
         double_t x_, y_;
 
         point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}
 
         bool operator<(const point_t& rhs) const
         {
-            if (std::abs(x_ - rhs.x_) < EPS) {
+            if (std::abs(x_ - rhs.x_) < EPS)
+            {
                 return y_ < rhs.y_;
             }
 
@@ -61,7 +64,8 @@ namespace {
 
         friend std::ostream& operator<<(std::ostream& out, const point_t& point)
         {
-            auto round = [](const double_t val) -> double_t {
+            auto round = [](const double_t val) -> double_t
+            {
                 return std::abs(val) < 1e-4 ? 0.0 : val;
             };
             out << "(" << std::fixed << std::setprecision(3) << round(point.x_) << "," << round(point.y_) << ")";
@@ -109,11 +113,16 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        if (sol.n_points_ < 0) {
+        if (sol.n_points_ < 0)
+        {
             out << "NO INTERSECTION";
-        } else if (sol.n_points_ == 0) {
+        }
+        else if (sol.n_points_ == 0)
+        {
             out << "THE CIRCLES ARE THE SAME";
-        } else {
+        }
+        else
+        {
             std::ostream_iterator<point_t> pout(out, "");
             std::copy(sol.points_.begin(), sol.points_.end(), pout);
         }
@@ -126,8 +135,10 @@ namespace {
         double_t distanceAB = std::sqrt((a_.x_ - b_.x_) * (a_.x_ - b_.x_) + (a_.y_ - b_.y_) * (a_.y_ - b_.y_));
 
         // shortcut for circles with same centers
-        if (std::abs(distanceAB) < EPS && std::abs(a_.r_ - b_.r_) < EPS) {
-            if (a_.r_ < EPS) {
+        if (std::abs(distanceAB) < EPS && std::abs(a_.r_ - b_.r_) < EPS)
+        {
+            if (a_.r_ < EPS)
+            {
                 points_.push_back(point_t(a_.x_, a_.y_));
             }
 
@@ -135,7 +146,8 @@ namespace {
         }
 
         // no intersection in any combination
-        if (a_.r_ + b_.r_ + EPS < distanceAB || a_.r_ + distanceAB + EPS < b_.r_ || b_.r_ + distanceAB + EPS < a_.r_) {
+        if (a_.r_ + b_.r_ + EPS < distanceAB || a_.r_ + distanceAB + EPS < b_.r_ || b_.r_ + distanceAB + EPS < a_.r_)
+        {
             return -1;
         }
 
@@ -143,15 +155,23 @@ namespace {
         double_t dy = b_.y_ - a_.y_;
 
         if (std::abs(distanceAB - a_.r_ - b_.r_) < EPS || std::abs(a_.r_ - distanceAB - b_.r_) < EPS ||
-                std::abs(b_.r_ - a_.r_ - distanceAB) < EPS) { // circles touch in single point
-            if (std::abs(distanceAB - a_.r_ - b_.r_) < EPS) { // (A)(B)
+                std::abs(b_.r_ - a_.r_ - distanceAB) < EPS)   // circles touch in single point
+        {
+            if (std::abs(distanceAB - a_.r_ - b_.r_) < EPS)   // (A)(B)
+            {
                 points_.push_back(point_t(a_.x_ + dx * a_.r_ / (a_.r_ + b_.r_), a_.y_ + dy * a_.r_ / (a_.r_ + b_.r_)));
-            } else if (a_.r_ < b_.r_) { //((A)B)
+            }
+            else if (a_.r_ < b_.r_)     //((A)B)
+            {
                 points_.push_back(point_t(a_.x_ - dx * a_.r_ / (b_.r_ - a_.r_), a_.y_ - dy * a_.r_ / (b_.r_ - a_.r_)));
-            } else { //((B)A)
+            }
+            else     //((B)A)
+            {
                 points_.push_back(point_t(b_.x_ + dx * b_.r_ / (a_.r_ - b_.r_), b_.y_ + dy * b_.r_ / (a_.r_ - b_.r_)));
             }
-        } else { // 2 intersection point
+        }
+        else     // 2 intersection point
+        {
             double_t theta = acos((a_.r_ * a_.r_ + distanceAB * distanceAB - b_.r_ * b_.r_) / 2 / a_.r_ / distanceAB);
             double_t r_dx = dx * cos(theta) - dy * sin(theta);
             double_t r_dy = dx * sin(theta) + dy * cos(theta);
@@ -171,7 +191,8 @@ void U453::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

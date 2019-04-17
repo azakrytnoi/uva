@@ -42,14 +42,20 @@ namespace {
             std::vector<uint32_t> dp(total_ + 1);
             std::sort(stones_.begin(), stones_.end());
 
-            for (auto dpi = dp.begin(); dpi != dp.end(); ++dpi) {
-                for (auto sti = stones_.begin(); sti != stones_.end(); ++sti) {
-                    if (std::distance(dp.begin(), dpi) >= *sti) {
-                        if (*(dpi - *sti) == 0) {
+            for (auto dpi = dp.begin(); dpi != dp.end(); ++dpi)
+            {
+                for (auto sti = stones_.begin(); sti != stones_.end(); ++sti)
+                {
+                    if (std::distance(dp.begin(), dpi) >= *sti)
+                    {
+                        if (*(dpi - *sti) == 0)
+                        {
                             *dpi = 1;
                             break;
                         }
-                    } else {
+                    }
+                    else
+                    {
                         break;
                     }
                 }
@@ -66,9 +72,11 @@ namespace {
             sol.winner_ = false;
             sol.stones_.clear();
 
-            if (in >> sol.total_ >> m) {
+            if (in >> sol.total_ >> m)
+            {
                 sol.stones_.reserve(m);
-                std::generate_n(std::back_inserter(sol.stones_), m, [&]() {
+                std::generate_n(std::back_inserter(sol.stones_), m, [&]()
+                {
                     int32_t tmp;
                     in >> tmp;
                     return tmp;
@@ -96,7 +104,8 @@ void U10404::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

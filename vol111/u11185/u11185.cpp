@@ -68,15 +68,19 @@ void U11185::operator()() const
     translated.reserve(20);
     base3_iterator bend(0);
 
-    while (std::cin >> N && N >= 0) {
-        if (N != 0) {
+    while (std::cin >> N && N >= 0)
+    {
+        if (N != 0)
+        {
             base3_iterator bit(N);
             translated.clear();
             std::copy(bit, bend, std::back_inserter(translated));
             std::reverse(translated.begin(), translated.end());
             std::cout << translated << std::endl;
 
-        } else {
+        }
+        else
+        {
             std::cout << "0" << std::endl;
         }
     }

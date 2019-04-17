@@ -49,7 +49,8 @@ namespace {
         std::getline(std::cin, line);
         std::vector<std::string> input;
         input.reserve(10);
-        std::generate_n(std::back_inserter(input), 10, [&]() -> std::string {
+        std::generate_n(std::back_inserter(input), 10, [&]() -> std::string
+        {
             std::getline(std::cin, line);
             // cppcheck-suppress returnReference
             return line; });
@@ -68,11 +69,14 @@ namespace {
         message_.clear();
         message_.reserve(input[0].length() - 1);
 
-        for (size_t i = 1; i < input[0].length(); i++) {
+        for (size_t i = 1; i < input[0].length(); i++)
+        {
             char ch(0);
 
-            for (size_t j = 0, power = 1; j < 9; j++, power <<= 1) {
-                if (input[j][i] == '\\') {
+            for (size_t j = 0, power = 1; j < 9; j++, power <<= 1)
+            {
+                if (input[j][i] == '\\')
+                {
                     ch += char(power >> 1);
                 }
             }
@@ -90,7 +94,8 @@ void U10851::operator()() const
     std::cin >> N;
     decoder dec;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> dec;
         std::cout << dec << std::endl;
     }

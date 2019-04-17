@@ -40,7 +40,8 @@ namespace {
             factorial_.push_back(1);
             factorial_.push_back(1);
             math::uint_big_t current (factorial_.back());
-            std::generate_n(std::back_inserter(factorial_), 600, [&]() {
+            std::generate_n(std::back_inserter(factorial_), 600, [&]()
+            {
                 current *= math::uint_big_t(factorial_.size());
                 return current;
             });
@@ -85,7 +86,8 @@ void U10007::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

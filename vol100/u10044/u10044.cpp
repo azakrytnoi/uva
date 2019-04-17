@@ -55,13 +55,15 @@ namespace {
         std::string line;
         std::getline(in, line);
 
-        while (n_books--) {
+        while (n_books--)
+        {
             std::getline(in, line);
             std::string temp = line.substr(0, line.find(':'));
             temp.erase(temp.find_last_not_of(' ') + 1);
             std::list<std::string> coauthors;
 
-            while (temp.find(".,") != std::string::npos) {
+            while (temp.find(".,") != std::string::npos)
+            {
                 std::string author = temp.substr(0, temp.find(".,") + 1);
                 temp.erase(0, author.length() + 1);
                 author.erase(0, author.find_first_not_of(' '));
@@ -72,8 +74,10 @@ namespace {
             temp.erase(0, temp.find_first_not_of(' '));
             coauthors.push_back(temp);
             sol.enumbers_[temp] = std::numeric_limits<uint32_t>::max();
-            std::for_each(coauthors.begin(), coauthors.end(), [&](const std::string & author) {
-                std::copy_if(coauthors.begin(), coauthors.end(), std::back_inserter(sol.coauthors_[author]), [&](auto coauthor) {
+            std::for_each(coauthors.begin(), coauthors.end(), [&](const std::string & author)
+            {
+                std::copy_if(coauthors.begin(), coauthors.end(), std::back_inserter(sol.coauthors_[author]), [&](auto coauthor)
+                {
                     return author != coauthor
                            && std::find(sol.coauthors_[author].begin(), sol.coauthors_[author].end(), coauthor) == sol.coauthors_[author].end();
                 });
@@ -82,7 +86,8 @@ namespace {
 
         sol.candidates_.clear();
         sol.candidates_.reserve(n_authors);
-        std::generate_n(std::back_inserter(sol.candidates_), n_authors, [&]() {
+        std::generate_n(std::back_inserter(sol.candidates_), n_authors, [&]()
+        {
             std::getline(in, line);
             return line;
         });
@@ -92,8 +97,10 @@ namespace {
 
     solution& solution::operator ()()
     {
-        std::for_each(candidates_.begin(), candidates_.end(), [&](const std::string & candidate) {
-            if (enumbers_[candidate] == std::numeric_limits<uint32_t>::max()) {
+        std::for_each(candidates_.begin(), candidates_.end(), [&](const std::string & candidate)
+        {
+            if (enumbers_[candidate] == std::numeric_limits<uint32_t>::max())
+            {
                 std::list<std::string> trace;
                 enumbers_[candidate] = calculate(candidate, trace);
             }
@@ -105,14 +112,18 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        std::for_each(sol.candidates_.begin(), sol.candidates_.end(), [&](const std::string & author) {
+        std::for_each(sol.candidates_.begin(), sol.candidates_.end(), [&](const std::string & author)
+        {
             out << author << " ";
             uint32_t enumber = sol.enumbers_.find(author)->second;
 
-            if (enumber == std::numeric_limits<uint32_t>::max()) {
+            if (enumber == std::numeric_limits<uint32_t>::max())
+            {
                 out << "infinity" << std::endl;
 
-            } else {
+            }
+            else
+            {
                 out << enumber << std::endl;
             }
         });
@@ -121,18 +132,22 @@ namespace {
 
     uint32_t solution::calculate(const std::string& candidate, std::list<std::string>& passed)
     {
-        if (enumbers_[candidate] != std::numeric_limits<uint32_t>::max()) {
+        if (enumbers_[candidate] != std::numeric_limits<uint32_t>::max())
+        {
             return enumbers_[candidate];
         }
 
-        if (std::find(passed.begin(), passed.end(), candidate) == passed.end()) {
+        if (std::find(passed.begin(), passed.end(), candidate) == passed.end())
+        {
             passed.push_back(candidate);
             uint32_t min_number(std::accumulate(coauthors_[candidate].begin(), coauthors_[candidate].end(),
-            std::numeric_limits<uint32_t>::max(), [&](uint32_t running, const std::string & name) {
+                                                std::numeric_limits<uint32_t>::max(), [&](uint32_t running, const std::string & name)
+            {
                 return std::min(running, calculate(name, passed));
             }));
 
-            if (min_number != std::numeric_limits<uint32_t>::max()) {
+            if (min_number != std::numeric_limits<uint32_t>::max())
+            {
                 return min_number + 1;
             }
         }
@@ -148,7 +163,8 @@ void U10044::operator()() const
     solution sol;
     uint32_t nCase(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Scenario " << (++nCase) << std::endl << sol() << std::endl;
     }

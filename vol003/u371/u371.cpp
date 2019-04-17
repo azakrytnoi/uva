@@ -36,13 +36,15 @@ namespace {
 
         uint32_t func_r(uint64_t x)
         {
-            if (cache_[x] != 0) {
+            if (cache_[x] != 0)
+            {
                 return cache_[x];
             }
 
             long y = (x % 2) ? 3 * x + 1 : x / 2;
 
-            if (y == 1) {
+            if (y == 1)
+            {
                 return 1;
             }
 
@@ -54,14 +56,17 @@ namespace {
             uint32_t count(0);
             uint64_t n = nn;
 
-            do {
-                if (cache_[nn] != 0) {
+            do
+            {
+                if (cache_[nn] != 0)
+                {
                     return cache_[nn];
                 }
 
                 n = (n & 0x01) ? 3 * n + 1 : n >> 1;
                 count++;
-            } while (n != 1);
+            }
+            while (n != 1);
 
             cache_[nn] = count;
             return count;
@@ -69,17 +74,20 @@ namespace {
 
         std::string operator() (uint32_t l, uint32_t h)
         {
-            if (l > h) {
+            if (l > h)
+            {
                 std::swap(l, h);
             }
 
             uint64_t result(0);
             uint32_t idx(l);
 
-            for (uint64_t n = l; n <= h; n++) {
+            for (uint64_t n = l; n <= h; n++)
+            {
                 uint32_t tmp = func_i(n);
 
-                if (tmp > result) {
+                if (tmp > result)
+                {
                     result = tmp;
                     idx = n;
                 }
@@ -99,7 +107,8 @@ void U371::operator()() const
     solution sol;
     uint32_t l, h;
 
-    while (std::cin >> l >> h && (l + h) != 0) {
+    while (std::cin >> l >> h && (l + h) != 0)
+    {
         std::cout << sol(l, h) << std::endl;
     }
 }

@@ -52,7 +52,8 @@ namespace {
             std::string line;
             auto current = comp.ram_.begin();
 
-            while (std::getline(in, line) && !line.empty()) {
+            while (std::getline(in, line) && !line.empty())
+            {
                 uint16_t word = std::atoi(line.c_str()) % computer::MODULO;
                 *(current++) = word;
             }
@@ -80,7 +81,8 @@ namespace {
 
         inline void condJump(uint8_t d, uint8_t s)
         {
-            if (registers_[s] != 0) {
+            if (registers_[s] != 0)
+            {
                 pc_ = registers_[d];
             }
         }
@@ -152,7 +154,8 @@ namespace {
 
         solution& operator () ()
         {
-            while (comp_) {
+            while (comp_)
+            {
                 steps_++;
                 comp_.step();
             }
@@ -163,13 +166,15 @@ namespace {
 
     void computer::step()
     {
-        if (running_) {
+        if (running_)
+        {
             uint16_t instruction = ram_[pc_++];
             uint8_t code = instruction / 100;
             uint8_t op1 = (instruction % 100) / 10;
             uint8_t op2 = instruction % 10;
 
-            switch (code) {
+            switch (code)
+            {
             case 0:
                 condJump(op1, op2);
                 break;
@@ -224,7 +229,8 @@ void U10033::operator()() const
     std::getline(std::cin, line);
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

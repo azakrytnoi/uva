@@ -31,7 +31,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct matrix_t {
+    struct matrix_t
+    {
         char name_;
         size_t row_, col_;
 
@@ -66,11 +67,13 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (sol.matrices_.empty()) {
+        if (sol.matrices_.empty())
+        {
             size_t n(0);
             in >> n;
 
-            while (n--) {
+            while (n--)
+            {
                 auto mat (std::make_shared<matrix_t>());
                 in >> *mat;
                 sol.matrices_.insert(std::make_pair(mat->name_, mat));
@@ -83,9 +86,12 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        if (sol.valid_) {
+        if (sol.valid_)
+        {
             out << sol.count_;
-        } else {
+        }
+        else
+        {
             out << "error";
         }
 
@@ -98,19 +104,25 @@ namespace {
         valid_ = true;
         std::stack<std::shared_ptr<matrix_t>> work;
 
-        for (auto ch : expr_) {
-            switch (ch) {
-            case ')': {
+        for (auto ch : expr_)
+        {
+            switch (ch)
+            {
+            case ')':
+            {
                 auto rhs (work.top());
                 work.pop();
                 auto lhs (work.top());
                 work.pop();
 
-                if (lhs->col_ == rhs->row_) {
+                if (lhs->col_ == rhs->row_)
+                {
                     count_ += lhs->row_ * lhs->col_ * rhs->col_;
                     auto inter (std::make_shared<matrix_t>('x', lhs->row_, rhs->col_));
                     work.push(inter);
-                } else {
+                }
+                else
+                {
                     valid_ = false;
                     break;
                 }
@@ -135,7 +147,8 @@ void U442::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

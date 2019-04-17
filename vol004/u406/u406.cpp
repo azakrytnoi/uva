@@ -53,7 +53,8 @@ namespace {
     {
         int64_t bound = std::lower_bound(sieve_.begin(), sieve_.end(), N_) - sieve_.begin();
 
-        while (bound >= sieve_.size() || sieve_[bound] > N_) {
+        while (bound >= sieve_.size() || sieve_[bound] > N_)
+        {
             --bound;
         }
 
@@ -79,7 +80,8 @@ void U406::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

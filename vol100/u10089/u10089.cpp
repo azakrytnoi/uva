@@ -55,9 +55,11 @@ namespace {
         sol.possible_ = false;
         sol.packages_.clear();
 
-        if (in && sol.N_ > 0) {
+        if (in && sol.N_ > 0)
+        {
             sol.packages_.reserve(sol.N_);
-            std::generate_n(std::back_inserter(sol.packages_), sol.N_, [&]() -> std::tuple<int64_t, int64_t, int64_t> {
+            std::generate_n(std::back_inserter(sol.packages_), sol.N_, [&]() -> std::tuple<int64_t, int64_t, int64_t>
+            {
                 int64_t p1(0), p2(0), p3(0);
                 in >> p1 >> p2 >> p3;
                 return std::make_tuple(p1, p2, p3);
@@ -78,60 +80,78 @@ namespace {
         std::vector<std::pair<int64_t, int64_t>> repack;
         repack.reserve(packages_.size());
         std::transform(packages_.begin(), packages_.end(),
-        std::back_inserter(repack), [](const std::tuple<int64_t, int64_t, int64_t>& pack) -> std::pair<int64_t, int64_t> {
+                       std::back_inserter(repack), [](const std::tuple<int64_t, int64_t, int64_t>& pack) -> std::pair<int64_t, int64_t>
+        {
             return std::make_pair(std::get<0>(pack) - std::get<2>(pack), std::get<1>(pack) - std::get<2>(pack));
         });
         int64_t x1(repack[0].first), y1(repack[0].second);
         int64_t x2(x1), y2(y1);
 
-        for (auto it = repack.begin() + 1; it != repack.end(); ++it) {
+        for (auto it = repack.begin() + 1; it != repack.end(); ++it)
+        {
             int64_t x = it->first, y = it->second;
             int64_t a1 = y1 * x, b1 = x1 * y, a2 = y2 * x, b2 = x2 * y;
 
-            if (a1 == b1) {
-                if (x1 * x + y1 * y <= 0) {
+            if (a1 == b1)
+            {
+                if (x1 * x + y1 * y <= 0)
+                {
                     possible_ = true;
                     break;
 
-                } else {
+                }
+                else
+                {
                     continue;
                 }
             }
 
-            if (a2 == b2) {
-                if (x2 * x + y2 * y <= 0) {
+            if (a2 == b2)
+            {
+                if (x2 * x + y2 * y <= 0)
+                {
                     possible_ = true;
                     break;
 
-                } else {
+                }
+                else
+                {
                     continue;
                 }
             }
 
-            if (a1 < b1) {
+            if (a1 < b1)
+            {
                 x1 = x, y1 = y;
             }
 
-            if (a2 > b2) {
+            if (a2 > b2)
+            {
                 x2 = x, y2 = y;
             }
 
-            if (x1 == x2 && y1 == y2) {
+            if (x1 == x2 && y1 == y2)
+            {
                 possible_ = true;
                 break;
             }
 
-            if (y1 * x2 == y2 * x1) {
-                if (x1 * x2 + y1 * y2 <= 0) {
+            if (y1 * x2 == y2 * x1)
+            {
+                if (x1 * x2 + y1 * y2 <= 0)
+                {
                     possible_ = true;
                     break;
 
-                } else {
+                }
+                else
+                {
                     continue;
                 }
             }
 
-            if (y1 * x2 < y2 * x1) {
+            if (y1 * x2 < y2 * x1)
+            {
                 possible_ = true;
                 break;
             }
@@ -145,7 +165,8 @@ void U10089::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

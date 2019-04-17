@@ -32,7 +32,8 @@ void __cdecl invoke()
 namespace {
 
     template<typename vdata>
-    struct vertex_t {
+    struct vertex_t
+    {
         vdata id_;
         std::vector<std::shared_ptr<vertex_t>> adjacent_;
         vertex_t (const vdata& id) : id_(id), adjacent_() {}
@@ -78,7 +79,8 @@ namespace {
         auto w = getVertex (end);
         v->adjacent_.push_back (w);
 
-        if (!directed) {
+        if (!directed)
+        {
             w->adjacent_.push_back (v);
         }
     }
@@ -88,7 +90,8 @@ namespace {
     {
         auto it = vertexMap_.find (v);
 
-        if (it == vertexMap_.end()) {
+        if (it == vertexMap_.end())
+        {
             return addVertex (v);
         }
 
@@ -110,16 +113,20 @@ namespace {
 
         work.push (std::make_pair(beginning, 0));
 
-        while (!work.empty()) {
+        while (!work.empty())
+        {
             auto temp (work.front());
             work.pop();
 
-            if (temp.first->id_ == end) {
+            if (temp.first->id_ == end)
+            {
                 return temp.second;
             }
 
-            for (auto& adj : temp.first->adjacent_) {
-                if (taken[adj->id_] == false) {
+            for (auto& adj : temp.first->adjacent_)
+            {
+                if (taken[adj->id_] == false)
+                {
                     taken[adj->id_] = true;
                     work.push (std::make_pair(adj, temp.second + 1));
                 }
@@ -153,20 +160,24 @@ namespace {
     {
         sol.words_.clear();
 
-        if (sol.n_ == std::numeric_limits<size_t>::max()) {
+        if (sol.n_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.n_;
             in.ignore();
         }
 
         std::string line;
 
-        while (std::getline(in, line) && line != "*") {
-            if (not line.empty()) {
+        while (std::getline(in, line) && line != "*")
+        {
+            if (not line.empty())
+            {
                 sol.dictionary_.push_back(line);
             }
         }
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             std::stringstream temp(line);
             std::tuple<std::string, std::string, int32_t> pair;
             temp >> std::get<0>(pair) >> std::get<1>(pair);
@@ -178,7 +189,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        std::for_each(sol.words_.begin(), sol.words_.end(), [&](const std::tuple<std::string, std::string, int32_t>& pair) {
+        std::for_each(sol.words_.begin(), sol.words_.end(), [&](const std::tuple<std::string, std::string, int32_t>& pair)
+        {
             out << std::get<0>(pair) << " " << std::get<1>(pair) << " " << std::get<2>(pair) << std::endl;
         });
         return out;
@@ -188,9 +200,12 @@ namespace {
     {
         graph_.reset();
 
-        for (auto i = dictionary_.begin(); i != dictionary_.end(); ++i) {
-            for (auto j = i + 1; j != dictionary_.end(); ++j) {
-                if (i->size() != j->size()) {
+        for (auto i = dictionary_.begin(); i != dictionary_.end(); ++i)
+        {
+            for (auto j = i + 1; j != dictionary_.end(); ++j)
+            {
+                if (i->size() != j->size())
+                {
                     continue;
                 }
 
@@ -198,19 +213,23 @@ namespace {
                 auto ik = i->begin();
                 auto jk = j->begin();
 
-                for (; diff_cnt < 2 && ik != i->end(); ++ik, ++jk) {
-                    if (*ik != *jk) {
+                for (; diff_cnt < 2 && ik != i->end(); ++ik, ++jk)
+                {
+                    if (*ik != *jk)
+                    {
                         ++diff_cnt;
                     }
                 }
 
-                if (diff_cnt < 2) {
+                if (diff_cnt < 2)
+                {
                     graph_.addEdge (*i, *j);
                 }
             }
         }
 
-        for (auto& pair : words_) {
+        for (auto& pair : words_)
+        {
             std::get<2>(pair) = graph_.bfs(std::get<0>(pair), std::get<1>(pair));
         }
 
@@ -223,8 +242,10 @@ void U429::operator()() const
 {
     solution_t sol;
 
-    do {
+    do
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
-    } while (sol);
+    }
+    while (sol);
 }

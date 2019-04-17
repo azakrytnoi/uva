@@ -40,11 +40,13 @@ namespace {
             std::priority_queue<uint64_t, std::deque<uint64_t>, std::greater<uint64_t>> work;
             work.push(1);
 
-            std::generate_n(std::back_inserter(numbers_), max_, [&]() {
+            std::generate_n(std::back_inserter(numbers_), max_, [&]()
+            {
                 auto num = work.top();
                 work.pop();
 
-                while (not work.empty() && work.top() == num) {
+                while (not work.empty() && work.top() == num)
+                {
                     work.pop();
                 }
 
@@ -80,14 +82,17 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        auto suffix = [](size_t n) {
+        auto suffix = [](size_t n)
+        {
             n %= 100;
 
-            if (n > 10 && n < 20) {
+            if (n > 10 && n < 20)
+            {
                 return "th";
             }
 
-            switch (n % 10) {
+            switch (n % 10)
+            {
             case 1:
                 return "st";
 
@@ -116,7 +121,8 @@ void U443::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -21,7 +21,8 @@ U482::~U482()
 {}
 
 namespace {
-    struct item {
+    struct item
+    {
         uint32_t idx;
         std::string value;
 
@@ -50,7 +51,8 @@ void U482::operator()()
     std::getline(std::cin, line);
     std::vector<item> src;
 
-    while (n--) {
+    while (n--)
+    {
         src.clear();
         std::getline(std::cin, line);
         std::getline(std::cin, line);
@@ -58,7 +60,8 @@ void U482::operator()()
         {
             std::stringstream ssin(line);
             std::transform(std::istream_iterator<uint32_t>(ssin), std::istream_iterator<uint32_t>(), std::back_inserter(src),
-            [&](auto n) {
+                           [&](auto n)
+            {
                 item i;
                 i.idx = n;
                 return i;
@@ -69,12 +72,14 @@ void U482::operator()()
             auto src_pointer = src.begin();
             std::stringstream ssin(line);
             std::for_each(std::istream_iterator<std::string>(ssin), std::istream_iterator <std::string>(),
-            [&](const std::string & val) {
+                          [&](const std::string & val)
+            {
                 (src_pointer++)->value = val;
             });
         }
         std::sort(src.begin(), src.end());
-        std::for_each(src.begin(), src.end(), [&](item & itm) {
+        std::for_each(src.begin(), src.end(), [&](item & itm)
+        {
             std::cout << itm.value << std::endl;
         });
         std::cout << std::endl;

@@ -57,15 +57,21 @@ namespace {
             auto pa = a_.begin();
             auto pb = b_.begin();
 
-            while (pa != a_.end() && pb != b_.end()) {
-                if (*pa == *pb) {
+            while (pa != a_.end() && pb != b_.end())
+            {
+                if (*pa == *pb)
+                {
                     result_ += (*pa++);
                     ++pb;
 
-                } else if (*pa > *pb) {
+                }
+                else if (*pa > *pb)
+                {
                     ++pb;
 
-                } else {
+                }
+                else
+                {
                     ++pa;
                 }
             }
@@ -80,7 +86,8 @@ void U10252::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

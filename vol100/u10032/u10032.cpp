@@ -50,11 +50,13 @@ namespace {
     {
         int32_t n;
 
-        if (in >> n) {
+        if (in >> n)
+        {
             sol.weights_.clear();
             sol.weights_.reserve(n);
             sol.total_ = 0;
-            std::generate_n(std::back_inserter(sol.weights_), n, [&]() {
+            std::generate_n(std::back_inserter(sol.weights_), n, [&]()
+            {
                 int32_t tmp;
                 in >> tmp;
                 sol.total_ += tmp;
@@ -77,9 +79,12 @@ namespace {
         std::vector<int64_t> dp(weights_.size() * 450);
         dp[0] = 1;
 
-        for (size_t i = 0; i < weights_.size(); i++) {
-            for (int j = total_; j > -1; j--) {
-                if (dp[j]) {
+        for (size_t i = 0; i < weights_.size(); i++)
+        {
+            for (int j = total_; j > -1; j--)
+            {
+                if (dp[j])
+                {
                     dp[j + weights_[i]] |= (dp[j] << 1);
                 }
             }
@@ -90,13 +95,16 @@ namespace {
 
         int32_t median(0);
 
-        for (int i = half, j = half; i > -1 && j <= total_; i--, j++) {
-            if (dp[i] & bit) {
+        for (int i = half, j = half; i > -1 && j <= total_; i--, j++)
+        {
+            if (dp[i] & bit)
+            {
                 median = i;
                 break;
             }
 
-            if (dp[j] & bit) {
+            if (dp[j] & bit)
+            {
                 median = j;
                 break;
             }
@@ -115,8 +123,10 @@ void U10032::operator()() const
     solution sol;
     bool next(false);
 
-    while (N--) {
-        if (next) {
+    while (N--)
+    {
+        if (next)
+        {
             std::cout << std::endl;
         }
 

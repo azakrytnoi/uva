@@ -34,20 +34,24 @@ namespace {
         std::istream& operator >> (std::istream& in, solver& s)
         {
             int n, m;
-            auto load = [&]() {
+            auto load = [&]()
+            {
                 int tmp;
                 in >> tmp;
                 return tmp;
             };
 
-            if (in >> m >> n && !(m == 0 && n == 0)) {
+            if (in >> m >> n && !(m == 0 && n == 0))
+            {
                 s.seq_++;
                 s.a_.clear();
                 std::generate_n(std::back_inserter(s.a_), m, load);
                 s.b_.clear();
                 std::generate_n(std::back_inserter(s.b_), n, load);
 
-            } else {
+            }
+            else
+            {
                 while (in >> n);
             }
 
@@ -76,15 +80,22 @@ namespace {
         int temp[M + 1][N + 1];
 #endif
 
-        for (size_t i = 0; i <= M; i++) {
-            for (size_t j = 0; j <= N; j++) {
-                if (i == 0 || j == 0) {
+        for (size_t i = 0; i <= M; i++)
+        {
+            for (size_t j = 0; j <= N; j++)
+            {
+                if (i == 0 || j == 0)
+                {
                     temp[i][j] = 0;
 
-                } else if (a[i - 1] == b[j - 1]) {
+                }
+                else if (a[i - 1] == b[j - 1])
+                {
                     temp[i][j] = temp[i - 1][j - 1] + 1;
 
-                } else {
+                }
+                else
+                {
                     temp[i][j] = std::max(temp[i - 1][j], temp[i][j - 1]);
                 }
             }
@@ -108,7 +119,8 @@ void U10066::operator()() const
 {
     solver s;
 
-    while (std::cin >> s) {
+    while (std::cin >> s)
+    {
         std::cout << s.solve() << std::endl;
     }
 }

@@ -55,12 +55,14 @@ namespace {
     solution_t& solution_t::operator()()
     {
         std::sort(names_.begin(), names_.end());
-        col_width_ = std::accumulate(names_.begin(), names_.end(), 0, [](const size_t prev, const std::string & str) {
+        col_width_ = std::accumulate(names_.begin(), names_.end(), 0, [](const size_t prev, const std::string & str)
+        {
             return prev < str.length() ? str.length() : prev;
         });
         col_width_ += 2;
 
-        if (col_width_ > 60) {
+        if (col_width_ > 60)
+        {
             col_width_ = 60;
         }
 
@@ -73,7 +75,8 @@ namespace {
     {
         sol.names_.clear();
 
-        if (in >> sol.n_) {
+        if (in >> sol.n_)
+        {
             sol.names_.reserve(sol.n_);
             std::istream_iterator<std::string> sin(in);
             std::copy_n(sin, sol.n_, std::back_inserter(sol.names_));
@@ -86,9 +89,12 @@ namespace {
     {
         out << std::string(60, '-') << std::endl;
 
-        for (size_t i = 0; i < sol.nrows_; ++i) {
-            for (size_t j = 0; i + j < sol.n_; j += sol.nrows_) {
-                if (j > 0) {
+        for (size_t i = 0; i < sol.nrows_; ++i)
+        {
+            for (size_t j = 0; i + j < sol.n_; j += sol.nrows_)
+            {
+                if (j > 0)
+                {
                     out << "  ";
                 }
 
@@ -108,7 +114,8 @@ void U400::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

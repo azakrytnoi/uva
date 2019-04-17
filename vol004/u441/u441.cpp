@@ -53,7 +53,8 @@ namespace {
         sol.set_.clear();
         size_t n;
 
-        if (in >> n && n > 0) {
+        if (in >> n && n > 0)
+        {
             sol.set_.reserve(n);
             std::istream_iterator<uint16_t> sin(in);
             std::copy_n(sin, n, std::back_inserter(sol.set_));
@@ -76,15 +77,19 @@ namespace {
 
     void solution_t::select_and_print(size_t selected, size_t pos, std::ostream& out)
     {
-        if (selected + set_.size() - pos < 6) {
+        if (selected + set_.size() - pos < 6)
+        {
             return;
         }
 
-        if (pos == set_.size()) {
-            if (selected == 6) {
+        if (pos == set_.size())
+        {
+            if (selected == 6)
+            {
                 auto sel = selected_.begin();
                 out << *(sel++);
-                std::for_each(sel, selected_.end(), [&](const uint16_t num) {
+                std::for_each(sel, selected_.end(), [&](const uint16_t num)
+                {
                     out << ' ' << num;
                 });
                 out << std::endl;
@@ -93,7 +98,8 @@ namespace {
             return;
         }
 
-        if (selected < 6) {
+        if (selected < 6)
+        {
             selected_[selected] = set_[pos];
             select_and_print(selected + 1, pos + 1, out);
         }
@@ -107,7 +113,8 @@ void U441::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol(std::cout) << std::endl;
     }
 }

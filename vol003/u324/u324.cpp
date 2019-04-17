@@ -40,16 +40,20 @@ namespace {
             math::uint_big_t fact(1);
             cache_.resize(368);
 
-            for (uint16_t i = 1; i <= 367; i++) {
+            for (uint16_t i = 1; i <= 367; i++)
+            {
                 cache_[i].resize(10);
                 fact *= math::uint_big_t(i);
                 bool leading0(true);
-                std::for_each(fact.data().rbegin(), fact.data().rend(), [&](auto digit) {
-                    if (leading0) {
+                std::for_each(fact.data().rbegin(), fact.data().rend(), [&](auto digit)
+                {
+                    if (leading0)
+                    {
                         leading0 = digit == 0;
                     }
 
-                    if (!leading0) {
+                    if (!leading0)
+                    {
                         cache_[i][digit]++;
                     }
                 });
@@ -71,9 +75,11 @@ namespace {
     {
         out << sol.number_ << "! --";
         uint16_t idx(0);
-        std::for_each(sol.cache_[sol.number_].begin(), sol.cache_[sol.number_].end(), [&](auto freq) {
+        std::for_each(sol.cache_[sol.number_].begin(), sol.cache_[sol.number_].end(), [&](auto freq)
+        {
             // cppcheck-suppress knownConditionTrueFalse
-            if ((idx % 5) == 0) {
+            if ((idx % 5) == 0)
+            {
                 out << std::endl;
             }
 
@@ -88,7 +94,8 @@ void U324::operator()() const
     solution sol;
     uint16_t n;
 
-    while (std::cin >> n && n > 0) {
+    while (std::cin >> n && n > 0)
+    {
         std::cout << sol(n) << std::endl;
     }
 }

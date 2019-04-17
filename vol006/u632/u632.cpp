@@ -52,7 +52,8 @@ namespace {
         size_t n;
         in >> n;
         sol.original_.reserve(n);
-        std::generate_n(std::back_inserter(sol.original_), n, [&]() {
+        std::generate_n(std::back_inserter(sol.original_), n, [&]()
+        {
             char ch;
 
             while (in.get(ch) && ch == '\n');
@@ -67,9 +68,11 @@ namespace {
         out << sol.s1_pos_ << std::endl;
         std::ostream_iterator<char> oit (out, "");
         size_t line_length(0);
-        std::transform(sol.result_.begin(), sol.result_.end(), oit, [&](char ch) {
+        std::transform(sol.result_.begin(), sol.result_.end(), oit, [&](char ch)
+        {
 
-            if (line_length >= 50) {
+            if (line_length >= 50)
+            {
                 out << std::endl;
                 line_length = 0;
             }
@@ -86,20 +89,24 @@ namespace {
         std::vector<std::pair<size_t, std::string>> sn;
         sn.reserve(original_.length());
         size_t seq_no(0);
-        std::generate_n(std::back_inserter(sn), original_.length(), [&]() {
+        std::generate_n(std::back_inserter(sn), original_.length(), [&]()
+        {
             auto pair = std::make_pair(seq_no++, original_);
             auto ch = original_[0];
             original_ = original_.erase(0, 1) + ch;
             return pair;
         });
-        std::sort(sn.begin(), sn.end(), [](const std::pair<size_t, std::string>& lhs, const std::pair<size_t, std::string>& rhs) {
+        std::sort(sn.begin(), sn.end(), [](const std::pair<size_t, std::string>& lhs, const std::pair<size_t, std::string>& rhs)
+        {
             return lhs.second < rhs.second;
         });
         result_.reserve(original_.length());
         size_t row_no(0);
 
-        for (auto& pair : sn) {
-            if (pair.first == 1) {
+        for (auto& pair : sn)
+        {
+            if (pair.first == 1)
+            {
                 s1_pos_ = row_no;
             }
 
@@ -118,12 +125,14 @@ void U632::operator()() const
     size_t N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         solution sol;
         std::cin >> sol;
         std::cout << sol();
 
-        if (N != 0) {
+        if (N != 0)
+        {
             std::cout << std::endl;
         }
     }

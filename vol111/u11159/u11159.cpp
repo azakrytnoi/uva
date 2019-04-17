@@ -72,13 +72,17 @@ namespace {
     template<size_t N, size_t M>
     solution<N, M>& solution<N, M>::operator()()
     {
-        for (int i = 1; i <= n_; ++i) {
-            for (int j = 1; j <= m_; ++j) {
-                if (a_[i] != 0 && b_[j] % a_[i] == 0) {
+        for (int i = 1; i <= n_; ++i)
+        {
+            for (int j = 1; j <= m_; ++j)
+            {
+                if (a_[i] != 0 && b_[j] % a_[i] == 0)
+                {
                     g_[i].push_back(j + n_);
                 }
 
-                if (a_[i] == 0 && b_[j] == 0) {
+                if (a_[i] == 0 && b_[j] == 0)
+                {
                     g_[i].push_back(j + n_);
                 }
             }
@@ -97,10 +101,14 @@ namespace {
         pn_.resize(n_ + m_ + 2);
         pm_.resize(n_ + m_ + 2);
 
-        while (BFS()) {
-            for (int i = 1; i <= n_; ++i) {
-                if (pn_[i] == 0) {
-                    if (DFS(i)) {
+        while (BFS())
+        {
+            for (int i = 1; i <= n_; ++i)
+            {
+                if (pn_[i] == 0)
+                {
+                    if (DFS(i))
+                    {
                         ++result_;
                     }
                 }
@@ -111,12 +119,16 @@ namespace {
     template<size_t N, size_t M>
     bool solution<N, M>::DFS(int v)
     {
-        if (v != 0) {
-            for (int j = 0; j < int(g_[v].size()); ++j) {
+        if (v != 0)
+        {
+            for (int j = 0; j < int(g_[v].size()); ++j)
+            {
                 int u = g_[v][j];
 
-                if (dist_[pm_[u]] == dist_[v] + 1) {
-                    if (DFS(pm_[u])) {
+                if (dist_[pm_[u]] == dist_[v] + 1)
+                {
+                    if (DFS(pm_[u]))
+                    {
                         pm_[u] = v;
                         pn_[v] = u;
                         return true;
@@ -136,26 +148,34 @@ namespace {
     {
         int b (0), en (0);
 
-        for (int i = 1; i <= n_; ++i) {
-            if (pn_[i] == 0) {
+        for (int i = 1; i <= n_; ++i)
+        {
+            if (pn_[i] == 0)
+            {
                 dist_[i] = 0;
                 q_[en++] = i;
 
-            } else {
+            }
+            else
+            {
                 dist_[i] = INFINITY_;
             }
         }
 
         dist_[0] = INFINITY_;
 
-        while (b < en) {
+        while (b < en)
+        {
             int v = q_[b++];
 
-            if (dist_[v] < dist_[0]) {
-                for (int j = 0; j < int(g_[v].size()); ++j) {
+            if (dist_[v] < dist_[0])
+            {
+                for (int j = 0; j < int(g_[v].size()); ++j)
+                {
                     int u = g_[v][j];
 
-                    if (dist_[pm_[u]] == INFINITY_) {
+                    if (dist_[pm_[u]] == INFINITY_)
+                    {
                         dist_[pm_[u]] = dist_[v] + 1;
                         q_[en++] = pm_[u];
                     }
@@ -171,7 +191,8 @@ namespace {
     template<size_t N, size_t M>
     std::istream& operator >> (std::istream& in, solution<N, M>& sol)
     {
-        auto readArray = [&]() {
+        auto readArray = [&]()
+        {
             int tmp;
             in >> tmp;
             return tmp;
@@ -204,7 +225,8 @@ void U11159::operator()() const
     std::cin >> T;
     u11159Solution sol;
 
-    while (T--) {
+    while (T--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

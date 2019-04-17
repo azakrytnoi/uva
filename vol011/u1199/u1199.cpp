@@ -48,7 +48,8 @@ namespace {
             sol.stops_.clear();
             sol.floors_.reset();
 
-            while (sol.nFloors_--) {
+            while (sol.nFloors_--)
+            {
                 in >> sol.upmost_;
                 sol.floors_[sol.upmost_] = true;
             }
@@ -61,7 +62,8 @@ namespace {
         {
             out << sol.max_ << std::endl;
             out << sol.stops_.size();
-            std::for_each(sol.stops_.begin(), sol.stops_.end(), [&](auto floor) {
+            std::for_each(sol.stops_.begin(), sol.stops_.end(), [&](auto floor)
+            {
                 out << " " << floor;
             });
             return out;
@@ -72,13 +74,17 @@ namespace {
             int min(0);
             max_ = 14 * (upmost_ - 1);
 
-            while (min < max_ - 1) {
+            while (min < max_ - 1)
+            {
                 int mid = (min + max_) / 2;
 
-                if (solve(mid)) {
+                if (solve(mid))
+                {
                     max_ = mid;
 
-                } else {
+                }
+                else
+                {
                     min = mid;
                 }
             }
@@ -91,14 +97,17 @@ namespace {
             int num_stops(0);
             int next_floor(top / 20 + 2);
 
-            while (next_floor <= upmost_) {
-                while (next_floor <= upmost_ && floors_[next_floor] == false) {
+            while (next_floor <= upmost_)
+            {
+                while (next_floor <= upmost_ && floors_[next_floor] == false)
+                {
                     next_floor++;
                 }
 
                 stops_.push_back(next_floor);
 
-                if ((next_floor - 1) * 4 + 10 * num_stops > top) {
+                if ((next_floor - 1) * 4 + 10 * num_stops > top)
+                {
                     return false;
                 }
 
@@ -116,7 +125,8 @@ void U1199::operator()() const
 {
     int N;
 
-    while ((std::cin >> N) && N) {
+    while ((std::cin >> N) && N)
+    {
         solver<32> s(N);
         std::cin >> s;
         s.solve();

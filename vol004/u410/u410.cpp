@@ -63,17 +63,20 @@ namespace {
         auto spec_i = spec_.rbegin();
         auto chamber_i = chamber_.begin();
 
-        for (int16_t direction = 1; spec_i != spec_.rend(); ++spec_i, std::advance(chamber_i, direction)) {
+        for (int16_t direction = 1; spec_i != spec_.rend(); ++spec_i, std::advance(chamber_i, direction))
+        {
             chamber_i->first += *spec_i;
             chamber_i->second.push_back(*spec_i);
 
-            if (chamber_i == chamber_.end() - 1) {
+            if (chamber_i == chamber_.end() - 1)
+            {
                 --direction;
             }
         }
 
         imbalance_ = std::accumulate(chamber_.begin(), chamber_.end(), 0.0, [&](const double_t prev,
-        const std::pair<double_t, std::vector<uint16_t>>& val) {
+                                     const std::pair<double_t, std::vector<uint16_t>>& val)
+        {
             return prev + std::abs(val.first - avg);
         });
         return *this;
@@ -84,7 +87,8 @@ namespace {
         sol.chamber_.clear();
         sol.spec_.clear();
 
-        if (in >> sol.n_chambers_) {
+        if (in >> sol.n_chambers_)
+        {
             size_t n(0);
             in >> n;
             std::istream_iterator<uint16_t> sin(in);
@@ -99,9 +103,11 @@ namespace {
     {
         out << "Set #" << sol.case_no_ << std::endl;
 
-        for (size_t idx = 0; idx < sol.chamber_.size(); ++idx) {
+        for (size_t idx = 0; idx < sol.chamber_.size(); ++idx)
+        {
             out << std::right << std::setw(2) << idx << ':';
-            std::for_each(sol.chamber_[idx].second.begin(), sol.chamber_[idx].second.end(), [&](const uint16_t val) {
+            std::for_each(sol.chamber_[idx].second.begin(), sol.chamber_[idx].second.end(), [&](const uint16_t val)
+            {
                 out << " " << val;
             });
             out << std::endl;
@@ -117,7 +123,8 @@ void U410::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -54,7 +54,8 @@ namespace {
         size_t n;
         sol.jolly_ = true;
 
-        if (in >> n && n > 0) {
+        if (in >> n && n > 0)
+        {
             size_t n1(n - 1);
             sol.set_.clear();
             sol.set_.resize(n1);
@@ -62,23 +63,29 @@ namespace {
             in >> last;
             n--;
 
-            if (n > 0) {
-                while (n--) {
+            if (n > 0)
+            {
+                while (n--)
+                {
                     int next;
                     in >> next;
                     size_t diff = std::abs(last - next);
 
-                    if (diff <= n1 && diff > 0) {
+                    if (diff <= n1 && diff > 0)
+                    {
                         sol.set_[diff - 1] = true;
 
-                    } else {
+                    }
+                    else
+                    {
                         sol.jolly_ = false;
                     }
 
                     last = next;
                 }
 
-                sol.jolly_ = sol.jolly_ && std::accumulate(sol.set_.begin(), sol.set_.end(), true, [](auto i, auto next) {
+                sol.jolly_ = sol.jolly_ && std::accumulate(sol.set_.begin(), sol.set_.end(), true, [](auto i, auto next)
+                {
                     return i && next;
                 });
             }
@@ -93,7 +100,8 @@ void U10038::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

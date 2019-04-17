@@ -30,9 +30,11 @@ void U458::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         std::ostream_iterator<char> oit(std::cout);
-        std::transform(line.begin(), line.end(), oit, [](auto ch) {
+        std::transform(line.begin(), line.end(), oit, [](auto ch)
+        {
             return ch - ('\'' - ' ');
         });
         std::cout << std::endl;

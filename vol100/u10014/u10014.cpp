@@ -53,13 +53,15 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (sol.N_ == std::numeric_limits<size_t>::max()) {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.N_;
         }
 
         size_t n(0);
 
-        if (in >> n) {
+        if (in >> n)
+        {
             in >> sol.a0_ >> sol.an1_;
             std::istream_iterator<double_t> din(in);
             sol.c_.clear();
@@ -81,7 +83,8 @@ namespace {
         auto n = c_.size();
         res_ = a0_ * n + an1_;
 
-        for (size_t i = n; i >= 1; --i) {
+        for (size_t i = n; i >= 1; --i)
+        {
             res_ -= 2 * (n - i + 1) * c_[i - 1];
         }
 
@@ -96,7 +99,8 @@ void U10014::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

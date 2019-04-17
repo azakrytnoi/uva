@@ -56,8 +56,10 @@ namespace {
         sol.total_ = 0;
         size_t n;
 
-        if (in >> n) {
-            std::generate_n(std::back_inserter(sol.left_), n, [&]() {
+        if (in >> n)
+        {
+            std::generate_n(std::back_inserter(sol.left_), n, [&]()
+            {
                 uint16_t tmp;
                 in >> tmp;
                 return tmp;
@@ -75,16 +77,19 @@ namespace {
 
     solution::operator bool()
     {
-        if (left_.empty()) {
+        if (left_.empty())
+        {
             return false;
         }
 
         std::sort(left_.begin(), left_.end());
 
-        while (true) {
+        while (true)
+        {
             auto A = left_[0];
 
-            if (left_.size() == 1) {
+            if (left_.size() == 1)
+            {
                 sout_ << A;
                 total_ += A;
                 break;
@@ -92,13 +97,15 @@ namespace {
 
             auto B = left_[1];
 
-            if (left_.size() == 2) {
+            if (left_.size() == 2)
+            {
                 sout_ << A << ' ' << B;
                 total_ += B;
                 break;
             }
 
-            if (left_.size() == 3) {
+            if (left_.size() == 3)
+            {
                 sout_ << A << ' ' << left_[2] << std::endl << A << std::endl << A << ' ' << B;
                 total_ += A + B + left_[2];
                 break;
@@ -109,11 +116,14 @@ namespace {
             auto Y = left_.back();
             left_.pop_back();
 
-            if (A + Y < B * 2) {
+            if (A + Y < B * 2)
+            {
                 sout_ << A << " " << Z << std::endl << A << std::endl << A << " " << Y << std::endl << A << std::endl;
                 total_ += Z + 2 * A + Y;
 
-            } else {
+            }
+            else
+            {
                 sout_ << A << " " << B << std::endl << A << std::endl << Y << " " << Z << std::endl << B << std::endl;
                 total_ += 2 * B + A + Z;
             }
@@ -129,7 +139,8 @@ void U10037::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

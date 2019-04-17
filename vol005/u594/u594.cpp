@@ -19,11 +19,13 @@ U594::~U594()
 {}
 
 namespace {
-    union {
+    union
+    {
         int32_t numerical;
         unsigned char bytes[4];
 
-        int32_t flip_endian() {
+        int32_t flip_endian()
+        {
             std::swap(bytes[0], bytes[3]);
             std::swap(bytes[1], bytes[2]);
             return numerical;
@@ -41,7 +43,8 @@ void __cdecl invoke()
 }
 void U594::operator()() const
 {
-    while (std::cin >> item.numerical) {
+    while (std::cin >> item.numerical)
+    {
         std::cout << item.numerical << " converts to ";
         std::cout << item.flip_endian() << std::endl;
     }

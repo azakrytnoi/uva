@@ -68,7 +68,8 @@ namespace {
         d_ = a_;
         int64_t x(0), y(1);
 
-        while (b_) {
+        while (b_)
+        {
             int64_t quot = d_ / b_;
             int64_t rem = d_ % b_;
             d_ = b_;
@@ -92,7 +93,8 @@ void U10104::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

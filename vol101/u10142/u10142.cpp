@@ -58,16 +58,19 @@ namespace {
         sol.winners_.reserve(n);
         std::string line;
         std::getline(in, line);
-        std::generate_n(std::back_inserter(sol.candidates_), n, [&]() -> std::string {
+        std::generate_n(std::back_inserter(sol.candidates_), n, [&]() -> std::string
+        {
             std::getline(in, line);
             // cppcheck-suppress returnReference
             return line; });
 
-        while (std::getline(in, line) && !line.empty()) {
+        while (std::getline(in, line) && !line.empty())
+        {
             std::stringstream iss(line);
             std::istream_iterator<size_t> iit(iss);
             sol.votes_.push_back(std::deque<size_t>());
-            std::for_each(iit, std::istream_iterator<size_t>(), [&](size_t idx) {
+            std::for_each(iit, std::istream_iterator<size_t>(), [&](size_t idx)
+            {
                 sol.votes_.back().push_back(idx);
             });
         }
@@ -85,26 +88,35 @@ namespace {
 
     solution& solution::operator ()()
     {
-        if (candidates_.size() > 1) {
-            do {
+        if (candidates_.size() > 1)
+        {
+            do
+            {
                 std::vector<std::pair<size_t, size_t>> ballout;
                 ballout.reserve(candidates_.size());
                 std::transform(candidates_.begin(), candidates_.end(), std::back_inserter(ballout), [&](auto /*name*/) -> std::pair<size_t, size_t>
                 {   return std::make_pair(0, ballout.size()); });
-                std::for_each(votes_.begin(), votes_.end(), [&](const std::deque<size_t>& vote) {
-                    if (!vote.empty()) {
+                std::for_each(votes_.begin(), votes_.end(), [&](const std::deque<size_t>& vote)
+                {
+                    if (!vote.empty())
+                    {
                         ballout[vote.front() - 1].first++;
                     }
                 });
                 std::sort(ballout.begin(), ballout.end(), [](auto c1, auto c2) -> bool
                 {   return c1.first > c2.first; });
 
-                if (ballout[0].first > votes_.size() / 2) {
+                if (ballout[0].first > votes_.size() / 2)
+                {
                     winners_.push_back(candidates_[ballout[0].second]);
 
-                } else {
-                    while (ballout.back().first == 0) {
-                        if (std::find(votes_.begin()->begin(), votes_.begin()->end(), ballout.back().second + 1) != votes_.begin()->end()) {
+                }
+                else
+                {
+                    while (ballout.back().first == 0)
+                    {
+                        if (std::find(votes_.begin()->begin(), votes_.begin()->end(), ballout.back().second + 1) != votes_.begin()->end())
+                        {
                             break;
                         }
 
@@ -112,20 +124,26 @@ namespace {
                     }
 
                     size_t highest = ballout[0].first;
-                    bool tie(std::accumulate(ballout.begin(), ballout.end(), true, [&](bool init, auto c) {
+                    bool tie(std::accumulate(ballout.begin(), ballout.end(), true, [&](bool init, auto c)
+                    {
                         init &= c.first == highest;
                         return init;
                     }));
 
-                    if (tie) {
+                    if (tie)
+                    {
                         std::transform(ballout.begin(), ballout.end(), std::back_inserter(winners_), [&](auto c) -> std::string
                         {   return candidates_[c.second]; });
 
-                    } else {
+                    }
+                    else
+                    {
                         size_t lowest = ballout.back().first;
 
-                        while (ballout.back().first == lowest) {
-                            std::for_each(votes_.begin(), votes_.end(), [&](std::deque<size_t>& vote) {
+                        while (ballout.back().first == lowest)
+                        {
+                            std::for_each(votes_.begin(), votes_.end(), [&](std::deque<size_t>& vote)
+                            {
                                 std::deque<size_t> temp;
                                 std::copy_if(vote.begin(), vote.end(), std::back_inserter(temp), [&](auto idx) -> bool
                                 {   return idx - 1 != ballout.back().second; });
@@ -135,9 +153,12 @@ namespace {
                         }
                     }
                 }
-            } while (winners_.empty());
+            }
+            while (winners_.empty());
 
-        } else {
+        }
+        else
+        {
             winners_.assign(candidates_.begin(), candidates_.end());
         }
 
@@ -156,7 +177,8 @@ void U10142::operator()() const
     std::getline(std::cin, line);
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

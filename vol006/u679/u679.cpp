@@ -75,8 +75,10 @@ void U679::operator()() const
 {
     int n_cases;
 
-    while ((std::cin >> n_cases) && (n_cases > 0)) {
-        while (n_cases-- > 0) {
+    while ((std::cin >> n_cases) && (n_cases > 0))
+    {
+        while (n_cases-- > 0)
+        {
             int D, I;
             std::cin >> D >> I;
             node::id_gen = 0;
@@ -84,8 +86,10 @@ void U679::operator()() const
             std::map <int, std::vector<node*>> nodes;
             nodes[1].push_back(root);
 
-            for (int i = 2; i <= D; ++i) {
-                std::for_each(nodes[i - 1].begin(), nodes[i - 1].end(), [&](node * n) {
+            for (int i = 2; i <= D; ++i)
+            {
+                std::for_each(nodes[i - 1].begin(), nodes[i - 1].end(), [&](node * n)
+                {
                     n->left() = new node();
                     n->right() = new node();
                     nodes[i].push_back(n->left());
@@ -95,11 +99,13 @@ void U679::operator()() const
 
             node* current = nullptr;
 
-            for (int i = 1; i <= I; ++i) {
+            for (int i = 1; i <= I; ++i)
+            {
                 current = root;
                 node* next = current;
 
-                while (next != nullptr) {
+                while (next != nullptr)
+                {
                     current = next;
                     next = current->traverse();
                 }

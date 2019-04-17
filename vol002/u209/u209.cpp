@@ -43,7 +43,8 @@ namespace {
 
         friend bool operator < (const point_t& lhs, const point_t& rhs)
         {
-            if (std::abs(lhs.x_ - rhs.x_) > 1e-6) {
+            if (std::abs(lhs.x_ - rhs.x_) > 1e-6)
+            {
                 return lhs.x_ < rhs.x_;
             }
 
@@ -71,7 +72,8 @@ namespace {
         double_t y_;
     };
 
-    enum class shape_t {
+    enum class shape_t
+    {
         none, trinagle, parallelogram, hexagon
     };
 
@@ -83,12 +85,14 @@ namespace {
             triangles_[1] = {0, 0};
             const auto dy = std::sqrt(3.0) / 2.0;
 
-            for (size_t i = 2, idx = 2; idx < std::numeric_limits<int16_t>::max(); i++) {
+            for (size_t i = 2, idx = 2; idx < std::numeric_limits<int16_t>::max(); i++)
+            {
                 triangles_[idx].x_ = triangles_[idx - i + 1].x_ - 0.5;
                 triangles_[idx].y_ = triangles_[idx - i + 1].y_ - dy;
                 size_t j;
 
-                for (j = 1, idx++; j < i && idx < std::numeric_limits<int16_t>::max(); j++, idx++) {
+                for (j = 1, idx++; j < i && idx < std::numeric_limits<int16_t>::max(); j++, idx++)
+                {
                     triangles_[idx].x_ = triangles_[idx - 1].x_ + 1;
                     triangles_[idx].y_ = triangles_[idx - 1].y_;
                 }
@@ -121,16 +125,20 @@ namespace {
         hull.resize(points_.size() * 2);
         int32_t m(0), n(points_.size()), i, t;
 
-        for (i = 0; i < n; i++) {
-            while (m >= 2 && point_t::cross(hull[m - 2], hull[m - 1], points_[i]) <= 0) {
+        for (i = 0; i < n; i++)
+        {
+            while (m >= 2 && point_t::cross(hull[m - 2], hull[m - 1], points_[i]) <= 0)
+            {
                 m--;
             }
 
             hull[m++] = points_[i];
         }
 
-        for (i = n - 1, t = m + 1; i >= 0; i--) {
-            while (m >= t && point_t::cross(hull[m - 2], hull[m - 1], points_[i]) <= 0) {
+        for (i = n - 1, t = m + 1; i >= 0; i--)
+        {
+            while (m >= t && point_t::cross(hull[m - 2], hull[m - 1], points_[i]) <= 0)
+            {
                 m--;
             }
 
@@ -143,18 +151,22 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        if (points_.size() > 1) {
+        if (points_.size() > 1)
+        {
 //            std::sort(points_.begin(), points_.end());
             std::vector<point_t> points;
             points.reserve(points_.size() * 10);
             size_t metrix = convex(points);
 
-            if (metrix - 1 == points_.size() && metrix - 1 != 5) {
+            if (metrix - 1 == points_.size() && metrix - 1 != 5)
+            {
                 double_t side = point_t::distance2(points[0], points[1]);
                 size_t idx;
 
-                for (idx = 1; idx < metrix; idx++) {
-                    if (std::abs(point_t::distance2(points[idx], points[idx - 1]) - side) > 1e-7) {
+                for (idx = 1; idx < metrix; idx++)
+                {
+                    if (std::abs(point_t::distance2(points[idx], points[idx - 1]) - side) > 1e-7)
+                    {
                         return *this;;
                     }
                 }
@@ -169,7 +181,8 @@ namespace {
 //                    }
 //                }
 
-                switch (points_.size()) {
+                switch (points_.size())
+                {
                 case 3:
                     shape_ = shape_t::trinagle;
                     break;
@@ -198,11 +211,13 @@ namespace {
         sol.original_.clear();
         sol.shape_ = shape_t::none;
 
-        if (std::getline(in, sol.original_)) {
+        if (std::getline(in, sol.original_))
+        {
             int32_t idx;
             std::stringstream sstream(sol.original_);
 
-            while (sstream >> idx) {
+            while (sstream >> idx)
+            {
                 point_t point = sol.triangles_[idx];
                 sol.points_.push_back(point);
             }
@@ -215,12 +230,16 @@ namespace {
     {
         out << sol.original_ << " ";
 
-        if (sol.shape_ == shape_t::none) {
+        if (sol.shape_ == shape_t::none)
+        {
             out << "are not the vertices of an acceptable figure";
-        } else {
+        }
+        else
+        {
             out << "are the vertives of a ";
 
-            switch (sol.shape_) {
+            switch (sol.shape_)
+            {
             case shape_t::trinagle:
                 out << "triangle";
                 break;
@@ -246,7 +265,8 @@ void U209::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

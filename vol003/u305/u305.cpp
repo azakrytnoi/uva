@@ -20,8 +20,10 @@ namespace {
 
         size_t current((m - 1) % size), i(0);
 
-        for (i = 0; i < 2 * k; i++) {
-            if (current < k) {
+        for (i = 0; i < 2 * k; i++)
+        {
+            if (current < k)
+            {
                 break;
             }
 
@@ -48,7 +50,8 @@ void U305::operator()()
     std::vector<size_t> answers;
     answers.reserve(15);
     answers.push_back(0);
-    std::generate_n(std::back_inserter(answers), 15, [&]() -> size_t {
+    std::generate_n(std::back_inserter(answers), 15, [&]() -> size_t
+    {
         size_t probe(1);
         size_t k = answers.size();
 

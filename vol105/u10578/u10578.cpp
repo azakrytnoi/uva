@@ -46,7 +46,8 @@ namespace {
             std::array<uint8_t, 6> v({0, 0, 0, 0, 0, 0});
             int16_t num(0);
 
-            for (char ch : input_) {
+            for (char ch : input_)
+            {
                 num++;
                 v[ch - '0' - 1]++;
             }
@@ -78,13 +79,15 @@ namespace {
             std::string cache_key;
             {
                 int16_t idx(0);
-                auto crc(std::accumulate(v.begin(), v.end(), 0, [&](int16_t prev, int8_t next) {
+                auto crc(std::accumulate(v.begin(), v.end(), 0, [&](int16_t prev, int8_t next)
+                {
                     idx++;
                     cache_key += '0' + next;
                     return prev + next * idx;
                 }));
 
-                if (crc > 31) {
+                if (crc > 31)
+                {
                     dp_[cache_key] = p_num;
                     return p_num;
                 }
@@ -93,19 +96,22 @@ namespace {
             {
                 auto prev = dp_.find(cache_key);
 
-                if (prev != dp_.end()) {
+                if (prev != dp_.end())
+                {
                     return prev->second;
                 }
             }
 
             int16_t win = 1 ^ p_num;
 
-            for (auto& vi : v) {
+            for (auto& vi : v)
+            {
                 vi++;
                 int16_t tmp = play(1 ^ p_num, v);
                 vi--;
 
-                if (tmp != win) {
+                if (tmp != win)
+                {
                     win = tmp;
                     break;
                 }
@@ -122,7 +128,8 @@ void U10578::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

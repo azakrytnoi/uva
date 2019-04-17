@@ -62,8 +62,10 @@ namespace {
     {
         summ_ = 0;
 
-        for (int32_t i = a_; i <= b_; i++) {
-            if (i & 0x01) {
+        for (int32_t i = a_; i <= b_; i++)
+        {
+            if (i & 0x01)
+            {
                 summ_ += i;
             }
         }
@@ -80,7 +82,8 @@ void U10783::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Case " << (++caseNo) << ": " << sol() << std::endl;
     }

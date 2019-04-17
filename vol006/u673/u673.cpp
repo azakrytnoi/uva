@@ -30,35 +30,44 @@ void U673::operator()() const
     std::cin >> N;
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::getline(std::cin, line);
         std::stringstream iss(line);
         std::stack<char> check;
         char ch;
         bool valid(true);
 
-        while (valid && iss >> ch) {
-            switch (ch) {
+        while (valid && iss >> ch)
+        {
+            switch (ch)
+            {
             case '[':
             case '(':
                 check.push(ch);
                 break;
 
             case ']':
-                if (!check.empty() && '[' == check.top()) {
+                if (!check.empty() && '[' == check.top())
+                {
                     check.pop();
 
-                } else {
+                }
+                else
+                {
                     valid = false;
                 }
 
                 break;
 
             case ')':
-                if (!check.empty() && '(' == check.top()) {
+                if (!check.empty() && '(' == check.top())
+                {
                     check.pop();
 
-                } else {
+                }
+                else
+                {
                     valid = false;
                 }
 

@@ -53,7 +53,8 @@ namespace {
         sol.source_.clear();
         std::string line;
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             sol.source_.push_back(line);
         }
 
@@ -71,12 +72,15 @@ namespace {
     {
         maze_.clear();
 
-        for (auto& src : source_) {
+        for (auto& src : source_)
+        {
             size_t n(0);
             std::string line;
 
-            for (auto ch : src) {
-                switch (ch) {
+            for (auto ch : src)
+            {
+                switch (ch)
+                {
                 case '!':
                     maze_.push_back(line);
                     line.clear();
@@ -84,9 +88,12 @@ namespace {
                     break;
 
                 default:
-                    if (std::isdigit(ch)) {
+                    if (std::isdigit(ch))
+                    {
                         n += ch - '0';
-                    } else {
+                    }
+                    else
+                    {
                         line += std::string(n, ch == 'b' ? ' ' : ch);
                         n = 0;
                     }
@@ -107,11 +114,14 @@ void U445::operator()() const
 {
     solution_t sol;
 
-    do {
+    do
+    {
         std::cin >> sol;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << sol() << std::endl;
         }
-    } while (sol);
+    }
+    while (sol);
 }

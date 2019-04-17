@@ -28,7 +28,8 @@ namespace {
 
         uint64_t operator ()(int n)
         {
-            while (fib_.size() < size_t(n + 1)) {
+            while (fib_.size() < size_t(n + 1))
+            {
                 size_t last = fib_.size() - 1;
                 fib_.push_back(fib_[last] + fib_[last - 1]);
             }
@@ -53,7 +54,8 @@ void U900::operator()() const
     int N;
     fibonacci<50> fib;
 
-    while (std::cin >> N && N > 0) {
+    while (std::cin >> N && N > 0)
+    {
         std::cout << fib(N) << std::endl;
     }
 }

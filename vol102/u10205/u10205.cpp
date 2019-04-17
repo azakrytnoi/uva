@@ -35,7 +35,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const suit& s)
     {
-        switch (s) {
+        switch (s)
+        {
         case suit::Clubs:
             out << "Clubs";
             break;
@@ -61,7 +62,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const rank& r)
     {
-        switch (r) {
+        switch (r)
+        {
         case rank::A:
             out << "Ace";
             break;
@@ -96,7 +98,8 @@ namespace {
 
         friend bool operator < (const card& c1, const card& c2)
         {
-            if (c1.suit_ == c2.suit_) {
+            if (c1.suit_ == c2.suit_)
+            {
                 return c1.rank_ < c2.rank_;
             }
 
@@ -127,8 +130,10 @@ namespace {
         suit suits[] = { suit::Clubs, suit::Diamonds, suit::Hearts, suit::Spades };
         rank ranks[] = { rank::_2, rank::_3, rank::_4, rank::_5, rank::_6, rank::_7, rank::_8, rank::_9, rank::T, rank::J, rank::Q, rank::K, rank::A };
         desk_.reserve(52);
-        std::for_each(suits, suits + 4, [&](const suit & s) {
-            std::for_each(ranks, ranks + 13, [&](const rank & r) {
+        std::for_each(suits, suits + 4, [&](const suit & s)
+        {
+            std::for_each(ranks, ranks + 13, [&](const rank & r)
+            {
                 desk_.push_back(card(r, s));
             });
         });
@@ -141,7 +146,8 @@ namespace {
         std::vector<std::vector<uint16_t>> shuffles;
         shuffles.reserve(n);
 
-        while (n--) {
+        while (n--)
+        {
             std::vector<uint16_t> temp;
             temp.reserve(52);
             std::istream_iterator<uint16_t> iit(in);
@@ -152,12 +158,14 @@ namespace {
         std::string line;
         std::getline(in, line);
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             std::vector<card> temp;
             temp.reserve(52);
             std::stringstream ss (line);
             ss >> n;
-            std::for_each(shuffles[n - 1].begin(), shuffles[n - 1].end(), [&](uint16_t idx) {
+            std::for_each(shuffles[n - 1].begin(), shuffles[n - 1].end(), [&](uint16_t idx)
+            {
                 temp.push_back(sol.desk_[idx - 1]);
             });
             sol.desk_.swap(temp);
@@ -180,7 +188,8 @@ void U10205::operator()() const
     uint32_t N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         solution sol;
         std::cin >> sol;
         std::cout << sol << std::endl;

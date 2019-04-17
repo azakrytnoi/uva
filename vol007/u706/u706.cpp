@@ -43,7 +43,8 @@ namespace {
     };
 
     solution::solution() :
-        size_(0), number_(), digits_( {
+        size_(0), number_(), digits_(
+    {
         { " - ", "| |", "   ", "| |", " - " },
         { "   ", "  |", "   ", "  |", "   " },
         { " - ", "  |", " - ", "|  ", " - " },
@@ -72,21 +73,25 @@ namespace {
     {
         size_t row(0);
         size_t col(0);
-        auto printLine = [&](auto digit) {
-            if ((col++) != 0) {
+        auto printLine = [&](auto digit)
+        {
+            if ((col++) != 0)
+            {
                 out << ' ';
             }
 
             size_t idx = digit - '0';
             out << sol.digits_[idx][row][0];
 
-            for (size_t i = 0; i < sol.size_; i++) {
+            for (size_t i = 0; i < sol.size_; i++)
+            {
                 out << sol.digits_[idx][row][1];
             }
 
             out << sol.digits_[idx][row][2];
         };
-        auto printScaledLine = [&]() {
+        auto printScaledLine = [&]()
+        {
             // cppcheck-suppress unreadVariable
             col = 0;
             std::for_each(sol.number_.begin(), sol.number_.end(), printLine);
@@ -95,7 +100,8 @@ namespace {
         printScaledLine();
         row++;
 
-        for (size_t ri = 0; ri < sol.size_; ri++) {
+        for (size_t ri = 0; ri < sol.size_; ri++)
+        {
             printScaledLine();
         }
 
@@ -103,7 +109,8 @@ namespace {
         printScaledLine();
         row++;
 
-        for (size_t ri = 0; ri < sol.size_; ri++) {
+        for (size_t ri = 0; ri < sol.size_; ri++)
+        {
             printScaledLine();
         }
 
@@ -118,7 +125,8 @@ void U706::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

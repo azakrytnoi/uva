@@ -51,7 +51,8 @@ namespace {
         {
             int32_t s(0);
 
-            for (; n != 0; n /= 10) {
+            for (; n != 0; n /= 10)
+            {
                 s += n % 10;
             }
 
@@ -86,17 +87,21 @@ namespace {
         int32_t s1(0);
         int32_t upper = int32_t(std::sqrt(n) + 1);
 
-        for (auto it = sieve_.begin() + 1; it != sieve_.end() && *it <= uint64_t(upper); ++it) {
-            if (n % *it == 0) {
+        for (auto it = sieve_.begin() + 1; it != sieve_.end() && *it <= uint64_t(upper); ++it)
+        {
+            if (n % *it == 0)
+            {
                 int32_t s = n_summ(*it);
 
-                for (; n % *it == 0; n /= int32_t(*it)) {
+                for (; n % *it == 0; n /= int32_t(*it))
+                {
                     s1 += s;
                 }
             }
         }
 
-        if (s1 != 0 && n != 1) {
+        if (s1 != 0 && n != 1)
+        {
             s1 += n_summ(n);
         }
 
@@ -110,7 +115,8 @@ void U10042::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

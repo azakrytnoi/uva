@@ -30,7 +30,8 @@ void U913::operator()() const
 {
     uint64_t num;
 
-    while (std::cin >> num) {
+    while (std::cin >> num)
+    {
         num = num / 2 + 1;
         num *= num;
         std::cout << ((num * 2 - 1) * 3 - 6) << std::endl;

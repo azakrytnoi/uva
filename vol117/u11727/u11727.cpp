@@ -50,7 +50,8 @@ namespace {
     std::istream& operator >> (std::istream& in, solution& sol)
     {
         sol.data_.clear();
-        std::generate_n(std::back_inserter(sol.data_), 3, [&]() {
+        std::generate_n(std::back_inserter(sol.data_), 3, [&]()
+        {
             int32_t tmp;
             in >> tmp;
             return tmp;
@@ -78,7 +79,8 @@ void U11727::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Case " << (++caseNo) << ": " << sol() << std::endl;
     }

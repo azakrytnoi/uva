@@ -41,7 +41,8 @@ namespace {
         {
             size_t curr(1);
 
-            while (curr < n_) {
+            while (curr < n_)
+            {
                 curr = curr * 2 + 1;
             }
 
@@ -73,7 +74,8 @@ void U12293::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

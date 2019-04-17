@@ -47,11 +47,14 @@ namespace {
         std::string s;
         in >> sol.ident_ >> sol.n_ >> s;
 
-        if (in) {
+        if (in)
+        {
             sol.lattice_ = 0;
 
-            for (int32_t i = 0; i < sol.n_; i++) {
-                if (s[i] == '1') {
+            for (int32_t i = 0; i < sol.n_; i++)
+            {
+                if (s[i] == '1')
+                {
                     sol.lattice_ |= static_cast<uint32_t>(1) << (sol.n_ - i - 1);
                 }
             }
@@ -73,37 +76,47 @@ namespace {
                  ident_ : ~ident_;
 
         for (int i = 0; i < 4; i++, id >>= 2)
-            if (id & 3) {
+            if (id & 3)
+            {
                 int lc_0 = -1, lc_1 = -1;
 
                 // left, cell, and right bits whose new state is equal
                 // to the current value
-                if (id & 1) {
+                if (id & 1)
+                {
                     lc_0 = i * 2;
                 }
 
-                if (id & 2) {
+                if (id & 2)
+                {
                     lc_1 = i * 2 + 1;
                 }
 
-                if (!li) { // for the first cell
+                if (!li)   // for the first cell
+                {
                     // pass the cell and right bits of the first cell
                     if (((id & 1) &&
                             (*this)(li + 1, lc_0 & 3, i)) ||
                             ((id & 2) &&
-                             (*this)(li + 1, lc_1 & 3, i))) {
+                             (*this)(li + 1, lc_1 & 3, i)))
+                    {
                         return true;
                     }
 
-                } else if (li == n_ - 1) { // for the last cell
+                }
+                else if (li == n_ - 1)     // for the last cell
+                {
                     if ((lc_0 != -1 && (lc_0 >> 1) == fcr &&
                             (lc_0 & 3) == plc) ||
-                            (lc_1 != -1 && (lc_1 >> 1) == fcr && (lc_1 & 3) == plc)) {
+                            (lc_1 != -1 && (lc_1 >> 1) == fcr && (lc_1 & 3) == plc))
+                    {
                         return true;
                     }
 
-                } else if ((lc_0 != -1 && (lc_0 & 3) == plc) ||
-                           (lc_1 != -1 && (lc_1 & 3) == plc)) {
+                }
+                else if ((lc_0 != -1 && (lc_0 & 3) == plc) ||
+                         (lc_1 != -1 && (lc_1 & 3) == plc))
+                {
                     if ((*this)(li + 1, fcr, i))
                         // cell and right bits of the current cell are equal
                         // to the left ant cell bits of the previous cell
@@ -121,7 +134,8 @@ void U10001::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

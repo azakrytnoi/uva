@@ -39,7 +39,8 @@ namespace {
 
         solution_t& operator()()
         {
-            if (o_ > s_) {
+            if (o_ > s_)
+            {
                 std::swap(o_, s_);
             }
 
@@ -65,14 +66,16 @@ namespace {
 
         uint64_t dfs(uint64_t lhs, uint64_t rhs)
         {
-            if (lhs == 0) {
+            if (lhs == 0)
+            {
                 return 0;
             }
 
             uint64_t res(0);
             res |= !dfs(rhs % lhs, lhs);
 
-            if (rhs / lhs != 1 && res == 0) {
+            if (rhs / lhs != 1 && res == 0)
+            {
                 res |= !dfs(rhs, rhs + rhs % lhs);
             }
 
@@ -86,7 +89,8 @@ void U10368::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

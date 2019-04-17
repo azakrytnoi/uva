@@ -53,7 +53,8 @@ namespace {
         in >> n;
         sol.points_.clear();
         sol.points_.reserve(n);
-        std::generate_n(std::back_inserter(sol.points_), n, [&]() {
+        std::generate_n(std::back_inserter(sol.points_), n, [&]()
+        {
             double x, y;
             in >> x >> y;
             return std::make_pair(x, y);
@@ -74,19 +75,25 @@ namespace {
         result_ = 0.0;
         size_t cnt(1);
 
-        while (cnt < points_.size()) {
+        while (cnt < points_.size())
+        {
             double min = std::numeric_limits<double>::min();
             int64_t minp(-1);
 
-            for (size_t i = 0; i < points_.size(); i++) {
-                if (intree[i]) {
-                    for (size_t j = 0; j < points_.size(); j++) {
-                        if (!intree[j]) {
+            for (size_t i = 0; i < points_.size(); i++)
+            {
+                if (intree[i])
+                {
+                    for (size_t j = 0; j < points_.size(); j++)
+                    {
+                        if (!intree[j])
+                        {
                             double dx(points_[i].first - points_[j].first);
                             double dy(points_[i].second - points_[j].second);
                             double distance(std::sqrt(dx * dx + dy * dy));
 
-                            if (min == std::numeric_limits<double>::min() || distance < min) {
+                            if (min == std::numeric_limits<double>::min() || distance < min)
+                            {
                                 min = distance;
                                 minp = j;
                             }
@@ -95,7 +102,8 @@ namespace {
                 }
             }
 
-            if (minp > 0) {
+            if (minp > 0)
+            {
                 intree[minp] = true;
                 result_ += min;
             }
@@ -115,8 +123,10 @@ void U10034::operator()() const
     solution sol;
     bool first(true);
 
-    while (N--) {
-        if (!first) {
+    while (N--)
+    {
+        if (!first)
+        {
             std::cout << std::endl;
         }
 

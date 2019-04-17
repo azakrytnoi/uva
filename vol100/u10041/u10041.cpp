@@ -52,7 +52,8 @@ namespace {
         in >> n;
         sol.addresses_.clear();
         sol.addresses_.reserve(n);
-        std::generate_n(std::back_inserter(sol.addresses_), n, [&]() {
+        std::generate_n(std::back_inserter(sol.addresses_), n, [&]()
+        {
             static int32_t a;
             in >> a;
             return a;
@@ -70,7 +71,8 @@ namespace {
     {
         std::nth_element(addresses_.begin(), addresses_.begin() + addresses_.size() / 2, addresses_.end());
         auto median = addresses_[addresses_.size() / 2];
-        result_ = std::accumulate(addresses_.begin(), addresses_.end(), 0, [&](auto current, auto a) {
+        result_ = std::accumulate(addresses_.begin(), addresses_.end(), 0, [&](auto current, auto a)
+        {
             return std::abs(median - a) + current;
         });
         return *this;
@@ -84,7 +86,8 @@ void U10041::operator()() const
     size_t N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

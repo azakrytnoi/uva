@@ -57,7 +57,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        if (sol.palingword_) {
+        if (sol.palingword_)
+        {
             out << sol.src_ << std::endl;
         }
 
@@ -68,31 +69,42 @@ namespace {
     {
         std::vector<std::vector<bool>> dp(src_.size(), std::vector<bool>(src_.size(), true));
 
-        for (size_t i = 0; i < src_.size() - 1; ++i) {
+        for (size_t i = 0; i < src_.size() - 1; ++i)
+        {
             dp[i][i + 1] = (src_[i] == src_[i + 1] ? true : false);
         }
 
-        auto check = [&]() {
+        auto check = [&]()
+        {
             std::string candidate;
             size_t left (0), right (src_.size() - 1);
 
-            for (size_t len = 2; len < src_.size(); ++len) {
-                for (size_t i = 0; i + len < src_.size(); ++i) {
+            for (size_t len = 2; len < src_.size(); ++len)
+            {
+                for (size_t i = 0; i + len < src_.size(); ++i)
+                {
                     size_t j = i + len;
 
-                    if (src_[i] == src_[j] && dp[i + 1][j - 1]) {
+                    if (src_[i] == src_[j] && dp[i + 1][j - 1])
+                    {
                         dp[i][j] = true;
 
-                        if (candidate == "") {
+                        if (candidate == "")
+                        {
                             candidate = src_.substr(i, len + 1);
                             right = i;
                             left = j;
-                        } else if (i > right || j < left) {
-                            if (src_.substr(i, len + 1).find(candidate) == std::string::npos) {
+                        }
+                        else if (i > right || j < left)
+                        {
+                            if (src_.substr(i, len + 1).find(candidate) == std::string::npos)
+                            {
                                 return true;
                             }
                         }
-                    } else {
+                    }
+                    else
+                    {
                         dp[i][j] = false;
                     }
                 }
@@ -111,7 +123,8 @@ void U257::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol();
     }
 }

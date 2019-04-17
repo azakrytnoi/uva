@@ -75,7 +75,8 @@ void U11984::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Case " << (++caseNo) << ": " << sol() << std::endl;
     }

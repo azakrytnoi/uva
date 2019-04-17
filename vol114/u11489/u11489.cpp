@@ -42,25 +42,30 @@ namespace {
             std::vector<size_t> cnt(10);
             size_t sum(0);
 
-            for (size_t i = 0; i < s_.length(); i++) {
+            for (size_t i = 0; i < s_.length(); i++)
+            {
                 cnt[s_[i] - '0']++;
                 sum += s_[i] - '0';
             }
 
             int8_t flag(0);
 
-            while (true) {
+            while (true)
+            {
                 size_t i;
 
-                for (i = sum % 3; i < 10; i += 3) {
-                    if (cnt[i] != 0) {
+                for (i = sum % 3; i < 10; i += 3)
+                {
+                    if (cnt[i] != 0)
+                    {
                         cnt[i]--;
                         sum -= i;
                         break;
                     }
                 }
 
-                if (i >= 10) {
+                if (i >= 10)
+                {
                     break;
                 }
 
@@ -74,7 +79,8 @@ namespace {
 
         friend std::istream& operator>>(std::istream& in, solution_t& sol)
         {
-            if (sol.N_ == std::numeric_limits<size_t>::max()) {
+            if (sol.N_ == std::numeric_limits<size_t>::max())
+            {
                 in >> sol.N_;
             }
 
@@ -101,7 +107,8 @@ void U11489::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

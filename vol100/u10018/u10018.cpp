@@ -48,7 +48,8 @@ namespace {
     {
         int64_t rev(0);
 
-        while (number > 0) {
+        while (number > 0)
+        {
             rev *= 10;
             rev += number % 10;
             number /= 10;
@@ -74,10 +75,12 @@ namespace {
     {
         int64_t rev(revert(number_));
 
-        do {
+        do
+        {
             count_++;
             number_ += rev;
-        } while ((rev = revert(number_)) != number_);
+        }
+        while ((rev = revert(number_)) != number_);
 
         return *this;
     }
@@ -89,7 +92,8 @@ void U10018::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

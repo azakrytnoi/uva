@@ -40,25 +40,29 @@ namespace {
             std::stringstream ss;
             auto ita = s.a_.begin(), itb = s.b_.begin();
 
-            for (; ita != s.a_.end() && itb != s.b_.end(); ) {
+            for (; ita != s.a_.end() && itb != s.b_.end(); )
+            {
                 int res = (*(ita++) - '0') + (*(itb++) - '0') + carry;
                 ss << (res % 10);
                 carry = res / 10;
             }
 
-            while (ita != s.a_.end()) {
+            while (ita != s.a_.end())
+            {
                 int res = (*(ita++) - '0') + carry;
                 ss << (res % 10);
                 carry = res / 10;
             }
 
-            while (itb != s.b_.end()) {
+            while (itb != s.b_.end())
+            {
                 int res = (*(itb++) - '0') + carry;
                 ss << (res % 10);
                 carry = res / 10;
             }
 
-            if (carry != 0) {
+            if (carry != 0)
+            {
                 ss << carry;
             }
 
@@ -84,7 +88,8 @@ void U713::operator()() const
     std::cin >> N;
     solver s;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> s;
         std::cout << s << std::endl;
     }

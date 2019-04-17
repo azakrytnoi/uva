@@ -42,20 +42,24 @@ namespace {
         {
             std::vector<double_t> probability(16);
 
-            for (size_t round = 0, group_size = 1; round < 4; ++round, group_size *= 2) {
-                for (size_t i = 0; i < 16; ++i) {
+            for (size_t round = 0, group_size = 1; round < 4; ++round, group_size *= 2)
+            {
+                for (size_t i = 0; i < 16; ++i)
+                {
                     size_t current_group = i / group_size;
                     size_t start = current_group % 2 == 0 ? current_group * group_size + group_size : current_group * group_size - group_size;
                     probability[i] = 0;
 
-                    for (size_t shift = 0; shift < group_size; ++shift) {
+                    for (size_t shift = 0; shift < group_size; ++shift)
+                    {
                         probability[i] += names_[start + shift].second * chances_[i][start + shift];
                     }
 
                     probability[i] *= names_[i].second;
                 }
 
-                std::transform(names_.begin(), names_.end(), probability.begin(), names_.begin(), [](std::pair<std::string, double_t>& lhs, double_t rhs) {
+                std::transform(names_.begin(), names_.end(), probability.begin(), names_.begin(), [](std::pair<std::string, double_t>& lhs, double_t rhs)
+                {
                     lhs.second = rhs;
                     return lhs;
                 });
@@ -66,16 +70,21 @@ namespace {
 
         friend std::istream& operator>>(std::istream& in, solution_t& sol)
         {
-            if (in) {
-                std::generate_n(std::back_inserter(sol.names_), 16, [&]() {
+            if (in)
+            {
+                std::generate_n(std::back_inserter(sol.names_), 16, [&]()
+                {
                     std::string name;
                     in >> name;
                     return std::make_pair(name, 1.0);
                 });
 
-                if (in) {
-                    std::for_each(sol.chances_.begin(), sol.chances_.end(), [&](std::vector<double_t>& row) {
-                        std::generate(row.begin(), row.end(), [&]() {
+                if (in)
+                {
+                    std::for_each(sol.chances_.begin(), sol.chances_.end(), [&](std::vector<double_t>& row)
+                    {
+                        std::generate(row.begin(), row.end(), [&]()
+                        {
                             double_t chance;
                             in >> chance;
                             return chance / 100.0;
@@ -89,7 +98,8 @@ namespace {
 
         friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
         {
-            std::for_each(sol.names_.begin(), sol.names_.end(), [&](const std::pair<std::string, double_t>& name) {
+            std::for_each(sol.names_.begin(), sol.names_.end(), [&](const std::pair<std::string, double_t>& name)
+            {
                 out << std::left << std::setw(10) << name.first << std::setw(1) << " p=" << std::fixed << //
                     std::setprecision(2) << name.second * 100.0 << '%' << std::endl;
             });
@@ -107,7 +117,8 @@ void U542::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

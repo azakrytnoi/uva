@@ -25,22 +25,26 @@ namespace {
 
         void generate(std::string::iterator pos, std::string::iterator end, const std::string& s)
         {
-            if (pos == end) {
+            if (pos == end)
+            {
                 std::cout << s << std::endl;
                 return;
             }
 
             auto self = this;
 
-            switch (*pos) {
+            switch (*pos)
+            {
             case '#':
-                std::for_each(dictionary_.begin(), dictionary_.end(), [&](auto dict) {
+                std::for_each(dictionary_.begin(), dictionary_.end(), [&](auto dict)
+                {
                     self->generate(pos + 1, end, s + dict);
                 });
                 break;
 
             case '0':
-                std::for_each(digits, digits + 10, [&](auto digit) {
+                std::for_each(digits, digits + 10, [&](auto digit)
+                {
                     self->generate(pos + 1, end, s + digit);
                 });
                 break;
@@ -66,11 +70,13 @@ void U628::operator()() const
     std::string line;
     auto load = [&]() -> std::string { std::cin >> line; return line; };
 
-    while (true) {
+    while (true)
+    {
         int n_words;
         std::cin >> n_words;
 
-        if (!std::cin) {
+        if (!std::cin)
+        {
             break;
         }
 
@@ -82,7 +88,8 @@ void U628::operator()() const
         std::cin >> n_rules;
         std::cout << "--" << std::endl;
 
-        while (n_rules--) {
+        while (n_rules--)
+        {
             std::cin >> line;
             gen.generate(line.begin(), line.end(), "");
         }

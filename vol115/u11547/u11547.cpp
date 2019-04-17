@@ -68,7 +68,8 @@ void U11547::operator()() const
     std::cin >> n_cases;
     solution sol;
 
-    while (n_cases--) {
+    while (n_cases--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

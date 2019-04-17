@@ -63,7 +63,8 @@ namespace {
             v_ = v;
             idx_ = 0;
             last_.clear();
-            std::generate_n(std::back_inserter(last_), N, []() {
+            std::generate_n(std::back_inserter(last_), N, []()
+            {
                 return -1;
             });
             to_.clear();
@@ -97,12 +98,15 @@ namespace {
             pot_.clear();
             pot_.resize(N);
 
-            while (true) {
-                std::generate_n(prev_.begin(), N, []() {
+            while (true)
+            {
+                std::generate_n(prev_.begin(), N, []()
+                {
                     return -1;
                 });
                 std::bitset<N> visited;
-                std::generate_n(dist_.begin(), v_, []() {
+                std::generate_n(dist_.begin(), v_, []()
+                {
                     return INF;
                 });
 
@@ -110,24 +114,29 @@ namespace {
                 work_queue.push(std::make_pair(0, start));
                 dist_[start] = prev_[start] = 0;
 
-                while (!work_queue.empty()) {
+                while (!work_queue.empty())
+                {
                     int idx = work_queue.top().second;
                     work_queue.pop();
 
-                    if (visited[idx]) {
+                    if (visited[idx])
+                    {
                         continue;
                     }
 
                     visited[idx] = true;
 
-                    for (int edge = last_[idx]; edge != -1; edge = next_[edge]) {
-                        if (cap_[edge] <= 0) {
+                    for (int edge = last_[idx]; edge != -1; edge = next_[edge])
+                    {
+                        if (cap_[edge] <= 0)
+                        {
                             continue;
                         }
 
                         double new_dist = dist_[idx] + cost_[edge] + pot_[idx] - pot_[to_[edge]];
 
-                        if (new_dist < dist_[to_[edge]]) {
+                        if (new_dist < dist_[to_[edge]])
+                        {
                             dist_[to_[edge]] = new_dist;
                             prev_[to_[edge]] = edge;
                             work_queue.push(std::make_pair(-new_dist, to_[edge]));
@@ -135,17 +144,20 @@ namespace {
                     }
                 }
 
-                if (prev_[end] == -1) {
+                if (prev_[end] == -1)
+                {
                     break;
                 }
 
                 int factor = cap_[prev_[end]];
 
-                for (int i = end; i != start; i = to_[prev_[i] ^ 1]) {
+                for (int i = end; i != start; i = to_[prev_[i] ^ 1])
+                {
                     factor = std::min(factor, cap_[prev_[i]]);
                 }
 
-                for (int i = end; i != start; i = to_[prev_[i] ^ 1]) {
+                for (int i = end; i != start; i = to_[prev_[i] ^ 1])
+                {
                     cap_[prev_[i]] -= factor;
                     cap_[prev_[i] ^ 1] += factor;
                 }
@@ -153,8 +165,10 @@ namespace {
                 val += factor;
                 cost += factor * (dist_[end] - pot_[start] + pot_[end]);
 
-                for (int i = 0; i < v_; ++i) {
-                    if (prev_[i] != -1) {
+                for (int i = 0; i < v_; ++i)
+                {
+                    if (prev_[i] != -1)
+                    {
                         pot_[i] += dist_[i];
                     }
                 }
@@ -173,19 +187,24 @@ void U10746::operator()() const
     int n, m;
     mcmf<21 * 2> solver;
 
-    while ((std::cin >> n >> m) && (n != 0 && m != 0)) {
+    while ((std::cin >> n >> m) && (n != 0 && m != 0))
+    {
         solver.init(n + m + 2);
 
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             solver.add_edge(0, 1 + i, 1, 0);
         }
 
-        for (int i = 0; i < m; ++i) {
+        for (int i = 0; i < m; ++i)
+        {
             solver.add_edge(1 + n + i, 1 + n + m, 1, 0);
         }
 
-        for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < m; ++j) {
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = 0; j < m; ++j)
+            {
                 double cost;
                 std::cin >> cost;
                 solver.add_edge(1 + i, 1 + n + j, 1, cost);

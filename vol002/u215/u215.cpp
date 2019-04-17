@@ -28,10 +28,12 @@ void __cdecl invoke()
 
 namespace {
 
-    enum class status_t {
+    enum class status_t
+    {
         Undefined, Calculating, Caclulated
     };
-    struct cell_t {
+    struct cell_t
+    {
         std::string expression_;
         int64_t value_;
         status_t status_;
@@ -72,13 +74,17 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (in >> sol.n_rows_ >> sol.n_cols_) {
-            if (sol) {
+        if (in >> sol.n_rows_ >> sol.n_cols_)
+        {
+            if (sol)
+            {
                 in.ignore();
                 sol.broken_ = false;
 
-                for (size_t row = 0; row < sol.n_rows_; row++) {
-                    for (size_t col = 0; col < sol.n_cols_; col++) {
+                for (size_t row = 0; row < sol.n_rows_; row++)
+                {
+                    for (size_t col = 0; col < sol.n_cols_; col++)
+                    {
                         in >> sol.spread_[row][col];
                     }
                 }
@@ -90,28 +96,37 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        if (not sol.broken_) {
+        if (not sol.broken_)
+        {
             out << " ";
 
-            for (size_t col = 0; col < sol.n_cols_; col++) {
+            for (size_t col = 0; col < sol.n_cols_; col++)
+            {
                 out << std::setw(6) << col;
             }
 
             out << std::endl;
 
-            for (size_t row = 0; row < sol.n_rows_; row++) {
+            for (size_t row = 0; row < sol.n_rows_; row++)
+            {
                 out << static_cast<char>('A' + row);
 
-                for (size_t col = 0; col < sol.n_cols_; col++) {
+                for (size_t col = 0; col < sol.n_cols_; col++)
+                {
                     out << std::setw(6) << sol.spread_[row][col].value_;
                 }
 
                 out << std::endl;
             }
-        } else {
-            for (size_t row = 0; row < sol.n_rows_; row++) {
-                for (size_t col = 0; col < sol.n_cols_; col++) {
-                    if (sol.spread_[row][col].status_ == status_t::Calculating) {
+        }
+        else
+        {
+            for (size_t row = 0; row < sol.n_rows_; row++)
+            {
+                for (size_t col = 0; col < sol.n_cols_; col++)
+                {
+                    if (sol.spread_[row][col].status_ == status_t::Calculating)
+                    {
                         out << static_cast<char>('A' + row) << col << ": " << sol.spread_[row][col].expression_ << std::endl;
                     }
                 }
@@ -123,8 +138,10 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        for (size_t row = 0; row < n_rows_; row++) {
-            for (size_t col = 0; col < n_cols_; col++) {
+        for (size_t row = 0; row < n_rows_; row++)
+        {
+            for (size_t col = 0; col < n_cols_; col++)
+            {
                 bool broken(false);
                 calculate (row, col, broken);
                 broken_ |= broken;
@@ -136,7 +153,8 @@ namespace {
 
     int64_t solution_t::calculate(const size_t row, const size_t col, bool& broken)
     {
-        switch (spread_[row][col].status_) {
+        switch (spread_[row][col].status_)
+        {
         case status_t::Caclulated:
             return spread_[row][col].value_;
             break;
@@ -145,15 +163,18 @@ namespace {
             broken = true;
             return 0;
 
-        default: {
+        default:
+        {
             spread_[row][col].status_ = status_t::Calculating;
             auto ch = spread_[row][col].expression_.begin();
             bool sign(true);
 
-            while (ch != spread_[row][col].expression_.end() && *ch != ' ') {
+            while (ch != spread_[row][col].expression_.end() && *ch != ' ')
+            {
                 int64_t term(0);
 
-                switch (*ch) {
+                switch (*ch)
+                {
                 case '+':
                     sign = true;
                     ++ch;
@@ -165,17 +186,23 @@ namespace {
                     break;
 
                 default:
-                    if (std::isdigit(*ch)) {
-                        do {
+                    if (std::isdigit(*ch))
+                    {
+                        do
+                        {
                             term *= 10;
                             term += *ch - '0';
-                        } while (std::isdigit(*(++ch)));
-                    } else {
+                        }
+                        while (std::isdigit(*(++ch)));
+                    }
+                    else
+                    {
                         size_t refRow = *(ch++) - 'A';
                         size_t refCol = *(ch++) - '0';
                         term = calculate(refRow, refCol, broken);
 
-                        if (broken) {
+                        if (broken)
+                        {
                             return 0;
                         }
                     }
@@ -199,7 +226,8 @@ void U215::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

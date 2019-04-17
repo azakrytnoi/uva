@@ -42,7 +42,8 @@ namespace {
     public:
         solution() : i_(101), v_(101), x_(101), l_(101), c_(101), n_(0)
         {
-            for (size_t i = 1; i <= 100; i++) {
+            for (size_t i = 1; i <= 100; i++)
+            {
                 i_[i] += i_[i - 1] + i_0_[i % 10];
                 v_[i] += v_[i - 1] + v_0_[i % 10];
                 x_[i] += x_[i - 1] + x_0_[i % 10] + x_10_[i / 10];
@@ -78,7 +79,8 @@ void U344::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

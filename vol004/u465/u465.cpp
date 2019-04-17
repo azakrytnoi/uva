@@ -40,7 +40,8 @@ namespace {
         result.push_back(source);
         size_t op_position = source.find('+');
 
-        if (op_position == std::string::npos) {
+        if (op_position == std::string::npos)
+        {
             op_position = source.find('*');
         }
 
@@ -49,31 +50,40 @@ namespace {
         bool op1_long = op1.length() > std::numeric_limits<int>::digits10;
         bool op2_long = op2.length() > std::numeric_limits<int>::digits10;
 
-        if (op1_long) {
+        if (op1_long)
+        {
             result.push_back("first number too big");
         }
 
-        if (op2_long) {
+        if (op2_long)
+        {
             result.push_back("second number too big");
         }
 
-        if (op1_long || op2_long) {
+        if (op1_long || op2_long)
+        {
             result.push_back("result too big");
 
-        } else {
-            switch (source[op_position]) {
-            case '+': {
+        }
+        else
+        {
+            switch (source[op_position])
+            {
+            case '+':
+            {
                 math::uint_big_t bi (op1);
                 bi += op2;
 
-                if (bi.length() > std::numeric_limits<int>::digits10) {
+                if (bi.length() > std::numeric_limits<int>::digits10)
+                {
                     result.push_back("result too big");
                 }
             }
             break;
 
             case '*':
-                if (op1.length() + op2.length() > std::numeric_limits<int>::digits10) {
+                if (op1.length() + op2.length() > std::numeric_limits<int>::digits10)
+                {
                     result.push_back("result too big");
                 }
 
@@ -93,7 +103,8 @@ void U465::operator()() const
     std::string line;
     std::ostream_iterator<std::string> oit(std::cout, "\n");
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         std::vector <std::string> result(checker::check(line));
         std::copy(result.begin(), result.end(), oit);
     }

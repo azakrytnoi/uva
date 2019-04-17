@@ -51,7 +51,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        static const char* messgess[] = {
+        static const char* messgess[] =
+        {
             " does not divide ",
             " divides "
         };
@@ -63,22 +64,26 @@ namespace {
     {
         int32_t m(m_), n(n_);
 
-        if (m == 0) {
+        if (m == 0)
+        {
             return true;
         }
 
-        if (n == 0 && m == 1) {
+        if (n == 0 && m == 1)
+        {
             return true;
         }
 
-        for (int32_t f = 2, mf = int32_t(std::sqrt(m) + 1); m > n && f < mf; ++f) {
+        for (int32_t f = 2, mf = int32_t(std::sqrt(m) + 1); m > n && f < mf; ++f)
+        {
             int32_t c = 0;
 
             for (; m % f == 0; m /= f, ++c) {}
 
             for (int32_t nf = f; c > 0 && nf <= n; c -= n / nf, nf *= f) {}
 
-            if (c > 0) {
+            if (c > 0)
+            {
                 return false;
             }
         }
@@ -91,7 +96,8 @@ void U10139::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

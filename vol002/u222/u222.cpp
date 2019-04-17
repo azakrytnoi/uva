@@ -56,11 +56,13 @@ namespace {
     {
         sol.stations_.clear();
 
-        if (in >> sol.distance_ && sol.distance_ > 0) {
+        if (in >> sol.distance_ && sol.distance_ > 0)
+        {
             size_t n_stations(0);
             in >> sol.tank_ >> sol.mi_per_gallon_ >> sol.costs_ >> n_stations;
             sol.stations_.reserve(n_stations + 1);
-            std::generate_n(std::back_inserter(sol.stations_), n_stations, [&]() {
+            std::generate_n(std::back_inserter(sol.stations_), n_stations, [&]()
+            {
                 double_t dist(0), price(0);
                 in >> dist >> price;
                 return std::make_pair(dist, price);
@@ -85,24 +87,30 @@ namespace {
 
     double_t solution_t::optimize(double_t distance, station_ref station)
     {
-        if (distance + tank_ * mi_per_gallon_ >= distance_ || station == stations_.end()) {
+        if (distance + tank_ * mi_per_gallon_ >= distance_ || station == stations_.end())
+        {
             return 0;
         }
 
         double_t best = std::numeric_limits<double_t>::max();
 
-        for (station_ref next_station = station; next_station != stations_.end(); ++next_station) {
+        for (station_ref next_station = station; next_station != stations_.end(); ++next_station)
+        {
             auto fuel_used = (next_station->first - distance) / mi_per_gallon_;
             auto fuel_remains = tank_ - fuel_used;
 
-            if (fuel_remains < 0) {
+            if (fuel_remains < 0)
+            {
                 break;
             }
 
-            if (fuel_remains <= tank_ / 2.0) {
+            if (fuel_remains <= tank_ / 2.0)
+            {
                 best = std::min(best, 200 + fuel_used * next_station->second + optimize(next_station->first, next_station + 1));
-            } else if (fuel_remains > tank_ / 2.0 && next_station + 1 != stations_.end() //
-                       && (next_station + 1)->first > distance + tank_ * mi_per_gallon_) {
+            }
+            else if (fuel_remains > tank_ / 2.0 && next_station + 1 != stations_.end()   //
+                     && (next_station + 1)->first > distance + tank_ * mi_per_gallon_)
+            {
                 return std::floor(200 + fuel_used * next_station->second + optimize(next_station->first, next_station + 1) + 0.5);
             }
         }
@@ -115,7 +123,8 @@ void U222::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

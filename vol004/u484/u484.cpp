@@ -32,13 +32,16 @@ void U484::operator()() const
     std::map<int, int> freq;
     int n;
 
-    while (std::cin >> n) {
-        if ((freq[n]++) == 0) {
+    while (std::cin >> n)
+    {
+        if ((freq[n]++) == 0)
+        {
             v.push_back(n);
         }
     }
 
-    std::for_each(v.begin(), v.end(), [&](auto num) {
+    std::for_each(v.begin(), v.end(), [&](auto num)
+    {
         std::cout << num << " " << freq[num] << std::endl;
     });
 }

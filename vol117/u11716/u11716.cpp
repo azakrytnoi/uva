@@ -65,20 +65,26 @@ namespace {
         plain_.reserve(cipher_.length());
         size_t dim = std::sqrt(cipher_.length());
 
-        if (dim * dim != cipher_.length()) {
+        if (dim * dim != cipher_.length())
+        {
             plain_ = "INVALID";
-        } else {
+        }
+        else
+        {
             std::vector<std::string> matrix;
             matrix.resize(dim);
             auto ptr = cipher_.begin();
 
-            for (auto& row : matrix) {
+            for (auto& row : matrix)
+            {
                 row.assign(ptr, ptr + dim);
                 ptr += dim;
             }
 
-            for (size_t idx = 0; idx < dim; idx++) {
-                for (auto& row : matrix) {
+            for (size_t idx = 0; idx < dim; idx++)
+            {
+                for (auto& row : matrix)
+                {
                     plain_ += row[idx];
                 }
             }
@@ -97,7 +103,8 @@ void U11716::operator()() const
     std::getline(std::cin, dummy);
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

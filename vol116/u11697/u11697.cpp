@@ -69,37 +69,46 @@ namespace {
         std::array<std::array<char, 5>, 5> matrix;
         std::set<char> processed;
         size_t i(0), j(0);
-        auto fill_matrix = [&](char ch) {
-            if (std::isalpha(ch) && processed.find(ch) == processed.end()) {
+        auto fill_matrix = [&](char ch)
+        {
+            if (std::isalpha(ch) && processed.find(ch) == processed.end())
+            {
                 matrix[i][j] = std::toupper(ch);
                 processed.insert(ch);
                 j++;
                 j %= 5;
 
-                if (j == 0) {
+                if (j == 0)
+                {
                     i++;
                     i %= 5;
                 }
             }
         };
 
-        for (char ch : key_) {
+        for (char ch : key_)
+        {
             fill_matrix(ch);
         }
 
-        for (char ch = 'a'; ch <= 'z'; ch++) {
-            if (ch == 'q') {
+        for (char ch = 'a'; ch <= 'z'; ch++)
+        {
+            if (ch == 'q')
+            {
                 continue;
             }
 
             fill_matrix(ch);
         }
 
-        auto locate = [&](char ch) -> std::pair<size_t, size_t> {
+        auto locate = [&](char ch) -> std::pair<size_t, size_t>
+        {
             for (size_t row = 0; row < 5; row++)
             {
-                for (size_t col = 0; col < 5; col++) {
-                    if (matrix[row][col] == ch) {
+                for (size_t col = 0; col < 5; col++)
+                {
+                    if (matrix[row][col] == ch)
+                    {
                         return std::make_pair(row, col);
                     }
                 }
@@ -110,18 +119,21 @@ namespace {
 
         std::string work;
         work.reserve(plain_.length());
-        std::copy_if(plain_.begin(), plain_.end(), std::back_inserter(work), [](const char ch) {
+        std::copy_if(plain_.begin(), plain_.end(), std::back_inserter(work), [](const char ch)
+        {
             return std::isalpha(ch);
         });
         auto ptr = work.begin();
-        auto make_digraph = [&]() -> std::pair<char, char> {
+        auto make_digraph = [&]() -> std::pair<char, char>
+        {
             char ch1 = std::toupper(*(ptr++));
             char ch2 = ptr == work.end() ? ch1 : std::toupper(*ptr);
 
             if (ch1 == ch2)
             {
                 ch2 = 'X';
-            } else
+            }
+            else
             {
                 ++ptr;
             }
@@ -129,18 +141,24 @@ namespace {
             return std::make_pair(ch1, ch2);
         };
 
-        while (ptr != work.end()) {
+        while (ptr != work.end())
+        {
             auto digraph = make_digraph();
             auto loc1 = locate(digraph.first);
             auto loc2 = locate(digraph.second);
 
-            if (loc1.first == loc2.first) {
+            if (loc1.first == loc2.first)
+            {
                 digraph.first = matrix[loc1.first][(loc1.second + 1) % 5];
                 digraph.second = matrix[loc2.first][(loc2.second + 1) % 5];
-            } else if (loc1.second == loc2.second) {
+            }
+            else if (loc1.second == loc2.second)
+            {
                 digraph.first = matrix[(loc1.first + 1) % 5][loc1.second];
                 digraph.second = matrix[(loc2.first + 1) % 5][loc2.second];
-            } else {
+            }
+            else
+            {
                 digraph.first = matrix[loc1.first][loc2.second];
                 digraph.second = matrix[loc2.first][loc1.second];
             }
@@ -162,7 +180,8 @@ void U11697::operator()() const
     std::string dummy;
     std::getline(std::cin, dummy);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

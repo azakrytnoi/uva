@@ -52,7 +52,8 @@ namespace {
         {
             int_ = 1;
 
-            for (math::uint_big_t n = 2; n <= n_; ++n) {
+            for (math::uint_big_t n = 2; n <= n_; ++n)
+            {
                 int_ *= n;
             }
 
@@ -66,7 +67,8 @@ void U623::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

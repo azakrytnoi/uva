@@ -54,11 +54,13 @@ namespace {
     {
         in >> sol.n_ >> sol.l_;
 
-        if (in) {
+        if (in)
+        {
             sol.ed_.clear();
             sol.ed_.resize(sol.n_);
 
-            for (int32_t i = 0; i < sol.l_; i++) {
+            for (int32_t i = 0; i < sol.l_; i++)
+            {
                 int32_t x, y;
                 in >> x >> y;
                 sol.ed_[x].push_back(y);
@@ -83,21 +85,27 @@ namespace {
         colors[0] = 0;
         work.push(0);
 
-        while (!work.empty()) {
+        while (!work.empty())
+        {
             int32_t p = work.front();
             work.pop();
 
-            for (size_t i = 0; i < ed_[p].size(); i++) {
-                if (colors[ed_[p][i]] == -1) {
+            for (size_t i = 0; i < ed_[p].size(); i++)
+            {
+                if (colors[ed_[p][i]] == -1)
+                {
                     colors[ed_[p][i]] = (colors[p] == 0 ? 1 : 0);
                     work.push(ed_[p][i]);
-                } else if (colors[ed_[p][i]] == colors[p]) {
+                }
+                else if (colors[ed_[p][i]] == colors[p])
+                {
                     bicolorable_ = false;
                     break;
                 }
             }
 
-            if (!bicolorable_) {
+            if (!bicolorable_)
+            {
                 break;
             }
         }
@@ -110,7 +118,8 @@ void U10004::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -29,7 +29,8 @@ void __cdecl invoke()
 }
 
 namespace {
-    struct trip_history {
+    struct trip_history
+    {
         uint16_t day_, hour_, minute_;
         int16_t distance_;
         bool enter_;
@@ -65,8 +66,10 @@ namespace {
         sol.trips_.clear();
         sol.fares_.reserve(24);
 
-        if (in) {
-            std::generate_n(std::back_inserter(sol.fares_), 24, [&]() {
+        if (in)
+        {
+            std::generate_n(std::back_inserter(sol.fares_), 24, [&]()
+            {
                 uint16_t tmp;
                 in >> tmp;
                 return tmp;
@@ -74,7 +77,8 @@ namespace {
             std::string line;
             std::getline(in, line);
 
-            while (std::getline(in, line) && !line.empty()) {
+            while (std::getline(in, line) && !line.empty())
+            {
                 std::stringstream iss(line);
                 std::string license;
                 trip_history trip;
@@ -88,8 +92,10 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        std::for_each(sol.trips_.begin(), sol.trips_.end(), [&](const std::pair<std::string, std::pair<double, std::vector<trip_history>>>& trips) {
-            if (trips.second.first != 0) {
+        std::for_each(sol.trips_.begin(), sol.trips_.end(), [&](const std::pair<std::string, std::pair<double, std::vector<trip_history>>>& trips)
+        {
+            if (trips.second.first != 0)
+            {
                 double cost(trips.second.first + 2);
                 out << trips.first << " $" << std::setprecision(2) << std::fixed << cost << std::endl;
             }
@@ -99,20 +105,25 @@ namespace {
 
     solution::operator bool()
     {
-        if (fares_.empty()) {
+        if (fares_.empty())
+        {
             return false;
         }
 
         solution* self(this);
 
-        for (auto trip = trips_.begin(); trip != trips_.end(); ++trip) {
+        for (auto trip = trips_.begin(); trip != trips_.end(); ++trip)
+        {
             trip->second.first = 0;
-            std::sort(trip->second.second.begin(), trip->second.second.end(), [](trip_history & l, trip_history & r) {
+            std::sort(trip->second.second.begin(), trip->second.second.end(), [](trip_history & l, trip_history & r)
+            {
                 return l.day_ * 24 * 60 + l.hour_ * 60 + l.minute_ < r.day_ * 24 * 60 + r.hour_ * 60 + r.minute_;
             });
 
-            for (size_t idx = 1; idx < trip->second.second.size(); idx++) {
-                if (trip->second.second[idx - 1].enter_ && !trip->second.second[idx].enter_) {
+            for (size_t idx = 1; idx < trip->second.second.size(); idx++)
+            {
+                if (trip->second.second[idx - 1].enter_ && !trip->second.second[idx].enter_)
+                {
                     int16_t traveled = std::abs(trip->second.second[idx - 1].distance_ - trip->second.second[idx].distance_);
                     double cost = (self->fares_[trip->second.second[idx - 1].hour_] * traveled) / 100.0;
                     trip->second.first += cost + 1;
@@ -130,7 +141,8 @@ void U10138::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (std::cin >> sol || sol) {
+    while (std::cin >> sol || sol)
+    {
         std::cout << sol << std::endl;
     }
 }

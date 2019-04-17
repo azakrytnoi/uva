@@ -32,7 +32,8 @@ namespace {
     public:
         solution_t() : DP_(N_), n_(), m_()
         {
-            auto backtrace = [](size_t n, size_t k) -> bool {
+            auto backtrace = [](size_t n, size_t k) -> bool
+            {
                 std::vector<size_t> link(N_ + 1);
 
                 for (size_t i = 2; i < n; ++i)
@@ -45,7 +46,8 @@ namespace {
 
                 for (size_t i = 1; i < n; ++i)
                 {
-                    for (size_t j = 1; j < k; ++j) {
+                    for (size_t j = 1; j < k; ++j)
+                    {
                         prev = head, head = link[head];
                     }
 
@@ -57,10 +59,12 @@ namespace {
                 return last == 2;
             };
 
-            for (size_t i = 3; i < N_; ++i) {
+            for (size_t i = 3; i < N_; ++i)
+            {
                 size_t count(2);
 
-                while (not backtrace(i, count)) {
+                while (not backtrace(i, count))
+                {
                     ++count;
                 }
 
@@ -109,7 +113,8 @@ void U440::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

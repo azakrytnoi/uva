@@ -53,7 +53,8 @@ namespace {
     {
         std::string line;
 
-        while (std::getline(in, line) && line != "#") {
+        while (std::getline(in, line) && line != "#")
+        {
             sol.dictionary_.insert(line);
         }
 
@@ -66,15 +67,18 @@ namespace {
         std::stringstream parser(sol.plain_);
         std::istream_iterator<std::string> tokenizer(parser);
         std::ostream_iterator<std::string> oit(out, "");
-        std::transform(tokenizer, std::istream_iterator<std::string>(), oit, [&](auto & word) {
+        std::transform(tokenizer, std::istream_iterator<std::string>(), oit, [&](auto & word)
+        {
             static size_t line_length(0);
 
-            if (line_length + word.length() >= 60) {
+            if (line_length + word.length() >= 60)
+            {
                 out << std::endl;
                 line_length = 0;
             }
 
-            if (line_length > 0) {
+            if (line_length > 0)
+            {
                 out << ' ';
             }
 
@@ -91,19 +95,23 @@ namespace {
         result.resize(crypted_.size());
         size_t maxcnt(0);
 
-        for (int16_t key = 1; key < 27; key++) {
-            std::transform(crypted_.begin(), crypted_.end(), result.begin(), [&](char ch) {
+        for (int16_t key = 1; key < 27; key++)
+        {
+            std::transform(crypted_.begin(), crypted_.end(), result.begin(), [&](char ch)
+            {
                 char shift = (ch == ' ') ? 0 : ch - 'A' + 1;
                 shift = (shift - key + 27) % 27;
                 return shift == 0 ? ' ' : shift + 'A' - 1;
             });
             std::stringstream temp(result);
             std::istream_iterator<std::string> token(temp);
-            size_t cnt = std::count_if(token, std::istream_iterator<std::string>(), [&](auto & word) {
+            size_t cnt = std::count_if(token, std::istream_iterator<std::string>(), [&](auto & word)
+            {
                 return dictionary_.find(word) != dictionary_.end();
             });
 
-            if (cnt > maxcnt) {
+            if (cnt > maxcnt)
+            {
                 plain_.assign(result.begin(), result.end());
                 maxcnt = cnt;
             }

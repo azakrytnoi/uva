@@ -43,10 +43,12 @@ namespace {
         friend std::ostream& operator << (std::ostream& out, solution& sol)
         {
             char last(0);
-            std::for_each(sol.original_.begin(), sol.original_.end(), [&](auto ch) {
+            std::for_each(sol.original_.begin(), sol.original_.end(), [&](auto ch)
+            {
                 char soundex (sol.soundex(ch));
 
-                if (soundex > 0 && soundex != last) {
+                if (soundex > 0 && soundex != last)
+                {
                     out << soundex;
                 }
 
@@ -61,7 +63,8 @@ namespace {
 
     char solution::soundex(char ch)
     {
-        switch (ch) {
+        switch (ch)
+        {
         case 'B':
         case 'F':
         case 'P':
@@ -97,7 +100,8 @@ namespace {
         }
     }
 
-    std::unordered_map<char, char> solution::soundex_ = {
+    std::unordered_map<char, char> solution::soundex_ =
+    {
         {'B', '1' }, {'F', '1' }, {'P', '1' }, {'V', '1' },
         {'C', '2' }, {'G', '2' }, {'J', '2' }, {'K', '2' }, {'Q', '2' }, {'S', '2' }, {'X', '2' }, {'Z', '2' },
         {'D', '3' }, {'T', '3' },
@@ -112,7 +116,8 @@ void U10260::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

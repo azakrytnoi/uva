@@ -57,7 +57,8 @@ namespace {
     {
         std::string word;
 
-        while (std::getline(in, word) && !word.empty()) {
+        while (std::getline(in, word) && !word.empty())
+        {
             sol.dictionary_[word.length()].push_back(word);
         }
 
@@ -66,10 +67,13 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.have_solution_) {
+        if (sol.have_solution_)
+        {
             sol.print_path(out, sol.a_idx_, sol.b_idx_);
 
-        } else {
+        }
+        else
+        {
             out << "No solution." << std::endl;
         }
 
@@ -78,7 +82,8 @@ namespace {
 
     void solution::print_path(std::ostream& out, size_t start, size_t end) const
     {
-        if (start != end) {
+        if (start != end)
+        {
             print_path(out, start, path_[end]);
         }
 
@@ -90,27 +95,33 @@ namespace {
         have_solution_ = false;
         in >> a_ >> b_;
 
-        if (a_.length() == b_.length()) {
+        if (a_.length() == b_.length())
+        {
             doublets_.assign(dictionary_[a_.length()].begin(), dictionary_[a_.length()].end());
             a_idx_ = std::find(doublets_.begin(), doublets_.end(), a_) - doublets_.begin();
             b_idx_ = std::find(doublets_.begin(), doublets_.end(), b_) - doublets_.begin();
 
-            if (a_idx_ < doublets_.size() && b_idx_ < doublets_.size()) {
+            if (a_idx_ < doublets_.size() && b_idx_ < doublets_.size())
+            {
                 path_.clear();
                 path_.reserve(doublets_.size());
-                std::generate_n(std::back_inserter(path_), doublets_.size(), []() {
+                std::generate_n(std::back_inserter(path_), doublets_.size(), []()
+                {
                     return -1;
                 });
                 path_[a_idx_] = a_idx_;
                 std::queue<size_t> path_q;
                 path_q.push(a_idx_);
 
-                while (path_q.size() && path_q.front() != b_idx_) {
+                while (path_q.size() && path_q.front() != b_idx_)
+                {
                     size_t u = path_q.front();
                     path_q.pop();
 
-                    for (size_t v = 0; v < doublets_.size(); v++) {
-                        if (u != v && path_[v] < 0 && is_doublets(u, v)) {
+                    for (size_t v = 0; v < doublets_.size(); v++)
+                    {
+                        if (u != v && path_[v] < 0 && is_doublets(u, v))
+                        {
                             path_[v] = u;
                             path_q.push(v);
                         }
@@ -128,7 +139,8 @@ namespace {
     {
         size_t diff (0);
 
-        for (auto itu = doublets_[u].begin(), itv = doublets_[v].begin(); diff < 2 && itu != doublets_[u].end(); ++itu, ++itv) {
+        for (auto itu = doublets_[u].begin(), itv = doublets_[v].begin(); diff < 2 && itu != doublets_[u].end(); ++itu, ++itv)
+        {
             diff += (*itu) != (*itv);
         }
 
@@ -142,7 +154,8 @@ void U10150::operator()() const
     solution sol;
     std::cin >> sol;
 
-    while (sol(std::cin)) {
+    while (sol(std::cin))
+    {
         std::cout << sol << std::endl;
     }
 }

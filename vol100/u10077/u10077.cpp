@@ -63,13 +63,17 @@ namespace {
         int32_t Nm(1), Nn(1), NLm(0), NLn(1), NRn(0), NRm(1);
         const double value = double(m_) / n_;
 
-        for (; Nm != m_ || Nn != n_; Nm = NLm + NRm, Nn = NLn + NRn) {
-            if (value > double(Nm) / Nn) {
+        for (; Nm != m_ || Nn != n_; Nm = NLm + NRm, Nn = NLn + NRn)
+        {
+            if (value > double(Nm) / Nn)
+            {
                 NLn = Nn;
                 NLm = Nm;
                 result_ += "R";
 
-            } else {
+            }
+            else
+            {
                 NRn = Nn;
                 NRm = Nm;
                 result_ += "L";
@@ -84,7 +88,8 @@ void U10077::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

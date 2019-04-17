@@ -52,7 +52,8 @@ namespace {
 
         uint64_t f(uint64_t n, uint64_t k)
         {
-            if (n == 1) {
+            if (n == 1)
+            {
                 return 1;
             }
 
@@ -84,7 +85,8 @@ void U10015::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -27,13 +27,15 @@ void U11764::operator()() const
     std::cin >> N;
     int caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         int nWalls;
         int hJump(0), lJump(0);
         int current, prev;
         std::cin >> nWalls >> prev;
 
-        while (--nWalls) {
+        while (--nWalls)
+        {
             std::cin >> current;
             (current > prev ? ++hJump : current < prev ? ++lJump : 0);
             prev = current;

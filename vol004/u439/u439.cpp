@@ -33,26 +33,37 @@ namespace {
     public:
         solution_t() : moves_(), positions_()
         {
-            auto is_knight_move = [](int32_t x1, int32_t y1, int32_t x2, int32_t y2) -> bool {
+            auto is_knight_move = [](int32_t x1, int32_t y1, int32_t x2, int32_t y2) -> bool
+            {
                 auto dx = std::abs(x1 - x2), dy = std::abs(y1 - y2);
                 return (dx == 1 && dy == 2) || (dx == 2 && dy == 1);
             };
 
-            for (auto i = 0; i < DIMENSION; ++i) {
-                for (auto j = 0; j < DIMENSION; ++j) {
-                    if (i == j) {
+            for (auto i = 0; i < DIMENSION; ++i)
+            {
+                for (auto j = 0; j < DIMENSION; ++j)
+                {
+                    if (i == j)
+                    {
                         moves_[i][j] = 0;
-                    } else if (is_knight_move(i / SIZE, i % SIZE, j / SIZE, j % SIZE)) {
+                    }
+                    else if (is_knight_move(i / SIZE, i % SIZE, j / SIZE, j % SIZE))
+                    {
                         moves_[i][j] = 1;
-                    } else {
+                    }
+                    else
+                    {
                         moves_[i][j] = INF;
                     }
                 }
             }
 
-            for (auto k = 0; k < DIMENSION; ++k) {
-                for (auto i = 0; i < DIMENSION; ++i) {
-                    for (auto j = 0; j < DIMENSION; ++j) {
+            for (auto k = 0; k < DIMENSION; ++k)
+            {
+                for (auto i = 0; i < DIMENSION; ++i)
+                {
+                    for (auto j = 0; j < DIMENSION; ++j)
+                    {
                         moves_[i][j] = std::min(moves_[i][j], moves_[i][k] + moves_[k][j]);
                     }
                 }
@@ -103,7 +114,8 @@ void U439::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

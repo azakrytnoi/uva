@@ -33,7 +33,8 @@ namespace geom {
 
         bool operator<(const point_t& rhs) const
         {
-            if (std::abs(x_ - rhs.x_) < geom::EPS) {
+            if (std::abs(x_ - rhs.x_) < geom::EPS)
+            {
                 return y_ < rhs.y_;
             }
 
@@ -85,10 +86,12 @@ namespace geom {
 
             size_t k = 0;
 
-            for (size_t i = 0; i < n; i++) {
+            for (size_t i = 0; i < n; i++)
+            {
                 while (k >= 2 && point_t::cross(convex_hull[k - 2],
                                                 convex_hull[k - 1],
-                                                points[i]) <= geom::EPS) {
+                                                points[i]) <= geom::EPS)
+                {
                     --k;
                 }
 
@@ -97,10 +100,12 @@ namespace geom {
 
             size_t t = k + 1;
 
-            for (int64_t i = n - 2; i >= 0; i--) {
+            for (int64_t i = n - 2; i >= 0; i--)
+            {
                 while (k >= t && point_t::cross(convex_hull[k - 2],
                                                 convex_hull[k - 1],
-                                                points[i]) <= geom::EPS) {
+                                                points[i]) <= geom::EPS)
+                {
                     --k;
                 }
 
