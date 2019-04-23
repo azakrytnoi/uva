@@ -117,7 +117,7 @@ namespace {
             in.ignore();
             sol.field_.clear();
             sol.field_ = std::vector<std::vector<std::vector<int8_t>>>(16, std::vector<std::vector<int8_t>>(16, std::vector<int8_t>(4)));
-            int8_t kind(0);
+            char kind(0);
             std::string temp;
 
             while (std::getline(in, temp) && not temp.empty())
@@ -125,11 +125,8 @@ namespace {
                 switch (temp[0])
                 {
                 case 'v':
-                    kind = 0;
-                    break;
-
                 case 'h':
-                    kind = 1;
+                    kind = temp[0];
                     break;
 
                 default:
@@ -138,7 +135,7 @@ namespace {
                     int16_t x(0), y(0);
                     ss >> x >> y;
 
-                    if (kind == 0)
+                    if (kind == 'v')
                     {
                         sol.field_[x][y][2] = sol.field_[x + 1][y][3] = 1;
                     }
@@ -163,7 +160,7 @@ namespace {
         }
         else
         {
-            out << int16_t(sol.result_);
+            out << sol.result_;
         }
 
         return out;
@@ -193,11 +190,13 @@ namespace {
                 return ;
             }
 
-            for (int8_t i = 0; i < 4; i++)
+            static std::vector<direction_t> dirs ({direction_t::right, direction_t::left, direction_t::up, direction_t::down});
+
+            for (auto d : dirs)
             {
-                if (field_[u.x_][u.y_][i] == 0)
+                if (field_[u.x_][u.y_][static_cast<int16_t>(d)] == 0)
                 {
-                    auto v = u.roll(static_cast<direction_t>(i));
+                    auto v = u.roll(d);
 
                     if (v.x_ <= 0 || v.x_ > X_ || v.y_ <= 0 || v.y_ > Y_)
                     {
