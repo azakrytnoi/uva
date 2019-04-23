@@ -18,6 +18,8 @@
 #include <memory>
 #include <limits>
 
+#include "biguint.h"
+
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
 }
@@ -32,35 +34,71 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() { }
+        solution_t() : N_(std::numeric_limits<size_t>::max()), x_(), y_() { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
 
-        operator bool() const
+        operator bool()
         {
-            return true;
+            return N_-- > 0;
         }
         solution_t& operator()();
 
     private:
+        size_t N_;
+        math::uint_big_t x_, y_;
+
+        math::uint_big_t sqrt(math::uint_big_t& n);
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
+            in >> sol.N_;
+        }
+
+        in >> sol.y_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        out << sol.x_ << std::endl;
         return out;
     }
 
     solution_t& solution_t::operator()()
     {
+        x_ = sqrt(y_);
         return *this;
     }
 
+    math::uint_big_t solution_t::sqrt(math::uint_big_t& n)
+    {
+        math::uint_big_t a(1);
+        math::uint_big_t b(n);
+
+        while (true)
+        {
+            auto m = (a + b) / 2;
+
+            if (m == a || m == b)
+            {
+                return m;
+            }
+
+            if (n < (m * m))
+            {
+                b = m;
+            }
+            else
+            {
+                a = m;
+            }
+        }
+    }
 }
 
 void U10023::operator()() const
