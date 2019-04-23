@@ -45,7 +45,7 @@ namespace {
             static const std::vector<rank_t> rorder({rank_t::A, rank_t::_2, rank_t::_3, rank_t::_4, rank_t::_5, rank_t::_6, rank_t::_7, rank_t::_8, rank_t::_9, rank_t::X, rank_t::J, rank_t::Q, rank_t::K});
             struct less_rank
             {
-                bool operator()(const rank_t lhs, const rank_t rhs)
+                bool operator()(const rank_t lhs, const rank_t rhs) const
                 {
                     auto lhsi = std::find(rorder.begin(), rorder.end(), lhs);
                     auto rhsi = std::find(rorder.begin(), rorder.end(), rhs);
