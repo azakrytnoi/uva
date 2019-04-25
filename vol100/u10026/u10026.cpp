@@ -101,7 +101,7 @@ namespace {
 
             return a.position_ < b.position_;
         });
-        return !jobs_.empty();
+        return not jobs_.empty();
     }
 
 }
