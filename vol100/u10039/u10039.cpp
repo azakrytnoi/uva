@@ -44,7 +44,7 @@ namespace {
         uint16_t departure_time_, arrival_time_;
         std::string departure_, arrival_;
 
-        result_t() : valid_(false), departure_time_(0), arrival_time_(0), departure_(), arrival_() {}
+        result_t(const std::string& start, const std::string end) : valid_(false), departure_time_(0), arrival_time_(0), departure_(start), arrival_(end) {}
 
         operator bool() const
         {
@@ -70,7 +70,7 @@ namespace {
     class solution_t {
     public:
         solution_t() : N_(std::numeric_limits<size_t>::max()), Case_No_(0), cities_(), edges_()
-            , start_trip_(), start_(), end_(), result_() { }
+            , start_trip_(), start_(), end_(), result_("", "") { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
@@ -195,45 +195,42 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        result_ = result_t();
+        result_ = result_t(start_, end_);
         size_t from(cities_[start_]), to(cities_[end_]);
         ++Case_No_;
         std::vector<std::vector<int16_t>> timetable(2400, std::vector<int16_t>(edges_.size() + 1, -1));
 
-        for (size_t i = 0; i < edges_[from].size(); ++i)
+        std::for_each(edges_[from].begin(), edges_[from].end(), [&](auto & edge)
         {
-            if (edges_[from][i].start_time_ >= start_trip_)
+            if (edge.start_time_ >= start_trip_)
             {
-                timetable[edges_[from][i].end_time_][edges_[from][i].to_] = std::max(timetable[edges_[from][i].end_time_][edges_[from][i].to_],
-                        edges_[from][i].start_time_);
+                timetable[edge.end_time_][edge.to_] = std::max(timetable[edge.end_time_][edge.to_], edge.start_time_);
             }
-        }
+        });
 
         for (int16_t i = start_trip_; i < 2400; ++i)
         {
-            for (size_t j = 0; j < cities_.size(); ++j)
+            std::for_each(cities_.begin(), cities_.end(), [&](auto & city)
             {
-                if (timetable[i][j] == -1)
+                if (timetable[i][city.second] == -1)
                 {
-                    continue;
+                    return;
                 }
 
-                for (size_t k = 0; k < edges_[j].size(); ++k)
+                std::for_each(edges_[city.second].begin(), edges_[city.second].end(), [&](auto & edge)
                 {
-                    if (edges_[j][k].start_time_ >= i)
+                    if (edge.start_time_ >= i)
                     {
-                        timetable[edges_[j][k].end_time_][edges_[j][k].to_] = std::max(timetable[edges_[j][k].end_time_][edges_[j][k].to_], timetable[i][j]);
+                        timetable[edge.end_time_][edge.to_] = std::max(timetable[edge.end_time_][edge.to_], timetable[i][city.second]);
                     }
-                }
-            }
+                });
+            });
 
             if (timetable[i][to] != -1)
             {
                 result_.valid_ = true;
                 result_.departure_time_ = timetable[i][to];
                 result_.arrival_time_ = i;
-                result_.departure_ = start_;
-                result_.arrival_ = end_;
                 break;
             }
         }
