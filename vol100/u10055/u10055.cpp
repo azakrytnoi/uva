@@ -32,7 +32,7 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() { }
+        solution_t() : a_(), b_() { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
@@ -44,15 +44,18 @@ namespace {
         solution_t& operator()();
 
     private:
+    int64_t a_, b_;
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        in >> sol.a_ >> sol.b_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        out << std::abs(sol.a_ - sol.b_);
         return out;
     }
 
