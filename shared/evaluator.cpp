@@ -1,12 +1,8 @@
 #include <iostream>
 
 
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <dlfcn.h>
-    #define __cdecl
-#endif
+#include <dlfcn.h>
+#define __cdecl
 
 #include "evaluator.h"
 
@@ -89,17 +85,6 @@ int main(int argc, char** argv)
 
 uva_wraper::invoker uva_wraper::prepare(const std::string& baseName)
 {
-#ifdef _WIN32
-    hGetProcIDDLL_ = LoadLibraryA((baseName + ".dll").c_str());
-
-    if (!hGetProcIDDLL_)
-    {
-        std::cout << "failure loading library" << std::endl;
-        throw std::exception(baseName.c_str());
-    }
-
-    invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL_, "invoke");
-#else
     handle_ = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
 
     if (!handle_)
@@ -109,7 +94,6 @@ uva_wraper::invoker uva_wraper::prepare(const std::string& baseName)
     }
 
     invoker fnc = (invoker)dlsym(handle_, "invoke");
-#endif // _WIN32
 
     if (!fnc)
     {
@@ -122,23 +106,12 @@ uva_wraper::invoker uva_wraper::prepare(const std::string& baseName)
 
 void uva_wraper::release()
 {
-#ifdef _WIN32
-
-    if (hGetProcIDDLL_)
-    {
-        FreeLibrary(hGetProcIDDLL_);
-        hGetProcIDDLL_ = nullptr;
-    }
-
-#else
-
     if (handle_)
     {
         dlclose(handle_);
         handle_ = nullptr;
     }
 
-#endif // _WIN32
 }
 
 void dyn_evaluator::operator()()
