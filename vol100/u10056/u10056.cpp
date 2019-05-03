@@ -17,6 +17,7 @@
 #include <numeric>
 #include <memory>
 #include <limits>
+#include <cmath>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -32,32 +33,43 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() { }
+        solution_t() : N_(std::numeric_limits<size_t>::max()), n_(), i_(), p_(), result_() { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
 
-        operator bool() const
+        operator bool()
         {
-            return true;
+            return N_-- > 0;
         }
         solution_t& operator()();
 
     private:
+        size_t N_;
+        int32_t n_, i_;
+        double_t p_, result_;
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
+            in >> sol.N_;
+        }
+
+        in >> sol.n_ >> sol.p_ >> sol.i_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        out << std::fixed << std::setprecision(4) << sol.result_;
         return out;
     }
 
     solution_t& solution_t::operator()()
     {
+        result_ = p_ == 0.0 ? 0.0 : p_ * std::pow(1.0 - p_, i_ - 1) / (1.0 - std::pow(1.0 - p_, n_));
         return *this;
     }
 
