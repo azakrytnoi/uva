@@ -24,10 +24,7 @@ namespace math {
                 n /= 10;
             }
 
-            if (number_.empty())
-            {
-                number_.push_back(0);
-            }
+            normalize();
         }
 
         uint_big_t(const std::string& str) : number_(str.length())
@@ -175,10 +172,18 @@ namespace math {
 
         friend std::ostream& operator << (std::ostream& out, const uint_big_t& num)
         {
-            std::for_each(num.number_.rbegin(), num.number_.rend(), [&](uint8_t d)
+            if (not num.number_.empty())
             {
-                out << static_cast<char>(d + '0');
-            });
+                std::for_each(num.number_.rbegin(), num.number_.rend(), [&](uint8_t d)
+                {
+                    out << static_cast<char>(d + '0');
+                });
+            }
+            else
+            {
+                out << '0';
+            }
+
             return out;
         }
 
@@ -189,19 +194,22 @@ namespace math {
 
         void normalize()
         {
-            if (number_.back() == 0)
+            if (not number_.empty())
             {
-                auto lead_pos (std::find_if_not(number_.rbegin(), number_.rend(), [](uint8_t n)
+                if (number_.back() == 0)
                 {
-                    return n == 0;
-                }));
+                    auto lead_pos (std::find_if_not(number_.rbegin(), number_.rend(), [](uint8_t n)
+                    {
+                        return n == 0;
+                    }));
 
-                auto distance = std::distance(number_.rbegin(), lead_pos);
+                    auto distance = std::distance(number_.rbegin(), lead_pos);
 
-                if (distance != 0)
-                {
-                    number_.erase(number_.end() - distance, number_.end());
-                    number_.shrink_to_fit();
+                    if (distance != 0)
+                    {
+                        number_.erase(number_.end() - distance, number_.end());
+                        number_.shrink_to_fit();
+                    }
                 }
             }
         }

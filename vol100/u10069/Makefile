@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u10069.o: u10069.h
+u10069.o: u10069.h ../../headers/biguint.h
