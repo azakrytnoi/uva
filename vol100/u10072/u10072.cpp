@@ -33,9 +33,15 @@ namespace {
 
     struct player_t
     {
-        double_t bat_, bow_, fr_;
-        bool ok_bat_, ok_bow_, ok_ar_;
-        player_t() : bat_(), bow_(), fr_(), ok_bat_(), ok_bow_(), ok_ar_() {}
+        enum class kind_t
+        {
+            battler, bowler, allrounder
+        };
+
+        std::map<kind_t, double_t> capacity_;
+        std::map<kind_t, bool> capability_;
+
+        player_t() : capacity_(), capability_() {}
 
         friend std::istream& operator >>(std::istream& in, player_t& rhs)
         {
@@ -48,23 +54,25 @@ namespace {
             };
             int16_t bat(0), bow(0), fd(0);
             in >> bat >> bow >> fd;
-            rhs.bat_ = round(0.8 * bat + 0.2 * fd);
-            rhs.bow_ = round(0.7 * bow + 0.1 * bat + 0.2 * fd);
-            rhs.fr_ = round(0.4 * bat + 0.4 * bow + 0.2 * fd);
-            rhs.ok_bat_ = bat && fd;
-            rhs.ok_bow_ = bow && (bat || fd);
-            rhs.ok_ar_ = bow && bat && fd;
+            rhs.capacity_[player_t::kind_t::battler] = round(0.8 * bat + 0.2 * fd);
+            rhs.capacity_[player_t::kind_t::bowler] = round(0.7 * bow + 0.1 * bat + 0.2 * fd);
+            rhs.capacity_[player_t::kind_t::allrounder] = round(0.4 * bat + 0.4 * bow + 0.2 * fd);
+            rhs.capability_[player_t::kind_t::battler] = bat && fd;
+            rhs.capability_[player_t::kind_t::battler] = bow && (bat || fd);
+            rhs.capability_[player_t::kind_t::allrounder] = bow && bat && fd;
             return in;
         }
     };
 
     struct team_t
     {
+        typedef std::map<size_t, std::map<int16_t, std::map<int16_t, std::map<int16_t, size_t>>>> dp_matrix_t;
+
         uint16_t n_bat_, n_bow_, n_ar_;
         std::vector<player_t> players_;
-        std::vector<size_t> bat_, bow_, ar_;
+        std::map<player_t::kind_t, std::vector<size_t>> roles_;
 
-        team_t() : n_bat_(), n_bow_(), n_ar_(), players_(), bat_(), bow_(), ar_() {}
+        team_t() : n_bat_(), n_bow_(), n_ar_(), players_(), roles_() {}
 
         operator bool () const
         {
@@ -72,6 +80,9 @@ namespace {
         }
 
         double_t build();
+
+        void prepare (dp_matrix_t& dp, dp_matrix_t& trace);
+        void group_team(dp_matrix_t& trace);
 
         friend std::istream& operator >> (std::istream& in, team_t& rhs)
         {
@@ -92,17 +103,20 @@ namespace {
         friend std::ostream& operator << (std::ostream& out, const team_t& rhs)
         {
             out << "Batsmen :";
-            std::for_each(rhs.bat_.begin(), rhs.bat_.end(), [&](auto idx)
+            auto& battlers = rhs.roles_.find(player_t::kind_t::battler)->second;
+            std::for_each(battlers.begin(), battlers.end(), [&](auto idx)
             {
                 out << ' ' << idx;
             });
             out << std::endl << "Bowlers :";
-            std::for_each(rhs.bow_.begin(), rhs.bow_.end(), [&](auto idx)
+            auto& bowlers = rhs.roles_.find(player_t::kind_t::bowler)->second;
+            std::for_each(bowlers.begin(), bowlers.end(), [&](auto idx)
             {
                 out << ' ' << idx;
             });
             out << std::endl << "All-rounders :";
-            std::for_each(rhs.ar_.begin(), rhs.ar_.end(), [&](auto idx)
+            auto& allrounders = rhs.roles_.find(player_t::kind_t::allrounder)->second;
+            std::for_each(allrounders.begin(), allrounders.end(), [&](auto idx)
             {
                 out << ' ' << idx;
             });
@@ -150,10 +164,8 @@ namespace {
         return *this;
     }
 
-    double_t team_t::build()
+    void team_t::prepare(dp_matrix_t& dp, dp_matrix_t& trace)
     {
-        std::map<size_t, std::map<int16_t, std::map<int16_t, std::map<int16_t, size_t>>>> dp, trace;
-
         for (auto i = 0u; i < players_.size(); ++i)
         {
             for (auto ba = 0; ba <= n_bat_ + 1; ++ba)
@@ -166,9 +178,9 @@ namespace {
                         trace[i][ba][bo][ar] = 0;
                         curr = dp[i - 1][ba][bo][ar];
 
-                        if (ba > 0 && players_[i].ok_bat_)
+                        if (ba > 0 && players_[i].capability_[player_t::kind_t::battler])
                         {
-                            auto next = dp[i - 1][ba - 1][bo][ar] + players_[i].bat_;
+                            auto next = dp[i - 1][ba - 1][bo][ar] + players_[i].capacity_[player_t::kind_t::battler];
 
                             if (next > curr)
                             {
@@ -177,9 +189,9 @@ namespace {
                             }
                         }
 
-                        if (bo > 0 && players_[i].ok_bow_)
+                        if (bo > 0 && players_[i].capability_[player_t::kind_t::bowler])
                         {
-                            auto next = dp[i - 1][ba][bo - 1][ar] + players_[i].bow_;
+                            auto next = dp[i - 1][ba][bo - 1][ar] + players_[i].capacity_[player_t::kind_t::bowler];
 
                             if (next > curr)
                             {
@@ -188,9 +200,9 @@ namespace {
                             }
                         }
 
-                        if (ar > 0 && players_[i].ok_ar_)
+                        if (ar > 0 && players_[i].capability_[player_t::kind_t::allrounder])
                         {
-                            auto next = dp[i - 1][ba][bo][ar - 1] + players_[i].fr_;
+                            auto next = dp[i - 1][ba][bo][ar - 1] + players_[i].capacity_[player_t::kind_t::allrounder];
 
                             if (next > curr)
                             {
@@ -203,39 +215,49 @@ namespace {
                 }
             }
         }
+    }
 
+    void team_t::group_team(dp_matrix_t& trace)
+    {
         auto ba(n_bat_), bo(n_bow_), ar(n_ar_);
         int32_t idx(players_.size());
-        bat_.clear();
-        bow_.clear();
-        ar_.clear();
+        roles_.clear();
 
-        while (idx>=0)
+        while (idx >= 0)
         {
             auto k = trace[idx][ba][bo][ar];
 
             if (k == 1)
             {
-                bat_.push_back(idx + 1);
+                roles_[player_t::kind_t::battler].push_back(idx + 1);
                 ba--;
             }
             else if (k == 2)
             {
-                bow_.push_back(idx + 1);
+                roles_[player_t::kind_t::bowler].push_back(idx + 1);
                 bo--;
             }
             else if (k == 3)
             {
-                ar_.push_back(idx + 1);
+                roles_[player_t::kind_t::allrounder].push_back(idx + 1);
                 ar--;
             }
 
             idx--;
         }
 
-        std::sort(bat_.begin(), bat_.end());
-        std::sort(bow_.begin(), bow_.end());
-        std::sort(ar_.begin(), ar_.end());
+        std::sort(roles_[player_t::kind_t::battler].begin(), roles_[player_t::kind_t::battler].end());
+        std::sort(roles_[player_t::kind_t::bowler].begin(), roles_[player_t::kind_t::bowler].end());
+        std::sort(roles_[player_t::kind_t::allrounder].begin(), roles_[player_t::kind_t::allrounder].end());
+    }
+
+
+
+    double_t team_t::build()
+    {
+        dp_matrix_t dp, trace;
+        prepare(dp, trace);
+        group_team(trace);
 
         return  dp[players_.size() - 1][n_bat_][n_bow_][n_ar_];
     }
