@@ -38,7 +38,7 @@ namespace geom {
         return in;
     }
 
-};
+} // namespace geom
 
 namespace {
 
