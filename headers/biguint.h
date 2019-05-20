@@ -158,6 +158,27 @@ namespace math {
             return tmp;
         }
 
+        uint_big_t& operator ^= (const uint_big_t& n)
+        {
+            uint_big_t tmp(*this);
+            uint_big_t nn(n);
+            static const uint_big_t zero(0);
+
+            while (zero < --nn)
+            {
+                *this *= tmp;
+            }
+
+            return *this;
+        }
+
+        friend uint_big_t operator ^ (const uint_big_t& lhs, const uint_big_t& rhs)
+        {
+            uint_big_t tmp(lhs);
+            tmp ^= rhs;
+            return tmp;
+        }
+
         friend std::istream& operator >> (std::istream& in, uint_big_t& num)
         {
             std::string strnum;
