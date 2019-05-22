@@ -19,7 +19,7 @@ namespace geom {
 
         double_t x_, y_;
 
-        explicit point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}
+        point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}
 
         static double_t cross(const point_t& o, const point_t& a, const point_t& b)
         {
@@ -71,6 +71,12 @@ namespace geom {
         double_t operator^(const point_t& rhs) const
         {
             return x_ * rhs.y_ - y_ * rhs.x_;
+        }
+
+        point_t& operator /= (double_t r)
+        {
+            x_ /= r, y_ /= r;
+            return *this;
         }
     };
 

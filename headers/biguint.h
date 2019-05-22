@@ -54,11 +54,21 @@ namespace math {
 
         bool operator < (const uint_big_t& rhs) const;
 
+        bool operator > (const uint_big_t& rhs) const
+        {
+            return rhs < *this;
+        }
+
         bool operator == (const uint_big_t& rhs) const;
 
         bool operator <= (const uint_big_t& rhs) const
         {
             return *this < rhs || *this == rhs;
+        }
+
+        bool operator >= (const uint_big_t& rhs) const
+        {
+            return not (*this < rhs);
         }
 
         bool operator != (const uint_big_t& rhs) const
@@ -70,6 +80,7 @@ namespace math {
         {
             return number_.size();
         }
+        
         std::vector<uint8_t>& data()
         {
             return number_;

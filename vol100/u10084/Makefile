@@ -49,4 +49,4 @@ depend: $(SRCS)
 
 # DO NOT DELETE THIS LINE -- make depend needs it
 
-u10084.o: u10084.h
+u10084.o: u10084.h ../../headers/point.h
