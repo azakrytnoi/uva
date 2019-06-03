@@ -153,7 +153,7 @@ namespace {
                             break;
                         }
 
-                        auto value = calc(arr[i - 1][j], i, k);
+                        auto value(calc(arr[i - 1][j], i, k));
 
                         if (arr[i][j + k] > value)
                         {
@@ -173,17 +173,17 @@ namespace {
             trace_.pop();
         }
 
-        auto x = ncpc_.size() - 1;
-        auto y = T1_;
+        auto t2(ncpc_.size() - 1);
+        auto t1(T1_);
 
-        while (x > 0)
+        while (t2 > 0)
         {
-            trace_.push(used[x][y]);
-            y -= used[x][y];
-            x -= 1;
+            trace_.push(used[t2][t1]);
+            t1 -= used[t2][t1];
+            t2 -= 1;
         }
 
-        trace_.push(y);
+        trace_.push(t1);
         return *this;
     }
 
