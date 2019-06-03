@@ -64,7 +64,8 @@ namespace {
             sol.bcew_.resize(n);
             auto ncpc = sol.ncpc_.begin();
             auto bcew = sol.bcew_.begin();
-            auto read_item = [&]() {
+            auto read_item = [&]()
+            {
                 int64_t item;
                 in >> item;
                 return item;
@@ -109,58 +110,50 @@ namespace {
         matrix_t arr(ncpc_.size(), std::vector<int64_t> (T1_ + 1, std::numeric_limits<int64_t>::max()));
         matrix_t used(ncpc_.size(), std::vector<int64_t> (T1_ + 1, -1));
 
-        for (auto i = 0u; i < T1_ + 1; ++i)
+        auto calc = [&](auto ini, auto i, auto k)
+        {
+            auto value(ini);
+
+            if (k == 0)
+            {
+                value += bcew_[i].back();
+            }
+            else if (k == ncpc_[i].size())
+            {
+                value += ncpc_[i].back();
+            }
+            else
+            {
+                value += ncpc_[i][k - 1] + bcew_[i][ncpc_[i].size() - k - 1];
+            }
+
+            return value;
+        };
+
+        for (auto i = 0u; i <= T1_; ++i)
         {
             if (i > ncpc_[0].size())
             {
                 break;
             }
 
-            auto value (0);
-
-            if (i == 0)
-            {
-                value = bcew_[0].back();
-            }
-            else if (i == ncpc_[0].size())
-            {
-                value = ncpc_[0].back();
-            }
-            else
-            {
-                value = ncpc_[0][i - 1] + bcew_[0][ncpc_[0].size() - i - 1];
-            }
-
-            arr[0][i] = value;
+            arr[0][i] = calc(0, 0u, i);
         }
 
         for (auto i = 1u; i < ncpc_.size(); ++i)
         {
-            for (auto j = 0u; j < T1_ + 1; ++j)
+            for (auto j = 0u; j <= T1_; ++j)
             {
                 if (arr[i - 1][j] != std::numeric_limits<int64_t>::max())
                 {
-                    for (auto k = 0u; k < T1_ - j + 1; ++k)
+                    for (auto k = 0u; k <= T1_ - j; ++k)
                     {
                         if (k > ncpc_[i].size())
                         {
                             break;
                         }
 
-                        auto value = arr[i - 1][j];
-
-                        if (k == 0)
-                        {
-                            value += bcew_[i].back();
-                        }
-                        else if (k == ncpc_[i].size())
-                        {
-                            value += ncpc_[i].back();
-                        }
-                        else
-                        {
-                            value += ncpc_[i][k - 1] + bcew_[i][ncpc_[i].size() - k - 1];
-                        }
+                        auto value = calc(arr[i - 1][j], i, k);
 
                         if (arr[i][j + k] > value)
                         {

@@ -3,7 +3,7 @@
 
 CC = g++
 
-CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++17 -g3 -pthread $(UCFLAGS)
+CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++17 -g -pthread $(UCFLAGS)
 
 #
 INCLUDES = -I. -I../headers -I../logger
