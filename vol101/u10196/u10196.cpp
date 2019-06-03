@@ -45,15 +45,18 @@ namespace {
             d.field_.clear();
             d.wKing_ = {0, 0 };
             d.bKing_ = {0, 0 };
-            std::generate_n(std::back_inserter(d.field_), 8, [&]() {
+            std::generate_n(std::back_inserter(d.field_), 8, [&]()
+            {
                 std::getline(in, line);
                 size_t kPos;
 
-                if ((kPos = line.find('K')) != std::string::npos) {
+                if ((kPos = line.find('K')) != std::string::npos)
+                {
                     d.wKing_ = {d.field_.size(), kPos };
                 }
 
-                if ((kPos = line.find('k')) != std::string::npos) {
+                if ((kPos = line.find('k')) != std::string::npos)
+                {
                     d.bKing_ = {d.field_.size(), kPos };
                 }
 
@@ -109,13 +112,18 @@ namespace {
 
     std::ostream& operator <<(std::ostream& out, const solution& sol)
     {
-        if (sol.wKingCheck_) {
+        if (sol.wKingCheck_)
+        {
             out << "white king is in check.";
 
-        } else if (sol.bKingCheck_) {
+        }
+        else if (sol.bKingCheck_)
+        {
             out << "black king is in check.";
 
-        } else {
+        }
+        else
+        {
             out << "no king is in check.";
         }
 
@@ -127,23 +135,30 @@ namespace {
         bool check(false);
         std::pair<int, int> checkPosition;
         bool safe;
-        auto checkDiagonal = [&] () {
+        auto checkDiagonal = [&] ()
+        {
             char figure;
 
-            switch (figure = desk_.field_[checkPosition.first][checkPosition.second]) {
+            switch (figure = desk_.field_[checkPosition.first][checkPosition.second])
+            {
             case 'p':
             case 'P':
             case 'b':
             case 'B':
             case 'q':
             case 'Q':
-                if (direction < 0 && (figure == 'B' || figure == 'Q' || figure == 'P')) {
+                if (direction < 0 && (figure == 'B' || figure == 'Q' || figure == 'P'))
+                {
                     safe = true;
 
-                } else if (direction > 0 && (figure == 'b' || figure == 'q' || figure == 'p')) {
+                }
+                else if (direction > 0 && (figure == 'b' || figure == 'q' || figure == 'p'))
+                {
                     safe = true;
 
-                } else {
+                }
+                else
+                {
                     check = true;
                 }
 
@@ -163,21 +178,28 @@ namespace {
                 break;
             }
         };
-        auto checkDirect = [&]() {
+        auto checkDirect = [&]()
+        {
             char figure;
 
-            switch (figure = desk_.field_[checkPosition.first][checkPosition.second]) {
+            switch (figure = desk_.field_[checkPosition.first][checkPosition.second])
+            {
             case 'q':
             case 'Q':
             case 'r':
             case 'R':
-                if (direction < 0 && (figure == 'Q' || figure == 'R')) {
+                if (direction < 0 && (figure == 'Q' || figure == 'R'))
+                {
                     safe = true;
 
-                } else if (direction > 0 && (figure == 'q' || figure == 'r')) {
+                }
+                else if (direction > 0 && (figure == 'q' || figure == 'r'))
+                {
                     safe = true;
 
-                } else {
+                }
+                else
+                {
                     check = true;
                 }
 
@@ -199,16 +221,21 @@ namespace {
                 break;
             }
         };
-        auto checkKnight = [&]() {
+        auto checkKnight = [&]()
+        {
             char figure;
 
-            switch (figure = desk_.field_[checkPosition.first][checkPosition.second]) {
+            switch (figure = desk_.field_[checkPosition.first][checkPosition.second])
+            {
             case 'n':
             case 'N':
-                if (direction < 0 && figure == 'n') {
+                if (direction < 0 && figure == 'n')
+                {
                     check = true;
 
-                } else if (direction > 0 && figure == 'N') {
+                }
+                else if (direction > 0 && figure == 'N')
+                {
                     check = true;
                 }
 
@@ -235,97 +262,113 @@ namespace {
 
         for (safe = false, checkPosition = {kPosition.first - 1, kPosition.second - 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first--, checkPosition.second--) {
+                checkPosition.first--, checkPosition.second--)
+        {
             checkDiagonal();
         }
 
         for (safe = false, checkPosition = {kPosition.first + 1, kPosition.second - 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first++, checkPosition.second--) {
+                checkPosition.first++, checkPosition.second--)
+        {
             checkDiagonal();
         }
 
         for (safe = false, checkPosition = {kPosition.first - 1, kPosition.second + 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first--, checkPosition.second++) {
+                checkPosition.first--, checkPosition.second++)
+        {
             checkDiagonal();
         }
 
         for (safe = false, checkPosition = {kPosition.first + 1, kPosition.second + 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first++, checkPosition.second++) {
+                checkPosition.first++, checkPosition.second++)
+        {
             checkDiagonal();
         }
 
         for (safe = false, checkPosition = {kPosition.first - 1, kPosition.second };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first--) {
+                checkPosition.first--)
+        {
             checkDirect();
         }
 
         for (safe = false, checkPosition = {kPosition.first + 1, kPosition.second };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.first++) {
+                checkPosition.first++)
+        {
             checkDirect();
         }
 
         for (safe = false, checkPosition = {kPosition.first, kPosition.second - 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.second--) {
+                checkPosition.second--)
+        {
             checkDirect();
         }
 
         for (safe = false, checkPosition = {kPosition.first, kPosition.second + 1 };
                 !check && !safe && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7;
-                checkPosition.second++) {
+                checkPosition.second++)
+        {
             checkDirect();
         }
 
         checkPosition = {kPosition.first - 2, kPosition.second - 1 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first - 1, kPosition.second - 2 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first + 1, kPosition.second - 2 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first + 2, kPosition.second - 1 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first + 2, kPosition.second + 1 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first + 1, kPosition.second + 2 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first - 1, kPosition.second + 2 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
         checkPosition = {kPosition.first - 2, kPosition.second + 1 };
 
-        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7) {
+        if (!check && checkPosition.first >= 0 && checkPosition.second >= 0 && checkPosition.first <= 7 && checkPosition.second <= 7)
+        {
             checkKnight();
         }
 
@@ -339,7 +382,8 @@ void U10196::operator()() const
     solution sol;
     int gameNo(0);
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << "Game #" << (++gameNo) << ": " << sol() << std::endl;
     }
 }

@@ -33,13 +33,15 @@ void U855::operator()() const
     std::vector<int> streets;
     std::vector<int> avenues;
 
-    while (N--) {
+    while (N--)
+    {
         int temp, nFriends;
         std::cin >> temp >> temp >> nFriends;
         streets.resize(nFriends);
         avenues.resize(nFriends);
 
-        for (auto ita = avenues.begin(), its = streets.begin(); ita != avenues.end(); ++its, ++ita) {
+        for (auto ita = avenues.begin(), its = streets.begin(); ita != avenues.end(); ++its, ++ita)
+        {
             std::cin >> *its >> *ita;
         }
 

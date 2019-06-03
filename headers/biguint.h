@@ -18,19 +18,19 @@ namespace math {
     public:
         uint_big_t(uint64_t n = 0) : number_()
         {
-            while (n > 0) {
+            while (n > 0)
+            {
                 number_.push_back((n % 10));
                 n /= 10;
             }
 
-            if (number_.empty()) {
-                number_.push_back(0);
-            }
+            normalize();
         }
 
         uint_big_t(const std::string& str) : number_(str.length())
         {
-            std::transform(str.rbegin(), str.rend(), number_.begin(), [](char ch) {
+            std::transform(str.rbegin(), str.rend(), number_.begin(), [](char ch)
+            {
                 return ch - '0';
             });
             normalize();
@@ -54,11 +54,21 @@ namespace math {
 
         bool operator < (const uint_big_t& rhs) const;
 
+        bool operator > (const uint_big_t& rhs) const
+        {
+            return rhs < *this;
+        }
+
         bool operator == (const uint_big_t& rhs) const;
 
         bool operator <= (const uint_big_t& rhs) const
         {
             return *this < rhs || *this == rhs;
+        }
+
+        bool operator >= (const uint_big_t& rhs) const
+        {
+            return not (*this < rhs);
         }
 
         bool operator != (const uint_big_t& rhs) const
@@ -70,6 +80,7 @@ namespace math {
         {
             return number_.size();
         }
+        
         std::vector<uint8_t>& data()
         {
             return number_;
@@ -158,12 +169,34 @@ namespace math {
             return tmp;
         }
 
+        uint_big_t& operator ^= (const uint_big_t& n)
+        {
+            uint_big_t tmp(*this);
+            uint_big_t nn(n);
+            static const uint_big_t zero(0);
+
+            while (zero < --nn)
+            {
+                *this *= tmp;
+            }
+
+            return *this;
+        }
+
+        friend uint_big_t operator ^ (const uint_big_t& lhs, const uint_big_t& rhs)
+        {
+            uint_big_t tmp(lhs);
+            tmp ^= rhs;
+            return tmp;
+        }
+
         friend std::istream& operator >> (std::istream& in, uint_big_t& num)
         {
             std::string strnum;
             in >> strnum;
             num.number_.resize(strnum.length());
-            std::transform(strnum.rbegin(), strnum.rend(), num.number_.begin(), [](char ch) {
+            std::transform(strnum.rbegin(), strnum.rend(), num.number_.begin(), [](char ch)
+            {
                 return ch - '0';
             });
             return in;
@@ -171,9 +204,18 @@ namespace math {
 
         friend std::ostream& operator << (std::ostream& out, const uint_big_t& num)
         {
-            std::for_each(num.number_.rbegin(), num.number_.rend(), [&](uint8_t d) {
-                out << static_cast<char>(d + '0');
-            });
+            if (not num.number_.empty())
+            {
+                std::for_each(num.number_.rbegin(), num.number_.rend(), [&](uint8_t d)
+                {
+                    out << static_cast<char>(d + '0');
+                });
+            }
+            else
+            {
+                out << '0';
+            }
+
             return out;
         }
 
@@ -184,16 +226,22 @@ namespace math {
 
         void normalize()
         {
-            if (number_.back() == 0) {
-                auto lead_pos (std::find_if_not(number_.rbegin(), number_.rend(), [](uint8_t n) {
-                    return n == 0;
-                }));
+            if (not number_.empty())
+            {
+                if (number_.back() == 0)
+                {
+                    auto lead_pos (std::find_if_not(number_.rbegin(), number_.rend(), [](uint8_t n)
+                    {
+                        return n == 0;
+                    }));
 
-                auto distance = std::distance(number_.rbegin(), lead_pos);
+                    auto distance = std::distance(number_.rbegin(), lead_pos);
 
-                if (distance != 0) {
-                    number_.erase(number_.end() - distance, number_.end());
-                    number_.shrink_to_fit();
+                    if (distance != 0)
+                    {
+                        number_.erase(number_.end() - distance, number_.end());
+                        number_.shrink_to_fit();
+                    }
                 }
             }
         }
@@ -295,22 +343,30 @@ namespace math {
 
     std::pair<uint_big_t, uint_big_t> uint_big_t::divide(const uint_big_t& lhs, const uint_big_t& rhs)
     {
-        if (rhs == 0) {
+        if (rhs == 0)
+        {
             throw "Illegal operation";
         }
 
         std::pair<uint_big_t, uint_big_t> result;
 
-        if (rhs == 1) {
+        if (rhs == 1)
+        {
             result.first.number_.assign(lhs.number_.begin(), lhs.number_.end());
             result.second = 0;
-        } else if (lhs < rhs) {
+        }
+        else if (lhs < rhs)
+        {
             result.first = 0;
             result.second.number_.assign(lhs.number_.begin(), lhs.number_.end());
-        } else if (lhs == rhs) {
+        }
+        else if (lhs == rhs)
+        {
             result.first = 1;
             result.second = 0;
-        } else {
+        }
+        else
+        {
             result.first.number_.clear();
             result.first.number_.reserve(lhs.number_.size() - rhs.number_.size() + 1);
             uint_big_t op;
@@ -318,31 +374,38 @@ namespace math {
             auto running_pos = lhs.number_.end();
             std::advance(running_pos, -rhs.number_.size());
             std::copy_backward(running_pos, lhs.number_.end(), op.number_.end());
-            auto next_digit = [](uint_big_t& num, std::vector<uint8_t>::const_iterator & pos) {
+            auto next_digit = [](uint_big_t& num, std::vector<uint8_t>::const_iterator & pos)
+            {
                 num.number_.resize(num.number_.size() + 1);
                 std::copy_backward(num.number_.begin(), num.number_.end() - 1, num.number_.end());
                 num.number_[0] = *(--pos);
                 num.normalize();
             };
 
-            while (true) {
-                while (running_pos != lhs.number_.begin() && op < rhs) {
+            while (true)
+            {
+                while (running_pos != lhs.number_.begin() && op < rhs)
+                {
                     next_digit(op, running_pos);
                     result.first.number_.push_back(0);
                 }
 
                 uint8_t counter(0);
 
-                while (rhs <= op) {
+                while (rhs <= op)
+                {
                     op -= rhs;
                     counter++;
                 }
 
                 result.first.number_.push_back(counter);
 
-                if (running_pos != lhs.number_.begin()) {
+                if (running_pos != lhs.number_.begin())
+                {
                     next_digit(op, running_pos);
-                } else {
+                }
+                else
+                {
                     break;
                 }
             }
@@ -358,11 +421,14 @@ namespace math {
 
     bool uint_big_t::operator < (const uint_big_t& rhs) const
     {
-        if (number_.size() == rhs.number_.size()) {
+        if (number_.size() == rhs.number_.size())
+        {
             auto ri = rhs.number_.rbegin();
 
-            for (auto li = number_.rbegin(); li != number_.rend() && ri != rhs.number_.rend(); ++li, ++ri) {
-                if (*li != *ri) {
+            for (auto li = number_.rbegin(); li != number_.rend() && ri != rhs.number_.rend(); ++li, ++ri)
+            {
+                if (*li != *ri)
+                {
                     return *li < *ri;
                 }
             }
@@ -375,11 +441,14 @@ namespace math {
 
     bool uint_big_t::operator == (const uint_big_t& rhs) const
     {
-        if (number_.size() == rhs.number_.size()) {
+        if (number_.size() == rhs.number_.size())
+        {
             auto ri = rhs.number_.begin();
 
-            for (auto li = number_.begin(); li != number_.end() && ri != rhs.number_.end(); ++li, ++ri) {
-                if (*li != *ri) {
+            for (auto li = number_.begin(); li != number_.end() && ri != rhs.number_.end(); ++li, ++ri)
+            {
+                if (*li != *ri)
+                {
                     return false;
                 }
             }
@@ -397,7 +466,8 @@ namespace math {
 
         uint8_t carry(0);
         number_.resize(rhs_n.size());
-        std::transform(number_.begin(), number_.end(), rhs_n.begin(), number_.begin(), [&](uint8_t lc, uint8_t rc) {
+        std::transform(number_.begin(), number_.end(), rhs_n.begin(), number_.begin(), [&](uint8_t lc, uint8_t rc)
+        {
             uint8_t digit = lc + rc + carry;
             carry = digit / 10;
             digit %= 10;
@@ -411,24 +481,31 @@ namespace math {
 
     uint_big_t& uint_big_t::operator -= (const uint_big_t& rhs)
     {
-        if (rhs <= *this) {
+        if (rhs <= *this)
+        {
             int16_t carry(0);
             auto li = number_.begin();
-            auto apply_carry = [&](uint8_t corr) {
-                if (carry + corr < 0) {
+            auto apply_carry = [&](uint8_t corr)
+            {
+                if (carry + corr < 0)
+                {
                     *(li++) = 10 + carry;
                     carry = -1;
-                } else {
+                }
+                else
+                {
                     *(li++) = corr + carry;
                     carry = 0;
                 }
             };
-            std::for_each(rhs.number_.begin(), rhs.number_.end(), [&](uint8_t digit) {
+            std::for_each(rhs.number_.begin(), rhs.number_.end(), [&](uint8_t digit)
+            {
                 carry += *li - digit;
                 apply_carry(0);
             });
 
-            while (carry < 0 && li != number_.end()) {
+            while (carry < 0 && li != number_.end())
+            {
                 apply_carry(*li);
             }
 
@@ -441,13 +518,15 @@ namespace math {
 
     uint_big_t& uint_big_t::operator *= (uint8_t num)
     {
-        if (num > 9) {
+        if (num > 9)
+        {
             throw "Illegal operation";
         }
 
         number_.resize(number_.size() + 1);
         uint16_t carry(0);
-        std::transform(number_.begin(), number_.end(), number_.begin(), [&](uint8_t digit) {
+        std::transform(number_.begin(), number_.end(), number_.begin(), [&](uint8_t digit)
+        {
             carry += digit * num;
             digit = carry % 10;
             carry /= 10;
@@ -462,11 +541,13 @@ namespace math {
         uint_big_t result;
         std::vector<uint8_t> rhs_n(rhs.number_.begin(), rhs.number_.end());
 
-        for (auto num = rhs_n.begin(); num != rhs_n.end(); ++num) {
+        for (auto num = rhs_n.begin(); num != rhs_n.end(); ++num)
+        {
             uint_big_t lhs(*this);
             auto shift = std::distance(rhs_n.begin(), num);
 
-            if (shift > 0) {
+            if (shift > 0)
+            {
                 lhs.number_.resize(lhs.number_.size() + shift);
                 std::copy_backward(lhs.number_.begin(), lhs.number_.end() - shift, lhs.number_.end());
                 std::fill_n(lhs.number_.begin(), shift, 0);

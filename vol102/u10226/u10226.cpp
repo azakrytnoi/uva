@@ -45,16 +45,19 @@ void U10226::operator()() const
     std::getline(std::cin, line);
     std::map<std::string, int> species;
 
-    while (N--) {
+    while (N--)
+    {
         species.clear();
         int total(0);
 
-        while (std::getline(std::cin, line) && !line.empty()) {
+        while (std::getline(std::cin, line) && !line.empty())
+        {
             species[line]++;
             total++;
         }
 
-        std::for_each(species.begin(), species.end(), [&](const std::pair<std::string, int>& specie) {
+        std::for_each(species.begin(), species.end(), [&](const std::pair<std::string, int>& specie)
+        {
             std::cout << std::make_pair(specie.first, double(specie.second) / total * 100.0) << std::endl;
         });
         std::cout << std::endl;

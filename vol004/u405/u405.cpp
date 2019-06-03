@@ -59,7 +59,8 @@ namespace {
         solution_t& operator()();
 
     private:
-        enum class delivery_t {
+        enum class delivery_t
+        {
             none, delivered, unable, circle
         };
         std::map<std::string, std::vector<std::pair<std::string, ORName_t>>> mta_;
@@ -73,15 +74,18 @@ namespace {
         sol.messages_.clear();
         size_t mta_n(0);
 
-        if (in >> mta_n) {
+        if (in >> mta_n)
+        {
             std::vector<std::pair<std::string, std::vector<std::pair<std::string, ORName_t>>>> input;
             input.reserve((mta_n));
-            std::generate_n(std::back_inserter(input), mta_n, [&]() {
+            std::generate_n(std::back_inserter(input), mta_n, [&]()
+            {
                 std::pair<std::string, std::vector<std::pair<std::string, ORName_t>>> mta;
                 size_t routes(0);
                 in >> mta.first >> routes;
                 mta.second.reserve(routes);
-                std::generate_n(std::back_inserter(mta.second), routes, [&]() {
+                std::generate_n(std::back_inserter(mta.second), routes, [&]()
+                {
                     std::pair<std::string, ORName_t> route;
                     in >> route.first >> route.second;
                     return route;
@@ -91,7 +95,8 @@ namespace {
             sol.mta_.insert(input.begin(), input.end());
             in >> mta_n;
             sol.messages_.reserve(mta_n);
-            std::generate_n(std::back_inserter(sol.messages_), mta_n, [&]() {
+            std::generate_n(std::back_inserter(sol.messages_), mta_n, [&]()
+            {
                 std::tuple<std::string, ORName_t, std::pair<solution_t::delivery_t, std::vector<std::string>>> message;
                 in >> std::get<0>(message) >> std::get<1>(message);
                 return message;
@@ -112,11 +117,13 @@ namespace {
         out << "Scenario # " << sol.seq_no_ << std::endl;
         size_t n(0);
 
-        for (auto& message : sol.messages_) {
+        for (auto& message : sol.messages_)
+        {
             auto& trace = std::get<2>(message);
             out << (++n) << " -- ";
 
-            switch (trace.first) {
+            switch (trace.first)
+            {
             case solution_t::delivery_t::delivered:
                 out << "delivered to " << trace.second.back();
                 break;
@@ -144,13 +151,16 @@ namespace {
     {
         seq_no_++;
 
-        for (auto& message : messages_) {
+        for (auto& message : messages_)
+        {
             auto& trace = std::get<2>(message);
             auto mta_name = std::get<0>(message);
             auto& dstName = std::get<1>(message);
 
-            while (trace.first == delivery_t::none) {
-                if (std::find(trace.second.begin(), trace.second.end(), mta_name) != trace.second.end()) {
+            while (trace.first == delivery_t::none)
+            {
+                if (std::find(trace.second.begin(), trace.second.end(), mta_name) != trace.second.end())
+                {
                     trace.first = delivery_t::circle;
                     trace.second.push_back(mta_name);
                     break;
@@ -161,11 +171,16 @@ namespace {
 
                 trace.first = delivery_t::unable;
 
-                for (auto& route : routes) {
-                    if (route.second == dstName) {
-                        if (route.first == mta_name) {
+                for (auto& route : routes)
+                {
+                    if (route.second == dstName)
+                    {
+                        if (route.first == mta_name)
+                        {
                             trace.first = delivery_t::delivered;
-                        } else {
+                        }
+                        else
+                        {
                             trace.first = delivery_t::none;
                             mta_name = route.first;
                         }
@@ -181,10 +196,14 @@ namespace {
 
     bool ORName_t::operator ==(const ORName_t& rhs) const
     {
-        if (country_ == "*" || country_ == rhs.country_) {
-            if (admd_ == "*" || admd_ == rhs.admd_) {
-                if (prmd_ == "*" || prmd_ == rhs.prmd_) {
-                    if (organization_ == "*" || organization_ == rhs.organization_) {
+        if (country_ == "*" || country_ == rhs.country_)
+        {
+            if (admd_ == "*" || admd_ == rhs.admd_)
+            {
+                if (prmd_ == "*" || prmd_ == rhs.prmd_)
+                {
+                    if (organization_ == "*" || organization_ == rhs.organization_)
+                    {
                         return true;
                     }
                 }
@@ -200,7 +219,8 @@ void U405::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

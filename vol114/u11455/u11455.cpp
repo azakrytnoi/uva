@@ -27,7 +27,8 @@ void __cdecl invoke()
 }
 
 namespace {
-    enum class category {
+    enum class category
+    {
         banana, quadrangle, rectangle, square
     };
     class solution {
@@ -56,7 +57,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        switch (sol.result_) {
+        switch (sol.result_)
+        {
         case category::square:
             out << "square";
             break;
@@ -81,17 +83,23 @@ namespace {
     {
         result_ = category::banana;
 
-        if (s1_ != 0 && s2_ != 0 && s3_ != 0 && s4_ != 0) {
-            if (s1_ == s2_ && s2_ == s3_ && s3_ == s4_) {
+        if (s1_ != 0 && s2_ != 0 && s3_ != 0 && s4_ != 0)
+        {
+            if (s1_ == s2_ && s2_ == s3_ && s3_ == s4_)
+            {
                 result_ = category::square;
-            } else if ((s1_ == s3_ && s2_ == s4_)
-                       || (s1_ == s2_ && s3_ == s4_)
-                       || (s1_ == s4_ && s3_ == s2_)) {
+            }
+            else if ((s1_ == s3_ && s2_ == s4_)
+                     || (s1_ == s2_ && s3_ == s4_)
+                     || (s1_ == s4_ && s3_ == s2_))
+            {
                 result_ = category::rectangle;
-            } else if ((s1_ <= (s2_ + s3_ + s4_))
-                       && (s2_ <= (s1_ + s3_ + s4_))
-                       && (s3_ <= (s1_ + s2_ + s4_))
-                       && (s4_ <= (s1_ + s2_ + s3_))) {
+            }
+            else if ((s1_ <= (s2_ + s3_ + s4_))
+                     && (s2_ <= (s1_ + s3_ + s4_))
+                     && (s3_ <= (s1_ + s2_ + s4_))
+                     && (s4_ <= (s1_ + s2_ + s3_)))
+            {
                 result_ = category::quadrangle;
             }
         }
@@ -106,7 +114,8 @@ void U11455::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

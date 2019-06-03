@@ -48,15 +48,19 @@ namespace {
         {
             size_t nMatched = 0;
 
-            for (size_t i = 0; i < fragments.size(); i++) {
-                for (size_t j = 0; j < fragments.size(); j++) {
-                    if (i != j && (fragments[i] + fragments[j]) == result) {
+            for (size_t i = 0; i < fragments.size(); i++)
+            {
+                for (size_t j = 0; j < fragments.size(); j++)
+                {
+                    if (i != j && (fragments[i] + fragments[j]) == result)
+                    {
                         nMatched++, fragments[i] = "*", fragments[j] = "*";
                     }
                 }
             }
 
-            if (nMatched == fragments.size() / 2) {
+            if (nMatched == fragments.size() / 2)
+            {
                 return true;
             }
 
@@ -71,7 +75,8 @@ namespace {
         sol.bits_ = 0;
         std::string line;
 
-        while (in >> line && !line.empty()) {
+        while (in >> line && !line.empty())
+        {
             sol.fragments_.push_back(line);
             sol.bits_ += line.size();
         }
@@ -90,12 +95,16 @@ namespace {
         size_t codeSize = (bits_ * 2) / fragments_.size();
         std::string candidate;
 
-        for (size_t i = 0; i < fragments_.size(); i++) {
-            for (size_t j = 0; j < fragments_.size(); j++) {
-                if (i != j &&  fragments_[i].length() + fragments_[j].length() == codeSize) {
+        for (size_t i = 0; i < fragments_.size(); i++)
+        {
+            for (size_t j = 0; j < fragments_.size(); j++)
+            {
+                if (i != j &&  fragments_[i].length() + fragments_[j].length() == codeSize)
+                {
                     candidate.assign(fragments_[i]).append(fragments_[j]);
 
-                    if (matchAll(candidate, fragments_)) {
+                    if (matchAll(candidate, fragments_))
+                    {
                         result_ = candidate;
                         return *this;
                     }
@@ -113,10 +122,12 @@ void U10132::operator()() const
     int ncases;
     std::cin >> ncases;
 
-    while (ncases--) {
+    while (ncases--)
+    {
         std::cin >> sol;
 
-        if (sol) {
+        if (sol)
+        {
             std::cout << sol() << std::endl;
         }
     }

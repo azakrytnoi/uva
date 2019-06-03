@@ -58,10 +58,12 @@ namespace {
     {
         int32_t modulo(0);
 
-        do {
+        do
+        {
             modulo = (modulo * 10 + 1) % N_;
             digits_++;
-        } while (modulo != 0);
+        }
+        while (modulo != 0);
 
         return *this;
     }
@@ -71,7 +73,8 @@ void U10127::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

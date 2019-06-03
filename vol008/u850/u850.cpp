@@ -53,13 +53,18 @@ namespace {
             std::fill_n(mappings_, 128, 0);
             std::fill_n(rmappings, 128, 0);
 
-            for (size_t i = 0; i < alphabetTokens_.size(); i++) {
-                for (size_t j = 0; j < alphabetTokens_[i].length(); j++) {
+            for (size_t i = 0; i < alphabetTokens_.size(); i++)
+            {
+                for (size_t j = 0; j < alphabetTokens_[i].length(); j++)
+                {
                     if ((mappings_[static_cast<size_t>(encrypted[i][j])] == 0 && rmappings[static_cast<size_t>(alphabetTokens_[i][j])] == 0)
-                            || (mappings_[static_cast<size_t>(encrypted[i][j])] == alphabetTokens_[i][j])) {
+                            || (mappings_[static_cast<size_t>(encrypted[i][j])] == alphabetTokens_[i][j]))
+                    {
                         mappings_[static_cast<size_t>(encrypted[i][j])] = alphabetTokens_[i][j];
 
-                    } else {
+                    }
+                    else
+                    {
                         return false;
                     }
                 }
@@ -84,7 +89,8 @@ namespace {
         std::string line;
         sol.inputTokens_.clear();
 
-        while (std::getline(in, line) && !line.empty()) {
+        while (std::getline(in, line) && !line.empty())
+        {
             sol.inputTokens_.resize(sol.inputTokens_.size() + 1);
             std::stringstream ss(line);
             std::istream_iterator<std::string> iss(ss);
@@ -97,14 +103,18 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.possible_) {
-            for (auto iti = sol.inputTokens_.begin(); iti != sol.inputTokens_.end(); ++iti) {
+        if (sol.possible_)
+        {
+            for (auto iti = sol.inputTokens_.begin(); iti != sol.inputTokens_.end(); ++iti)
+            {
                 std::ostream_iterator<std::string> oit(out, " ");
                 std::vector<std::string> translated;
                 translated.reserve(iti->size());
-                std::for_each(iti->begin(), iti->end(), [&](const std::string & element) {
+                std::for_each(iti->begin(), iti->end(), [&](const std::string & element)
+                {
                     std::string result;
-                    std::transform(element.begin(), element.end(), std::back_inserter(result), [&](auto ch) {
+                    std::transform(element.begin(), element.end(), std::back_inserter(result), [&](auto ch)
+                    {
                         return sol.mappings_[static_cast<size_t>(ch)];
                     });
                     translated.push_back(result);
@@ -114,7 +124,9 @@ namespace {
                 out << std::endl;
             }
 
-        } else {
+        }
+        else
+        {
             out << "No solution." << std::endl;
         }
 
@@ -125,11 +137,14 @@ namespace {
     {
         possible_ = false;
 
-        for (auto iti = inputTokens_.begin(); !possible_ && iti != inputTokens_.end(); ++iti) {
-            if (iti->size() == alphabetTokens_.size()) {
+        for (auto iti = inputTokens_.begin(); !possible_ && iti != inputTokens_.end(); ++iti)
+        {
+            if (iti->size() == alphabetTokens_.size())
+            {
                 possible_ = true;
 
-                for (auto iiti = iti->begin(), ati = alphabetTokens_.begin(); possible_ && iiti != iti->end(); ++iiti, ++ati) {
+                for (auto iiti = iti->begin(), ati = alphabetTokens_.begin(); possible_ && iiti != iti->end(); ++iiti, ++ati)
+                {
                     possible_ = iiti->length() == ati->length();
                 }
 
@@ -149,11 +164,13 @@ void U850::operator()() const
     std::cin.get();
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol();
 
-        if (N != 0) {
+        if (N != 0)
+        {
             std::cout << std::endl;
         }
     }

@@ -72,13 +72,16 @@ namespace {
 
     void desk::reinit()
     {
-        std::for_each(hands_.begin(), hands_.end(), [](std::stack<card_t>& hand) {
-            while (!hand.empty()) {
+        std::for_each(hands_.begin(), hands_.end(), [](std::stack<card_t>& hand)
+        {
+            while (!hand.empty())
+            {
                 hand.pop();
             }
         });
 
-        while (!table_.empty()) {
+        while (!table_.empty())
+        {
             table_.pop();
         }
 
@@ -89,14 +92,17 @@ namespace {
     {
         eng.reinit();
 
-        for (int i = 0, cardNo = 0; i < 4; i++) {
+        for (int i = 0, cardNo = 0; i < 4; i++)
+        {
             std::stringstream ss(line);
             std::istream_iterator<std::string> iss(ss);
-            std::for_each(iss, std::istream_iterator<std::string>(), [&](const std::string & word) {
+            std::for_each(iss, std::istream_iterator<std::string>(), [&](const std::string & word)
+            {
                 eng.hands_[(cardNo++) % 2].push(card_t(word[1], word[0]));
             });
 
-            if (i < 3) {
+            if (i < 3)
+            {
                 std::getline(in, line);
             }
         }
@@ -108,7 +114,8 @@ namespace {
         std::getline(in, line);
         eng.valid_ = in && !line.empty() && line != "#";
 
-        if (eng.valid_) {
+        if (eng.valid_)
+        {
             deal(line, eng, in);
         }
 
@@ -128,17 +135,20 @@ namespace {
         changeTurn();
         std::stack<card_t> temp;
 
-        while (!hands_[player_].empty()) {
+        while (!hands_[player_].empty())
+        {
             temp.push(hands_[player_].top());
             hands_[player_].pop();
         }
 
-        while (!table_.empty()) {
+        while (!table_.empty())
+        {
             hands_[player_].push(table_.top());
             table_.pop();
         }
 
-        while (!temp.empty()) {
+        while (!temp.empty())
+        {
             hands_[player_].push(temp.top());
             temp.pop();
         }
@@ -146,9 +156,12 @@ namespace {
 
     void desk::playToCover(size_t steps)
     {
-        while (steps--) {
-            if (step()) {
-                switch (table_.top().rank_) {
+        while (steps--)
+        {
+            if (step())
+            {
+                switch (table_.top().rank_)
+                {
                 case T10::rank_t::J:
                 case T10::rank_t::Q:
                 case T10::rank_t::K:
@@ -162,13 +175,16 @@ namespace {
                     break;
                 }
 
-            } else {
+            }
+            else
+            {
                 over_ = true;
                 break;
             }
         }
 
-        if (!over_ && !table_.empty()) {
+        if (!over_ && !table_.empty())
+        {
             incorporateTable();
             dumpRound();
         }
@@ -183,7 +199,8 @@ namespace {
     {
         out << cards.size() << ":[";
 
-        while (!cards.empty()) {
+        while (!cards.empty())
+        {
             out << " " << static_cast<char>(cards.top().suit_) << static_cast<char>(cards.top().rank_) << " ";
             cards.pop();
         }
@@ -201,7 +218,8 @@ namespace {
 
     bool desk::step()
     {
-        if (!hands_[player_].empty()) {
+        if (!hands_[player_].empty())
+        {
             table_.push(hands_[player_].top());
             hands_[player_].pop();
             dumpRound();
@@ -215,7 +233,8 @@ namespace {
     {
         player_ = 0;
 
-        while (step()) {
+        while (step())
+        {
             changeTurn();
             coverFace();
         }
@@ -225,7 +244,8 @@ namespace {
 
     void desk::coverFace()
     {
-        switch (table_.top().rank_) {
+        switch (table_.top().rank_)
+        {
         case T10::rank_t::J:
             playToCover(1);
             break;
@@ -252,7 +272,8 @@ void U162::operator()() const
 {
     desk eng;
 
-    while ((std::cin >> eng) && eng) {
+    while ((std::cin >> eng) && eng)
+    {
         std::cout << eng() << std::endl;
     }
 }

@@ -35,20 +35,24 @@ void U11136::operator()()
     std::string line;
     std::multiset<int> bills;
 
-    while ((std::cin >> N) && N > 0) {
+    while ((std::cin >> N) && N > 0)
+    {
         std::getline(std::cin, line);
         bills.clear();
         int total(0);
 
-        while (N--) {
+        while (N--)
+        {
             std::getline(std::cin, line);
             std::stringstream sin(line);
             int n;
             sin >> n;
 
-            if (n > 0) {
+            if (n > 0)
+            {
                 std::istream_iterator<int> iin(sin);
-                std::for_each(iin, std::istream_iterator<int>(), [&](auto item) {
+                std::for_each(iin, std::istream_iterator<int>(), [&](auto item)
+                {
                     bills.insert(item);
                 });
             }

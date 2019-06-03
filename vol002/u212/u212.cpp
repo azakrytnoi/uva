@@ -112,7 +112,8 @@ namespace {
             return out;
         }
 
-        struct less : public std::binary_function<std::shared_ptr<room>, std::shared_ptr<room>, bool> {
+        struct less : public std::binary_function<std::shared_ptr<room>, std::shared_ptr<room>, bool>
+        {
             bool operator() (const std::shared_ptr<room>& lhs, const std::shared_ptr<room>& rhs)
             {
                 return lhs->id_ > rhs->id_;
@@ -129,7 +130,8 @@ namespace {
             out << "Bed" << std::right << std::setw(5) << rhs.id_ << std::setw(6) << rhs.used_;
             return out;
         }
-        struct less : public std::binary_function<std::shared_ptr<bed>, std::shared_ptr<bed>, bool> {
+        struct less : public std::binary_function<std::shared_ptr<bed>, std::shared_ptr<bed>, bool>
+        {
             bool operator() (const std::shared_ptr<bed>& lhs, const std::shared_ptr<bed>& rhs)
             {
                 return lhs->id_ > rhs->id_;
@@ -201,13 +203,15 @@ namespace {
         void allocate_room(std::shared_ptr<room> room, const time& when);
         void allocate_bed(std::shared_ptr<bed> bed, const time& when);
 
-        struct less_op : public std::binary_function<std::shared_ptr<patient>, std::shared_ptr<patient>, bool> {
+        struct less_op : public std::binary_function<std::shared_ptr<patient>, std::shared_ptr<patient>, bool>
+        {
             bool operator() (const std::shared_ptr<patient>& lhs, const std::shared_ptr<patient>& rhs)
             {
                 return not (lhs->room_->released() < rhs->room_->released());
             }
         };
-        struct less_rec : public std::binary_function<std::shared_ptr<patient>, std::shared_ptr<patient>, bool> {
+        struct less_rec : public std::binary_function<std::shared_ptr<patient>, std::shared_ptr<patient>, bool>
+        {
             bool operator() (const std::shared_ptr<patient>& lhs, const std::shared_ptr<patient>& rhs)
             {
                 return not (lhs->bed_->released() < rhs->bed_->released());
@@ -247,13 +251,15 @@ namespace {
         sol.rooms_.clear();
         sol.rooms_.reserve(n_rooms);
         uint16_t id(0);
-        std::generate_n(std::back_inserter(sol.rooms_), n_rooms, [&]() {
+        std::generate_n(std::back_inserter(sol.rooms_), n_rooms, [&]()
+        {
             return std::make_shared<room>(++id);
         });
         sol.beds_.clear();
         sol.beds_.reserve(n_beds);
         id  = 0;
-        std::generate_n(std::back_inserter(sol.beds_), n_beds, [&]() {
+        std::generate_n(std::back_inserter(sol.beds_), n_beds, [&]()
+        {
             return std::make_shared<bed>(++id);
         });
         in >> sol.transport_room_bed_ >> sol.prepare_room_ >> sol.prepare_bed_;
@@ -262,7 +268,8 @@ namespace {
         sol.patients_.clear();
         sol.patients_.reserve(n_patients);
         id = 0;
-        std::generate_n(std::back_inserter(sol.patients_), n_patients, [&]() {
+        std::generate_n(std::back_inserter(sol.patients_), n_patients, [&]()
+        {
             std::string temp;
             std::getline(in, temp);
             std::getline(in, temp);
@@ -280,7 +287,8 @@ Patient Operating Room Recovery Room
 #  Name    Room#    Begin    End   Bed#   Begin    End
 ------------------------------------------------------)" << std::endl;;
 
-        for (auto patient : sol.patients_) {
+        for (auto patient : sol.patients_)
+        {
             out << std::setw(2) << std::right << patient->id() << ' ' << std::setw(8) << std::left << patient->name() //
                 << std::setw(2) << ' ' << *patient->allocated_room() << std::setw(3) << ' ' << *patient->allocated_bed() //
                 << std::endl;
@@ -291,12 +299,14 @@ Facility Utilization
 Type   # Minutes  % Used
 -------------------------)" << std:: endl;;
 
-        for (auto op_room : sol.rooms_) {
+        for (auto op_room : sol.rooms_)
+        {
             out << *op_room << ' ' << std::fixed << std::setprecision(2) << std::setw(8) << std::right << op_room->utilized(
                     sol.finish_ - sol.start_) << std::endl;
         }
 
-        for (auto r_bed : sol.beds_) {
+        for (auto r_bed : sol.beds_)
+        {
             out << *r_bed << ' ' << std::fixed << std::setprecision(2) << std::setw(8) << std::right << r_bed->utilized(sol.finish_ - sol.start_) << std::endl;
         }
 
@@ -304,15 +314,18 @@ Type   # Minutes  % Used
     }
 
     template<typename R>
-    struct time_cmp: public std::binary_function<std::pair<R, time>, std::pair<R, time>, bool> {
+    struct time_cmp: public std::binary_function<std::pair<R, time>, std::pair<R, time>, bool>
+    {
         bool operator()(const std::pair<R, time>& lhs, const std::pair<R, time>& rhs)
         {
             return lhs.second < rhs.second;
         }
     };
 
-    struct event {
-        enum class kind {
+    struct event
+    {
+        enum class kind
+        {
             none, surgery, transfer, recovery, prepare_room, prepare_bed
         };
         std::shared_ptr<patient> patient_;
@@ -323,7 +336,8 @@ Type   # Minutes  % Used
 
         event() : patient_(), room_(), bed_(), when_(), kind_(event::kind::none) {}
 
-        struct less : public std::binary_function<event*, event*, bool> {
+        struct less : public std::binary_function<event*, event*, bool>
+        {
             bool operator () (const event* lhs, const event* rhs)
             {
                 return not (lhs->when_ < rhs->when_);
@@ -341,7 +355,8 @@ Type   # Minutes  % Used
         time now = start_;
         auto pat = patients_.begin();
 
-        while (not ready_rooms.empty()) {
+        while (not ready_rooms.empty())
+        {
             auto op_room = ready_rooms.top();
             ready_rooms.pop();
             (*pat)->allocate_room(op_room, now);
@@ -354,13 +369,16 @@ Type   # Minutes  % Used
             ++pat;
         }
 
-        while (not events.empty()) {
+        while (not events.empty())
+        {
             auto evt = events.top();
             events.pop();
             now = evt->when_;
 
-            switch (evt->kind_) {
-            case event::kind::surgery: {
+            switch (evt->kind_)
+            {
+            case event::kind::surgery:
+            {
                 evt->kind_ = event::kind::transfer;
                 evt->when_ = now + transport_room_bed_;
                 events.push(evt);
@@ -372,7 +390,8 @@ Type   # Minutes  % Used
                 break;
             }
 
-            case event::kind::transfer: {
+            case event::kind::transfer:
+            {
                 evt->kind_ = event::kind::recovery;
                 auto r_bed = ready_beds.top();
                 ready_beds.pop();
@@ -383,7 +402,8 @@ Type   # Minutes  % Used
                 break;
             }
 
-            case event::kind::recovery: {
+            case event::kind::recovery:
+            {
                 evt->kind_ = event::kind::prepare_bed;
                 evt->when_ = now + prepare_bed_;
                 events.push(evt);
@@ -391,10 +411,12 @@ Type   # Minutes  % Used
                 break;
             }
 
-            case event::kind::prepare_room: {
+            case event::kind::prepare_room:
+            {
                 ready_rooms.push(evt->room_);
 
-                if (pat != patients_.end()) {
+                if (pat != patients_.end())
+                {
                     auto op_room = ready_rooms.top();
                     ready_rooms.pop();
                     (*pat)->allocate_room(op_room, now);
@@ -405,14 +427,17 @@ Type   # Minutes  % Used
                     evt->kind_ = event::kind::surgery;
                     events.push(evt);
                     ++pat;
-                } else {
+                }
+                else
+                {
                     delete evt;
                 }
 
                 break;
             }
 
-            case event::kind::prepare_bed: {
+            case event::kind::prepare_bed:
+            {
                 ready_beds.push(evt->bed_);
                 delete evt;
                 break;

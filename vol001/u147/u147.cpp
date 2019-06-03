@@ -40,8 +40,10 @@ namespace {
             counts_.resize(N + 1);
             counts_[0] = 1;
 
-            for (auto cit = coins_.begin(); cit != coins_.end(); ++cit) {
-                for (size_t i = *cit; i <= N; i++) {
+            for (auto cit = coins_.begin(); cit != coins_.end(); ++cit)
+            {
+                for (size_t i = *cit; i <= N; i++)
+                {
                     counts_[i] += counts_[i - *cit];
                 }
             }
@@ -65,7 +67,8 @@ void U147::operator()() const
     double amt;
     solution<30000> sol;
 
-    while (std::cin >> amt && amt != 0.0) {
+    while (std::cin >> amt && amt != 0.0)
+    {
         std::cout.setf(std::ios::right);
         std::cout << std::setw(6) << std::setprecision(2) << std::fixed << amt << std::setw(17) << sol(amt) << std::endl;
     }

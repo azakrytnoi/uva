@@ -32,11 +32,13 @@ void __cdecl invoke()
 
 namespace {
 
-    enum class op_code_t : uint8_t {
+    enum class op_code_t : uint8_t
+    {
         ADD = 0, SUB, MUL, DIV, MOV, BREQ, BRLE, BRLS, BRGE, BRGR, BRNE, BR, AND, OR, XOR, NOT
     };
 
-    enum class addr_type_t : uint8_t {
+    enum class addr_type_t : uint8_t
+    {
         Register = 0, Absolute, PCRelative, Constant
     };
 
@@ -375,7 +377,8 @@ namespace {
     {
         std::string line;
 
-        while (std::getline(in, line)) {
+        while (std::getline(in, line))
+        {
             sol.bin_ += line;
         }
 
@@ -384,7 +387,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        std::for_each(sol.code_.begin(), sol.code_.end(), [&](const std::shared_ptr<instruction_t> instruction) {
+        std::for_each(sol.code_.begin(), sol.code_.end(), [&](const std::shared_ptr<instruction_t> instruction)
+        {
             out << instruction->format() << std::endl;
         });
         return out;
@@ -396,7 +400,8 @@ namespace {
         std::stringstream in(bin_);
         char op(0);
 
-        while (in >> op) {
+        while (in >> op)
+        {
             auto inst = instruction_t::decode(in, op);
             code_.push_back(inst);
         }
@@ -408,7 +413,8 @@ namespace {
     {
         op = op >= 'A' ? 10 + op - 'A' : op - '0';
 
-        switch (static_cast<op_code_t>(op)) {
+        switch (static_cast<op_code_t>(op))
+        {
         case op_code_t::ADD:
             return std::make_shared<add_t>(in);
 
@@ -472,7 +478,8 @@ namespace {
         uint16_t op_value(raw_op & 0x3fff);
         uint8_t op_type((raw_op >> 14) & 0x03);
 
-        switch (static_cast<addr_type_t>(op_type)) {
+        switch (static_cast<addr_type_t>(op_type))
+        {
         case addr_type_t::Register:
             return std::make_shared<register_t>(op_value);
 

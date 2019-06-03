@@ -51,10 +51,13 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.carry_ > 0) {
+        if (sol.carry_ > 0)
+        {
             out << sol.carry_ << " carry operation" << (sol.carry_ > 1 ? "s" : "") << '.';
 
-        } else {
+        }
+        else
+        {
             out << "No carry operation.";
         }
 
@@ -63,18 +66,21 @@ namespace {
 
     solution::operator bool()
     {
-        if (left_ == 0 && right_ == 0) {
+        if (left_ == 0 && right_ == 0)
+        {
             return false;
         }
 
         uint64_t carry(0);
 
-        while (!(left_ == 0 && right_ == 0)) {
+        while (!(left_ == 0 && right_ == 0))
+        {
             carry = ((left_ % 10) + (right_ % 10) + carry) / 10;
             left_ /= 10;
             right_ /= 10;
 
-            if (carry > 0) {
+            if (carry > 0)
+            {
                 carry_++;
             }
         }
@@ -87,7 +93,8 @@ void U10035::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol << std::endl;
     }
 }

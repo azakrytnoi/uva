@@ -45,7 +45,8 @@ namespace {
     public:
         solution() : goal_(N), cur_(N), start_(N), path_(MAX_DEPTH), bound_(), solved_()
         {
-            for (int i = 0; i < N - 1; ++i) {
+            for (int i = 0; i < N - 1; ++i)
+            {
                 goal_[i] = i + 1;
             }
 
@@ -80,7 +81,8 @@ namespace {
 
         for (; i < N && start_[i]; ++i);
 
-        while (!solved_ && bound_ < 100) {
+        while (!solved_ && bound_ < 100)
+        {
             bound_ = dfs(i, 0, -10);
         }
 
@@ -91,33 +93,39 @@ namespace {
     {
         int h = heu();
 
-        if (depth + h > bound_) {
+        if (depth + h > bound_)
+        {
             return depth + h;
         }
 
-        if (h == 0) {
+        if (h == 0)
+        {
             solved_ = true;
             return depth;
         }
 
         int nbound = INF;
 
-        for (int i = 0; i < DIR_N; ++i) {
-            if (i + d == DIR_N - 1) {
+        for (int i = 0; i < DIR_N; ++i)
+        {
+            if (i + d == DIR_N - 1)
+            {
                 continue;
             }
 
             int nx = pos / SIZE + dir_[i][0];
             int ny = pos % SIZE + dir_[i][1];
 
-            if (0 <= nx && nx < SIZE && 0 <= ny && ny < SIZE) {
+            if (0 <= nx && nx < SIZE && 0 <= ny && ny < SIZE)
+            {
                 path_[depth] = i;
                 int npos = nx * SIZE + ny;
                 cur_[pos] = cur_[npos];
                 cur_[npos] = 0;     /* pos -> npos */
                 int t = dfs(npos, depth + 1, i);
 
-                if (solved_) {
+                if (solved_)
+                {
                     return t;
                 }
 
@@ -134,15 +142,19 @@ namespace {
     {
         int ret(0);
 
-        for (int i = 0; i < N; ++i) {
+        for (int i = 0; i < N; ++i)
+        {
             int8_t ch = goal_[i];
 
-            if (ch == 0) {
+            if (ch == 0)
+            {
                 continue;
             }
 
-            for (int j = 0; j < N; ++j) {
-                if (ch == cur_[j]) {
+            for (int j = 0; j < N; ++j)
+            {
+                if (ch == cur_[j])
+                {
                     ret = ret + std::abs(i / SIZE - j / SIZE) + std::abs(i % SIZE - j % SIZE);
                 }
             }
@@ -155,15 +167,19 @@ namespace {
     {
         int8_t ret(0);
 
-        for (int i = 0; i < N - 1; ++i) {
+        for (int i = 0; i < N - 1; ++i)
+        {
             int8_t ch;
 
-            if ((ch = s[i]) == 0 && ((i / SIZE + 1) & 0x1)) {
+            if ((ch = s[i]) == 0 && ((i / SIZE + 1) & 0x1))
+            {
                 ret = 1 - ret;
             }
 
-            for (int j = i + 1; j < N; ++j) {
-                if (s[j] && s[j] < ch) {
+            for (int j = i + 1; j < N; ++j)
+            {
+                if (s[j] && s[j] < ch)
+                {
                     ret = 1 - ret;
                 }
             }
@@ -175,7 +191,8 @@ namespace {
     std::istream& operator >> (std::istream& in, solution& sol)
     {
         sol.start_.clear();
-        std::generate_n(std::back_inserter(sol.start_), N, [&]() {
+        std::generate_n(std::back_inserter(sol.start_), N, [&]()
+        {
             int tmp;
             in >> tmp;
             return tmp;
@@ -186,11 +203,15 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (!sol.solved_) {
+        if (!sol.solved_)
+        {
             out << "This puzzle is not solvable.";
 
-        } else {
-            for (auto it = sol.path_.begin(); it != sol.path_.end() && *it != -1; ++it) {
+        }
+        else
+        {
+            for (auto it = sol.path_.begin(); it != sol.path_.end() && *it != -1; ++it)
+            {
                 out << sol.md_[*it];
             }
         }
@@ -202,9 +223,11 @@ namespace {
     {
         solved_ = inv_judge(start_);
 
-        if (solved_) {
+        if (solved_)
+        {
             path_.clear();
-            std::generate_n(std::back_inserter(path_), MAX_DEPTH, []() {
+            std::generate_n(std::back_inserter(path_), MAX_DEPTH, []()
+            {
                 return -1;
             });
             IDAstar();
@@ -220,7 +243,8 @@ void U10181::operator()() const
     std::cin >> nCases;
     solution sol;
 
-    while (nCases--) {
+    while (nCases--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

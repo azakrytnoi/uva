@@ -59,12 +59,14 @@ namespace {
     {
         in >> sol.n_ >> sol.m_;
 
-        if (sol) {
+        if (sol)
+        {
             sol.adjacency_.clear();
             sol.adjacency_.resize(sol.n_);
             int32_t cnt(sol.m_);
 
-            while (cnt--) {
+            while (cnt--)
+            {
                 int32_t u, v;
                 in >> u >> v;
                 --u;
@@ -92,12 +94,15 @@ namespace {
         // value is a vertex, key is its degree
         {
             int32_t i(0);
-            std::for_each(adjacency_.begin(), adjacency_.end(), [&](const uint64_t item) {
+            std::for_each(adjacency_.begin(), adjacency_.end(), [&](const uint64_t item)
+            {
                 int32_t degree(0);
                 uint64_t mask(1);
 
-                for (int32_t j = 0; j < n_; j++, mask <<= 1) {
-                    if (item & mask) {
+                for (int32_t j = 0; j < n_; j++, mask <<= 1)
+                {
+                    if (item & mask)
+                    {
                         degree++;
                     }
                 }
@@ -109,7 +114,8 @@ namespace {
         // vector of vertices in descending order of their degrees
         std::vector<int32_t> vertices;
         vertices.reserve(n_);
-        std::transform(degrees.begin(), degrees.end(), std::back_inserter(vertices), [](const std::pair<int32_t, int32_t>& p) {
+        std::transform(degrees.begin(), degrees.end(), std::back_inserter(vertices), [](const std::pair<int32_t, int32_t>& p)
+        {
             return p.second;
         });
 
@@ -119,7 +125,8 @@ namespace {
         // vertices[i] - vertices[n - 1]
         uint64_t c(0);
 
-        for (int32_t iv = n_ - 1; iv >= 0; iv--) {
+        for (int32_t iv = n_ - 1; iv >= 0; iv--)
+        {
             int32_t i = vertices[iv];
             c |= adjacency_[i] | (static_cast<uint64_t>(1) << i);
             coverable[iv] = c;
@@ -134,11 +141,13 @@ namespace {
     void solution::dominating_set(const std::vector<int32_t>& vertices, int32_t n, int32_t iv, int32_t v, const std::vector<uint64_t>& adjacency,
                                   const std::vector<uint64_t>& coverable, const uint64_t all_covered, uint64_t covered, int32_t& min_covered)
     {
-        if (min_covered <= v + 1 || iv == n) {
+        if (min_covered <= v + 1 || iv == n)
+        {
             return; // no need to further search
         }
 
-        if ((covered | coverable[iv]) != all_covered) {
+        if ((covered | coverable[iv]) != all_covered)
+        {
             return;
         }
 
@@ -146,7 +155,8 @@ namespace {
         uint64_t current = static_cast<uint64_t>(1) << i;
         uint64_t c = covered | adjacency[i] | current;
 
-        if (c == all_covered) {
+        if (c == all_covered)
+        {
             min_covered = v + 1;
             return;
         }
@@ -160,7 +170,8 @@ void U10160::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

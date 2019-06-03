@@ -20,14 +20,17 @@ namespace {
         std::string result("");
         std::stack <char> op_stack;
 
-        for (size_t i = 0; i < input.size(); i++) {
-            switch (input[i]) {
+        for (size_t i = 0; i < input.size(); i++)
+        {
+            switch (input[i])
+            {
             case '(':
                 op_stack.push(input[i]);
                 break;
 
             case ')':
-                while (op_stack.top() != '(') {
+                while (op_stack.top() != '(')
+                {
                     char ch = op_stack.top();
                     op_stack.pop();
                     result += ch;
@@ -40,11 +43,15 @@ namespace {
             case '-':
             case '*':
             case '/':
-                if (op_stack.empty() || op_stack.top() == '(') {
+                if (op_stack.empty() || op_stack.top() == '(')
+                {
                     op_stack.push(input[i]);
 
-                } else {
-                    while (!op_stack.empty() && op_rank[input[i]] <= op_rank[op_stack.top()]) {
+                }
+                else
+                {
+                    while (!op_stack.empty() && op_rank[input[i]] <= op_rank[op_stack.top()])
+                    {
                         char ch = op_stack.top();
                         op_stack.pop();
                         result += ch;
@@ -73,8 +80,10 @@ namespace {
             }
         }
 
-        while (!op_stack.empty()) {
-            if (op_stack.top() != '(') {
+        while (!op_stack.empty())
+        {
+            if (op_stack.top() != '(')
+            {
                 result += op_stack.top();
             }
 
@@ -113,11 +122,13 @@ void U727::operator()() const
     std::getline(std::cin, line);
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::cout << std::endl;
         std::string input;
 
-        while (std::getline(std::cin, line) && !line.empty()) {
+        while (std::getline(std::cin, line) && !line.empty())
+        {
             input += line;
         }
 

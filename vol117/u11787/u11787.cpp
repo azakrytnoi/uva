@@ -32,13 +32,16 @@ void __cdecl invoke()
 namespace {
 
     class solution {
-        enum class unit_t : char {
+        enum class unit_t : char
+        {
             B = 'B', U = 'U', S = 'S', P = 'P', F = 'F', T = 'T', M = 'M', Z = '0'
         };
-        enum class direction_t {
+        enum class direction_t
+        {
             undefined, left, right
         };
-        struct glyph_t {
+        struct glyph_t
+        {
 //        	glyph_t() : unit_(unit_t::Z), legal_(), value_() {}
             unit_t unit_;
             std::map<direction_t, std::list<unit_t>> legal_;
@@ -47,7 +50,8 @@ namespace {
 
         friend bool operator < (unit_t lhs, unit_t rhs)
         {
-            static std::vector<std::pair<unit_t, uint64_t>> num_val ({
+            static std::vector<std::pair<unit_t, uint64_t>> num_val (
+            {
                 {unit_t::B, 1},
                 {unit_t::U, 10},
                 {unit_t::S, 100},
@@ -57,11 +61,13 @@ namespace {
                 {unit_t::M, 1000000},
                 {unit_t::Z, 0}
             });
-            uint64_t lhs_val = std::find_if(num_val.begin(), num_val.end(), [&](auto & p) {
+            uint64_t lhs_val = std::find_if(num_val.begin(), num_val.end(), [&](auto & p)
+            {
                 return p.first == lhs;
             })->second;
             uint64_t rhs_val = std::find_if(num_val.begin(), num_val.end(),
-            [&](auto & p) {
+                                            [&](auto & p)
+            {
                 return p.first == rhs;
             })->second;
             return lhs_val < rhs_val;
@@ -73,7 +79,8 @@ namespace {
             std::vector<unit_t> units ({unit_t::B, unit_t::U, unit_t::S, unit_t::P, unit_t::F, unit_t::T, unit_t::M});
             std::vector<std::pair<unit_t, glyph_t>> glyps;
             glyps.reserve(units.size());
-            std::transform(units.begin(), units.end(), std::back_inserter(glyps), [&](unit_t unit) -> std::pair<unit_t, glyph_t> {
+            std::transform(units.begin(), units.end(), std::back_inserter(glyps), [&](unit_t unit) -> std::pair<unit_t, glyph_t>
+            {
                 glyph_t glyph ({unit, {}, 0});
                 std::copy_if(units.begin(), units.end(), std::back_inserter(glyph.legal_[direction_t::left]), [&](unit_t uu)
                 {
@@ -148,9 +155,12 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.valid_) {
+        if (sol.valid_)
+        {
             out << sol.number_;
-        } else {
+        }
+        else
+        {
             out << "error";
         }
 
@@ -165,22 +175,29 @@ namespace {
         unit_t last(unit_t::Z);
         uint16_t same_cnt(0);
 
-        while (valid_ && in >> ch) {
+        while (valid_ && in >> ch)
+        {
             unit_t unit = static_cast<unit_t>(ch);
             glyph_t& glyph = glyphs_.find(unit)->second;
             number_ += glyph.value_;
 
-            if (last != unit_t::Z && last != unit) {
+            if (last != unit_t::Z && last != unit)
+            {
                 same_cnt = 0;
                 auto& legal = glyphs_.find(last)->second.legal_.find(direction_t::left)->second;
 
-                if (dir == direction_t::undefined) {
+                if (dir == direction_t::undefined)
+                {
                     dir = std::find(legal.begin(), legal.end(), unit) == legal.end() ? direction_t::right : direction_t::left;
-                } else {
+                }
+                else
+                {
                     auto new_dir = std::find(legal.begin(), legal.end(), unit) == legal.end() ? direction_t::right : direction_t::left;
                     valid_ = dir == new_dir;
                 }
-            } else if (last == unit) {
+            }
+            else if (last == unit)
+            {
                 same_cnt++;
             }
 
@@ -201,7 +218,8 @@ void U11787::operator()() const
     std::getline(std::cin, dummy);
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

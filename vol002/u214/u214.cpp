@@ -31,7 +31,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct node_t {
+    struct node_t
+    {
         std::string name_;
         char op_;
         std::shared_ptr<node_t> left_;
@@ -45,11 +46,13 @@ namespace {
             static int ident(0);
             out << std::setw(++ident) << ' ' << std::setw(1) << "node [name: '" << node.name_ << "', operation: '" << node.op_ << "']";
 
-            if (node.left_) {
+            if (node.left_)
+            {
                 out << std:: endl << *node.left_;
             }
 
-            if (node.right_) {
+            if (node.right_)
+            {
                 out << std::endl << *node.right_;
             }
 
@@ -97,7 +100,8 @@ namespace {
         sol.compile_.clear();
         std::string line;
 
-        if (std::getline(in, line)) {
+        if (std::getline(in, line))
+        {
             sol.root_ = parser_t::parse(line);
         }
 
@@ -112,7 +116,8 @@ namespace {
 
     solution& solution::operator()()
     {
-        if (root_) {
+        if (root_)
+        {
             std::stack<int> temp;
             temp.push(0);
             std::stringstream out;
@@ -134,11 +139,13 @@ namespace {
     {
         auto ch = *ptr_++;
 
-        switch (ch) {
+        switch (ch)
+        {
         case '+':
         case '-':
         case '*':
-        case '/': {
+        case '/':
+        {
             auto node = std::make_shared<node_t>("", ch);
             node->right_ = term();
             node->left_ = term();
@@ -146,7 +153,8 @@ namespace {
             return node;
         }
 
-        case '@': {
+        case '@':
+        {
             auto node = std::make_shared<node_t>("", ch);
             node->left_ = term();
             node->left_->parent_ = node;
@@ -245,10 +253,14 @@ namespace {
      */
     std::shared_ptr<node_t> solution::traverse(std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream& out)
     {
-        if (node) {
-            switch (node->op_) {
-            case ' ': {
-                if (acu && acu.get() != node.get()) {
+        if (node)
+        {
+            switch (node->op_)
+            {
+            case ' ':
+            {
+                if (acu && acu.get() != node.get())
+                {
                     auto tmp = temp.top();
                     temp.push(++tmp);
                     out << "ST $" << tmp << std::endl;
@@ -259,12 +271,16 @@ namespace {
                 break;
             }
 
-            case '+': {
+            case '+':
+            {
                 traverse(node->left_, acu, temp, out);
 
-                if (node->right_->op_ == ' ') {
+                if (node->right_->op_ == ' ')
+                {
                     out << "A " << node->right_->name_ << std::endl;
-                } else {
+                }
+                else
+                {
                     traverse(node->right_, acu, temp, out);
                     auto tmp = temp.top();
                     temp.pop();
@@ -275,12 +291,16 @@ namespace {
                 break;
             }
 
-            case '-': {
+            case '-':
+            {
                 traverse(node->left_, acu, temp, out);
 
-                if (node->right_->op_ == ' ') {
+                if (node->right_->op_ == ' ')
+                {
                     out << "S " << node->right_->name_ << std::endl;
-                } else {
+                }
+                else
+                {
                     traverse(node->right_, acu, temp, out);
                     auto tmp = temp.top();
                     temp.pop();
@@ -292,19 +312,24 @@ namespace {
                 break;
             }
 
-            case '@': {
+            case '@':
+            {
                 traverse(node->left_, acu, temp, out);
                 out << "N" << std::endl;
                 acu = node;
                 break;
             }
 
-            case '*': {
+            case '*':
+            {
                 traverse(node->left_, acu, temp, out);
 
-                if (node->right_->op_ == ' ') {
+                if (node->right_->op_ == ' ')
+                {
                     out << "M " << node->right_->name_ << std::endl;
-                } else {
+                }
+                else
+                {
                     traverse(node->right_, acu, temp, out);
                     auto tmp = temp.top();
                     temp.pop();
@@ -315,12 +340,16 @@ namespace {
                 break;
             }
 
-            case '/': {
+            case '/':
+            {
                 traverse(node->left_, acu, temp, out);
 
-                if (node->right_->op_ == ' ') {
+                if (node->right_->op_ == ' ')
+                {
                     out << "D " << node->right_->op_ << std::endl;
-                } else {
+                }
+                else
+                {
                     traverse(node->right_, acu, temp, out);
                     auto tmp = temp.top();
                     temp.pop();
@@ -345,7 +374,8 @@ void U214::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

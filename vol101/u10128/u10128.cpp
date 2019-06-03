@@ -51,22 +51,29 @@ namespace {
         std::vector<std::vector<int64_t>> pascalTriangle(N, std::vector<int64_t>(N));
         pascalTriangle[0][0] = 1;
 
-        for (size_t i = 1; i < N; i++) {
+        for (size_t i = 1; i < N; i++)
+        {
             pascalTriangle[i][0] = pascalTriangle[i][i] = 1;
         }
 
-        for (size_t i = 2; i < N; ++i) {
-            for (size_t j = 1; j < i; ++j) {
+        for (size_t i = 2; i < N; ++i)
+        {
+            for (size_t j = 1; j < i; ++j)
+            {
                 pascalTriangle[i][j] = pascalTriangle[i - 1][j] + pascalTriangle[i - 1][j - 1];
             }
         }
 
         dp_[1][1][1] = dp_[0][0][0] = 1;
 
-        for (size_t n = 2; n < 14; ++n) {
-            for (size_t p = 1; p <= n; ++p) {
-                for (size_t r = 1; r <= p; ++r) {
-                    for (size_t i = p - 1; i <= n - 1 - (r - 1); ++i) {
+        for (size_t n = 2; n < 14; ++n)
+        {
+            for (size_t p = 1; p <= n; ++p)
+            {
+                for (size_t r = 1; r <= p; ++r)
+                {
+                    for (size_t i = p - 1; i <= n - 1 - (r - 1); ++i)
+                    {
                         dp_[n][p][r] +=
                             pascalTriangle[n - 1][i] *
                             std::accumulate(dp_[i][p - 1].begin(), dp_[i][p - 1].end(), 0ll) *
@@ -86,10 +93,13 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.p_ == 0 || sol.r_ == 0 || sol.p_ + sol.r_ > sol.n_ + 1) {
+        if (sol.p_ == 0 || sol.r_ == 0 || sol.p_ + sol.r_ > sol.n_ + 1)
+        {
             out << 0;
 
-        } else {
+        }
+        else
+        {
             out << sol.dp_[sol.n_][sol.p_][sol.r_];
         }
 
@@ -104,7 +114,8 @@ void U10128::operator()() const
     std::cin >> T;
     solution sol;
 
-    while (T--) {
+    while (T--)
+    {
         std::cin >> sol;
         std::cout << sol << std::endl;
     }

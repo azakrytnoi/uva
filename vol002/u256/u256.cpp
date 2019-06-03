@@ -36,7 +36,8 @@ namespace {
         solution_t() : qn_(), result_()
         {
             qn_.reserve(10000);
-            std::generate_n(std::back_inserter(qn_), 10000, [&]() {
+            std::generate_n(std::back_inserter(qn_), 10000, [&]()
+            {
                 return qn_.size() * qn_.size();
             });
         }
@@ -54,7 +55,8 @@ namespace {
         std::vector<uint32_t> qn_;
         static uint16_t n_;
 
-        struct formatted_n {
+        struct formatted_n
+        {
             uint32_t val_;
             size_t size_;
 
@@ -91,15 +93,18 @@ namespace {
         const uint32_t mid (std::pow(10, n_ / 2));
         auto ubound = std::upper_bound(qn_.begin(), qn_.end(), upper_value);
 
-        if (ubound != qn_.end()) {
-            while (*ubound > upper_value) {
+        if (ubound != qn_.end())
+        {
+            while (*ubound > upper_value)
+            {
                 --ubound;
             }
         }
 
         result_.clear();
         result_.reserve(std::distance(qn_.begin(), ubound));
-        std::copy_if(qn_.begin(), ubound, std::back_inserter(result_), [&](auto qn) {
+        std::copy_if(qn_.begin(), ubound, std::back_inserter(result_), [&](auto qn)
+        {
             uint16_t upper = qn / mid;
             uint16_t lower = qn % mid;
             return uint32_t((upper + lower) * (upper + lower)) == qn;
@@ -113,7 +118,8 @@ void U256::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol();
     }
 }

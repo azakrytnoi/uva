@@ -45,19 +45,28 @@ namespace {
             int shift(root * root - root + 1);
             x_ = y_ = root;
 
-            if (root % 2 == 0) {
-                if (n > shift) {
+            if (root % 2 == 0)
+            {
+                if (n > shift)
+                {
                     y_ -= n - shift;
 
-                } else {
+                }
+                else
+                {
                     x_ -= shift - n;
                 }
 
-            } else {
-                if (n > shift) {
+            }
+            else
+            {
+                if (n > shift)
+                {
                     x_ -= n - shift;
 
-                } else {
+                }
+                else
+                {
                     y_ -= shift - n;
                 }
             }
@@ -72,7 +81,8 @@ void U10161::operator()() const
     int n;
     solution sol;
 
-    while (std::cin >> n && n != 0) {
+    while (std::cin >> n && n != 0)
+    {
         std::cout << sol(n) << std::endl;
     }
 }

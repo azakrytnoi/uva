@@ -41,7 +41,8 @@ namespace {
     std::string coder::encode(const std::string& source)
     {
         std::stringstream out;
-        std::for_each(source.rbegin(), source.rend(), [&](auto ch) {
+        std::for_each(source.rbegin(), source.rend(), [&](auto ch)
+        {
             std::stringstream ss;
             ss << (int)ch;
             std::string str(ss.str());
@@ -56,7 +57,8 @@ namespace {
         std::stringstream out;
         std::string tmp;
 
-        for (auto it = source.begin(); it != source.end();) {
+        for (auto it = source.begin(); it != source.end();)
+        {
             tmp.assign(it, it + 2);
             it += 2;
             std::reverse(tmp.begin(), tmp.end());
@@ -65,7 +67,8 @@ namespace {
             int ch;
             in >> ch;
 
-            if (ch < 32) {
+            if (ch < 32)
+            {
                 ++it;
                 ch += 100;
             }
@@ -84,8 +87,10 @@ void U444::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line)) {
-        if (!line.empty()) {
+    while (std::getline(std::cin, line))
+    {
+        if (!line.empty())
+        {
             std::cout << (std::isdigit(line[0]) ? coder::decode(line) : coder::encode(line));
         }
 

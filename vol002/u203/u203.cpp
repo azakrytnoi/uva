@@ -69,7 +69,8 @@ namespace {
             auto ynom = det({det1, y1my2}, {det2, y3my4});
             auto denom = det({x1mx2, y1my2}, {x3mx4, y3my4});
 
-            if (denom == 0.0) {
+            if (denom == 0.0)
+            {
                 return std::make_pair(false, point_t());
             }
 
@@ -112,7 +113,8 @@ namespace {
             sin >> ship.point_.x_ >> ship.point_.y_ >> ship.course_ >> ship.speed_;
             ship.course_ = 90 - ship.course_;
 
-            if (std::abs(ship.course_) > 180) {
+            if (std::abs(ship.course_) > 180)
+            {
                 ship.course_ += ship.course_ > 0 ? -360 : 360;
             }
 
@@ -140,15 +142,18 @@ namespace {
         solution_t& operator()()
         {
 
-            for (auto& ship : others_) {
+            for (auto& ship : others_)
+            {
                 ship.distance_ = point_t::distance(own_.point_, ship.point_);
                 ship.bearing_ = point_t::bearing(ship.point_, own_.point_, ship.next_);
 
-                if (ship.distance_ <= 10.0) {
+                if (ship.distance_ <= 10.0)
+                {
 //                    auto next_bearing = point_t::bearing(ship.point_ + ship.next_, own_.point_ + own_.next_, ship.next_ + ship.next_);
                     auto next_distance = point_t::distance(own_.point_ + own_.next_, ship.point_ + ship.next_);
 
-                    if (ship.distance_ >= next_distance) {
+                    if (ship.distance_ >= next_distance)
+                    {
                         collisions_.push_back(&ship);
                     }
                 }
@@ -164,14 +169,16 @@ namespace {
             sol.collisions_.clear();
             sol.own_.reset();
 
-            if (std::getline(in, sol.set_name_)) {
+            if (std::getline(in, sol.set_name_))
+            {
                 size_t n;
                 in >> n;
                 std::string tmp;
                 std::getline(in, tmp);
                 in >> sol.own_;
                 sol.others_.reserve(n);
-                std::generate_n(std::back_inserter(sol.others_), n, [&]() {
+                std::generate_n(std::back_inserter(sol.others_), n, [&]()
+                {
                     ship_t ship;
                     in >> ship;
                     return ship;
@@ -184,7 +191,8 @@ namespace {
 
         friend std::ostream& operator<<(std::ostream& out, const solution_t& sol)
         {
-            auto visible_lights = [](double_t angle) -> std::string {
+            auto visible_lights = [](double_t angle) -> std::string
+            {
                 std::string result("Masthead");
 
                 if (angle >= 357.5 || angle <= 115.0)
@@ -208,15 +216,18 @@ namespace {
                 << R"(Boat ID       Bearing      Distance     Lights (left to right)
 ---------------------------------------------------------------)" << std::endl;
 
-            for (auto& ship : sol.others_) {
+            for (auto& ship : sol.others_)
+            {
                 out << std::setw(12) << std::left << ship.name_ << std::setw(2) << ' ' //
                     << std::fixed << std::setw(7) << std::right << std::setprecision(2) << ship.bearing_ //
                     << std::setw(12) << ship.distance_ << std::setw(7) << ' ' //
                     << (ship.distance_ > 10.0 ? "Lights not visible" : visible_lights(ship.bearing_)) << std::endl;
             }
 
-            if (not sol.collisions_.empty()) {
-                for (auto& ship : sol.collisions_) {
+            if (not sol.collisions_.empty())
+            {
+                for (auto& ship : sol.collisions_)
+                {
                     auto distance = point_t::distance(sol.own_.point_ + sol.own_.next_, ship->point_ + ship->next_);
                     out << "** Collision warning --> " << ship->name_ << ":  Distance = " << std::fixed << std::setprecision(2) << distance << std::endl;
                 }
@@ -239,7 +250,8 @@ void U203::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

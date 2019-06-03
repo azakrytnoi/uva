@@ -72,18 +72,22 @@ namespace {
 
     void solution::simulate(size_t ball, size_t peg, std::vector<size_t>& pegs)
     {
-        if (peg != n_) {
-            if (pegs[peg] == 0) {
+        if (peg != n_)
+        {
+            if (pegs[peg] == 0)
+            {
                 pegs[peg] = ball;
                 result_++;
                 simulate(ball + 1, peg, pegs);
                 return;
             }
 
-            for (size_t i = 0; i <= peg; i++) {
+            for (size_t i = 0; i <= peg; i++)
+            {
                 size_t root = static_cast<size_t>(std::sqrt(pegs[i] + ball));
 
-                if (root * root == pegs[i] + ball) {
+                if (root * root == pegs[i] + ball)
+                {
                     pegs[i] = ball;
                     result_++;
                     simulate(ball + 1, peg, pegs);
@@ -103,7 +107,8 @@ void U10276::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N-- > 0) {
+    while (N-- > 0)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

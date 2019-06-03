@@ -51,7 +51,8 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
-        if (sol.N_ == std::numeric_limits<size_t>::max()) {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.N_;
         }
 
@@ -67,10 +68,12 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        auto countBits = [](uint64_t num) {
+        auto countBits = [](uint64_t num)
+        {
             size_t counter(0);
 
-            while (num != 0) {
+            while (num != 0)
+            {
                 counter += num & 0x01;
                 num >>= 1;
             }
@@ -93,7 +96,8 @@ void U10019::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

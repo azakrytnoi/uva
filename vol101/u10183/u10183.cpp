@@ -38,7 +38,8 @@ namespace {
             fibs_.reserve(502);
             fibs_.push_back("1");
             fibs_.push_back("2");
-            std::generate_n(std::back_inserter(fibs_), 500, [&]() {
+            std::generate_n(std::back_inserter(fibs_), 500, [&]()
+            {
                 return solution::add(fibs_[fibs_.size() - 2], fibs_[fibs_.size() - 1]);
             });
         }
@@ -72,7 +73,8 @@ namespace {
 
     solution& solution::operator()()
     {
-        count_ = std::accumulate(fibs_.begin(), fibs_.end(), 0ull, [&](size_t current, const std::string & fib) {
+        count_ = std::accumulate(fibs_.begin(), fibs_.end(), 0ull, [&](size_t current, const std::string & fib)
+        {
             return current + (solution::less(s1_, fib) && solution::less(fib, s2_) ? 1 : 0);
         });
         return *this;
@@ -87,14 +89,16 @@ namespace {
         res.reserve(len + 1);
         int32_t  carry = 0;
 
-        for (int32_t i = static_cast<int32_t>(len - 1); i >= 0; i--) {
+        for (int32_t i = static_cast<int32_t>(len - 1); i >= 0; i--)
+        {
             int32_t sum = carry + (s1[i] - '0') + (s2[i] - '0');
             carry = sum / 10;
             sum = sum % 10;
             res = (char)(sum + '0') + res;
         }
 
-        if (carry) {
+        if (carry)
+        {
             res  = '1' + res;
         }
 
@@ -126,7 +130,8 @@ void U10183::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

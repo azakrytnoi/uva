@@ -19,7 +19,7 @@ namespace geom {
 
         double_t x_, y_;
 
-        explicit point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}
+        point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}
 
         static double_t cross(const point_t& o, const point_t& a, const point_t& b)
         {
@@ -33,7 +33,8 @@ namespace geom {
 
         bool operator<(const point_t& rhs) const
         {
-            if (std::abs(x_ - rhs.x_) < geom::EPS) {
+            if (std::abs(x_ - rhs.x_) < geom::EPS)
+            {
                 return y_ < rhs.y_;
             }
 
@@ -71,6 +72,12 @@ namespace geom {
         {
             return x_ * rhs.y_ - y_ * rhs.x_;
         }
+
+        point_t& operator /= (double_t r)
+        {
+            x_ /= r, y_ /= r;
+            return *this;
+        }
     };
 
     class point_util {
@@ -85,10 +92,12 @@ namespace geom {
 
             size_t k = 0;
 
-            for (size_t i = 0; i < n; i++) {
+            for (size_t i = 0; i < n; i++)
+            {
                 while (k >= 2 && point_t::cross(convex_hull[k - 2],
                                                 convex_hull[k - 1],
-                                                points[i]) <= geom::EPS) {
+                                                points[i]) <= geom::EPS)
+                {
                     --k;
                 }
 
@@ -97,10 +106,12 @@ namespace geom {
 
             size_t t = k + 1;
 
-            for (int64_t i = n - 2; i >= 0; i--) {
+            for (int64_t i = n - 2; i >= 0; i--)
+            {
                 while (k >= t && point_t::cross(convex_hull[k - 2],
                                                 convex_hull[k - 1],
-                                                points[i]) <= geom::EPS) {
+                                                points[i]) <= geom::EPS)
+                {
                     --k;
                 }
 

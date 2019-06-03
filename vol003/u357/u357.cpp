@@ -37,8 +37,10 @@ namespace {
             counts_.resize(N + 1);
             counts_[0] = 1;
 
-            for (auto cit = coins_.begin(); cit != coins_.end(); ++cit) {
-                for (size_t i = *cit; i <= N; i++) {
+            for (auto cit = coins_.begin(); cit != coins_.end(); ++cit)
+            {
+                for (size_t i = *cit; i <= N; i++)
+                {
                     counts_[i] += counts_[i - *cit];
                 }
             }
@@ -62,14 +64,18 @@ void U357::operator()() const
     int amt;
     solution<30000> sol;
 
-    while (std::cin >> amt) {
+    while (std::cin >> amt)
+    {
         std::cout.setf(std::ios::right);
         int64_t res = sol(amt);
 
-        if (res > 1) {
+        if (res > 1)
+        {
             std::cout << "There are " << res << " ways to produce " << amt << " cents change." << std::endl;
 
-        } else {
+        }
+        else
+        {
             std::cout << "There is only 1 way to produce " << amt << " cents change." << std::endl;
         }
     }

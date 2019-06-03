@@ -30,7 +30,8 @@ void __cdecl invoke()
 
 namespace {
 
-    enum class orientation_t : char {
+    enum class orientation_t : char
+    {
         N = 'N', S = 'S', W = 'W', E = 'E'
     };
 
@@ -75,7 +76,8 @@ namespace {
 
         point_t& move (orientation_t head)
         {
-            switch (head) {
+            switch (head)
+            {
             case orientation_t::N:
                 y()++;
                 break;
@@ -115,7 +117,8 @@ namespace {
         }
     };
 
-    enum class instruction_t : char {
+    enum class instruction_t : char
+    {
         R = 'R', L = 'L', F = 'F'
     };
 
@@ -156,19 +159,24 @@ namespace {
             std::cerr << *this <<  ": " << static_cast<char>(instruction);
 #endif
 
-            switch (instruction) {
+            switch (instruction)
+            {
             case instruction_t::R:
             case instruction_t::L:
                 rotate(instruction);
                 break;
 
-            case instruction_t::F: {
+            case instruction_t::F:
+            {
                 point_t next (position());
                 next.move(heading());
 
-                if (not within(next)) {
+                if (not within(next))
+                {
                     alive() = not dropoff(position());
-                } else {
+                }
+                else
+                {
                     position() = next;
                 }
 
@@ -205,7 +213,8 @@ namespace {
         {
             out << robot.position() << ' ' << static_cast<char>(robot.heading());
 
-            if (not robot.alive()) {
+            if (not robot.alive())
+            {
                 out << " LOST";
             }
 
@@ -220,7 +229,8 @@ namespace {
             Iterator current = std::find(begin, end, heading);
             ++current;
 
-            if (current == end) {
+            if (current == end)
+            {
                 current = begin;
             }
 
@@ -231,9 +241,12 @@ namespace {
         {
             static std::vector<orientation_t> headings ({orientation_t::N, orientation_t::E, orientation_t::S, orientation_t::W});
 
-            if (instruction == instruction_t::R) {
+            if (instruction == instruction_t::R)
+            {
                 heading() = doRotate(headings.begin(), headings.end(), heading());
-            } else {
+            }
+            else
+            {
                 heading() = doRotate(headings.rbegin(), headings.rend(), heading());
             }
         }
@@ -262,7 +275,8 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution& sol)
     {
-        if (sol.X_ == 0 && sol.Y_ == 0) {
+        if (sol.X_ == 0 && sol.Y_ == 0)
+        {
             in >> sol.X_ >> sol.Y_;
         }
 
@@ -283,15 +297,19 @@ namespace {
         std::stringstream in (instructions_);
         char ch;
 
-        while (in >> ch && robot_.alive()) {
-            robot_.move(static_cast<instruction_t>(ch), [&](point_t& next) -> bool {
+        while (in >> ch && robot_.alive())
+        {
+            robot_.move(static_cast<instruction_t>(ch), [&](point_t& next) -> bool
+            {
                 return next.x() >= 0 && next.x() <= X_ && next.y() >= 0 && next.y() <= Y_;
-            }, [&](point_t& point) -> bool {
+            }, [&](point_t& point) -> bool
+            {
                 return std::find(off_points_.begin(), off_points_.end(), point) == off_points_.end();
             });
         }
 
-        if (not robot_.alive()) {
+        if (not robot_.alive())
+        {
             off_points_.push_back(robot_.position());
         }
 
@@ -304,7 +322,8 @@ void U118::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

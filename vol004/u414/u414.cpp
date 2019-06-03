@@ -55,7 +55,8 @@ namespace {
         std::vector<int64_t> pattern(n_);
         auto pat(pattern.begin());
 
-        for (auto& line : surface_) {
+        for (auto& line : surface_)
+        {
             auto ptr(line.begin());
 
             for (; ptr != line.end() && *ptr == 'X'; ++ptr);
@@ -67,14 +68,16 @@ namespace {
             auto right(std::distance(line.begin(), ptr));
             *pat = right - left;
 
-            if (*pat < shift) {
+            if (*pat < shift)
+            {
                 shift = *pat;
             }
 
             ++pat;
         }
 
-        sum_ = std::accumulate(pattern.begin(), pattern.end(), 0, [&](const int64_t old, const int64_t val) {
+        sum_ = std::accumulate(pattern.begin(), pattern.end(), 0, [&](const int64_t old, const int64_t val)
+        {
             return old + val - shift;
         });
         return *this;
@@ -84,11 +87,13 @@ namespace {
     {
         sol.surface_.clear();
 
-        if (in >> sol.n_) {
+        if (in >> sol.n_)
+        {
             in.ignore();
             sol.surface_.reserve(sol.n_);
             std::string line;
-            std::generate_n(std::back_inserter(sol.surface_), sol.n_, [&]() {
+            std::generate_n(std::back_inserter(sol.surface_), sol.n_, [&]()
+            {
                 std::getline(in, line);
                 return line;
             });
@@ -109,7 +114,8 @@ void U414::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

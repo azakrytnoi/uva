@@ -56,19 +56,23 @@ namespace {
     {
         in >> sol.N_ >> sol.roads_;
 
-        if (sol) {
+        if (sol)
+        {
             sol.matrix_.clear();
-            std::generate_n(std::back_inserter(sol.matrix_), sol.N_ + 1, [&]() {
+            std::generate_n(std::back_inserter(sol.matrix_), sol.N_ + 1, [&]()
+            {
                 return std::vector<int32_t>(sol.N_ + 1, INF);
             });
 
-            for (int32_t i = 0; i < sol.roads_; i++) {
+            for (int32_t i = 0; i < sol.roads_; i++)
+            {
                 int32_t c1, c2, p;
                 in >> c1 >> c2 >> p;
                 sol.matrix_[c1 - 1][c2 - 1] = sol.matrix_[c2 - 1][c1 - 1] = p - 1;
             }
 
-            for (int32_t i = 0; i < sol.N_; i++) {
+            for (int32_t i = 0; i < sol.N_; i++)
+            {
                 sol.matrix_[i][i] = 0;
             }
 
@@ -86,12 +90,18 @@ namespace {
 
     solution& solution::operator()()
     {
-        if (source_ == destination_) {
+        if (source_ == destination_)
+        {
             trip_ = 1;
-        } else {
-            for (int32_t k = 0; k < N_; k++) {
-                for (int32_t i = 0; i < N_; i++) {
-                    for (int32_t j = 0; j < N_; j++) {
+        }
+        else
+        {
+            for (int32_t k = 0; k < N_; k++)
+            {
+                for (int32_t i = 0; i < N_; i++)
+                {
+                    for (int32_t j = 0; j < N_; j++)
+                    {
                         matrix_[i][j] = std::max(matrix_[i][j], std::min(matrix_[i][k], matrix_[k][j]));
                     }
                 }
@@ -110,7 +120,8 @@ void U10099::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << "Scenario #" << (++caseNo) << std::endl << "Minimum Number of Trips = " << sol() << std::endl << std::endl;;
     }
 }

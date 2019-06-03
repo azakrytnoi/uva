@@ -35,7 +35,8 @@ namespace {
     class solution {
         struct vertex;
 
-        struct edge {
+        struct edge
+        {
             edge() : to_(nullptr), departure_(0), arrival_(0) {}
 
             edge(const edge& rhs) : to_(rhs.to_), departure_(rhs.departure_), arrival_(rhs.arrival_) {}
@@ -52,7 +53,8 @@ namespace {
             int16_t arrival_;
         };
 
-        struct vertex {
+        struct vertex
+        {
             vertex() : connections_(), cost_(std::numeric_limits<int32_t>::max()), time_(0), prev_(nullptr)
             {
                 connections_.reserve(MAX_CITIES);
@@ -100,7 +102,8 @@ namespace {
         size_t n;
         in >> n;
 
-        while (n--) {
+        while (n--)
+        {
             std::string from, to;
             int32_t dep, length;
             in >> from >> to >> dep >> length;
@@ -111,7 +114,8 @@ namespace {
             int32_t departure ((dep + 12) % 24);
             int32_t arrival (departure + length);
 
-            if ((length <= 12) && (departure >= 6 && departure <= 18) && (arrival >= 6 && arrival <= 18)) {
+            if ((length <= 12) && (departure >= 6 && departure <= 18) && (arrival >= 6 && arrival <= 18))
+            {
                 solution::edge e;
                 e.to_ = &sol.cities_[to];
                 e.departure_ = departure;
@@ -126,9 +130,12 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.solved_) {
+        if (sol.solved_)
+        {
             out << "Vladimir needs " << sol.cities_.find(sol.to_)->second.cost_ << " litre(s) of blood.";
-        } else {
+        }
+        else
+        {
             out << "There is no route Vladimir can take.";
         }
 
@@ -151,27 +158,33 @@ namespace {
         source->cost_ = 0;
         workQ.push(std::make_pair(0, source));
 
-        while (!workQ.empty()) {
+        while (!workQ.empty())
+        {
             element ce = workQ.top();
             vertex* current = ce.second;
             workQ.pop();
 
-            if (ce.first != current->cost_) {
+            if (ce.first != current->cost_)
+            {
                 continue;
             }
 
-            if (current == destination) {
+            if (current == destination)
+            {
                 return true;
             }
 
-            for (auto it = current->connections_.begin(); it != current->connections_.end(); ++it) {
+            for (auto it = current->connections_.begin(); it != current->connections_.end(); ++it)
+            {
                 int newCost = current->cost_;
 
-                if (current->time_ > it->departure_) {
+                if (current->time_ > it->departure_)
+                {
                     newCost++;
                 }
 
-                if (newCost < it->to_->cost_) {
+                if (newCost < it->to_->cost_)
+                {
                     it->to_->cost_ = newCost;
                     it->to_->prev_ = current;
                     it->to_->time_ = it->arrival_;
@@ -192,7 +205,8 @@ void U10187::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Test Case " << (++caseNo) << '.' << std::endl << sol() << std::endl;
     }

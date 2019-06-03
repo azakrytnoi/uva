@@ -51,9 +51,11 @@ namespace {
         sol.ants_.clear();
         int n;
 
-        if (in >> n && n > 0) {
+        if (in >> n && n > 0)
+        {
             sol.ants_.reserve(n);
-            std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t> {
+            std::generate_n(std::back_inserter(sol.ants_), n, [&]() -> std::pair<uint16_t, uint64_t>
+            {
                 uint16_t l(0), w(0), h(0);
                 in >> l >> w >> h;
                 return std::make_pair(h, l* w * h);
@@ -71,7 +73,8 @@ namespace {
 
     solution& solution::operator ()()
     {
-        std::sort(ants_.begin(), ants_.end(), [](auto a1, auto a2) -> bool {
+        std::sort(ants_.begin(), ants_.end(), [](auto a1, auto a2) -> bool
+        {
             if (a1.first == a2.first) return a1.second > a2.second;
             return a1.first > a2.first;
         });
@@ -85,7 +88,8 @@ void U12709::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -28,7 +28,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct linear {
+    struct linear
+    {
         uint32_t Z, I, M;
         uint32_t operator ()(uint32_t n) const
         {
@@ -67,7 +68,8 @@ namespace {
             mask_.clear();
             mask_.resize(lcm_.M + 1);
 
-            while (!mask_[n]) {
+            while (!mask_[n])
+            {
                 mask_[n] = true;
                 n = lcm_(n);
                 count_++;
@@ -85,7 +87,8 @@ void U350::operator()() const
     solution sol;
     uint32_t caseNo(0);
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << "Case " << (++caseNo) << ": " << uint32_t(sol()) << std::endl;
     }
 }

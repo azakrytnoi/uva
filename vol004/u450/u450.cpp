@@ -37,7 +37,8 @@ namespace {
         return in;
     }
 
-    struct person_t {
+    struct person_t
+    {
         std::vector<std::string> info_;
 
         explicit person_t(std::string dep) : info_(8)
@@ -92,15 +93,18 @@ namespace {
     {
         size_t n_dep(0);
 
-        if (in >> n_dep) {
+        if (in >> n_dep)
+        {
             std::string dep;
             std::getline(in, dep);
 
-            while (n_dep--) {
+            while (n_dep--)
+            {
                 std::getline(in, dep);
                 std::string line;
 
-                while (std::getline(in, line) && not line.empty()) {
+                while (std::getline(in, line) && not line.empty())
+                {
                     auto person = std::make_shared<person_t>(dep);
                     std::stringstream sin(line);
                     sin >> *person;
@@ -114,7 +118,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        std::for_each(sol.persons_.begin(), sol.persons_.end(), [&](const std::pair<std::string, std::shared_ptr<person_t>>& item) {
+        std::for_each(sol.persons_.begin(), sol.persons_.end(), [&](const std::pair<std::string, std::shared_ptr<person_t>>& item)
+        {
             out << *item.second << std::endl;
         });
         return out;

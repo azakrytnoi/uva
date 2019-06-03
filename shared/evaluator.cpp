@@ -1,12 +1,8 @@
 #include <iostream>
 
 
-#ifdef _WIN32
-    #include <windows.h>
-#else
-    #include <dlfcn.h>
-    #define __cdecl
-#endif
+#include <dlfcn.h>
+#define __cdecl
 
 #include "evaluator.h"
 
@@ -24,7 +20,8 @@ namespace {
     template<class... Ts> struct populate {};
 
     template<class Tp, class... Ts>
-    struct populate<Tp, Ts...> : populate<Ts...> {
+    struct populate<Tp, Ts...> : populate<Ts...>
+    {
         populate() : populate<Ts...>()
         {
             std::string tp_name(typeid(Tp).name());
@@ -37,11 +34,14 @@ namespace {
     {
         DIR* dp;
 
-        if ((dp = opendir("../lib")) != nullptr) {
+        if ((dp = opendir("../lib")) != nullptr)
+        {
             dirent* dref;
 
-            while ((dref = readdir(dp)) != nullptr) {
-                if (dref->d_name[0] != '.') {
+            while ((dref = readdir(dp)) != nullptr)
+            {
+                if (dref->d_name[0] != '.')
+                {
                     std::string libname(dref->d_name);
                     std::string p_name (libname.substr(4, libname.find('.') - 4));
                     std::stringstream vol_in(p_name), vol_out;
@@ -61,17 +61,23 @@ int main(int argc, char** argv)
 {
     populate_uva();
 
-    if (argc > 1) {
-        for (int i = 1; i < argc; i++) {
+    if (argc > 1)
+    {
+        for (int i = 1; i < argc; i++)
+        {
             auto uva = g_cache.find(argv[i]);
 
-            if (uva != g_cache.end()) {
+            if (uva != g_cache.end())
+            {
                 (*(uva->second))();
             }
         }
 
-    } else {
-        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva) {
+    }
+    else
+    {
+        std::for_each(g_cache.begin(), g_cache.end(), [](auto uva)
+        {
             (*(uva.second))();
         });
     }
@@ -79,27 +85,18 @@ int main(int argc, char** argv)
 
 uva_wraper::invoker uva_wraper::prepare(const std::string& baseName)
 {
-#ifdef _WIN32
-    hGetProcIDDLL_ = LoadLibraryA((baseName + ".dll").c_str());
-
-    if (!hGetProcIDDLL_) {
-        std::cout << "failure loading library" << std::endl;
-        throw std::exception(baseName.c_str());
-    }
-
-    invoker fnc = (invoker)GetProcAddress(hGetProcIDDLL_, "invoke");
-#else
     handle_ = dlopen(("lib" + baseName + ".so").c_str(), RTLD_LAZY);
 
-    if (!handle_) {
+    if (!handle_)
+    {
         std::cout << "failure loading library" << std::endl;
         throw std::exception();
     }
 
     invoker fnc = (invoker)dlsym(handle_, "invoke");
-#endif // _WIN32
 
-    if (!fnc) {
+    if (!fnc)
+    {
         std::cout << "failure locate function" << std::endl;
         throw std::exception();
     }
@@ -109,21 +106,12 @@ uva_wraper::invoker uva_wraper::prepare(const std::string& baseName)
 
 void uva_wraper::release()
 {
-#ifdef _WIN32
-
-    if (hGetProcIDDLL_) {
-        FreeLibrary(hGetProcIDDLL_);
-        hGetProcIDDLL_ = nullptr;
-    }
-
-#else
-
-    if (handle_) {
+    if (handle_)
+    {
         dlclose(handle_);
         handle_ = nullptr;
     }
 
-#endif // _WIN32
 }
 
 void dyn_evaluator::operator()()

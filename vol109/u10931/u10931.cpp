@@ -73,7 +73,8 @@ void U10931::operator()() const
     uint16_t parity;
     bit_iterator b_end(0, parity);
 
-    while (std::cin >> number && number != 0) {
+    while (std::cin >> number && number != 0)
+    {
         binary.clear();
         parity = 0;
         bit_iterator b_number(number, parity);

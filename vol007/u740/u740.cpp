@@ -54,16 +54,20 @@ namespace {
         eng.shift_ = baudot_t::shift_t::DOWN;
         std::string result;
 
-        for (auto it = input.begin(); it != input.end(); ) {
+        for (auto it = input.begin(); it != input.end(); )
+        {
             uint16_t code(0);
 
-            for (size_t power = 0x10; power > 0; power >>= 1, ++it) {
-                if (*it == '1') {
+            for (size_t power = 0x10; power > 0; power >>= 1, ++it)
+            {
+                if (*it == '1')
+                {
                     code += uint16_t(power);
                 }
             }
 
-            switch (code) {
+            switch (code)
+            {
             case 0b11011:
                 eng.shift_ = baudot_t::shift_t::DOWN;
                 break;
@@ -88,7 +92,8 @@ void U740::operator()() const
     std::cin >> eng;
     std::string line;
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         std::cout << (eng << line) << std::endl;
     }
 }

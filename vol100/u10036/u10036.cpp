@@ -54,7 +54,8 @@ namespace {
     {
         in >> sol.N_ >> sol.K_;
         sol.val_.clear();
-        std::generate_n(std::back_inserter(sol.val_), sol.N_, [&]() {
+        std::generate_n(std::back_inserter(sol.val_), sol.N_, [&]()
+        {
             int32_t tmp;
             in >> tmp;
             return tmp;
@@ -73,12 +74,15 @@ namespace {
         std::vector<std::vector<bool>> remainders(2, std::vector<bool>(K_));
         int32_t iTemp(0), iAnswer(1);
         remainders[iTemp][0] = remainders[iAnswer][0] = true;
-        std::for_each(val_.begin(), val_.end(), [&](int32_t val) {
+        std::for_each(val_.begin(), val_.end(), [&](int32_t val)
+        {
             std::swap(iTemp, iAnswer);
             remainders[iAnswer].assign(K_, false);
 
-            for (int32_t remainder = 0; remainder < K_; remainder++) {
-                if (remainders[iTemp][remainder]) {
+            for (int32_t remainder = 0; remainder < K_; remainder++)
+            {
+                if (remainders[iTemp][remainder])
+                {
                     remainders[iAnswer][std::abs(remainder + (val % K_)) % K_] = true;
                     remainders[iAnswer][std::abs(remainder + (-val % K_)) % K_] = true;
                 }
@@ -96,7 +100,8 @@ void U10036::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

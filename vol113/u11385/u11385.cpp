@@ -57,7 +57,8 @@ namespace {
         sol.cipher_.clear();
         sol.cipher_.reserve(n);
         sol.text_len_ = 0;
-        std::generate_n(std::back_inserter(sol.cipher_), n, [&]() {
+        std::generate_n(std::back_inserter(sol.cipher_), n, [&]()
+        {
             uint64_t tmp;
             in >> tmp;
             sol.text_len_ = std::max(sol.text_len_, sol.fb_(tmp));
@@ -65,7 +66,8 @@ namespace {
         });
         std::getline(in, sol.cipher_text_);
         std::getline(in, sol.cipher_text_);
-        std::copy_if(sol.cipher_text_.begin(), sol.cipher_text_.end(), sol.cipher_text_.begin(), [](auto ch) {
+        std::copy_if(sol.cipher_text_.begin(), sol.cipher_text_.end(), sol.cipher_text_.begin(), [](auto ch)
+        {
             return std::isalpha(ch) && std::isupper(ch);
         });
         return in;
@@ -75,7 +77,8 @@ namespace {
     {
         std::string text(sol.text_len_, ' ');
 
-        for (size_t i = 0; i < sol.cipher_.size(); i++) {
+        for (size_t i = 0; i < sol.cipher_.size(); i++)
+        {
             text[sol.fb_(sol.cipher_[i]) - 1] = sol.cipher_text_[i];
         }
 
@@ -91,7 +94,8 @@ void U11385::operator()() const
     int N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol << std::endl;
     }

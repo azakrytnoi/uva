@@ -66,10 +66,13 @@ namespace {
 
     std::ostream& operator <<(std::ostream& out, const solution& sol)
     {
-        if (sol.summ_.size() < 4) {
+        if (sol.summ_.size() < 4)
+        {
             out << "Impossible.";
 
-        } else {
+        }
+        else
+        {
             out << sol.summ_[0] << ' ' << sol.summ_[1] << ' ' << sol.summ_[2] << ' ' << sol.summ_[3];
 
             //        std::ostream_iterator<int32_t> oit(out, " ");
@@ -81,21 +84,27 @@ namespace {
 
     solution& solution::operator()()
     {
-        if (n_ >= 8) {
+        if (n_ >= 8)
+        {
             summ_.resize(2);
 
-            if (n_ % 2 == 0) {
+            if (n_ % 2 == 0)
+            {
                 summ_[0] = summ_[1] = 2;
                 n_ -= 4;
 
-            } else {
+            }
+            else
+            {
                 summ_[0] = 2;
                 summ_[1] = 3;
                 n_ -= 5;
             }
 
-            for (int32_t i = 2, e = n_ / 2; i <= e; ++i) {
-                if (sieve_->is_prime(i) && sieve_->is_prime(n_ - i)) {
+            for (int32_t i = 2, e = n_ / 2; i <= e; ++i)
+            {
+                if (sieve_->is_prime(i) && sieve_->is_prime(n_ - i))
+                {
                     summ_.resize(4);
                     summ_[2] = i;
                     summ_[3] = n_ - i;
@@ -112,7 +121,8 @@ void U10168::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

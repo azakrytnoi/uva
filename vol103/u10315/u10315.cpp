@@ -39,7 +39,8 @@ namespace {
 
     int to_number(const rank_t c)
     {
-        switch (static_cast<char>(c)) {
+        switch (static_cast<char>(c))
+        {
         case '2':
         case '3':
         case '4':
@@ -80,7 +81,8 @@ bool operator < (const rank_t& c1, const rank_t& c2)
 
 namespace std {
     template<>
-    struct less<rank_t> {
+    struct less<rank_t>
+    {
         // functor for operator<
         typedef rank_t first_argument_type;
         typedef rank_t second_argument_type;
@@ -132,12 +134,16 @@ namespace {
 
         friend bool operator == (const hand_t& left, const hand_t& right)
         {
-            if (left.value_ == right.value_) {
-                switch (left.value_) {
+            if (left.value_ == right.value_)
+            {
+                switch (left.value_)
+                {
                 case combination_t::Flush:
                 case combination_t::StraightFlush:
-                    for (size_t idx = 0; idx < left.hand_.size(); idx++) {
-                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_) {
+                    for (size_t idx = 0; idx < left.hand_.size(); idx++)
+                    {
+                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_)
+                        {
                             return false;
                         }
                     }
@@ -145,8 +151,10 @@ namespace {
                     return true;
 
                 default:
-                    for (size_t idx = 0; idx < left.distribution_.size(); idx++) {
-                        if (left.distribution_[idx].first != right.distribution_[idx].first) {
+                    for (size_t idx = 0; idx < left.distribution_.size(); idx++)
+                    {
+                        if (left.distribution_[idx].first != right.distribution_[idx].first)
+                        {
                             return false;
                         }
                     }
@@ -160,12 +168,16 @@ namespace {
 
         friend bool operator < (const hand_t& left, const hand_t& right)
         {
-            if (left.value_ == right.value_) {
-                switch (left.value_) {
+            if (left.value_ == right.value_)
+            {
+                switch (left.value_)
+                {
                 case combination_t::Flush:
                 case combination_t::StraightFlush:
-                    for (size_t idx = 0; idx < left.hand_.size(); idx++) {
-                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_) {
+                    for (size_t idx = 0; idx < left.hand_.size(); idx++)
+                    {
+                        if (left.hand_[idx].rank_ != right.hand_[idx].rank_)
+                        {
                             return left.hand_[idx].rank_ < right.hand_[idx].rank_;
                         }
                     }
@@ -173,8 +185,10 @@ namespace {
                     return true;
 
                 default:
-                    for (size_t idx = 0; idx < left.distribution_.size(); idx++) {
-                        if (left.distribution_[idx].first != right.distribution_[idx].first) {
+                    for (size_t idx = 0; idx < left.distribution_.size(); idx++)
+                    {
+                        if (left.distribution_[idx].first != right.distribution_[idx].first)
+                        {
                             return left.distribution_[idx].first < right.distribution_[idx].first;
                         }
                     }
@@ -199,7 +213,8 @@ namespace {
 
         friend std::istream& operator >>(std::istream& in, solution& sol)
         {
-            if (in) {
+            if (in)
+            {
                 in >> sol.black_ >> sol.white_;
             }
 
@@ -210,13 +225,18 @@ namespace {
         {
             out << sol.black_ << " vs " << sol.white_ << std::endl;
 
-            if (sol.black_ == sol.white_) {
+            if (sol.black_ == sol.white_)
+            {
                 out << "Tie.";
 
-            } else if (sol.black_ < sol.white_) {
+            }
+            else if (sol.black_ < sol.white_)
+            {
                 out << "White wins.";
 
-            } else {
+            }
+            else
+            {
                 out << "Black wins.";
             }
 
@@ -232,7 +252,8 @@ namespace {
         std::istream_iterator<card_t> cin(in);
         std::copy_n(cin, 5, std::back_inserter(h.hand_));
 
-        if (in) {
+        if (in)
+        {
             h.evaluate();
         }
 
@@ -247,56 +268,73 @@ namespace {
                          && (hand_[3].suit_ == hand_[4].suit_);
         bool straight(is_straight());
 
-        if (same_suit) {
-            if (straight) {
+        if (same_suit)
+        {
+            if (straight)
+            {
                 value_ = combination_t::StraightFlush;
 
-            } else {
+            }
+            else
+            {
                 value_ = combination_t::Flush;
             }
 
-        } else {
+        }
+        else
+        {
             value_ = combination_t::HighCard;
             std::map<rank_t, int> temp;
-            std::for_each(hand_.begin(), hand_.end(), [&](auto c) {
+            std::for_each(hand_.begin(), hand_.end(), [&](auto c)
+            {
                 temp[c.rank_]++;
             });
             distribution_.assign(temp.begin(), temp.end());
-            std::sort(distribution_.begin(), distribution_.end(), [](auto d1, auto d2) {
-                if (d2.second == d1.second) {
+            std::sort(distribution_.begin(), distribution_.end(), [](auto d1, auto d2)
+            {
+                if (d2.second == d1.second)
+                {
                     return d2.first < d1.first;
                 }
 
                 return d2.second < d1.second;
             });
 
-            switch (distribution_[0].second) {
+            switch (distribution_[0].second)
+            {
             case 4:
                 value_ = combination_t::FourOfAKind;
                 break;
 
             case 3:
-                if (distribution_.size() == 2) {
+                if (distribution_.size() == 2)
+                {
                     value_ = combination_t::FullHouse;
 
-                } else {
+                }
+                else
+                {
                     value_ = combination_t::ThreeOfAKind;
                 }
 
                 break;
 
             case 2:
-                if (distribution_[1].second == 2) {
+                if (distribution_[1].second == 2)
+                {
                     value_ = combination_t::TwoPairs;
 
-                } else {
+                }
+                else
+                {
                     value_ = combination_t::OnePair;
                 }
 
                 break;
 
             default:
-                if (straight) {
+                if (straight)
+                {
                     value_ = combination_t::Straight;
                 }
 
@@ -307,13 +345,16 @@ namespace {
 
     bool hand_t::is_straight()
     {
-        std::sort(hand_.begin(), hand_.end(), [](auto c1, auto c2) {
+        std::sort(hand_.begin(), hand_.end(), [](auto c1, auto c2)
+        {
             return c2.rank_ < c1.rank_;
         });
         bool straight(true);
 
-        for (size_t i = 1; straight && i <= 4; i++) {
-            if (hand_[i - 1].rank_ - hand_[i].rank_ != 1) {
+        for (size_t i = 1; straight && i <= 4; i++)
+        {
+            if (hand_[i - 1].rank_ - hand_[i].rank_ != 1)
+            {
                 straight = false;
             }
         }
@@ -323,7 +364,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const combination_t val)
     {
-        static const std::map<combination_t, std::string> names ({
+        static const std::map<combination_t, std::string> names (
+        {
             {combination_t::HighCard, "High Card"},
             {combination_t::OnePair, "One Pair"},
             {combination_t::TwoPairs, "Two Pairs"},
@@ -352,7 +394,8 @@ void U10315::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol << std::endl;
     }
 }

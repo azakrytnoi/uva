@@ -34,14 +34,17 @@ void U156::operator()() const
     std::string word;
     std::map<std::string, std::pair<std::string, int>> dictionary;
 
-    while (std::cin >> word && word[0] != '#') {
+    while (std::cin >> word && word[0] != '#')
+    {
         std::string key(word);
-        std::transform(key.begin(), key.end(), key.begin(), [](auto ch) {
+        std::transform(key.begin(), key.end(), key.begin(), [](auto ch)
+        {
             return std::tolower(ch);
         });
         std::sort(key.begin(), key.end());
 
-        if (dictionary[key].second++ == 0) {
+        if (dictionary[key].second++ == 0)
+        {
             dictionary[key].first = word;
         }
     }

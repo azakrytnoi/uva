@@ -36,7 +36,8 @@ namespace {
 
     void piggler::piggle(const std::string& word)
     {
-        switch (word[0]) {
+        switch (word[0])
+        {
         case 'a':
         case 'A':
         case 'e':
@@ -64,15 +65,21 @@ void U492::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         std::string word;
 
-        for (auto it = line.begin(); it != line.end(); ++it) {
-            if (std::isalpha(*it)) {
+        for (auto it = line.begin(); it != line.end(); ++it)
+        {
+            if (std::isalpha(*it))
+            {
                 word += (*it);
 
-            } else {
-                if (!word.empty()) {
+            }
+            else
+            {
+                if (!word.empty())
+                {
                     piggler::piggle(word);
                     word.clear();
                 }
@@ -81,7 +88,8 @@ void U492::operator()() const
             }
         }
 
-        if (!word.empty()) {
+        if (!word.empty())
+        {
             piggler::piggle(word);
         }
 

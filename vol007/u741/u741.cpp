@@ -39,16 +39,23 @@ namespace {
             next_.resize(temp.size());
             size_t last_pos(std::numeric_limits<size_t>::max());
 
-            for (size_t idx = 0; idx < temp.size(); idx++) {
-                if (last_pos == std::numeric_limits<size_t>::max()) {
+            for (size_t idx = 0; idx < temp.size(); idx++)
+            {
+                if (last_pos == std::numeric_limits<size_t>::max())
+                {
                     auto pos = message_.find(temp[idx]);
                     next_[idx] = last_pos = pos;
-                } else {
-                    if (temp[idx] == temp[idx - 1]) {
+                }
+                else
+                {
+                    if (temp[idx] == temp[idx - 1])
+                    {
                         auto pos = message_.find(temp[idx], last_pos + 1);
                         last_pos = std::numeric_limits<size_t>::max();
                         next_[idx] = last_pos = pos;
-                    } else {
+                    }
+                    else
+                    {
                         auto pos = message_.find(temp[idx]);
                         next_[idx] = last_pos = pos;
                     }
@@ -73,7 +80,8 @@ namespace {
         {
             size_t pos = sol.position_ - 1;
 
-            for (size_t idx = 0; idx < sol.message_.size(); idx++) {
+            for (size_t idx = 0; idx < sol.message_.size(); idx++)
+            {
                 pos = sol.next_[pos];
                 out << sol.message_[pos];
             }
@@ -93,7 +101,8 @@ void U741::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

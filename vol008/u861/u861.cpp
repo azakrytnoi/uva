@@ -59,18 +59,26 @@ namespace {
 
     solution& solution::operator()()
     {
-        if (n_ == 1 || k_ == 0) {
+        if (n_ == 1 || k_ == 0)
+        {
             result_ = 1;
 
-        } else {
+        }
+        else
+        {
             int32_t row1[20] = {}, row2[20] = {};
 
-            for (int32_t i = 0; i < n_; i++) {
-                for (int32_t j = 0; j < n_; j++) {
-                    if ((i + j) % 2) {
+            for (int32_t i = 0; i < n_; i++)
+            {
+                for (int32_t j = 0; j < n_; j++)
+                {
+                    if ((i + j) % 2)
+                    {
                         row1[(i + j) / 2]++;
 
-                    } else {
+                    }
+                    else
+                    {
                         row2[(i + j) / 2]++;
                     }
                 }
@@ -82,25 +90,30 @@ namespace {
             dp1[0][0] = 1, dp1[0][1] = row1[0];
             dp2[0][0] = 1, dp2[0][1] = row2[0];
 
-            for (int32_t i = 1; i < n_ - 1; i++) {
+            for (int32_t i = 1; i < n_ - 1; i++)
+            {
                 dp1[i][0] = 1;
 
-                for (int32_t j = 1; j <= row1[i]; j++) {
+                for (int32_t j = 1; j <= row1[i]; j++)
+                {
                     dp1[i][j] = dp1[i - 1][j] + dp1[i - 1][j - 1] * (row1[i] - (j - 1));
                 }
             }
 
-            for (int32_t i = 1; i < n_; i++) {
+            for (int32_t i = 1; i < n_; i++)
+            {
                 dp2[i][0] = 1;
 
-                for (int32_t j = 1; j <= row2[i]; j++) {
+                for (int32_t j = 1; j <= row2[i]; j++)
+                {
                     dp2[i][j] = dp2[i - 1][j] + dp2[i - 1][j - 1] * (row2[i] - (j - 1));
                 }
             }
 
             result_ = 0;
 
-            for (int32_t i = 0; i <= k_; i++) {
+            for (int32_t i = 0; i <= k_; i++)
+            {
                 result_ += dp1[n_ - 2][i] * dp2[n_ - 1][k_ - i];
             }
         }
@@ -113,7 +126,8 @@ void U861::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

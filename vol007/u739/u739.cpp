@@ -70,10 +70,12 @@ namespace {
         size_t code_len(0);
         auto last = encode(*(current++));
 
-        for (; current != name_.end() && code_len < 3; ++current) {
+        for (; current != name_.end() && code_len < 3; ++current)
+        {
             auto curr = encode(*(current));
 
-            if (curr != last && curr != 0) {
+            if (curr != last && curr != 0)
+            {
                 code << curr;
                 code_len++;
             }
@@ -81,7 +83,8 @@ namespace {
             last = curr;
         }
 
-        while ((code_len++) < 3) {
+        while ((code_len++) < 3)
+        {
             code << '0';
         }
 
@@ -91,7 +94,8 @@ namespace {
 
     uint16_t solution::encode(char ch)
     {
-        static std::string soundex[] = {
+        static std::string soundex[] =
+        {
             "AEIOUYWH",
             "BPFV",
             "CSKGJQXZ",
@@ -101,8 +105,10 @@ namespace {
             "R"
         };
 
-        for (size_t idx = 0; idx < sizeof soundex; idx++) {
-            if (soundex[idx].find(ch) != std::string::npos) {
+        for (size_t idx = 0; idx < sizeof soundex; idx++)
+        {
+            if (soundex[idx].find(ch) != std::string::npos)
+            {
                 return idx;
             }
         }
@@ -117,7 +123,8 @@ void U739::operator()() const
     solution sol;
     std::cout << std::setw(9) << ' ' << std::left << std::setw(25) << "NAME" << std::setw(1) << "SOUNDEX CODE" << std::endl;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 

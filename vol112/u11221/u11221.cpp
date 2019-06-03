@@ -35,21 +35,25 @@ void U11221::operator()() const
     std::getline(std::cin, line);
     int caseNo(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::cout << "Case #" << (++caseNo) << ":" << std::endl;
         std::getline(std::cin, line);
         std::string palindrome;
         palindrome.reserve(line.length());
-        std::copy_if(line.begin(), line.end(), std::back_inserter(palindrome), [](auto ch) {
+        std::copy_if(line.begin(), line.end(), std::back_inserter(palindrome), [](auto ch)
+        {
             return std::isalpha(ch);
         });
         size_t sqSize = size_t(std::sqrt(palindrome.length()));
 
-        if (sqSize * sqSize == palindrome.length()) {
+        if (sqSize * sqSize == palindrome.length())
+        {
             std::string rev(palindrome);
             std::reverse(rev.begin(), rev.end());
 
-            if (rev == palindrome) {
+            if (rev == palindrome)
+            {
                 std::cout << sqSize << std::endl;
                 continue;
             }

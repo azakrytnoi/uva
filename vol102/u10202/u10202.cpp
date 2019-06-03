@@ -56,11 +56,13 @@ namespace {
         sol.summ_.clear();
         int32_t n;
 
-        if (in >> n) {
+        if (in >> n)
+        {
             int32_t limit = (n * (n - 1)) / 2;
             sol.result_.reserve(limit);
             sol.summ_.reserve(limit);
-            std::generate_n(std::back_inserter(sol.summ_), limit, [&]() {
+            std::generate_n(std::back_inserter(sol.summ_), limit, [&]()
+            {
                 int32_t tmp;
                 in >> tmp;
                 return tmp;
@@ -72,10 +74,13 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.result_.empty()) {
+        if (sol.result_.empty())
+        {
             out << "Impossible";
 
-        } else {
+        }
+        else
+        {
             std::ostream_iterator<int32_t> io(out, " ");
             std::copy(sol.result_.begin(), sol.result_.end(), io);
             out << '\b';
@@ -97,17 +102,21 @@ namespace {
 
     bool solution::calculate(size_t start, std::vector<bool> taken)
     {
-        if (start == summ_.size()) {
+        if (start == summ_.size())
+        {
             return true;
         }
 
         size_t pivot = ((result_.size() - 1) * result_.size()) / 2;
 
-        for (size_t i = 2; i < summ_.size(); i++) {
-            if (start == 2) {
+        for (size_t i = 2; i < summ_.size(); i++)
+        {
+            if (start == 2)
+            {
                 double candidate = (summ_[0] + summ_[1] - summ_[i]) / 2.0;
 
-                if (std::fabs(candidate - int32_t(candidate)) > 0.00000001) {
+                if (std::fabs(candidate - int32_t(candidate)) > 0.00000001)
+                {
                     continue;
                 }
 
@@ -116,39 +125,49 @@ namespace {
                 result_.push_back(summ_[1] - int32_t(candidate));
                 taken[i] = true;
 
-            } else if (start == pivot) {
-                if (taken[i]) {
+            }
+            else if (start == pivot)
+            {
+                if (taken[i])
+                {
                     continue;
                 }
 
                 result_.push_back(summ_[i] - result_[0]);
                 taken[i] = true;
 
-            } else {
+            }
+            else
+            {
                 pivot = ((result_.size() - 2) * (result_.size() - 1)) / 2;
 
-                if (taken[i]) {
+                if (taken[i])
+                {
                     continue;
                 }
 
-                if (summ_[i] - result_.back() != result_[start % pivot]) {
+                if (summ_[i] - result_.back() != result_[start % pivot])
+                {
                     continue;
                 }
 
                 taken[i] = true;
             }
 
-            if (calculate(start + 1, taken)) {
+            if (calculate(start + 1, taken))
+            {
                 return true;
             }
 
             taken[i] = false;
 
-            if (start == 2) {
+            if (start == 2)
+            {
                 result_.clear();
             }
 
-            if (start == pivot) {
+            if (start == pivot)
+            {
                 result_.pop_back();
             }
         }
@@ -161,7 +180,8 @@ void U10202::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

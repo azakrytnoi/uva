@@ -56,7 +56,8 @@ namespace {
             double_t area = 0.0;
             center_.x_ = center_.y_ = 0.0;
 
-            for (size_t i = 1; i < points_.size() - 1; i++) {
+            for (size_t i = 1; i < points_.size() - 1; i++)
+            {
                 auto tmp = point_t::cross(points_[i], points_[0], points_[i + 1]) / 2.0;
                 center_.x_ += (points_[0].x_ + points_[i].x_ + points_[i + 1].x_) * tmp;
                 center_.y_ += (points_[0].y_ + points_[i].y_ + points_[i + 1].y_) * tmp;
@@ -72,7 +73,8 @@ namespace {
     {
         constexpr size_t precision (3);
         constexpr double_t EPS (std::pow(10, -double_t(precision + 1)));
-        auto round = [&](const double_t val) -> double_t {
+        auto round = [&](const double_t val) -> double_t
+        {
             return std::abs(val) < EPS ? 0.0 : val;
         };
         out << std::fixed << std::setprecision(precision) << round(point.x_) << ' ' << round(point.y_);
@@ -90,10 +92,12 @@ namespace {
         sol.points_.clear();
         size_t n(0);
 
-        if (in >> n && n >= 3) {
+        if (in >> n && n >= 3)
+        {
             sol.points_.resize(n);
 
-            for (auto& point : sol.points_) {
+            for (auto& point : sol.points_)
+            {
                 in >> point;
             };
         }
@@ -120,7 +124,8 @@ void U10002::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

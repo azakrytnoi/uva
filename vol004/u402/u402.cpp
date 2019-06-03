@@ -55,14 +55,19 @@ namespace {
     {
         case_no_++;
 
-        for (auto card = desk_.begin(); card != desk_.end() && ppl_.size() > lucky_; ++card) {
+        for (auto card = desk_.begin(); card != desk_.end() && ppl_.size() > lucky_; ++card)
+        {
             size_t cnt(0);
 
-            for (auto ppl = ppl_.begin(); ppl != ppl_.end() && ppl_.size() > lucky_;) {
-                if (++cnt == *card) {
+            for (auto ppl = ppl_.begin(); ppl != ppl_.end() && ppl_.size() > lucky_;)
+            {
+                if (++cnt == *card)
+                {
                     cnt = 0;
                     ppl = ppl_.erase(ppl);
-                } else {
+                }
+                else
+                {
                     ++ppl;
                 }
             }
@@ -76,8 +81,10 @@ namespace {
         sol.desk_.clear();
         sol.ppl_.clear();
 
-        if (in >> sol.lucky_) {
-            std::generate_n(std::back_inserter(sol.ppl_), sol.lucky_, [&]() {
+        if (in >> sol.lucky_)
+        {
+            std::generate_n(std::back_inserter(sol.ppl_), sol.lucky_, [&]()
+            {
                 return sol.ppl_.size() + 1;
             });
             sol.desk_.reserve(20);
@@ -105,7 +112,8 @@ void U402::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

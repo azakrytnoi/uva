@@ -63,8 +63,10 @@ namespace {
         int32_t repeated_cycle = sol.repeat_term_index_ - sol.parenthesis_start_;
         out << ".";
 
-        if ( repeated_cycle == 1 && sol.after_decimal_.at (sol.after_decimal_.size () - 1) == '0' ) {
-            for ( size_t i = 0; i < sol.after_decimal_.size () - 1; i++ ) {
+        if ( repeated_cycle == 1 && sol.after_decimal_.at (sol.after_decimal_.size () - 1) == '0' )
+        {
+            for ( size_t i = 0; i < sol.after_decimal_.size () - 1; i++ )
+            {
                 out << sol.after_decimal_.at (i);
             }
 
@@ -73,9 +75,13 @@ namespace {
             out << std::endl;
             out << "This expansion terminates." << std::endl;
             //cout << "(" << afterDecimal.at (afterDecimal.size () - 1) << ")" << endl;
-        } else if ( sol.repeat_term_index_ > 50 ) {
-            for ( size_t i = 0; i < sol.after_decimal_.size (); i++ ) {
-                if ( (i + 1) % 50 == 0 ) {
+        }
+        else if ( sol.repeat_term_index_ > 50 )
+        {
+            for ( size_t i = 0; i < sol.after_decimal_.size (); i++ )
+            {
+                if ( (i + 1) % 50 == 0 )
+                {
                     out << std::endl;
                 }
 
@@ -84,8 +90,11 @@ namespace {
 
             out << std::endl;
             out << "The last " << repeated_cycle << " digits repeat forever." << std::endl;
-        } else {
-            for ( unsigned int i = 0; i < sol.after_decimal_.size (); i++ ) {
+        }
+        else
+        {
+            for ( unsigned int i = 0; i < sol.after_decimal_.size (); i++ )
+            {
                 out << sol.after_decimal_.at (i);
             }
 
@@ -107,7 +116,8 @@ namespace {
         before_decimal_ += '.';
         repeat_term_index_ = 1;
 
-        while ( freq_matrix [mod] == 0 ) {
+        while ( freq_matrix [mod] == 0 )
+        {
             freq_matrix [mod] = repeat_term_index_++;
             quotient = mod / denominator_;
             mod %= denominator_;
@@ -125,7 +135,8 @@ void U275::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

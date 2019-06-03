@@ -139,7 +139,8 @@ namespace math {
     private:
         void normalize()
         {
-            if (b_ == 0) {
+            if (b_ == 0)
+            {
                 throw "Illegal number";
             }
 
@@ -155,7 +156,8 @@ namespace math {
         std::vector<T> result;
         auto temp(*this);
 
-        while (temp.b_ != 1) {
+        while (temp.b_ != 1)
+        {
             auto int_part (temp.a_ / temp.b_);
             result.push_back(int_part);
             temp -= int_part;

@@ -62,13 +62,15 @@ namespace {
         size_t n;
         in >> n;
 
-        for (size_t i = 0; i < n; i++) {
+        for (size_t i = 0; i < n; i++)
+        {
             size_t temp1, temp2;
             in >> temp1 >> temp2;
             sol.g_[temp1][temp2] += 1;
             sol.g_[temp2][temp1] += 1;
 
-            if (i == 0) {
+            if (i == 0)
+            {
                 sol.start_ = temp1;
             }
         }
@@ -78,11 +80,15 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
-        if (sol.solved_) {
-            for (size_t i = 0; i < sol.answers_.size() - 1; i++) {
+        if (sol.solved_)
+        {
+            for (size_t i = 0; i < sol.answers_.size() - 1; i++)
+            {
                 out << sol.answers_[i] << " " << sol.answers_[i + 1] << std::endl;
             }
-        } else {
+        }
+        else
+        {
             out << "some beads may be lost" << std::endl;
         }
 
@@ -91,14 +97,17 @@ namespace {
 
     solution& solution::operator()()
     {
-        for (size_t i = 0; i < MAX_N; i++) {
+        for (size_t i = 0; i < MAX_N; i++)
+        {
             size_t check(0);
 
-            for (size_t j = 0; j < MAX_N; j++) {
+            for (size_t j = 0; j < MAX_N; j++)
+            {
                 check += g_[i][j];
             }
 
-            if (check % 2 != 0) {
+            if (check % 2 != 0)
+            {
                 return *this;
             }
         }
@@ -110,8 +119,10 @@ namespace {
 
     void solution::dfs(size_t current)
     {
-        for (size_t i = 0; i < MAX_N; i++) {
-            if (g_[current][i] > 0) {
+        for (size_t i = 0; i < MAX_N; i++)
+        {
+            if (g_[current][i] > 0)
+            {
                 g_[current][i]--;
                 g_[i][current]--;
                 dfs(i);
@@ -129,7 +140,8 @@ void U10054::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << "Case #" << (++caseNo) << std::endl << sol() << std::endl;
     }

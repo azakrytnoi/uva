@@ -28,7 +28,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct building_t {
+    struct building_t
+    {
         int16_t x_, y_;
         int16_t width_, depth_, height_, label_;
 
@@ -45,7 +46,8 @@ namespace {
             auto lhs_coord (std::make_pair(x_, y_));
             auto rhs_coord (std::make_pair(rhs.x_, rhs.y_));
 
-            if (lhs_coord != rhs_coord) {
+            if (lhs_coord != rhs_coord)
+            {
                 return lhs_coord < rhs_coord;
             }
 
@@ -80,7 +82,8 @@ namespace {
         sol.result_.clear();
         size_t n_builings(0);
 
-        if (in >> n_builings && n_builings > 0) {
+        if (in >> n_builings && n_builings > 0)
+        {
             sol.buildings_.reserve(n_builings);
             std::istream_iterator<building_t> iin(in);
             std::copy_n(iin, n_builings, std::back_inserter(sol.buildings_));
@@ -102,31 +105,38 @@ namespace {
     {
         n_case_++;
         int16_t label(0);
-        std::for_each(buildings_.begin(), buildings_.end(), [&](building_t& b) {
+        std::for_each(buildings_.begin(), buildings_.end(), [&](building_t& b)
+        {
             b.label_ = ++label;
         });
         std::sort(buildings_.begin(), buildings_.end());
 
-        for (auto building_i = buildings_.begin(); building_i != buildings_.end(); ++building_i) {
+        for (auto building_i = buildings_.begin(); building_i != buildings_.end(); ++building_i)
+        {
             std::vector<std::pair<int16_t, int16_t>> interval;
 
-            for (auto building_j = buildings_.begin(); building_j != buildings_.end(); ++building_j) {
-                if (building_j == building_i)	{
+            for (auto building_j = buildings_.begin(); building_j != buildings_.end(); ++building_j)
+            {
+                if (building_j == building_i)
+                {
                     continue;
                 }
 
-                if (building_i->height_ > building_j->height_ || building_i->y_ <= building_j->y_) {
+                if (building_i->height_ > building_j->height_ || building_i->y_ <= building_j->y_)
+                {
                     continue;
                 }
 
                 int16_t left = std::max(building_i->x_, building_j->x_), right = std::min(building_i->x_ + building_i->width_, building_j->x_ + building_j->width_);
 
-                if (left < right) {
+                if (left < right)
+                {
                     interval.push_back(std::make_pair(left, right));
                 }
             }
 
-            if (not cover(interval, building_i->x_, building_i->x_ + building_i->width_)) {
+            if (not cover(interval, building_i->x_, building_i->x_ + building_i->width_))
+            {
                 result_.push_back(building_i->label_);
             }
         }
@@ -139,10 +149,14 @@ namespace {
         std::sort(interval.begin(), interval.end());
         int16_t y = left;
 
-        for (size_t i = 0; i < interval.size(); i++) {
-            if (interval[i].first <= y) {
+        for (size_t i = 0; i < interval.size(); i++)
+        {
+            if (interval[i].first <= y)
+            {
                 y = std::max(y, interval[i].second);
-            } else {
+            }
+            else
+            {
                 return 0;
             }
         }
@@ -155,7 +169,8 @@ void U221::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

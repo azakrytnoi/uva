@@ -34,7 +34,8 @@ void U424::operator()() const
     std::string line;
     math::uint_big_t bi;
 
-    while (std::getline(std::cin, line) && line != "0") {
+    while (std::getline(std::cin, line) && line != "0")
+    {
         bi += line;
     }
 

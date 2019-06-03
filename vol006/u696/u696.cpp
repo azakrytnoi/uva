@@ -58,17 +58,23 @@ namespace {
             uint32_t n(n_);
             uint32_t m(m_);
 
-            if (n > m) {
+            if (n > m)
+            {
                 std::swap(n, m);
             }
 
-            if (n == 1) {
+            if (n == 1)
+            {
                 knights_ = m;
 
-            } else if (n == 2) {
+            }
+            else if (n == 2)
+            {
                 knights_ = m / 4 * 4 + (m % 4 == 1 ? 2 : (m % 4 >= 2 ? 4 : 0));
 
-            } else {
+            }
+            else
+            {
                 knights_ = (n * m + 1) / 2;
             }
 
@@ -82,7 +88,8 @@ void U696::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

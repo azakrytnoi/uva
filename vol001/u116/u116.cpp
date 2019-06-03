@@ -35,7 +35,8 @@ namespace {
             path_.resize(10);
             trace_.reserve(100);
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10; i++)
+            {
                 matrix_[i].reserve(100);
                 costs_[i].reserve(100);
                 path_[i].reserve(100);
@@ -45,10 +46,13 @@ namespace {
         friend
         std::istream& operator >> (std::istream& in, solver& s)
         {
-            if (in >> s.M_ >> s.N_) {
-                for (int i = 0; i < s.M_; i++) {
+            if (in >> s.M_ >> s.N_)
+            {
+                for (int i = 0; i < s.M_; i++)
+                {
                     s.matrix_[i].clear();
-                    std::generate_n(std::back_inserter(s.matrix_[i]), s.N_, [&]() -> int {
+                    std::generate_n(std::back_inserter(s.matrix_[i]), s.N_, [&]() -> int
+                    {
                         int tmp; std::cin >> tmp;
                         return tmp; });
                     s.costs_[i].clear();
@@ -84,17 +88,20 @@ namespace {
          */
         int row(0);
 
-        for (int i = 0; i < M_; i++) {
+        for (int i = 0; i < M_; i++)
+        {
             dp(i, 0);
 
-            if (costs_[i][0] < best_) {
+            if (costs_[i][0] < best_)
+            {
                 best_ = costs_[i][0];
                 row = i;
             }
         }
 
         // Print path.
-        for (int j = 0; j < N_; j++) {
+        for (int j = 0; j < N_; j++)
+        {
             trace_.push_back(row + 1);
             row = path_[row][j];
         }
@@ -102,29 +109,35 @@ namespace {
 
     int solver::dp(int row, int col)
     {
-        if (col >= N_) {
+        if (col >= N_)
+        {
             return 0;
         }
 
-        if (costs_[row][col] != std::numeric_limits<int>::max()) {
+        if (costs_[row][col] != std::numeric_limits<int>::max())
+        {
             return costs_[row][col];
         }
 
         int next[3] = { row - 1, row, row + 1 };
 
-        if (row == 0) {
+        if (row == 0)
+        {
             next[0] = M_ - 1;
         }
 
-        if (row == M_ - 1) {
+        if (row == M_ - 1)
+        {
             next[2] = 0;
         }
 
-        for (int k = 0; k < 3; k++) {
+        for (int k = 0; k < 3; k++)
+        {
             int val = matrix_[row][col] + dp(next[k], col + 1);
 
             // Second argument is to preserve lexicographical output.
-            if (costs_[row][col] > val || (costs_[row][col] == val && path_[row][col] > next[k])) {
+            if (costs_[row][col] > val || (costs_[row][col] == val && path_[row][col] > next[k]))
+            {
                 costs_[row][col] = val;
                 // Store direction when cost matrix is updated.
                 path_[row][col] = next[k];
@@ -149,7 +162,8 @@ void U116::operator()() const
 {
     solver s;
 
-    while (std::cin >> s) {
+    while (std::cin >> s)
+    {
         s.solve();
         std::cout << s << std::endl;
     }

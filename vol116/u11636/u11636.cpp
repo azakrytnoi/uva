@@ -28,11 +28,13 @@ void U11636::operator()() const
     int lines;
     int case_no(0);
 
-    while (std::cin >> lines && lines > 0) {
+    while (std::cin >> lines && lines > 0)
+    {
         int pastes(0);
         lines -= 1;
 
-        while (lines > 0) {
+        while (lines > 0)
+        {
             lines >>= 1;
             pastes++;
         }

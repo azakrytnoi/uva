@@ -103,14 +103,17 @@ namespace {
         std::stringstream oss;
         std::string code;
 
-        while (iss >> code) {
+        while (iss >> code)
+        {
             oss << code_[code];
 
-            if (iss) {
+            if (iss)
+            {
                 iss.get();
                 char ch = iss.peek();
 
-                if (ch == ' ') {
+                if (ch == ' ')
+                {
                     oss << ' ';
                 }
             }
@@ -137,7 +140,8 @@ void U11223::operator()() const
     std::getline(std::cin, line);
     morse coder;
 
-    while (N--) {
+    while (N--)
+    {
         std::getline(std::cin, line);
         (coder << line) >> line;
         std::cout << "Message #" << (++caseNo) << std::endl << line << std::endl << std::endl;

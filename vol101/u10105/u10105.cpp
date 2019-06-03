@@ -51,11 +51,13 @@ namespace {
     {
         int16_t k;
 
-        if (in >> sol.n_ >> k) {
+        if (in >> sol.n_ >> k)
+        {
             sol.coeff_.clear();
             sol.result_ = 0;
             sol.coeff_.reserve(k);
-            std::generate_n(std::back_inserter(sol.coeff_), k, [&]() {
+            std::generate_n(std::back_inserter(sol.coeff_), k, [&]()
+            {
                 int16_t t;
                 in >> t;
                 return t;
@@ -73,7 +75,8 @@ namespace {
 
     solution& solution::operator()()
     {
-        result_ = std::accumulate(coeff_.begin(), coeff_.end(), 1ll, [&](int64_t val, int16_t next) {
+        result_ = std::accumulate(coeff_.begin(), coeff_.end(), 1ll, [&](int64_t val, int16_t next)
+        {
             val *= factorial(next);
             return val;
         });
@@ -86,7 +89,8 @@ void U10105::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol) {
+    while (std::cin >> sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -59,7 +59,8 @@ namespace {
         in >> n;
         sol.forbid_.resize(10000);
 
-        for (int32_t i = 0; i < n; i++) {
+        for (int32_t i = 0; i < n; i++)
+        {
             int32_t temp = sol.read(in);
             sol.forbid_[temp] = true;
         }
@@ -75,9 +76,12 @@ namespace {
 
     solution& solution::operator()()
     {
-        if (start_ == target_) {
+        if (start_ == target_)
+        {
             distance_ = 0;
-        } else {
+        }
+        else
+        {
             distance_ = bfs();
         }
 
@@ -98,19 +102,23 @@ namespace {
         distances[start_] = 0;
         work.push(start_);
 
-        while (!work.empty()) {
+        while (!work.empty())
+        {
             int32_t u(work.front());
             int32_t p(u);
             work.pop();
 
-            for (int32_t i = 0; i < 4; i++) {
+            for (int32_t i = 0; i < 4; i++)
+            {
                 int32_t d = static_cast<int32_t>(std::pow(10.0, static_cast<double>(i)));
                 int32_t v = (p % 10 == 0) ? u + (d * 9) : u - d;
 
-                if (!forbid_[v] && distances[v] == -1) {
+                if (!forbid_[v] && distances[v] == -1)
+                {
                     distances[v] = distances[u] + 1;
 
-                    if (v == target_) {
+                    if (v == target_)
+                    {
                         return distances[v];
                     }
 
@@ -119,10 +127,12 @@ namespace {
 
                 v = (p % 10 == 9) ? u - (d * 9) : u + d;
 
-                if (!forbid_[v] && distances[v] == -1) {
+                if (!forbid_[v] && distances[v] == -1)
+                {
                     distances[v] = distances[u] + 1;
 
-                    if (v == target_) {
+                    if (v == target_)
+                    {
                         return distances[v];
                     }
 
@@ -143,7 +153,8 @@ void U10067::operator()() const
     std::cin >> N;
     solution sol;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         std::cout << sol() << std::endl;
     }

@@ -36,15 +36,18 @@ namespace {
         solution() : primes_()
         {
             math::sieve_t<N> sieve;
-            std::for_each(sieve.begin(), sieve.end(), [&](auto prime) {
+            std::for_each(sieve.begin(), sieve.end(), [&](auto prime)
+            {
                 primes_[prime] = true;
             });
         }
 
         std::string operator() (int n, int m)
         {
-            if (primes_[n]) {
-                if (primes_[m] && m != n) {
+            if (primes_[n])
+            {
+                if (primes_[m] && m != n)
+                {
                     return " is emirp.";
                 }
 
@@ -64,7 +67,8 @@ void U10235::operator()() const
     solution<1000001> sol;
     std::string line;
 
-    while (std::getline(std::cin, line) && !line.empty()) {
+    while (std::getline(std::cin, line) && !line.empty())
+    {
         int n = std::atoi(line.c_str());
         std::reverse(line.begin(), line.end());
         int m = std::atoi(line.c_str());

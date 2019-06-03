@@ -1,4 +1,4 @@
---style=1tbs
+--style=allman
 --align-pointer=type
 --align-reference=type
 --max-code-length=150

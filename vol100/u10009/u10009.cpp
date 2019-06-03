@@ -53,9 +53,12 @@ namespace {
 
         void printPath(const std::string& end, const std::string& start, std::ostream& out) const
         {
-            if (start == end) {
+            if (start == end)
+            {
                 out << start[0];
-            } else {
+            }
+            else
+            {
                 printPath(route_.find(end)->second, start, out);
                 out << end[0];
             }
@@ -66,21 +69,26 @@ namespace {
     {
         route_.clear();
         std::map<std::string, int32_t> visited;
-        auto bfs = [&]() {
+        auto bfs = [&]()
+        {
             std::deque<std::string> work;
             visited[start_] = 0;
             work.push_back(start_);
 
-            while (not work.empty()) {
+            while (not work.empty())
+            {
                 auto top = work.front();
                 work.pop_front();
 
-                if (top == end_) {
+                if (top == end_)
+                {
                     break;
                 }
 
-                for (auto current = graph_[top].begin(); current != graph_[top].end(); ++current) {
-                    if (visited.find(*current) == visited.end()) {
+                for (auto current = graph_[top].begin(); current != graph_[top].end(); ++current)
+                {
+                    if (visited.find(*current) == visited.end())
+                    {
                         visited[*current] = visited[top] + 1;
                         work.push_back(*current);
                         route_[*current] = top;
@@ -94,17 +102,21 @@ namespace {
 
     std::istream& operator>>(std::istream& in, solution_t& sol)
     {
-        if (sol.N_ == std::numeric_limits<size_t>::max()) {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.N_;
         }
 
-        if (sol.N_ > 0) {
-            if (sol.M_ == 0) {
+        if (sol.N_ > 0)
+        {
+            if (sol.M_ == 0)
+            {
                 sol.graph_.clear();
                 size_t n(0);
                 in >> n >> sol.M_;
 
-                while (n--) {
+                while (n--)
+                {
                     std::string start, end;
                     in >> start >> end;
                     sol.graph_[start].push_back(end);
@@ -123,7 +135,8 @@ namespace {
     {
         sol.printPath(sol.end_, sol.start_, out);
 
-        if (sol.M_ == 0)  {
+        if (sol.M_ == 0)
+        {
             out << std::endl;
         }
 
@@ -135,7 +148,8 @@ void U10009::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

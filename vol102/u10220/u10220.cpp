@@ -37,7 +37,8 @@ void U10220::operator()() const
         digits[0] = 1;
         int32_t remainder(0);
         sums.push_back(0);
-        std::generate_n(std::back_inserter(sums), 1000, [&]() -> int32_t {
+        std::generate_n(std::back_inserter(sums), 1000, [&]() -> int32_t
+        {
             uint32_t digit = uint32_t(sums.size());
             std::for_each(digits.begin(), digits.end(), [&](auto & dig)
             {
@@ -50,7 +51,8 @@ void U10220::operator()() const
     }
     int n;
 
-    while (std::cin >> n) {
+    while (std::cin >> n)
+    {
         std::cout << sums[n] << std::endl;
     }
 }

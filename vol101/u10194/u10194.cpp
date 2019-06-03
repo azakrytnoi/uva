@@ -32,30 +32,45 @@ namespace {
 
         bool operator < (const team& other) const
         {
-            if (points_ == other.points_) {
-                if (wins_ == other.wins_) {
-                    if (goals() == other.goals()) {
-                        if (goals_scored_ == other.goals_scored_) {
-                            if (games_played() == other.games_played()) {
+            if (points_ == other.points_)
+            {
+                if (wins_ == other.wins_)
+                {
+                    if (goals() == other.goals())
+                    {
+                        if (goals_scored_ == other.goals_scored_)
+                        {
+                            if (games_played() == other.games_played())
+                            {
                                 return name_ > other.name_;
 
-                            } else {
+                            }
+                            else
+                            {
                                 return games_played() > other.games_played();
                             }
 
-                        } else {
+                        }
+                        else
+                        {
                             return goals_scored_ < other.goals_scored_;
                         }
 
-                    } else {
+                    }
+                    else
+                    {
                         return goals() < other.goals();
                     }
 
-                } else {
+                }
+                else
+                {
                     return wins_ < other.wins_;
                 }
 
-            } else {
+            }
+            else
+            {
                 return points_ < other.points_;
             }
         }
@@ -130,15 +145,20 @@ namespace {
         team1.goals_against() += team2Goals;
         team2.goals_against() += team1Goals;
 
-        if (team1Goals < team2Goals) {
+        if (team1Goals < team2Goals)
+        {
             team2.win();
             team1.loss();
 
-        } else if (team1Goals > team2Goals) {
+        }
+        else if (team1Goals > team2Goals)
+        {
             team1.win();
             team2.loss();
 
-        } else {
+        }
+        else
+        {
             team1.tie();
             team2.tie();
         }
@@ -170,7 +190,8 @@ void U10194::operator()()
     std::cin >> N;
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::getline(std::cin, line);
         std::cout << line << std::endl;
         int n;
@@ -179,7 +200,8 @@ void U10194::operator()()
         results.reserve(n);
         teams.clear();
         std::getline(std::cin, line);
-        std::generate_n(std::back_inserter(results), n, [&]() {
+        std::generate_n(std::back_inserter(results), n, [&]()
+        {
             std::getline(std::cin, line);
             auto t = std::make_shared<team>(line);
             teams[line] = t;
@@ -188,11 +210,14 @@ void U10194::operator()()
         std::cin >> n;
         std::getline(std::cin, line);
 
-        while (n--) {
+        while (n--)
+        {
             std::getline(std::cin, line);
 
-            if (std::regex_match(line, match, reg)) {
-                if (match.size() == 5) {
+            if (std::regex_match(line, match, reg))
+            {
+                if (match.size() == 5)
+                {
                     int team1Goals = std::atoi(match[2].str().c_str());
                     int team2Goals = std::atoi(match[3].str().c_str());
                     team::recordResults(*teams[match[1].str()], *teams[match[4].str()], team1Goals, team2Goals);
@@ -200,11 +225,13 @@ void U10194::operator()()
             }
         }
 
-        std::sort(results.begin(), results.end(), [](auto t1, auto t2) {
+        std::sort(results.begin(), results.end(), [](auto t1, auto t2)
+        {
             return *t2 < *t1;
         });
         int position = 0;
-        std::for_each(results.begin(), results.end(), [&position](const std::shared_ptr<team>& t) {
+        std::for_each(results.begin(), results.end(), [&position](const std::shared_ptr<team>& t)
+        {
             std::cout << (++position) << ") " << *t << std::endl;
         });
         std::cout << std::endl;

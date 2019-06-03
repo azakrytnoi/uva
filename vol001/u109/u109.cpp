@@ -29,7 +29,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct point_t : std::pair<int16_t, int16_t> {
+    struct point_t : std::pair<int16_t, int16_t>
+    {
         point_t(int16_t x = 0, int16_t y = 0) : std::pair<int16_t, int16_t>(x, y) {}
 
         int16_t& x()
@@ -93,11 +94,13 @@ namespace {
         sol.kingdoms_.reserve(20);
         int32_t m (0);
 
-        while (in >> m && m != -1) {
+        while (in >> m && m != -1)
+        {
             sol.kingdoms_.push_back(kingdom_t());
             auto kingdom = --sol.kingdoms_.end();
             kingdom->points_.reserve(m);
-            std::generate_n(std::back_inserter(kingdom->points_), m, [&]() {
+            std::generate_n(std::back_inserter(kingdom->points_), m, [&]()
+            {
                 point_t pp;
                 in >> pp;
                 return pp;
@@ -105,14 +108,17 @@ namespace {
             {
                 auto median = kingdom->points_.begin();
 
-                for (auto point = kingdom->points_.begin() + 1; point != kingdom->points_.end(); ++point) {
-                    if (point->x() < median->x() || (point->x() == median->x() && point->y() < median->y())) {
+                for (auto point = kingdom->points_.begin() + 1; point != kingdom->points_.end(); ++point)
+                {
+                    if (point->x() < median->x() || (point->x() == median->x() && point->y() < median->y()))
+                    {
                         median = point;
                     }
                 }
 
                 std::swap(kingdom->points_[0], *median);
-                std::sort(kingdom->points_.begin() + 1, kingdom->points_.end(), [&](const point_t& lhs, const point_t& rhs) {
+                std::sort(kingdom->points_.begin() + 1, kingdom->points_.end(), [&](const point_t& lhs, const point_t& rhs)
+                {
                     return point_t::cross(kingdom->points_[0], lhs, rhs) < 0;
                 });
                 kingdom->points_.push_back(kingdom->points_[0]);
@@ -120,9 +126,11 @@ namespace {
             kingdom->hull_.push_back(kingdom->points_[0]);
             kingdom->hull_.push_back(kingdom->points_[1]);
 
-            for (auto point = kingdom->points_.begin() + 2; point != kingdom->points_.end(); ++point) {
+            for (auto point = kingdom->points_.begin() + 2; point != kingdom->points_.end(); ++point)
+            {
                 while (kingdom->hull_.size() >= 2 &&
-                        point_t::cross(kingdom->hull_[kingdom->hull_.size() - 2], kingdom->hull_[kingdom->hull_.size() - 1], *point) > 0) {
+                        point_t::cross(kingdom->hull_[kingdom->hull_.size() - 2], kingdom->hull_[kingdom->hull_.size() - 1], *point) > 0)
+                {
                     kingdom->hull_.erase(kingdom->hull_.end());
                 }
 
@@ -143,23 +151,30 @@ namespace {
     {
         point_t fire;
 
-        while (in >> fire) {
-            for (auto kingdom = kingdoms_.begin(); kingdom != kingdoms_.end(); ++kingdom) {
-                if (kingdom->alive_) {
+        while (in >> fire)
+        {
+            for (auto kingdom = kingdoms_.begin(); kingdom != kingdoms_.end(); ++kingdom)
+            {
+                if (kingdom->alive_)
+                {
                     bool mark = true;
 
-                    for (auto hull = kingdom->hull_.begin() + 1; hull != kingdom->hull_.end(); ++hull) {
-                        if (point_t::cross(*(hull - 1), *hull, fire) > 0) {
+                    for (auto hull = kingdom->hull_.begin() + 1; hull != kingdom->hull_.end(); ++hull)
+                    {
+                        if (point_t::cross(*(hull - 1), *hull, fire) > 0)
+                        {
                             mark = false;
                             break;
                         }
                     }
 
-                    if (mark) {
+                    if (mark)
+                    {
                         kingdom->alive_ = false;
                         double_t area(0);
 
-                        for (auto hull = kingdom->hull_.begin() + 1; hull != kingdom->hull_.end(); ++hull) {
+                        for (auto hull = kingdom->hull_.begin() + 1; hull != kingdom->hull_.end(); ++hull)
+                        {
                             area -= (hull - 1)->x() * hull->y() - hull->x() * (hull - 1)->y();
                         }
 

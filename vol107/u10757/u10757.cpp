@@ -64,7 +64,8 @@ namespace {
             std::vector<std::string> columns;
             columns.reserve(nColumns);
 
-            while (nColumns--) {
+            while (nColumns--)
+            {
                 std::string name;
                 std::string dt;
                 in >> name >> dt;
@@ -73,7 +74,8 @@ namespace {
             }
 
             t.data_.reserve(nRows);
-            std::generate_n(std::back_inserter(t.data_), nRows, [&]() -> std::unordered_map<std::string, std::string> {
+            std::generate_n(std::back_inserter(t.data_), nRows, [&]() -> std::unordered_map<std::string, std::string>
+            {
                 std::unordered_map<std::string, std::string> row;
                 std::for_each(columns.begin(), columns.end(), [&](auto name)
                 {
@@ -99,11 +101,13 @@ namespace {
             int nTables;
             std::cin >> nTables;
 
-            while (nTables--) {
+            while (nTables--)
+            {
                 auto t = std::make_shared<table>();
                 std::cin >> *t;
                 d.tables_[t->name()] = t;
-                std::for_each(t->meta().begin(), t->meta().end(), [&](auto col) {
+                std::for_each(t->meta().begin(), t->meta().end(), [&](auto col)
+                {
                     d.columns_[col.first] = t->name();
                 });
             }
@@ -123,7 +127,8 @@ namespace {
         bool compare(const std::string& column, const std::unordered_map<std::string, std::string>& r1,
                      const std::unordered_map<std::string, std::string>& r2) const
         {
-            switch (tables_.find(columns_.find(column)->second)->second->meta().find(column)->second) {
+            switch (tables_.find(columns_.find(column)->second)->second->meta().find(column)->second)
+            {
             case datatype::I:
                 return std::atoi(r1.find(column)->second.c_str()) < std::atoi(r2.find(column)->second.c_str());
 
@@ -154,7 +159,8 @@ namespace {
             {
                 std::string line;
 
-                while (std::getline(in, line)) {
+                while (std::getline(in, line))
+                {
                     strq.append(line).append(" ");
                 }
             }
@@ -166,11 +172,14 @@ namespace {
         std::ostream& operator << (std::ostream& out, const query& q)
         {
             std::cout << q.selector_.size() << " " << q.resultset_.size() << std::endl;
-            std::for_each(q.selector_.begin(), q.selector_.end(), [&](auto col) {
+            std::for_each(q.selector_.begin(), q.selector_.end(), [&](auto col)
+            {
                 out << col << std::endl;
             });
-            std::for_each(q.resultset_.begin(), q.resultset_.end(), [&](auto row) {
-                std::for_each(q.selector_.begin(), q.selector_.end(), [&](auto col) {
+            std::for_each(q.resultset_.begin(), q.resultset_.end(), [&](auto row)
+            {
+                std::for_each(q.selector_.begin(), q.selector_.end(), [&](auto col)
+                {
                     out << row[col] << " ";
                 });
                 std::cout << std::endl;
@@ -191,10 +200,12 @@ namespace {
     {
         auto select_pos = qry.find("SELECT ");
 
-        if (select_pos != std::string::npos) {
+        if (select_pos != std::string::npos)
+        {
             auto from_pos = qry.find(" FROM ", select_pos);
 
-            if (from_pos != std::string::npos) {
+            if (from_pos != std::string::npos)
+            {
                 std::string select_list(qry.substr(select_pos + 7, from_pos - select_pos - 7));
                 auto where_pos = qry.find(" WHERE ", from_pos);
                 std::string from_list(qry.substr(from_pos + 6, where_pos - from_pos - 6));
@@ -215,11 +226,14 @@ namespace {
         source.erase(select_list.find_last_not_of(' ') + 1, std::string::npos).erase(0, select_list.find_first_not_of(' '));
         selector_.reserve(db_.columns().size());
 
-        if (source == "*") {
+        if (source == "*")
+        {
             selector_.reserve(db_.columns().size());
             std::transform(db_.columns().begin(), db_.columns().end(), std::back_inserter(selector_), [](auto column) -> std::string { return column.first; });
 
-        } else {
+        }
+        else
+        {
             std::stringstream ss(source);
             std::istream_iterator<std::string>  iss(ss);
             std::transform(iss, std::istream_iterator<std::string>(), std::back_inserter(selector_), [](auto column) -> std::string { return column.substr(0, column.find_last_not_of(',') + 1); });
@@ -233,25 +247,30 @@ namespace {
         auto join_pos = source.find(" INNER JOIN ");
         std::string main_table_name(source);
 
-        if (join_pos != std::string::npos) {
+        if (join_pos != std::string::npos)
+        {
             main_table_name = source.substr(0, join_pos);
             main_table_name.erase(main_table_name.find_last_not_of(' ') + 1, std::string::npos).erase(0, main_table_name.find_first_not_of(' '));
             std::shared_ptr<table> main_table = db_.tables().find(main_table_name)->second;
             resultset_.reserve(main_table->data().size());
             std::copy(main_table->data().begin(), main_table->data().end(), std::back_inserter(resultset_));
 
-            while (!source.empty()) {
+            while (!source.empty())
+            {
                 source = source.substr(join_pos + 12);
                 join_pos = source.find(" INNER JOIN ");
                 std::string join_spec = join_pos == std::string::npos ? source : source.substr(0, join_pos + 1);
                 parseJoin(join_spec);
 
-                if (join_pos == std::string::npos) {
+                if (join_pos == std::string::npos)
+                {
                     break;
                 }
             }
 
-        } else {
+        }
+        else
+        {
             std::shared_ptr<table> main_table = db_.tables().find(main_table_name)->second;
             resultset_.reserve(main_table->data().size());
             std::copy(main_table->data().begin(), main_table->data().end(), std::back_inserter(resultset_));
@@ -267,7 +286,8 @@ namespace {
         col_name.erase(col_name.find_last_not_of(' ') + 1, std::string::npos).erase(0, col_name.find_first_not_of(' '));
         col_value.erase(col_value.find_last_not_of(' ') + 1, std::string::npos).erase(0, col_value.find_first_not_of(' '));
 
-        if (col_value[0] == '"') {
+        if (col_value[0] == '"')
+        {
             col_value = col_value.substr(1, col_value.length() - 2);
         }
 
@@ -283,20 +303,24 @@ namespace {
         std::string source(order_list);
         source.erase(order_list.find_last_not_of(' ') + 1, std::string::npos).erase(0, order_list.find_first_not_of(' '));
 
-        if (!source.empty()) {
+        if (!source.empty())
+        {
             source.append(",");
             std::vector<std::pair<std::string, bool>> sort_defs;
-            sort_defs.reserve(std::count_if(source.begin(), source.end(), [](auto ch) {
+            sort_defs.reserve(std::count_if(source.begin(), source.end(), [](auto ch)
+            {
                 return ch == ',';
             }));
 
-            while (source.find(',') != std::string::npos) {
+            while (source.find(',') != std::string::npos)
+            {
                 std::string ord = source.substr(0, source.find(','));
                 ord.erase(ord.find_last_not_of(' ') + 1, std::string::npos).erase(0, ord.find_first_not_of(' '));
                 source.erase(0, source.find(',') + 1);
                 bool order(true);
 
-                if (ord.find(' ') != std::string::npos) {
+                if (ord.find(' ') != std::string::npos)
+                {
                     order = ord.substr(ord.find(' ') + 1) == "DESCENDING";
                     ord.erase(ord.find(' '), std::string::npos);
                     ord.erase(ord.find_last_not_of(' ') + 1, std::string::npos).erase(0, ord.find_first_not_of(' '));
@@ -305,8 +329,10 @@ namespace {
                 sort_defs.push_back(std::make_pair(ord, order));
             }
 
-            std::for_each(sort_defs.rbegin(), sort_defs.rend(), [&](auto sort_def) {
-                std::stable_sort(resultset_.begin(), resultset_.end(), [&](auto r1, auto r2) {
+            std::for_each(sort_defs.rbegin(), sort_defs.rend(), [&](auto sort_def)
+            {
+                std::stable_sort(resultset_.begin(), resultset_.end(), [&](auto r1, auto r2)
+                {
                     return sort_def.second ? db_.compare(sort_def.first, r1, r2) : db_.compare(sort_def.first, r2, r1);
                 });
             });
@@ -328,12 +354,15 @@ namespace {
         std::vector<std::unordered_map<std::string, std::string>> join_result;
         std::shared_ptr<table> join_table = db_.tables().find(join_table_name)->second;
         join_result.reserve(resultset_.size() * join_table->data().size());
-        std::for_each(resultset_.begin(), resultset_.end(), [&](auto row1) {
-            std::for_each(join_table->data().begin(), join_table->data().end(), [&](auto row2) {
+        std::for_each(resultset_.begin(), resultset_.end(), [&](auto row1)
+        {
+            std::for_each(join_table->data().begin(), join_table->data().end(), [&](auto row2)
+            {
                 std::unordered_map<std::string, std::string> row(row1);
                 row.insert(row2.begin(), row2.end());
 
-                if (row[col_a] == row[col_b]) {
+                if (row[col_a] == row[col_b])
+                {
                     join_result.push_back(row);
                 }
             });
@@ -353,7 +382,8 @@ void U10757::operator()() const
     int N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         database db;
         std::cin >> db;
         query q(db);

@@ -26,7 +26,8 @@ void U10810::operator()() const
 {
     int n;
 
-    while (std::cin >> n && n > 0) {
+    while (std::cin >> n && n > 0)
+    {
         util::sort<999999999> s(n);
         std::cin >> s;
         std::cout << s.do_sort() << std::endl;

@@ -27,15 +27,20 @@ void U146::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line)) {
-        if ("#" == line) {
+    while (std::getline(std::cin, line))
+    {
+        if ("#" == line)
+        {
             break;
         }
 
-        if (std::next_permutation(line.begin(), line.end())) {
+        if (std::next_permutation(line.begin(), line.end()))
+        {
             std::cout << line << std::endl;
 
-        } else {
+        }
+        else
+        {
             std::cout << "No Successor" << std::endl;
         }
     }

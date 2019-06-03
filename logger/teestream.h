@@ -34,10 +34,13 @@ private:
     {
         int_type const eof = traits::eof();
 
-        if (traits::eq_int_type(c, eof)) {
+        if (traits::eq_int_type(c, eof))
+        {
             return traits::not_eof(c);
 
-        } else {
+        }
+        else
+        {
             char_type const ch = traits::to_char_type(c);
             int_type const r1 = sb1->sputc(ch);
             int_type const r2 = sb2->sputc(ch);

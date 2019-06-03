@@ -52,7 +52,8 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        static std::vector<std::string> good( {
+        static std::vector<std::string> good(
+        {
             "YYYYYYN",//0
             "NYYNNNN",//1
             "YYNYYNY",//2
@@ -66,35 +67,45 @@ namespace {
         });
         match_ = false;
 
-        for (size_t i = 9; i >= leds_.size() - 1; --i) {
+        for (size_t i = 9; i >= leds_.size() - 1; --i)
+        {
             std::vector<bool> bad(n_leds_);
             auto led = leds_.begin();
 
-            for (; led != leds_.end(); ++led) {
+            for (; led != leds_.end(); ++led)
+            {
                 auto possible = good[i - std::distance(leds_.begin(), led)].begin();
                 auto bad_led = bad.begin();
                 auto segment = led->begin();
 
-                for (; segment != led->end(); ++segment, ++bad_led, ++possible) {
-                    if (*bad_led && *segment == 'Y') {
+                for (; segment != led->end(); ++segment, ++bad_led, ++possible)
+                {
+                    if (*bad_led && *segment == 'Y')
+                    {
                         break;
                     }
 
-                    if (*segment != *possible) {
-                        if (*segment == 'N') {
+                    if (*segment != *possible)
+                    {
+                        if (*segment == 'N')
+                        {
                             *bad_led = true;
-                        } else if (*segment == 'Y') {
+                        }
+                        else if (*segment == 'Y')
+                        {
                             break;
                         }
                     }
                 }
 
-                if (segment != led->end()) { // loop not finished
+                if (segment != led->end())   // loop not finished
+                {
                     break;
                 }
             }
 
-            if (led == leds_.end()) { // loop finished
+            if (led == leds_.end())   // loop finished
+            {
                 match_ = true;
                 break;
             }
@@ -108,7 +119,8 @@ namespace {
         sol.leds_.clear();
         size_t n(0);
 
-        if (in >> n) {
+        if (in >> n)
+        {
             sol.leds_.reserve(n);
             std::istream_iterator<std::string> sin(in);
             std::copy_n(sin, n, std::back_inserter(sol.leds_));
@@ -129,7 +141,8 @@ void U416::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

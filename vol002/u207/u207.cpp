@@ -43,7 +43,8 @@ namespace {
         friend std::istream& operator >>(std::istream& in, purse& p)
         {
             in >> p.value_;
-            std::generate_n(p.distibution_.begin(), 70, [&]() {
+            std::generate_n(p.distibution_.begin(), 70, [&]()
+            {
                 REAL tmp;
                 in >> tmp;
                 return tmp;
@@ -74,7 +75,8 @@ namespace {
             std::stringstream score_stream(line.substr(21));
             std::istream_iterator<std::string> iscore_stream (score_stream);
             std::vector<std::string> scores (iscore_stream, std::istream_iterator<std::string>());
-            std::transform(scores.begin(), scores.end(), p.scores_.begin(), [&](auto & score) {
+            std::transform(scores.begin(), scores.end(), p.scores_.begin(), [&](auto & score)
+            {
                 char* tmp;
                 return std::strtol(score.c_str(), &tmp, 0);
             });
@@ -111,14 +113,16 @@ namespace {
     {
         std::string line;
 
-        if (std::getline(in, line)) {
+        if (std::getline(in, line))
+        {
             in >> sol.purse_;
             uint32_t n_players;
             in >> n_players;
             std::getline(in, line);
             sol.players_.clear();
             sol.players_.reserve(n_players);
-            std::generate_n(std::back_inserter(sol.players_), n_players, [&]() {
+            std::generate_n(std::back_inserter(sol.players_), n_players, [&]()
+            {
                 auto p = std::make_shared<player>();
                 in >> *p;
                 return p;

@@ -31,15 +31,19 @@ void U11495::operator()() const
 {
     std::string line;
 
-    while (std::getline(std::cin, line)) {
+    while (std::getline(std::cin, line))
+    {
         std::stringstream in(line);
         int n;
         in >> n;
 
-        if (n == 0) {
+        if (n == 0)
+        {
             break;
 
-        } else {
+        }
+        else
+        {
             util::sort<100000> s(n);
             in >> s;
             std::cout << ((s.do_sort() & 0x01) ? "Marcelo" : "Carlos") << std::endl;

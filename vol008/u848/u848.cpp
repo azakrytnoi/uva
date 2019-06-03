@@ -49,7 +49,8 @@ namespace {
 //        if (str.front() == ' ') {
 //            str.erase(0, str.find_first_not_of(' '));
 //        }
-            if (!str.empty() && str.back() == ' ') {
+            if (!str.empty() && str.back() == ' ')
+            {
                 str.erase(str.find_last_not_of(' '), std::string::npos);
             }
         }
@@ -60,14 +61,18 @@ namespace {
         std::string line;
         std::stringstream instream;
 
-        while (std::getline(in, line)) {
+        while (std::getline(in, line))
+        {
             solution::trim(line);
 
-            if (line.empty()) {
+            if (line.empty())
+            {
                 sol.buffer_.push_back(instream.str());
                 instream.str(line);
 
-            } else {
+            }
+            else
+            {
                 line += " ";
                 instream << line;
             }
@@ -80,25 +85,34 @@ namespace {
     std::string solution::operator ()()
     {
         std::stringstream outstream;
-        std::for_each(buffer_.begin(), buffer_.end(), [&](auto str) {
+        std::for_each(buffer_.begin(), buffer_.end(), [&](auto str)
+        {
             std::string line;
 
-            if (str.length() <= 72) {
+            if (str.length() <= 72)
+            {
                 line.assign(str);
 
-            } else {
-                for (auto it = str.begin(); it != str.end() && *it == ' '; ++it) {
+            }
+            else
+            {
+                for (auto it = str.begin(); it != str.end() && *it == ' '; ++it)
+                {
                     line += ' ';
                 }
 
                 std::stringstream paragraph(str);
                 std::string word;
 
-                while (paragraph >> word) {
-                    if ((line.length() + word.length()) < 71) {
+                while (paragraph >> word)
+                {
+                    if ((line.length() + word.length()) < 71)
+                    {
                         line += (line.empty() ? "" : " ") + word;
 
-                    } else {
+                    }
+                    else
+                    {
                         outstream << line << std::endl;
                         line = word;
                     }
@@ -117,7 +131,8 @@ void U848::operator()() const
     solution sol;
     std::cin >> sol;
 
-    if (sol) {
+    if (sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

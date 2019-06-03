@@ -49,7 +49,8 @@ namespace {
             sol.N_ = n;
             sol.S_ = 0;
 
-            while (n--) {
+            while (n--)
+            {
                 uint64_t t;
                 in >> t;
                 sol.S_ ^= t;
@@ -74,7 +75,8 @@ void U10165::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

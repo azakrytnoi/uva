@@ -54,30 +54,37 @@ namespace {
     {
         in >> sol.n_;
 
-        if (sol) {
+        if (sol)
+        {
             sol.num_.resize(sol.n_ * 6);
             sol.top_.resize(sol.n_ * 6);
             sol.bot_.resize(sol.n_ * 6);
             sol.df_.resize(sol.n_ * 6);
             sol.idx_ = 0;
 
-            for (int32_t i = 0; i < sol.n_; i++) {
+            for (int32_t i = 0; i < sol.n_; i++)
+            {
                 std::vector<int32_t> cube;
                 cube.reserve(6);
-                std::generate_n(std::back_inserter(cube), 6, [&]() {
+                std::generate_n(std::back_inserter(cube), 6, [&]()
+                {
                     int32_t tmp;
                     in >> tmp;
                     return tmp;
                 });
 
-                for (int32_t j = 0; j < 6; j++, sol.idx_++) {
+                for (int32_t j = 0; j < 6; j++, sol.idx_++)
+                {
                     sol.df_[sol.idx_] = j;
                     sol.num_[sol.idx_] = i + 1;
                     sol.top_[sol.idx_] = cube[j];
 
-                    if (j % 2 == 0) {
+                    if (j % 2 == 0)
+                    {
                         sol.bot_[sol.idx_] = cube[j + 1];
-                    } else {
+                    }
+                    else
+                    {
                         sol.bot_[sol.idx_] = cube[j - 1];
                     }
                 }
@@ -99,9 +106,12 @@ namespace {
         path_ = std::vector<int32_t>(n_ * 6, -1);
         std::vector<int32_t> dp(n_ * 6);
 
-        for (int32_t i = 0; i < idx_; i++) {
-            for (int32_t j = 0; j < idx_; j++) {
-                if (num_[j] > num_[i] && bot_[i] == top_[j] && dp[j] < dp[i] + 1) {
+        for (int32_t i = 0; i < idx_; i++)
+        {
+            for (int32_t j = 0; j < idx_; j++)
+            {
+                if (num_[j] > num_[i] && bot_[i] == top_[j] && dp[j] < dp[i] + 1)
+                {
                     dp[j] = dp[i] + 1;
                     path_[j] = i;
                 }
@@ -110,8 +120,10 @@ namespace {
 
         max_ = pathIdx_ = 0;
 
-        for (int32_t i = 0; i < idx_; i++) {
-            if (dp[i] > max_) {
+        for (int32_t i = 0; i < idx_; i++)
+        {
+            if (dp[i] > max_)
+            {
                 max_ = dp[i];
                 pathIdx_ = i;
             }
@@ -122,7 +134,8 @@ namespace {
 
     void solution::printPath(std::ostream& out, int32_t current) const
     {
-        if (current == -1) {
+        if (current == -1)
+        {
             return;
         }
 
@@ -136,8 +149,10 @@ void U10051::operator()() const
     solution sol;
     int32_t caseNo(0);
 
-    while (std::cin >> sol && sol) {
-        if (caseNo > 0) {
+    while (std::cin >> sol && sol)
+    {
+        if (caseNo > 0)
+        {
             std::cout << std::endl;
         }
 

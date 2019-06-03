@@ -51,7 +51,8 @@ namespace {
         sol.molecules_.clear();
         std::string line;
 
-        if (in >> line && line != "Q") {
+        if (in >> line && line != "Q")
+        {
             sol.molecules_.resize(4);
             sol.molecules_[0] = line;
             in >> sol.molecules_[1] >> sol.molecules_[2] >> sol.molecules_[3];
@@ -75,27 +76,37 @@ namespace {
         const size_t first_possible = 1;
         const size_t min_gap = 2;
 
-        do {
+        do
+        {
             auto& vertical_left(molecules_[order[0]]), //
                   horizontal_up(molecules_[order[1]]), //
                   vertical_right(molecules_[order[2]]), //
                   horizontal_down(molecules_[order[3]]);
 
-            for (size_t vl_hu = first_possible; vl_hu <= last_possible; vl_hu++) {
-                for (size_t hu_vl = first_possible; hu_vl <= last_possible; hu_vl++) {
-                    if (vertical_left[vl_hu] != horizontal_up[hu_vl]) {
+            for (size_t vl_hu = first_possible; vl_hu <= last_possible; vl_hu++)
+            {
+                for (size_t hu_vl = first_possible; hu_vl <= last_possible; hu_vl++)
+                {
+                    if (vertical_left[vl_hu] != horizontal_up[hu_vl])
+                    {
                         continue;
                     }
 
-                    for (size_t hu_vr = hu_vl + min_gap; hu_vr <= last_possible; hu_vr++) {
-                        for (size_t vr_hu = first_possible; vr_hu <= last_possible; vr_hu++) {
-                            if (horizontal_up[hu_vr] != vertical_right[vr_hu]) {
+                    for (size_t hu_vr = hu_vl + min_gap; hu_vr <= last_possible; hu_vr++)
+                    {
+                        for (size_t vr_hu = first_possible; vr_hu <= last_possible; vr_hu++)
+                        {
+                            if (horizontal_up[hu_vr] != vertical_right[vr_hu])
+                            {
                                 continue;
                             }
 
-                            for (size_t vl_hd = vl_hu + min_gap; vl_hd <= last_possible; vl_hd++) {
-                                for (size_t hd_vl = first_possible; hd_vl <= last_possible; hd_vl++) {
-                                    if (vertical_left[vl_hd] != horizontal_down[hd_vl]) {
+                            for (size_t vl_hd = vl_hu + min_gap; vl_hd <= last_possible; vl_hd++)
+                            {
+                                for (size_t hd_vl = first_possible; hd_vl <= last_possible; hd_vl++)
+                                {
+                                    if (vertical_left[vl_hd] != horizontal_down[hd_vl])
+                                    {
                                         continue;
                                     }
 
@@ -104,7 +115,8 @@ namespace {
 
                                     if (vr_hd >= first_possible && vr_hd <= last_possible &&
                                             hd_vr >= first_possible && hd_vr <= last_possible &&
-                                            vertical_right[vr_hd] == horizontal_down[hd_vr]) {
+                                            vertical_right[vr_hd] == horizontal_down[hd_vr])
+                                    {
                                         area_ = std::max(area_, (vl_hd - vl_hu - 1) * (hu_vr - hu_vl - 1));
                                     }
                                 }
@@ -113,7 +125,8 @@ namespace {
                     }
                 }
             }
-        } while (std::next_permutation(order.begin(), order.end()));
+        }
+        while (std::next_permutation(order.begin(), order.end()));
 
         return *this;
     }
@@ -124,7 +137,8 @@ void U418::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

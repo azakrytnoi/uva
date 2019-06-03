@@ -68,7 +68,8 @@ namespace {
         ++n_lots_;
         lot_roof_ = lot_floor_ = 0;
 
-        for (auto& lot_det : lot_det_) {
+        for (auto& lot_det : lot_det_)
+        {
             double_t base = (std::get<0>(lot_det) + std::get<1>(lot_det)) * std::get<2>(lot_det) / 2.0;
             lot_roof_ += base;
             lot_floor_ += base * std::cos(std::get<3>(lot_det) * M_PI / 180.0);
@@ -86,11 +87,13 @@ namespace {
         std::string lot;
         std::string line;
 
-        while (std::getline(in, line) && not line.empty()) {
+        while (std::getline(in, line) && not line.empty())
+        {
             lot += " " + line;
         }
 
-        if (not lot.empty()) {
+        if (not lot.empty())
+        {
             std::stringstream sin(lot);
             sin >> sol.lot_;
             std::istream_iterator<lot_t> slot(sin);
@@ -102,7 +105,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const solution_t& sol)
     {
-        if (sol.n_lots_ == 1) {
+        if (sol.n_lots_ == 1)
+        {
             out << "Roof Area" << std::string(5, ' ') << "Floor Area" << std::string(5, ' ') << "% Covered" << std::endl //
                 << "---------" << std::string(5, ' ') << "----------" << std::string(5, ' ') << "---------" << std::endl;
         }
@@ -134,7 +138,8 @@ void U428::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 

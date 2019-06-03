@@ -66,13 +66,15 @@ namespace {
 
     int64_t solution::g(int64_t num)
     {
-        if (num < 10) {
+        if (num < 10)
+        {
             return num;
         }
 
         int64_t running(0);
 
-        while (num > 0) {
+        while (num > 0)
+        {
             running += num % 10;
             num /= 10;
         }
@@ -85,7 +87,8 @@ void U11332::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

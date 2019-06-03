@@ -64,24 +64,30 @@ namespace {
         std::string line;
         uint32_t temp(nReq_ + 1);
 
-        while (temp--) {
+        while (temp--)
+        {
             std::getline(std::cin, line);
         }
 
-        while (nProposals_--) {
+        while (nProposals_--)
+        {
             std::getline(std::cin, line);
             double price(0);
             double offer(0);
             std::cin >> price >> offer;
             double comp (offer / nReq_);
 
-            if (comp > compliance) {
+            if (comp > compliance)
+            {
                 compliance = comp;
                 choosen_ = line;
                 minPrice = price;
 
-            } else if (std::abs(compliance - comp) <= 1e-6) {
-                if (minPrice > price) {
+            }
+            else if (std::abs(compliance - comp) <= 1e-6)
+            {
+                if (minPrice > price)
+                {
                     compliance = comp;
                     choosen_ = line;
                     minPrice = price;
@@ -90,7 +96,8 @@ namespace {
 
             uint32_t temp(offer + 1);
 
-            while (temp--) {
+            while (temp--)
+            {
                 std::getline(std::cin, line);
             }
         }
@@ -105,7 +112,8 @@ void U10141::operator()() const
     uint32_t caseNo(0);
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << "RFP #" << (++caseNo) << std::endl << sol() << std::endl;
     }
 }

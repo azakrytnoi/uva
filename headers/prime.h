@@ -22,11 +22,14 @@ namespace math {
             sieve_[1] = false;
             primes_.push_back(1);
 
-            for (uint64_t i = 2; i <= N; i++) {
-                if (sieve_[i]) {
+            for (uint64_t i = 2; i <= N; i++)
+            {
+                if (sieve_[i])
+                {
                     primes_.push_back(i);
 
-                    for (uint64_t j = i * i; j <= N; j += i) {
+                    for (uint64_t j = i * i; j <= N; j += i)
+                    {
                         sieve_[j] = false;
                     }
                 }
@@ -37,7 +40,8 @@ namespace math {
 
         bool is_prime(uint64_t n) const
         {
-            if (n < N) {
+            if (n < N)
+            {
                 return sieve_[n];
             }
 

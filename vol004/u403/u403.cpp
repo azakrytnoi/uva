@@ -18,19 +18,23 @@
 #include <regex>
 
 namespace {
-    enum class action_t {
+    enum class action_t
+    {
         print, flush
     };
 
-    enum class alignment_t : char {
+    enum class alignment_t : char
+    {
         none = 'P', left = 'L', right = 'R', center = 'C', end = 'E'
     };
 
-    enum class font_t : char {
+    enum class font_t : char
+    {
         C1 = '1', C5 = '5'
     };
 
-    struct command_t {
+    struct command_t
+    {
         action_t action_;
         alignment_t alignment_;
         font_t font_;
@@ -43,16 +47,19 @@ namespace {
         {
             std::string word;
 
-            if (in >> word && word[0] == '.') {
+            if (in >> word && word[0] == '.')
+            {
                 command.alignment_ = static_cast<alignment_t>(word[1]);
 
-                if (command.alignment_ != alignment_t::end) {
+                if (command.alignment_ != alignment_t::end)
+                {
                     command.text_.clear();
                     in >> word;
                     command.font_ = static_cast<font_t>(word[1]);
                     in >> command.row_;
 
-                    if (command.alignment_ == alignment_t::none) {
+                    if (command.alignment_ == alignment_t::none)
+                    {
                         in >> command.col_;
                     }
 
@@ -60,7 +67,8 @@ namespace {
 
                     while (in >> ch && ch != '|');
 
-                    while (in >> ch && ch != '|') {
+                    while (in >> ch && ch != '|')
+                    {
                         command.text_.append(1, ch);
                     }
                 }
@@ -73,7 +81,8 @@ namespace {
         {
             text_.clear();
 
-            if (src == ".EOP") {
+            if (src == ".EOP")
+            {
                 action_ = action_t::flush;
                 return *this;
             }
@@ -81,14 +90,16 @@ namespace {
             action_ = action_t::print;
             auto ch = src.begin();
 
-            if (*ch++ == '.') {
+            if (*ch++ == '.')
+            {
                 alignment_ = static_cast<alignment_t>(*ch++);
 
                 while (*ch++ != 'C');
 
                 font_ = static_cast<font_t>(*ch++);
 
-                auto parse = [&]() -> size_t {
+                auto parse = [&]() -> size_t
+                {
                     size_t result(0);
 
                     while (not std::isdigit(*ch))
@@ -106,13 +117,15 @@ namespace {
                 };
                 row_ = parse();
 
-                if (alignment_ == alignment_t::none) {
+                if (alignment_ == alignment_t::none)
+                {
                     col_ = parse();
                 }
 
                 while (*ch++ != '|');
 
-                while (*ch != '|') {
+                while (*ch != '|')
+                {
                     text_ += *ch++;
                 }
             }
@@ -311,22 +324,27 @@ namespace {
     {
         auto length = command.text_.length();
 
-        if (command.font_ == font_t::C5) {
+        if (command.font_ == font_t::C5)
+        {
             length *= 6;
         }
 
-        if (length > 60) {
+        if (length > 60)
+        {
             length = 60;
         }
 
         auto n_chars = (command.font_ == font_t::C1 ? length : length / 6);
 
-        switch (command.alignment_) {
-        case alignment_t::center: {
+        switch (command.alignment_)
+        {
+        case alignment_t::center:
+        {
             size_t col = (60 - length) / 2.0 + 0.5;
             size_t start_from(0);
 
-            if (command.text_.length() > (command.font_ == font_t::C1 ? 60 : 10)) {
+            if (command.text_.length() > (command.font_ == font_t::C1 ? 60 : 10))
+            {
                 start_from = (command.text_.length() - (command.font_ == font_t::C1 ? 60 : 10)) / 2.0 + 0.5;
                 col = 0;
             }
@@ -335,21 +353,27 @@ namespace {
         }
         break;
 
-        case alignment_t::left: {
+        case alignment_t::left:
+        {
             print_text(command.row_, 0, command.text_, 0, n_chars, command.font_);
         }
         break;
 
-        case alignment_t::right: {
+        case alignment_t::right:
+        {
             size_t col = 60 - length;
             print_text(command.row_, col, command.text_, 0, n_chars, command.font_);
         }
         break;
 
-        case alignment_t::none: {
-            if (command.font_ == font_t::C1) {
+        case alignment_t::none:
+        {
+            if (command.font_ == font_t::C1)
+            {
                 n_chars = std::min(60 - command.col_, n_chars);
-            } else {
+            }
+            else
+            {
                 n_chars = std::min((60 - command.col_) / 5, n_chars);
             }
 
@@ -367,11 +391,13 @@ namespace {
     {
         std::string line;
 
-        while (std::getline(in, line)) {
+        while (std::getline(in, line))
+        {
             command_t command;
             command << line;
 
-            switch (command.action_) {
+            switch (command.action_)
+            {
             case action_t::flush:
                 do_flush(out);
                 break;
@@ -390,10 +416,13 @@ namespace {
 
     void solution_t::print_text(size_t row, size_t col, const std::string& text, size_t start_from, size_t n_chars, font_t font)
     {
-        switch (font) {
+        switch (font)
+        {
         case font_t::C1:
-            for (size_t idx = 0; idx < n_chars; ++idx) {
-                if (text[idx + start_from] != ' ') {
+            for (size_t idx = 0; idx < n_chars; ++idx)
+            {
+                if (text[idx + start_from] != ' ')
+                {
                     page_[row][col + idx] = text[idx + start_from];
                 }
             }
@@ -401,14 +430,20 @@ namespace {
             break;
 
         case font_t::C5:
-            for (size_t drow = 0; drow < 5 && row + drow < 60; ++drow) {
-                for (size_t idx = 0; idx < n_chars; ++idx) {
-                    if (text[idx + start_from] != ' ') {
+            for (size_t drow = 0; drow < 5 && row + drow < 60; ++drow)
+            {
+                for (size_t idx = 0; idx < n_chars; ++idx)
+                {
+                    if (text[idx + start_from] != ' ')
+                    {
                         auto letter = letters_.find(text[idx + start_from]);
 
-                        if (letter != letters_.end()) {
-                            for (size_t dcol = 0; dcol < 5 && col + idx * 6 + dcol < 60; dcol++) {
-                                if (letter->second[drow][dcol] != '.') {
+                        if (letter != letters_.end())
+                        {
+                            for (size_t dcol = 0; dcol < 5 && col + idx * 6 + dcol < 60; dcol++)
+                            {
+                                if (letter->second[drow][dcol] != '.')
+                                {
                                     page_[row + drow][col + idx * 6 + dcol] = letter->second[drow][dcol];
                                 }
                             }

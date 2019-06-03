@@ -53,9 +53,11 @@ namespace {
         int32_t n;
         in >> n;
 
-        if (n > 0) {
+        if (n > 0)
+        {
             sol.locations_.reserve(n);
-            std::generate_n(std::back_inserter(sol.locations_), n, [&]() {
+            std::generate_n(std::back_inserter(sol.locations_), n, [&]()
+            {
                 int32_t x(0), y(0);
                 in >> x >> y;
                 return std::make_pair(x, y);
@@ -70,7 +72,8 @@ namespace {
         out << "Network #" << sol.ncase_ << std::endl;
         double total (0);
 
-        for (size_t i = 1; i < sol.locations_.size(); i++) {
+        for (size_t i = 1; i < sol.locations_.size(); i++)
+        {
             auto x (sol.locations_[i].first), y (sol.locations_[i].second);
             auto x1 (sol.locations_[i - 1].first), y1 (sol.locations_[i - 1].second);
             double dist = std::sqrt ((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
@@ -92,26 +95,32 @@ namespace {
         std::vector<int32_t> permutations ({0, 1, 2, 3, 4, 5, 6, 7});
         std::vector<int32_t> temp (locations_.size());
 
-        do {
-            for (size_t i = 0; i < locations_.size(); i++) {
+        do
+        {
+            for (size_t i = 0; i < locations_.size(); i++)
+            {
                 locations_[i] = work[permutations[i]];
             }
 
             double calculated_distance (0);
 
-            for (size_t i = 1; i < locations_.size(); i++) {
+            for (size_t i = 1; i < locations_.size(); i++)
+            {
                 auto x (locations_[i].first), y (locations_[i].second);
                 auto x1 (locations_[i - 1].first), y1 (locations_[i - 1].second);
                 calculated_distance += std::sqrt ((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y));
             }
 
-            if (calculated_distance < min_distance) {
+            if (calculated_distance < min_distance)
+            {
                 min_distance = calculated_distance;
                 temp.assign(permutations.begin(), permutations.end());
             }
-        } while (std::next_permutation(permutations.begin(), permutations.begin() + locations_.size()));
+        }
+        while (std::next_permutation(permutations.begin(), permutations.begin() + locations_.size()));
 
-        for (size_t i = 0; i < locations_.size(); i++) {
+        for (size_t i = 0; i < locations_.size(); i++)
+        {
             locations_[i] = work[temp[i]];
         }
 
@@ -124,7 +133,8 @@ void U216::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

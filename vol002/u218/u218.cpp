@@ -43,7 +43,8 @@ namespace {
 
         bool operator < (const point& rhs) const
         {
-            if (first != rhs.first) {
+            if (first != rhs.first)
+            {
                 return first < rhs.first;
             }
 
@@ -95,10 +96,12 @@ namespace {
         size_t n;
         in >> n;
 
-        if (n != 0) {
+        if (n != 0)
+        {
             sol.case_no_++;
             sol.points_.reserve(n);
-            std::generate_n(std::back_inserter(sol.points_), n, [&]() {
+            std::generate_n(std::back_inserter(sol.points_), n, [&]()
+            {
                 point p;
                 in >> p;
                 return p;
@@ -112,8 +115,10 @@ namespace {
     {
         out << "Region #" << sol.case_no_ << ":" << std::endl;
 
-        for (auto pItr = sol.perimeter_.rbegin(); pItr != sol.perimeter_.rend(); ++ pItr) {
-            if (pItr != sol.perimeter_.rbegin()) {
+        for (auto pItr = sol.perimeter_.rbegin(); pItr != sol.perimeter_.rend(); ++ pItr)
+        {
+            if (pItr != sol.perimeter_.rbegin())
+            {
                 out << "-";
             }
 
@@ -124,7 +129,8 @@ namespace {
         out << std::endl;
         double perimeter(0);
 
-        for (size_t idx = 0 ; idx < sol.perimeter_.size() - 1; idx++) {
+        for (size_t idx = 0 ; idx < sol.perimeter_.size() - 1; idx++)
+        {
             perimeter += std::sqrt( //
                              std::pow(sol.perimeter_[idx].x() - sol.perimeter_[idx + 1].x(), 2) + //
                              std::pow(sol.perimeter_[idx].y() - sol.perimeter_[idx + 1].y(), 2));
@@ -140,16 +146,20 @@ namespace {
         perimeter_.resize(points_.size() * 2);
         size_t per_idx(0);
 
-        for (size_t idx = 0; idx < points_.size(); idx++) {
-            while (per_idx >= 2 && area(perimeter_[per_idx - 2], perimeter_[per_idx - 1], points_[idx]) <= 0) {
+        for (size_t idx = 0; idx < points_.size(); idx++)
+        {
+            while (per_idx >= 2 && area(perimeter_[per_idx - 2], perimeter_[per_idx - 1], points_[idx]) <= 0)
+            {
                 per_idx--;
             }
 
             perimeter_[per_idx++] = points_[idx];
         }
 
-        for (size_t idx = points_.size() - 2, top_idx = per_idx + 1; idx < points_.size() ; idx--) {
-            while (per_idx >= top_idx && area(perimeter_[per_idx - 2], perimeter_[per_idx - 1], points_[idx]) <= 0) {
+        for (size_t idx = points_.size() - 2, top_idx = per_idx + 1; idx < points_.size() ; idx--)
+        {
+            while (per_idx >= top_idx && area(perimeter_[per_idx - 2], perimeter_[per_idx - 1], points_[idx]) <= 0)
+            {
                 per_idx--;
             }
 
@@ -158,7 +168,8 @@ namespace {
 
         perimeter_.resize(per_idx);
 
-        if (perimeter_.size() == 1) {
+        if (perimeter_.size() == 1)
+        {
             perimeter_.push_back(perimeter_[0]);
         }
 
@@ -170,7 +181,8 @@ void U218::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -55,9 +55,12 @@ namespace {
     {
         ++case_no_;
 
-        for (size_t k = 0; k < rates_.size(); ++k) {
-            for (size_t i = 0; i < rates_.size(); ++i) {
-                for (size_t j = 0; j < rates_.size(); ++j) {
+        for (size_t k = 0; k < rates_.size(); ++k)
+        {
+            for (size_t i = 0; i < rates_.size(); ++i)
+            {
+                for (size_t j = 0; j < rates_.size(); ++j)
+                {
                     rates_[i][j] = std::max(rates_[i][j], rates_[i][k] * rates_[k][j]);
                 }
             }
@@ -65,7 +68,8 @@ namespace {
 
         result_ = false;
 
-        for (size_t i = 0; not result_ && i < rates_.size(); ++i) {
+        for (size_t i = 0; not result_ && i < rates_.size(); ++i)
+        {
             result_ = (rates_[i][i] - 1.0) > 1e-5;
         }
 
@@ -77,11 +81,13 @@ namespace {
         sol.rates_.clear();
         size_t n(0);
 
-        if (in >> n && n > 0) {
+        if (in >> n && n > 0)
+        {
             std::vector<std::pair<std::string, size_t>> currencyNames;
             currencyNames.reserve(n);
 
-            while (currencyNames.size() < n) {
+            while (currencyNames.size() < n)
+            {
                 std::string name;
                 in >> name;
                 currencyNames.push_back(std::make_pair(name, currencyNames.size()));
@@ -91,7 +97,8 @@ namespace {
             sol.rates_ = std::vector<std::vector<double_t>>(n, std::vector<double_t>(n));
             in >> n;
 
-            while (n--) {
+            while (n--)
+            {
                 std::string from, to;
                 double_t rate;
                 in >> from >> rate >> to;
@@ -114,7 +121,8 @@ void U436::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

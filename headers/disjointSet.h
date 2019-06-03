@@ -6,7 +6,8 @@
 #include <cstdint>
 
 namespace math {
-    struct disjointSet_t {
+    struct disjointSet_t
+    {
         uint64_t sets_;
         std::vector<uint64_t> pAddress_;
         std::vector<uint64_t> numVertices_;
@@ -21,20 +22,25 @@ namespace math {
             pAddress_.reserve(n + 1);
             numVertices_.reserve(n + 1);
             uint64_t i = 0;
-            std::generate_n(std::back_inserter(pAddress_), n + 1, [&i]() {
+            std::generate_n(std::back_inserter(pAddress_), n + 1, [&i]()
+            {
                 return i++;
             });
-            std::generate_n(std::back_inserter(numVertices_), n + 1, []() {
+            std::generate_n(std::back_inserter(numVertices_), n + 1, []()
+            {
                 return 1;
             });
         }
 
         uint64_t findSet(uint64_t x)
         {
-            if (x == pAddress_[x]) {
+            if (x == pAddress_[x])
+            {
                 return x;
 
-            } else {
+            }
+            else
+            {
                 return pAddress_[x] = findSet(pAddress_[x]);
             }
         }
@@ -46,10 +52,13 @@ namespace math {
 
         bool isSameSet(uint64_t x, uint64_t y)
         {
-            if (findSet(x) == findSet(y)) {
+            if (findSet(x) == findSet(y))
+            {
                 return true;
 
-            } else {
+            }
+            else
+            {
                 return false;
             }
         }
@@ -59,7 +68,8 @@ namespace math {
             uint64_t xRoot = findSet(x);
             uint64_t yRoot = findSet(y);
 
-            if (!isSameSet(xRoot, yRoot)) {
+            if (!isSameSet(xRoot, yRoot))
+            {
                 numVertices_[yRoot] += numVertices_[xRoot];
                 pAddress_[xRoot] = yRoot;
                 sets_--;

@@ -16,7 +16,8 @@
 namespace {
     int calculate(int full, int extra)
     {
-        if (full != 0) {
+        if (full != 0)
+        {
             return full + calculate((full + extra) / 3, (full + extra) % 3);
         }
 
@@ -38,7 +39,8 @@ void U11150::operator()() const
 {
     int N;
 
-    while (std::cin >> N) {
+    while (std::cin >> N)
+    {
         std::cout << calculate(N, ((N & 0x01) == 1 ? 0 : 2)) << std::endl;
     }
 }

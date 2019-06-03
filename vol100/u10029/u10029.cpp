@@ -66,43 +66,54 @@ namespace {
     solution& solution::operator()()
     {
         std::unordered_map <std::string, int32_t> wordCache;
-        std::for_each(words_.begin(), words_.end(), [&](std::string & word) {
+        std::for_each(words_.begin(), words_.end(), [&](std::string & word)
+        {
             int32_t len(1);
 
-            for (size_t i = 0; i <= word.size(); ++i) {
-                for (char c = 'a'; c <= 'z'; ++c) {
+            for (size_t i = 0; i <= word.size(); ++i)
+            {
+                for (char c = 'a'; c <= 'z'; ++c)
+                {
                     std::string w1(word);
                     w1.insert(i, 1, c);
 
-                    if (w1 > word) {
+                    if (w1 > word)
+                    {
                         break;
                     }
 
-                    if (wordCache.count(w1)) {
+                    if (wordCache.count(w1))
+                    {
                         len = std::max(len, wordCache[w1] + 1);
                     }
                 }
             }
 
-            for (size_t i = 0; i < word.size(); ++i) {
+            for (size_t i = 0; i < word.size(); ++i)
+            {
                 std::string w1(word);
                 w1.erase(i, 1);
 
-                if (wordCache.count(w1)) {
+                if (wordCache.count(w1))
+                {
                     len = std::max(len, wordCache[w1] + 1);
                 }
             }
 
-            for (size_t i = 0; i < word.size(); ++i) {
-                for (char c = 'a'; c <= 'z' && c != word[i]; ++c) {
+            for (size_t i = 0; i < word.size(); ++i)
+            {
+                for (char c = 'a'; c <= 'z' && c != word[i]; ++c)
+                {
                     std::string w1(word);
                     w1[i] = c;
 
-                    if (w1 > word) {
+                    if (w1 > word)
+                    {
                         break;
                     }
 
-                    if (wordCache.count(w1)) {
+                    if (wordCache.count(w1))
+                    {
                         len = std::max(len, wordCache[w1] + 1);
                     }
                 }

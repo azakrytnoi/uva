@@ -70,8 +70,10 @@ namespace {
     {
         moves_.clear();
 
-        for (size_t i = pancakes_.size(); !isSorted(); i--) {
-            if (moveLargestToFirst(i)) {
+        for (size_t i = pancakes_.size(); !isSorted(); i--)
+        {
+            if (moveLargestToFirst(i))
+            {
                 moves_.push_back(pancakes_.size() - i + 1);
                 std::reverse(pancakes_.begin(), pancakes_.begin() + i);
             }
@@ -82,8 +84,10 @@ namespace {
 
     bool solution::isSorted() const
     {
-        for (size_t i = 0; i < pancakes_.size() - 1; i++) {
-            if (pancakes_[i] > pancakes_[i + 1]) {
+        for (size_t i = 0; i < pancakes_.size() - 1; i++)
+        {
+            if (pancakes_[i] > pancakes_[i + 1])
+            {
                 return false;
             }
         }
@@ -94,17 +98,21 @@ namespace {
     {
         size_t largest = 0;
 
-        for (size_t i = 0; i < pos; i++) {
-            if (pancakes_[i] > pancakes_[largest]) {
+        for (size_t i = 0; i < pos; i++)
+        {
+            if (pancakes_[i] > pancakes_[largest])
+            {
                 largest = i;
             }
         }
 
-        if (largest == 0) {
+        if (largest == 0)
+        {
             return true;
         }
 
-        if (largest == pos - 1) {
+        if (largest == pos - 1)
+        {
             return false;
         }
 
@@ -120,7 +128,8 @@ void U120::operator()() const
     solution sol;
     std::string line;
 
-    while (std::getline(std::cin, line)) {
+    while (std::getline(std::cin, line))
+    {
         std::cout << line << std::endl;
         std::stringstream in(line);
         in >> sol;

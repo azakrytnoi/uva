@@ -29,11 +29,13 @@ void __cdecl invoke()
 
 namespace {
 
-    enum class wday_t : char {
+    enum class wday_t : char
+    {
         M = 'M', T = 'T', W = 'W', R = 'R', F = 'F'
     };
 
-    struct slot_t {
+    struct slot_t
+    {
         wday_t wday_;
         uint16_t mday_, month_;
         uint16_t hour_, minute_;
@@ -43,10 +45,14 @@ namespace {
 
         bool operator == (const slot_t& rhs) const
         {
-            if (year_ == rhs.year_) {
-                if (month_ == rhs.month_) {
-                    if (mday_ == rhs.mday_) {
-                        if (hour_ == rhs.hour_) {
+            if (year_ == rhs.year_)
+            {
+                if (month_ == rhs.month_)
+                {
+                    if (mday_ == rhs.mday_)
+                    {
+                        if (hour_ == rhs.hour_)
+                        {
                             return minute_ == rhs.minute_;
                         }
                     }
@@ -58,19 +64,23 @@ namespace {
 
         bool operator < (const slot_t& rhs) const
         {
-            if (year_ != rhs.year_) {
+            if (year_ != rhs.year_)
+            {
                 return year_ < rhs.year_;
             }
 
-            if (month_ != rhs.month_) {
+            if (month_ != rhs.month_)
+            {
                 return month_ < rhs.month_;
             }
 
-            if (mday_ != rhs.mday_) {
+            if (mday_ != rhs.mday_)
+            {
                 return mday_ < rhs.mday_;
             }
 
-            if (hour_ != rhs.hour_) {
+            if (hour_ != rhs.hour_)
+            {
                 return hour_ < rhs.hour_;
             }
 
@@ -81,13 +91,16 @@ namespace {
         {
             minute_ += 15;
 
-            if (minute_ == 60) {
+            if (minute_ == 60)
+            {
                 minute_ = 0;
                 ++hour_;
 
-                if (hour_ == 17) {
+                if (hour_ == 17)
+                {
                     hour_ = 9;
-                    static std::map<wday_t, std::pair<wday_t, uint16_t>> next_day ({
+                    static std::map<wday_t, std::pair<wday_t, uint16_t>> next_day (
+                    {
                         {wday_t::M, {wday_t::T, 1}}, //
                         {wday_t::T, {wday_t::W, 1}}, //
                         {wday_t::W, {wday_t::R, 1}}, //
@@ -97,16 +110,19 @@ namespace {
                     auto& next = next_day[wday_];
                     wday_ = next.first;
                     mday_ += next.second;
-                    static std::map<uint16_t, uint16_t> max_day ({
+                    static std::map<uint16_t, uint16_t> max_day (
+                    {
                         {1, 31}, {2, 28}, {3, 31}, {4, 30}, {5, 31}, {6, 30}, {7, 31}, {8, 31}, {9, 30}, {10, 31}, {11, 30}, {12, 31}
                     });
                     auto next_month = max_day[month_];
 
-                    if (mday_ > next_month) {
+                    if (mday_ > next_month)
+                    {
                         mday_ %= next_month;
                         ++month_;
 
-                        if (month_ > 12) {
+                        if (month_ > 12)
+                        {
                             month_ = 1;
                             ++year_;
                         }
@@ -121,7 +137,8 @@ namespace {
         {
             slot_t temp(slot);
 
-            while (n--) {
+            while (n--)
+            {
                 ++temp;
             }
 
@@ -158,7 +175,8 @@ namespace {
 
         static uint16_t duration (const slot_t& start, const slot_t& end)
         {
-            if (end < start) {
+            if (end < start)
+            {
                 return 0;
             }
 
@@ -195,7 +213,8 @@ namespace {
         sol.agenda_.reserve(4 * (17 - 9) * 52);
         sol.agenda_.push_back(std::make_pair(today, true));
 
-        for (size_t cnt = 0; cnt < 4 * (17 - 9) * 52; ++cnt) {
+        for (size_t cnt = 0; cnt < 4 * (17 - 9) * 52; ++cnt)
+        {
             slot_t next = sol.agenda_.back().first;
             sol.agenda_.push_back(std::make_pair(++next, true));
         }
@@ -203,8 +222,10 @@ namespace {
         sol.agenda_.shrink_to_fit();
         in.ignore();
 
-        while (std::getline(in, line) && line != "done") {
-            while (std::getline(in, line) && line != "done") {
+        while (std::getline(in, line) && line != "done")
+        {
+            while (std::getline(in, line) && line != "done")
+            {
                 std::stringstream sin(line);
                 slot_t mstart;
                 uint16_t start(0), end(0);
@@ -216,11 +237,13 @@ namespace {
                 mstart.minute_ = start % 100;
                 std::pair<slot_t, bool> agenda_start = std::make_pair(mstart, false);
                 auto meet_start = std::lower_bound(sol.agenda_.begin(), sol.agenda_.end(), agenda_start,
-                [](const solution_t::agenda_t& lhs, const solution_t::agenda_t& rhs) -> bool {
+                                                   [](const solution_t::agenda_t& lhs, const solution_t::agenda_t& rhs) -> bool
+                {
                     return lhs.first < rhs.first;
                 });
 
-                while (meet_start->first < mend) {
+                while (meet_start->first < mend)
+                {
                     meet_start->second = false;
                     ++meet_start;
                 }
@@ -235,7 +258,8 @@ namespace {
         std::ostream_iterator<slot_t> sout(out, "\n");
         std::copy(sol.meetings_.begin(), sol.meetings_.end(), sout);
 
-        if (sol.meetings_.size() < sol.n_) {
+        if (sol.meetings_.size() < sol.n_)
+        {
             out << "No more times available" << std::endl;
         }
 
@@ -248,32 +272,42 @@ namespace {
         auto last = agenda_.back();
         last.first -= duration_;
         auto last_i = std::lower_bound(agenda_.begin(), agenda_.end(), last,
-        [](const agenda_t& lhs, const agenda_t& rhs) -> bool {
+                                       [](const agenda_t& lhs, const agenda_t& rhs) -> bool
+        {
             return lhs.first < rhs.first;
         });
 
-        for (auto meet = agenda_.begin(); meetings_.size() < n_ && meet != last_i; ++meet) {
-            if (meet->second) {
+        for (auto meet = agenda_.begin(); meetings_.size() < n_ && meet != last_i; ++meet)
+        {
+            if (meet->second)
+            {
                 auto possible = meet->first;
                 auto end_of_day(possible);
                 end_of_day.hour_ = 17;
                 end_of_day.minute_ = 0;
 
-                if (slot_t::duration(possible, end_of_day) >= duration_) {
+                if (slot_t::duration(possible, end_of_day) >= duration_)
+                {
 
-                    while (slot_t::duration (possible, meet->first) < duration_ && meet->second && meet != last_i) {
+                    while (slot_t::duration (possible, meet->first) < duration_ && meet->second && meet != last_i)
+                    {
                         ++meet;
                     }
 
-                    if (slot_t::duration(possible, meet->first) == duration_) {
+                    if (slot_t::duration(possible, meet->first) == duration_)
+                    {
                         meetings_.push_back(possible);
                     }
 
-                    if (meet == agenda_.end()) {
+                    if (meet == agenda_.end())
+                    {
                         break;
                     }
-                } else {
-                    while (meet->first < end_of_day && meet != last_i) {
+                }
+                else
+                {
+                    while (meet->first < end_of_day && meet != last_i)
+                    {
                         ++meet;
                     }
 

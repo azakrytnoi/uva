@@ -38,10 +38,12 @@ namespace {
             cache_[0] = 1;
             int64_t modFact = 1;
 
-            for (size_t i = 1; i <= N; i++) {
+            for (size_t i = 1; i <= N; i++)
+            {
                 modFact = (modFact * i);
 
-                while (modFact % 10 == 0) {
+                while (modFact % 10 == 0)
+                {
                     modFact /= 10;
                 }
 
@@ -63,7 +65,8 @@ void U568::operator()() const
     solution<10001> sol;
     uint32_t n;
 
-    while (std::cin >> n) {
+    while (std::cin >> n)
+    {
         std::cout.setf(std::ios::right);
         std::cout << std::setw(5) << n << " -> " << sol[n] << std::endl;
     }

@@ -48,11 +48,13 @@ void U10258::operator()()
     std::getline(std::cin, line);
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         contest.clear();
         scoreboard.clear();
 
-        while (std::getline(std::cin, line) && !line.empty()) {
+        while (std::getline(std::cin, line) && !line.empty())
+        {
             int cont, problem, time;
             char resolution;
             {
@@ -60,8 +62,10 @@ void U10258::operator()()
                 ss >> cont >> problem >> time >> resolution;
             }
 
-            if (!contest[cont][problem].first) {
-                switch (resolution) {
+            if (!contest[cont][problem].first)
+            {
+                switch (resolution)
+                {
                 case 'C':
                     contest[cont][problem].first = true;
                     contest[cont][problem].second += time;
@@ -78,26 +82,36 @@ void U10258::operator()()
         }
 
         scoreboard.reserve(contest.size());
-        std::for_each(contest.begin(), contest.end(), [&scoreboard](auto participant) {
+        std::for_each(contest.begin(), contest.end(), [&scoreboard](auto participant)
+        {
             int total(0), problems(0);
-            std::for_each(participant.second.begin(), participant.second.end(), [&total, &problems](auto problem) {
-                if (problem.second.first) {
+            std::for_each(participant.second.begin(), participant.second.end(), [&total, &problems](auto problem)
+            {
+                if (problem.second.first)
+                {
                     total += problem.second.second;
                     problems++;
                 }
             });
             scoreboard.push_back(std::make_tuple(participant.first, problems, total));
         });
-        std::sort(scoreboard.begin(), scoreboard.end(), [](auto t1, auto t2) {
-            if (std::get<1>(t1) == std::get<1>(t2)) {
-                if (std::get<2>(t1) == std::get<2>(t2)) {
+        std::sort(scoreboard.begin(), scoreboard.end(), [](auto t1, auto t2)
+        {
+            if (std::get<1>(t1) == std::get<1>(t2))
+            {
+                if (std::get<2>(t1) == std::get<2>(t2))
+                {
                     return std::get<0>(t1) < std::get<0>(t2);
 
-                } else {
+                }
+                else
+                {
                     return std::get<2>(t1) < std::get<2>(t2);
                 }
 
-            } else {
+            }
+            else
+            {
                 return std::get<1>(t1) > std::get<1>(t2);
             }
         });

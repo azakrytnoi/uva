@@ -29,7 +29,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct car_t {
+    struct car_t
+    {
         std::string name_;
         uint64_t low_;
         uint64_t high_;
@@ -80,15 +81,18 @@ namespace {
         sol.queries_.clear();
         sol.results_.clear();
 
-        if (sol.n_ == std::numeric_limits<size_t>::max()) {
+        if (sol.n_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.n_;
         }
 
         size_t n(0);
 
-        if (in >> n) {
+        if (in >> n)
+        {
             sol.car_db_.reserve(n);
-            std::generate_n(std::back_inserter(sol.car_db_), n, [&]() {
+            std::generate_n(std::back_inserter(sol.car_db_), n, [&]()
+            {
                 auto car (std::make_shared<car_t>());
                 in >> *car;
                 return car;
@@ -115,15 +119,20 @@ namespace {
         std::vector<std::shared_ptr<car_t>> tmp;
         tmp.reserve(car_db_.size());
 
-        for (auto qry : queries_) {
+        for (auto qry : queries_)
+        {
             tmp.clear();
-            std::copy_if(car_db_.begin(), car_db_.end(), std::back_inserter(tmp), [&](const std::shared_ptr<car_t>& car) {
+            std::copy_if(car_db_.begin(), car_db_.end(), std::back_inserter(tmp), [&](const std::shared_ptr<car_t>& car)
+            {
                 return car->low_ <= qry && car->high_ > qry;
             });
 
-            if (tmp.size() == 1) {
+            if (tmp.size() == 1)
+            {
                 results_.push_back(tmp[0]->name_);
-            } else {
+            }
+            else
+            {
                 results_.push_back("UNDETERMINED");
             }
         }
@@ -137,7 +146,8 @@ void U1237::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

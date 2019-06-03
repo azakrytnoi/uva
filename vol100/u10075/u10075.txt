@@ -1,0 +1,5503 @@
+6 19 16
+Bou -64.162 27.361
+Montgomery -28.843 163.577
+Baton -81.671 -3.251
+Masjed 75.567 65.601
+Pomona -15.115 135.831
+Baia -39.670 -135.473
+Baton Bou
+Baia Pomona
+Masjed Bou
+Pomona Baia
+Pomona Montgomery
+Baton Pomona
+Masjed Pomona
+Baton Masjed
+Baia Bou
+Baia Baton
+Bou Montgomery
+Montgomery Baia
+Pomona Bou
+Montgomery Baton
+Masjed Baton
+Bou Masjed
+Baia Montgomery
+Baton Baia
+Bou Pomona
+Masjed Montgomery
+Baton Bou
+Baton Baia
+Baia Masjed
+Bou Masjed
+Pomona Bou
+Masjed Bou
+Montgomery Bou
+Bou Baton
+Baia Montgomery
+Pomona Masjed
+Montgomery Baia
+Masjed Pomona
+Baton Masjed
+Baton Montgomery
+Montgomery Bou
+21 27 9
+Bat 68.768 63.799
+Peoria 65.080 -29.810
+Puli 69.577 -0.377
+Mirpur -41.741 38.610
+Phnom -10.804 99.889
+Bou 61.205 -99.379
+Batangas -58.370 4.443
+Pakan 11.281 -31.167
+Mexico -70.640 -71.438
+Punto 87.381 8.590
+Praia -60.504 76.005
+Polomolok -77.850 -31.034
+Mazari 80.472 -69.067
+Maunath -33.972 -146.202
+Barra -79.624 -79.631
+Porac 42.838 73.948
+Petaling 37.959 -101.128
+Mobile -11.835 14.432
+Bihar -39.153 -68.935
+Memphis 63.524 41.679
+Miami 24.351 -1.430
+Bat Porac
+Bihar Maunath
+Bou Mazari
+Miami Barra
+Maunath Barra
+Miami Porac
+Petaling Mobile
+Mirpur Batangas
+Petaling Memphis
+Maunath Bihar
+Puli Maunath
+Barra Batangas
+Bat Praia
+Peoria Mobile
+Puli Mobile
+Porac Barra
+Punto Maunath
+Memphis Batangas
+Bou Mirpur
+Barra Praia
+Punto Bat
+Barra Polomolok
+Barra Porac
+Polomolok Mazari
+Bou Punto
+Punto Peoria
+Batangas Punto
+Mobile Mirpur
+Miami Batangas
+Bat Bihar
+Punto Bat
+Polomolok Porac
+Peoria Memphis
+Miami Punto
+Miami Phnom
+Phnom Polomolok
+14 20 18
+Pakan -63.935 -40.131
+Mazari 69.841 -87.826
+Pir -52.861 72.720
+Pasadena 50.599 80.128
+Midsayap -86.635 -41.425
+Beni 26.010 -174.518
+Petaling 50.631 57.012
+Poza 3.022 11.981
+Pematang -52.245 13.209
+Buenos -88.478 42.472
+Pembroke 36.511 -46.812
+McAllen 48.376 173.291
+Bani -50.408 -136.573
+Minglanilla -50.686 175.575
+Bani Poza
+Bani Pasadena
+Beni Poza
+Beni Minglanilla
+Petaling Mazari
+Poza McAllen
+Buenos Midsayap
+Mazari Pasadena
+Minglanilla Poza
+McAllen Pasadena
+Beni Midsayap
+Pasadena Poza
+Pasadena Bani
+Beni McAllen
+Bani Pakan
+Minglanilla Pembroke
+Mazari Petaling
+Pasadena Midsayap
+Pembroke Beni
+Pembroke Pir
+Buenos Pakan
+Minglanilla Bani
+McAllen Pir
+Bani Mazari
+Petaling Pakan
+Pasadena Beni
+Pematang Pir
+McAllen Bani
+Poza Pembroke
+Buenos Midsayap
+Petaling Minglanilla
+Pasadena Bani
+Pasadena McAllen
+Bani McAllen
+Poza Buenos
+Poza Pembroke
+Beni Poza
+Beni Pematang
+9 9 12
+McAllen -69.123 -2.385
+Marilao 23.564 93.246
+Mandaue -15.926 -3.711
+Pago 57.924 60.071
+Malaybalay 11.968 -85.573
+Mobile 14.055 143.632
+Philadelphia -0.286 101.537
+Bat 54.858 -18.603
+Mar 56.977 -153.453
+Philadelphia Pago
+Philadelphia Bat
+Mandaue Philadelphia
+McAllen Mar
+Philadelphia Mar
+Mandaue Malaybalay
+Malaybalay Philadelphia
+Mar Malaybalay
+McAllen Malaybalay
+Philadelphia Mobile
+McAllen Malaybalay
+McAllen Mandaue
+McAllen Mar
+Philadelphia Pago
+Malaybalay Mobile
+Marilao Malaybalay
+Malaybalay Marilao
+Mar Marilao
+Mobile Marilao
+Pago Marilao
+Mar Marilao
+13 54 17
+Pomona 0.597 163.894
+Pittsburgh -8.790 -73.045
+Poza 16.902 141.607
+Providence 42.613 111.866
+Phnom -88.666 174.245
+Petaling -23.023 -52.895
+Palmdale 83.049 100.582
+Bani -16.412 -93.337
+Masjed 24.960 17.603
+Pueblo -57.296 157.403
+Palma -3.149 -47.473
+Banja 55.079 3.853
+Montes -10.463 71.767
+Montes Petaling
+Pittsburgh Masjed
+Poza Bani
+Pueblo Poza
+Pittsburgh Bani
+Poza Palmdale
+Bani Pomona
+Palma Palmdale
+Providence Petaling
+Pomona Montes
+Palmdale Phnom
+Palmdale Masjed
+Masjed Bani
+Phnom Poza
+Masjed Montes
+Poza Montes
+Pittsburgh Poza
+Bani Phnom
+Montes Pomona
+Providence Masjed
+Poza Palma
+Masjed Pueblo
+Palma Pueblo
+Pomona Petaling
+Poza Pueblo
+Providence Phnom
+Petaling Montes
+Bani Poza
+Phnom Palmdale
+Masjed Palma
+Palmdale Banja
+Palma Masjed
+Providence Pittsburgh
+Banja Petaling
+Phnom Pueblo
+Bani Pueblo
+Bani Banja
+Banja Palma
+Pittsburgh Pueblo
+Poza Masjed
+Palmdale Pomona
+Petaling Masjed
+Pomona Bani
+Banja Bani
+Pittsburgh Petaling
+Providence Palmdale
+Phnom Palma
+Pueblo Palma
+Palmdale Bani
+Pomona Banja
+Masjed Banja
+Banja Phnom
+Poza Pittsburgh
+Masjed Providence
+Petaling Pomona
+Palma Petaling
+Phnom Providence
+Palma Bani
+Pomona Bani
+Phnom Pomona
+Montes Palmdale
+Providence Pittsburgh
+Palma Pueblo
+Palma Pueblo
+Bani Palma
+Masjed Phnom
+Palmdale Pueblo
+Phnom Palmdale
+Providence Pueblo
+Providence Bani
+Phnom Masjed
+16 49 19
+Banda -40.030 127.383
+Pembroke 57.245 -128.624
+Murfreesboro 82.059 49.681
+Muntinlupa 39.910 115.119
+Bila 47.239 2.529
+Mar 3.644 168.520
+Pagadian -64.186 -178.057
+Patos 72.509 -151.936
+Philadelphia -6.881 7.258
+Panabo 20.757 5.127
+Banja 54.548 46.316
+Meycauayan -56.337 -38.787
+Mesquite 19.487 35.843
+Ponta -42.831 17.789
+Bnei -50.411 93.398
+Mandaue -22.133 58.155
+Mandaue Mesquite
+Mesquite Pembroke
+Banja Ponta
+Mar Bnei
+Mesquite Bila
+Mandaue Panabo
+Bnei Pembroke
+Mesquite Philadelphia
+Banda Meycauayan
+Pembroke Bnei
+Murfreesboro Bnei
+Bnei Mesquite
+Muntinlupa Mandaue
+Muntinlupa Ponta
+Mar Muntinlupa
+Mandaue Banja
+Meycauayan Bila
+Murfreesboro Meycauayan
+Panabo Mar
+Panabo Patos
+Banda Mar
+Patos Philadelphia
+Banda Bnei
+Panabo Muntinlupa
+Pembroke Banda
+Pagadian Muntinlupa
+Meycauayan Panabo
+Ponta Pagadian
+Mesquite Banda
+Pagadian Philadelphia
+Ponta Patos
+Bnei Murfreesboro
+Muntinlupa Mesquite
+Mar Pembroke
+Banda Muntinlupa
+Pagadian Murfreesboro
+Banda Pagadian
+Banda Panabo
+Mandaue Meycauayan
+Meycauayan Ponta
+Panabo Mandaue
+Banja Mandaue
+Pagadian Pembroke
+Muntinlupa Meycauayan
+Pembroke Banja
+Philadelphia Patos
+Murfreesboro Panabo
+Mesquite Bnei
+Banda Murfreesboro
+Panabo Muntinlupa
+Mesquite Banda
+Meycauayan Panabo
+Pagadian Mesquite
+Meycauayan Pagadian
+Pagadian Mandaue
+Pembroke Pagadian
+Pembroke Mesquite
+Mandaue Bila
+Bnei Pagadian
+Ponta Banda
+Ponta Pagadian
+Mandaue Philadelphia
+Pagadian Banda
+Murfreesboro Mesquite
+Mandaue Pagadian
+Patos Meycauayan
+Bila Meycauayan
+Patos Murfreesboro
+8 42 8
+McAllen 0.913 -83.152
+Panama 83.661 68.649
+Bokaro -7.608 -132.587
+Mandaluyong -28.070 -130.536
+Mogilev 49.897 -65.265
+Barra -1.779 -68.898
+Phnom 49.720 -175.754
+Minglanilla -65.382 62.041
+Bokaro Phnom
+Mogilev Phnom
+McAllen Barra
+Minglanilla McAllen
+Phnom Bokaro
+Bokaro Mogilev
+Panama McAllen
+Minglanilla Bokaro
+Minglanilla Mandaluyong
+Barra Phnom
+Barra Bokaro
+Mandaluyong Mogilev
+Mogilev Minglanilla
+Bokaro Panama
+Mandaluyong Phnom
+Bokaro Barra
+McAllen Bokaro
+McAllen Mogilev
+Phnom Barra
+Panama Phnom
+Panama Bokaro
+Panama Mogilev
+Bokaro Mandaluyong
+Panama Barra
+Minglanilla Panama
+Mandaluyong Bokaro
+Mandaluyong Minglanilla
+Phnom McAllen
+Mogilev Panama
+Barra Minglanilla
+McAllen Mandaluyong
+McAllen Phnom
+Panama Minglanilla
+Mandaluyong McAllen
+McAllen Panama
+Mandaluyong Panama
+Mogilev McAllen
+Minglanilla Mogilev
+Barra Panama
+Panama Mandaluyong
+Bokaro McAllen
+Phnom Minglanilla
+Phnom Barra
+Minglanilla McAllen
+Panama Phnom
+Panama Barra
+Mogilev Bokaro
+Minglanilla Bokaro
+Panama Mandaluyong
+Mogilev Barra
+13 45 6
+Mariveles 20.250 53.060
+Porac 14.296 76.301
+Phnom -73.114 -149.152
+Pematang 36.633 -4.989
+Bnei -69.602 -154.049
+Moreno 75.219 -50.734
+Presidente 85.198 149.361
+Pago 10.692 -60.362
+Memphis 3.245 105.041
+Polomolok -35.486 117.971
+Marilao -34.434 -37.242
+Phoenix 67.586 -75.699
+Mesa -32.061 114.933
+Pematang Porac
+Memphis Mesa
+Mesa Mariveles
+Memphis Pematang
+Presidente Polomolok
+Phoenix Bnei
+Memphis Porac
+Marilao Moreno
+Moreno Bnei
+Presidente Porac
+Moreno Marilao
+Phoenix Polomolok
+Porac Bnei
+Phnom Memphis
+Phoenix Phnom
+Pematang Pago
+Polomolok Presidente
+Polomolok Bnei
+Mariveles Bnei
+Marilao Bnei
+Presidente Memphis
+Porac Moreno
+Polomolok Mariveles
+Marilao Pago
+Phnom Polomolok
+Phnom Porac
+Memphis Moreno
+Porac Pago
+Moreno Phoenix
+Bnei Porac
+Polomolok Phnom
+Mesa Porac
+Memphis Phnom
+Moreno Mariveles
+Mariveles Porac
+Phnom Marilao
+Mariveles Pematang
+Porac Memphis
+Phoenix Memphis
+Porac Polomolok
+Moreno Polomolok
+Mesa Bnei
+Phoenix Pematang
+Bnei Pematang
+Memphis Phoenix
+Pematang Pago
+Bnei Memphis
+Moreno Bnei
+Memphis Phnom
+Porac Moreno
+Polomolok Pago
+22 10 11
+Muntinlupa -34.861 -109.935
+Pittsburgh -27.414 0.685
+Paradise 71.562 175.152
+Minglanilla -23.552 127.871
+Mobile 2.609 -176.033
+Punta 89.925 -157.945
+Parang -20.672 78.755
+Malita 78.538 122.131
+Puerto -8.612 91.155
+Pomona 28.963 -65.164
+Bat -5.512 -53.506
+Moreno -69.960 -115.000
+Piatra 74.442 -167.261
+Bihar 19.039 75.372
+Mandaluyong 38.925 38.422
+Pago -46.062 -148.394
+Modesto -50.600 70.650
+Bokaro 81.079 52.830
+Bila 66.152 -50.746
+Midsayap -23.709 -153.061
+Porto 4.305 113.322
+Malolos -21.181 -170.512
+Malita Bat
+Parang Malolos
+Bila Muntinlupa
+Midsayap Piatra
+Piatra Mandaluyong
+Puerto Punta
+Bila Bat
+Bihar Pomona
+Pago Malita
+Paradise Pago
+Bila Midsayap
+Mobile Pittsburgh
+Midsayap Malita
+Punta Bat
+Pomona Bat
+Bila Mandaluyong
+Bila Malita
+Minglanilla Modesto
+Moreno Puerto
+Bila Pago
+Paradise Bokaro
+19 44 10
+Mariveles 80.909 -95.589
+Praha 89.258 -163.164
+Malita 78.125 1.267
+Mazari -11.325 149.603
+Pittsburgh 54.258 -171.600
+Masjed 26.237 74.162
+Plano 25.738 -47.278
+Mesquite 19.040 -96.417
+Batangas -54.306 68.058
+Peoria -63.520 -108.763
+Providence -55.841 -8.125
+Maunath 60.790 -116.181
+Mar 79.453 -138.606
+Mexico -61.261 0.633
+Punto -82.328 113.458
+Bat -26.920 -79.759
+Malolos -67.622 -51.290
+Mesa 85.362 -166.387
+Bergisch 55.033 -91.069
+Masjed Maunath
+Punto Malita
+Mesa Bergisch
+Malolos Plano
+Peoria Peoria
+Providence Mesquite
+Malita Peoria
+Mar Bat
+Masjed Pittsburgh
+Maunath Mesquite
+Batangas Mexico
+Bat Malita
+Peoria Malita
+Masjed Malita
+Mesquite Mar
+Batangas Punto
+Mariveles Mar
+Mar Providence
+Mazari Malita
+Providence Mexico
+Mesa Mesquite
+Mexico Punto
+Pittsburgh Mexico
+Bat Mesa
+Mar Plano
+Mesa Mexico
+Batangas Maunath
+Punto Peoria
+Bat Masjed
+Mariveles Maunath
+Punto Bat
+Plano Mar
+Plano Mesquite
+Mexico Praha
+Peoria Malolos
+Mar Pittsburgh
+Plano Punto
+Malita Mexico
+Mar Mazari
+Peoria Providence
+Pittsburgh Bat
+Batangas Bergisch
+Pittsburgh Masjed
+Providence Mazari
+Plano Mar
+Peoria Mazari
+Punto Malita
+Praha Mesquite
+Peoria Malita
+Maunath Punto
+Mariveles Providence
+Malolos Punto
+Peoria Mesa
+Praha Bergisch
+5 11 3
+Mar 43.001 137.410
+Maunath 44.892 63.789
+Parang -3.675 50.518
+Phoenix 18.770 147.378
+Malolos 70.652 146.957
+Malolos Phoenix
+Mar Malolos
+Parang Mar
+Parang Malolos
+Malolos Mar
+Maunath Phoenix
+Maunath Mar
+Mar Phoenix
+Maunath Parang
+Phoenix Malolos
+Mar Maunath
+Phoenix Maunath
+Phoenix Parang
+Phoenix Parang
+22 5 10
+Mar 0.546 132.532
+Baia 67.890 -120.489
+Mobile -74.960 124.896
+Polomolok 62.053 -134.558
+Palma -82.900 9.373
+Mati -86.710 -75.927
+Moreno 67.107 71.093
+Bila 20.111 -110.862
+Bou -45.128 75.583
+Bandar 30.474 -81.581
+Pinar -76.450 113.613
+Pago 55.972 162.151
+Minglanilla -54.691 -65.294
+Bab -42.501 162.702
+Pasadena 40.603 -177.210
+Pittsburgh -55.393 93.027
+Murfreesboro 61.038 134.546
+Barra 17.755 -88.474
+Batangas -14.321 100.313
+Beni -36.680 -167.466
+Poza -13.606 -139.823
+Mandaue 53.481 51.573
+Beni Pasadena
+Bila Bou
+Beni Minglanilla
+Beni Bila
+Poza Minglanilla
+Pago Bila
+Beni Pago
+Polomolok Pasadena
+Baia Minglanilla
+Mati Bila
+Bou Mar
+Mobile Murfreesboro
+Beni Barra
+Bandar Mati
+Pago Beni
+20 35 9
+Porac 85.753 121.297
+Bani -78.776 -175.640
+Murfreesboro -21.991 -51.078
+Pittsburgh -27.493 -95.950
+Mexico 89.387 -68.911
+Pomona -85.892 -107.414
+Meycauayan 60.010 -38.424
+Montes 78.054 18.869
+Mirpur -57.417 -66.319
+Punta -28.468 -53.438
+Memphis 24.349 -144.906
+Pakan -8.314 15.374
+Pematang 63.368 148.856
+Praha 12.483 -33.642
+Bahir 71.447 -108.809
+Port -56.299 34.010
+Benito -35.158 93.422
+Peoria 9.922 -136.108
+Mogi -49.013 32.500
+Maunath 71.816 103.503
+Mirpur Meycauayan
+Memphis Benito
+Pematang Pittsburgh
+Pakan Mirpur
+Bahir Mirpur
+Maunath Pematang
+Meycauayan Pakan
+Punta Benito
+Montes Pomona
+Port Memphis
+Praha Pittsburgh
+Meycauayan Maunath
+Bahir Punta
+Praha Mogi
+Praha Mexico
+Meycauayan Porac
+Mexico Punta
+Porac Montes
+Bani Pematang
+Mexico Pomona
+Pakan Pomona
+Bahir Pematang
+Maunath Benito
+Mexico Benito
+Memphis Port
+Peoria Maunath
+Pakan Murfreesboro
+Montes Port
+Pakan Montes
+Maunath Porac
+Bani Mogi
+Pomona Port
+Porac Murfreesboro
+Montes Mogi
+Pittsburgh Mexico
+Benito Mogi
+Montes Mogi
+Meycauayan Montes
+Bahir Pakan
+Bahir Benito
+Benito Mirpur
+Murfreesboro Pakan
+Mogi Maunath
+Mogi Punta
+21 42 18
+Banja -8.383 -92.414
+Mogilev 68.754 30.991
+Bnei 36.659 169.778
+Punto 4.925 53.585
+Bergisch 36.102 143.111
+Puebla -26.058 63.664
+Poza -59.420 144.127
+Matamoros 25.661 20.215
+Piatra -2.015 -107.497
+Malaybalay -88.365 83.282
+Mesquite -7.682 118.374
+Petah -25.805 -47.568
+Plano -69.318 -21.058
+Petaling -44.727 100.193
+Porac -2.985 -70.449
+Pittsburgh 73.424 -160.539
+Praha 21.620 5.527
+Beni 53.934 -8.026
+Ponta 57.768 35.747
+Bordj 34.064 -3.093
+Malolos -79.865 -93.359
+Malolos Mogilev
+Ponta Bergisch
+Petaling Praha
+Malolos Petaling
+Punto Mogilev
+Bnei Bordj
+Petaling Pittsburgh
+Bnei Piatra
+Mogilev Pittsburgh
+Malaybalay Petaling
+Mesquite Mogilev
+Porac Poza
+Malaybalay Mesquite
+Mesquite Praha
+Petaling Beni
+Beni Pittsburgh
+Malolos Plano
+Puebla Porac
+Poza Mesquite
+Petah Puebla
+Punto Matamoros
+Bnei Petah
+Bordj Beni
+Malaybalay Bnei
+Petaling Ponta
+Bnei Ponta
+Petah Mogilev
+Malaybalay Plano
+Banja Poza
+Beni Puebla
+Plano Malaybalay
+Plano Petaling
+Beni Bnei
+Bordj Bnei
+Petaling Bergisch
+Bergisch Banja
+Beni Mogilev
+Porac Beni
+Praha Beni
+Matamoros Bnei
+Piatra Bergisch
+Piatra Matamoros
+Mogilev Bnei
+Malaybalay Matamoros
+Banja Porac
+Praha Mogilev
+Praha Pittsburgh
+Beni Poza
+Piatra Porac
+Poza Banja
+Bergisch Matamoros
+Mogilev Puebla
+Mogilev Bordj
+Praha Pittsburgh
+Beni Ponta
+Malolos Bnei
+Malaybalay Bnei
+Bergisch Matamoros
+Pittsburgh Piatra
+Mogilev Porac
+24 14 16
+Mobile -61.179 -172.990
+Bokaro -43.522 78.878
+Punta -39.254 107.225
+Pueblo 6.880 45.987
+Memphis 5.274 53.987
+Montes 5.057 -75.423
+Puli 68.801 -159.777
+Banja 76.746 -54.371
+Punto -12.107 -57.000
+Palmdale 55.683 104.180
+Petaling -33.281 157.379
+Mexico 25.608 -162.920
+Plano -10.549 -31.768
+Minglanilla 39.098 -164.289
+Malaybalay -53.441 -163.441
+Mirpur 70.321 45.142
+Petah -6.191 -78.267
+Bab 56.783 97.297
+Maunath 63.612 45.089
+Bahir -45.849 93.349
+Miami -46.517 -105.016
+Belo 47.634 -84.260
+Belford 51.279 -16.175
+Bat -22.256 -124.304
+Bat Mirpur
+Plano Petaling
+Banja Petaling
+Memphis Punto
+Petaling Miami
+Bokaro Mexico
+Minglanilla Malaybalay
+Belo Banja
+Maunath Memphis
+Plano Mexico
+Maunath Bokaro
+Bahir Pueblo
+Puli Palmdale
+Mexico Mobile
+Malaybalay Mexico
+Maunath Mexico
+Belo Montes
+Mirpur Puli
+Puli Memphis
+Bokaro Bahir
+Bat Bab
+Banja Maunath
+Bokaro Plano
+Punto Miami
+Punto Mexico
+Punta Minglanilla
+Punto Petah
+Malaybalay Pueblo
+Malaybalay Mobile
+Puli Bokaro
+13 37 17
+Praia -8.749 118.924
+Mesa 1.920 -123.303
+Bago 59.384 108.391
+Pematang 37.784 144.453
+Modesto 29.764 119.118
+Puebla 39.843 7.459
+Patos -27.532 -147.111
+Puente 87.517 146.620
+Belford 8.799 -133.434
+Provo -77.031 65.023
+Mirpur -36.460 14.229
+Peoria -71.044 -133.013
+Mandaue -66.980 -53.106
+Mandaue Belford
+Peoria Puebla
+Belford Patos
+Provo Belford
+Mandaue Mirpur
+Patos Modesto
+Belford Mesa
+Peoria Belford
+Puente Praia
+Bago Mirpur
+Mirpur Puebla
+Pematang Peoria
+Provo Mandaue
+Mesa Peoria
+Modesto Patos
+Pematang Provo
+Mesa Praia
+Belford Praia
+Provo Pematang
+Praia Mandaue
+Mirpur Patos
+Bago Praia
+Modesto Belford
+Bago Puente
+Belford Mandaue
+Peoria Bago
+Mandaue Pematang
+Modesto Peoria
+Bago Puebla
+Peoria Pematang
+Mirpur Bago
+Patos Peoria
+Mirpur Provo
+Provo Mirpur
+Puente Puebla
+Puente Peoria
+Bago Modesto
+Praia Modesto
+Pematang Puente
+Peoria Mirpur
+Mesa Pematang
+Mesa Mirpur
+Bago Puente
+Mirpur Pematang
+Belford Praia
+Mesa Provo
+Provo Pematang
+Patos Mandaue
+Mirpur Provo
+Puebla Mandaue
+Patos Mirpur
+Mirpur Mandaue
+Belford Mesa
+Mandaue Pematang
+17 12 20
+Pinar -40.701 65.210
+Banja 10.914 47.529
+Bab 59.302 89.671
+Petaling 5.174 -66.705
+Muntinlupa 37.272 -31.666
+Panama 10.452 98.781
+Punto -61.526 133.495
+Masjed 43.832 151.828
+Mawlamyaing 49.497 -131.557
+Pago 6.002 -64.433
+Bordj -33.659 115.454
+Pematang -43.895 1.196
+Malasiqui -80.098 -157.501
+Mogi -16.548 14.951
+Port -1.141 39.753
+Porac -13.793 45.421
+Milton 37.349 -32.234
+Punto Mawlamyaing
+Panama Milton
+Masjed Punto
+Bab Milton
+Banja Mawlamyaing
+Bab Panama
+Pematang Bordj
+Port Porac
+Mogi Masjed
+Punto Malasiqui
+Banja Milton
+Port Mawlamyaing
+Port Malasiqui
+Masjed Porac
+Mawlamyaing Masjed
+Mogi Punto
+Petaling Masjed
+Panama Bordj
+Pinar Bab
+Banja Mawlamyaing
+Muntinlupa Pago
+Bab Muntinlupa
+Bab Milton
+Port Masjed
+Bab Punto
+Panama Pematang
+Pematang Muntinlupa
+Masjed Bordj
+Port Mawlamyaing
+Milton Porac
+Bab Pematang
+Panama Punto
+11 31 20
+Pittsburgh -76.698 -145.786
+Poza -52.969 160.395
+Praha 73.709 -103.041
+Midsayap -35.375 -110.178
+Panama 66.804 110.948
+Matamoros 74.028 147.843
+Pomona 84.292 -17.314
+Marawi -38.991 45.167
+Pueblo 31.963 95.717
+Porac -24.442 -169.612
+Parang 29.743 14.728
+Pittsburgh Praha
+Matamoros Marawi
+Midsayap Poza
+Praha Porac
+Pomona Praha
+Midsayap Praha
+Pomona Pueblo
+Pomona Parang
+Pueblo Porac
+Praha Marawi
+Marawi Parang
+Pomona Porac
+Marawi Matamoros
+Panama Poza
+Parang Midsayap
+Pueblo Pittsburgh
+Praha Pittsburgh
+Praha Pomona
+Poza Panama
+Matamoros Midsayap
+Porac Marawi
+Praha Panama
+Pittsburgh Marawi
+Marawi Pueblo
+Marawi Praha
+Marawi Pittsburgh
+Pittsburgh Poza
+Praha Pueblo
+Porac Panama
+Parang Praha
+Panama Matamoros
+Pueblo Porac
+Matamoros Porac
+Midsayap Panama
+Parang Pueblo
+Panama Poza
+Porac Marawi
+Midsayap Porac
+Panama Porac
+Marawi Panama
+Marawi Poza
+Parang Pittsburgh
+Poza Porac
+Porac Midsayap
+Praha Midsayap
+Pomona Midsayap
+Porac Pittsburgh
+Midsayap Panama
+Matamoros Midsayap
+Praha Porac
+Midsayap Panama
+29 11 20
+Banja 44.516 12.235
+Pasadena 63.091 85.444
+Punto -54.726 -131.353
+Mesquite 9.005 -151.205
+McAllen -87.065 -82.435
+Peoria -49.252 -96.992
+Mirpur -56.634 135.506
+Matamoros -28.687 -45.254
+Pomona -56.225 -92.708
+Memphis -80.809 92.375
+Malasiqui -82.438 -61.894
+Patos -41.163 93.780
+Port 28.973 -53.199
+Mandaluyong -41.014 -129.633
+Puerto 32.988 -142.630
+Malolos -68.440 -165.831
+Mandaue -14.710 -77.128
+Panabo 43.181 26.552
+Phnom 1.837 26.740
+Plano -49.688 -139.410
+Providence 46.411 90.541
+Buenos 5.496 101.901
+Pagadian 43.219 -17.392
+Bnei 17.826 -8.161
+Phoenix -75.735 -129.146
+Pouso 11.643 15.652
+Milton -18.523 -4.777
+Beni -80.964 -158.709
+Montgomery -81.534 158.035
+Pouso Milton
+Punto Pouso
+Providence Panabo
+Puerto Pagadian
+Montgomery Pomona
+Plano Montgomery
+Patos Phnom
+Patos Pagadian
+Pagadian Beni
+Panabo Peoria
+Providence Mirpur
+Phoenix Peoria
+Mandaue Mirpur
+Banja Phnom
+Beni Montgomery
+Pouso Mirpur
+Plano Phoenix
+Malolos McAllen
+Phnom Mandaluyong
+McAllen Bnei
+Puerto Malasiqui
+Buenos Pagadian
+Pouso Montgomery
+Mandaluyong Port
+Buenos Punto
+Puerto Plano
+Matamoros Plano
+Mirpur Port
+Port Pouso
+Bnei Milton
+Puerto Phnom
+2 1 10
+Midsayap -26.192 -119.938
+Mawlamyaing -60.128 139.633
+Mawlamyaing Midsayap
+Midsayap Mawlamyaing
+Mawlamyaing Midsayap
+Midsayap Mawlamyaing
+Midsayap Mawlamyaing
+Mawlamyaing Midsayap
+Mawlamyaing Midsayap
+Midsayap Mawlamyaing
+Midsayap Mawlamyaing
+Midsayap Mawlamyaing
+Mawlamyaing Midsayap
+31 56 5
+Puli -49.092 -153.486
+Pueblo 30.984 -95.603
+Bihar 36.994 -50.836
+Meycauayan -6.649 -127.032
+Pagadian 16.986 -92.972
+Phnom 26.492 -115.930
+Minneapolis 10.691 72.455
+Providence -65.580 -23.724
+Beni 64.581 -138.951
+Puerto 58.884 -58.117
+Mirpur -71.467 35.951
+Port 69.818 -77.883
+Manchester 84.115 -176.839
+Pinar 16.550 143.338
+Philadelphia 69.000 -64.576
+Bandar 83.465 -98.505
+Malasiqui 45.136 -61.441
+Benito -40.260 -98.770
+Bago -11.944 17.274
+Buenos 44.138 41.559
+Peoria -29.699 41.630
+Petah -5.430 -83.282
+Montes 86.700 -51.448
+Batangas 70.776 130.920
+Bat 82.541 -146.651
+Pago 71.862 -113.618
+Mobile 60.676 -81.833
+Matamoros -86.213 75.544
+Muntinlupa -73.805 -106.699
+Palmdale -54.868 -132.944
+Pomona -22.421 -143.205
+Pinar Batangas
+Manchester Buenos
+Meycauayan Pinar
+Bihar Mobile
+Bandar Mirpur
+Pomona Phnom
+Minneapolis Pinar
+Bat Mirpur
+Pago Mobile
+Bandar Matamoros
+Pinar Philadelphia
+Bandar Benito
+Malasiqui Pomona
+Petah Bihar
+Puli Palmdale
+Montes Bat
+Manchester Pinar
+Mobile Meycauayan
+Pomona Bandar
+Bat Mobile
+Palmdale Philadelphia
+Pago Petah
+Palmdale Malasiqui
+Manchester Montes
+Phnom Pinar
+Muntinlupa Mobile
+Batangas Petah
+Batangas Philadelphia
+Pagadian Batangas
+Philadelphia Meycauayan
+Pagadian Muntinlupa
+Petah Pago
+Montes Malasiqui
+Beni Puerto
+Beni Matamoros
+Batangas Pago
+Pagadian Puli
+Bat Meycauayan
+Bandar Peoria
+Puli Philadelphia
+Pagadian Pago
+Matamoros Pagadian
+Benito Beni
+Providence Pueblo
+Phnom Philadelphia
+Pagadian Pomona
+Petah Buenos
+Matamoros Port
+Peoria Bandar
+Providence Petah
+Bat Peoria
+Batangas Port
+Manchester Batangas
+Port Bandar
+Palmdale Matamoros
+Petah Port
+Malasiqui Meycauayan
+Port Benito
+Bago Bihar
+Philadelphia Malasiqui
+Pinar Petah
+29 47 19
+Mariveles -74.800 104.260
+Boa 49.095 103.833
+Pasadena 13.961 34.055
+Masjed 73.325 -52.990
+McAllen 32.988 -11.052
+Bihar -3.169 98.484
+Pir -58.707 2.206
+Banda 10.218 121.737
+Belo 28.067 -149.572
+Phnom -26.568 -134.614
+Bandar 56.534 171.436
+Peoria -22.055 -4.885
+Banja -68.539 140.401
+Matamoros 54.719 -127.058
+Parang -20.141 -143.678
+Puerto -11.402 105.054
+Petah 69.936 138.307
+Baia 19.558 127.119
+Porto -16.950 5.769
+Midsayap -48.764 -127.176
+Malita 83.312 -18.545
+Panama -76.345 -86.387
+Pueblo -27.863 -80.098
+Mesquite 35.457 -134.502
+Manchester 45.709 -137.738
+Modesto 48.316 5.654
+Piatra -11.714 173.795
+Malolos -72.326 -11.834
+Mirpur 1.993 -177.690
+McAllen Phnom
+Mesquite Belo
+Puerto Manchester
+Peoria Puerto
+Belo Banda
+Petah Pir
+Banja McAllen
+Malita Panama
+Modesto Midsayap
+Panama Boa
+McAllen Parang
+Porto Midsayap
+Bihar Panama
+Mirpur Mesquite
+Bandar Piatra
+Malolos Mirpur
+Mirpur Pir
+Boa Panama
+Mariveles Puerto
+Parang Bihar
+Masjed Mariveles
+Modesto Boa
+Parang Puerto
+Piatra Petah
+Baia Bandar
+Petah Porto
+Boa Pueblo
+Pir Bihar
+Malita Malolos
+Petah Bihar
+Modesto Mesquite
+Mariveles Parang
+Mirpur Modesto
+Masjed Mesquite
+Malita Mirpur
+Mirpur Baia
+Bandar Mesquite
+Boa Manchester
+Masjed Manchester
+Pir Malolos
+Phnom Panama
+Pir Pueblo
+Malita Pasadena
+Mariveles Banja
+Phnom Peoria
+Piatra Baia
+Mesquite Piatra
+Pueblo Malolos
+Matamoros Pueblo
+Matamoros Baia
+Bihar Modesto
+Midsayap McAllen
+Malita Puerto
+Peoria Malita
+Bandar Manchester
+Belo Phnom
+Pasadena Peoria
+Matamoros Pir
+Bandar Pueblo
+Piatra Parang
+Mesquite Midsayap
+Belo Mesquite
+Matamoros Baia
+Masjed Pasadena
+Peoria Porto
+Parang Belo
+22 8 15
+Manchester -8.756 -73.872
+Phoenix -77.514 52.852
+Philadelphia 25.505 -143.997
+Midsayap -80.399 -21.782
+Providence -57.239 118.289
+Peoria -87.997 -166.295
+Portland -67.565 -91.449
+Puli 49.864 125.669
+Mandaue -2.145 -43.637
+Puente -82.077 127.450
+Minglanilla 83.375 -0.345
+Praia 51.255 42.350
+Malolos -27.555 -47.463
+Mexico -37.797 45.895
+Milwaukee -78.094 163.121
+Pago 37.328 -135.992
+Punta 69.229 -50.617
+Montgomery -79.462 -127.155
+Puerto 72.398 110.291
+Bokaro -42.485 5.987
+Palmdale 23.539 4.135
+Punto 44.465 4.193
+Manchester Mexico
+Puerto Milwaukee
+Pago Providence
+Portland Peoria
+Praia Punto
+Pago Philadelphia
+Portland Puente
+Bokaro Punta
+Philadelphia Puerto
+Puerto Mandaue
+Peoria Portland
+Minglanilla Midsayap
+Peoria Midsayap
+Peoria Puente
+Palmdale Providence
+Praia Puerto
+Minglanilla Palmdale
+Philadelphia Puli
+Portland Peoria
+Puerto Midsayap
+Punto Montgomery
+Palmdale Providence
+Palmdale Peoria
+8 5 14
+Pakan -34.833 55.112
+Baia -11.742 -18.585
+Mexico -79.592 99.904
+Bordj -62.842 -153.210
+Manchester 41.187 95.129
+Presidente 25.623 -125.381
+Pir 49.139 96.927
+Panama -45.131 -16.464
+Pakan Manchester
+Presidente Manchester
+Pakan Panama
+Baia Bordj
+Pir Presidente
+Pakan Manchester
+Pir Bordj
+Baia Panama
+Mexico Bordj
+Pakan Manchester
+Manchester Pakan
+Presidente Manchester
+Manchester Mexico
+Panama Bordj
+Pakan Presidente
+Baia Pakan
+Presidente Pakan
+Pakan Pir
+Mexico Presidente
+27 3 9
+Mandaluyong 78.345 -4.119
+Mogi -9.574 -74.091
+Pir -42.168 -54.711
+Pakan 58.621 101.733
+Malolos 12.688 85.550
+Petaling 31.624 121.501
+Montgomery 52.419 -61.536
+Barra 76.200 137.451
+Petah -81.904 -130.303
+Milton -80.321 -86.945
+Miami -18.346 60.890
+Puebla 88.395 81.924
+Batangas 10.251 7.209
+Bordj 58.674 -86.554
+Phnom 58.081 118.994
+Poza 12.722 82.113
+Providence 79.473 -141.376
+Polomolok -78.952 -51.305
+Puente -1.900 -129.933
+Mariveles 21.195 -155.867
+Plano -43.244 90.724
+Peoria 83.111 -121.566
+Provo -20.664 -100.527
+Memphis -29.212 -83.195
+Bat -0.010 112.450
+Piatra 8.463 -8.098
+Bahir -45.533 -112.139
+Bahir Piatra
+Providence Piatra
+Petah Miami
+Petah Batangas
+Memphis Milton
+Bordj Malolos
+Petaling Puebla
+Malolos Pakan
+Plano Petah
+Petaling Mariveles
+Puente Batangas
+Mariveles Provo
+27 42 2
+Boa 78.606 -158.694
+Petah -25.348 -10.664
+Portland 45.207 63.010
+Philadelphia 34.977 -100.113
+Patos -85.900 108.051
+Baton 17.853 71.059
+Minneapolis 81.359 62.770
+Provo -28.410 -4.560
+Pago -35.356 35.167
+Baia 32.125 34.103
+Midsayap -50.474 -52.454
+Palmdale -37.416 -15.778
+Bergisch -78.087 -11.539
+Banda -83.984 76.186
+Maunath 36.065 41.761
+Bani 2.935 170.355
+Malaybalay -7.526 -86.101
+Praha 63.246 34.189
+Punto 45.014 -72.954
+Bou 66.759 85.878
+Mobile 6.640 21.146
+Minglanilla -0.863 -145.436
+Mexico -39.802 -121.716
+Beni -79.702 42.079
+Mogilev 33.729 -3.010
+Pueblo -77.731 108.046
+Mar -8.184 81.185
+Patos Bani
+Palmdale Bergisch
+Bergisch Punto
+Baton Minneapolis
+Minneapolis Petah
+Mexico Portland
+Bani Praha
+Provo Minneapolis
+Malaybalay Praha
+Beni Philadelphia
+Palmdale Minglanilla
+Punto Bani
+Punto Bou
+Banda Petah
+Mar Baia
+Mogilev Bani
+Malaybalay Bou
+Mar Mogilev
+Patos Portland
+Bou Baton
+Provo Mar
+Malaybalay Maunath
+Baia Palmdale
+Praha Bergisch
+Bani Mar
+Mobile Banda
+Portland Malaybalay
+Mogilev Petah
+Portland Baia
+Punto Midsayap
+Pueblo Praha
+Pueblo Patos
+Portland Patos
+Mexico Mogilev
+Punto Minneapolis
+Baton Maunath
+Punto Pueblo
+Malaybalay Midsayap
+Malaybalay Mexico
+Boa Patos
+Maunath Philadelphia
+Minglanilla Malaybalay
+Banda Bani
+Minneapolis Philadelphia
+15 20 8
+Mati -26.726 -17.113
+Milton -16.869 -102.724
+Petaling 59.480 11.846
+Pago -36.789 59.189
+Mazari 84.669 161.225
+Puli -52.262 -177.054
+Patos -62.801 46.462
+Provo -64.846 -15.895
+Malita -61.453 16.976
+Marawi -31.413 119.364
+Bandar -12.023 -159.368
+Bnei 57.292 -90.343
+Pasadena -29.849 -174.448
+Petah -55.318 93.705
+Pouso -33.122 128.382
+Petah Provo
+Malita Puli
+Pago Bnei
+Pouso Milton
+Petaling Patos
+Mati Provo
+Puli Petaling
+Provo Bnei
+Puli Bandar
+Mazari Pasadena
+Bnei Bandar
+Bandar Mati
+Pouso Provo
+Patos Bnei
+Pago Patos
+Puli Patos
+Pouso Malita
+Bnei Malita
+Petah Marawi
+Pago Marawi
+Pasadena Pago
+Patos Bandar
+Mati Bandar
+Patos Bandar
+Pouso Bandar
+Petah Patos
+Puli Patos
+Puli Marawi
+21 35 2
+Modesto -38.760 157.877
+Baton -46.000 -50.438
+Manchester -88.627 165.692
+Meycauayan -11.004 -155.551
+Matamoros 70.116 -133.044
+Provo 59.600 -93.802
+Banja -29.056 -119.650
+Pinar -58.383 86.841
+Palmdale 66.282 163.339
+Panabo 87.193 -33.168
+Batangas -47.218 -42.596
+Mawlamyaing -26.970 2.252
+Mirpur -50.108 143.035
+Praha -29.719 133.151
+Pittsburgh -64.301 34.304
+Pomona 75.723 -154.878
+Midsayap 7.865 -149.174
+Panama -63.177 11.147
+Bab 56.981 -80.564
+Punto 73.499 107.509
+Minglanilla 13.021 78.686
+Bab Mawlamyaing
+Meycauayan Modesto
+Mirpur Pomona
+Praha Mawlamyaing
+Baton Panabo
+Banja Palmdale
+Pittsburgh Baton
+Manchester Praha
+Pittsburgh Matamoros
+Mirpur Mawlamyaing
+Minglanilla Mirpur
+Banja Modesto
+Panama Mawlamyaing
+Manchester Pittsburgh
+Pinar Minglanilla
+Panama Mirpur
+Praha Pinar
+Punto Panabo
+Minglanilla Meycauayan
+Matamoros Palmdale
+Midsayap Pinar
+Banja Panabo
+Baton Pinar
+Panabo Palmdale
+Bab Praha
+Matamoros Baton
+Baton Pomona
+Provo Batangas
+Manchester Panama
+Pittsburgh Provo
+Panama Panabo
+Pittsburgh Palmdale
+Pittsburgh Batangas
+Pomona Midsayap
+Panabo Modesto
+Matamoros Baton
+Manchester Panama
+4 9 11
+Miami 42.523 143.320
+Pasadena 34.311 175.606
+Baton 58.556 129.326
+Mogilev -54.778 -40.745
+Pasadena Baton
+Miami Baton
+Pasadena Mogilev
+Mogilev Baton
+Mogilev Miami
+Mogilev Pasadena
+Miami Pasadena
+Baton Miami
+Miami Mogilev
+Baton Pasadena
+Mogilev Miami
+Miami Mogilev
+Miami Mogilev
+Miami Baton
+Miami Baton
+Mogilev Miami
+Mogilev Pasadena
+Pasadena Miami
+Miami Pasadena
+Mogilev Baton
+8 24 13
+Mawlamyaing -50.511 -91.805
+Milwaukee -72.406 -52.302
+Bab -65.759 168.856
+Bergisch -31.004 130.136
+Mesquite 59.215 -82.747
+Providence -42.006 -109.327
+Puli -41.025 -80.882
+Mar -41.844 155.731
+Bab Providence
+Bab Mawlamyaing
+Bergisch Mawlamyaing
+Mar Providence
+Bab Mesquite
+Mawlamyaing Bergisch
+Puli Bab
+Mesquite Bergisch
+Mesquite Milwaukee
+Mar Bab
+Mar Mawlamyaing
+Milwaukee Bergisch
+Mesquite Mar
+Milwaukee Mar
+Milwaukee Bab
+Bab Milwaukee
+Bergisch Bab
+Providence Bab
+Milwaukee Mawlamyaing
+Bergisch Milwaukee
+Bergisch Providence
+Mawlamyaing Providence
+Puli Mar
+Providence Puli
+Puli Milwaukee
+Puli Mawlamyaing
+Milwaukee Providence
+Puli Mawlamyaing
+Bab Bergisch
+Puli Mawlamyaing
+Puli Providence
+Puli Mar
+Bab Mar
+Milwaukee Bergisch
+Puli Mar
+Puli Mar
+Bergisch Providence
+10 60 17
+Pagadian 6.421 -144.106
+Midsayap -51.297 128.420
+Banja 32.209 -120.335
+Piatra -55.490 -86.507
+Mar -76.248 -102.055
+Murfreesboro 30.644 -83.642
+Muntinlupa 43.955 108.084
+Baia -84.379 102.276
+Plano 6.278 -74.418
+Milton -24.930 66.027
+Milton Banja
+Milton Muntinlupa
+Muntinlupa Mar
+Baia Milton
+Piatra Pagadian
+Pagadian Midsayap
+Piatra Banja
+Banja Baia
+Muntinlupa Milton
+Piatra Plano
+Baia Banja
+Pagadian Baia
+Milton Baia
+Milton Murfreesboro
+Muntinlupa Midsayap
+Banja Plano
+Murfreesboro Muntinlupa
+Baia Midsayap
+Mar Milton
+Banja Muntinlupa
+Banja Mar
+Mar Muntinlupa
+Pagadian Plano
+Piatra Baia
+Murfreesboro Midsayap
+Mar Murfreesboro
+Plano Mar
+Murfreesboro Baia
+Mar Baia
+Murfreesboro Milton
+Murfreesboro Pagadian
+Muntinlupa Pagadian
+Piatra Muntinlupa
+Milton Midsayap
+Plano Piatra
+Murfreesboro Mar
+Muntinlupa Baia
+Midsayap Mar
+Muntinlupa Piatra
+Pagadian Piatra
+Baia Murfreesboro
+Mar Midsayap
+Pagadian Mar
+Banja Milton
+Murfreesboro Plano
+Banja Midsayap
+Muntinlupa Plano
+Piatra Midsayap
+Pagadian Banja
+Banja Piatra
+Mar Piatra
+Murfreesboro Banja
+Pagadian Milton
+Milton Plano
+Murfreesboro Piatra
+Plano Murfreesboro
+Midsayap Milton
+Piatra Milton
+Banja Murfreesboro
+Mar Plano
+Baia Muntinlupa
+Murfreesboro Piatra
+Mar Midsayap
+Baia Pagadian
+Midsayap Baia
+Piatra Banja
+Piatra Muntinlupa
+Murfreesboro Banja
+Plano Mar
+Mar Banja
+Midsayap Murfreesboro
+Milton Piatra
+Muntinlupa Pagadian
+Muntinlupa Murfreesboro
+Milton Muntinlupa
+Muntinlupa Mar
+Banja Mar
+29 49 13
+Puli -60.998 38.757
+Polomolok 18.439 -134.244
+Mandaue -69.891 -6.591
+McAllen 77.344 -53.399
+Midsayap -6.490 121.076
+Puerto -36.756 -86.694
+Palmdale 27.462 68.432
+Phoenix -52.021 33.053
+Pago 43.858 173.166
+Mazari -8.019 73.012
+Mirpur 45.241 -136.063
+Beni 56.695 -85.992
+Plano 78.544 99.286
+Matamoros -4.077 -15.152
+Portland 32.346 -100.155
+Meycauayan 55.518 158.591
+Minneapolis -11.532 -78.572
+Praha -84.888 167.955
+Port 23.478 -104.749
+Porac 5.366 142.042
+Mesquite 40.733 -31.985
+Minglanilla 31.637 176.707
+Pembroke -9.617 134.636
+Pouso -77.309 94.448
+Praia 59.296 35.087
+Marawi 16.911 -18.394
+Bordj -32.615 47.521
+Belford 88.702 127.064
+Petah 65.403 27.139
+Puerto Phoenix
+Midsayap Belford
+Portland Porac
+Puerto Marawi
+Plano Palmdale
+Praha Pembroke
+Phoenix Pago
+Port Minglanilla
+Pembroke Praha
+Bordj Palmdale
+Polomolok Puerto
+Minneapolis Pembroke
+Puli Pouso
+Minglanilla Bordj
+Belford Matamoros
+Mirpur Mesquite
+Port Marawi
+Meycauayan Portland
+McAllen Midsayap
+Mirpur Matamoros
+Palmdale Phoenix
+Meycauayan Porac
+McAllen Puerto
+Meycauayan Marawi
+Pouso Praha
+Pembroke Plano
+Palmdale Marawi
+Porac Mandaue
+Petah Belford
+Belford McAllen
+Matamoros Pouso
+Mandaue Porac
+Portland Mazari
+Beni Meycauayan
+Matamoros Minglanilla
+Petah Pouso
+Bordj Port
+Midsayap Marawi
+Porac Meycauayan
+Puli Praha
+Mandaue Meycauayan
+Puerto Belford
+Pembroke Mandaue
+Minglanilla Pago
+Matamoros Mazari
+Portland Phoenix
+Mazari McAllen
+Port Pouso
+Puerto Minneapolis
+Puli Mandaue
+Mandaue Petah
+Port Porac
+Meycauayan Porac
+Mazari Midsayap
+Midsayap Praia
+Mirpur Praha
+Phoenix Petah
+Polomolok Phoenix
+Meycauayan Puli
+Polomolok Portland
+Minglanilla Mesquite
+Praia Meycauayan
+10 34 16
+Peoria -46.890 -19.645
+Moreno -47.082 -72.287
+Bergisch 44.138 25.155
+Minneapolis -31.002 12.177
+Pakan 55.350 62.743
+Mexico -32.173 -54.628
+Pueblo -75.129 -109.657
+Mawlamyaing 47.921 -60.837
+Parang -16.813 29.838
+Baton 23.681 117.755
+Moreno Peoria
+Parang Minneapolis
+Pueblo Parang
+Pakan Parang
+Mexico Pakan
+Peoria Baton
+Bergisch Parang
+Baton Pakan
+Moreno Baton
+Baton Mawlamyaing
+Minneapolis Parang
+Pakan Minneapolis
+Mawlamyaing Mexico
+Mexico Pueblo
+Pakan Mexico
+Baton Bergisch
+Baton Mexico
+Baton Minneapolis
+Pakan Moreno
+Moreno Bergisch
+Parang Peoria
+Bergisch Mexico
+Bergisch Peoria
+Pueblo Moreno
+Minneapolis Peoria
+Mexico Minneapolis
+Pueblo Bergisch
+Moreno Pakan
+Mexico Moreno
+Minneapolis Mawlamyaing
+Minneapolis Mexico
+Pueblo Mawlamyaing
+Moreno Minneapolis
+Mexico Peoria
+Minneapolis Pakan
+Parang Peoria
+Mawlamyaing Pueblo
+Pakan Parang
+Moreno Minneapolis
+Peoria Pueblo
+Pakan Pueblo
+Baton Peoria
+Mexico Baton
+Pueblo Mexico
+Moreno Bergisch
+Minneapolis Moreno
+Bergisch Pakan
+Bergisch Mexico
+Pakan Parang
+Pueblo Baton
+22 57 7
+Praha -42.157 -9.168
+Mogi -11.692 -98.553
+Malolos -60.309 83.098
+Puerto 24.997 -81.947
+Bou -86.372 66.528
+Pembroke 34.352 -64.090
+Barra -12.765 -138.738
+Presidente -38.035 -94.807
+Pueblo 85.277 -113.203
+Masjed -41.482 99.895
+Paradise -13.612 -26.461
+Plano 44.784 -41.381
+Punta 83.623 167.867
+Pago -76.611 -13.729
+Pir -44.394 -159.098
+Panama 87.813 -107.875
+Pakan 29.338 -24.819
+Parang -2.008 26.916
+Pinar 49.241 132.658
+Minglanilla 62.214 -70.156
+Mati 77.053 110.821
+Mar -67.797 132.212
+Pago Malolos
+Minglanilla Punta
+Mar Punta
+Plano Malolos
+Mati Pakan
+Pakan Mar
+Mogi Pir
+Paradise Minglanilla
+Praha Minglanilla
+Pago Pakan
+Pakan Malolos
+Mogi Malolos
+Praha Pueblo
+Pakan Puerto
+Barra Paradise
+Mogi Pakan
+Panama Plano
+Praha Panama
+Plano Paradise
+Presidente Praha
+Pir Barra
+Mogi Pueblo
+Puerto Mogi
+Parang Mogi
+Puerto Pir
+Parang Masjed
+Pinar Pembroke
+Barra Panama
+Puerto Paradise
+Malolos Punta
+Pembroke Malolos
+Pago Panama
+Barra Mati
+Barra Punta
+Punta Parang
+Mar Pago
+Mati Malolos
+Mogi Praha
+Mar Mogi
+Pakan Minglanilla
+Bou Mogi
+Bou Plano
+Bou Praha
+Pueblo Paradise
+Mar Barra
+Mogi Bou
+Malolos Pinar
+Pueblo Presidente
+Mogi Masjed
+Praha Pinar
+Pinar Praha
+Mar Mati
+Pinar Mati
+Pir Parang
+Mar Minglanilla
+Mati Mogi
+Punta Puerto
+Presidente Bou
+Panama Plano
+Pago Punta
+Pueblo Pir
+Praha Panama
+Praha Pir
+Paradise Mogi
+9 24 3
+Mawlamyaing 72.799 -128.979
+Phnom 81.967 25.865
+Buenos 66.480 101.777
+Bou 4.107 131.990
+Malita 34.341 -145.079
+Modesto 5.758 -80.003
+Peoria 70.496 111.513
+Bandar -66.486 124.466
+Pomona -7.749 -166.833
+Phnom Modesto
+Bandar Bou
+Bandar Peoria
+Buenos Pomona
+Bou Pomona
+Pomona Malita
+Peoria Mawlamyaing
+Bou Modesto
+Malita Buenos
+Malita Peoria
+Buenos Modesto
+Pomona Modesto
+Mawlamyaing Pomona
+Modesto Peoria
+Bou Buenos
+Malita Bandar
+Pomona Bou
+Pomona Bandar
+Buenos Bandar
+Phnom Buenos
+Pomona Buenos
+Peoria Malita
+Bou Mawlamyaing
+Modesto Bandar
+Peoria Malita
+Bou Phnom
+Bou Buenos
+18 15 5
+Milton -20.412 -65.913
+Punto 84.680 168.877
+Beni 89.942 -158.983
+Bahir 53.195 52.625
+Provo 75.749 16.147
+Mariveles -71.335 -32.084
+Pomona -83.000 11.830
+Portland -78.414 -100.120
+Malita -67.767 -55.995
+Batangas -0.537 172.917
+Midsayap -87.441 48.633
+Plano -36.977 99.694
+Polomolok -6.121 21.536
+Bago -81.862 4.985
+Murfreesboro 1.795 143.917
+Philadelphia 51.633 -69.310
+Mesa -83.347 109.788
+Patos -57.050 76.173
+Beni Patos
+Midsayap Provo
+Malita Midsayap
+Murfreesboro Mesa
+Batangas Midsayap
+Beni Murfreesboro
+Polomolok Plano
+Pomona Portland
+Provo Mariveles
+Mesa Batangas
+Pomona Plano
+Philadelphia Midsayap
+Patos Bahir
+Provo Philadelphia
+Mesa Polomolok
+Batangas Polomolok
+Portland Patos
+Philadelphia Mariveles
+Murfreesboro Provo
+Mesa Provo
+23 29 6
+Memphis 7.655 -25.406
+Pomona 76.701 65.899
+Belo -45.034 -36.744
+Palmdale -34.335 58.979
+Bordj 79.450 111.425
+Mirpur -80.346 158.058
+Boa 54.300 -15.440
+Polomolok -3.024 -53.078
+Bani -57.139 58.819
+Buenos -60.545 159.507
+Montgomery 25.557 -161.848
+Malasiqui -22.654 35.058
+Parang -50.919 72.584
+Peoria -10.944 179.327
+Bandar 55.939 169.551
+Matamoros -69.598 103.873
+Paradise -33.264 59.419
+Malaybalay 81.988 -161.009
+Bokaro 43.511 -84.470
+Beni -32.826 70.000
+Malita 49.178 -2.229
+Barra 74.699 -100.934
+Bila 18.619 138.104
+Bila Bani
+Belo Parang
+Beni Bani
+Peoria Polomolok
+Boa Bani
+Palmdale Bandar
+Memphis Pomona
+Barra Mirpur
+Malita Polomolok
+Memphis Bani
+Barra Malita
+Bila Palmdale
+Paradise Belo
+Beni Belo
+Peoria Malasiqui
+Bokaro Montgomery
+Bandar Buenos
+Peoria Bandar
+Peoria Belo
+Malasiqui Parang
+Peoria Bokaro
+Malita Boa
+Malasiqui Peoria
+Belo Malasiqui
+Malasiqui Buenos
+Boa Peoria
+Peoria Pomona
+Bordj Malita
+Memphis Barra
+Buenos Memphis
+Belo Peoria
+Palmdale Beni
+Belo Paradise
+Bokaro Malita
+Belo Matamoros
+30 24 17
+Bahir 37.988 142.531
+Bordj -65.712 -44.476
+Piatra 88.327 -173.876
+Malasiqui -81.716 106.952
+Marilao -30.918 156.946
+Bab -80.437 40.267
+Pembroke 46.571 -168.414
+Bandar 23.932 -137.815
+Malita 49.197 58.172
+Belo 77.719 -125.844
+Bou 12.574 -131.429
+Pago -65.066 149.875
+Palmdale -68.781 -105.485
+Midsayap 83.830 -101.459
+Port -5.893 -71.952
+Mexico 32.837 125.689
+Bergisch -52.631 144.875
+Memphis -2.701 -50.534
+Moreno 17.237 98.996
+Mawlamyaing -85.508 179.437
+Praia -49.138 141.000
+Muntinlupa -3.827 47.063
+Plano -8.199 -90.688
+Mar 76.621 -57.515
+Polomolok 70.142 148.512
+Malolos 57.145 105.125
+Milwaukee 63.644 20.571
+Paradise -12.274 114.269
+Maunath -52.693 -89.594
+Portland 56.857 -168.150
+Bergisch Bab
+Paradise Polomolok
+Palmdale Plano
+Bab Piatra
+Bahir Midsayap
+Bahir Malita
+Bandar Memphis
+Mexico Memphis
+Midsayap Malasiqui
+Portland Polomolok
+Midsayap Port
+Palmdale Mar
+Midsayap Portland
+Polomolok Memphis
+Paradise Portland
+Milwaukee Mawlamyaing
+Maunath Mar
+Memphis Moreno
+Bordj Marilao
+Marilao Memphis
+Bab Mar
+Palmdale Pago
+Bergisch Bandar
+Pembroke Maunath
+Pago Bahir
+Palmdale Muntinlupa
+Milwaukee Pago
+Bab Plano
+Mawlamyaing Malolos
+Midsayap Polomolok
+Bahir Malasiqui
+Piatra Pembroke
+Mar Moreno
+Mawlamyaing Maunath
+Piatra Malasiqui
+Malita Midsayap
+Bergisch Port
+Midsayap Palmdale
+Bou Piatra
+Polomolok Pago
+Malasiqui Plano
+30 26 10
+Mirpur -12.902 152.712
+Bokaro -34.802 -36.624
+Paradise 72.467 73.567
+Pinar 68.834 23.873
+Peoria -10.137 -161.151
+Mar -28.442 57.438
+Bergisch -0.908 -172.608
+Meycauayan -33.958 3.027
+Murfreesboro -54.643 -126.804
+Mandaluyong 83.354 88.364
+Presidente 0.446 112.941
+Minglanilla 59.988 19.472
+Montes 59.203 -140.423
+Moreno -7.257 -58.583
+Benito -70.760 -111.961
+Marawi 10.712 145.942
+Baia 26.708 4.243
+Phnom 45.303 -73.952
+Memphis 69.804 -125.729
+Pago -46.941 114.547
+Puente -42.543 93.832
+Bihar 26.229 -162.363
+Mariveles 10.875 -142.571
+Bani -54.450 -46.619
+Phoenix -30.439 165.720
+Petah -66.768 54.998
+Malasiqui 32.228 -84.462
+Bordj -72.447 13.131
+Modesto 32.957 101.290
+Belo 39.256 -10.449
+Pinar Presidente
+Modesto Malasiqui
+Modesto Murfreesboro
+Petah Malasiqui
+Mar Pinar
+Pinar Bergisch
+Bani Phoenix
+Bihar Peoria
+Modesto Puente
+Pago Mirpur
+Mirpur Benito
+Bani Moreno
+Mirpur Mar
+Paradise Phoenix
+Peoria Marawi
+Petah Baia
+Moreno Murfreesboro
+Pinar Baia
+Peoria Montes
+Phnom Bergisch
+Mandaluyong Paradise
+Petah Montes
+Petah Moreno
+Peoria Meycauayan
+Pago Petah
+Paradise Memphis
+Marawi Pinar
+Bordj Paradise
+Phnom Mandaluyong
+Malasiqui Bokaro
+Bokaro Mar
+Bihar Bokaro
+Peoria Presidente
+Bergisch Pinar
+Moreno Minglanilla
+Puente Murfreesboro
+18 26 5
+Beni -59.725 26.111
+Pasadena -34.358 107.754
+Bergisch 24.746 -99.482
+Praha 4.664 -95.336
+Maunath 26.312 -97.712
+Peoria -9.581 64.147
+Paradise 47.383 -125.036
+Mar -48.752 -138.484
+Banja 6.130 136.721
+Modesto 37.172 -11.829
+Bani 74.637 163.451
+Boa 1.365 -96.370
+Bandar -30.320 56.971
+Malaybalay 82.738 -37.683
+Pembroke -5.152 -12.100
+Panama -32.371 21.944
+Malolos 3.564 -20.066
+Mandaue 20.820 7.250
+Bani Peoria
+Beni Panama
+Peoria Beni
+Panama Modesto
+Malolos Pasadena
+Bani Malaybalay
+Panama Mandaue
+Boa Beni
+Maunath Panama
+Beni Mar
+Praha Boa
+Mar Paradise
+Bandar Pembroke
+Peoria Malaybalay
+Praha Bani
+Pembroke Malaybalay
+Boa Bani
+Bani Praha
+Mandaue Malolos
+Banja Bergisch
+Peoria Malaybalay
+Maunath Mar
+Modesto Malaybalay
+Pembroke Bandar
+Malaybalay Bergisch
+Banja Praha
+Malaybalay Mar
+Malaybalay Beni
+Maunath Praha
+Pembroke Banja
+Mandaue Pasadena
+24 17 1
+Pakan 47.351 -0.176
+Bandar -79.266 -57.562
+Mati 48.485 -48.940
+Palmdale 56.277 -93.976
+Pir 40.682 -57.273
+Miami -85.183 -169.425
+Belo -13.279 -5.488
+Patos -28.366 -70.555
+Modesto -75.788 -138.482
+Belford 3.160 58.049
+Paradise 77.528 -16.237
+Mogi -19.931 106.371
+Panama -11.431 -16.917
+Moreno 60.952 -92.504
+Bila -56.466 154.083
+Montgomery -80.719 165.473
+Murfreesboro -72.892 96.089
+Puente -30.662 -85.789
+Bago -57.475 73.559
+Barra -59.137 178.574
+Bat 81.940 -154.055
+McAllen 57.640 98.903
+Mandaue -23.212 14.262
+Petah -42.908 163.855
+Belo Murfreesboro
+Bandar Murfreesboro
+Moreno Paradise
+Belford Bago
+Barra Mandaue
+Petah Murfreesboro
+Bandar Bago
+Belford Bat
+Patos Bat
+Bat Panama
+McAllen Moreno
+Paradise Miami
+Panama Mandaue
+Murfreesboro Pir
+Mandaue Montgomery
+Pakan Panama
+McAllen Bat
+Belo Bandar
+24 25 1
+Maunath -6.043 -132.283
+Masjed -13.970 -42.361
+Mati -57.511 -82.125
+Bokaro -72.795 -65.092
+Muntinlupa 59.591 14.478
+Murfreesboro -54.483 113.642
+Porac -28.476 23.505
+Puente 13.423 65.010
+Praha 19.826 84.104
+Bergisch -51.274 48.895
+Peoria -27.336 67.968
+Belford -13.190 -94.761
+Porto -9.748 -151.147
+Mandaluyong 64.091 -33.547
+Minglanilla -42.723 -113.429
+Bab 85.220 42.523
+Minneapolis 19.877 -67.953
+Punto 67.586 28.167
+Batangas 4.389 -21.343
+Pembroke -9.133 -93.358
+Plano -65.658 -120.206
+Mogi -88.410 -87.474
+Pagadian 81.998 28.759
+Puebla -68.560 -43.086
+Plano Batangas
+Masjed Porac
+Peoria Mandaluyong
+Muntinlupa Maunath
+Plano Minglanilla
+Porac Batangas
+Muntinlupa Mandaluyong
+Batangas Plano
+Bab Masjed
+Batangas Punto
+Mandaluyong Peoria
+Porto Porac
+Puente Bergisch
+Muntinlupa Peoria
+Mogi Masjed
+Puente Maunath
+Mandaluyong Pagadian
+Pagadian Bergisch
+Bab Bergisch
+Porac Murfreesboro
+Bokaro Bergisch
+Porac Belford
+Murfreesboro Puebla
+Porac Puente
+Batangas Bab
+Plano Praha
+18 8 9
+Mesa -65.292 106.621
+Phoenix 65.203 7.945
+Patos 73.586 142.554
+Meycauayan 43.321 -133.445
+Barra 45.052 -142.708
+Benito -0.681 12.615
+Puebla -46.102 9.694
+Pasadena -88.962 -6.085
+Bergisch 17.472 28.240
+Pagadian -1.976 -50.939
+Bila 17.967 90.171
+Mariveles -52.352 175.762
+Milton -51.853 158.194
+Poza -27.679 -84.581
+Bago -11.880 50.232
+Mandaue 83.017 71.250
+Polomolok 53.546 72.301
+Batangas 74.752 107.502
+Mariveles Pasadena
+Polomolok Mandaue
+Mesa Mariveles
+Pagadian Puebla
+Meycauayan Mariveles
+Mesa Bila
+Patos Mesa
+Puebla Pagadian
+Mariveles Bago
+Mesa Polomolok
+Mandaue Barra
+Mariveles Meycauayan
+Bago Phoenix
+Pasadena Benito
+Mesa Mariveles
+Mesa Poza
+Bila Mariveles
+28 33 4
+Patos 66.823 84.265
+Parang -3.995 -87.365
+Port -40.331 174.232
+Boa 20.218 156.942
+Bnei -8.819 5.173
+Maunath 11.520 -81.378
+Memphis -88.175 -50.614
+Ponta -59.170 31.524
+Praha 1.789 -113.078
+Buenos 58.845 0.399
+Marilao 85.625 -116.593
+Puente 79.334 2.872
+Pinar -15.048 -69.786
+Benito -55.217 -148.510
+Portland -42.182 103.487
+McAllen 2.262 63.020
+Mexico -84.970 -28.633
+Milton -87.939 28.881
+Pasadena 29.679 -82.506
+Mesquite 59.711 93.191
+Matamoros -27.763 139.870
+Bila 84.209 40.507
+Montes 27.871 -132.179
+Paradise -31.369 138.405
+Bordj -63.227 154.306
+Bergisch 57.295 157.621
+Muntinlupa -69.779 -175.131
+Mandaue 53.229 -65.314
+Milton Mandaue
+Bnei Memphis
+Milton Mexico
+Mexico Muntinlupa
+Mesquite Paradise
+Buenos Port
+Buenos Milton
+Montes Bnei
+Muntinlupa Buenos
+Bila Montes
+Pasadena Montes
+Muntinlupa Maunath
+Marilao Pinar
+Boa Patos
+Mandaue Portland
+Boa Portland
+Port Memphis
+Paradise Boa
+Mesquite Patos
+Boa Port
+Paradise Memphis
+Mandaue Matamoros
+Praha Mandaue
+Bila Marilao
+Mexico Benito
+Bnei Mexico
+Mandaue Patos
+McAllen Marilao
+Marilao Benito
+Patos Parang
+Boa Mexico
+Paradise Mexico
+Mesquite Mexico
+Mesquite Buenos
+Bnei Buenos
+Praha Bordj
+Paradise Boa
+14 10 5
+Manchester -71.787 158.806
+Masjed 83.459 -2.873
+Baia -0.633 13.870
+Porac -68.802 -48.857
+Marilao -13.407 -54.647
+Mesquite 26.755 -149.475
+Pagadian 54.677 89.704
+Murfreesboro 56.516 73.283
+Minneapolis 74.668 129.157
+Baton -79.523 75.489
+Peoria 36.897 -87.775
+Mirpur -79.838 84.502
+Bani -80.604 -89.778
+Moreno -20.481 -178.600
+Peoria Baton
+Murfreesboro Baia
+Baia Moreno
+Marilao Minneapolis
+Manchester Bani
+Minneapolis Marilao
+Mirpur Peoria
+Porac Murfreesboro
+Porac Baton
+Baia Masjed
+Manchester Peoria
+Moreno Minneapolis
+Mirpur Mesquite
+Pagadian Peoria
+Murfreesboro Minneapolis
+27 32 14
+Muntinlupa -7.606 -38.980
+Phnom -28.964 -100.536
+Mogilev -1.989 -172.309
+Modesto -48.339 136.068
+Murfreesboro -20.784 -20.676
+Petaling 33.966 48.318
+Mandaue -33.568 148.914
+Puente -16.458 176.817
+Punta -60.528 -77.727
+Milton 30.591 -92.053
+Memphis -19.264 71.825
+Meycauayan -61.549 -76.350
+Marilao 82.320 161.141
+Parang -76.078 107.709
+Baia 61.465 -63.349
+Mirpur 18.632 -70.645
+Pir 26.332 126.482
+Panama -26.245 134.949
+Mati 1.300 -140.895
+Port -44.681 13.332
+Providence 64.750 -12.373
+Mogi 30.044 56.660
+Panabo -30.294 -61.033
+Milwaukee -12.148 104.156
+Portland 48.148 -164.912
+Belo 34.066 90.110
+Praha 53.802 124.779
+Marilao Memphis
+Phnom Belo
+Mandaue Murfreesboro
+Mirpur Pir
+Mogilev Meycauayan
+Punta Portland
+Mogilev Baia
+Baia Meycauayan
+Marilao Milton
+Panabo Muntinlupa
+Portland Phnom
+Panama Portland
+Petaling Puente
+Punta Panama
+Mogilev Providence
+Mogi Puente
+Portland Pir
+Meycauayan Belo
+Parang Modesto
+Petaling Panabo
+Providence Memphis
+Phnom Port
+Mandaue Providence
+Petaling Memphis
+Mandaue Panabo
+Port Panabo
+Marilao Port
+Portland Praha
+Petaling Modesto
+Marilao Mogi
+Mogilev Milwaukee
+Parang Puente
+Mogi Praha
+Mogilev Portland
+Milton Punta
+Puente Milwaukee
+Mirpur Mati
+Meycauayan Belo
+Punta Memphis
+Mandaue Pir
+Phnom Modesto
+Panabo Baia
+Modesto Parang
+Petaling Milton
+Modesto Punta
+Petaling Puente
+20 25 16
+Midsayap 35.397 -170.247
+Puerto -11.430 109.559
+Boa 83.688 155.994
+Port -83.314 85.772
+Mesa -56.158 62.191
+Mawlamyaing 1.708 -89.679
+Miami 12.308 82.132
+Meycauayan -69.311 57.145
+Panama 47.604 132.214
+Pasadena -46.097 -130.206
+Bihar -57.288 179.934
+Portland 88.581 124.682
+Pouso 85.006 69.759
+Bahir 67.393 90.760
+Bat -18.318 -64.754
+Pittsburgh 2.726 90.626
+Ponta 61.814 -1.193
+Moreno 62.328 138.995
+Phnom -46.239 71.106
+Marawi 86.848 -93.019
+Portland Bihar
+Portland Mawlamyaing
+Panama Bat
+Pittsburgh Pouso
+Ponta Moreno
+Meycauayan Bahir
+Portland Phnom
+Puerto Meycauayan
+Panama Bihar
+Midsayap Puerto
+Mesa Mawlamyaing
+Meycauayan Bat
+Mesa Moreno
+Meycauayan Pasadena
+Midsayap Bat
+Port Mesa
+Panama Puerto
+Puerto Moreno
+Mesa Pouso
+Midsayap Portland
+Phnom Moreno
+Panama Marawi
+Pouso Moreno
+Moreno Marawi
+Portland Bahir
+Phnom Boa
+Puerto Mawlamyaing
+Puerto Pittsburgh
+Pittsburgh Portland
+Portland Ponta
+Pouso Marawi
+Pouso Bat
+Mesa Pouso
+Mesa Bat
+Mawlamyaing Panama
+Miami Mawlamyaing
+Ponta Pittsburgh
+Mawlamyaing Miami
+Moreno Panama
+Bat Boa
+Moreno Panama
+4 7 11
+Piatra -21.830 53.928
+Plano -58.128 2.857
+Porto -5.759 -16.309
+Mar -81.738 -150.379
+Porto Piatra
+Mar Porto
+Mar Piatra
+Piatra Porto
+Plano Mar
+Piatra Plano
+Porto Plano
+Plano Porto
+Mar Piatra
+Plano Mar
+Mar Plano
+Porto Plano
+Porto Piatra
+Mar Piatra
+Porto Plano
+Porto Mar
+Piatra Mar
+Plano Mar
+12 3 3
+Bordj 5.600 49.401
+Memphis -49.579 135.190
+Miami -4.954 -144.568
+Phoenix 61.458 96.690
+Peoria -74.994 86.675
+Bab 55.342 30.863
+Buenos 54.088 9.394
+Praia 3.836 -98.371
+Polomolok 57.275 -172.943
+Marilao -18.401 -126.016
+Mesa 26.741 -140.715
+Malaybalay 51.878 147.144
+Miami Malaybalay
+Buenos Phoenix
+Mesa Peoria
+Polomolok Praia
+Miami Bab
+Marilao Miami
+26 48 13
+Mirpur 23.687 -80.114
+Malolos 7.626 -110.860
+Mandaluyong 25.010 109.160
+Patos 55.277 -75.474
+Miami -81.979 -152.724
+Mesquite 61.161 66.058
+Bani -20.408 -32.087
+Portland -53.678 -29.021
+Milton 41.784 94.404
+Belo -65.769 127.876
+Phoenix 6.653 -24.091
+Pittsburgh 54.687 79.763
+Peoria -78.111 113.825
+Ponta 45.630 74.551
+Moreno 85.312 45.225
+Panabo -21.926 139.379
+Midsayap 63.383 173.241
+Mobile 54.947 -64.319
+Buenos -62.216 116.987
+Punta -76.256 -117.205
+Meycauayan 6.892 23.926
+Marawi 31.389 27.917
+Mazari -18.628 -53.357
+Petah -62.733 -7.426
+Bahir 53.589 18.426
+Praia -88.694 -68.339
+Moreno Mesquite
+Panabo Malolos
+Belo Mobile
+Ponta Bani
+Mazari Bani
+Moreno Buenos
+Patos Mirpur
+Miami Bahir
+Malolos Patos
+Marawi Praia
+Panabo Ponta
+Marawi Petah
+Punta Ponta
+Marawi Mobile
+Moreno Marawi
+Mandaluyong Belo
+Phoenix Miami
+Mazari Meycauayan
+Mirpur Mazari
+Mirpur Punta
+Mobile Portland
+Miami Buenos
+Milton Portland
+Bani Marawi
+Milton Mesquite
+Mazari Malolos
+Petah Patos
+Malolos Peoria
+Praia Mobile
+Panabo Petah
+Petah Marawi
+Praia Mirpur
+Miami Petah
+Petah Buenos
+Peoria Pittsburgh
+Petah Mandaluyong
+Milton Bani
+Moreno Portland
+Panabo Mesquite
+Moreno Punta
+Punta Mobile
+Miami Midsayap
+Mobile Milton
+Portland Petah
+Moreno Mobile
+Moreno Miami
+Patos Moreno
+Marawi Moreno
+Pittsburgh Bahir
+Phoenix Milton
+Bani Panabo
+Praia Midsayap
+Mesquite Panabo
+Bani Mesquite
+Marawi Mirpur
+Buenos Petah
+Ponta Moreno
+Mazari Bahir
+Petah Portland
+Bahir Patos
+Belo Pittsburgh
+16 54 16
+Pasadena 56.596 -38.324
+Bila -52.150 73.298
+Bab -57.059 -177.864
+Muntinlupa 10.946 174.236
+Banja -40.335 98.294
+Minglanilla 0.118 -124.870
+Bou 59.765 -90.768
+Mandaue 52.090 63.690
+Bihar -23.911 -160.810
+Punta 65.578 169.314
+Minneapolis 45.082 -124.282
+Murfreesboro -28.129 -77.783
+Meycauayan -74.649 -135.594
+Pittsburgh -66.559 28.516
+Providence 4.992 137.451
+Puente -73.570 25.073
+Murfreesboro Minneapolis
+Murfreesboro Punta
+Muntinlupa Meycauayan
+Pasadena Bou
+Puente Punta
+Minglanilla Bila
+Banja Punta
+Bab Providence
+Muntinlupa Punta
+Bila Providence
+Punta Meycauayan
+Mandaue Minneapolis
+Pasadena Muntinlupa
+Pasadena Minglanilla
+Bou Bila
+Meycauayan Murfreesboro
+Bou Puente
+Bab Bihar
+Bila Minneapolis
+Puente Minglanilla
+Mandaue Puente
+Murfreesboro Bihar
+Minneapolis Bou
+Puente Mandaue
+Providence Banja
+Banja Bab
+Muntinlupa Banja
+Minneapolis Minglanilla
+Bab Pasadena
+Meycauayan Mandaue
+Bihar Pittsburgh
+Meycauayan Bila
+Punta Mandaue
+Puente Banja
+Murfreesboro Banja
+Pittsburgh Minneapolis
+Providence Bila
+Bou Pasadena
+Providence Bihar
+Bila Mandaue
+Bila Bab
+Bab Meycauayan
+Puente Muntinlupa
+Murfreesboro Pasadena
+Meycauayan Pasadena
+Punta Bab
+Bab Bila
+Meycauayan Pittsburgh
+Punta Murfreesboro
+Punta Bou
+Minneapolis Muntinlupa
+Muntinlupa Bila
+Punta Bila
+Bihar Bila
+Muntinlupa Minneapolis
+Bou Punta
+Pittsburgh Bou
+Minglanilla Minneapolis
+Minglanilla Pittsburgh
+Minneapolis Minglanilla
+Puente Bihar
+Minneapolis Murfreesboro
+Mandaue Meycauayan
+Pittsburgh Minglanilla
+Bihar Providence
+Punta Bila
+Banja Punta
+Bab Minneapolis
+Bab Bou
+Punta Meycauayan
+18 28 12
+Mawlamyaing 20.233 -138.523
+Mariveles -49.779 142.016
+Poza -25.251 -135.204
+Praia 67.132 155.512
+Portland -44.841 82.340
+Baton -11.565 -124.142
+Pagadian 62.682 -41.519
+Praha -16.367 153.606
+Porac 8.633 24.591
+Banja -57.216 -121.630
+Mogi -24.159 -149.442
+Puente -9.812 -108.368
+Bou -57.196 -68.650
+Masjed -37.244 -1.542
+Bihar 31.648 114.853
+Mandaue 36.534 -29.129
+Bat -59.225 -99.274
+Murfreesboro -36.987 -156.307
+Bat Pagadian
+Mandaue Poza
+Pagadian Porac
+Portland Murfreesboro
+Murfreesboro Bou
+Porac Baton
+Pagadian Banja
+Portland Bihar
+Poza Mariveles
+Bat Mandaue
+Bihar Mandaue
+Bihar Baton
+Baton Mandaue
+Masjed Praha
+Praha Bou
+Murfreesboro Bihar
+Mandaue Praia
+Bou Bihar
+Bou Praia
+Bihar Bat
+Mariveles Puente
+Poza Portland
+Mawlamyaing Pagadian
+Praha Pagadian
+Bat Praia
+Pagadian Bat
+Masjed Mogi
+Murfreesboro Banja
+Poza Pagadian
+Praia Praha
+Porac Mariveles
+Masjed Bat
+Mariveles Poza
+Mawlamyaing Praha
+Mawlamyaing Mandaue
+Mariveles Mawlamyaing
+Mawlamyaing Pagadian
+Puente Baton
+Praha Mariveles
+Mandaue Bou
+7 11 7
+Meycauayan -8.736 -53.307
+Port 29.802 22.141
+Mandaue 37.382 -9.861
+Baia -25.571 -105.390
+Batangas -72.598 -164.891
+Puli 88.225 21.805
+Pinar 21.131 -87.528
+Batangas Puli
+Mandaue Meycauayan
+Meycauayan Port
+Puli Pinar
+Pinar Mandaue
+Puli Batangas
+Baia Mandaue
+Puli Port
+Baia Batangas
+Port Baia
+Pinar Batangas
+Mandaue Pinar
+Puli Port
+Puli Batangas
+Meycauayan Batangas
+Meycauayan Batangas
+Mandaue Meycauayan
+Baia Batangas
+5 1 12
+Montgomery 31.487 56.914
+Patos 13.546 -15.744
+Mesa -1.053 143.055
+Peoria 23.243 -173.038
+Masjed 88.534 -30.229
+Masjed Mesa
+Mesa Montgomery
+Montgomery Patos
+Mesa Patos
+Montgomery Peoria
+Mesa Montgomery
+Peoria Patos
+Patos Masjed
+Montgomery Mesa
+Patos Masjed
+Masjed Montgomery
+Mesa Peoria
+Mesa Masjed
+13 10 10
+Petah -85.775 100.722
+Belford -38.386 -8.419
+Belo -50.140 102.086
+Petaling -62.734 130.664
+Puli 53.932 -121.376
+Port 56.661 31.145
+Bnei 14.247 154.786
+Modesto 14.491 73.702
+Malaybalay -1.567 112.127
+Panabo -5.076 152.243
+Pago -66.465 160.848
+Miami 55.411 111.385
+Bago -16.664 149.965
+Modesto Petaling
+Pago Panabo
+Panabo Puli
+Bnei Belo
+Petaling Miami
+Bnei Miami
+Petah Bnei
+Belo Panabo
+Panabo Port
+Modesto Malaybalay
+Bnei Malaybalay
+Petah Modesto
+Malaybalay Bnei
+Port Panabo
+Petah Belford
+Pago Bago
+Bnei Bago
+Petaling Malaybalay
+Bnei Bago
+Petah Malaybalay
+13 41 4
+Minglanilla -83.917 -37.753
+Bago -72.752 -6.467
+Malaybalay 86.098 7.667
+Batangas 20.013 84.026
+Manchester 56.026 90.586
+Montgomery 32.687 -89.395
+Memphis 26.858 -31.796
+Mariveles 78.729 81.347
+Mobile 23.663 -19.903
+Barra -32.424 -1.614
+Buenos -48.182 -122.717
+Pomona 31.447 -62.619
+Midsayap 40.818 161.683
+Bago Buenos
+Buenos Montgomery
+Barra Midsayap
+Barra Mariveles
+Batangas Midsayap
+Mariveles Barra
+Manchester Buenos
+Mariveles Batangas
+Midsayap Montgomery
+Memphis Manchester
+Barra Buenos
+Montgomery Pomona
+Minglanilla Midsayap
+Midsayap Mobile
+Montgomery Mobile
+Minglanilla Bago
+Malaybalay Batangas
+Midsayap Barra
+Mobile Pomona
+Buenos Manchester
+Bago Batangas
+Buenos Mobile
+Mariveles Mobile
+Midsayap Memphis
+Mariveles Bago
+Memphis Minglanilla
+Malaybalay Mariveles
+Mobile Malaybalay
+Mariveles Buenos
+Midsayap Pomona
+Malaybalay Midsayap
+Minglanilla Mobile
+Memphis Bago
+Minglanilla Manchester
+Barra Pomona
+Mobile Batangas
+Midsayap Mariveles
+Buenos Malaybalay
+Buenos Batangas
+Manchester Midsayap
+Midsayap Manchester
+Bago Minglanilla
+Pomona Malaybalay
+Pomona Bago
+Minglanilla Barra
+12 48 4
+Miami -37.663 -129.610
+Port 67.717 -60.744
+Malita 80.024 28.758
+Benito 31.322 -88.588
+Mobile -25.663 -132.341
+Phoenix -22.843 111.231
+McAllen -45.683 119.806
+Minneapolis 10.902 -30.016
+Bokaro -4.368 -135.420
+Moreno 38.987 -69.144
+Maunath 67.405 95.725
+Mogi 73.117 -5.175
+Phoenix Mobile
+Mobile Bokaro
+Maunath Moreno
+Moreno Port
+Minneapolis Port
+Miami Phoenix
+Miami Maunath
+Minneapolis McAllen
+Maunath Benito
+Bokaro Benito
+Benito Bokaro
+Mobile Maunath
+Miami Minneapolis
+Miami Bokaro
+Malita Bokaro
+Benito Miami
+Phoenix Mogi
+Miami Port
+Maunath Port
+Port Mobile
+McAllen Malita
+Moreno Bokaro
+Phoenix Miami
+Bokaro Mogi
+Moreno Minneapolis
+Minneapolis Miami
+Maunath Mogi
+Mobile McAllen
+Benito Maunath
+Mogi Mobile
+Benito Moreno
+Mobile Phoenix
+McAllen Benito
+McAllen Port
+Mogi Maunath
+McAllen Phoenix
+Malita Maunath
+Moreno Maunath
+McAllen Moreno
+McAllen Miami
+Mobile Minneapolis
+Port Malita
+Bokaro Maunath
+Port Mogi
+Benito Mogi
+Port Bokaro
+Malita Mogi
+Phoenix Moreno
+Malita Minneapolis
+Minneapolis Miami
+Minneapolis McAllen
+Bokaro Malita
+30 29 9
+Polomolok 39.142 91.277
+Port 60.797 -118.503
+Punto -47.844 -101.584
+Mesquite -60.056 -75.605
+Panabo 15.373 -90.232
+Malaybalay 73.989 -43.216
+Pueblo 62.796 -27.619
+Modesto 85.655 149.919
+Petah 18.834 15.613
+Mogi 7.098 25.629
+Puebla -59.553 -111.052
+Montes -76.360 115.362
+Piatra -37.204 29.431
+Milwaukee 83.779 44.127
+McAllen -68.529 -30.720
+Parang -1.108 -137.069
+Marilao 88.344 80.466
+Porto -12.256 -26.054
+Pir -66.535 -94.609
+Bani 43.181 -19.466
+Phoenix -68.635 127.954
+Barra 25.610 -145.761
+Midsayap -69.493 148.335
+Benito 35.840 -21.630
+Manchester -2.192 51.874
+Peoria -18.177 94.018
+Mati -17.267 59.734
+Porac 59.865 -16.305
+Petaling 8.684 -85.472
+Banja 29.744 -126.016
+Pueblo Barra
+Piatra Phoenix
+Pir Phoenix
+Montes Midsayap
+Milwaukee Peoria
+Porac Petaling
+Mati Punto
+Panabo Banja
+Marilao Polomolok
+Pir Peoria
+Porto Malaybalay
+Benito Banja
+Midsayap Bani
+Mesquite Milwaukee
+Port Pueblo
+Banja Phoenix
+Manchester Puebla
+Barra Piatra
+Benito Porto
+Polomolok Marilao
+Pueblo Milwaukee
+Mogi Manchester
+Phoenix Malaybalay
+Milwaukee Port
+Phoenix Marilao
+Peoria Puebla
+Panabo Montes
+Mesquite Modesto
+Puebla Mogi
+Midsayap Punto
+Punto Midsayap
+Marilao Mesquite
+Marilao McAllen
+Banja Mesquite
+Mati Punto
+Petah Malaybalay
+Pueblo Piatra
+Mesquite Pueblo
+10 50 20
+Malita -41.312 -137.345
+Pasadena 23.858 -37.732
+Portland -25.229 -141.020
+Panama -11.398 -67.213
+Beni -1.405 -118.112
+Mar -9.513 -73.487
+Matamoros -67.416 -133.944
+Minglanilla 3.085 -93.132
+Mandaue -19.251 -170.623
+Marilao -84.870 76.263
+Matamoros Mar
+Portland Marilao
+Panama Mar
+Panama Beni
+Mandaue Malita
+Portland Matamoros
+Beni Matamoros
+Minglanilla Panama
+Pasadena Marilao
+Marilao Portland
+Portland Minglanilla
+Malita Mar
+Pasadena Matamoros
+Matamoros Portland
+Pasadena Beni
+Minglanilla Marilao
+Mar Matamoros
+Matamoros Marilao
+Pasadena Panama
+Marilao Beni
+Minglanilla Beni
+Malita Matamoros
+Mar Marilao
+Panama Minglanilla
+Mandaue Portland
+Panama Pasadena
+Panama Malita
+Mar Portland
+Matamoros Minglanilla
+Beni Pasadena
+Minglanilla Mar
+Beni Minglanilla
+Panama Matamoros
+Mar Panama
+Beni Marilao
+Mandaue Pasadena
+Portland Panama
+Beni Mar
+Marilao Minglanilla
+Minglanilla Portland
+Pasadena Portland
+Beni Panama
+Pasadena Mar
+Marilao Malita
+Panama Portland
+Marilao Panama
+Pasadena Minglanilla
+Portland Malita
+Marilao Matamoros
+Matamoros Mandaue
+Pasadena Malita
+Matamoros Minglanilla
+Beni Minglanilla
+Malita Minglanilla
+Marilao Mandaue
+Portland Malita
+Mar Portland
+Minglanilla Portland
+Marilao Beni
+Beni Marilao
+Pasadena Malita
+Portland Mandaue
+Beni Mandaue
+Malita Beni
+Portland Malita
+Malita Matamoros
+Mar Panama
+Portland Mandaue
+Minglanilla Marilao
+Marilao Panama
+18 36 3
+Belo 42.305 -33.765
+Malolos -74.147 82.086
+Mogi 5.484 73.059
+Mandaluyong 11.201 -7.950
+Providence -30.102 -136.967
+Pueblo -25.448 -24.603
+Banja 44.201 -116.378
+Montes -51.784 -46.401
+Matamoros -48.024 52.685
+Poza -54.532 -11.609
+McAllen 73.852 -81.690
+Barra -71.930 178.961
+Marilao -30.162 47.783
+Murfreesboro -75.930 153.853
+Pomona 40.327 175.948
+Pematang 39.238 -156.938
+Malasiqui 41.203 143.694
+Bat -68.545 66.485
+Bat Malolos
+Mandaluyong Pomona
+Murfreesboro Malasiqui
+Pueblo Barra
+Marilao Matamoros
+Pomona Providence
+Pematang Malolos
+Matamoros Bat
+Mandaluyong Marilao
+Poza Providence
+Murfreesboro Belo
+Belo Malolos
+Mandaluyong Bat
+Marilao Bat
+Providence McAllen
+Poza Belo
+Marilao Providence
+Belo McAllen
+Mandaluyong Pueblo
+Murfreesboro Pueblo
+Montes Pematang
+Malasiqui Montes
+Montes Mandaluyong
+Montes Matamoros
+Matamoros Pueblo
+Banja Mandaluyong
+Belo Matamoros
+Pueblo Montes
+Bat McAllen
+Banja McAllen
+Mogi Marilao
+Marilao Malasiqui
+Bat Montes
+Malolos Pematang
+Pueblo Murfreesboro
+Barra Matamoros
+Pematang Banja
+Malolos Pomona
+Providence Pueblo
+14 14 2
+Mar 10.050 154.203
+Modesto 15.535 -85.558
+Pematang 88.651 81.573
+Benito 22.395 -71.390
+Bergisch -60.579 -47.408
+Puebla -28.935 86.027
+Minneapolis 51.139 -125.458
+Bani 23.473 -79.111
+Minglanilla -0.552 -22.481
+Patos -80.442 179.162
+Peoria 16.659 -77.147
+Presidente 10.510 -144.765
+Bou -80.721 166.332
+Plano -71.036 -6.049
+Minneapolis Bergisch
+Minglanilla Bou
+Mar Pematang
+Minneapolis Modesto
+Bou Pematang
+Bergisch Presidente
+Minneapolis Plano
+Modesto Peoria
+Presidente Bou
+Peoria Bou
+Presidente Patos
+Bergisch Patos
+Bani Minneapolis
+Benito Peoria
+Bergisch Presidente
+Modesto Presidente
+24 2 6
+Philadelphia 68.922 51.257
+Manchester -86.583 10.484
+Malolos 18.826 18.689
+Miami 1.161 -3.704
+Phoenix -57.380 -120.523
+Pasadena -61.246 -11.924
+Polomolok 40.705 76.208
+Maunath 33.633 -15.682
+Bila 27.937 39.333
+Milwaukee 32.136 132.619
+Pematang -57.177 63.307
+Montes -59.857 144.193
+Memphis 3.289 -149.878
+Petaling -50.006 132.799
+Mar 46.261 113.154
+Pakan 55.421 75.695
+Bou -74.436 24.864
+Panama 44.639 13.133
+Mobile -62.018 -72.873
+Pittsburgh 87.729 110.834
+Palma -33.175 89.687
+Mesa -41.063 5.147
+Bihar -47.215 -76.420
+Mandaluyong -16.283 104.108
+Petaling Pakan
+Phoenix Manchester
+Miami Memphis
+Memphis Malolos
+Montes Manchester
+Maunath Montes
+Pakan Mar
+Polomolok Palma
+2 2 14
+Praha 35.740 -53.187
+Philadelphia 50.262 -4.013
+Praha Philadelphia
+Philadelphia Praha
+Philadelphia Praha
+Philadelphia Praha
+Philadelphia Praha
+Philadelphia Praha
+Praha Philadelphia
+Praha Philadelphia
+Philadelphia Praha
+Philadelphia Praha
+Philadelphia Praha
+Praha Philadelphia
+Philadelphia Praha
+Praha Philadelphia
+Praha Philadelphia
+Philadelphia Praha
+30 47 16
+Peoria -18.546 -118.871
+Modesto -6.885 -52.734
+Buenos -60.852 158.193
+Bandar 14.081 125.348
+Maunath 25.334 59.333
+Pomona -28.778 55.280
+Pir 17.922 -100.071
+Puebla -62.321 -88.479
+Mexico -50.564 -126.425
+Providence 21.536 -44.479
+Marilao -20.410 -32.746
+McAllen -28.177 -147.512
+Meycauayan -79.290 -125.491
+Mati 53.073 -126.675
+Palma 38.628 -124.387
+Porac 10.065 125.826
+Plano -61.837 175.305
+Mandaluyong -7.004 -159.903
+Malasiqui -53.539 6.692
+Pueblo -29.784 115.629
+Provo -38.698 6.410
+Baia -53.306 -27.243
+Montes 37.428 -57.103
+Patos -48.606 178.851
+Parang 24.250 88.943
+Miami 16.559 17.455
+Mogi 76.709 56.837
+Milton -88.892 -123.102
+Presidente -47.813 -14.182
+Matamoros 0.937 -31.030
+Palma Provo
+Parang Pomona
+Patos Bandar
+Providence Bandar
+Marilao Pomona
+Presidente Provo
+Marilao Meycauayan
+Mandaluyong Milton
+Porac Meycauayan
+Maunath Baia
+Pomona Pueblo
+Baia Puebla
+Pomona Montes
+Mandaluyong Matamoros
+Modesto Providence
+Matamoros Meycauayan
+Marilao Plano
+McAllen Patos
+Malasiqui Bandar
+Peoria Provo
+Bandar Matamoros
+McAllen Presidente
+Mandaluyong Mati
+Mandaluyong Baia
+Maunath Buenos
+Mati Baia
+Presidente Buenos
+Parang Maunath
+Bandar Miami
+Maunath Bandar
+Mexico Milton
+Mati Bandar
+Plano Malasiqui
+Puebla Mati
+Pomona Matamoros
+Buenos Presidente
+Meycauayan Porac
+Bandar Montes
+Milton Palma
+Pueblo Plano
+Puebla Baia
+Porac Parang
+Pueblo Buenos
+Matamoros McAllen
+Baia Buenos
+Mati Matamoros
+Meycauayan Peoria
+Matamoros Meycauayan
+Marilao Mandaluyong
+Meycauayan Modesto
+Mexico McAllen
+Maunath Parang
+Peoria Bandar
+Provo Patos
+Palma Pueblo
+Pomona Milton
+Miami Baia
+Provo Buenos
+Baia Bandar
+Mandaluyong Porac
+Presidente Meycauayan
+Parang Mandaluyong
+Plano Marilao
+5 13 10
+Phoenix -6.287 121.886
+Bani -27.377 105.108
+Piatra 28.772 142.504
+Bnei 57.789 69.165
+Matamoros 41.093 50.769
+Phoenix Bnei
+Piatra Matamoros
+Matamoros Bnei
+Bnei Bani
+Bani Matamoros
+Piatra Bani
+Bnei Phoenix
+Bani Piatra
+Bnei Piatra
+Piatra Bnei
+Phoenix Bani
+Bani Bnei
+Piatra Phoenix
+Bnei Matamoros
+Bnei Bani
+Matamoros Piatra
+Matamoros Piatra
+Bani Bnei
+Piatra Bnei
+Piatra Matamoros
+Piatra Phoenix
+Bnei Piatra
+Phoenix Piatra
+7 11 5
+Mirpur 62.005 139.559
+Puebla 36.807 -103.454
+Pouso -53.545 100.674
+Bila 80.694 91.475
+Pematang -62.737 165.765
+Pasadena 80.215 -162.417
+Pittsburgh -44.240 -141.137
+Puebla Bila
+Puebla Mirpur
+Pittsburgh Pasadena
+Mirpur Pouso
+Mirpur Bila
+Mirpur Puebla
+Pittsburgh Mirpur
+Bila Pouso
+Pematang Pasadena
+Pouso Pasadena
+Pasadena Pouso
+Mirpur Pouso
+Puebla Mirpur
+Mirpur Pasadena
+Pittsburgh Mirpur
+Pittsburgh Bila
+3 4 9
+Phnom -21.847 -6.801
+Meycauayan 63.628 -99.799
+Malaybalay -6.091 -121.242
+Malaybalay Meycauayan
+Meycauayan Phnom
+Phnom Malaybalay
+Phnom Meycauayan
+Meycauayan Malaybalay
+Malaybalay Meycauayan
+Malaybalay Phnom
+Meycauayan Malaybalay
+Meycauayan Phnom
+Phnom Meycauayan
+Phnom Malaybalay
+Phnom Malaybalay
+Phnom Malaybalay
+30 25 4
+Malolos 59.681 -6.750
+Bokaro 48.228 -52.030
+Palma 4.358 -126.280
+Milton -53.295 25.338
+Batangas -31.710 -55.285
+Ponta -56.457 118.985
+Mati -36.116 -102.027
+McAllen -54.774 -74.633
+Montes 9.888 65.570
+Paradise 15.700 56.724
+Peoria -33.417 65.858
+Murfreesboro 80.560 51.315
+Panama 33.229 -114.512
+Puebla 58.054 162.256
+Providence -9.724 -110.927
+Pouso -3.563 142.679
+Bila 29.635 49.135
+Masjed -86.088 3.826
+Manchester 75.508 -108.213
+Mogi 21.631 -103.709
+Malasiqui -32.576 72.286
+Maunath -11.053 -141.256
+Benito 27.428 -117.416
+Panabo -29.848 112.560
+Mobile -59.793 -119.339
+Piatra -82.474 134.197
+Mar -4.081 147.716
+Phnom -13.716 118.087
+Malita -81.374 127.911
+Marilao -33.961 -112.484
+Puebla Marilao
+Murfreesboro Benito
+Phnom Murfreesboro
+Providence Benito
+Montes Pouso
+Malasiqui Panabo
+Mobile Paradise
+Mati Pouso
+Ponta Panabo
+Bila Ponta
+Masjed Bokaro
+Masjed Palma
+Bokaro Malolos
+Ponta Murfreesboro
+Mobile Bokaro
+Batangas Mogi
+Malolos Phnom
+Murfreesboro Palma
+Bila Benito
+McAllen Manchester
+Murfreesboro Mobile
+Piatra Mogi
+Mar Phnom
+Panama Bokaro
+Marilao Palma
+Piatra Marilao
+Bokaro Montes
+Montes Panama
+Pouso Mobile
+15 56 1
+Banja -44.311 134.625
+Muntinlupa -18.885 42.117
+Punta 50.956 -34.695
+Patos -43.622 -2.884
+Meycauayan -56.314 170.910
+Poza 59.689 58.244
+Petaling -19.886 -19.500
+Bandar -81.761 172.632
+Panama 85.442 142.639
+Pinar -11.718 146.312
+Mariveles 79.424 -98.772
+Moreno -0.984 -78.002
+Baia -23.055 -23.141
+Porto -55.225 -98.733
+Punto 88.370 29.644
+Petaling Porto
+Banja Muntinlupa
+Bandar Panama
+Muntinlupa Pinar
+Baia Punto
+Baia Mariveles
+Poza Muntinlupa
+Punta Panama
+Petaling Bandar
+Punta Punto
+Pinar Panama
+Panama Moreno
+Bandar Porto
+Baia Petaling
+Baia Meycauayan
+Panama Punta
+Punto Patos
+Muntinlupa Mariveles
+Meycauayan Punto
+Bandar Patos
+Punta Poza
+Porto Pinar
+Patos Punto
+Petaling Pinar
+Bandar Poza
+Poza Meycauayan
+Panama Banja
+Pinar Mariveles
+Porto Punta
+Meycauayan Pinar
+Banja Punto
+Punto Banja
+Mariveles Punto
+Meycauayan Petaling
+Muntinlupa Baia
+Panama Mariveles
+Pinar Poza
+Bandar Baia
+Poza Bandar
+Baia Bandar
+Moreno Porto
+Poza Pinar
+Meycauayan Baia
+Petaling Punto
+Banja Mariveles
+Punta Muntinlupa
+Muntinlupa Poza
+Mariveles Banja
+Muntinlupa Petaling
+Poza Punto
+Meycauayan Panama
+Punta Baia
+Petaling Banja
+Petaling Patos
+Porto Mariveles
+Poza Petaling
+Bandar Punto
+17 57 11
+Maunath -55.714 -146.605
+Muntinlupa -52.829 -84.293
+Montgomery -88.810 135.954
+Poza -57.108 11.017
+Meycauayan 48.618 40.532
+Buenos -24.082 179.763
+Moreno 67.023 -156.281
+Presidente 12.417 70.212
+Malolos 36.332 148.983
+Baton 73.755 -104.319
+Modesto -46.760 37.930
+Murfreesboro -67.962 -18.257
+Ponta 9.275 109.986
+Mobile 13.062 74.876
+Mazari 60.053 -41.365
+Malita 15.206 -60.220
+Pir -66.955 -144.880
+Mobile Mazari
+Ponta Meycauayan
+Muntinlupa Murfreesboro
+Pir Poza
+Moreno Presidente
+Maunath Muntinlupa
+Moreno Pir
+Mobile Modesto
+Maunath Baton
+Murfreesboro Moreno
+Buenos Mazari
+Montgomery Maunath
+Poza Malolos
+Poza Malita
+Poza Pir
+Montgomery Malita
+Muntinlupa Meycauayan
+Montgomery Muntinlupa
+Modesto Malita
+Mazari Montgomery
+Mobile Maunath
+Maunath Murfreesboro
+Murfreesboro Buenos
+Murfreesboro Baton
+Moreno Buenos
+Mobile Presidente
+Malita Pir
+Mazari Pir
+Presidente Muntinlupa
+Baton Maunath
+Buenos Murfreesboro
+Mazari Malita
+Ponta Muntinlupa
+Mazari Buenos
+Baton Modesto
+Ponta Mazari
+Murfreesboro Poza
+Modesto Murfreesboro
+Baton Muntinlupa
+Baton Montgomery
+Murfreesboro Maunath
+Malita Mobile
+Maunath Presidente
+Mazari Mobile
+Malolos Mazari
+Montgomery Modesto
+Malita Moreno
+Baton Mobile
+Malolos Poza
+Buenos Poza
+Mobile Montgomery
+Montgomery Presidente
+Presidente Pir
+Muntinlupa Poza
+Muntinlupa Malolos
+Moreno Malita
+Ponta Poza
+Malolos Poza
+Mobile Ponta
+Muntinlupa Murfreesboro
+Presidente Murfreesboro
+Malita Pir
+Modesto Presidente
+Modesto Moreno
+Maunath Pir
+Moreno Malita
+Mazari Modesto
+Malita Meycauayan
+13 58 6
+Palmdale -53.334 129.115
+Peoria -20.121 -8.371
+Minglanilla 72.310 51.652
+Banda 30.414 126.573
+Patos 79.774 6.573
+Malolos 28.832 31.384
+Mobile 57.609 -105.041
+Milwaukee -68.669 -106.508
+Pembroke -83.077 61.509
+Pomona 9.741 -70.674
+Punta 62.572 44.925
+Bihar 31.676 -155.966
+Plano -38.692 -72.455
+Peoria Patos
+Plano Bihar
+Malolos Milwaukee
+Pembroke Palmdale
+Palmdale Bihar
+Punta Patos
+Malolos Bihar
+Milwaukee Mobile
+Minglanilla Patos
+Punta Pomona
+Pembroke Punta
+Bihar Patos
+Milwaukee Banda
+Mobile Minglanilla
+Banda Milwaukee
+Plano Banda
+Palmdale Banda
+Patos Punta
+Pomona Mobile
+Mobile Patos
+Patos Pembroke
+Banda Palmdale
+Patos Peoria
+Pembroke Milwaukee
+Patos Mobile
+Peoria Malolos
+Banda Pembroke
+Patos Milwaukee
+Palmdale Malolos
+Punta Bihar
+Punta Malolos
+Malolos Peoria
+Milwaukee Punta
+Pembroke Plano
+Milwaukee Palmdale
+Patos Banda
+Pomona Milwaukee
+Bihar Malolos
+Bihar Pembroke
+Palmdale Mobile
+Minglanilla Palmdale
+Pomona Malolos
+Plano Mobile
+Milwaukee Pomona
+Patos Pomona
+Banda Bihar
+Plano Pembroke
+Pembroke Peoria
+Minglanilla Mobile
+Palmdale Milwaukee
+Pomona Punta
+Malolos Minglanilla
+Bihar Minglanilla
+Banda Malolos
+Pembroke Pomona
+Pomona Plano
+Milwaukee Bihar
+Malolos Pomona
+Mobile Pomona
+Mobile Milwaukee
+Malolos Patos
+Pomona Patos
+Peoria Patos
+Pomona Malolos
+7 13 3
+Porac 58.511 -77.702
+Bahir -28.729 -135.810
+Mirpur -21.116 -124.710
+Mobile -39.752 148.919
+Matamoros -5.211 -36.240
+Paradise -23.328 -42.757
+Boa -9.091 -27.428
+Mobile Porac
+Matamoros Mirpur
+Paradise Bahir
+Mirpur Matamoros
+Porac Boa
+Mobile Bahir
+Mirpur Boa
+Paradise Porac
+Matamoros Bahir
+Porac Matamoros
+Matamoros Paradise
+Bahir Porac
+Bahir Paradise
+Mirpur Porac
+Paradise Bahir
+Porac Boa
+17 55 4
+Bat 15.097 140.601
+Mobile -35.926 124.098
+Mandaue 89.182 58.441
+Praha -44.484 -53.044
+Piatra 86.851 124.353
+Murfreesboro -4.442 -64.205
+Pakan -37.252 -65.232
+Mesquite -81.861 146.922
+Portland 60.544 61.178
+Pouso -37.230 -69.266
+Mazari -73.896 145.099
+Mar 46.662 -157.039
+Bab 46.310 -69.145
+Bokaro 77.253 -139.149
+Puli 87.530 23.222
+Meycauayan -55.856 118.939
+Punta -35.577 -53.137
+Bokaro Bab
+Punta Bokaro
+Mandaue Piatra
+Pouso Bab
+Portland Mobile
+Bokaro Punta
+Pouso Piatra
+Mazari Pakan
+Mar Portland
+Mar Praha
+Mobile Portland
+Puli Meycauayan
+Praha Mesquite
+Puli Mobile
+Bokaro Praha
+Meycauayan Piatra
+Pakan Bat
+Mazari Murfreesboro
+Murfreesboro Pouso
+Portland Mandaue
+Murfreesboro Bab
+Pakan Bab
+Mesquite Bokaro
+Punta Bat
+Pouso Pakan
+Mar Murfreesboro
+Praha Portland
+Mandaue Murfreesboro
+Mobile Bat
+Meycauayan Portland
+Pouso Bokaro
+Pouso Mesquite
+Meycauayan Mar
+Pouso Puli
+Mandaue Mobile
+Meycauayan Bokaro
+Praha Pakan
+Bokaro Meycauayan
+Mar Mandaue
+Mazari Mesquite
+Praha Puli
+Murfreesboro Bokaro
+Murfreesboro Piatra
+Mobile Mar
+Mobile Bokaro
+Mesquite Mar
+Punta Mesquite
+Punta Portland
+Piatra Pouso
+Piatra Meycauayan
+Meycauayan Bab
+Puli Praha
+Mazari Bat
+Mandaue Puli
+Pouso Mar
+Portland Meycauayan
+Pouso Bab
+Punta Pouso
+Mar Mobile
+9 46 1
+Panama -88.490 121.081
+Mar 52.354 40.187
+Pembroke 45.117 34.082
+Mobile -35.609 -65.225
+Miami -40.600 52.248
+Memphis -34.367 -68.394
+McAllen -6.978 160.739
+Pittsburgh 36.452 90.742
+Puli 34.166 -18.752
+McAllen Miami
+Pembroke Mar
+Mobile Panama
+Pembroke Miami
+Mar Puli
+Mobile Memphis
+Miami Panama
+Memphis Pittsburgh
+Pittsburgh Puli
+Pembroke Memphis
+Puli Miami
+Mar Mobile
+Pembroke Puli
+McAllen Mar
+Memphis Pembroke
+Pittsburgh Mobile
+Memphis McAllen
+Mar Memphis
+Puli Pittsburgh
+McAllen Panama
+Mar Miami
+Pembroke Panama
+Memphis Puli
+Panama Memphis
+Mar McAllen
+Panama Mobile
+Panama Mar
+Puli Panama
+Mar Pittsburgh
+Miami Mobile
+Pembroke Mobile
+Pittsburgh Miami
+Mobile Puli
+Puli Pembroke
+Miami McAllen
+Mobile Mar
+Pittsburgh Panama
+Mobile McAllen
+Pittsburgh McAllen
+Miami Memphis
+Panama McAllen
+Miami Puli
+McAllen Memphis
+Pittsburgh Pembroke
+Pittsburgh Memphis
+Puli Memphis
+Mar Pembroke
+30 41 8
+Pematang 16.717 -83.024
+Moreno -6.290 -14.876
+Minglanilla 13.714 15.791
+Malaybalay 42.779 -128.686
+Milwaukee -82.838 126.700
+Petaling 79.682 -116.280
+Malasiqui -47.583 134.953
+Pago 4.277 169.064
+Beni 19.563 -30.532
+Puebla 53.935 158.701
+Benito 84.110 118.286
+Belo -70.194 -123.819
+Palmdale 35.530 123.331
+Plano 77.628 138.811
+Mobile -12.354 -96.512
+Mariveles 12.470 -83.278
+Patos 7.314 146.037
+Peoria 2.908 -14.400
+Puente 75.538 95.984
+Pinar -49.270 24.272
+Mati 60.187 23.730
+Mogi 37.450 96.237
+Palma 89.774 127.091
+Mandaluyong 9.268 -61.368
+Baia -28.774 -98.510
+Philadelphia -17.066 95.084
+Mesquite 75.392 141.909
+Providence -65.182 -67.900
+Modesto -1.167 -51.573
+Praha 38.740 -131.633
+Malaybalay Providence
+Pematang Peoria
+Mogi Plano
+Mati Puebla
+Pinar Patos
+Mesquite Mandaluyong
+Patos Puebla
+Palmdale Patos
+Pago Mogi
+Pematang Mogi
+Mati Minglanilla
+Moreno Mobile
+Belo Milwaukee
+Pinar Palma
+Beni Philadelphia
+Mogi Beni
+Beni Mesquite
+Peoria Mesquite
+Modesto Mesquite
+Mobile Moreno
+Peoria Pago
+Palmdale Pematang
+Pematang Moreno
+Moreno Philadelphia
+Mariveles Minglanilla
+Philadelphia Pago
+Malasiqui Palmdale
+Mandaluyong Milwaukee
+Petaling Baia
+Minglanilla Moreno
+Benito Malaybalay
+Pinar Palmdale
+Minglanilla Modesto
+Palmdale Plano
+Pematang Benito
+Mobile Petaling
+Petaling Mandaluyong
+Baia Puebla
+Malaybalay Baia
+Malasiqui Praha
+Philadelphia Moreno
+Philadelphia Mogi
+Mandaluyong Pematang
+Mandaluyong Minglanilla
+Petaling Puente
+Pematang Milwaukee
+Baia Peoria
+Pematang Baia
+Mesquite Praha
+24 35 1
+Malita 76.293 119.844
+Mesa -9.309 -173.122
+Benito 4.596 -6.342
+Bab 43.055 40.823
+Muntinlupa 68.039 -24.046
+Buenos -2.384 114.609
+Phnom -20.312 176.823
+Puerto 33.421 12.070
+Bordj -1.919 154.826
+Belford -4.600 133.623
+Porto -73.982 62.114
+Puli 20.638 151.831
+Paradise 9.480 -81.194
+Mesquite 83.563 -128.311
+Milton -32.230 122.302
+Pueblo -23.730 14.790
+Memphis -31.638 120.814
+Pasadena -85.660 -64.192
+Praia 13.859 -37.067
+Mati 42.281 29.375
+Boa 6.405 -93.711
+Beni -62.167 -133.348
+Marilao -75.240 87.853
+Maunath -34.499 159.314
+Bab Bordj
+Pueblo Bab
+Puli Belford
+Pasadena Memphis
+Praia Bordj
+Mesa Maunath
+Belford Phnom
+Pasadena Praia
+Memphis Phnom
+Puli Mati
+Puli Puerto
+Puli Memphis
+Buenos Boa
+Belford Bordj
+Maunath Paradise
+Pueblo Belford
+Mesa Benito
+Buenos Memphis
+Belford Pasadena
+Puli Milton
+Puerto Malita
+Belford Porto
+Muntinlupa Pasadena
+Maunath Bab
+Marilao Paradise
+Paradise Benito
+Praia Mesa
+Beni Maunath
+Bordj Memphis
+Boa Marilao
+Malita Maunath
+Praia Bab
+Boa Mesa
+Porto Maunath
+Buenos Beni
+Marilao Mesquite
+6 24 16
+Pinar 21.049 93.288
+Baton 20.712 -11.577
+Moreno 18.653 -79.035
+Phoenix 0.258 88.488
+Mazari -57.337 91.521
+Ponta 72.613 -46.801
+Ponta Mazari
+Moreno Phoenix
+Ponta Pinar
+Phoenix Moreno
+Phoenix Pinar
+Pinar Moreno
+Mazari Baton
+Baton Moreno
+Ponta Moreno
+Ponta Phoenix
+Phoenix Ponta
+Phoenix Mazari
+Mazari Ponta
+Moreno Pinar
+Moreno Mazari
+Pinar Baton
+Pinar Phoenix
+Moreno Baton
+Mazari Moreno
+Mazari Phoenix
+Pinar Ponta
+Baton Phoenix
+Mazari Pinar
+Moreno Ponta
+Baton Mazari
+Baton Pinar
+Phoenix Baton
+Baton Pinar
+Pinar Phoenix
+Ponta Baton
+Baton Phoenix
+Baton Pinar
+Pinar Phoenix
+Phoenix Ponta
+Ponta Moreno
+Moreno Phoenix
+Baton Pinar
+Ponta Pinar
+Baton Pinar
+Ponta Mazari
+9 48 5
+Bago 83.035 -46.863
+Petaling -33.215 -109.492
+Mogilev 21.858 -79.126
+Panama -24.841 105.322
+Presidente 52.516 -64.393
+Punta -42.352 -166.771
+Mogi 57.088 160.876
+Peoria 9.019 158.581
+Mesa -1.328 -134.988
+Mogilev Petaling
+Panama Peoria
+Punta Presidente
+Mesa Peoria
+Mogilev Punta
+Bago Peoria
+Punta Peoria
+Bago Panama
+Mogilev Panama
+Peoria Mogilev
+Petaling Peoria
+Mogilev Peoria
+Punta Mogi
+Mesa Bago
+Punta Petaling
+Mogi Punta
+Peoria Mesa
+Presidente Mogilev
+Bago Petaling
+Petaling Punta
+Mogi Petaling
+Petaling Mogi
+Mesa Mogilev
+Mogilev Mesa
+Presidente Bago
+Peoria Bago
+Panama Presidente
+Panama Mesa
+Mogilev Mogi
+Punta Mesa
+Presidente Petaling
+Panama Mogi
+Mesa Presidente
+Panama Punta
+Peoria Petaling
+Mogilev Bago
+Petaling Panama
+Mesa Mogi
+Mogi Panama
+Panama Petaling
+Mogi Bago
+Mogi Mesa
+Bago Mogi
+Presidente Panama
+Mesa Panama
+Peoria Presidente
+Panama Bago
+Punta Mogilev
+Peoria Presidente
+Mogi Mesa
+Punta Peoria
+Petaling Panama
+Punta Bago
+19 38 15
+Palma -55.135 -5.216
+Peoria -61.412 -93.908
+Modesto -53.831 -9.652
+Pittsburgh -16.816 19.180
+Panabo -12.264 4.692
+Petah -16.318 102.107
+Pembroke -6.746 80.226
+Bergisch 36.890 149.261
+Paradise -11.134 -103.718
+Pago 34.791 88.623
+Puli -15.238 8.018
+Piatra -62.820 123.697
+Marilao -74.685 2.381
+Boa -51.759 35.642
+Malaybalay 34.512 -51.184
+Pagadian -38.677 13.207
+Matamoros 19.749 -7.728
+Montgomery -25.015 47.476
+Provo 14.144 -128.334
+Pagadian Puli
+Petah Paradise
+Bergisch Pagadian
+Petah Matamoros
+Montgomery Boa
+Pembroke Pagadian
+Pagadian Modesto
+Pembroke Provo
+Panabo Paradise
+Petah Panabo
+Modesto Pittsburgh
+Matamoros Montgomery
+Panabo Provo
+Paradise Petah
+Pembroke Malaybalay
+Bergisch Matamoros
+Modesto Pagadian
+Palma Pittsburgh
+Pago Pagadian
+Piatra Boa
+Matamoros Modesto
+Montgomery Puli
+Boa Marilao
+Matamoros Pittsburgh
+Petah Montgomery
+Peoria Matamoros
+Marilao Boa
+Provo Petah
+Piatra Provo
+Petah Puli
+Montgomery Petah
+Panabo Montgomery
+Montgomery Provo
+Petah Palma
+Paradise Pago
+Pembroke Bergisch
+Marilao Palma
+Boa Pembroke
+Marilao Bergisch
+Modesto Piatra
+Modesto Boa
+Pagadian Malaybalay
+Boa Modesto
+Pago Panabo
+Pago Matamoros
+Malaybalay Petah
+Panabo Boa
+Piatra Boa
+Palma Pago
+Matamoros Palma
+Matamoros Pembroke
+Pittsburgh Palma
+Bergisch Pago
+17 4 15
+Malita -77.681 99.430
+Provo 26.855 -3.098
+Montgomery -7.299 -65.971
+Pasadena -54.634 107.547
+Pakan 21.195 77.806
+Banda 12.407 93.268
+Miami -46.279 53.464
+Providence -4.416 121.049
+Bago 23.975 -32.417
+Poza -55.242 -119.569
+Beni -36.852 -116.421
+Banja 71.329 101.077
+Pittsburgh 73.910 36.766
+Mogi -79.764 -19.562
+Minglanilla 72.237 -21.246
+Bani -67.076 -156.844
+Mirpur -71.496 165.644
+Pasadena Poza
+Mogi Miami
+Pasadena Bago
+Banda Poza
+Bani Pittsburgh
+Provo Banja
+Minglanilla Poza
+Bago Pasadena
+Minglanilla Banja
+Bani Minglanilla
+Banda Beni
+Mogi Bago
+Malita Providence
+Provo Providence
+Bani Montgomery
+Banda Beni
+Minglanilla Pakan
+Mirpur Banda
+Beni Minglanilla
+29 13 8
+Pouso -79.808 -60.402
+Bab 54.311 -177.656
+Pasadena 24.710 176.958
+Patos -77.505 162.774
+Murfreesboro 80.024 13.196
+Pinar 7.622 -100.808
+Marilao -8.726 46.367
+Portland -35.279 91.347
+Mobile 69.193 -108.274
+Mariveles 24.077 -20.673
+Bordj -30.022 97.830
+Pematang 78.200 100.020
+Moreno 42.050 55.024
+Beni -83.698 55.355
+Mandaluyong -35.831 150.971
+Mogilev -57.467 -47.208
+Bani -77.828 -15.492
+Bokaro -82.409 19.942
+Meycauayan 37.028 -11.910
+Minglanilla -57.403 -173.692
+Barra -51.485 171.716
+Pueblo 35.883 101.401
+Palma -30.715 -154.473
+Peoria 89.588 11.099
+Presidente -39.556 -51.661
+Mesa 54.987 -116.398
+Mati 65.302 49.787
+Porac 63.884 -125.666
+Provo -7.664 -121.982
+Bordj Pasadena
+Presidente Beni
+Porac Beni
+Presidente Porac
+Peoria Murfreesboro
+Palma Meycauayan
+Beni Mandaluyong
+Patos Palma
+Mobile Murfreesboro
+Pueblo Meycauayan
+Palma Bani
+Pouso Mogilev
+Peoria Bordj
+Porac Patos
+Mati Mesa
+Pasadena Pouso
+Mandaluyong Palma
+Moreno Pueblo
+Mesa Mariveles
+Minglanilla Marilao
+Barra Bordj
+25 30 19
+Pittsburgh -79.058 87.250
+Philadelphia -53.118 -131.234
+Moreno -40.913 26.440
+Bordj 9.857 155.486
+Malasiqui 53.883 -41.165
+Banja -13.727 -104.013
+Pago 3.736 68.360
+Portland 61.126 136.012
+Petaling -53.904 73.785
+Poza 60.819 -62.888
+Polomolok 30.348 -27.803
+Malita 88.498 -53.097
+Mesa -3.291 129.225
+Matamoros 73.479 106.906
+Malaybalay 52.436 62.435
+Maunath -14.703 -94.334
+Mawlamyaing 70.151 132.167
+Muntinlupa -45.609 -10.492
+Pouso -48.247 155.989
+Baton 38.219 52.745
+Punta -36.986 174.420
+Milton 86.887 63.011
+Praia 50.988 83.667
+Belford -7.389 -38.627
+Milwaukee 63.703 -143.961
+Malaybalay Punta
+Poza Milwaukee
+Banja Punta
+Moreno Malita
+Pouso Mesa
+Malaybalay Milton
+Milton Pouso
+Poza Portland
+Punta Bordj
+Mesa Petaling
+Milton Pago
+Petaling Poza
+Pittsburgh Banja
+Baton Punta
+Muntinlupa Mawlamyaing
+Portland Malaybalay
+Pittsburgh Mawlamyaing
+Milton Bordj
+Banja Malita
+Pago Polomolok
+Milwaukee Philadelphia
+Petaling Pittsburgh
+Bordj Malita
+Baton Bordj
+Mesa Muntinlupa
+Bordj Muntinlupa
+Belford Punta
+Maunath Bordj
+Milwaukee Punta
+Mawlamyaing Matamoros
+Malaybalay Malasiqui
+Pittsburgh Baton
+Philadelphia Moreno
+Poza Malita
+Mesa Malasiqui
+Malasiqui Malita
+Praia Milton
+Philadelphia Poza
+Malasiqui Pouso
+Malita Matamoros
+Polomolok Portland
+Malita Poza
+Malasiqui Philadelphia
+Poza Polomolok
+Philadelphia Mawlamyaing
+Punta Moreno
+Milton Muntinlupa
+Baton Belford
+Malita Milwaukee
+30 50 14
+Bihar 71.998 38.375
+McAllen 75.486 -3.933
+Mexico 30.133 160.453
+Panabo -52.625 114.808
+Mandaluyong 18.867 57.275
+Pago -88.028 -144.688
+Memphis 71.561 -51.237
+Puerto -18.396 -51.289
+Poza -2.862 168.317
+Malaybalay -45.936 104.091
+Mar 53.768 -29.317
+Marilao -40.748 26.984
+Bergisch -77.366 44.474
+Porto 18.970 162.140
+Bokaro -84.309 89.869
+Bago 20.231 -18.460
+Masjed -47.914 -52.889
+Boa 26.696 11.483
+Pakan 78.858 123.303
+Mariveles 33.981 87.558
+Banja 71.266 134.565
+Mati -84.547 130.724
+Peoria 0.271 85.663
+Bab 23.007 -125.550
+Portland -41.505 61.431
+Plano 0.901 -7.496
+Palmdale 76.787 -56.179
+Pematang -84.290 14.242
+Praha 88.625 -80.056
+Providence -32.147 128.339
+Mandaluyong Panabo
+Mariveles Boa
+Mati Bab
+Banja Poza
+Plano Marilao
+Boa Masjed
+Mar Bihar
+Mexico Boa
+Pakan Mar
+Bihar Pematang
+Peoria Bihar
+Bab Poza
+Providence Mar
+Providence Mexico
+Bihar Bokaro
+Mar Masjed
+Panabo Pago
+Banja Mati
+Providence Boa
+Banja Marilao
+Mariveles Plano
+Boa Puerto
+Masjed Mati
+Bab Mariveles
+Masjed Pematang
+Pematang Bab
+Portland Bihar
+Marilao Banja
+Bokaro Bago
+Peoria Mexico
+Mariveles Bokaro
+Marilao Mexico
+Bab Bokaro
+McAllen Portland
+Pago Bab
+Mar Porto
+Banja Masjed
+Puerto Pematang
+Poza Providence
+Palmdale Peoria
+Puerto Masjed
+Masjed Bab
+Pago McAllen
+Boa Pematang
+Peoria Mariveles
+Plano McAllen
+Panabo Marilao
+Boa Providence
+Bab Pakan
+Portland Banja
+Memphis Porto
+Mexico Puerto
+Memphis Pago
+Pematang Mar
+Palmdale Portland
+Malaybalay Palmdale
+Praha Porto
+Mexico Bokaro
+Plano Puerto
+Poza Portland
+Pematang Bergisch
+Marilao Panabo
+Mati Puerto
+Pakan Palmdale
+27 17 3
+Banda 23.644 -12.975
+Bnei -84.821 -142.992
+Petah 71.391 -19.879
+Mesa -12.183 56.956
+Panabo 33.838 -27.852
+Bordj -46.207 -117.441
+Pittsburgh 66.669 32.558
+Philadelphia -55.836 -157.628
+Buenos 63.915 7.182
+Peoria -86.372 36.917
+Belford -59.745 136.517
+Panama -35.132 -97.018
+Portland -84.797 70.379
+Pueblo 46.496 165.531
+Banja 25.959 32.117
+Murfreesboro -68.357 -23.382
+Mogi -51.401 123.891
+Muntinlupa 18.088 48.064
+Palmdale -55.744 -63.807
+Puente -8.314 116.532
+Phoenix 42.502 177.222
+Boa -29.132 -42.936
+Porac 35.604 -18.000
+Minneapolis 23.049 -39.509
+Pembroke 3.088 -153.806
+Punta 73.453 18.723
+Marilao 27.291 -39.524
+Minneapolis Bnei
+Punta Phoenix
+Mesa Philadelphia
+Mogi Palmdale
+Pittsburgh Buenos
+Muntinlupa Belford
+Palmdale Banda
+Peoria Pembroke
+Phoenix Mogi
+Peoria Panama
+Petah Muntinlupa
+Belford Boa
+Buenos Portland
+Boa Mogi
+Banda Muntinlupa
+Petah Panama
+Peoria Phoenix
+Pueblo Marilao
+Murfreesboro Muntinlupa
+Portland Boa
+18 6 5
+Puerto -26.487 -90.950
+Peoria -58.144 35.128
+Mogilev 49.738 133.171
+Mesquite -62.308 -166.742
+Boa -65.441 52.621
+Montgomery 21.550 -158.901
+Bat -4.156 29.620
+Bila 84.860 14.016
+Mobile -10.086 -46.452
+Meycauayan -41.254 12.719
+Puli 34.992 35.983
+Minglanilla -54.929 155.371
+Memphis -72.335 162.960
+Puente 12.893 -103.080
+Presidente -51.985 -1.209
+Palmdale -78.801 29.094
+Bou -72.688 19.034
+Pakan -51.540 107.429
+Peoria Memphis
+Peoria Presidente
+Boa Peoria
+Mogilev Puli
+Bat Puerto
+Mogilev Meycauayan
+Presidente Montgomery
+Bat Boa
+Pakan Peoria
+Memphis Peoria
+Palmdale Montgomery
+11 30 3
+Pakan -61.149 102.560
+Benito -67.732 -83.541
+Puente -73.026 -93.213
+Philadelphia 53.751 -105.895
+Parang 19.877 54.032
+Manchester 16.254 -58.379
+Masjed -52.918 50.735
+Pittsburgh -28.862 132.177
+Bordj -86.172 -102.537
+Minglanilla 64.123 77.030
+Mandaluyong 4.871 117.622
+Philadelphia Benito
+Bordj Manchester
+Bordj Philadelphia
+Bordj Pakan
+Pakan Puente
+Parang Pakan
+Parang Bordj
+Parang Minglanilla
+Puente Masjed
+Pittsburgh Philadelphia
+Parang Benito
+Minglanilla Benito
+Pakan Masjed
+Benito Pakan
+Masjed Benito
+Mandaluyong Pittsburgh
+Puente Pittsburgh
+Philadelphia Mandaluyong
+Bordj Puente
+Manchester Philadelphia
+Manchester Mandaluyong
+Masjed Pakan
+Puente Manchester
+Philadelphia Pittsburgh
+Minglanilla Pakan
+Pakan Pittsburgh
+Pittsburgh Mandaluyong
+Manchester Pakan
+Pittsburgh Bordj
+Minglanilla Manchester
+Pakan Bordj
+Parang Mandaluyong
+Puente Parang
+5 6 7
+Muntinlupa 7.029 -72.794
+Punto -38.560 108.957
+Malaybalay -29.076 102.103
+Patos 26.019 131.382
+Puebla 88.081 -7.007
+Puebla Malaybalay
+Punto Puebla
+Punto Muntinlupa
+Muntinlupa Punto
+Puebla Punto
+Patos Punto
+Patos Malaybalay
+Puebla Malaybalay
+Patos Malaybalay
+Punto Puebla
+Puebla Muntinlupa
+Patos Malaybalay
+Malaybalay Punto
+4 1 7
+Marilao -77.789 162.273
+Modesto 64.614 -123.323
+Mogilev 76.802 156.850
+Benito 22.026 -81.212
+Benito Marilao
+Marilao Benito
+Benito Mogilev
+Marilao Mogilev
+Modesto Benito
+Benito Mogilev
+Mogilev Modesto
+Modesto Mogilev
+31 5 6
+Milwaukee 12.768 116.883
+Midsayap 29.062 169.602
+Provo -86.393 -76.321
+Polomolok 34.452 40.443
+Bat 29.593 -52.135
+Petaling -85.117 -58.040
+Puerto 25.269 -147.844
+Porac -18.582 40.773
+Phnom -39.571 -26.825
+Mobile 64.262 108.148
+Puebla -69.286 -10.264
+Pueblo -40.135 92.985
+Beni -70.434 176.680
+Pagadian 5.302 -129.274
+Plano 85.207 -64.433
+Palma -68.726 -67.162
+Mirpur -31.048 -143.065
+Parang -22.442 -107.062
+Bago -55.528 104.045
+Minglanilla -25.023 -10.863
+Mati 19.829 127.164
+Batangas -5.846 -10.433
+Pouso 7.345 -108.348
+Montes 71.649 -91.874
+Muntinlupa 87.128 -112.872
+Mesa -81.032 -14.570
+Pinar 46.300 41.089
+Buenos 63.753 107.131
+Baia 38.357 -164.541
+Montgomery -84.420 -95.533
+Barra -70.012 -126.164
+Baia Montes
+Mirpur Beni
+Mesa Mati
+Barra Mirpur
+Palma Puerto
+Beni Parang
+Provo Beni
+Montgomery Bat
+Baia Mati
+Polomolok Mobile
+Puerto Mati
+11 33 6
+Mexico 70.519 26.592
+Milton 36.213 -88.444
+Praha 7.780 -154.590
+Panama -46.503 -144.236
+Puerto 18.359 -137.553
+Puli 59.774 -62.967
+Pembroke -37.810 75.951
+Pasadena 38.136 41.982
+Bani -63.571 86.480
+Mar -19.814 -51.978
+Boa 15.847 -169.784
+Mexico Boa
+Mexico Pasadena
+Panama Boa
+Mexico Milton
+Bani Mar
+Praha Pasadena
+Puerto Pembroke
+Praha Milton
+Puerto Praha
+Mar Pasadena
+Praha Boa
+Pembroke Milton
+Boa Milton
+Praha Mexico
+Mar Boa
+Bani Boa
+Bani Mexico
+Pembroke Panama
+Mexico Bani
+Praha Bani
+Pasadena Puerto
+Puli Puerto
+Boa Mexico
+Mar Panama
+Mexico Praha
+Boa Praha
+Mar Bani
+Puerto Bani
+Panama Pembroke
+Milton Pasadena
+Pasadena Milton
+Praha Panama
+Panama Praha
+Milton Mexico
+Praha Pembroke
+Puerto Praha
+Panama Praha
+Praha Milton
+Bani Mar
+27 17 7
+Presidente 85.931 -22.603
+Miami -88.312 41.826
+Mawlamyaing 58.912 3.169
+Malolos 69.662 -0.574
+Bani -87.851 -48.717
+Boa -58.814 121.665
+Midsayap -43.742 0.438
+Muntinlupa -40.947 13.278
+Beni -19.405 -88.802
+Peoria -5.577 -150.972
+Manchester -62.704 -122.239
+Modesto -73.541 -47.170
+Maunath 40.680 -29.835
+Palma 9.530 78.472
+Belford -19.639 19.718
+Malaybalay 14.070 112.850
+Banja -45.640 170.100
+Poza -54.113 96.392
+Providence -68.568 170.283
+Baton -23.014 -65.574
+Milwaukee -76.678 60.112
+Bou 39.021 17.165
+Pasadena -8.807 157.822
+Minneapolis -28.953 -132.290
+Meycauayan -63.043 37.902
+Pago -13.694 72.820
+Moreno -15.028 84.545
+Meycauayan Manchester
+Belford Muntinlupa
+Malaybalay Beni
+Moreno Pasadena
+Palma Boa
+Palma Maunath
+Belford Palma
+Maunath Malaybalay
+Poza Beni
+Moreno Pago
+Poza Bani
+Boa Maunath
+Midsayap Maunath
+Mawlamyaing Milwaukee
+Bani Palma
+Bou Moreno
+Minneapolis Providence
+Mawlamyaing Peoria
+Bani Modesto
+Banja Minneapolis
+Meycauayan Poza
+Modesto Baton
+Milwaukee Muntinlupa
+Palma Peoria
+14 19 12
+Barra -36.498 126.814
+Phoenix 42.771 -169.680
+Bordj 42.847 -55.739
+Midsayap 47.276 -166.263
+Punta 33.322 -128.863
+Pagadian -25.444 -110.042
+Peoria 35.183 0.432
+Mogilev 5.220 -86.777
+Mesquite -57.527 98.691
+Bago 55.268 108.174
+Beni -41.458 34.200
+Malaybalay 5.455 -122.259
+Phnom -12.214 47.951
+Montes -11.319 -91.026
+Phnom Mesquite
+Phoenix Mogilev
+Barra Malaybalay
+Bordj Montes
+Beni Punta
+Midsayap Peoria
+Punta Mesquite
+Montes Phoenix
+Beni Phnom
+Malaybalay Mogilev
+Barra Peoria
+Mesquite Midsayap
+Phnom Malaybalay
+Bago Barra
+Bago Midsayap
+Bago Pagadian
+Bordj Beni
+Mesquite Peoria
+Mesquite Phoenix
+Beni Phnom
+Bordj Phoenix
+Pagadian Punta
+Midsayap Phoenix
+Mesquite Beni
+Bordj Phnom
+Montes Peoria
+Barra Punta
+Barra Beni
+Midsayap Phoenix
+Mesquite Bordj
+Malaybalay Mesquite
+18 33 16
+Baia 37.858 -106.932
+Palma 71.997 -49.898
+Midsayap -88.010 -33.441
+Murfreesboro 76.224 -28.332
+Mawlamyaing 76.904 67.375
+Beni -34.255 -62.552
+Pittsburgh -71.133 -38.730
+Boa -87.331 -164.380
+Belo -78.094 -64.638
+Pagadian -52.647 -97.257
+Pir 17.691 46.946
+Pinar 37.120 -178.109
+Masjed -77.743 -10.749
+Peoria -42.675 39.837
+Bat -10.512 -178.445
+Puente -3.895 155.992
+Banja 62.704 -116.483
+Milwaukee 20.979 152.194
+Masjed Palma
+Palma Murfreesboro
+Pittsburgh Pinar
+Murfreesboro Peoria
+Pinar Beni
+Baia Pir
+Pir Pinar
+Pagadian Bat
+Masjed Boa
+Palma Baia
+Baia Bat
+Masjed Puente
+Pittsburgh Milwaukee
+Beni Palma
+Pittsburgh Baia
+Palma Midsayap
+Pir Baia
+Pinar Pagadian
+Puente Peoria
+Beni Mawlamyaing
+Murfreesboro Mawlamyaing
+Beni Midsayap
+Banja Midsayap
+Banja Beni
+Murfreesboro Pagadian
+Belo Mawlamyaing
+Mawlamyaing Pittsburgh
+Boa Bat
+Peoria Beni
+Murfreesboro Pir
+Midsayap Beni
+Milwaukee Bat
+Palma Puente
+Pir Midsayap
+Banja Bat
+Palma Baia
+Midsayap Milwaukee
+Midsayap Mawlamyaing
+Boa Banja
+Beni Baia
+Midsayap Belo
+Pittsburgh Peoria
+Midsayap Belo
+Murfreesboro Pagadian
+Boa Masjed
+Belo Masjed
+Pagadian Pittsburgh
+Belo Boa
+Beni Midsayap
+16 50 17
+Barra 51.954 45.660
+Mexico 33.880 147.335
+Bahir -12.248 98.522
+Banda -17.021 35.180
+Milton 77.613 -92.877
+Peoria 15.652 -148.667
+Piatra -60.927 -136.501
+Punto -39.124 -163.503
+Port 35.954 120.572
+Mirpur -38.800 -115.837
+Benito 66.423 -30.138
+Murfreesboro -9.764 -1.906
+Paradise 22.387 -135.943
+Ponta -21.468 61.570
+Buenos -45.055 38.320
+Mati 22.895 103.420
+Buenos Paradise
+Punto Peoria
+Buenos Mirpur
+Paradise Mexico
+Barra Mati
+Paradise Buenos
+Mirpur Paradise
+Piatra Mirpur
+Mexico Peoria
+Piatra Punto
+Milton Mexico
+Peoria Port
+Punto Bahir
+Milton Piatra
+Bahir Barra
+Peoria Bahir
+Murfreesboro Mirpur
+Murfreesboro Banda
+Bahir Punto
+Peoria Murfreesboro
+Punto Mati
+Port Mati
+Milton Ponta
+Milton Mirpur
+Barra Murfreesboro
+Mati Piatra
+Buenos Port
+Benito Milton
+Murfreesboro Peoria
+Peoria Buenos
+Barra Ponta
+Punto Benito
+Banda Bahir
+Ponta Barra
+Mati Mirpur
+Port Milton
+Mexico Port
+Mexico Paradise
+Port Piatra
+Mirpur Punto
+Paradise Benito
+Barra Milton
+Milton Peoria
+Barra Banda
+Mati Murfreesboro
+Ponta Buenos
+Buenos Bahir
+Murfreesboro Benito
+Banda Buenos
+Barra Piatra
+Punto Barra
+Port Piatra
+Bahir Mirpur
+Bahir Mati
+Murfreesboro Paradise
+Paradise Piatra
+Mirpur Bahir
+Punto Bahir
+Bahir Paradise
+Murfreesboro Bahir
+Ponta Barra
+Benito Buenos
+Paradise Mirpur
+Paradise Mirpur
+Mirpur Bahir
+Benito Paradise
+Milton Mati
+27 26 9
+Bahir 89.521 -96.845
+Punta 37.455 79.989
+Manchester 78.483 34.200
+Plano 53.220 41.916
+Pinar 31.741 6.766
+Pago -79.245 62.011
+Mobile 71.784 -77.673
+Piatra 84.363 -15.778
+McAllen 20.580 7.186
+Praia -16.203 2.403
+Meycauayan 14.154 -68.989
+Muntinlupa -29.324 -15.793
+Mesquite -78.034 59.988
+Malasiqui -24.083 39.547
+Marilao 47.061 -1.589
+Mazari 28.156 -30.241
+Baton -26.153 -50.480
+Milwaukee 47.068 -79.705
+Porto -23.451 18.615
+Bordj -74.072 -19.864
+Bou 79.818 -138.730
+Baia -86.009 -34.818
+Portland 28.648 41.621
+Marawi 72.517 82.135
+Bab -17.005 78.492
+Provo 0.583 -107.704
+Puli -81.696 -127.123
+Muntinlupa Manchester
+Porto Marilao
+Puli Provo
+Portland Baia
+Milwaukee Bou
+Meycauayan Mobile
+Bou Plano
+Mobile Muntinlupa
+Punta Malasiqui
+Piatra Baia
+Porto Plano
+Punta Praia
+Mazari Muntinlupa
+Baton Bab
+Mazari Bahir
+Manchester Baton
+Bordj Mazari
+Malasiqui Meycauayan
+Pinar Porto
+Muntinlupa Bab
+Bordj Muntinlupa
+Marilao Baia
+Mobile Mesquite
+Provo Bou
+Pinar Marawi
+Mazari Portland
+Pinar Portland
+Portland Baton
+Plano McAllen
+McAllen Punta
+Milwaukee Piatra
+Portland Bahir
+Puli Praia
+Baton Bab
+Muntinlupa Bordj
+11 52 14
+Phnom -86.470 -159.405
+Bou -42.541 33.055
+Bokaro 66.041 166.980
+Malita 41.786 157.249
+Malolos 67.796 104.888
+Plano 11.943 2.019
+Puente 11.730 71.928
+Pouso 80.794 144.207
+Moreno 6.928 -152.932
+Masjed -14.279 -171.765
+Philadelphia -31.310 -74.497
+Philadelphia Phnom
+Masjed Plano
+Philadelphia Malita
+Puente Plano
+Malolos Plano
+Bou Puente
+Malita Puente
+Masjed Bou
+Bokaro Pouso
+Bokaro Malita
+Moreno Pouso
+Phnom Philadelphia
+Bou Masjed
+Philadelphia Bokaro
+Pouso Phnom
+Masjed Puente
+Bou Pouso
+Bokaro Bou
+Malolos Pouso
+Plano Pouso
+Puente Masjed
+Masjed Bokaro
+Philadelphia Masjed
+Malita Masjed
+Philadelphia Bou
+Masjed Malita
+Philadelphia Moreno
+Philadelphia Malolos
+Bokaro Malolos
+Plano Malita
+Puente Malita
+Bou Malolos
+Malolos Bou
+Malolos Malita
+Pouso Bou
+Bou Philadelphia
+Plano Philadelphia
+Pouso Bokaro
+Puente Pouso
+Phnom Plano
+Plano Bokaro
+Pouso Malita
+Bokaro Plano
+Moreno Bou
+Malita Moreno
+Bokaro Moreno
+Moreno Puente
+Puente Bokaro
+Pouso Puente
+Masjed Malolos
+Malita Bokaro
+Pouso Moreno
+Philadelphia Plano
+Plano Masjed
+Philadelphia Plano
+Phnom Malita
+Masjed Philadelphia
+Malita Bokaro
+Bou Plano
+Philadelphia Puente
+Puente Bou
+Moreno Bokaro
+Malita Moreno
+Pouso Malita
+Philadelphia Malita
+Phnom Moreno
+16 59 8
+Barra -86.603 -104.484
+Port 12.180 -105.840
+Puerto 84.425 42.514
+Mazari -34.487 63.832
+Palma 16.549 -55.568
+Pasadena -10.680 -55.327
+Bou 67.864 31.907
+Pouso -7.916 84.945
+Matamoros 4.034 15.068
+Poza 54.829 154.857
+Phoenix -8.679 104.898
+Moreno 63.305 -1.145
+Mar -27.979 -147.710
+Bandar -71.864 -118.967
+Puebla -32.290 -88.602
+Mexico 45.277 -108.807
+Phoenix Matamoros
+Poza Moreno
+Puerto Palma
+Mazari Puebla
+Port Palma
+Puerto Moreno
+Mar Phoenix
+Poza Puebla
+Puerto Mexico
+Puebla Moreno
+Palma Bou
+Mazari Mexico
+Matamoros Puerto
+Puebla Phoenix
+Puerto Port
+Mar Matamoros
+Mar Moreno
+Palma Mar
+Barra Poza
+Matamoros Palma
+Matamoros Pouso
+Phoenix Pouso
+Mexico Phoenix
+Bou Barra
+Mar Barra
+Mar Puerto
+Bou Bandar
+Moreno Bou
+Moreno Puerto
+Bandar Bou
+Mexico Poza
+Poza Bou
+Puebla Palma
+Phoenix Bou
+Pasadena Pouso
+Mexico Puebla
+Pasadena Bou
+Puerto Barra
+Mar Pouso
+Puerto Bandar
+Moreno Matamoros
+Mexico Matamoros
+Mazari Matamoros
+Puebla Mar
+Barra Mar
+Mar Bandar
+Pouso Mazari
+Matamoros Mazari
+Mazari Bou
+Moreno Puebla
+Port Mazari
+Mexico Puerto
+Palma Puebla
+Poza Matamoros
+Pouso Bandar
+Matamoros Barra
+Mar Port
+Palma Barra
+Puebla Matamoros
+Matamoros Barra
+Bandar Moreno
+Puebla Pasadena
+Matamoros Pasadena
+Moreno Pouso
+Pasadena Moreno
+Puebla Bou
+Matamoros Bou
+20 18 13
+Pematang -45.070 119.508
+Panama 78.478 -119.719
+Mobile 88.897 -32.390
+Moreno -10.066 -39.682
+Baia 83.434 -150.224
+Pomona 12.516 58.459
+Masjed -31.859 -98.339
+Bordj 64.868 -76.890
+Pembroke -17.245 -95.178
+Mawlamyaing -64.392 41.443
+Manchester -77.911 -54.866
+Piatra -41.439 -23.233
+Paradise 75.447 -138.456
+Bani 60.605 -104.753
+Montgomery 36.650 27.932
+Barra -64.156 97.605
+Bila 70.218 -78.736
+Plano 47.142 120.619
+Bihar -32.098 -143.449
+Bokaro 51.486 161.187
+Mobile Piatra
+Bani Bila
+Baia Bila
+Moreno Mobile
+Manchester Pematang
+Plano Piatra
+Paradise Pematang
+Montgomery Bila
+Bila Piatra
+Manchester Pembroke
+Barra Manchester
+Mobile Bihar
+Bordj Barra
+Bani Pematang
+Montgomery Manchester
+Moreno Mawlamyaing
+Pomona Piatra
+Montgomery Plano
+Bordj Masjed
+Barra Plano
+Panama Pembroke
+Montgomery Piatra
+Bordj Paradise
+Bani Mobile
+Masjed Manchester
+Pematang Manchester
+Pembroke Panama
+Bila Moreno
+Barra Bordj
+Plano Mobile
+Moreno Panama
+4 5 2
+Paradise -40.195 -132.923
+Panabo -74.066 -145.249
+Baia 74.403 -167.851
+Baton -85.552 -75.267
+Baia Panabo
+Paradise Baton
+Panabo Paradise
+Baia Paradise
+Baton Panabo
+Baia Panabo
+Baia Paradise
+19 47 1
+Patos 46.959 131.535
+Murfreesboro 14.559 9.320
+Phoenix 5.427 -139.590
+Phnom -16.347 165.456
+Mogi -45.145 -88.380
+Presidente 36.470 47.004
+Milton -28.871 -112.819
+Milwaukee -49.420 -121.606
+Malasiqui 72.702 4.038
+Belford -51.100 133.791
+Ponta 49.527 -142.475
+Meycauayan -88.454 -156.719
+Pematang -33.630 -85.729
+Mazari -66.740 -147.856
+Miami 24.564 77.451
+Bani -53.681 42.259
+Montgomery 78.780 -63.171
+Parang 54.054 -8.379
+Providence 40.873 163.653
+Milton Pematang
+Presidente Milton
+Parang Pematang
+Phoenix Meycauayan
+Meycauayan Mazari
+Milton Milwaukee
+Phoenix Parang
+Malasiqui Phoenix
+Pematang Phoenix
+Meycauayan Providence
+Montgomery Murfreesboro
+Mogi Providence
+Milton Murfreesboro
+Malasiqui Miami
+Presidente Murfreesboro
+Mazari Murfreesboro
+Milwaukee Malasiqui
+Phoenix Montgomery
+Presidente Phnom
+Mazari Mogi
+Meycauayan Montgomery
+Pematang Montgomery
+Providence Mazari
+Pematang Parang
+Montgomery Meycauayan
+Ponta Presidente
+Murfreesboro Meycauayan
+Pematang Miami
+Belford Malasiqui
+Belford Parang
+Patos Pematang
+Murfreesboro Patos
+Montgomery Mogi
+Milwaukee Phnom
+Mogi Phoenix
+Mogi Milton
+Mogi Parang
+Milton Montgomery
+Phoenix Murfreesboro
+Belford Montgomery
+Pematang Mogi
+Belford Providence
+Parang Providence
+Malasiqui Providence
+Bani Parang
+Phoenix Ponta
+Milwaukee Ponta
+Pematang Belford
+0 0 0

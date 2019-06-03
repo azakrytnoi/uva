@@ -64,15 +64,21 @@ namespace {
         out << sol.numerator_ << "/" << sol.denominator_ << " = ";
         out << sol.before_decimal_;
 
-        if ( sol.after_decimal_.size () == sol.parenthesis_start_ ) {
-            for ( size_t i = 0; i < sol.after_decimal_.size () - 1; i++ ) {
+        if ( sol.after_decimal_.size () == sol.parenthesis_start_ )
+        {
+            for ( size_t i = 0; i < sol.after_decimal_.size () - 1; i++ )
+            {
                 out << sol.after_decimal_.at (i);
             }
 
             out << "(" << sol.after_decimal_.at (sol.after_decimal_.size () - 1) << ")" << std::endl;
-        } else if ( sol.repeat_term_index_ > 51 ) {
-            for ( size_t i = 0; i < 50; i++ ) {
-                if ( i + 1 == sol.parenthesis_start_ ) {
+        }
+        else if ( sol.repeat_term_index_ > 51 )
+        {
+            for ( size_t i = 0; i < 50; i++ )
+            {
+                if ( i + 1 == sol.parenthesis_start_ )
+                {
                     out << "(";
                 }
 
@@ -80,9 +86,13 @@ namespace {
             }
 
             out << "...)" << std::endl;
-        } else {
-            for ( size_t i = 0; i < sol.after_decimal_.size (); i++ ) {
-                if ( i + 1 == sol.parenthesis_start_ ) {
+        }
+        else
+        {
+            for ( size_t i = 0; i < sol.after_decimal_.size (); i++ )
+            {
+                if ( i + 1 == sol.parenthesis_start_ )
+                {
                     out << "(";
                 }
 
@@ -107,7 +117,8 @@ namespace {
         before_decimal_ += '.';
         repeat_term_index_ = 1;
 
-        while ( freq_matrix [mod] == 0 ) {
+        while ( freq_matrix [mod] == 0 )
+        {
             freq_matrix [mod] = repeat_term_index_++;
             quotient = mod / denominator_;
             mod %= denominator_;
@@ -125,7 +136,8 @@ void U202::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -30,7 +30,8 @@ void __cdecl invoke()
 
 namespace {
 
-    struct task_t {
+    struct task_t
+    {
         char name_;
         size_t duration_;
         std::vector<char> predessors_;
@@ -72,34 +73,42 @@ namespace {
         std::vector<std::vector<size_t>> matrix(N, std::vector<size_t>(N));
         std::vector<size_t> depends(N);
         std::vector<bool> defined(N);
-        std::for_each(tasks_.begin(), tasks_.end(), [&](const std::pair<char, std::shared_ptr<task_t>>& task) {
+        std::for_each(tasks_.begin(), tasks_.end(), [&](const std::pair<char, std::shared_ptr<task_t>>& task)
+        {
             size_t idx = task.first - 'A';
             defined[idx] = true;
 
-            for (int64_t ref = task.second->predessors_.size() - 1; ref >= 0; --ref) {
+            for (int64_t ref = task.second->predessors_.size() - 1; ref >= 0; --ref)
+            {
                 matrix[idx][depends[idx]++] = task.second->predessors_[ref] - 'A';
             }
         });
         std::vector<bool> used(N);
         std::vector<size_t> finished(N);
 
-        while (true) {
+        while (true)
+        {
             bool flag(false);
 
-            for (size_t i = 0; i < N; ++i) {
-                if (defined[i] && not used[i]) {
+            for (size_t i = 0; i < N; ++i)
+            {
+                if (defined[i] && not used[i])
+                {
                     size_t max(0);
                     size_t j = 0;
 
-                    for (; j < depends[i]; ++j) {
-                        if (not used[matrix[i][j]]) {
+                    for (; j < depends[i]; ++j)
+                    {
+                        if (not used[matrix[i][j]])
+                        {
                             break;
                         }
 
                         max = std::max(max, finished[matrix[i][j]]);
                     }
 
-                    if (j == depends[i]) {
+                    if (j == depends[i])
+                    {
                         finished[i] = max + tasks_[static_cast<char>(i + 'A')]->duration_;
                         total_ = std::max(total_, finished[i]);
                         used[i] = true;
@@ -108,7 +117,8 @@ namespace {
                 }
             }
 
-            if (not flag) {
+            if (not flag)
+            {
                 break;
             }
         }
@@ -121,7 +131,8 @@ namespace {
         sol.tasks_.clear();
         sol.total_ = 0;
 
-        if (sol.case_no_ == std::numeric_limits<size_t>::max()) {
+        if (sol.case_no_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.case_no_;
             in.ignore();
         }
@@ -130,17 +141,20 @@ namespace {
 
         while (std::getline(in, line) && line.empty());
 
-        do {
+        do
+        {
             std::stringstream sin(line);
             auto task = std::make_shared<task_t>();
             sin >> *task;
             sol.tasks_[task->name_] = task;
             char ref(0);
 
-            while (sin >> ref) {
+            while (sin >> ref)
+            {
                 task->predessors_.push_back(ref);
             }
-        } while (std::getline(in, line) && not line.empty());
+        }
+        while (std::getline(in, line) && not line.empty());
 
         return in;
     }
@@ -157,7 +171,8 @@ void U452::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

@@ -42,7 +42,8 @@ namespace {
             engine.out_ << engine.subst_ << std::endl << engine.plain_ << std::endl;
             std::string line;
 
-            while (std::getline(in, line) && !line.empty()) {
+            while (std::getline(in, line) && !line.empty())
+            {
                 engine.out_ << engine.encode(line) << std::endl;
             }
 
@@ -60,10 +61,12 @@ namespace {
 
     std::string& coder::encode(std::string& source)
     {
-        std::transform(source.begin(), source.end(), source.begin(), [&](auto ch) {
+        std::transform(source.begin(), source.end(), source.begin(), [&](auto ch)
+        {
             auto plain_pos = plain_.find(ch);
 
-            if (plain_pos != std::string::npos) {
+            if (plain_pos != std::string::npos)
+            {
                 return subst_[plain_pos];
             }
 
@@ -83,7 +86,8 @@ void U865::operator()() const
     std::getline(std::cin, line);
     coder engine(std::cout);
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> engine;
     }
 }

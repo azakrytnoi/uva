@@ -37,13 +37,16 @@ namespace {
             math::sieve_t<N> sieve;
             counts_.resize(N + 1);
 
-            for (uint32_t i = 0; i < sieve.size(); i++) {
+            for (uint32_t i = 0; i < sieve.size(); i++)
+            {
                 uint64_t sum(0);
 
-                for (auto j = sieve.begin() + i; j != sieve.end(); ++j) {
+                for (auto j = sieve.begin() + i; j != sieve.end(); ++j)
+                {
                     sum += *j;
 
-                    if (sum > N) {
+                    if (sum > N)
+                    {
                         break;
                     }
 
@@ -67,7 +70,8 @@ void U1210::operator()() const
     solution<10000> sol;
     uint32_t n;
 
-    while ((std::cin >> n) && n > 0) {
+    while ((std::cin >> n) && n > 0)
+    {
         std::cout << sol[n] << std::endl;
     }
 }

@@ -29,11 +29,13 @@ void __cdecl invoke()
 }
 
 namespace {
-    enum class day_time_t {
+    enum class day_time_t
+    {
         none, midnight, noon, am, pm
     };
 
-    struct time_t {
+    struct time_t
+    {
         uint16_t hour_, minute_;
         day_time_t day_time_;
         std::string tz_;
@@ -98,14 +100,16 @@ namespace {
 
     std::istream& operator>>(std::istream& in, solution_t& sol)
     {
-        if (sol.no_cases_ == std::numeric_limits<size_t>::max()) {
+        if (sol.no_cases_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.no_cases_;
             in.ignore();
         }
 
         std::string line;
 
-        if (std::getline(in, line)) {
+        if (std::getline(in, line))
+        {
             std::stringstream sin(line);
             sin >> sol.src_ >> sol.dst_tz_;
         }
@@ -123,9 +127,12 @@ namespace {
     {
         hour_ %= 24;
 
-        if (hour_ >= 12) {
+        if (hour_ >= 12)
+        {
             day_time_ = (hour_ == 12 && minute_ == 0) ? day_time_t::noon : day_time_t::pm;
-        } else {
+        }
+        else
+        {
             day_time_ = (hour_ == 0 && minute_ == 0) ? day_time_t::midnight : day_time_t::am;
         }
     }
@@ -138,7 +145,8 @@ namespace {
 
     time_t& time_t::operator =(int64_t raw)
     {
-        if (raw < 0) {
+        if (raw < 0)
+        {
             raw += 24 * 60;
         }
 
@@ -152,7 +160,8 @@ namespace {
     {
         time_t result(src.hour_, src.minute_, src.day_time_, "UTC");
 
-        if (not(src.tz_ == "UTC" || src.tz_ == "GMT")) {
+        if (not(src.tz_ == "UTC" || src.tz_ == "GMT"))
+        {
             auto raw(result.to_raw());
             raw -= tz_.find(src.tz_)->second;
             result = raw;
@@ -165,7 +174,8 @@ namespace {
     {
         time_t result(src.hour_, src.minute_, src.day_time_, dst_tz_);
 
-        if (src.tz_ != dst_tz_ && not(dst_tz_ == "UTC" || dst_tz_ == "GMT")) {
+        if (src.tz_ != dst_tz_ && not(dst_tz_ == "UTC" || dst_tz_ == "GMT"))
+        {
             auto raw(result.to_raw());
             raw += tz_.find(dst_tz_)->second;
             result = raw;
@@ -179,20 +189,28 @@ namespace {
         std::string part;
         in >> part;
 
-        if (part == "midnight") {
+        if (part == "midnight")
+        {
             time.hour_ = 0, time.minute_ = 0, time.day_time_ = day_time_t::midnight;
-        } else if (part == "noon") {
+        }
+        else if (part == "noon")
+        {
             time.hour_ = 12, time.minute_ = 0, time.day_time_ = day_time_t::noon;
-        } else {
+        }
+        else
+        {
             std::stringstream tmp(part);
             char del;
             tmp >> time.hour_ >> del >> time.minute_;
             in >> part;
             time.day_time_ = part == "a.m." ? day_time_t::am : day_time_t::pm;
 
-            if (time.day_time_ == day_time_t::pm && time.hour_ != 12) {
+            if (time.day_time_ == day_time_t::pm && time.hour_ != 12)
+            {
                 time.hour_ += 12;
-            } else if (time.day_time_ == day_time_t::am && time.hour_ == 12) {
+            }
+            else if (time.day_time_ == day_time_t::am && time.hour_ == 12)
+            {
                 time.hour_ = 0;
             }
         }
@@ -203,7 +221,8 @@ namespace {
 
     std::ostream& operator<<(std::ostream& out, const time_t& time)
     {
-        switch (time.day_time_) {
+        switch (time.day_time_)
+        {
         case day_time_t::midnight:
             out << "midnight";
             break;
@@ -213,10 +232,13 @@ namespace {
             break;
 
         default:
-            if (time.day_time_ == day_time_t::pm) {
+            if (time.day_time_ == day_time_t::pm)
+            {
                 out << (time.hour_ == 12 ? time.hour_ : time.hour_ - 12) << ':' << std::setw(2) << std::setfill('0') << time.minute_
                     << " p.m.";
-            } else {
+            }
+            else
+            {
                 out << (time.hour_ == 0 ? 12 : time.hour_) << ':' << std::setw(2) << std::setfill('0') << time.minute_
                     << " a.m.";
             }
@@ -233,7 +255,8 @@ void U10371::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

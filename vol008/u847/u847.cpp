@@ -31,19 +31,24 @@ void U847::operator()() const
 {
     int64_t n;
 
-    while (std::cin >> n) {
+    while (std::cin >> n)
+    {
         double_t lg = std::log((n + 1.0)) / std::log(18.0);
         int64_t lo = int64_t(std::floor(lg));
 
-        if (lg - lo < 0.00000000001) {
+        if (lg - lo < 0.00000000001)
+        {
             std::cout << "Ollie wins.\n";
             continue;
         }
 
-        if (n / std::pow(18.0, double_t(lo)) > 9.0) {
+        if (n / std::pow(18.0, double_t(lo)) > 9.0)
+        {
             std::cout << "Ollie wins.\n";
 
-        } else {
+        }
+        else
+        {
             std::cout << "Stan wins.\n";
         }
     }

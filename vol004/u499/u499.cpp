@@ -42,11 +42,13 @@ namespace {
             std::vector<std::pair<char, uint64_t>> work(raw_.begin(), raw_.end());
             std::map<uint64_t, std::string> reverse;
 
-            for (auto& pair : work) {
+            for (auto& pair : work)
+            {
                 reverse[pair.second] += pair.first;
             }
 
-            for (auto& pair : reverse) {
+            for (auto& pair : reverse)
+            {
                 std::sort(pair.second.begin(), pair.second.end());
             }
 
@@ -60,12 +62,15 @@ namespace {
             sol.result_.clear();
             std::string line;
 
-            if (std::getline(in, line) && not line.empty()) {
+            if (std::getline(in, line) && not line.empty())
+            {
                 std::stringstream sin(line);
                 char ch;
 
-                while (sin >> ch) {
-                    if (std::isalpha(ch)) {
+                while (sin >> ch)
+                {
+                    if (std::isalpha(ch))
+                    {
                         sol.raw_[ch]++;
                     }
                 }
@@ -92,7 +97,8 @@ void U499::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

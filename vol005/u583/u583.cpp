@@ -56,7 +56,8 @@ namespace {
     std::ostream& operator << (std::ostream& out, const solution& sol)
     {
         out << sol.n_ << (sol.n_ < 0 ? " = -1 x " : " = ") << sol.factors_[0];
-        std::for_each(sol.factors_.begin() + 1, sol.factors_.end(), [&](auto factor) {
+        std::for_each(sol.factors_.begin() + 1, sol.factors_.end(), [&](auto factor)
+        {
             out << " x " << factor;
         });
         return out;
@@ -68,8 +69,10 @@ namespace {
         factors_.clear();
         auto factor = sieve_.begin() + 1;
 
-        while ((*factor) * (*factor) <= num) {
-            while (num % (*factor) == 0) {
+        while ((*factor) * (*factor) <= num)
+        {
+            while (num % (*factor) == 0)
+            {
                 num /= *factor;
                 factors_.push_back(*factor);
             }
@@ -77,7 +80,8 @@ namespace {
             ++factor;
         }
 
-        if (num != 1) {
+        if (num != 1)
+        {
             factors_.push_back(num);
         }
 
@@ -90,7 +94,8 @@ void U583::operator()() const
 {
     solution sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }

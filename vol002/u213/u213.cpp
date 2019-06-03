@@ -49,10 +49,12 @@ namespace {
             std::string key;
             size_t key_size = 1;
             uint16_t key_value = 0;
-            std::for_each(keys.begin(), keys.end(), [&](auto ch) {
+            std::for_each(keys.begin(), keys.end(), [&](auto ch)
+            {
                 key = key_advance(key_size, key_value);
 
-                if (key.find_first_not_of('1') == std::string::npos) {
+                if (key.find_first_not_of('1') == std::string::npos)
+                {
                     key_size++;
                     key_value = 0;
                     key = key_advance(key_size, key_value);
@@ -65,7 +67,8 @@ namespace {
 
         friend std::istream& operator >>(std::istream& in, coder& coder)
         {
-            auto readchar = [&]() {
+            auto readchar = [&]()
+            {
                 char ch;
                 in >> ch;
                 return ch;
@@ -73,29 +76,35 @@ namespace {
             std::stringstream message;
             std::string block;
 
-            do {
+            do
+            {
                 block.clear();
                 std::generate_n(std::back_inserter(block), 3, readchar);
-                size_t block_len = std::accumulate(block.begin(), block.end(), 0, [](auto curr, auto ch) {
+                size_t block_len = std::accumulate(block.begin(), block.end(), 0, [](auto curr, auto ch)
+                {
                     curr <<= 1;
                     return curr +  ch - '0';
                 });
 
-                if (block_len > 0) {
+                if (block_len > 0)
+                {
                     std::string chunk;
 
-                    while (true) {
+                    while (true)
+                    {
                         chunk.clear();
                         std::generate_n(std::back_inserter(chunk), block_len, readchar);
 
-                        if (chunk.find('0') == std::string::npos) {
+                        if (chunk.find('0') == std::string::npos)
+                        {
                             break;
                         }
 
                         message << coder.code_[chunk];
                     }
                 }
-            } while (block != "000");
+            }
+            while (block != "000");
 
             coder.message_ = message.str();
             return in;
@@ -113,7 +122,8 @@ namespace {
             std::stringstream ss;
             uint16_t val (key_value++);
 
-            while (key_size--) {
+            while (key_size--)
+            {
                 ss << char((val & 0x01) + '0');
                 val >>= 1;
             }
@@ -130,10 +140,12 @@ void U213::operator()() const
 {
     coder coder;
 
-    while (std::cin) {
+    while (std::cin)
+    {
         std::string head;
 
-        if (std::getline(std::cin, head)) {
+        if (std::getline(std::cin, head))
+        {
             coder = head;
             std::cin >> coder;
             std::cout << coder << std::endl;

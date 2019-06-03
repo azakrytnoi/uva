@@ -3,7 +3,7 @@
 
 CC = g++
 
-CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++14 -g3 -fPIC $(UCFLAGS)
+CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++17 -g -fPIC $(UCFLAGS)
 
 #
 INCLUDES = -I. -I../../headers

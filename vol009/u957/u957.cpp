@@ -24,11 +24,13 @@ namespace {
 
         friend std::istream& operator >> (std::istream& in, solver& s)
         {
-            if (in >> s.years_) {
+            if (in >> s.years_)
+            {
                 in >> s.popes_;
                 solver::elections_.clear();
                 solver::elections_.reserve(s.popes_);
-                std::generate_n(std::back_inserter(solver::elections_), s.popes_, [&]() {
+                std::generate_n(std::back_inserter(solver::elections_), s.popes_, [&]()
+                {
                     int e;
                     in >> e;
                     return e;
@@ -48,11 +50,13 @@ namespace {
         {
             max_ = std::numeric_limits<int>::min();
 
-            for (auto it = solver::elections_.begin(); it != solver::elections_.end(); ++it) {
+            for (auto it = solver::elections_.begin(); it != solver::elections_.end(); ++it)
+            {
                 auto istart = it;
                 auto iend = std::upper_bound(it, solver::elections_.end(), *(it) + years_ - 1);
 
-                if ((iend - istart) > max_) {
+                if ((iend - istart) > max_)
+                {
                     max_ = (iend - istart);
                     start_ = istart;
                     end_ = iend - 1;
@@ -84,7 +88,8 @@ void U957::operator()() const
 {
     solver s;
 
-    while (std::cin >> s) {
+    while (std::cin >> s)
+    {
         s.solve();
         std::cout << s << std::endl;
     }

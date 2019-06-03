@@ -32,7 +32,8 @@ void U11462::operator()() const
     std::vector<uint64_t> data;
     uint64_t N;
 
-    while ((std::cin >> N) && N > 0) {
+    while ((std::cin >> N) && N > 0)
+    {
         data.clear();
         data.reserve(N);
         std::istream_iterator<uint64_t> in(std::cin);

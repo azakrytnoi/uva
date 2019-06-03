@@ -53,16 +53,21 @@ namespace {
         char ch;
         int count(0);
 
-        for (auto it = source.begin(); it != source.end(); ++it) {
-            if (std::isalpha(*it)) {
-                if (count != 0) {
+        for (auto it = source.begin(); it != source.end(); ++it)
+        {
+            if (std::isalpha(*it))
+            {
+                if (count != 0)
+                {
                     ss << std::string(count, ch);
                     count = 0;
                 }
 
                 ch = *it;
 
-            } else if (std::isdigit (*it)) {
+            }
+            else if (std::isdigit (*it))
+            {
                 count *= 10;
                 count += (*it) - '0';
             }
@@ -84,7 +89,8 @@ void U11541::operator()() const
     std::getline(std::cin, line);
     int case_no(0);
 
-    while (N--) {
+    while (N--)
+    {
         std::getline(std::cin, line);
         std::cout << "Case " << (++case_no) << ": " << (engine << line) << std::endl;
     }

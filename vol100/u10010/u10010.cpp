@@ -49,7 +49,8 @@ namespace {
         std::string line;
         in >> sol.nRows_ >> sol.nCols_;
         sol.grid_.reserve(sol.nRows_);
-        std::generate_n(std::back_inserter(sol.grid_), sol.nRows_, [&]() {
+        std::generate_n(std::back_inserter(sol.grid_), sol.nRows_, [&]()
+        {
             in >> line;
             std::transform(line.begin(), line.end(), line.begin(), ::tolower);
             return line;
@@ -67,8 +68,10 @@ namespace {
 
     bool solution::lookup(size_t row, size_t col, const std::string& word) const
     {
-        if (grid_[row][col] == word[0]) {
-            for (auto delta = deltas_.begin(); delta != deltas_.end(); ++delta) {
+        if (grid_[row][col] == word[0])
+        {
+            for (auto delta = deltas_.begin(); delta != deltas_.end(); ++delta)
+            {
                 int64_t lookup_row(row + delta->first), lookup_col(col + delta->second);
                 size_t matched_pos(1);
 
@@ -78,10 +81,12 @@ namespace {
                         && grid_[lookup_row][lookup_col] == word[matched_pos];
                         matched_pos++,
                         lookup_row += delta->first,
-                        lookup_col += delta->second) {
+                        lookup_col += delta->second)
+                {
                 }
 
-                if (matched_pos == word.length()) {
+                if (matched_pos == word.length())
+                {
                     return true;
                 }
             }
@@ -92,9 +97,12 @@ namespace {
 
     std::pair<size_t, size_t> solution::solve(const std::string& word) const
     {
-        for (size_t row = 0; row < size_t(nRows_); row++) {
-            for (size_t col = 0; col < size_t(nCols_); col++) {
-                if (lookup(row, col, word)) {
+        for (size_t row = 0; row < size_t(nRows_); row++)
+        {
+            for (size_t col = 0; col < size_t(nCols_); col++)
+            {
+                if (lookup(row, col, word))
+                {
                     return std::make_pair(row + 1, col + 1);
                 }
             }
@@ -110,12 +118,14 @@ void U10010::operator()() const
     int N;
     std::cin >> N;
 
-    while (N--) {
+    while (N--)
+    {
         std::cin >> sol;
         int K;
         std::cin >> K;
 
-        while (K--) {
+        while (K--)
+        {
             std::string word;
             std::cin >> word;
             std::transform(word.begin(), word.end(), word.begin(), ::tolower);

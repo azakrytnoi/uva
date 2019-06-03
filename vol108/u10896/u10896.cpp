@@ -40,7 +40,8 @@ namespace {
             std::stringstream ss(sentence);
             std::istream_iterator<std::string> sin(ss);
             std::for_each(sin, std::istream_iterator<std::string>(),
-            [&](const std::string & word) {
+                          [&](const std::string & word)
+            {
                 words_[word.length()].push_back(word);
             });
         }
@@ -50,13 +51,16 @@ namespace {
             std::stringstream out;
             std::list<std::string>& candidates = words_[word.length()];
 
-            for (auto it = candidates.begin(); it != candidates.end(); ++it) {
+            for (auto it = candidates.begin(); it != candidates.end(); ++it)
+            {
                 std::string::const_iterator wit = word.begin();
                 char candidate = distance((*it)[0], *wit);
 
                 if (std::accumulate((*it).begin(), (*it).end(), true,
-                [&](bool current, char ch) -> bool {
-                return current &= distance(ch, *(wit++)) == candidate;})) {
+                                    [&](bool current, char ch) -> bool
+            {
+                return current &= distance(ch, *(wit++)) == candidate;}))
+                {
                     out << char('a' + candidate);
                 }
             }
@@ -71,7 +75,8 @@ namespace {
         {
             char res = a - b;
 
-            if (res < 0) {
+            if (res < 0)
+            {
                 res += ('z' - 'a') + 1;
             }
 
@@ -88,7 +93,8 @@ void U10896::operator()() const
     std::string line;
     std::getline(std::cin, line);
 
-    while (N--) {
+    while (N--)
+    {
         std::getline(std::cin, line);
         decoder d(line);
         std::getline(std::cin, line);

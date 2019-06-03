@@ -52,13 +52,15 @@ namespace {
         sol.parties_.clear();
         sol.indexes_.clear();
 
-        if (sol.case_no_ == std::numeric_limits<size_t>::max()) {
+        if (sol.case_no_ == std::numeric_limits<size_t>::max())
+        {
             in >> sol.case_no_;
         }
 
         size_t n(0);
 
-        if (in >> n) {
+        if (in >> n)
+        {
             sol.parties_.reserve(n);
             sol.indexes_.resize(n);
             std::istream_iterator<uint16_t> iin(in);
@@ -70,7 +72,8 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
-        for (size_t idx = 0; idx < sol.indexes_.size(); ++idx) {
+        for (size_t idx = 0; idx < sol.indexes_.size(); ++idx)
+        {
             out << "party " << (idx + 1) << " has power index " << sol.indexes_[idx] << std::endl;
         }
 
@@ -79,15 +82,19 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
-        switch (parties_.size()) {
+        switch (parties_.size())
+        {
         case 1:
             indexes_[0] = 1;
             break;
 
         case 2:
-            if (parties_[0] > parties_[1]) {
+            if (parties_[0] > parties_[1])
+            {
                 indexes_ = {2, 0};
-            } else {
+            }
+            else
+            {
                 indexes_ = {0, 2};
             }
 
@@ -109,27 +116,33 @@ namespace {
 //        }
 //        break;
 
-        default: {
+        default:
+        {
             auto summ = std::accumulate(parties_.begin(), parties_.end(), 0);
             auto half = summ / 2 + (summ & 1);
 
-            for (size_t i = 0; i < parties_.size(); ++i) {
+            for (size_t i = 0; i < parties_.size(); ++i)
+            {
                 std::vector<int32_t> dp (1001);
                 dp[0] = 1;
 
-                for (size_t j = 0; j < parties_.size(); ++j) {
-                    if (i == j)	{
+                for (size_t j = 0; j < parties_.size(); ++j)
+                {
+                    if (i == j)
+                    {
                         continue;
                     }
 
-                    for (auto k = summ - parties_[j]; k >= 0; --k) {
+                    for (auto k = summ - parties_[j]; k >= 0; --k)
+                    {
                         dp[k + parties_[j]] += dp[k];
                     }
                 }
 
                 int32_t index (0);
 
-                for (auto j = half - parties_[i]; j < half && j >= 0; j++) {
+                for (auto j = half - parties_[i]; j < half && j >= 0; j++)
+                {
                     index += dp[j];
                 }
 
@@ -148,7 +161,8 @@ void U435::operator()() const
 {
     solution_t sol;
 
-    while (std::cin >> sol && sol) {
+    while (std::cin >> sol && sol)
+    {
         std::cout << sol() << std::endl;
     }
 }
