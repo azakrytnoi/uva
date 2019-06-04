@@ -78,6 +78,7 @@ namespace {
         int32_t backup_[NCELL][NCELL];
         int32_t ncache_[NMAX];
         int32_t cache_[NMAX][SMAX][NMAX];
+
     public:
         solution() : n_() {        }
 
@@ -534,7 +535,6 @@ namespace {
                 memcpy(cache_[nblocks - 1][ncache_[nblocks - 1]++],
                        temp, sizeof(temp));
             }
-
         }
         else
         {
