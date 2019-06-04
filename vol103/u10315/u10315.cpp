@@ -121,6 +121,7 @@ namespace {
         std::vector<card_t> hand_;
         combination_t value_;
         std::vector<std::pair<rank_t, int>> distribution_;
+
     public:
         hand_t() : hand_(), value_(combination_t::HighCard), distribution_()
         {
