@@ -66,6 +66,7 @@ namespace {
     class assign_t : public instruction_t {
         std::string variable_;
         uint64_t value_;
+
     public:
         op_type_t op_type() const override
         {
@@ -87,7 +88,7 @@ namespace {
         virtual ~assign_t() {}
 
     protected:
-        virtual void execute(processor_t& processor) const override;
+        void execute(processor_t& processor) const override;
     };
 
     class print_t : public instruction_t {
@@ -112,7 +113,7 @@ namespace {
         virtual ~print_t() {}
 
     protected:
-        virtual void execute(processor_t& processor) const override;
+        void execute(processor_t& processor) const override;
     };
 
     class lock_t : public instruction_t {
@@ -131,7 +132,7 @@ namespace {
         virtual ~lock_t() {}
 
     protected:
-        virtual void execute(processor_t& processor) const override;
+        void execute(processor_t& processor) const override;
     };
 
     class unlock_t : public instruction_t {
@@ -150,7 +151,7 @@ namespace {
         virtual ~unlock_t() {}
 
     protected:
-        virtual void execute(processor_t& processor) const override;
+        void execute(processor_t& processor) const override;
     };
 
     class end_t : public instruction_t {
@@ -254,6 +255,7 @@ namespace {
         std::deque<proc_id_t> ready_;
         proc_id_t latch_;
         std::deque<proc_id_t> locked_;
+
     public:
         processor_t() : n_proc_(), programms_(), variables_(), timings_(), quantum_(), slot_time_(), out_(), current_(), ready_(),
             latch_(std::numeric_limits<proc_id_t>::max()), locked_() {}
