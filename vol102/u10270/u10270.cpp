@@ -64,9 +64,9 @@ namespace {
         {47, 16, 24, 23, 23, 12, 12, 12, 7, 5, 5, 4, 3, 3, 2, 2, 1, 1},         // 47
     };
 
-    int32_t smallest;
+    // int32_t smallest;
 
-    bool found;
+    // bool found;
     bool finished;
 
     class solution {
@@ -102,8 +102,8 @@ namespace {
 
         void fill(int32_t blocks[], int32_t ncurrent, int32_t goal, bool display_when_find);
         int32_t find(int32_t size, point points[PMAX]);
-        void cut_by_hard_work(int32_t area, int32_t blocks[NMAX], int32_t nblocks);
-        void cut_by_tip(int32_t area, int32_t blocks[NMAX], int32_t nblocks, int32_t goal);
+        // void cut_by_hard_work(int32_t area, int32_t blocks[NMAX], int32_t nblocks);
+        // void cut_by_tip(int32_t area, int32_t blocks[NMAX], int32_t nblocks, int32_t goal);
 
         void print(square s[NMAX], int32_t nsquares);
     };
@@ -383,200 +383,200 @@ namespace {
         return npoints;
     }
 
-    void solution::cut_by_hard_work(int32_t area, int32_t blocks[NMAX], int32_t nblocks)
-    {
-        if (area >= 0 && nblocks > smallest)
-        {
-            return;
-        }
+    // void solution::cut_by_hard_work(int32_t area, int32_t blocks[NMAX], int32_t nblocks)
+    // {
+    //     if (area >= 0 && nblocks > smallest)
+    //     {
+    //         return;
+    //     }
 
-        if (area == 0 && nblocks == smallest && found)
-        {
-            return;
-        }
+    //     if (area == 0 && nblocks == smallest && found)
+    //     {
+    //         return;
+    //     }
 
-        if (area == 0 && ncount_[1] <= 1)
-        {
-            return;
-        }
+    //     if (area == 0 && ncount_[1] <= 1)
+    //     {
+    //         return;
+    //     }
 
-        if (area == 0)
-        {
-            int32_t temp[NMAX];
+    //     if (area == 0)
+    //     {
+    //         int32_t temp[NMAX];
 
-            memcpy(temp, blocks, NMAX * sizeof(int32_t));
+    //         memcpy(temp, blocks, NMAX * sizeof(int32_t));
 
-            std::sort(temp, temp + nblocks, [](int32_t x, int32_t y)
-            {
-                return x > y;
-            });
+    //         std::sort(temp, temp + nblocks, [](int32_t x, int32_t y)
+    //         {
+    //             return x > y;
+    //         });
 
-            memset(cell_, 0, sizeof(cell_));
+    //         memset(cell_, 0, sizeof(cell_));
 
-            finished = false;
-            fill(temp, 0, nblocks, false);
+    //         finished = false;
+    //         fill(temp, 0, nblocks, false);
 
-            if (finished)
-            {
-                smallest = nblocks;
-                found = true;
-            }
-        }
-        else
-        {
-            int32_t r;
+    //         if (finished)
+    //         {
+    //             smallest = nblocks;
+    //             found = true;
+    //         }
+    //     }
+    //     else
+    //     {
+    //         int32_t r;
 
-            for (r = n_ - 2; r >= 1; r--)
-            {
-                if (area >= (r * r))
-                {
-                    break;
-                }
-            }
+    //         for (r = n_ - 2; r >= 1; r--)
+    //         {
+    //             if (area >= (r * r))
+    //             {
+    //                 break;
+    //             }
+    //         }
 
-            int32_t c = r;
-            int32_t step = (nblocks == 0) ? 1 : (-1);
-            r = (nblocks == 0) ? 1 : r;
+    //         int32_t c = r;
+    //         int32_t step = (nblocks == 0) ? 1 : (-1);
+    //         r = (nblocks == 0) ? 1 : r;
 
-            for (; c >= 1; c--, r += step)
-            {
-                if (nblocks == 0 && r < (n_ / 2 + 1))
-                {
-                    continue;
-                }
+    //         for (; c >= 1; c--, r += step)
+    //         {
+    //             if (nblocks == 0 && r < (n_ / 2 + 1))
+    //             {
+    //                 continue;
+    //             }
 
-                if (nblocks == 1 && (r + blocks[0]) != n_)
-                {
-                    continue;
-                }
+    //             if (nblocks == 1 && (r + blocks[0]) != n_)
+    //             {
+    //                 continue;
+    //             }
 
-                if (nblocks == 2 && r != blocks[1])
-                {
-                    continue;
-                }
+    //             if (nblocks == 2 && r != blocks[1])
+    //             {
+    //                 continue;
+    //             }
 
-                if (nblocks == 4 && (r + blocks[3]) != blocks[0])
-                {
-                    continue;
-                }
+    //             if (nblocks == 4 && (r + blocks[3]) != blocks[0])
+    //             {
+    //                 continue;
+    //             }
 
-                if ((ncount_[r] + 1) > 4)
-                {
-                    continue;
-                }
+    //             if ((ncount_[r] + 1) > 4)
+    //             {
+    //                 continue;
+    //             }
 
-                ncount_[r]++;
+    //             ncount_[r]++;
 
-                blocks[nblocks] = r;
+    //             blocks[nblocks] = r;
 
-                cut_by_hard_work(area - (r * r), blocks, nblocks + 1);
+    //             cut_by_hard_work(area - (r * r), blocks, nblocks + 1);
 
-                ncount_[r]--;
-            }
-        }
-    }
+    //             ncount_[r]--;
+    //         }
+    //     }
+    // }
 
-    void solution::cut_by_tip(int32_t area, int32_t blocks[NMAX], int32_t nblocks, int32_t goal)
-    {
-        if (area > 0 && nblocks == goal)
-        {
-            return;
-        }
+    // void solution::cut_by_tip(int32_t area, int32_t blocks[NMAX], int32_t nblocks, int32_t goal)
+    // {
+    //     if (area > 0 && nblocks == goal)
+    //     {
+    //         return;
+    //     }
 
-        if (area == 0 && nblocks != goal)
-        {
-            return;
-        }
+    //     if (area == 0 && nblocks != goal)
+    //     {
+    //         return;
+    //     }
 
-        if (area == 0)
-        {
-            int32_t temp[NMAX];
+    //     if (area == 0)
+    //     {
+    //         int32_t temp[NMAX];
 
-            memcpy(temp, blocks, NMAX * sizeof(int32_t));
+    //         memcpy(temp, blocks, NMAX * sizeof(int32_t));
 
-            std::sort(temp, temp + nblocks, [](int32_t x, int32_t y)
-            {
-                return x > y;
-            });
+    //         std::sort(temp, temp + nblocks, [](int32_t x, int32_t y)
+    //         {
+    //             return x > y;
+    //         });
 
-            bool exist = false;
+    //         bool exist = false;
 
-            for (int32_t i = 0; i < ncache_[nblocks - 1]; i++)
-            {
-                bool equal = true;
+    //         for (int32_t i = 0; i < ncache_[nblocks - 1]; i++)
+    //         {
+    //             bool equal = true;
 
-                for (int32_t j = 0; j < nblocks; j++)
-                {
-                    if (cache_[nblocks - 1][i][j] != temp[j])
-                    {
-                        equal = false;
-                        break;
-                    }
-                }
+    //             for (int32_t j = 0; j < nblocks; j++)
+    //             {
+    //                 if (cache_[nblocks - 1][i][j] != temp[j])
+    //                 {
+    //                     equal = false;
+    //                     break;
+    //                 }
+    //             }
 
-                if (equal)
-                {
-                    exist = true;
-                    break;
-                }
-            }
+    //             if (equal)
+    //             {
+    //                 exist = true;
+    //                 break;
+    //             }
+    //         }
 
-            if (!exist)
-            {
-                memset(cell_, 0, sizeof(cell_));
+    //         if (!exist)
+    //         {
+    //             memset(cell_, 0, sizeof(cell_));
 
-                fill(temp, 0, nblocks, true);
+    //             fill(temp, 0, nblocks, true);
 
-                if (finished)
-                {
-                    return;
-                }
+    //             if (finished)
+    //             {
+    //                 return;
+    //             }
 
-                memcpy(cache_[nblocks - 1][ncache_[nblocks - 1]++],
-                       temp, sizeof(temp));
-            }
-        }
-        else
-        {
-            int32_t up(0);
+    //             memcpy(cache_[nblocks - 1][ncache_[nblocks - 1]++],
+    //                    temp, sizeof(temp));
+    //         }
+    //     }
+    //     else
+    //     {
+    //         int32_t up(0);
 
-            for (int32_t u = n_ - 1; u >= 1; u--)
-            {
-                if (area >= (u * u))
-                {
-                    up = u;
-                    break;
-                }
-            }
+    //         for (int32_t u = n_ - 1; u >= 1; u--)
+    //         {
+    //             if (area >= (u * u))
+    //             {
+    //                 up = u;
+    //                 break;
+    //             }
+    //         }
 
-            for (int32_t r = (up / 2 + 1); r <= up; r++)
-            {
-                if (nblocks == 1 && (r + blocks[0]) != n_)
-                {
-                    continue;
-                }
+    //         for (int32_t r = (up / 2 + 1); r <= up; r++)
+    //         {
+    //             if (nblocks == 1 && (r + blocks[0]) != n_)
+    //             {
+    //                 continue;
+    //             }
 
-                if (nblocks == 2 && r != blocks[1])
-                {
-                    continue;
-                }
+    //             if (nblocks == 2 && r != blocks[1])
+    //             {
+    //                 continue;
+    //             }
 
-                if (nblocks == 4 && (r + blocks[3]) != blocks[0])
-                {
-                    continue;
-                }
+    //             if (nblocks == 4 && (r + blocks[3]) != blocks[0])
+    //             {
+    //                 continue;
+    //             }
 
-                blocks[nblocks] = r;
+    //             blocks[nblocks] = r;
 
-                cut_by_tip(area - (r * r), blocks, nblocks + 1, goal);
+    //             cut_by_tip(area - (r * r), blocks, nblocks + 1, goal);
 
-                if (finished)
-                {
-                    return;
-                }
-            }
-        }
-    }
+    //             if (finished)
+    //             {
+    //                 return;
+    //             }
+    //         }
+    //     }
+    // }
 
     void solution::print(square s[NMAX], int32_t nsquares)
     {
