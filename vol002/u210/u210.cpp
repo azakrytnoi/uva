@@ -170,7 +170,7 @@ namespace {
         virtual ~end_t() {}
 
     protected:
-        virtual void execute(processor_t& processor) const override;
+        void execute(processor_t& processor) const override;
     };
 
 
