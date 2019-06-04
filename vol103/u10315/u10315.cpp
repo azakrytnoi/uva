@@ -209,6 +209,7 @@ namespace {
     class solution {
         hand_t white_;
         hand_t black_;
+
     public:
         solution() : white_(), black_() {}
 
@@ -229,12 +230,10 @@ namespace {
             if (sol.black_ == sol.white_)
             {
                 out << "Tie.";
-
             }
             else if (sol.black_ < sol.white_)
             {
                 out << "White wins.";
-
             }
             else
             {
@@ -274,13 +273,11 @@ namespace {
             if (straight)
             {
                 value_ = combination_t::StraightFlush;
-
             }
             else
             {
                 value_ = combination_t::Flush;
             }
-
         }
         else
         {
@@ -311,7 +308,6 @@ namespace {
                 if (distribution_.size() == 2)
                 {
                     value_ = combination_t::FullHouse;
-
                 }
                 else
                 {
@@ -324,7 +320,6 @@ namespace {
                 if (distribution_[1].second == 2)
                 {
                     value_ = combination_t::TwoPairs;
-
                 }
                 else
                 {
