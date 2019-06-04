@@ -115,12 +115,10 @@ namespace {
         if (sol.wKingCheck_)
         {
             out << "white king is in check.";
-
         }
         else if (sol.bKingCheck_)
         {
             out << "black king is in check.";
-
         }
         else
         {
@@ -150,12 +148,10 @@ namespace {
                 if (direction < 0 && (figure == 'B' || figure == 'Q' || figure == 'P'))
                 {
                     safe = true;
-
                 }
                 else if (direction > 0 && (figure == 'b' || figure == 'q' || figure == 'p'))
                 {
                     safe = true;
-
                 }
                 else
                 {
@@ -191,12 +187,10 @@ namespace {
                 if (direction < 0 && (figure == 'Q' || figure == 'R'))
                 {
                     safe = true;
-
                 }
                 else if (direction > 0 && (figure == 'q' || figure == 'r'))
                 {
                     safe = true;
-
                 }
                 else
                 {
@@ -232,7 +226,6 @@ namespace {
                 if (direction < 0 && figure == 'n')
                 {
                     check = true;
-
                 }
                 else if (direction > 0 && figure == 'N')
                 {
