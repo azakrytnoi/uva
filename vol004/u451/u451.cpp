@@ -1,4 +1,3 @@
-
 #ifdef _WIN32
     #define UVA_API_EXPORT __declspec(dllexport)
 #else
@@ -26,7 +25,7 @@ extern "C" {
 
 void __cdecl invoke()
 {
-    U450 instance;
+    U451 instance;
     instance();
 }
 
@@ -210,7 +209,7 @@ namespace {
 
 }
 
-void U450::operator()() const
+void U451::operator()() const
 {
     solution_t sol;
 
