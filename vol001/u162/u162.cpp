@@ -38,8 +38,8 @@ namespace {
         size_t player_;
         bool valid_;
         bool over_;
-    public:
 
+    public:
         desk() :
             hands_(), table_(), player_(0), valid_(true), over_(false)
         {
@@ -174,7 +174,6 @@ namespace {
                 default:
                     break;
                 }
-
             }
             else
             {
