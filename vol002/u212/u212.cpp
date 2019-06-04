@@ -33,6 +33,7 @@ namespace {
     class time {
         uint16_t hour_;
         uint16_t minute_;
+
     public:
         time(uint16_t hour = 0, uint16_t minute = 0) : hour_(hour), minute_(minute) {}
         time(const time& rhs) : hour_(rhs.hour_), minute_(rhs.minute_) {}
@@ -144,6 +145,7 @@ namespace {
         std::shared_ptr<R> resource_;
         const time assigned_;
         const time released_;
+
     public:
         resource_ref(std::shared_ptr<R> resource, const time& assigned, uint16_t duration) : resource_(resource), assigned_(assigned),
             released_(assigned + duration)
@@ -178,6 +180,7 @@ namespace {
         uint16_t surgery_, recovery_;
         std::unique_ptr<resource_ref<room>> room_;
         std::unique_ptr<resource_ref<bed>> bed_;
+
     public:
         patient(uint16_t id, const std::string& name, uint16_t surgery, uint16_t recovery) : id_(id), name_(name), surgery_(surgery), recovery_(recovery),
             room_(), bed_() {}
