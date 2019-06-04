@@ -72,7 +72,6 @@ int main(int argc, char** argv)
                 (*(uva->second))();
             }
         }
-
     }
     else
     {
@@ -111,7 +110,6 @@ void uva_wraper::release()
         dlclose(handle_);
         handle_ = nullptr;
     }
-
 }
 
 void dyn_evaluator::operator()()
