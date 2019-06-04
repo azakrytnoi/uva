@@ -251,7 +251,6 @@ namespace math {
             number_.assign(rhs.begin(), rhs.end());
             normalize();
         }
-
     };
 
 //    class int_big_t : public uint_big_t {
