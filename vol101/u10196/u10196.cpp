@@ -48,7 +48,6 @@ namespace {
         {
             return {lhs.first + rhs.first, lhs.second + rhs.second};
         }
-
     };
 
     typedef std::pair<position_t, std::function<void(position_t&)>> delta_t;
@@ -369,7 +368,6 @@ namespace {
 
         for (auto& delta : deltas)
         {
-
             checkPosition = kPosition + delta;
 
             if (!check && checkPosition.within())
