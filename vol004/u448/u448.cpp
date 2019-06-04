@@ -17,6 +17,7 @@
 #include <numeric>
 #include <memory>
 #include <limits>
+#include <functional>
 
 #include "utility.h"
 
@@ -402,7 +403,7 @@ namespace {
 
         while (in >> op)
         {
-            auto inst = instruction_t::decode(in, op);
+            auto inst(instruction_t::decode(in, op));
             code_.push_back(inst);
         }
 
@@ -411,61 +412,99 @@ namespace {
 
     std::shared_ptr<instruction_t> instruction_t::decode(std::istream& in, char op)
     {
+        static const std::map<op_code_t, std::function<std::shared_ptr<instruction_t>(std::istream&)>> decoder(
+        {
+            {op_code_t::ADD, [&](std::istream & in)
+                {
+                    return std::make_shared<add_t>(in);
+                }
+            },
+            {op_code_t::SUB, [&](std::istream & in)
+                {
+                    return std::make_shared<sub_t>(in);
+                }
+            },
+            {op_code_t::MUL, [&](std::istream & in)
+                {
+                    return std::make_shared<mul_t>(in);
+                }
+            },
+            {op_code_t::DIV, [&](std::istream & in)
+                {
+                    return std::make_shared<div_t>(in);
+                }
+            },
+            {op_code_t::MOV, [&](std::istream & in)
+                {
+                    return std::make_shared<mov_t>(in);
+                }
+            },
+            {op_code_t::BREQ, [&](std::istream & in)
+                {
+                    return std::make_shared<breq_t>(in);
+                }
+            },
+            {op_code_t::BRLE, [&](std::istream & in)
+                {
+                    return std::make_shared<brle_t>(in);
+                }
+            },
+            {op_code_t::BRLS, [&](std::istream & in)
+                {
+                    return std::make_shared<brls_t>(in);
+                }
+            },
+            {op_code_t::BRGE, [&](std::istream & in)
+                {
+                    return std::make_shared<brge_t>(in);
+                }
+            },
+            {op_code_t::BRGR, [&](std::istream & in)
+                {
+                    return std::make_shared<brge_t>(in);
+                }
+            },
+            {op_code_t::BRNE, [&](std::istream & in)
+                {
+                    return std::make_shared<brne_t>(in);
+                }
+            },
+            {op_code_t::BR, [&](std::istream & in)
+                {
+                    return std::make_shared<br_t>(in);
+                }
+            },
+            {op_code_t::AND, [&](std::istream & in)
+                {
+                    return std::make_shared<and_t>(in);
+                }
+            },
+            {op_code_t::OR, [&](std::istream & in)
+                {
+                    return std::make_shared<or_t>(in);
+                }
+            },
+            {op_code_t::XOR, [&](std::istream & in)
+                {
+                    return std::make_shared<xor_t>(in);
+                }
+            },
+            {op_code_t::NOT, [&](std::istream & in)
+                {
+                    return std::make_shared<not_t>(in);
+                }
+            }
+        });
         op = op >= 'A' ? 10 + op - 'A' : op - '0';
 
-        switch (static_cast<op_code_t>(op))
+        auto opi(decoder.find(static_cast<op_code_t>(op)));
+
+        if (opi == decoder.end())
         {
-        case op_code_t::ADD:
-            return std::make_shared<add_t>(in);
-
-        case op_code_t::SUB:
-            return std::make_shared<sub_t>(in);
-
-        case op_code_t::MUL:
-            return std::make_shared<mul_t>(in);
-
-        case op_code_t::DIV:
-            return std::make_shared<div_t>(in);
-
-        case op_code_t::MOV:
-            return std::make_shared<mov_t>(in);
-
-        case op_code_t::BREQ:
-            return std::make_shared<breq_t>(in);
-
-        case op_code_t::BRLE:
-            return std::make_shared<brle_t>(in);
-
-        case op_code_t::BRLS:
-            return std::make_shared<brls_t>(in);
-
-        case op_code_t::BRGE:
-            return std::make_shared<brge_t>(in);
-
-        case op_code_t::BRGR:
-            return std::make_shared<brgr_t>(in);
-
-        case op_code_t::BRNE:
-            return std::make_shared<brne_t>(in);
-
-        case op_code_t::BR:
-            return std::make_shared<br_t>(in);
-
-        case op_code_t::AND:
-            return std::make_shared<and_t>(in);
-
-        case op_code_t::OR:
-            return std::make_shared<or_t>(in);
-
-        case op_code_t::XOR:
-            return std::make_shared<xor_t>(in);
-
-        case op_code_t::NOT:
-            return std::make_shared<not_t>(in);
-
-        default:
             return nullptr;
         }
+
+        return opi->second(in);
     }
 
     std::shared_ptr<op_address_t> op_address_t::decode(std::istream& in)
