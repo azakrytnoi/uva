@@ -358,8 +358,7 @@ Type   # Minutes  % Used
         time now = start_;
         auto pat = patients_.begin();
 
-        while (not ready_rooms.empty())
-        {
+        auto serve_patient = [&]() {
             auto op_room = ready_rooms.top();
             ready_rooms.pop();
             (*pat)->allocate_room(op_room, now);
@@ -370,6 +369,11 @@ Type   # Minutes  % Used
             evt->kind_ = event::kind::surgery;
             events.push(evt);
             ++pat;
+        };
+
+        while (not ready_rooms.empty())
+        {
+            serve_patient();
         }
 
         while (not events.empty())
@@ -420,16 +424,7 @@ Type   # Minutes  % Used
 
                 if (pat != patients_.end())
                 {
-                    auto op_room = ready_rooms.top();
-                    ready_rooms.pop();
-                    (*pat)->allocate_room(op_room, now);
-                    event* evt = new event;
-                    evt->when_ = (*pat)->allocated_room()->released(); // @suppress("Method cannot be resolved")
-                    evt->patient_ = *pat;
-                    evt->room_ = op_room;
-                    evt->kind_ = event::kind::surgery;
-                    events.push(evt);
-                    ++pat;
+                    serve_patient();
                 }
                 else
                 {
