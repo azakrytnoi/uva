@@ -18,6 +18,8 @@
 #include <numeric>
 #include <limits>
 #include <memory>
+#include <map>
+#include <functional>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -166,202 +168,122 @@ namespace {
         }
     }
 
-    /*
-     *
-        if (node) {
-            if (node->left_) {
-                traverse(node->left_, out);
-            }
-
-            if (node->right_) {
-                traverse(node->right_, out);
-            }
-
-            switch (node->op_) {
-            case ' ':
-                if (not accu_loaded_) {
-                    out << "L " << node->name_ << std::endl;
-                    accu_loaded_ = true;
-                } else if (op_done_) {
-                    auto tmp = temp_.top();
-                    temp_.push(++tmp);
-                    out << "ST $" << tmp << std::endl << "L " << node->name_ << std::endl;
-                    op_done_ = false;
-                }
-
-                break;
-
-            case '+':
-                if (not op_done_) {
-                    out << "A " << node->right_->name_ << std::endl;
-                } else {
-                    auto tmp = temp_.top();
-                    temp_.pop();
-                    out << "A $" << tmp << std::endl;
-                }
-
-                op_done_ = true;
-                break;
-
-            case '-':
-                if (op_done_) {
-                    auto tmp = temp_.top();
-                    temp_.pop();
-                    out << "N" << std::endl << "A $" << tmp << std::endl;
-                } else {
-                    out << "S " << node->right_->name_ << std::endl;
-                }
-
-                op_done_ = true;
-                break;
-
-            case '*':
-                if (not op_done_) {
-                    out << "M " << node->right_->name_ << std::endl;
-                } else {
-                    auto tmp = temp_.top();
-                    temp_.pop();
-                    out << "M $" << tmp << std::endl;
-                }
-
-                op_done_ = true;
-                break;
-
-            case '@': {
-                auto tmp = temp_.top();
-                ++tmp;
-                out << "ST $" << tmp << std::endl << "L " << node->left_->name_ << std::endl << "N" << std::endl;
-            }
-
-            op_done_ = true;
-            break;
-
-            case '/': {
-                auto tmp = temp_.top();
-                tmp++;
-                out << "ST $" << tmp << std::endl << "L " << node->right_->name_ << std::endl << "D $" << tmp << std::endl;
-            }
-
-            op_done_ = true;
-            break;
-
-            default:
-                break;
-            }
-        }
-
-     */
     std::shared_ptr<node_t> solution::traverse(std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream& out)
     {
+        static const std::map<char, std::function<void(std::shared_ptr<node_t>, std::shared_ptr<node_t>&, std::stack<int>&, std::ostream&)>> processor (
+        {
+            {
+                ' ', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    if (acu && acu.get() != node.get())
+                    {
+                        auto tmp = temp.top();
+                        temp.push(++tmp);
+                        out << "ST $" << tmp << std::endl;
+                    }
+
+                    out << "L " << node->name_ << std::endl;
+                    acu = node;
+                }
+            },
+            {
+                '+', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    traverse(node->left_, acu, temp, out);
+
+                    if (node->right_->op_ == ' ')
+                    {
+                        out << "A " << node->right_->name_ << std::endl;
+                    }
+                    else
+                    {
+                        traverse(node->right_, acu, temp, out);
+                        auto tmp = temp.top();
+                        temp.pop();
+                        out << "A $" << tmp << std::endl;
+                    }
+
+                    acu = node;
+                }
+            },
+            {
+                '-', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    traverse(node->left_, acu, temp, out);
+
+                    if (node->right_->op_ == ' ')
+                    {
+                        out << "S " << node->right_->name_ << std::endl;
+                    }
+                    else
+                    {
+                        traverse(node->right_, acu, temp, out);
+                        auto tmp = temp.top();
+                        temp.pop();
+                        out << "N" << std::endl << "A $" << tmp << std::endl;
+                    }
+
+                    acu = node;
+                }
+            },
+            {
+                '*', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    traverse(node->left_, acu, temp, out);
+
+                    if (node->right_->op_ == ' ')
+                    {
+                        out << "M " << node->right_->name_ << std::endl;
+                    }
+                    else
+                    {
+                        traverse(node->right_, acu, temp, out);
+                        auto tmp = temp.top();
+                        temp.pop();
+                        out << "M $" << tmp << std::endl;
+                    }
+
+                    acu = node;
+                }
+            },
+            {
+                '/', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    traverse(node->left_, acu, temp, out);
+
+                    if (node->right_->op_ == ' ')
+                    {
+                        out << "D " << node->right_->op_ << std::endl;
+                    }
+                    else
+                    {
+                        traverse(node->right_, acu, temp, out);
+                        auto tmp = temp.top();
+                        temp.pop();
+                        out << "ST $" << (tmp + 1) << std::endl << "L $" << tmp << std::endl << "D $" << (tmp + 1) << std::endl;
+                    }
+                }
+            },
+            {
+                '@', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                {
+                    traverse(node->left_, acu, temp, out);
+                    out << "N" << std::endl;
+                    acu = node;
+                }
+            }
+        });
+
         if (node)
         {
-            switch (node->op_)
+            auto op = processor.find(node->op_);
+
+            if (op == processor.end())
             {
-            case ' ':
-            {
-                if (acu && acu.get() != node.get())
-                {
-                    auto tmp = temp.top();
-                    temp.push(++tmp);
-                    out << "ST $" << tmp << std::endl;
-                }
-
-                out << "L " << node->name_ << std::endl;
-                acu = node;
-                break;
-            }
-
-            case '+':
-            {
-                traverse(node->left_, acu, temp, out);
-
-                if (node->right_->op_ == ' ')
-                {
-                    out << "A " << node->right_->name_ << std::endl;
-                }
-                else
-                {
-                    traverse(node->right_, acu, temp, out);
-                    auto tmp = temp.top();
-                    temp.pop();
-                    out << "A $" << tmp << std::endl;
-                }
-
-                acu = node;
-                break;
-            }
-
-            case '-':
-            {
-                traverse(node->left_, acu, temp, out);
-
-                if (node->right_->op_ == ' ')
-                {
-                    out << "S " << node->right_->name_ << std::endl;
-                }
-                else
-                {
-                    traverse(node->right_, acu, temp, out);
-                    auto tmp = temp.top();
-                    temp.pop();
-                    out << "N" << std::endl << "A $" << tmp << std::endl;
-                }
-
-                acu = node;
-
-                break;
-            }
-
-            case '@':
-            {
-                traverse(node->left_, acu, temp, out);
-                out << "N" << std::endl;
-                acu = node;
-                break;
-            }
-
-            case '*':
-            {
-                traverse(node->left_, acu, temp, out);
-
-                if (node->right_->op_ == ' ')
-                {
-                    out << "M " << node->right_->name_ << std::endl;
-                }
-                else
-                {
-                    traverse(node->right_, acu, temp, out);
-                    auto tmp = temp.top();
-                    temp.pop();
-                    out << "M $" << tmp << std::endl;
-                }
-
-                acu = node;
-                break;
-            }
-
-            case '/':
-            {
-                traverse(node->left_, acu, temp, out);
-
-                if (node->right_->op_ == ' ')
-                {
-                    out << "D " << node->right_->op_ << std::endl;
-                }
-                else
-                {
-                    traverse(node->right_, acu, temp, out);
-                    auto tmp = temp.top();
-                    temp.pop();
-                    out << "ST $" << (tmp + 1) << std::endl << "L $" << tmp << std::endl << "D $" << (tmp + 1) << std::endl;
-                }
-
-                break;
-            }
-
-            default:
                 throw "not implemented";
             }
+
+            op->second(node, acu, temp, out);
 
             return node;
         }
