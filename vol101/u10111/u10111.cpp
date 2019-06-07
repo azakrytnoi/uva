@@ -17,6 +17,7 @@
 #include <limits>
 #include <array>
 #include <map>
+#include <tuple>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -34,10 +35,6 @@ namespace {
     {
         Nobody = '.', x = 'x', o = 'o'
     };
-
-//    bool operator < (const cell_t lhs, const cell_t rhs) {
-//
-//    }
 
     class board_t {
     public:
@@ -86,6 +83,7 @@ namespace {
         cell_t winner();
         std::pair<int64_t, int64_t> check_o_lose();
         void check_all (bool& all_checked, std::pair<int64_t, int64_t>& current);
+        std::tuple<bool, bool> check_same(size_t row);
     };
 
     std::istream& operator >> (std::istream& in, solution& sol)
@@ -131,6 +129,26 @@ namespace {
         return *this;
     }
 
+    std::tuple<bool, bool> solution::check_same(size_t row)
+    {
+        bool same_row(true), same_col(true);
+
+        for (size_t col = 1; col < board_t::size; col++)
+        {
+            if (board_.grid_[row][col] != board_.grid_[row][0])
+            {
+                same_row = false;
+            }
+
+            if (board_.grid_[col][row] != board_.grid_[0][row])
+            {
+                same_col = false;
+            }
+        }
+
+        return std::make_tuple(same_row, same_col);
+    }
+
     cell_t solution::winner()
     {
         for (size_t row = 0; row < board_t::size; row++)
@@ -140,20 +158,7 @@ namespace {
                 continue;
             }
 
-            bool same_row(true), same_col(true);
-
-            for (size_t col = 1; col < board_t::size; col++)
-            {
-                if (board_.grid_[row][col] != board_.grid_[row][0])
-                {
-                    same_row = false;
-                }
-
-                if (board_.grid_[col][row] != board_.grid_[0][row])
-                {
-                    same_col = false;
-                }
-            }
+            auto [same_row, same_col] = check_same(row);
 
             if (same_row)
             {
