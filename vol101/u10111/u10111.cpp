@@ -182,11 +182,40 @@ namespace {
 
     std::pair<int64_t, int64_t> solution::check_o_lose()
     {
+        std::pair<int64_t, int64_t> current = {-1, -1};
+        auto check_all = [&](bool& all_checked)
+        {
+            for (size_t col = 0; col < board_t::size; col++)
+            {
+                for (size_t row = 0; row < board_t::size; row++)
+                {
+                    if (board_.grid_[row][col] == cell_t::Nobody)
+                    {
+                        board_.grid_[row][col] = board_.x_turn_ ? cell_t::x : cell_t::o;
+                        board_.x_turn_ = not board_.x_turn_;
+                        auto win_pos = check_o_lose();
+                        all_checked &= (win_pos.first != -1 && win_pos.second != -1);
+                        board_.grid_[row][col] = cell_t::Nobody;
+                        board_.x_turn_ = not board_.x_turn_;
+
+                        if (board_.x_turn_ && (win_pos.first != -1 && win_pos.second != -1))
+                        {
+                            current = {row, col};
+                            break;
+                        }
+
+                        if (not board_.x_turn_ && not all_checked)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+        };
         auto checked_board = o_lose_.find(board_);
 
         if (checked_board == o_lose_.end())
         {
-            std::pair<int64_t, int64_t> current = {-1, -1};
             auto win = winner();
 
             if (win != cell_t::Nobody)
@@ -196,37 +225,7 @@ namespace {
             else
             {
                 bool all_checked(true);
-                auto check_all = [&]()
-                {
-
-                    for (size_t col = 0; col < board_t::size; col++)
-                    {
-                        for (size_t row = 0; row < board_t::size; row++)
-                        {
-                            if (board_.grid_[row][col] == cell_t::Nobody)
-                            {
-                                board_.grid_[row][col] = board_.x_turn_ ? cell_t::x : cell_t::o;
-                                board_.x_turn_ = not board_.x_turn_;
-                                auto win_pos = check_o_lose();
-                                all_checked &= (win_pos.first != -1 && win_pos.second != -1);
-                                board_.grid_[row][col] = cell_t::Nobody;
-                                board_.x_turn_ = not board_.x_turn_;
-
-                                if (board_.x_turn_ && (win_pos.first != -1 && win_pos.second != -1))
-                                {
-                                    current = {row, col};
-                                    break;
-                                }
-
-                                if (not board_.x_turn_ && not all_checked)
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                };
-                check_all();
+                check_all(all_checked);
 
                 if (all_checked && not board_.x_turn_)
                 {
