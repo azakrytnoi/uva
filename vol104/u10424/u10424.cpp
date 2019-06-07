@@ -39,7 +39,6 @@ namespace {
         double grade_;
 
     public:
-
         solution() : grade_(0) {}
 
         friend std::istream& operator >> (std::istream& in, solution& sol);

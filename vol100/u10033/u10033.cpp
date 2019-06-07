@@ -34,6 +34,7 @@ namespace {
         uint16_t pc_ = 0;
         bool running_ = false;
         static const uint16_t MODULO = 1000;
+
     public:
         computer() : registers_(), ram_()
         {

@@ -35,6 +35,7 @@ namespace {
     class solution {
         std::map<uint32_t, bool> carmichael_;
         uint32_t n_;
+
     public:
         solution() : carmichael_(), n_(0)
         {

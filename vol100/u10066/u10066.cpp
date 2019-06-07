@@ -48,7 +48,6 @@ namespace {
                 std::generate_n(std::back_inserter(s.a_), m, load);
                 s.b_.clear();
                 std::generate_n(std::back_inserter(s.b_), n, load);
-
             }
             else
             {

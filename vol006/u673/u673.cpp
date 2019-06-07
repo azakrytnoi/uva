@@ -63,7 +63,6 @@ void U673::operator()() const
                 if (!check.empty() && '(' == check.top())
                 {
                     check.pop();
-
                 }
                 else
                 {

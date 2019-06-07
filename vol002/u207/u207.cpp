@@ -226,7 +226,6 @@ namespace {
                 {
                     return p2->disqualified_;
                 }
-
             }
 
             if (p1->total_ == p2->total_)

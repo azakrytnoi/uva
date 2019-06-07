@@ -32,6 +32,7 @@ namespace {
         int64_t x_, y_, d_;
         int32_t n_, c1_, c2_, n1_, n2_;
         bool fail_;
+
     public:
         solution() : x_(), y_(), d_(), n_(), c1_(), c2_(), n1_(), n2_(), fail_() {};
 

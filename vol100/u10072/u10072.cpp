@@ -97,7 +97,6 @@ namespace {
             }
 
             return in;
-
         }
 
         friend std::ostream& operator << (std::ostream& out, const team_t& rhs)

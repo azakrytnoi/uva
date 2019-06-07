@@ -148,7 +148,6 @@ namespace {
         size_t n_;
         std::array<poker::hand_t, 5> desk_;
         std::map<combination_t, size_t> result_;
-
     };
 
     solution_t& solution_t::operator()()

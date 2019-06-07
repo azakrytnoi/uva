@@ -67,7 +67,6 @@ namespace {
             if (n == 1)
             {
                 knights_ = m;
-
             }
             else if (n == 2)
             {
