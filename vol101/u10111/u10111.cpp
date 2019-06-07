@@ -196,33 +196,37 @@ namespace {
             else
             {
                 bool all_checked(true);
-
-                for (size_t col = 0; col < board_t::size; col++)
+                auto check_all = [&]()
                 {
-                    for (size_t row = 0; row < board_t::size; row++)
+
+                    for (size_t col = 0; col < board_t::size; col++)
                     {
-                        if (board_.grid_[row][col] == cell_t::Nobody)
+                        for (size_t row = 0; row < board_t::size; row++)
                         {
-                            board_.grid_[row][col] = board_.x_turn_ ? cell_t::x : cell_t::o;
-                            board_.x_turn_ = not board_.x_turn_;
-                            auto win_pos = check_o_lose();
-                            all_checked &= (win_pos.first != -1 && win_pos.second != -1);
-                            board_.grid_[row][col] = cell_t::Nobody;
-                            board_.x_turn_ = not board_.x_turn_;
-
-                            if (board_.x_turn_ && (win_pos.first != -1 && win_pos.second != -1))
+                            if (board_.grid_[row][col] == cell_t::Nobody)
                             {
-                                current = {row, col};
-                                break;
-                            }
+                                board_.grid_[row][col] = board_.x_turn_ ? cell_t::x : cell_t::o;
+                                board_.x_turn_ = not board_.x_turn_;
+                                auto win_pos = check_o_lose();
+                                all_checked &= (win_pos.first != -1 && win_pos.second != -1);
+                                board_.grid_[row][col] = cell_t::Nobody;
+                                board_.x_turn_ = not board_.x_turn_;
 
-                            if (not board_.x_turn_ && not all_checked)
-                            {
-                                break;
+                                if (board_.x_turn_ && (win_pos.first != -1 && win_pos.second != -1))
+                                {
+                                    current = {row, col};
+                                    break;
+                                }
+
+                                if (not board_.x_turn_ && not all_checked)
+                                {
+                                    break;
+                                }
                             }
                         }
                     }
-                }
+                };
+                check_all();
 
                 if (all_checked && not board_.x_turn_)
                 {
