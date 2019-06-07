@@ -284,28 +284,11 @@ namespace {
                 int32_t y = points[i].y_;
                 int32_t s = blocks[ncurrent];
 
-                if (ncurrent == 0 && (y != 0 || x != 0))
-                {
-                    continue;
-                }
-
-                if (ncurrent == 1 && (y != 0 || x != blocks[0]))
-                {
-                    continue;
-                }
-
-                if (ncurrent == 2 && (y != blocks[0] || x != 0))
-                {
-                    continue;
-                }
-
-                if (ncurrent == 3 && x != (n_ - blocks[ncurrent]))
-                {
-                    continue;
-                }
-
-                if (ncurrent == 4 && (x != (n_ - blocks[ncurrent]) &&
-                                      y != (n_ - blocks[ncurrent])))
+                if ((ncurrent == 0 && (y != 0 || x != 0)) //
+                        || (ncurrent == 1 && (y != 0 || x != blocks[0])) //
+                        || (ncurrent == 2 && (y != blocks[0] || x != 0)) //
+                        || (ncurrent == 3 && x != (n_ - blocks[ncurrent]))
+                        || (ncurrent == 4 && (x != (n_ - blocks[ncurrent]) && y != (n_ - blocks[ncurrent]))))
                 {
                     continue;
                 }
