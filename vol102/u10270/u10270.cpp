@@ -251,6 +251,17 @@ namespace {
 //        print(best_, smallest);
 //    }
 
+    void populate(int32_t cell[NCELL][NCELL], int32_t x, int32_t y, int32_t delta, int32_t val)
+    {
+        for (int32_t gy = y; gy < (y + delta); gy++)
+        {
+            for (int32_t gx = x; gx < (x + delta); gx++)
+            {
+                cell[gy][gx] = val;
+            }
+        }
+    }
+
     void solution::fill(int32_t blocks[], int32_t ncurrent, int32_t goal, bool display_when_find)
     {
         if (ncurrent == goal)
@@ -297,13 +308,7 @@ namespace {
                 squares_[ncurrent].topLeft_.y_ = (y + 1);
                 squares_[ncurrent].size_ = s;
 
-                for (int32_t gy = y; gy < (y + s); gy++)
-                {
-                    for (int32_t gx = x; gx < (x + s); gx++)
-                    {
-                        cell_[gy][gx] = s;
-                    }
-                }
+                populate(cell_, x, y, s, s);
 
                 fill(blocks, ncurrent + 1, goal, display_when_find);
 
@@ -312,13 +317,7 @@ namespace {
                     return;
                 }
 
-                for (int32_t gy = y; gy < (y + s); gy++)
-                {
-                    for (int32_t gx = x; gx < (x + s); gx++)
-                    {
-                        cell_[gy][gx] = 0;
-                    }
-                }
+                populate(cell_, x, y, s, 0);
             }
         }
     }
