@@ -119,7 +119,6 @@ void U10026::operator()() const
         if (sol)
         {
             std::cout << sol << std::endl;
-
         }
         else
         {

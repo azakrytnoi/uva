@@ -31,7 +31,6 @@ namespace {
 
     class coder {
     public:
-
         coder() : buffer_() {}
 
         coder& operator << (const std::string& input);

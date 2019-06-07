@@ -81,7 +81,6 @@ namespace {
                 if (solve(mid))
                 {
                     max_ = mid;
-
                 }
                 else
                 {

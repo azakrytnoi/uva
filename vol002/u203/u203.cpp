@@ -89,7 +89,6 @@ namespace {
         {
             return p1.x_ * p2.y_ - p1.y_ * p2.x_;
         };
-
     };
 
     class ship_t {
@@ -141,7 +140,6 @@ namespace {
 
         solution_t& operator()()
         {
-
             for (auto& ship : others_)
             {
                 ship.distance_ = point_t::distance(own_.point_, ship.point_);

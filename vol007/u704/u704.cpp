@@ -112,6 +112,7 @@ namespace {
         std::deque<rotation> movements_;
         wheels wheels_;
         bool solved_;
+
     public:
         solution() : lower_half_cache_(), movements_(), wheels_(), solved_()
         {
@@ -241,7 +242,6 @@ namespace {
             if (sol.movements_.empty())
             {
                 std::cout << "PUZZLE ALREADY SOLVED";
-
             }
             else
             {
@@ -251,7 +251,6 @@ namespace {
                     std::cout << static_cast<int32_t>(*it);
                 }
             }
-
         }
         else
         {
@@ -283,7 +282,6 @@ namespace {
                 movements_ = movements;
                 movements_.insert(movements_.end(), lhci->second.begin(), lhci->second.end());
                 break;
-
             }
             else if (movements.size() < max_movements / 2)
             {

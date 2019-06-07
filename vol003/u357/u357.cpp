@@ -72,7 +72,6 @@ void U357::operator()() const
         if (res > 1)
         {
             std::cout << "There are " << res << " ways to produce " << amt << " cents change." << std::endl;
-
         }
         else
         {

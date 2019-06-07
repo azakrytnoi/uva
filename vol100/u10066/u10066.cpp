@@ -87,12 +87,10 @@ namespace {
                 if (i == 0 || j == 0)
                 {
                     temp[i][j] = 0;
-
                 }
                 else if (a[i - 1] == b[j - 1])
                 {
                     temp[i][j] = temp[i - 1][j - 1] + 1;
-
                 }
                 else
                 {

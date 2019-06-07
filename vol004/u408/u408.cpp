@@ -39,7 +39,6 @@ void U408::operator()() const
         if (math::gcd(mod, step) == 1)
         {
             std::cout << "Good Choice" << std::endl;
-
         }
         else
         {

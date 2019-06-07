@@ -145,7 +145,6 @@ namespace {
                 {
                     points_.erase(points_.end());
                 }
-
             }
         }
 

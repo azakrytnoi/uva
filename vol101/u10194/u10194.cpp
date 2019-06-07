@@ -43,31 +43,26 @@ namespace {
                             if (games_played() == other.games_played())
                             {
                                 return name_ > other.name_;
-
                             }
                             else
                             {
                                 return games_played() > other.games_played();
                             }
-
                         }
                         else
                         {
                             return goals_scored_ < other.goals_scored_;
                         }
-
                     }
                     else
                     {
                         return goals() < other.goals();
                     }
-
                 }
                 else
                 {
                     return wins_ < other.wins_;
                 }
-
             }
             else
             {
@@ -79,34 +74,42 @@ namespace {
         {
             return points_;
         }
+
         int games_played() const
         {
             return wins_ + losses_ + ties_;
         }
+
         int& wins()
         {
             return wins_;
         }
+
         int& ties()
         {
             return ties_;
         }
+
         int& losses()
         {
             return losses_;
         }
+
         int goals() const
         {
             return goals_scored_ - goals_against_;
         }
+
         int& goals_scored()
         {
             return goals_scored_;
         }
+
         int& goals_against()
         {
             return goals_against_;
         }
+
         const std::string& name() const
         {
             return name_;
@@ -117,10 +120,12 @@ namespace {
             wins_++;
             points_ += 3;
         }
+
         void loss()
         {
             losses_++;
         }
+
         void tie()
         {
             ties_++;
@@ -128,6 +133,7 @@ namespace {
         }
 
         static void recordResults(team& team1, team& team2, int team1Goals, int team2Goals);
+
     private:
         int points_;
         int wins_;
@@ -149,13 +155,11 @@ namespace {
         {
             team2.win();
             team1.loss();
-
         }
         else if (team1Goals > team2Goals)
         {
             team1.win();
             team2.loss();
-
         }
         else
         {

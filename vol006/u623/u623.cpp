@@ -33,6 +33,7 @@ namespace {
     class solution {
         math::uint_big_t int_;
         uint32_t n_;
+
     public:
         solution() : int_(), n_(0) {}
 

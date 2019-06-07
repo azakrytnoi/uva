@@ -21,8 +21,8 @@ U713::U713()
 namespace {
     class solver {
         std::string a_, b_;
-    public:
 
+    public:
         solver() : a_(), b_() {}
 
         friend

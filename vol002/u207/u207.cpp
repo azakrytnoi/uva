@@ -103,7 +103,6 @@ namespace {
         solution& operator()();
 
     private:
-
         void play_round(size_t round_no, std::vector<std::shared_ptr<player_t>>::iterator end);
 
         purse_t purse_;
@@ -213,7 +212,6 @@ namespace {
         {
             if (p1->disqualified_ || p2->disqualified_)
             {
-
                 if (p1->disqualified_ && p2->disqualified_)
                 {
                     return std::count_if(p1->scores_.begin(), p1->scores_.end(), [](auto score)

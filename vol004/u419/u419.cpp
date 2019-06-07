@@ -288,7 +288,6 @@ namespace {
 
                 if (slot_t::duration(possible, end_of_day) >= duration_)
                 {
-
                     while (slot_t::duration (possible, meet->first) < duration_ && meet->second && meet != last_i)
                     {
                         ++meet;

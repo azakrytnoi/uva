@@ -48,7 +48,6 @@ void U100::operator()() const
                 if (n & 0x01)
                 {
                     n = 3 * n + 1;
-
                 }
                 else
                 {

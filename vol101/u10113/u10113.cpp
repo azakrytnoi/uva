@@ -169,6 +169,5 @@ void U10113::operator()() const
         {
             sol.populate();
         }
-
     }
 }

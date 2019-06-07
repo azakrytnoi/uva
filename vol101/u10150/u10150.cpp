@@ -70,7 +70,6 @@ namespace {
         if (sol.have_solution_)
         {
             sol.print_path(out, sol.a_idx_, sol.b_idx_);
-
         }
         else
         {

@@ -31,6 +31,7 @@ namespace {
         std::vector<uint32_t> hParty_;
         uint32_t lostDays_;
         uint32_t nDays_;
+
     public:
         solution() : hParty_(), lostDays_(0), nDays_(0) {}
 

@@ -82,7 +82,6 @@ namespace {
                 std::generate_n(std::back_inserter(*bcew), m, read_item);
                 ++bcew;
             }
-
         }
 
         return in;
@@ -160,7 +159,6 @@ namespace {
                             arr[i][j + k] = value;
                             used[i][j + k] = k;
                         }
-
                     }
                 }
             }

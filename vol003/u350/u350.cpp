@@ -42,6 +42,7 @@ namespace {
         uint32_t count_;
         uint32_t L;
         std::vector<bool> mask_;
+
     public:
         solution() : lcm_(), count_(0), L(0), mask_() {}
 
@@ -77,7 +78,6 @@ namespace {
 
             return *this;
         }
-
     };
 
 }  // namespace

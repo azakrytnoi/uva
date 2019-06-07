@@ -85,7 +85,6 @@ namespace util {
                 *(current++) = left.front();
                 left.pop_front();
                 left_count++;
-
             }
             else
             {

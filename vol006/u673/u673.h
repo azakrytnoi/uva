@@ -10,10 +10,6 @@ public:
     U673();
 
     void operator()() const;
-
-protected:
-
-private:
 };
 #ifdef POPULATE_CACHE
     populate <U673> pu673;

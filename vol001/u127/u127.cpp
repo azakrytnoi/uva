@@ -60,7 +60,6 @@ namespace {
                     }
 
                     i -= 4;
-
                 }
                 else if (i >= 1 && can(cards[i].top(), cards[i - 1].top()))
                 {

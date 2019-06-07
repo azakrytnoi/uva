@@ -33,6 +33,7 @@ namespace {
     class solution {
         math::sieve_t<31623> sieve_;
         int32_t n_;
+
     public:
         solution() : sieve_(), n_() {}
 

@@ -118,6 +118,7 @@ namespace {
 
     class solution_t {
         typedef poker::combination_t combination_t;
+
     public:
         solution_t() : n_(std::numeric_limits<size_t>::max()), desk_(), result_(
         {

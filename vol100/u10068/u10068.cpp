@@ -71,7 +71,6 @@ namespace {
         node_t* prev_;
         node_t(size_t dist = std::numeric_limits<uint16_t>::max(), size_t step = 0, node_t* prev = nullptr)
             : dist_(dist), step_(step), prev_(prev) {}
-
     };
 
     class solution_t {

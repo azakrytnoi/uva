@@ -74,7 +74,6 @@ namespace {
                     if (diff <= n1 && diff > 0)
                     {
                         sol.set_[diff - 1] = true;
-
                     }
                     else
                     {

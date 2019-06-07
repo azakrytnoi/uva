@@ -32,6 +32,7 @@ namespace {
         std::vector<std::string> fibs_;
         std::string s1_, s2_;
         size_t count_;
+
     public:
         solution() : fibs_(), s1_(), s2_(), count_()
         {

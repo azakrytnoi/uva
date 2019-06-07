@@ -37,6 +37,7 @@ namespace {
 
     class solution {
         double grade_;
+
     public:
 
         solution() : grade_(0) {}
@@ -96,12 +97,10 @@ namespace {
         if (a.empty() && b.empty())
         {
             sol.grade_ = std::numeric_limits<double>::infinity();
-
         }
         else if (a.empty() || b.empty())
         {
             sol.grade_ = 0.0;
-
         }
         else
         {

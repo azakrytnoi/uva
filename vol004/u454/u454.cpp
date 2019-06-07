@@ -70,7 +70,6 @@ void U454::operator()() const
             if (it == anagrams.end())
             {
                 anagrams[akey][line].clear();
-
             }
             else
             {
@@ -93,7 +92,6 @@ void U454::operator()() const
                     if (pairs.first < anagram)
                     {
                         result.push_back(std::make_pair(pairs.first, anagram));
-
                     }
                     else
                     {

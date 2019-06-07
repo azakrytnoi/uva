@@ -63,7 +63,6 @@ namespace {
         if (op1_long || op2_long)
         {
             result.push_back("result too big");
-
         }
         else
         {

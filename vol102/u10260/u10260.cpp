@@ -31,6 +31,7 @@ namespace {
     class solution {
         static std::unordered_map<char, char> soundex_;
         std::string original_;
+
     public:
         solution() : original_() {}
 

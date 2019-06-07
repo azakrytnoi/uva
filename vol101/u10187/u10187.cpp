@@ -79,6 +79,7 @@ namespace {
         std::map<std::string, vertex> cities_;
         std::string from_, to_;
         bool solved_;
+
     public:
         solution() : cities_(), from_(), to_(), solved_() { }
 

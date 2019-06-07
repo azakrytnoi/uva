@@ -27,7 +27,6 @@ namespace {
         int dp(int row, int col);
 
     public:
-
         solver() : N_(0), M_(0), best_(0), matrix_(), costs_(), path_(), trace_()
         {
             matrix_.resize(10);

@@ -37,7 +37,6 @@ namespace math {
             if (x == pAddress_[x])
             {
                 return x;
-
             }
             else
             {
@@ -55,7 +54,6 @@ namespace math {
             if (findSet(x) == findSet(y))
             {
                 return true;
-
             }
             else
             {

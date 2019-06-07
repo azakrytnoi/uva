@@ -40,7 +40,6 @@ void U11495::operator()() const
         if (n == 0)
         {
             break;
-
         }
         else
         {

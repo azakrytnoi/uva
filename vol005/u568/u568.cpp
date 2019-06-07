@@ -30,6 +30,7 @@ namespace {
     template<size_t N>
     class solution {
         std::vector<uint32_t> cache_;
+
     public:
         solution() :
             cache_()

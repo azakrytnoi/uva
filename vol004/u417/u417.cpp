@@ -19,6 +19,7 @@ U417::U417()
 namespace {
     class solver {
         std::map<std::string, size_t> valid_;
+
     public:
         solver() : valid_()
         {

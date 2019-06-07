@@ -33,6 +33,7 @@ namespace {
     class coder {
         std::map<std::string, char> code_;
         std::string message_;
+
     public:
         coder() :
             code_(), message_()

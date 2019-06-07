@@ -103,7 +103,6 @@ namespace {
                 if (divide(mid) <= scribers_)
                 {
                     right = mid;
-
                 }
                 else
                 {
@@ -132,7 +131,6 @@ namespace {
                 if (i)
                 {
                     out << " " << pages_[i];
-
                 }
                 else
                 {

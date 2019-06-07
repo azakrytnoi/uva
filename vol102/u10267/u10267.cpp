@@ -31,6 +31,7 @@ namespace {
         std::vector<std::string> pixels_;
         size_t N_;
         size_t M_;
+
     public:
         device() : pixels_(), N_(0), M_(0) {}
 

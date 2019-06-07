@@ -37,7 +37,6 @@ void U146::operator()() const
         if (std::next_permutation(line.begin(), line.end()))
         {
             std::cout << line << std::endl;
-
         }
         else
         {

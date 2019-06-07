@@ -35,7 +35,6 @@ namespace {
         int32_t x_, y_;
 
         point_t(int32_t x = 0, int32_t y = 0) : x_(x), y_(y) {}
-
     };
 
     class solution_t {

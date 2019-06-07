@@ -41,6 +41,7 @@ namespace {
         int caseNo_;
 
         static const int INFINITY_;
+
     public:
         solution() : n_(0), m_(0), a_(), b_(), pn_(), pm_(), q_(), dist_(), g_(), result_(0), caseNo_(0)
         {
@@ -154,7 +155,6 @@ namespace {
             {
                 dist_[i] = 0;
                 q_[en++] = i;
-
             }
             else
             {

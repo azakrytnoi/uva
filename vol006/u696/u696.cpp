@@ -31,6 +31,7 @@ namespace {
         uint32_t knights_;
         uint32_t n_;
         uint32_t m_;
+
     public:
         solution() :
             knights_(0), n_(0), m_(0)
@@ -71,7 +72,6 @@ namespace {
             else if (n == 2)
             {
                 knights_ = m / 4 * 4 + (m % 4 == 1 ? 2 : (m % 4 >= 2 ? 4 : 0));
-
             }
             else
             {

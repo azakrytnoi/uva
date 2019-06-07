@@ -39,7 +39,6 @@ void U10219::operator()() const
             {
                 digit += (std::log10(i) - std::log10(n - i + 1));
             }
-
         }
         else
         {

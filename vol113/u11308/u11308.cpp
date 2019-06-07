@@ -77,7 +77,6 @@ void U11308::operator()() const
         if (requests.empty())
         {
             std::cout << "Too expensive!" << std::endl;
-
         }
         else
         {

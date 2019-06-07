@@ -33,7 +33,6 @@ void U11388::operator()() const
         if (lcm % gcd == 0)
         {
             std::cout << gcd << " " << lcm << std::endl;
-
         }
         else
         {

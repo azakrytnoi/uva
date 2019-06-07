@@ -222,7 +222,6 @@ namespace {
         }
 
     private:
-
         template<typename Iterator>
         orientation_t doRotate(Iterator begin, Iterator end, orientation_t heading)
         {

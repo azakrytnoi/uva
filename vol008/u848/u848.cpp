@@ -31,6 +31,7 @@ namespace {
 
     class solution {
         std::vector<std::string> buffer_;
+
     public:
         solution() : buffer_() {}
 
@@ -69,7 +70,6 @@ namespace {
             {
                 sol.buffer_.push_back(instream.str());
                 instream.str(line);
-
             }
             else
             {
@@ -92,7 +92,6 @@ namespace {
             if (str.length() <= 72)
             {
                 line.assign(str);
-
             }
             else
             {
@@ -109,7 +108,6 @@ namespace {
                     if ((line.length() + word.length()) < 71)
                     {
                         line += (line.empty() ? "" : " ") + word;
-
                     }
                     else
                     {

@@ -77,7 +77,6 @@ namespace {
         if (sol.result_.empty())
         {
             out << "Impossible";
-
         }
         else
         {
@@ -124,7 +123,6 @@ namespace {
                 result_.push_back(summ_[0] - int32_t(candidate));
                 result_.push_back(summ_[1] - int32_t(candidate));
                 taken[i] = true;
-
             }
             else if (start == pivot)
             {
@@ -135,7 +133,6 @@ namespace {
 
                 result_.push_back(summ_[i] - result_[0]);
                 taken[i] = true;
-
             }
             else
             {

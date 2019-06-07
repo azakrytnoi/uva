@@ -123,7 +123,6 @@ namespace {
             }
 
             out << *pItr;
-
         }
 
         out << std::endl;

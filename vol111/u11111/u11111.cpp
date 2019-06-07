@@ -67,7 +67,6 @@ namespace {
                 storage.push(*it);
                 summs.push(sum);
                 sum = 0;
-
             }
             else
             {
@@ -86,7 +85,6 @@ namespace {
 
                     sum += *it;
                     storage.pop();
-
                 }
                 else
                 {
@@ -112,7 +110,6 @@ void U11111::operator()() const
         if (sol)
         {
             std::cout << ":-) Matrioshka!" << std::endl;
-
         }
         else
         {

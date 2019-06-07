@@ -98,7 +98,6 @@ namespace {
                 {
                     possible_ = true;
                     break;
-
                 }
                 else
                 {
@@ -112,7 +111,6 @@ namespace {
                 {
                     possible_ = true;
                     break;
-
                 }
                 else
                 {
@@ -142,7 +140,6 @@ namespace {
                 {
                     possible_ = true;
                     break;
-
                 }
                 else
                 {

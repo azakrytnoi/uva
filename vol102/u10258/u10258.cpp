@@ -102,13 +102,11 @@ void U10258::operator()()
                 if (std::get<2>(t1) == std::get<2>(t2))
                 {
                     return std::get<0>(t1) < std::get<0>(t2);
-
                 }
                 else
                 {
                     return std::get<2>(t1) < std::get<2>(t2);
                 }
-
             }
             else
             {

@@ -50,7 +50,6 @@ namespace {
         }
 
         solution& operator () ();
-
     };
 
     std::ostream& operator << (std::ostream& out, const solution& sol)

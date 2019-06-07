@@ -38,7 +38,6 @@ namespace {
             in >> p.first >> p.second;
             return in;
         }
-
     };
 
     class solution_t {

@@ -48,7 +48,6 @@ void U200::operator()() const
                     {
                         ordering.push_back(ch);
                     }
-
                 }
                 else
                 {
@@ -97,7 +96,6 @@ void U200::operator()() const
                                 {
                                     ordering.insert(prev_pos + 1, 1, curr_ch);
                                 }
-
                             }
                             else if ((working[i - 1][idx - 1] == working[i][idx - 1]) && (prev_pos = ordering.find(prev_ch)) > curr_pos)
                             {

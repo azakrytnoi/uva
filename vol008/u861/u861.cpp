@@ -62,7 +62,6 @@ namespace {
         if (n_ == 1 || k_ == 0)
         {
             result_ = 1;
-
         }
         else
         {
@@ -75,7 +74,6 @@ namespace {
                     if ((i + j) % 2)
                     {
                         row1[(i + j) / 2]++;
-
                     }
                     else
                     {

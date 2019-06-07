@@ -120,7 +120,6 @@ namespace {
             {
                 sout_ << A << " " << Z << std::endl << A << std::endl << A << " " << Y << std::endl << A << std::endl;
                 total_ += Z + 2 * A + Y;
-
             }
             else
             {

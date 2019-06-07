@@ -42,6 +42,7 @@ namespace {
         bool solved_;
         static const int8_t md_[];
         static const int16_t dir_[][2];
+
     public:
         solution() : goal_(N), cur_(N), start_(N), path_(MAX_DEPTH), bound_(), solved_()
         {
@@ -206,7 +207,6 @@ namespace {
         if (!sol.solved_)
         {
             out << "This puzzle is not solvable.";
-
         }
         else
         {

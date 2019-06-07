@@ -31,6 +31,7 @@ namespace {
         std::vector<std::string> fragments_;
         std::string result_;
         size_t bits_;
+
     public:
         solution() : fragments_(), result_(), bits_(0) {}
 

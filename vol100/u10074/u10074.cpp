@@ -88,7 +88,6 @@ namespace {
 
             for (auto j = i; j < map_.size(); ++j)
             {
-
                 size_t tmp(0);
                 for (auto k = 0u; k < map_[i].size(); ++k)
                 {

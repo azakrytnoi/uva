@@ -31,6 +31,7 @@ void __cdecl invoke()
 namespace {
     class solution {
         std::unordered_map<int64_t, uint32_t> cache_;
+
     public:
         solution() : cache_() {}
 

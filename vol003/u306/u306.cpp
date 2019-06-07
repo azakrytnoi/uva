@@ -31,6 +31,7 @@ namespace {
     class cipher {
         std::vector<int> cipher_;
         std::string buffer_;
+
     public:
         cipher() :
             cipher_(), buffer_()

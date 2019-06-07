@@ -37,7 +37,6 @@ private:
         if (traits::eq_int_type(c, eof))
         {
             return traits::not_eof(c);
-
         }
         else
         {

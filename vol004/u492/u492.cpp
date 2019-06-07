@@ -74,7 +74,6 @@ void U492::operator()() const
             if (std::isalpha(*it))
             {
                 word += (*it);
-
             }
             else
             {

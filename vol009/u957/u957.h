@@ -8,10 +8,6 @@ public:
     }
     U957();
     void operator()() const;
-
-protected:
-
-private:
 };
 #ifdef POPULATE_CACHE
     populate <U957> pu957;

@@ -42,7 +42,6 @@ void U11239::operator()() const
             {
                 project = line;
                 projects[project].clear();
-
             }
             else
             {
@@ -50,7 +49,6 @@ void U11239::operator()() const
                 {
                     students[line] = project;
                     projects[project].insert(line);
-
                 }
                 else
                 {

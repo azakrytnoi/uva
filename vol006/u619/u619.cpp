@@ -104,7 +104,6 @@ namespace {
             out.setf(std::ios::left);
             out << std::setw(22) << translated;
             print(out, source);
-
         }
         else
         {

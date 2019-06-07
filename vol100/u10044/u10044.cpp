@@ -120,7 +120,6 @@ namespace {
             if (enumber == std::numeric_limits<uint32_t>::max())
             {
                 out << "infinity" << std::endl;
-
             }
             else
             {

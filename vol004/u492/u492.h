@@ -9,7 +9,6 @@ public:
     U492() {}
 
     void operator()() const;
-
 };
 #ifdef POPULATE_CACHE
     populate <U492> pu492;

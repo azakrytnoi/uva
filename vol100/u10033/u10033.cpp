@@ -130,12 +130,12 @@ namespace {
         {
             ram_[registers_[a]] = registers_[s];
         }
-
     };
 
     class solution {
         computer comp_;
         uint32_t steps_ = 0;
+
     public:
         solution() : comp_() {}
 

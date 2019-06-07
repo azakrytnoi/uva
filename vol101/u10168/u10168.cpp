@@ -69,7 +69,6 @@ namespace {
         if (sol.summ_.size() < 4)
         {
             out << "Impossible.";
-
         }
         else
         {
@@ -92,7 +91,6 @@ namespace {
             {
                 summ_[0] = summ_[1] = 2;
                 n_ -= 4;
-
             }
             else
             {

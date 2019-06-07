@@ -82,7 +82,6 @@ namespace {
                 compliance = comp;
                 choosen_ = line;
                 minPrice = price;
-
             }
             else if (std::abs(compliance - comp) <= 1e-6)
             {

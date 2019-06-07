@@ -54,7 +54,6 @@ namespace {
         if (sol.carry_ > 0)
         {
             out << sol.carry_ << " carry operation" << (sol.carry_ > 1 ? "s" : "") << '.';
-
         }
         else
         {

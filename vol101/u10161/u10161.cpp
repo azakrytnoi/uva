@@ -30,6 +30,7 @@ namespace {
     class solution {
         int x_;
         int y_;
+
     public:
         solution() : x_(0), y_(0) {}
 
@@ -50,20 +51,17 @@ namespace {
                 if (n > shift)
                 {
                     y_ -= n - shift;
-
                 }
                 else
                 {
                     x_ -= shift - n;
                 }
-
             }
             else
             {
                 if (n > shift)
                 {
                     x_ -= n - shift;
-
                 }
                 else
                 {

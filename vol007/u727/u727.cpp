@@ -46,7 +46,6 @@ namespace {
                 if (op_stack.empty() || op_stack.top() == '(')
                 {
                     op_stack.push(input[i]);
-
                 }
                 else
                 {

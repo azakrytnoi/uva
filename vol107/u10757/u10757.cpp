@@ -230,7 +230,6 @@ namespace {
         {
             selector_.reserve(db_.columns().size());
             std::transform(db_.columns().begin(), db_.columns().end(), std::back_inserter(selector_), [](auto column) -> std::string { return column.first; });
-
         }
         else
         {
@@ -267,7 +266,6 @@ namespace {
                     break;
                 }
             }
-
         }
         else
         {

@@ -29,6 +29,7 @@ namespace {
 
     class solution {
         int64_t n_;
+
     public:
         solution() : n_(0) {}
 

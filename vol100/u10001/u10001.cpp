@@ -102,7 +102,6 @@ namespace {
                     {
                         return true;
                     }
-
                 }
                 else if (li == n_ - 1)     // for the last cell
                 {
@@ -112,7 +111,6 @@ namespace {
                     {
                         return true;
                     }
-
                 }
                 else if ((lc_0 != -1 && (lc_0 & 3) == plc) ||
                          (lc_1 != -1 && (lc_1 & 3) == plc))

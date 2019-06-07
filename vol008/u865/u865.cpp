@@ -30,7 +30,6 @@ namespace {
 
     class coder {
     public:
-
         explicit coder(std::ostream& out) :
             plain_(), subst_(), out_(out)
         {}

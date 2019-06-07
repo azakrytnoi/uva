@@ -182,7 +182,6 @@ namespace {
         }
 
         return points_.size();
-
     }
 
 }

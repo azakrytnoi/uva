@@ -97,7 +97,6 @@ namespace {
             if (order[i].second != next)
             {
                 shifts_.push_back(order[i]);
-
             }
             else
             {

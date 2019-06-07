@@ -112,7 +112,6 @@ namespace {
             }
 
             return false;
-
         }
     };
 
@@ -166,7 +165,6 @@ void U184::operator()() const
         {
             std::cout << "The following lines were found:" << std::endl;
             std::cout << sol;
-
         }
         else
         {

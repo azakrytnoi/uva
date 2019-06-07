@@ -70,7 +70,6 @@ namespace {
         size_t line_length(0);
         std::transform(sol.result_.begin(), sol.result_.end(), oit, [&](char ch)
         {
-
             if (line_length >= 50)
             {
                 out << std::endl;
@@ -112,7 +111,6 @@ namespace {
 
             result_ += *pair.second.rbegin();
             row_no++;
-
         }
 
         return *this;

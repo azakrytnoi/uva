@@ -10,10 +10,6 @@ public:
     U10219();
 
     void operator()() const;
-
-protected:
-
-private:
 };
 #ifdef POPULATE_CACHE
     populate <U10219> pu10219;

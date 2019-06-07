@@ -39,6 +39,7 @@ namespace {
         std::vector<uint32_t> i_, v_, x_, l_, c_;
 
         uint32_t n_;
+
     public:
         solution() : i_(101), v_(101), x_(101), l_(101), c_(101), n_(0)
         {

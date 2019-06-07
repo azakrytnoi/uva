@@ -109,7 +109,6 @@ namespace {
                 if (ballout[0].first > votes_.size() / 2)
                 {
                     winners_.push_back(candidates_[ballout[0].second]);
-
                 }
                 else
                 {
@@ -134,7 +133,6 @@ namespace {
                     {
                         std::transform(ballout.begin(), ballout.end(), std::back_inserter(winners_), [&](auto c) -> std::string
                         {   return candidates_[c.second]; });
-
                     }
                     else
                     {
@@ -155,7 +153,6 @@ namespace {
                 }
             }
             while (winners_.empty());
-
         }
         else
         {

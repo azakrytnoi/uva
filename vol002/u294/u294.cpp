@@ -35,6 +35,7 @@ namespace {
         uint32_t high_;
         uint32_t result_;
         uint32_t num_factors_;
+
     public:
         solution() : sieve_(), low_(0), high_(0), result_(0), num_factors_(0) {}
 

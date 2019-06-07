@@ -41,6 +41,7 @@ namespace {
         {
             return not graph_.empty();
         }
+
         solution_t& operator()();
 
     private:
@@ -127,7 +128,6 @@ namespace {
         }
 
         return path[end];
-
     }
 
 }

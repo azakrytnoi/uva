@@ -96,7 +96,6 @@ namespace {
         if (sol.p_ == 0 || sol.r_ == 0 || sol.p_ + sol.r_ > sol.n_ + 1)
         {
             out << 0;
-
         }
         else
         {

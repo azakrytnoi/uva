@@ -43,8 +43,8 @@ namespace {
 
         int v_;
         int idx_;
-    public:
 
+    public:
         mcmf() :
             prev_(), last_(), to_(), next_(), cap_(), cost_(), dist_(), pot_(), v_(0), idx_(0)
         {

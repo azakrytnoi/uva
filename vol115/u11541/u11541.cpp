@@ -64,7 +64,6 @@ namespace {
                 }
 
                 ch = *it;
-
             }
             else if (std::isdigit (*it))
             {

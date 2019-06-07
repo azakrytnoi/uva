@@ -16,7 +16,6 @@ namespace geom {
 
     class point_t {
     public:
-
         double_t x_, y_;
 
         point_t(double_t x = 0, double_t y = 0) : x_(x), y_(y) {}

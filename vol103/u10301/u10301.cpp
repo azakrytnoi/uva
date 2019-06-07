@@ -40,13 +40,11 @@ namespace {
                 if (distance + std::min(mR, other.mR) <= std::max(mR, other.mR))
                 {
                     return false;
-
                 }
                 else
                 {
                     return true;
                 }
-
             }
             else
             {

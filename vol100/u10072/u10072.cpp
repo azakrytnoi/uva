@@ -210,7 +210,6 @@ namespace {
                                 trace[i][ba][bo][ar] = 3;
                             }
                         }
-
                     }
                 }
             }

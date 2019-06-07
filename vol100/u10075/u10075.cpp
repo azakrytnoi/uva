@@ -75,7 +75,6 @@ namespace {
         solution_t& operator()();
 
     private:
-
         constexpr static int64_t R_ = 6378;
 
         size_t case_no_;

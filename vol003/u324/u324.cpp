@@ -34,6 +34,7 @@ namespace {
     class solution {
         std::vector<std::vector<uint16_t>> cache_;
         uint16_t number_;
+
     public:
         solution() : cache_(), number_(0)
         {

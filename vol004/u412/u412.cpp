@@ -54,7 +54,6 @@ void U412::operator()() const
         if (count == 0)
         {
             std::cout << "No estimate for this data set." << std::endl;
-
         }
         else
         {

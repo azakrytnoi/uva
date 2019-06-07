@@ -60,7 +60,6 @@ namespace {
             if (sol.carmichael_[sol.n_])
             {
                 out << "The number " << sol.n_ << " is a Carmichael number.";
-
             }
             else
             {
@@ -119,3 +118,4 @@ void U10006::operator()() const
         std::cout << sol << std::endl;
     }
 }
+

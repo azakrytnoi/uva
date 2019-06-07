@@ -63,12 +63,10 @@ namespace {
                 {
                     result_ += (*pa++);
                     ++pb;
-
                 }
                 else if (*pa > *pb)
                 {
                     ++pb;
-
                 }
                 else
                 {

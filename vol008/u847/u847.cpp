@@ -45,7 +45,6 @@ void U847::operator()() const
         if (n / std::pow(18.0, double_t(lo)) > 9.0)
         {
             std::cout << "Ollie wins.\n";
-
         }
         else
         {

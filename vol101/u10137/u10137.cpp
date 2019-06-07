@@ -30,6 +30,7 @@ namespace {
     class solution {
         std::vector<int32_t> expences_;
         double change_;
+
     public:
         solution() : expences_(), change_(0) {}
 
@@ -58,7 +59,6 @@ namespace {
                     if (amt > avg)
                     {
                         positive += amt - avg;
-
                     }
                     else
                     {

@@ -33,6 +33,7 @@ namespace {
         std::vector<std::string> alphabetTokens_;
         std::vector<std::vector<std::string>> inputTokens_;
         bool possible_;
+
     public:
         solution();
 
@@ -46,7 +47,6 @@ namespace {
         solution& operator()();
 
     private:
-
         bool mapLetters(std::vector<std::string>& encrypted)
         {
             char rmappings[128];
@@ -61,7 +61,6 @@ namespace {
                             || (mappings_[static_cast<size_t>(encrypted[i][j])] == alphabetTokens_[i][j]))
                     {
                         mappings_[static_cast<size_t>(encrypted[i][j])] = alphabetTokens_[i][j];
-
                     }
                     else
                     {
@@ -123,7 +122,6 @@ namespace {
                 out.seekp(-1, std::ios::end);
                 out << std::endl;
             }
-
         }
         else
         {

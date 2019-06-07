@@ -78,7 +78,6 @@ namespace {
         if (sol.fail_)
         {
             out << "failed";
-
         }
         else
         {
@@ -103,14 +102,12 @@ namespace {
             if (lf > rg)
             {
                 fail_ = true;
-
             }
             else
             {
                 if (c1_ * (x_ + a * lf) + c2_ * (y_ - b * lf) < c1_ * (x_ + a * rg) + c2_ * (y_ - b * rg))
                 {
                     x_ += a * lf, y_ -= b * lf;
-
                 }
                 else
                 {

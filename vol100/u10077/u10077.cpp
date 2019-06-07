@@ -70,7 +70,6 @@ namespace {
                 NLn = Nn;
                 NLm = Nm;
                 result_ += "R";
-
             }
             else
             {

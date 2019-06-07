@@ -77,7 +77,6 @@ void U11185::operator()() const
             std::copy(bit, bend, std::back_inserter(translated));
             std::reverse(translated.begin(), translated.end());
             std::cout << translated << std::endl;
-
         }
         else
         {

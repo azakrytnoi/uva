@@ -36,7 +36,6 @@ struct flow_translator_t : public std::iterator<std::forward_iterator_tag, T>
 template<typename T>
 struct hex_translator_t : public flow_translator_t<T>
 {
-
     explicit hex_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~hex_translator_t() {}
 
@@ -52,7 +51,6 @@ struct hex_translator_t : public flow_translator_t<T>
 template<typename T>
 struct dec_translator_t : public std::iterator<std::forward_iterator_tag, T>
 {
-
     explicit dec_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~dec_translator_t() {}
 
@@ -67,7 +65,6 @@ struct dec_translator_t : public std::iterator<std::forward_iterator_tag, T>
 template<typename T>
 struct oct_translator_t : public std::iterator<std::forward_iterator_tag, T>
 {
-
     explicit oct_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~oct_translator_t() {}
 
@@ -82,7 +79,6 @@ struct oct_translator_t : public std::iterator<std::forward_iterator_tag, T>
 template<typename T>
 struct bin_translator_t : public std::iterator<std::forward_iterator_tag, T>
 {
-
     explicit bin_translator_t(T& ref) : flow_translator_t<T>(ref) {}
     ~bin_translator_t() {}
 
