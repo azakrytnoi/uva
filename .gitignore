@@ -230,3 +230,4 @@ uva.VC.opendb
 *.pdf
 
 .vscode/
+*.uva

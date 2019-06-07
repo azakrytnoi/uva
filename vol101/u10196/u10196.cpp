@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <functional>
+#include <cctype>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -275,19 +276,19 @@ namespace {
         bool safe, check(false);
         auto testPosition = [&]()
         {
-            char figure;
+            char figure(desk_.field_[checkPosition.first][checkPosition.second]);
 
-            switch (figure = desk_.field_[checkPosition.first][checkPosition.second])
+            switch (figure)
             {
             case 'q':
             case 'Q':
             case 'r':
             case 'R':
-                if (direction < 0 && (figure == 'Q' || figure == 'R'))
+                if (direction < 0 && std::isupper(figure))
                 {
                     safe = true;
                 }
-                else if (direction > 0 && (figure == 'q' || figure == 'r'))
+                else if (direction > 0 && std::islower(figure))
                 {
                     safe = true;
                 }

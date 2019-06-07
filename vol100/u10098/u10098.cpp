@@ -32,27 +32,55 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() { }
+        solution_t() : N_(std::numeric_limits<size_t>::max()), word_() { }
 
         friend std::istream& operator >>(std::istream& in, solution_t& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution_t& sol);
 
-        operator bool() const
+        operator bool()
         {
-            return true;
+            return N_-- > 0;
         }
         solution_t& operator()();
 
     private:
+        size_t N_;
+        std::string word_;
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        if (sol.N_ == std::numeric_limits<size_t>::max())
+        {
+            in >> sol.N_;
+        }
+
+        in >> sol.word_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        auto cmp = [](char lhs, char rhs) -> bool
+        {
+            if (lhs >= 'A')
+            {
+                return (rhs < 'A' || lhs < rhs);
+            }
+            else
+            {
+                return (rhs < 'A' && lhs < rhs);
+            }
+        };
+        std::string word(sol.word_.begin(), sol.word_.end());
+        std::sort(word.begin(), word.end(), cmp);
+
+        do
+        {
+            out << word << std::endl;
+        }
+        while (std::next_permutation(word.begin(), word.end(), cmp));
+
         return out;
     }
 
