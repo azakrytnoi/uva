@@ -1,7 +1,7 @@
 #
 #
 
-CC = g++
+CC = g++-8
 
 CFLAGS = -m64 -Wall -Wextra -Weffc++ -std=c++17 -g -fPIC $(UCFLAGS)
 
