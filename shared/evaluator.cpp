@@ -12,7 +12,11 @@
 #include <algorithm>
 #include <exception>
 
-#include <dirent.h>
+#if 0
+    #include <dirent.h>
+#else
+    #include <experimental/filesystem>
+#endif
 
 namespace {
     std::map<std::string, std::shared_ptr<uva_wraper>> g_cache;
@@ -32,6 +36,7 @@ namespace {
 
     void populate_uva()
     {
+#if 0
         DIR* dp;
 
         if ((dp = opendir("../lib")) != nullptr)
@@ -52,6 +57,28 @@ namespace {
                 }
             }
         }
+
+#else
+        namespace fs = std::experimental::filesystem;
+
+        for (auto& p : fs::directory_iterator("../lib"))
+        {
+            std::cout << p << std::endl;
+            std::string libname(fs::path(p).filename());
+
+            if (libname.substr(0, 3) == "lib")
+            {
+                auto p_name (libname.substr(4, libname.find('.') - 4));
+                std::cout << p_name << std::endl;
+                std::stringstream vol_in(p_name), vol_out;
+                size_t num(0);
+                vol_in >> num;
+                vol_out << std::setw(3) << std::setfill('0') << std::right << (num / 100);
+                g_cache[p_name] = std::make_shared<dyn_evaluator>("../vol" + vol_out.str() + "/u" + p_name + "/u" + p_name + ".txt", "u" + p_name);
+            }
+        }
+
+#endif
     }
 }
 

@@ -10,7 +10,7 @@ INCLUDES = -I. -I../headers -I../logger
 
 LFLAGS = -L../lib
 
-LIBS = -ldl
+LIBS = -ldl -lstdc++fs
 
 SRCS = $(wildcard *.cpp)
 
