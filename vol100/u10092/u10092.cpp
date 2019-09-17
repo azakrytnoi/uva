@@ -116,7 +116,6 @@ namespace {
                     edges_[ri].v_ -= dis[end];
                     edges_[ri ^ 1].v_ += dis[end];
                 }
-
             }
 
             return flow;
@@ -156,7 +155,6 @@ namespace {
                 }
 
                 sol.addEdge(start, i, 1);
-
             }
         }
 
