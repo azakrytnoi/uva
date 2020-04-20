@@ -143,15 +143,15 @@ namespace math {
 
         uint_big_t& operator/=(const uint_big_t& rhs)
         {
-            auto result = divide(*this, rhs);
-            this->number_.assign(result.first.number_.begin(), result.first.number_.end());
+            auto [num, frac] = divide(*this, rhs);
+            this->number_.assign(num.number_.begin(), num.number_.end());
             return *this;
         }
 
         uint_big_t& operator%=(const uint_big_t& rhs)
         {
-            auto result = divide(*this, rhs);
-            this->number_.assign(result.second.number_.begin(), result.second.number_.end());
+            auto [num, frac] = divide(*this, rhs);
+            this->number_.assign(frac.number_.begin(), frac.number_.end());
             return *this;
         }
 
@@ -347,38 +347,38 @@ namespace math {
             throw "Illegal operation";
         }
 
-        std::pair<uint_big_t, uint_big_t> result;
+        uint_big_t num, frac;
 
         if (rhs == 1)
         {
-            result.first.number_.assign(lhs.number_.begin(), lhs.number_.end());
-            result.second = 0;
+            num.number_.assign(lhs.number_.begin(), lhs.number_.end());
+            frac = 0;
         }
         else if (lhs < rhs)
         {
-            result.first = 0;
-            result.second.number_.assign(lhs.number_.begin(), lhs.number_.end());
+            num = 0;
+            frac.number_.assign(lhs.number_.begin(), lhs.number_.end());
         }
         else if (lhs == rhs)
         {
-            result.first = 1;
-            result.second = 0;
+            num = 1;
+            frac = 0;
         }
         else
         {
-            result.first.number_.clear();
-            result.first.number_.reserve(lhs.number_.size() - rhs.number_.size() + 1);
+            num.number_.clear();
+            num.number_.reserve(lhs.number_.size() - rhs.number_.size() + 1);
             uint_big_t op;
             op.number_.resize(rhs.number_.size());
             auto running_pos = lhs.number_.end();
             std::advance(running_pos, -rhs.number_.size());
             std::copy_backward(running_pos, lhs.number_.end(), op.number_.end());
-            auto next_digit = [](uint_big_t& num, std::vector<uint8_t>::const_iterator & pos)
+            auto next_digit = [](uint_big_t& tmp_num, std::vector<uint8_t>::const_iterator & pos)
             {
-                num.number_.resize(num.number_.size() + 1);
-                std::copy_backward(num.number_.begin(), num.number_.end() - 1, num.number_.end());
-                num.number_[0] = *(--pos);
-                num.normalize();
+                tmp_num.number_.resize(tmp_num.number_.size() + 1);
+                std::copy_backward(tmp_num.number_.begin(), tmp_num.number_.end() - 1, tmp_num.number_.end());
+                tmp_num.number_[0] = *(--pos);
+                tmp_num.normalize();
             };
 
             while (true)
@@ -386,7 +386,7 @@ namespace math {
                 while (running_pos != lhs.number_.begin() && op < rhs)
                 {
                     next_digit(op, running_pos);
-                    result.first.number_.push_back(0);
+                    num.number_.push_back(0);
                 }
 
                 uint8_t counter(0);
@@ -397,7 +397,7 @@ namespace math {
                     counter++;
                 }
 
-                result.first.number_.push_back(counter);
+                num.number_.push_back(counter);
 
                 if (running_pos != lhs.number_.begin())
                 {
@@ -409,13 +409,13 @@ namespace math {
                 }
             }
 
-            std::reverse(result.first.number_.begin(), result.first.number_.end());
-            result.second.number_.assign(op.number_.begin(), op.number_.end());
-            result.first.normalize();
-            result.second.normalize();
+            std::reverse(num.number_.begin(), num.number_.end());
+            frac.number_.assign(op.number_.begin(), op.number_.end());
+            num.normalize();
+            frac.normalize();
         }
 
-        return result;
+        return std::make_pair(num, frac);
     }
 
     bool uint_big_t::operator < (const uint_big_t& rhs) const

@@ -90,7 +90,9 @@ void U679::operator()() const
             {
                 std::for_each(nodes[i - 1].begin(), nodes[i - 1].end(), [&](node * n)
                 {
+                    //  deepcode ignore CppMemoryLeak: false positive, released in destructor
                     n->left() = new node();
+                    //  deepcode ignore CppMemoryLeak: false positive, released in destructor
                     n->right() = new node();
                     nodes[i].push_back(n->left());
                     nodes[i].push_back(n->right());

@@ -157,7 +157,6 @@ namespace {
         {
         case status_t::Caclulated:
             return spread_[row][col].value_;
-            break;
 
         case status_t::Calculating:
             broken = true;
@@ -206,8 +205,6 @@ namespace {
                             return 0;
                         }
                     }
-
-                    break;
                 }
 
                 spread_[row][col].value_ += sign ? term : -term;
@@ -216,7 +213,6 @@ namespace {
             spread_[row][col].status_ = status_t::Caclulated;
             return spread_[row][col].value_;
         }
-        break;
         }
     }
 

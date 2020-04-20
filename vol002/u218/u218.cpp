@@ -155,6 +155,7 @@ namespace {
             perimeter_[per_idx++] = points_[idx];
         }
 
+        //  deepcode ignore CppLoopCheckAndUpdateMismatch: false positive, comparing unsigned with 0 doesn't work here
         for (size_t idx = points_.size() - 2, top_idx = per_idx + 1; idx < points_.size() ; idx--)
         {
             while (per_idx >= top_idx && area(perimeter_[per_idx - 2], perimeter_[per_idx - 1], points_[idx]) <= 0)

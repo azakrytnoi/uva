@@ -120,6 +120,7 @@ namespace {
     {
         if (root_)
         {
+            //  deepcode ignore ContainerUpdatedButNeverQueried: false positive
             std::stack<int> temp;
             temp.push(0);
             std::stringstream out;

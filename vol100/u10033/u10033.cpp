@@ -55,7 +55,7 @@ namespace {
 
             while (std::getline(in, line) && !line.empty())
             {
-                uint16_t word = std::atoi(line.c_str()) % computer::MODULO;
+                uint16_t word = std::stoi(line) % computer::MODULO;
                 *(current++) = word;
             }
 

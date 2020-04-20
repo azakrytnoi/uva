@@ -123,7 +123,7 @@ namespace math {
         rational_t operator /(const rational_t& lhs, const rational_t& rhs)
         {
             rational_t tmp(lhs);
-            tmp *= rhs;
+            tmp /= rhs;
             return tmp;
 //            return rational_t(lhs.a_ * rhs.b_, lhs.b_ * rhs.a_);
         }
