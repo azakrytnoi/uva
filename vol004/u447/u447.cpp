@@ -33,6 +33,7 @@ namespace {
     class solution_t {
     public:
         solution_t() : years_(), //
+            // deepcode ignore : Unclear what the issue is
             map_(std::vector<std::vector<std::string>>(2, std::vector<std::string>(MAX_, std::string(MAX_, ' ')))), //
             current_() { }
 

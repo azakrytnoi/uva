@@ -116,6 +116,7 @@ namespace {
             in >> sol.X_ >> sol.Y_ >> sol.A_ >> sol.B_ >> sol.C_ >> sol.D_;
             in.ignore();
             sol.field_.clear();
+            // file deepcode ignore : Unclear what the issue is
             sol.field_ = std::vector<std::vector<std::vector<int8_t>>>(16, std::vector<std::vector<int8_t>>(16, std::vector<int8_t>(4)));
             char kind(0);
             std::string temp;

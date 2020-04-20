@@ -94,6 +94,7 @@ namespace {
             }
 
             std::map<std::string, size_t> currencies(currencyNames.begin(), currencyNames.end());
+            // deepcode ignore : Unclear what the issue is, if any?
             sol.rates_ = std::vector<std::vector<double_t>>(n, std::vector<double_t>(n));
             in >> n;
 

@@ -61,6 +61,7 @@ namespace {
         {
             sol.rows_ = sol.h_ * 4;
             sol.cols_ = sol.w_ * 4;
+            // file deepcode ignore : Unclear what the issue is
             sol.maze_ = std::vector<std::vector<int32_t>>(sol.rows_, std::vector<int32_t>(sol.cols_, -1));
             std::string line;
             std::getline(in, line);

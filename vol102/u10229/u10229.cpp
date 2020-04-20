@@ -33,6 +33,7 @@ namespace {
     template<size_t R, size_t C, typename T>
     class matrix_t {
     public:
+        // file deepcode ignore : Unclear what the issue is
         matrix_t() : data_(std::vector<std::vector<T>>(R, std::vector<T>(C))) {}
 
         std::vector<T>& operator[](size_t row)

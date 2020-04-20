@@ -74,6 +74,7 @@ namespace {
 
     solution_t& solution_t::operator()()
     {
+        // file deepcode ignore : Unclear what the issue is
         matrix_t mat(std::vector<std::vector<math::uint_big_t>>(main_.size() + 1, std::vector<math::uint_big_t>(sub_.size() + 1)));
         result_ = count(0u, 0u, mat);
         return *this;

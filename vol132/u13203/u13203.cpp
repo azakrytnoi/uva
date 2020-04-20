@@ -39,20 +39,24 @@ namespace {
 
         operator bool() const
         {
-            return true;
+            return n_ > 0;
         }
         solution_t& operator()();
 
     private:
+        uint32_t n_{0};
     };
 
     std::istream& operator >> (std::istream& in, solution_t& sol)
     {
+        sol.n_ = 0;
+        in >> sol.n_;
         return in;
     }
 
     std::ostream& operator << (std::ostream& out, const solution_t& sol)
     {
+        out << (sol.n_ - 2) * (sol.n_ - 1) / 2;
         return out;
     }
 
