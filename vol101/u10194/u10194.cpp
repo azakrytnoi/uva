@@ -222,8 +222,8 @@ void U10194::operator()()
             {
                 if (match.size() == 5)
                 {
-                    int team1Goals = std::atoi(match[2].str().c_str());
-                    int team2Goals = std::atoi(match[3].str().c_str());
+                    int team1Goals = std::stoi(match[2].str());
+                    int team2Goals = std::stoi(match[3].str());
                     team::recordResults(*teams[match[1].str()], *teams[match[4].str()], team1Goals, team2Goals);
                 }
             }

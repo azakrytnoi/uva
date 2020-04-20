@@ -69,9 +69,9 @@ void U10235::operator()() const
 
     while (std::getline(std::cin, line) && !line.empty())
     {
-        int n = std::atoi(line.c_str());
+        int n = std::stoi(line);
         std::reverse(line.begin(), line.end());
-        int m = std::atoi(line.c_str());
+        int m = std::stoi(line);
         std::cout << n << sol(n, m) << std::endl;
     }
 }
