@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <vector>
+#include <array>
 #include <algorithm>
 #include <iterator>
 #include <numeric>
@@ -21,29 +22,28 @@
 #include <iomanip>
 
 namespace {
-    typedef std::pair<int, int> queen;
+    typedef std::pair<int, int> queen_t;
     class solver {
-        int board_[8][8];
-        queen queens_[8];
-        int max_;
+        std::array<std::array<int, 8>, 8> board_;
+        queen_t queens_[8];
+        int max_{0};
 
         void reinit();
         void traverse(int current);
         bool conflict(int qmax, int row, int col);
 
     public:
-        solver() : max_(0)
+        solver() : board_()
         {
-            reinit();
         }
 
         friend
         std::istream& operator >> (std::istream& in, solver& s)
         {
             s.reinit();
-            std::for_each(s.board_, s.board_ + 8, [&](auto row)
+            std::for_each(s.board_.begin(), s.board_.end(), [&](auto& row)
             {
-                std::generate_n(row, 8, [&]() -> int { int c; in >> c; return c; });
+                std::generate_n(row.begin(), 8, [&]() -> int { int c; in >> c; return c; });
             });
             return in;
         }
@@ -76,9 +76,9 @@ namespace {
     void solver::reinit()
     {
         max_ = 0;
-        std::for_each(board_, board_ + 8, [](auto row)
+        std::for_each(board_.begin(), board_.end(), [](auto & row)
         {
-            std::fill_n(row, 8, 0);
+            std::fill_n(row.begin(), 8, 0);
         });
     }
 
@@ -86,12 +86,10 @@ namespace {
     {
         if (current == 8)
         {
-            int total = 0;
-
-            for (int i = 0; i < 8; i++)
+            int total = std::accumulate(queens_, queens_ + 8, 0, [&](auto last, const auto & q)
             {
-                total += board_[queens_[i].first][queens_[i].second];
-            }
+                return last + board_[q.first][q.second];
+            });
 
             max_ = std::max(total, max_);
             return;

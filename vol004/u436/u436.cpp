@@ -61,7 +61,8 @@ namespace {
             {
                 for (size_t j = 0; j < rates_.size(); ++j)
                 {
-                    rates_[i][j] = std::max(rates_[i][j], rates_[i][k] * rates_[k][j]);
+                    auto val = std::max(rates_[i][j], std::min(std::numeric_limits<double_t>::max(), rates_[i][k] * rates_[k][j]));
+                    rates_[i][j] = val;
                 }
             }
         }
@@ -94,7 +95,7 @@ namespace {
             }
 
             std::map<std::string, size_t> currencies(currencyNames.begin(), currencyNames.end());
-            // deepcode ignore : Unclear what the issue is, if any?
+            // deepcode ignore ConstantBinaryExpression : Unclear what the issue is, if any?
             sol.rates_ = std::vector<std::vector<double_t>>(n, std::vector<double_t>(n));
             in >> n;
 
@@ -104,6 +105,7 @@ namespace {
                 double_t rate;
                 in >> from >> rate >> to;
                 sol.rates_[currencies[from]][currencies[to]] = rate;
+                // sol.rates_[currencies[to]][currencies[from]] = 1.0 / rate;
             }
         }
 

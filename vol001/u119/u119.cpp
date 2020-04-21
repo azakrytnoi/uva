@@ -77,10 +77,10 @@ namespace {
                 }
             }
 
-            std::transform(names.begin(), names.end(), std::back_inserter(gr.names_), [&](const std::string & res)
+            for (const auto& person : names)
             {
-                return std::make_pair(res, temp.find(res)->second);
-            });
+                gr.names_.push_back({ person, temp.find(person)->second });
+            }
         }
 
         return in;
@@ -88,10 +88,11 @@ namespace {
 
     std::ostream& operator << (std::ostream& out, const group& gr)
     {
-        std::for_each(gr.names_.begin(), gr.names_.end(), [&](const std::pair<std::string, int32_t>& res)
+        for (const auto& [name, gift] : gr.names_)
         {
-            out << res.first << " " << res.second << std::endl;
-        });
+            out << name << " " << gift << std::endl;
+        }
+
         return out;
     }
 

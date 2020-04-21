@@ -51,8 +51,8 @@ void U156::operator()() const
 
     std::vector <std::pair<std::string, std::pair<std::string, int>>> ordinals;
     ordinals.reserve(dictionary.size());
-    std::copy_if(dictionary.begin(), dictionary.end(), std::back_inserter(ordinals), [](auto item) -> bool { return item.second.second == 1; });
-    std::sort(ordinals.begin(), ordinals.end(), [](auto a1, auto a2) -> bool { return a1.second.first < a2.second.first; });
+    std::copy_if(dictionary.begin(), dictionary.end(), std::back_inserter(ordinals), [](auto& item) -> bool { return item.second.second == 1; });
+    std::sort(ordinals.begin(), ordinals.end(), [](auto& a1, auto& a2) -> bool { return a1.second.first < a2.second.first; });
     std::ostream_iterator<std::string> out(std::cout, "\n");
-    std::transform(ordinals.begin(), ordinals.end(), out, [](auto item) -> std::string { return item.second.first; });
+    std::transform(ordinals.begin(), ordinals.end(), out, [](auto& item) -> std::string { return item.second.first; });
 }
