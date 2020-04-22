@@ -15,8 +15,9 @@
 #include <iterator>
 #include <numeric>
 #include <limits>
-#include <stack>
+// #include <stack>
 #include <sstream>
+#include <deque>
 
 #include "card.h"
 
@@ -30,31 +31,30 @@ void __cdecl invoke()
 }
 
 namespace {
-    typedef card_t<T10::rank_t> card_t;
 
-    class desk {
-        std::vector<std::stack<card_t>> hands_;
-        std::stack<card_t> table_;
+    class desk_t {
+        std::vector<std::deque<cardT10_t>> hands_;
+        std::deque<cardT10_t> table_;
         size_t player_;
         bool valid_;
         bool over_;
 
     public:
-        desk() :
+        desk_t() :
             hands_(), table_(), player_(0), valid_(true), over_(false)
         {
             hands_.resize(2);
         }
 
-        friend std::istream& operator >>(std::istream& in, desk& eng);
-        friend std::ostream& operator <<(std::ostream& out, const desk& eng);
+        friend std::istream& operator >>(std::istream& in, desk_t& eng);
+        friend std::ostream& operator <<(std::ostream& out, const desk_t& eng);
 
         operator bool() const
         {
             return valid_;
         }
 
-        desk& operator ()();
+        desk_t& operator ()();
 
     private:
         void playToCover(size_t steps);
@@ -66,29 +66,23 @@ namespace {
 
         void reinit();
 
-        friend void deal(std::string& line, desk& eng, std::istream& in);
+        friend void deal(std::string& line, desk_t& eng, std::istream& in);
         void incorporateTable();
     };
 
-    void desk::reinit()
+    void desk_t::reinit()
     {
-        std::for_each(hands_.begin(), hands_.end(), [](std::stack<card_t>& hand)
+        for (auto& hand : hands_)
         {
-            while (!hand.empty())
-            {
-                hand.pop();
-            }
-        });
-
-        while (!table_.empty())
-        {
-            table_.pop();
+            hand.clear();
         }
+
+        table_.clear();
 
         over_ = false;
     }
 
-    void deal(std::string& line, desk& eng, std::istream& in)
+    void deal(std::string& line, desk_t& eng, std::istream& in)
     {
         eng.reinit();
 
@@ -98,7 +92,7 @@ namespace {
             std::istream_iterator<std::string> iss(ss);
             std::for_each(iss, std::istream_iterator<std::string>(), [&](const std::string & word)
             {
-                eng.hands_[(cardNo++) % 2].push(card_t(word[1], word[0]));
+                eng.hands_[(cardNo++) % 2].push_front(cardT10_t(word[1], word[0]));
             });
 
             if (i < 3)
@@ -108,7 +102,7 @@ namespace {
         }
     }
 
-    std::istream& operator >>(std::istream& in, desk& eng)
+    std::istream& operator >>(std::istream& in, desk_t& eng)
     {
         std::string line;
         std::getline(in, line);
@@ -122,7 +116,7 @@ namespace {
         return in;
     }
 
-    std::ostream& operator <<(std::ostream& out, const desk& eng)
+    std::ostream& operator <<(std::ostream& out, const desk_t& eng)
     {
         out << ((eng.player_) % 2) + 1;
         out.setf(std::ios::right);
@@ -130,42 +124,28 @@ namespace {
         return out;
     }
 
-    void desk::incorporateTable()
+    void desk_t::incorporateTable()
     {
         changeTurn();
-        std::stack<card_t> temp;
 
-        while (!hands_[player_].empty())
-        {
-            temp.push(hands_[player_].top());
-            hands_[player_].pop();
-        }
-
-        while (!table_.empty())
-        {
-            hands_[player_].push(table_.top());
-            table_.pop();
-        }
-
-        while (!temp.empty())
-        {
-            hands_[player_].push(temp.top());
-            temp.pop();
+        while (not table_.empty()) {
+            hands_[player_].push_back(table_.back());
+            table_.pop_back();
         }
     }
 
-    void desk::playToCover(size_t steps)
+    void desk_t::playToCover(size_t steps)
     {
         while (steps--)
         {
             if (step())
             {
-                switch (table_.top().rank_)
+                switch (table_.front().rank_)
                 {
-                case T10::rank_t::J:
-                case T10::rank_t::Q:
-                case T10::rank_t::K:
-                case T10::rank_t::A:
+                case cardT10_t::rank_t::J:
+                case cardT10_t::rank_t::Q:
+                case cardT10_t::rank_t::K:
+                case cardT10_t::rank_t::A:
                     steps = 0;
                     changeTurn();
                     coverFace();
@@ -182,45 +162,45 @@ namespace {
             }
         }
 
-        if (!over_ && !table_.empty())
+        if (not over_ && not table_.empty())
         {
             incorporateTable();
             dumpRound();
         }
     }
 
-    void desk::changeTurn()
+    void desk_t::changeTurn()
     {
         player_ = (player_ + 1) & 0x01;
     }
 
-    std::ostream& operator << (std::ostream& out, std::stack<card_t> cards)
+    std::ostream& operator << (std::ostream& out, std::deque<cardT10_t> cards)
     {
         out << cards.size() << ":[";
 
         while (!cards.empty())
         {
-            out << " " << static_cast<char>(cards.top().suit_) << static_cast<char>(cards.top().rank_) << " ";
-            cards.pop();
+            out << " " << static_cast<char>(cards.front().suit_) << static_cast<char>(cards.front().rank_) << " ";
+            cards.pop_front();
         }
 
         out << "]";
         return out;
     }
 
-    void desk::dumpRound()
+    void desk_t::dumpRound()
     {
         std::clog << player_ << ": " << table_ << std::endl;
         std::clog << "\t" << hands_[0] << std::endl;
         std::clog << "\t" << hands_[1] << std::endl;
     }
 
-    bool desk::step()
+    bool desk_t::step()
     {
-        if (!hands_[player_].empty())
+        if (not hands_[player_].empty())
         {
-            table_.push(hands_[player_].top());
-            hands_[player_].pop();
+            table_.push_front(hands_[player_].front());
+            hands_[player_].pop_front();
             dumpRound();
             return true;
         }
@@ -228,7 +208,7 @@ namespace {
         return false;
     }
 
-    desk& desk::operator ()()
+    desk_t& desk_t::operator ()()
     {
         player_ = 0;
 
@@ -241,23 +221,23 @@ namespace {
         return *this;
     }
 
-    void desk::coverFace()
+    void desk_t::coverFace()
     {
-        switch (table_.top().rank_)
+        switch (table_.front().rank_)
         {
-        case T10::rank_t::J:
+        case cardT10_t::rank_t::J:
             playToCover(1);
             break;
 
-        case T10::rank_t::Q:
+        case cardT10_t::rank_t::Q:
             playToCover(2);
             break;
 
-        case T10::rank_t::K:
+        case cardT10_t::rank_t::K:
             playToCover(3);
             break;
 
-        case T10::rank_t::A:
+        case cardT10_t::rank_t::A:
             playToCover(4);
             break;
 
@@ -269,7 +249,7 @@ namespace {
 
 void U162::operator()() const
 {
-    desk eng;
+    desk_t eng;
 
     while ((std::cin >> eng) && eng)
     {

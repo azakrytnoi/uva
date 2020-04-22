@@ -19,6 +19,8 @@
 #include <sstream>
 #include <memory>
 #include <cstdint>
+#include <charconv>
+#include <decimal/decimal>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -32,7 +34,7 @@ void __cdecl invoke()
 
 namespace {
 
-    typedef long double REAL;
+    typedef std::decimal::decimal32 REAL;
 
     class purse_t {
     public:
@@ -42,12 +44,14 @@ namespace {
 
         friend std::istream& operator >>(std::istream& in, purse_t& p)
         {
-            in >> p.value_;
+            double tmp;
+            in >> tmp;
+            p.value_ = REAL(tmp);
             std::generate_n(p.distibution_.begin(), 70, [&]()
             {
-                REAL tmp;
-                in >> tmp;
-                return tmp / 100.0;
+                double tmp_val;
+                in >> tmp_val;
+                return REAL(tmp_val); // / 100.0;
             });
             return in;
         }
@@ -75,11 +79,12 @@ namespace {
             p.amateur_ = p.name_[p.name_.length() - 1] == '*';
             std::stringstream score_stream(line.substr(21));
             std::istream_iterator<std::string> iscore_stream (score_stream);
-            std::vector<std::string> scores (iscore_stream, std::istream_iterator<std::string>());
-            std::transform(scores.begin(), scores.end(), p.scores_.begin(), [&](auto & score)
+            // std::vector<std::string> scores (iscore_stream, std::istream_iterator<std::string>());
+            std::transform(iscore_stream, std::istream_iterator<std::string>(), p.scores_.begin(), [&](auto & score)
             {
-                char* tmp;
-                return std::strtol(score.c_str(), &tmp, 0);
+                uint16_t result;
+                std::from_chars(score.data(), score.data() + score.size(), result);
+                return result;
             });
 
             p.disqualified_ = false;
@@ -142,7 +147,7 @@ namespace {
         out << R"(Player Name          Place     RD1  RD2  RD3  RD4  TOTAL     Money Won
 -----------------------------------------------------------------------
 )";
-        for (auto pl : sol.players_)
+        for (auto& pl : sol.players_)
         {
             out << std::setw(20) << std::left << pl->name_ << " ";
 
@@ -186,7 +191,8 @@ namespace {
 
             if (pl->prize_ > 0)
             {
-                out << "       $" << std::setw(9) << std::right << std::fixed << std::setprecision(2) << pl->prize_;
+                out << "       $" << std::setw(9) << std::right << std::fixed << std::setprecision(2)
+                    << std::decimal::decimal_to_double(pl->prize_);
             }
 
             out << std::endl;
@@ -197,7 +203,7 @@ namespace {
 
     void solution::play_round(size_t round_no, std::vector<std::shared_ptr<player_t>>::iterator end)
     {
-        for (auto pl : players_)
+        for (auto& pl : players_)
         {
             pl->total_ += pl->scores_[round_no];
             pl->disqualified_ = pl->scores_[round_no] == 0;
@@ -271,7 +277,7 @@ namespace {
     {
         uint16_t place (0);
 
-        for (auto pl : players_)
+        for (auto& pl : players_)
         {
             if (not pl->disqualified_)
             {
@@ -296,7 +302,7 @@ namespace {
         {
             if (ties.empty())
             {
-                tie_prc = (*(pl - 1))->amateur_ ? 0.0 : *(perc - 1);
+                tie_prc = (*(pl - 1))->amateur_ ? REAL(0) : *(perc - 1);
                 ties.push_back(*(pl - 1));
             }
 
@@ -324,12 +330,12 @@ namespace {
                 tie_prc /= ties.size();
                 auto tie_amount (purse_.value_ * tie_prc);
                 tie_amount *= ties.size();
-                tie_amount /= clean.size();
+                tie_amount /= REAL(clean.size() * 100.0);
 
-                for (auto tie = clean.begin(); tie != clean.end(); ++tie)
+                for (auto& tie : clean)
                 {
-                    (*tie)->prize_ = tie_amount;
-                    (*tie)->tie_ = clean.size() > 1;
+                    tie->prize_ = tie_amount;
+                    tie->tie_ = clean.size() > 1;
                 }
             }
 
@@ -356,7 +362,7 @@ namespace {
 
                 if (not (*pl)->amateur_ && perc != purse_.distibution_.end())   // @suppress("Field cannot be resolved")
                 {
-                    (*pl)->prize_ = purse_.value_ * *perc;
+                    (*pl)->prize_ = (purse_.value_ * *perc) / REAL(100.0);
                     ++perc;
                 }
             }

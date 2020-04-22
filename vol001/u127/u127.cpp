@@ -20,30 +20,29 @@
 
 
 namespace {
-    typedef card_t<T10::rank_t> card_t;
 
-    bool can(const card_t& c1, const card_t& c2)
+    bool can(const cardT10_t& c1, const cardT10_t& c2)
     {
         return (c1.rank_ == c2.rank_ || c1.suit_ == c2.suit_);
     }
 
     void evaluate()
     {
-        std::vector <std::stack <card_t>> cards;
+        std::vector <std::stack <cardT10_t>> cards;
         std::string word;
 
         while (std::cin >> word && word != "#")
         {
             cards.clear();
-            std::stack <card_t> s;
-            s.push(card_t(word[0], word[1]));
+            std::stack <cardT10_t> s;
+            s.push(cardT10_t(word[0], word[1]));
             cards.push_back(s);
 
             for (int i = 0; i < 51; i++)
             {
                 std::cin >> word;
-                std::stack <card_t> s;
-                s.push(card_t(word[0], word[1]));
+                std::stack <cardT10_t> s;
+                s.push(cardT10_t(word[0], word[1]));
                 cards.push_back(s);
             }
 
@@ -79,7 +78,7 @@ namespace {
             auto cbeg = cards.begin();
             std::cout << cbeg->size();
             ++cbeg;
-            std::for_each(cbeg, cards.end(), [&](const std::stack<card_t>& s)
+            std::for_each(cbeg, cards.end(), [&](const std::stack<cardT10_t>& s)
             {
                 std::cout << ' ' << s.size();
             });

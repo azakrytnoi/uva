@@ -18,6 +18,7 @@
 #include <numeric>
 #include <limits>
 #include <map>
+#include <charconv>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -50,7 +51,8 @@ namespace {
             std::string key;
             size_t key_size = 1;
             uint16_t key_value = 0;
-            std::for_each(keys.begin(), keys.end(), [&](auto ch)
+
+            for (auto ch : keys)
             {
                 key = key_advance(key_size, key_value);
 
@@ -62,7 +64,8 @@ namespace {
                 }
 
                 code_[key] = ch;
-            });
+            };
+
             return *this;
         }
 
@@ -74,23 +77,19 @@ namespace {
                 in >> ch;
                 return ch;
             };
-            std::stringstream message;
+            std::string message;
             std::string block;
+            std::string chunk;
 
             do
             {
                 block.clear();
                 std::generate_n(std::back_inserter(block), 3, readchar);
-                size_t block_len = std::accumulate(block.begin(), block.end(), 0, [](auto curr, auto ch)
-                {
-                    curr <<= 1;
-                    return curr +  ch - '0';
-                });
+                size_t block_len;
+                std::from_chars(block.data(), block.data() + 3, block_len, 2);
 
                 if (block_len > 0)
                 {
-                    std::string chunk;
-
                     while (true)
                     {
                         chunk.clear();
@@ -101,13 +100,13 @@ namespace {
                             break;
                         }
 
-                        message << coder.code_[chunk];
+                        message += coder.code_[chunk];
                     }
                 }
             }
             while (block != "000");
 
-            coder.message_ = message.str();
+            coder.message_ = message;
             return in;
         }
 
@@ -120,17 +119,16 @@ namespace {
     private:
         static std::string key_advance(size_t key_size, uint16_t& key_value)
         {
-            std::stringstream ss;
-            uint16_t val (key_value++);
+            std::string result (key_size, '0');
 
-            while (key_size--)
+            if (uint16_t val (key_value++); val != 0)
             {
-                ss << char((val & 0x01) + '0');
-                val >>= 1;
+                char buff[std::numeric_limits<uint16_t>::digits + 1];
+                auto cnv = std::to_chars(buff, buff + sizeof(buff), val, 2);
+                auto len = cnv.ptr - buff;
+                std::copy_n(buff, len, result.end() - len);
             }
 
-            std::string result(ss.str());
-            std::reverse(result.begin(), result.end());
             return result;
         }
     };
@@ -140,17 +138,13 @@ namespace {
 void U213::operator()() const
 {
     coder coder;
+    std::string head;
 
-    while (std::cin)
+    while (std::cin && std::getline(std::cin, head))
     {
-        std::string head;
-
-        if (std::getline(std::cin, head))
-        {
-            coder = head;
-            std::cin >> coder;
-            std::cout << coder << std::endl;
-            std::getline(std::cin, head);
-        }
+        coder = head;
+        std::cin >> coder;
+        std::cout << coder << std::endl;
+        std::getline(std::cin, head);
     }
 }

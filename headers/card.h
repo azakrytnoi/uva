@@ -62,6 +62,9 @@ public:
     }
 };
 
+typedef card_t<T10::rank_t> cardT10_t;
+typedef card_t<X10::rank_t> cardX10_t;
+
 namespace poker {
 
     enum class combination_t : uint8_t

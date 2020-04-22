@@ -19,6 +19,8 @@
 #include <numeric>
 #include <limits>
 #include <memory>
+#include <charconv>
+#include <optional>
 #include <unordered_map>
 
 extern "C" {
@@ -79,9 +81,12 @@ namespace {
         }
         std::string to_string() override
         {
-            std::stringstream temp;
-            temp << variable_ << " = " << value_;
-            return temp.str();
+            std::string result (variable_);
+            result.append(" = ");
+            char temp[std::numeric_limits<uint64_t>::digits10 + 1];
+            auto cnv_res = std::to_chars(temp, temp + sizeof(temp), value_);
+            result.append(temp, cnv_res.ptr);
+            return result;
         }
 
         assign_t(const std::string& src) : variable_(src), value_() {}
@@ -104,9 +109,9 @@ namespace {
         }
         std::string to_string() override
         {
-            std::stringstream temp;
-            temp << "print " << variable_;
-            return temp.str();
+            std::string result("print ");
+            result.append(variable_);
+            return result;
         }
 
         print_t(const std::string& /*src*/) : variable_() {}
@@ -248,17 +253,19 @@ namespace {
         std::unordered_map<char, uint64_t> variables_;
         std::unordered_map<op_type_t, time_t, op_type_hash> timings_;
         time_t quantum_;
-        time_t slot_time_;
+        // time_t slot_time_;
         // runtime
         std::string out_;
         proc_id_t current_;
         std::deque<proc_id_t> ready_;
-        proc_id_t latch_;
+        std::optional<proc_id_t> latch_;
         std::deque<proc_id_t> locked_;
 
     public:
-        processor_t() : n_proc_(), programms_(), variables_(), timings_(), quantum_(), slot_time_(), out_(), current_(), ready_(),
-            latch_(std::numeric_limits<proc_id_t>::max()), locked_() {}
+        processor_t() : n_proc_(), programms_(), variables_(), timings_(), quantum_(),
+        //  slot_time_(),
+          out_(), current_(), ready_(),
+            latch_(), locked_() {}
 
         friend std::istream& operator>>(std::istream& in, processor_t& proc);
         friend std::ostream& operator<<(std::ostream& out, const processor_t& proc);
@@ -289,11 +296,11 @@ namespace {
 
     class solution_t {
     public:
-        solution_t() : n_cases_(std::numeric_limits<size_t>::max()), processor_() {}
+        solution_t() : n_cases_(), processor_() {}
 
         operator bool()
         {
-            return n_cases_-- != 0;
+            return (*n_cases_)-- != 0;
         }
 
         solution_t& operator()();
@@ -303,7 +310,7 @@ namespace {
         friend std::ostream& operator<<(std::ostream& out, const solution_t& sol);
 
     private:
-        size_t n_cases_;
+        std::optional<size_t> n_cases_;
         std::unique_ptr<processor_t> processor_;
     };
 
@@ -317,9 +324,11 @@ namespace {
     {
         sol.processor_.release();
 
-        if (sol.n_cases_ == std::numeric_limits<size_t>::max())
+        if (not sol.n_cases_)
         {
-            in >> sol.n_cases_;
+            size_t temp;
+            in >> temp;
+            sol.n_cases_ = temp;
         }
 
         if (in)
@@ -370,9 +379,8 @@ namespace {
             {"unlock", op_type_t::unlock},
             {"end", op_type_t::end}
         };
-        auto code = code_map.find(src);
-
-        if (code != code_map.end())
+        
+        if (auto code = code_map.find(src); code != code_map.end())
         {
             switch (code->second)
             {
@@ -445,7 +453,7 @@ namespace {
 
     void processor_t::lock()
     {
-        if (latch_ == std::numeric_limits<proc_id_t>::max())
+        if (not latch_)
         {
             latch_ = current_;
         }
@@ -464,13 +472,12 @@ namespace {
             if (not locked_.empty())
             {
                 auto unlock = locked_.front();
-                auto prog = programms_.find(unlock)->second;
-                prog->status() = status_t::running;
+                programms_.find(unlock)->second->status() = status_t::running;
                 ready_.push_front(unlock);
                 locked_.pop_front();
             }
 
-            latch_ = std::numeric_limits<proc_id_t>::max();
+            latch_ = { };
         }
     }
 
@@ -478,15 +485,15 @@ namespace {
     {
         std::transform(programms_.begin(), programms_.end(), //
                        std::back_inserter(ready_), //
-                       [](const std::pair<proc_id_t, std::shared_ptr<programm_t>>& prog) ->proc_id_t { return prog.first; });
+                       [](const auto& prog) ->proc_id_t { return prog.first; });
         std::sort(ready_.begin(), ready_.end());
 
         while (not ready_.empty())
         {
             current_ = ready_.front();
             ready_.pop_front();
-            auto prog = programms_.find(current_)->second;
-            slot_time_ = 0;
+            auto& prog = programms_.find(current_)->second;
+            time_t slot_time_ = 0;
 
             while (prog->status() == status_t::running && slot_time_ < quantum_)
             {

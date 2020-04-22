@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <map>
+#include <charconv>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -110,9 +111,9 @@ namespace {
         std::map<int32_t, int32_t> freq_matrix;
         int32_t quotient = numerator_ / denominator_;
         int32_t mod = (numerator_ % denominator_) * 10;
-        std::stringstream num;
-        num << quotient;
-        before_decimal_ += num.str();
+        char buff[std::numeric_limits<int32_t>::digits10 + 2];
+        auto cnv = std::to_chars(buff, buff + sizeof(buff), quotient);
+        before_decimal_.assign(buff, cnv.ptr);
         before_decimal_ += '.';
         repeat_term_index_ = 1;
 

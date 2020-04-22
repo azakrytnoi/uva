@@ -70,7 +70,7 @@ namespace {
     {
         moves_.clear();
 
-        for (size_t i = pancakes_.size(); !isSorted(); i--)
+        for (size_t i = pancakes_.size(); not isSorted(); i--)
         {
             if (moveLargestToFirst(i))
             {
@@ -96,28 +96,19 @@ namespace {
     }
     bool solution::moveLargestToFirst(size_t pos)
     {
-        size_t largest = 0;
+        auto max_elt = std::max_element(pancakes_.begin(), pancakes_.begin() + pos);
 
-        for (size_t i = 0; i < pos; i++)
-        {
-            if (pancakes_[i] > pancakes_[largest])
-            {
-                largest = i;
-            }
-        }
-
-        if (largest == 0)
-        {
-            return true;
-        }
-
-        if (largest == pos - 1)
+        if (max_elt == pancakes_.begin() + pos - 1)
         {
             return false;
         }
+        else if (max_elt != pancakes_.begin())
+        {
 
-        std::reverse(pancakes_.begin(), pancakes_.begin() + largest + 1);
-        moves_.push_back(pancakes_.size() - largest);
+            std::reverse(pancakes_.begin(), max_elt + 1);
+            size_t largest = max_elt - pancakes_.begin();
+            moves_.push_back(pancakes_.size() - largest);
+        }
 
         return true;
     }

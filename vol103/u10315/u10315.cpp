@@ -109,7 +109,6 @@ namespace {
 
 #endif
 
-    typedef card_t<T10::rank_t> card_t;
     typedef poker::combination_t combination_t;
 
     int operator - (const rank_t c1, const rank_t c2)
@@ -118,7 +117,7 @@ namespace {
     }
 
     class hand_t {
-        std::vector<card_t> hand_;
+        std::vector<cardT10_t> hand_;
         combination_t value_;
         std::vector<std::pair<rank_t, int>> distribution_;
 
@@ -249,7 +248,7 @@ namespace {
     std::istream& operator >> (std::istream& in, hand_t& h)
     {
         h.hand_.clear();
-        std::istream_iterator<card_t> cin(in);
+        std::istream_iterator<cardT10_t> cin(in);
         std::copy_n(cin, 5, std::back_inserter(h.hand_));
 
         if (in)
@@ -379,7 +378,7 @@ namespace {
     std::ostream& operator<<(std::ostream& out, const hand_t& hand)
     {
         out << hand.value_ << ": [ ";
-        std::ostream_iterator<card_t> cout(out, " ");
+        std::ostream_iterator<cardT10_t> cout(out, " ");
         std::copy(hand.hand_.begin(), hand.hand_.end(), cout);
         out << ']';
         return out;

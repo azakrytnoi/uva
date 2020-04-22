@@ -19,6 +19,7 @@
 #include <limits>
 #include <memory>
 #include <map>
+#include <optional>
 #include <functional>
 
 extern "C" {
@@ -36,12 +37,13 @@ namespace {
     struct node_t
     {
         std::string name_;
+        std::optional<int> store_name_;
         char op_;
         std::shared_ptr<node_t> left_;
         std::shared_ptr<node_t> right_;
         std::shared_ptr<node_t> parent_;
 
-        node_t (const std::string& name, char op) : name_(name), op_(op), left_(), right_(), parent_() {}
+        node_t (const std::string& name, char op) : name_(name), store_name_(), op_(op), left_(), right_(), parent_() {}
 
         friend std::ostream& operator << (std::ostream& out, const node_t& node)
         {
@@ -78,10 +80,11 @@ namespace {
     class solution {
         std::shared_ptr<node_t> root_;
         std::string compile_;
-        bool accu_loaded_;
+        // bool accu_loaded_;
+        std::optional<node_t*> acu_;
         bool op_done_;
     public:
-        solution() : root_(), compile_(), accu_loaded_(false), op_done_(false) { }
+        solution() : root_(), compile_(), /*accu_loaded_(false),*/ acu_(), op_done_(false) { }
 
         friend std::istream& operator >>(std::istream& in, solution& sol);
         friend std::ostream& operator <<(std::ostream& out, const solution& sol);
@@ -93,7 +96,7 @@ namespace {
         solution& operator()();
 
     private:
-        std::shared_ptr<node_t> traverse(std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream& out);
+        std::shared_ptr<node_t> traverse(std::shared_ptr<node_t> node, int& gen, std::ostream& out);
     };
 
     std::istream& operator >> (std::istream& in, solution& sol)
@@ -120,12 +123,10 @@ namespace {
     {
         if (root_)
         {
-            //  deepcode ignore ContainerUpdatedButNeverQueried: false positive
-            std::stack<int> temp;
-            temp.push(0);
+            int gen{0};
             std::stringstream out;
-            std::shared_ptr<node_t> acu;
-            traverse(root_, acu, temp, out);
+            acu_ = {};
+            traverse(root_, gen, out);
             compile_ = out.str();
         }
 
@@ -169,28 +170,41 @@ namespace {
         }
     }
 
-    std::shared_ptr<node_t> solution::traverse(std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream& out)
+    std::shared_ptr<node_t> solution::traverse(
+        std::shared_ptr<node_t> node,
+        int& generator,
+        std::ostream& out)
     {
-        static const std::map<char, std::function<void(std::shared_ptr<node_t>, std::shared_ptr<node_t>&, std::stack<int>&, std::ostream&)>> processor (
+        static const std::map<char, std::function<void(
+            std::shared_ptr<node_t>,
+            int&,
+            std::ostream&)>> processor (
         {
             {
-                ' ', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                ' ', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    if (acu && acu.get() != node.get())
+                    if (acu_ && (*acu_) != node.get())
                     {
-                        auto tmp = temp.top();
-                        temp.push(++tmp);
-                        out << "ST $" << tmp << std::endl;
+                        if (not (*acu_)->store_name_)
+                        {
+                            (*acu_)->store_name_ = ++temp;
+                        }
+
+                        out << "ST $" << (*acu_)->store_name_.value() << std::endl;
                     }
 
                     out << "L " << node->name_ << std::endl;
-                    acu = node;
+                    acu_ = node.get();
                 }
             },
             {
-                '+', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                '+', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    traverse(node->left_, acu, temp, out);
+                    traverse(node->left_, temp, out);
 
                     if (node->right_->op_ == ' ')
                     {
@@ -198,19 +212,20 @@ namespace {
                     }
                     else
                     {
-                        traverse(node->right_, acu, temp, out);
-                        auto tmp = temp.top();
-                        temp.pop();
-                        out << "A $" << tmp << std::endl;
+                        traverse(node->right_, temp, out);
+                        out << "A $" << node->left_->store_name_.value() << std::endl;
+                        --temp;
                     }
 
-                    acu = node;
+                    acu_ = node.get();
                 }
             },
             {
-                '-', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                '-', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    traverse(node->left_, acu, temp, out);
+                    traverse(node->left_, temp, out);
 
                     if (node->right_->op_ == ' ')
                     {
@@ -218,19 +233,21 @@ namespace {
                     }
                     else
                     {
-                        traverse(node->right_, acu, temp, out);
-                        auto tmp = temp.top();
-                        temp.pop();
-                        out << "N" << std::endl << "A $" << tmp << std::endl;
+                        traverse(node->right_, temp, out);
+                        out << "N" << std::endl
+                            << "A $" << node->left_->store_name_.value() << std::endl;
+                        --temp;
                     }
 
-                    acu = node;
+                    acu_ = node.get();
                 }
             },
             {
-                '*', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                '*', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    traverse(node->left_, acu, temp, out);
+                    traverse(node->left_, temp, out);
 
                     if (node->right_->op_ == ' ')
                     {
@@ -238,19 +255,20 @@ namespace {
                     }
                     else
                     {
-                        traverse(node->right_, acu, temp, out);
-                        auto tmp = temp.top();
-                        temp.pop();
-                        out << "M $" << tmp << std::endl;
+                        traverse(node->right_, temp, out);
+                        out << "M $" << node->left_->store_name_.value() << std::endl;
+                        --temp;
                     }
 
-                    acu = node;
+                    acu_ = node.get();
                 }
             },
             {
-                '/', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                '/', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    traverse(node->left_, acu, temp, out);
+                    traverse(node->left_, temp, out);
 
                     if (node->right_->op_ == ' ')
                     {
@@ -258,19 +276,30 @@ namespace {
                     }
                     else
                     {
-                        traverse(node->right_, acu, temp, out);
-                        auto tmp = temp.top();
-                        temp.pop();
-                        out << "ST $" << (tmp + 1) << std::endl << "L $" << tmp << std::endl << "D $" << (tmp + 1) << std::endl;
+                        traverse(node->right_, temp, out);
+
+                        if (not node->right_->store_name_)
+                        {
+                            node->right_->store_name_ = temp + 1;
+                        }
+
+                        out << "ST $" << node->right_->store_name_.value() << std::endl
+                            << "L $" << node->left_->store_name_.value() << std::endl
+                            << "D $" << node->right_->store_name_.value() << std::endl;
+                        --temp;
                     }
+
+                    acu_ = node.get();
                 }
             },
             {
-                '@', [this](std::shared_ptr<node_t> node, std::shared_ptr<node_t>& acu, std::stack<int>& temp, std::ostream & out)
+                '@', [this](std::shared_ptr<node_t> node,
+                            int& temp,
+                            std::ostream & out)
                 {
-                    traverse(node->left_, acu, temp, out);
+                    traverse(node->left_, temp, out);
                     out << "N" << std::endl;
-                    acu = node;
+                    acu_ = node.get();
                 }
             }
         });
@@ -284,7 +313,7 @@ namespace {
                 throw "not implemented";
             }
 
-            op->second(node, acu, temp, out);
+            op->second(node, generator, out);
 
             return node;
         }

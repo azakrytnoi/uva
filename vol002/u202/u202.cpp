@@ -16,6 +16,7 @@
 #include <numeric>
 #include <limits>
 #include <map>
+#include <charconv>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -68,10 +69,10 @@ namespace {
         {
             for ( size_t i = 0; i < sol.after_decimal_.size () - 1; i++ )
             {
-                out << sol.after_decimal_.at (i);
+                out << sol.after_decimal_[i];
             }
 
-            out << "(" << sol.after_decimal_.at (sol.after_decimal_.size () - 1) << ")" << std::endl;
+            out << "(" << sol.after_decimal_[sol.after_decimal_.size () - 1] << ")" << std::endl;
         }
         else if ( sol.repeat_term_index_ > 51 )
         {
@@ -82,7 +83,7 @@ namespace {
                     out << "(";
                 }
 
-                out << sol.after_decimal_.at (i);
+                out << sol.after_decimal_[i];
             }
 
             out << "...)" << std::endl;
@@ -96,7 +97,7 @@ namespace {
                     out << "(";
                 }
 
-                out << sol.after_decimal_.at (i);
+                out << sol.after_decimal_[i];
             }
 
             out << ")" << std::endl;
@@ -111,9 +112,9 @@ namespace {
         std::map<int32_t, int32_t> freq_matrix;
         int32_t quotient = numerator_ / denominator_;
         int32_t mod = (numerator_ % denominator_) * 10;
-        std::stringstream num;
-        num << quotient;
-        before_decimal_ += num.str();
+        char numStr[std::numeric_limits<int32_t>::digits10 + 1];
+        const auto res = std::to_chars(numStr, numStr + sizeof(numStr), quotient);
+        before_decimal_.assign(numStr, res.ptr - numStr);
         before_decimal_ += '.';
         repeat_term_index_ = 1;
 

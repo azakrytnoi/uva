@@ -17,6 +17,7 @@
 #include <limits>
 #include <functional>
 #include <list>
+#include <optional>
 
 extern "C" {
     UVA_API_EXPORT void __cdecl invoke();
@@ -266,7 +267,7 @@ namespace {
         solution& operator()();
 
     private:
-        uint16_t X_, Y_;
+        std::optional<uint16_t> X_, Y_;
         robot_t robot_;
         std::string instructions_;
         std::list<point_t> off_points_;
@@ -274,9 +275,11 @@ namespace {
 
     std::istream& operator >> (std::istream& in, solution& sol)
     {
-        if (sol.X_ == 0 && sol.Y_ == 0)
+        if (not sol.X_)
         {
-            in >> sol.X_ >> sol.Y_;
+            uint16_t x, y;
+            in >> x >> y;
+            sol.X_ = x; sol.Y_ = y;
         }
 
         sol.robot_.reset();
